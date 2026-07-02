@@ -1,0 +1,93 @@
+{
+  "$meta": {
+    "name": "Path of Ambition — Character Schema",
+    "version": "1.0.0",
+    "principle": "Two-layer state: a character file stores ONLY player choices and current pool values. Every maximum, modifier, and derived number is recomputed from the content data (professions/origins/spells/items/shared) on every load — nothing derived is ever saved.",
+    "derived_not_stored": [
+      "tier (from featsPurchased via tier-progression.json)",
+      "attribute/skill point budgets, feat slot allowances",
+      "all four defenses, vitality max, wounds max, ambition max + die size",
+      "resource maxima (formula fields on profession/universal resources)",
+      "skill pools/ranks/die sizes, spell DC, reservoir max, known/prepared allowances",
+      "carry capacity, item stats (resolved from catalog via catalog_item_id)",
+      "display names for profession/origin/vocation (resolved by id)"
+    ]
+  },
+  "fields": {
+    "id": "string — unique character id (uuid or slug)",
+    "schema_version": "number — for the export/import migration pipeline",
+    "created_at": "ISO datetime string",
+    "updated_at": "ISO datetime string",
+    "identity": {
+      "name": "string",
+      "portrait": "string|null — data URL or null",
+      "pronouns": "string",
+      "tags": "string[] — freeform campaign/player labels"
+    },
+    "build": {
+      "profession_id": "string — id in data/professions",
+      "origin_id": "string — id in data/origins",
+      "vocation_id": "string — id in data/origins/origin-*-*.json",
+      "feats_purchased": "number — drives tier via tier-progression.json",
+      "attributes": "{ brawn, finesse, mind, will } — final allocated base values (vocation bonus applied on top at compute)",
+      "skills": {
+        "proficiencies": "string[] — V.I.T.A.L.S. names picked as Trained",
+        "points": "Record<skill, number> — extra skill dice allocated",
+        "expertise_bumps": "Record<skill, number> — rank bumps beyond Trained"
+      },
+      "feat_ids": "string[] — purchased feat ids (tier>0). Starting feats (tier 0) derive from profession/origin/vocation.",
+      "choices": "Record<choiceKey, string|string[]> — selections for choice/multi_choice/daily-independent picks, keyed by the boon `key`",
+      "spellcasting_modifier": "\"mind\"|\"will\"|null — only when the grant offers a choice",
+      "known_spell_ids": "string[]",
+      "known_cantrip_ids": "string[]",
+      "known_sphere_ids": "string[]",
+      "prepared_spell_ids": "string[] — subset of known",
+      "signature_spell_ids": "string[]",
+      "tier4_slot_choice": "\"tactical\"|\"narrative\"|null — tier-progression tier 4 flexible slot",
+      "prep": "Record<featId, json> — per-feat preparation selections (bound weapon, augments, enchantments, daily inscriptions)"
+    },
+    "inventory": {
+      "items": [
+        {
+          "id": "string — instance id",
+          "catalog_item_id": "string|null — id in data/items catalog; null = custom item",
+          "name": "string — display name (custom items) or catalog override",
+          "quantity": "number",
+          "equipped": "boolean",
+          "slot": "string|null — slot_definitions key",
+          "masterwork_bonus": "number",
+          "medium_armor_stat": "\"brawn\"|\"finesse\"|null — wearer's pick for Medium armor",
+          "reduction_pool_current": "number|null — shields only; max derives from catalog",
+          "notes": "string",
+          "custom": "json|null — full stat block for non-catalog items (same shape as a catalog entry)"
+        }
+      ],
+      "currency": "{ gold, silver, copper }",
+      "notes": "string"
+    },
+    "pools": {
+      "vitality": "number — current",
+      "temp_vitality": "number",
+      "wounds": "number — current wounds taken",
+      "ambition": "number — current",
+      "reservoir": "number — current mana/reservoir for casters",
+      "resources": "Record<resourceId, number> — current value per profession/feat resource",
+      "reduction_pools": "Record<sourceKey, number> — current value per character-level reduction pool boon",
+      "free_successes": "Record<context, number> — remaining grants_free_success counters",
+      "uses": "Record<featOrBoonKey, number> — remaining limited-use counters"
+    },
+    "states": { "active": "string[] — activate_state toggles currently on" },
+    "conditions": "Record<conditionId, number> — 3-letter ids from conditions.json; value = stack count (>=1 = active)",
+    "daily_modes": "Record<modeKey, string|null> — daily_mode_choice selections",
+    "play": {
+      "renown": "number",
+      "respites_used": "number",
+      "favorites": "[{ type: \"item\"|\"feat\"|\"spell\", id }] — pinned to the quick panel"
+    },
+    "notes": {
+      "journal": "[{ id, title, content, created_at, updated_at }]",
+      "biography": "{ personality, ideals, bonds, flaws, backstory }",
+      "freeform": "string"
+    }
+  }
+}

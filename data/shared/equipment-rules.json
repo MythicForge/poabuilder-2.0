@@ -1,0 +1,37 @@
+{
+  "$meta": {
+    "name": "Path of Ambition — Equipment Rules",
+    "version": "1.0.0",
+    "source": "codified from builder-1.0 lib/characterCalc.ts calcArmorDefense/calcCarryWeight; stat caps agree with items.json armor_types",
+    "notes": [
+      "Armor Defense = base + armor_bonus + shield_bonus + min(stat_cap, stat); masterwork raises the stat cap.",
+      "Special formulas (spell armor, unarmored defense) replace the whole calculation while active."
+    ]
+  },
+  "armor_defense": {
+    "base": 8,
+    "categories": {
+      "Heavy":  { "stat": "brawn", "stat_cap": 3, "shield_allowed": true },
+      "Medium": { "stat": "brawn_or_finesse", "stat_cap": 3, "shield_allowed": true,
+                  "note": "wearer picks the stat per armor piece (mediumArmorStat)" },
+      "Light":  { "stat": "finesse", "stat_cap": 5, "shield_allowed": false,
+                  "agile_bonus": "add Tier while the Agile rule applies" },
+      "Unarmored": { "stat": "finesse", "stat_cap": null, "shield_allowed": true,
+                     "agile_bonus": "add Tier while the Agile rule applies" }
+    },
+    "masterwork": "masterwork_bonus adds to the category stat_cap",
+    "special": {
+      "spell_armor": { "formula": "8 + Tier + min(9, spell_modifier)",
+                       "activation": "activate_state; replaces Armor while active" },
+      "unarmored_defense": { "formula": "8 + Tier + min(9, Brawn)",
+                             "condition": "granted by boon (e.g. Berserker) and no armor equipped" }
+    }
+  },
+  "wounds": { "armor_wound_bonus": "equipped armor wound_bonus adds to max Wounds" },
+  "carry": { "capacity_formula": "5 + Brawn + Tier", "unit": "slot_weight" },
+  "shields": {
+    "armor_bonus": "shield armor bonus adds to Armor Defense when equipped",
+    "reduction_pool": "shields carry their own reduction pool (max/current tracked on the inventory item)"
+  },
+  "dual_wield": { "default": "not allowed unless an equipment_rule_override boon grants allow_dual_wield" }
+}

@@ -1,0 +1,35 @@
+{
+  "$meta": {
+    "name": "Path of Ambition — Item Catalog Schema",
+    "version": "1.0.0",
+    "notes": [
+      "data/items/items.json top level: $meta, item_traits, armor_types, masterwork_quality, abbreviations, kit_legends, slot_definitions, carry_rules, catalog.",
+      "Character inventory stores catalog_item_id + instance state only; item stats always resolve from the catalog at compute time (see character-schema.json).",
+      "Armor stat caps and defense math live in equipment-rules.json."
+    ]
+  },
+  "catalog_entry_fields": {
+    "id": "string — kebab-case, prefixed by kind (weapon-/armor-/shield-/kit-)",
+    "name": "string",
+    "category": "\"Weapon\"|\"Armor\"|\"Shield\"|\"Kit\"|\"Consumable\"|\"Currency\"|\"Misc\"",
+    "subcategory": "string — finer grouping (e.g. medical, engineering for kits)",
+    "groups": "string[] — armament proficiency tags (Simple/Martial/Finesse/Ranged); weapons only",
+    "damage": "dice string|null — weapons",
+    "damage_types": "[{ code, name }] — weapons",
+    "range_bands": "[{ code, name }] — weapons",
+    "traits": "[{ name }] — item traits defined in item_traits",
+    "armor_type": "string|null — key into armor_types (armor/shields)",
+    "armor_bonus / armor_bonus_range": "number or {value} — armor/shields",
+    "wound_bonus": "number (optional) — armor adds to max Wounds",
+    "reduction_pool": "number|null — shields: pool maximum",
+    "augment_slots": "string|number — armor",
+    "shield_type": "string|null",
+    "uses / bonus / critical / default_uses": "kit-specific fields",
+    "cost": "number|null — gold",
+    "weight": "number, in slot_weight units; stackable + stack_limit_per_weight_unit for bundles",
+    "equip_slots": "string[] — keys into slot_definitions",
+    "equippable": "boolean",
+    "is_template": "boolean (optional) — baseline entry, not a purchasable item",
+    "rules_reference": "{ source_pages: number[] } (optional)"
+  }
+}

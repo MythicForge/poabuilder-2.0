@@ -1,0 +1,22 @@
+{
+  "$meta": {
+    "name": "Path of Ambition — Spell Schema",
+    "version": "1.0.0",
+    "cost_rule": "Base cast costs mana equal to the spell's tier; cantrips cost 0. Each amp adds its listed extra cost on top. spell_cost_modifier boons apply after."
+  },
+  "fields": {
+    "id": "string — kebab-case slug, unique",
+    "name": "string",
+    "tier": "number 0–5 (0 = cantrip)",
+    "is_cantrip": "boolean",
+    "school": "string|null — Aberration, Augmentation, Conjuration, Decimation, Divination, Mortification, Reclamation; null for cantrips",
+    "spheres": "string[] — Universal, Mana, Soul, Anima, Primeval; a caster needs one matching known sphere",
+    "range": "string|null",
+    "duration": "string|null",
+    "cost": "number — base mana cost (= tier, 0 for cantrips)",
+    "area": "string|null",
+    "description": "markdown string",
+    "amps": "[{ cost: string (e.g. \"+2\"), effect: string }] — optional extra-mana upgrades",
+    "reference_only": "boolean (optional) — imported entry kept for reference, not player-selectable"
+  }
+}

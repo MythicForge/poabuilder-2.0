@@ -1,0 +1,58 @@
+{
+  "id": "fixture-selene-tier3-mage",
+  "schema_version": 1,
+  "created_at": "2026-07-01T00:00:00.000Z",
+  "updated_at": "2026-07-01T00:00:00.000Z",
+  "identity": { "name": "Selene Marrow", "portrait": null, "pronouns": "she/her", "tags": ["fixture"] },
+  "build": {
+    "profession_id": "mage",
+    "origin_id": "apprentice",
+    "vocation_id": "apprentice-artisan",
+    "feats_purchased": 6,
+    "attributes": { "brawn": 1, "finesse": 2, "mind": 6, "will": 3 },
+    "skills": {
+      "proficiencies": ["Lore", "Intuition"],
+      "points": { "Lore": 2, "Intuition": 1 },
+      "expertise_bumps": { "Lore": 1 }
+    },
+    "feat_ids": ["rune_wards", "arcane_author", "pragmatic_utility", "temperate_augmentations", "astute_studies", "spellmote"],
+    "choices": {},
+    "spellcasting_modifier": null,
+    "known_spell_ids": ["alarm", "arcane-needles", "arcane-chains", "arcane-bastion", "bitter-chill", "command"],
+    "known_cantrip_ids": ["arcane-jolt", "arcane-echo", "arcane-lens"],
+    "known_sphere_ids": ["Mana"],
+    "prepared_spell_ids": ["arcane-needles", "arcane-chains", "bitter-chill"],
+    "signature_spell_ids": [],
+    "tier4_slot_choice": null,
+    "prep": {}
+  },
+  "inventory": {
+    "items": [
+      { "id": "inv-1", "catalog_item_id": "weapon-quarterstaff", "name": "Quarterstaff", "quantity": 1, "equipped": true, "slot": "two_hands", "masterwork_bonus": 0, "medium_armor_stat": null, "reduction_pool_current": null, "notes": "", "custom": null },
+      { "id": "inv-2", "catalog_item_id": "armor-leather-armor", "name": "Leather Armor", "quantity": 1, "equipped": true, "slot": "body", "masterwork_bonus": 0, "medium_armor_stat": null, "reduction_pool_current": null, "notes": "", "custom": null },
+      { "id": "inv-3", "catalog_item_id": "kit-medical-healer-s-kit", "name": "Healer's Kit", "quantity": 1, "equipped": false, "slot": null, "masterwork_bonus": 0, "medium_armor_stat": null, "reduction_pool_current": null, "notes": "", "custom": null }
+    ],
+    "currency": { "gold": 4, "silver": 12, "copper": 6 },
+    "notes": ""
+  },
+  "pools": {
+    "vitality": 14,
+    "temp_vitality": 0,
+    "wounds": 0,
+    "ambition": 6,
+    "reservoir": 8,
+    "resources": { "mana": 8 },
+    "reduction_pools": {},
+    "free_successes": {},
+    "uses": {}
+  },
+  "states": { "active": [] },
+  "conditions": {},
+  "daily_modes": {},
+  "play": { "renown": 5, "respites_used": 0, "favorites": [{ "type": "spell", "id": "arcane-needles" }] },
+  "notes": {
+    "journal": [],
+    "biography": { "personality": "Methodical, curious.", "ideals": "Knowledge outlives us.", "bonds": "Her old workshop master.", "flaws": "Cannot leave a puzzle unsolved.", "backstory": "Artisan's apprentice who traced enchantment lattices until they answered back." },
+    "freeform": ""
+  }
+}

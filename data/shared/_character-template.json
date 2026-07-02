@@ -1,0 +1,46 @@
+{
+  "id": "",
+  "schema_version": 1,
+  "created_at": "",
+  "updated_at": "",
+  "identity": { "name": "", "portrait": null, "pronouns": "", "tags": [] },
+  "build": {
+    "profession_id": "",
+    "origin_id": "",
+    "vocation_id": "",
+    "feats_purchased": 0,
+    "attributes": { "brawn": 0, "finesse": 0, "mind": 0, "will": 0 },
+    "skills": { "proficiencies": [], "points": {}, "expertise_bumps": {} },
+    "feat_ids": [],
+    "choices": {},
+    "spellcasting_modifier": null,
+    "known_spell_ids": [],
+    "known_cantrip_ids": [],
+    "known_sphere_ids": [],
+    "prepared_spell_ids": [],
+    "signature_spell_ids": [],
+    "tier4_slot_choice": null,
+    "prep": {}
+  },
+  "inventory": { "items": [], "currency": { "gold": 0, "silver": 0, "copper": 0 }, "notes": "" },
+  "pools": {
+    "vitality": 0,
+    "temp_vitality": 0,
+    "wounds": 0,
+    "ambition": 0,
+    "reservoir": 0,
+    "resources": {},
+    "reduction_pools": {},
+    "free_successes": {},
+    "uses": {}
+  },
+  "states": { "active": [] },
+  "conditions": {},
+  "daily_modes": {},
+  "play": { "renown": 0, "respites_used": 0, "favorites": [] },
+  "notes": {
+    "journal": [],
+    "biography": { "personality": "", "ideals": "", "bonds": "", "flaws": "", "backstory": "" },
+    "freeform": ""
+  }
+}

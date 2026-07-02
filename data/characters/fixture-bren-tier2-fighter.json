@@ -1,0 +1,59 @@
+{
+  "id": "fixture-bren-tier2-fighter",
+  "schema_version": 1,
+  "created_at": "2026-07-01T00:00:00.000Z",
+  "updated_at": "2026-07-01T00:00:00.000Z",
+  "identity": { "name": "Bren Ironhold", "portrait": null, "pronouns": "he/him", "tags": ["fixture"] },
+  "build": {
+    "profession_id": "fighter",
+    "origin_id": "soldier",
+    "vocation_id": "soldier-infantry",
+    "feats_purchased": 3,
+    "attributes": { "brawn": 5, "finesse": 2, "mind": 1, "will": 2 },
+    "skills": {
+      "proficiencies": ["Vigor"],
+      "points": { "Vigor": 1 },
+      "expertise_bumps": {}
+    },
+    "feat_ids": ["adrenaline_rush", "defensive_stance", "signature_armor"],
+    "choices": { "signature_school": "defender" },
+    "spellcasting_modifier": null,
+    "known_spell_ids": [],
+    "known_cantrip_ids": [],
+    "known_sphere_ids": [],
+    "prepared_spell_ids": [],
+    "signature_spell_ids": [],
+    "tier4_slot_choice": null,
+    "prep": {}
+  },
+  "inventory": {
+    "items": [
+      { "id": "inv-1", "catalog_item_id": "weapon-longsword", "name": "Longsword", "quantity": 1, "equipped": true, "slot": "main_hand", "masterwork_bonus": 0, "medium_armor_stat": null, "reduction_pool_current": null, "notes": "", "custom": null },
+      { "id": "inv-2", "catalog_item_id": "armor-chainmail", "name": "Chainmail", "quantity": 1, "equipped": true, "slot": "body", "masterwork_bonus": 0, "medium_armor_stat": "brawn", "reduction_pool_current": null, "notes": "", "custom": null },
+      { "id": "inv-3", "catalog_item_id": "shield-shield", "name": "Shield", "quantity": 1, "equipped": true, "slot": "off_hand", "masterwork_bonus": 0, "medium_armor_stat": null, "reduction_pool_current": 12, "notes": "", "custom": null }
+    ],
+    "currency": { "gold": 9, "silver": 4, "copper": 0 },
+    "notes": ""
+  },
+  "pools": {
+    "vitality": 24,
+    "temp_vitality": 0,
+    "wounds": 1,
+    "ambition": 4,
+    "reservoir": 0,
+    "resources": { "adrenaline": 3 },
+    "reduction_pools": {},
+    "free_successes": {},
+    "uses": {},
+    "//": "current values only — engine clamps to computed maxima"
+  },
+  "states": { "active": [] },
+  "conditions": { "BLD": 1 },
+  "daily_modes": {},
+  "play": { "renown": 2, "respites_used": 1, "favorites": [{ "type": "feat", "id": "adrenaline_rush" }] },
+  "notes": {
+    "journal": [{ "id": "j1", "title": "The siege of Hollowmere", "content": "Held the east gate for six hours.", "created_at": "2026-07-01T00:00:00.000Z", "updated_at": "2026-07-01T00:00:00.000Z" }],
+    "biography": { "personality": "Steady under pressure.", "ideals": "The line holds.", "bonds": "Old regiment.", "flaws": "Never retreats, even when he should.", "backstory": "Career soldier turned freelance shieldman." },
+    "freeform": ""
+  }
+}
