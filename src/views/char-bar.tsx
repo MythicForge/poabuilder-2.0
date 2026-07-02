@@ -33,6 +33,13 @@ export function CharBar({ stored, c, setStored }: CharBarProps) {
         <button className="char-bar-crumb" onClick={() => (window.location.href = "index.html")}>
           ← MY CHARACTERS
         </button>
+        <button
+          className="char-bar-crumb"
+          style={{ marginLeft: "auto" }}
+          onClick={() => (window.location.href = `builder.html?id=${encodeURIComponent(stored.id)}`)}
+        >
+          EDIT IN BUILDER →
+        </button>
       </div>
 
       <div className="top">
