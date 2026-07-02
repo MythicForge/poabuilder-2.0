@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import type { ComputedCharacter, StoredCharacter } from "../core/types.ts";
-import { Icon } from "../shared/primitives.tsx";
+import { Icon } from "@ui/primitives.tsx";
 import { REGISTRY } from "../core/data-registry.ts";
 import { applyRest, type RestKind } from "../core/rest.ts";
 

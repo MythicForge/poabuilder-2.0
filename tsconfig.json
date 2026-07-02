@@ -13,7 +13,7 @@
     "useDefineForClassFields": true,
     "allowImportingTsExtensions": true,
     "baseUrl": ".",
-    "paths": { "@data/*": ["data/*"] },
+    "paths": { "@data/*": ["data/*"], "@ui/*": ["packages/ui/*"] },
     "types": ["vite/client", "node"]
   },
   "include": ["src", "vite.config.ts"]

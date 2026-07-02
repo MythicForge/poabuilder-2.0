@@ -2,7 +2,7 @@
 // and limited-use counters.
 
 import type { Boon, ComputedCharacter, Feat, StoredCharacter } from "../core/types.ts";
-import { Pill } from "../shared/primitives.tsx";
+import { Pill } from "@ui/primitives.tsx";
 
 interface TabProps {
   c: ComputedCharacter;

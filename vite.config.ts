@@ -7,6 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@data": fileURLToPath(new URL("./data", import.meta.url)),
+      "@ui": fileURLToPath(new URL("./packages/ui", import.meta.url)),
     },
   },
   server: {

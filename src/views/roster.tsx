@@ -2,7 +2,7 @@
 // import/export via the portable envelope.
 
 import { useRef, useState } from "react";
-import "../shared/styles.css";
+import "@ui/styles.css";
 import { CharStorage } from "../core/storage.ts";
 import { REGISTRY } from "../core/data-registry.ts";
 import { computeCharacter } from "../core/compute.ts";

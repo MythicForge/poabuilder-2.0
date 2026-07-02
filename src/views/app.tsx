@@ -3,12 +3,12 @@
 // is the only mutable state; `c` is recomputed each change and auto-saved.
 
 import { useEffect, useMemo, useState } from "react";
-import "../shared/styles.css";
+import "@ui/styles.css";
 import { REGISTRY } from "../core/data-registry.ts";
 import { computeCharacter } from "../core/compute.ts";
 import { CharStorage } from "../core/storage.ts";
 import type { StoredCharacter } from "../core/types.ts";
-import { Icon, StatCard } from "../shared/primitives.tsx";
+import { Icon, StatCard } from "@ui/primitives.tsx";
 import { CharBar } from "./char-bar.tsx";
 import { LeftRail } from "./left-rail.tsx";
 import { RightRail } from "./right-rail.tsx";

@@ -4,7 +4,7 @@
 // authored yet — the framework is complete and tolerates partial data.
 
 import { useMemo, useState } from "react";
-import "../../shared/styles.css";
+import "@ui/styles.css";
 import "./builder.css";
 import { CharStorage } from "../../core/storage.ts";
 import { REGISTRY } from "../../core/data-registry.ts";
