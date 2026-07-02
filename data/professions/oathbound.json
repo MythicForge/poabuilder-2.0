@@ -2,26 +2,70 @@
   "id": "oathbound",
   "name": "Oathbound",
   "description": "Divine spellcasters who channel their deity's power through sworn oaths. They excel at healing, protection, and combating supernatural threats that violate their divine principles. Half-caster (Herald path becomes full-caster). Paths are the Herald and the Arbiter.",
-  "favored_attributes": ["Mind", "Will", "Brawn"],
+  "favored_attributes": [
+    "Mind",
+    "Will",
+    "Brawn"
+  ],
   "favored_attributes_note": "Source: '(Mind or Will) and Body'. Player picks Mind OR Will as casting modifier, plus Brawn (Body). Verify.",
   "vitality": {
     "base": "9 + Brawn",
     "per_tier": "2d10",
-    "brawn_bonus": { "dice": "1d6", "threshold": 5, "attribute": "Brawn" }
+    "brawn_bonus": {
+      "dice": "1d6",
+      "threshold": 5,
+      "attribute": "Brawn"
+    }
   },
   "wound_threshold_per_tier": 1,
   "proficiencies": {
-    "skills": { "type": "choice", "count": 1, "from": ["Intuition", "Awareness", "Lore", "Social"] },
-    "armaments": ["Simple", "Catalysts", "Light Crossbow"],
-    "protection": ["Light", "Shield"],
-    "tools": { "type": "choice", "count": 1, "from": ["Alchemy", "Medicine"] }
+    "skills": {
+      "type": "choice",
+      "count": 1,
+      "from": [
+        "Intuition",
+        "Awareness",
+        "Lore",
+        "Social"
+      ]
+    },
+    "armaments": [
+      "Simple",
+      "Catalysts",
+      "Light Crossbow"
+    ],
+    "protection": [
+      "Light",
+      "Shield"
+    ],
+    "tools": {
+      "type": "choice",
+      "count": 1,
+      "from": [
+        "Alchemy",
+        "Medicine"
+      ]
+    }
   },
   "starting_pack": {
-    "weapons": ["simple_weapon_choice", "magic_staff_or_talisman"],
-    "armor": ["light_armor", "shield"],
+    "weapons": [
+      "simple_weapon_choice",
+      "magic_staff_or_talisman"
+    ],
+    "armor": [
+      "light_armor",
+      "shield"
+    ],
     "kits": [],
-    "inventory": ["holy_symbol", "prayer_book", "holy_water_2", "healers_kit"],
-    "currency": { "gold": 7 }
+    "inventory": [
+      "holy_symbol",
+      "prayer_book",
+      "holy_water_2",
+      "healers_kit"
+    ],
+    "currency": {
+      "gold": 7
+    }
   },
   "resources": [
     {
@@ -29,18 +73,31 @@
       "name": "Reservoir",
       "max": "(1 * Tier) + SpellMod",
       "note": "Half-caster reservoir; source = Soul, modifier = Mind or Will. Covenant's Herald upgrades to (2 * Tier) + SpellMod (full-caster).",
-      "recovery": { "respite": { "formula": "SpellMod", "minimum": 3 } }
+      "recovery": {
+        "respite": {
+          "formula": "SpellMod",
+          "minimum": 3
+        }
+      }
     }
   ],
   "paths": [
-    { "id": "herald",  "name": "Herald" },
-    { "id": "arbiter", "name": "Arbiter" }
+    {
+      "id": "herald",
+      "name": "Herald"
+    },
+    {
+      "id": "arbiter",
+      "name": "Arbiter"
+    }
   ],
   "feats": [
     {
       "id": "creed",
       "name": "Creed",
-      "tags": ["Oathbound"],
+      "tags": [
+        "Oathbound"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -59,24 +116,86 @@
           "prompt": "Choose your Creed",
           "options": [
             {
-              "value": "honor", "label": "Honor", "grants": { "anathema": ["Chaos", "Ruin"],
+              "value": "honor",
+              "label": "Honor",
+              "grants": {
+                "anathema": [
+                  "Chaos",
+                  "Ruin"
+                ],
                 "description": "When you Smite a target that violates your Anathema, deal an additional 1d8 Ether or Void damage.",
-                "boons": [] } },
+                "boons": []
+              }
+            },
             {
-              "value": "serenity", "label": "Serenity", "grants": { "anathema": ["Ruin"],
+              "value": "serenity",
+              "label": "Serenity",
+              "grants": {
+                "anathema": [
+                  "Ruin"
+                ],
                 "description": "When you restore a target's Vitality, add an additional 1d4 healing.",
-                "boons": [] } },
+                "boons": []
+              }
+            },
             {
-              "value": "dominion", "label": "Dominion", "grants": { "anathema": ["Neutral", "Chaos"],
-                "boons": [{ "type": "proficiency", "category": "armaments", "value": "Martial" }, { "type": "proficiency", "category": "protection", "value": "Medium" }] } },
+              "value": "dominion",
+              "label": "Dominion",
+              "grants": {
+                "anathema": [
+                  "Neutral",
+                  "Chaos"
+                ],
+                "boons": [
+                  {
+                    "type": "proficiency",
+                    "category": "armaments",
+                    "value": "Martial"
+                  },
+                  {
+                    "type": "proficiency",
+                    "category": "protection",
+                    "value": "Medium"
+                  }
+                ]
+              }
+            },
             {
-              "value": "entropy", "label": "Entropy", "grants": { "anathema": ["Order"],
+              "value": "entropy",
+              "label": "Entropy",
+              "grants": {
+                "anathema": [
+                  "Order"
+                ],
                 "description": "When a damaging spell of yours hits, deal an additional 1d4 Void or Ether damage.",
-                "boons": [{ "type": "grants_sphere", "sphere": "mortification" }] } },
+                "boons": [
+                  {
+                    "type": "grants_sphere",
+                    "sphere": "mortification"
+                  }
+                ]
+              }
+            },
             {
-              "value": "paradox", "label": "Paradox", "grants": { "anathema": ["Order", "Neutral"],
+              "value": "paradox",
+              "label": "Paradox",
+              "grants": {
+                "anathema": [
+                  "Order",
+                  "Neutral"
+                ],
                 "description": "You may turn your spell damage into Arcane damage.",
-                "boons": [{ "type": "grants_known_spells", "spell_ids": ["arcane_needle"], "counts_against_known": false }] } }
+                "boons": [
+                  {
+                    "type": "grants_known_spells",
+                    "spell_ids": [
+                      "arcane-needles"
+                    ],
+                    "counts_against_known": false
+                  }
+                ]
+              }
+            }
           ]
         }
       ]
@@ -84,7 +203,10 @@
     {
       "id": "spellcasting",
       "name": "Spellcasting",
-      "tags": ["Oathbound", "Spellcasting"],
+      "tags": [
+        "Oathbound",
+        "Spellcasting"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -102,18 +224,31 @@
           "caster_type": "limited",
           "source": "soul",
           "modifier": "SpellMod",
-          "modifier_choice": ["Mind", "Will"],
-          "known_spells": { "start": 3, "tier": 1 },
+          "modifier_choice": [
+            "Mind",
+            "Will"
+          ],
+          "known_spells": {
+            "start": 3,
+            "tier": 1
+          },
           "prepared_spells": "SpellMod",
           "spell_dc": "10 + SpellTier + SpellMod",
-          "cantrips": { "max": 3, "from": ["radiant_dart"] }
+          "cantrips": {
+            "max": 3,
+            "from": [
+              "radiant-dart"
+            ]
+          }
         }
       ]
     },
     {
       "id": "augur",
       "name": "Augur",
-      "tags": ["Oathbound"],
+      "tags": [
+        "Oathbound"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -126,13 +261,22 @@
       "prerequisites": [],
       "description": "You gain access to smite and turn the heretics; these do not count as known spells.",
       "boons": [
-        { "type": "grants_known_spells", "spell_ids": ["smite", "turn_the_heretics"], "counts_against_known": false }
+        {
+          "type": "grants_known_spells",
+          "spell_ids": [
+            "smite",
+            "turn-the-heretic"
+          ],
+          "counts_against_known": false
+        }
       ]
     },
     {
       "id": "ascendant_boons",
       "name": "Ascendant Boons",
-      "tags": ["Oathbound"],
+      "tags": [
+        "Oathbound"
+      ],
       "path": null,
       "tier": 1,
       "trait": "Narrative",
@@ -140,7 +284,10 @@
       "cost": null,
       "range": null,
       "duration": "1 Minute",
-      "uses": { "count": 1, "recharge": "long_rest" },
+      "uses": {
+        "count": 1,
+        "recharge": "long_rest"
+      },
       "feat_dc": null,
       "prerequisites": [],
       "description": "Once per Long Rest, invoke your Creed to manifest an Ascendant Boon for 1 minute. Effect depends on your Creed: Honor — an Aura of Ambition; allies in your Engagement or that you touch may add your Ambition die to checks (once per round). Serenity — once per round when you restore Vitality, also heal an ally in Close range for 1d4 (up to your Tier allies). Dominion — mark a target within Nearby range; attacks and spell attacks against it have Resolve. Entropy — an Aura in Close range; when you damage an already-damaged target, deal an additional 1d4 Void or Ether damage. Paradox — when you deal damage, make a Mind opposed check; on success the target's next attack against another creature is made with Strain, on a critical success all the target's attacks are made with Strain until the end of its turn.",
@@ -149,7 +296,9 @@
     {
       "id": "creeds_echo",
       "name": "Creed's Echo",
-      "tags": ["Oathbound"],
+      "tags": [
+        "Oathbound"
+      ],
       "path": null,
       "tier": 2,
       "trait": "Passive",
@@ -159,10 +308,18 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": ["ascendant_boons"],
+      "prerequisites": [
+        "ascendant_boons"
+      ],
       "description": "Your devotion strengthens: you may perform your Ascendant Boon twice per Long Rest.",
       "boons": [
-        { "type": "upgrade_feat", "target_feat": "ascendant_boons", "patch": { "uses.count": 2 } }
+        {
+          "type": "upgrade_feat",
+          "target_feat": "ascendant_boons",
+          "patch": {
+            "uses.count": 2
+          }
+        }
       ]
     }
   ]

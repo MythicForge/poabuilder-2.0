@@ -6,7 +6,17 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 
 const old = JSON.parse(readFileSync("merge/builder-1.0/content/spells.json", "utf8"));
 
-const spells = old.spells.map((s) => ({
+// Broken markdown-table extraction rows: empty or sentence-length slug ids.
+const rejected = old.spells.filter((s) => !s.id || s.id.length > 60);
+const kept = old.spells.filter((s) => s.id && s.id.length <= 60);
+if (rejected.length) {
+  writeFileSync("data/spells/_rejected.json", JSON.stringify({
+    $meta: { note: "Rows rejected during port (broken source extraction) — recover manually if any are real spells." },
+    rejected,
+  }, null, 2) + "\n");
+}
+
+const spells = kept.map((s) => ({
   id: s.id,
   name: s.name,
   tier: s.tier,

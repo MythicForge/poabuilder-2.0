@@ -147,10 +147,10 @@
           "cantrips": {
             "max": 3,
             "from": [
-              "hunters_stride",
-              "primeval_lure",
-              "primeval_ward",
-              "unseen_messenger"
+              "hunter-s-stride",
+              "primeval-lure",
+              "primeval-ward",
+              "unseen-messenger"
             ]
           }
         }

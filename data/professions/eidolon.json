@@ -2,26 +2,63 @@
   "id": "eidolon",
   "name": "Eidolon",
   "description": "Inheritors of ancient magical bloodlines who manipulate arcane energies with instinctive flair. Their magic operates on intuition and emotion rather than formula, letting them bend arcane rules. Full-caster. Paths are the Spellshaper and the Prodigy. (Source text also calls the class 'scion' — naming drift; verify.)",
-  "favored_attributes": ["Will"],
+  "favored_attributes": [
+    "Will"
+  ],
   "vitality": {
     "base": "8 + Brawn",
     "per_tier": "2d8",
-    "brawn_bonus": { "dice": "1d6", "threshold": 5, "attribute": "Brawn" }
+    "brawn_bonus": {
+      "dice": "1d6",
+      "threshold": 5,
+      "attribute": "Brawn"
+    }
   },
   "wound_threshold_per_tier": 1,
   "wound_threshold_note": "Source omits the Wound Threshold line; defaulted to 1 (matches other 2d8 casters). Verify.",
   "proficiencies": {
-    "skills": { "type": "choice", "count": 1, "from": ["Awareness", "Lore", "Social"] },
-    "armaments": ["Catalysts", "one_of_choice"],
+    "skills": {
+      "type": "choice",
+      "count": 1,
+      "from": [
+        "Awareness",
+        "Lore",
+        "Social"
+      ]
+    },
+    "armaments": [
+      "Catalysts",
+      "one_of_choice"
+    ],
     "protection": [],
-    "tools": { "type": "choice", "count": 1, "from": ["Crafting", "Engineering", "Medicine"] }
+    "tools": {
+      "type": "choice",
+      "count": 1,
+      "from": [
+        "Crafting",
+        "Engineering",
+        "Medicine"
+      ]
+    }
   },
   "starting_pack": {
-    "weapons": ["magic_wand", "dagger_or_light_weapon_choice"],
-    "armor": ["heritage_clothing"],
+    "weapons": [
+      "magic_wand",
+      "dagger_or_light_weapon_choice"
+    ],
+    "armor": [
+      "heritage_clothing"
+    ],
     "kits": [],
-    "inventory": ["family_heirloom_minor_enchantment", "nobles_signet_ring", "fine_clothing", "lineage_journal"],
-    "currency": { "gold": 25 }
+    "inventory": [
+      "family_heirloom_minor_enchantment",
+      "nobles_signet_ring",
+      "fine_clothing",
+      "lineage_journal"
+    ],
+    "currency": {
+      "gold": 25
+    }
   },
   "resources": [
     {
@@ -29,45 +66,91 @@
       "name": "Reservoir",
       "max": "(2 * Tier) + Will",
       "note": "Full-caster reservoir; source = Anima, modifier = Will.",
-      "recovery": { "respite": { "formula": "Will", "minimum": 3 } }
+      "recovery": {
+        "respite": {
+          "formula": "Will",
+          "minimum": 3
+        }
+      }
     },
     {
       "id": "resonance",
       "name": "Resonance",
       "max": "Tier",
       "note": "Start with 1/day; +1 per Tier after Tier 1 (so max = Tier). Convert (1 AP/MP, once per turn): 1 Resonance -> 2 Reservoir, or 2 Reservoir -> 1 Resonance. Unused Resonance beyond starting amount fades after a long or full rest. Source sometimes calls this 'design points' / 'essence'.",
-      "recovery": { "long_rest": "reset_to_starting" }
+      "recovery": {
+        "long_rest": "reset_to_starting"
+      }
     }
   ],
   "paths": [
-    { "id": "spellshaper", "name": "Spellshaper" },
-    { "id": "prodigy",     "name": "Prodigy" }
+    {
+      "id": "spellshaper",
+      "name": "Spellshaper"
+    },
+    {
+      "id": "prodigy",
+      "name": "Prodigy"
+    }
   ],
   "feats": [
     {
       "id": "resonance",
       "name": "Resonance",
-      "tags": ["Eidolon"],
+      "tags": [
+        "Eidolon"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Maneuver",
       "slot_type": null,
-      "cost": { "ap": 1 },
+      "cost": {
+        "ap": 1
+      },
       "range": null,
       "duration": null,
-      "uses": { "count": 1, "recharge": "turn" },
+      "uses": {
+        "count": 1,
+        "recharge": "turn"
+      },
       "feat_dc": null,
       "prerequisites": [],
       "description": "You gain the Resonance resource (max equal to your essence; start with 1/day, +1 per Tier after Tier 1). Spend 1 AP or MP, once per turn, to convert: spend 1 Resonance to restore 2 Reservoir, or spend 2 Reservoir to regain 1 Resonance.",
       "boons": [
-        { "type": "grants_resource", "resource_id": "resonance" },
+        {
+          "type": "grants_resource",
+          "resource_id": "resonance"
+        },
         {
           "type": "resource_conversion",
-          "uses": { "count": 1, "recharge": "turn" },
-          "cost": { "ap": 1 },
+          "uses": {
+            "count": 1,
+            "recharge": "turn"
+          },
+          "cost": {
+            "ap": 1
+          },
           "modes": [
-            { "spend": { "id": "resonance", "amount": 1 }, "gain": { "id": "anima", "amount": 2 } },
-            { "spend": { "id": "anima", "amount": 2 }, "gain": { "id": "resonance", "amount": 1 } }
+            {
+              "spend": {
+                "id": "resonance",
+                "amount": 1
+              },
+              "gain": {
+                "id": "anima",
+                "amount": 2
+              }
+            },
+            {
+              "spend": {
+                "id": "anima",
+                "amount": 2
+              },
+              "gain": {
+                "id": "resonance",
+                "amount": 1
+              }
+            }
           ],
           "note": "Resource conversion — see rule-check.md."
         }
@@ -76,7 +159,9 @@
     {
       "id": "spell_shaping",
       "name": "Spell Shaping",
-      "tags": ["Eidolon"],
+      "tags": [
+        "Eidolon"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -95,8 +180,32 @@
           "prepared_per_day": 2,
           "activation": "free_action",
           "options": [
-            { "id": "efficient_resonance", "name": "Efficient Resonance", "cost": { "resources": [{ "id": "resonance", "amount": "spell_tier" }] }, "effect": "When you cast a spell, reduce its cast cost to 1 AP." },
-            { "id": "cascading_resonance", "name": "Cascading Resonance", "cost": { "resources": [{ "id": "resonance", "amount": "2 * spell_tier" }] }, "effect": "Double a spell's duration (max 8 hours)." }
+            {
+              "id": "efficient_resonance",
+              "name": "Efficient Resonance",
+              "cost": {
+                "resources": [
+                  {
+                    "id": "resonance",
+                    "amount": "spell_tier"
+                  }
+                ]
+              },
+              "effect": "When you cast a spell, reduce its cast cost to 1 AP."
+            },
+            {
+              "id": "cascading_resonance",
+              "name": "Cascading Resonance",
+              "cost": {
+                "resources": [
+                  {
+                    "id": "resonance",
+                    "amount": "2 * spell_tier"
+                  }
+                ]
+              },
+              "effect": "Double a spell's duration (max 8 hours)."
+            }
           ],
           "note": "Spell-shape subsystem — see rule-check.md."
         }
@@ -105,7 +214,10 @@
     {
       "id": "spellcasting",
       "name": "Spellcasting",
-      "tags": ["Eidolon", "Spellcasting"],
+      "tags": [
+        "Eidolon",
+        "Spellcasting"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -123,17 +235,30 @@
           "caster_type": "full",
           "source": "anima",
           "modifier": "Will",
-          "known_spells": { "start": 4, "tier": 1 },
+          "known_spells": {
+            "start": 4,
+            "tier": 1
+          },
           "prepared_spells": "Will",
           "spell_dc": "10 + SpellTier + Will",
-          "cantrips": { "max": 3, "from": ["mending_bond", "starfall", "starlight", "radiant_dart"] }
+          "cantrips": {
+            "max": 3,
+            "from": [
+              "mending-bond",
+              "starfall",
+              "starlight",
+              "radiant-dart"
+            ]
+          }
         }
       ]
     },
     {
       "id": "expanded_resonance",
       "name": "Expanded Resonance",
-      "tags": ["Eidolon"],
+      "tags": [
+        "Eidolon"
+      ],
       "path": null,
       "tier": 1,
       "trait": "Passive",
@@ -146,15 +271,69 @@
       "prerequisites": [],
       "description": "Learn new spell shapes. You may now have three prepared spell shapes per day, swappable during a full rest.",
       "boons": [
-        { "type": "upgrade_feat", "target_feat": "spell_shaping", "patch": { "boons[0].prepared_per_day": 3 } },
+        {
+          "type": "upgrade_feat",
+          "target_feat": "spell_shaping",
+          "patch": {
+            "boons[0].prepared_per_day": 3
+          }
+        },
         {
           "type": "grants_spell_shapes",
           "extends": "spell_shaping",
           "options": [
-            { "id": "critical_resonance",   "name": "Critical Resonance",   "cost": { "resources": [{ "id": "resonance", "amount": 5 }] }, "effect": "Decrease critical roll by 1 (20->19) when casting; repeatable up to 3 times." },
-            { "id": "fragmented_resonance", "name": "Fragmented Resonance", "cost": { "resources": [{ "id": "resonance", "amount": "up_to_3" }] }, "effect": "Single-target spell may select another target (including self)." },
-            { "id": "graceful_resonance",   "name": "Graceful Resonance",   "cost": { "resources": [{ "id": "resonance", "amount": "1_per_excluded_target" }] }, "effect": "Exclude chosen targets from a zone spell." },
-            { "id": "pursuing_resonance",   "name": "Pursuing Resonance",   "cost": { "resources": [{ "id": "resonance", "amount": "1_per_spell_tier" }] }, "effect": "On a missed spell attack, reroll a d20 and take the new roll." }
+            {
+              "id": "critical_resonance",
+              "name": "Critical Resonance",
+              "cost": {
+                "resources": [
+                  {
+                    "id": "resonance",
+                    "amount": 5
+                  }
+                ]
+              },
+              "effect": "Decrease critical roll by 1 (20->19) when casting; repeatable up to 3 times."
+            },
+            {
+              "id": "fragmented_resonance",
+              "name": "Fragmented Resonance",
+              "cost": {
+                "resources": [
+                  {
+                    "id": "resonance",
+                    "amount": "up_to_3"
+                  }
+                ]
+              },
+              "effect": "Single-target spell may select another target (including self)."
+            },
+            {
+              "id": "graceful_resonance",
+              "name": "Graceful Resonance",
+              "cost": {
+                "resources": [
+                  {
+                    "id": "resonance",
+                    "amount": "1_per_excluded_target"
+                  }
+                ]
+              },
+              "effect": "Exclude chosen targets from a zone spell."
+            },
+            {
+              "id": "pursuing_resonance",
+              "name": "Pursuing Resonance",
+              "cost": {
+                "resources": [
+                  {
+                    "id": "resonance",
+                    "amount": "1_per_spell_tier"
+                  }
+                ]
+              },
+              "effect": "On a missed spell attack, reroll a d20 and take the new roll."
+            }
           ]
         }
       ]
@@ -162,29 +341,82 @@
     {
       "id": "magical_resonance",
       "name": "Magical Resonance",
-      "tags": ["Eidolon"],
+      "tags": [
+        "Eidolon"
+      ],
       "path": null,
       "tier": 2,
       "trait": "Trigger",
       "slot_type": "minor",
-      "cost": { "resources": [{ "id": "resonance", "amount": 2 }] },
+      "cost": {
+        "resources": [
+          {
+            "id": "resonance",
+            "amount": 2
+          }
+        ]
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": ["expanded_resonance"],
+      "prerequisites": [
+        "expanded_resonance"
+      ],
       "description": "Learn new spell shapes. You may now have four prepared spell shapes per day.",
       "boons": [
-        { "type": "upgrade_feat", "target_feat": "spell_shaping", "patch": { "boons[0].prepared_per_day": 4 } },
+        {
+          "type": "upgrade_feat",
+          "target_feat": "spell_shaping",
+          "patch": {
+            "boons[0].prepared_per_day": 4
+          }
+        },
         {
           "type": "grants_spell_shapes",
           "extends": "spell_shaping",
           "options": [
-            { "id": "fluctuating_resonance",   "name": "Fluctuating Resonance",   "effect": "Alter spell damage type to another within the same category (Arcane -> Ether/Void/Psi)." },
-            { "id": "acute_resonance",         "name": "Acute Resonance",         "effect": "Reroll 1s and 2s once when rolling spell damage; take the second roll." },
-            { "id": "reverberating_resonance", "name": "Reverberating Resonance", "effect": "Tier 1-2 spell, 10+ min duration, non-Focused: extend duration until your next Long Rest." },
-            { "id": "shifting_resonance",      "name": "Shifting Resonance",      "cost": { "resources": [{ "id": "resonance", "amount": "2_per_spell_tier" }] }, "effect": "Change a spell's area (Single -> Burst(Touch) -> Burst(Close) -> Wave(1 Zone) -> ...)." },
-            { "id": "surging_resonance",       "name": "Surging Resonance",       "cost": { "resources": [{ "id": "resonance", "amount": 2 }] }, "effect": "On a Decimation spell, add 2d4 elemental damage of choice." }
+            {
+              "id": "fluctuating_resonance",
+              "name": "Fluctuating Resonance",
+              "effect": "Alter spell damage type to another within the same category (Arcane -> Ether/Void/Psi)."
+            },
+            {
+              "id": "acute_resonance",
+              "name": "Acute Resonance",
+              "effect": "Reroll 1s and 2s once when rolling spell damage; take the second roll."
+            },
+            {
+              "id": "reverberating_resonance",
+              "name": "Reverberating Resonance",
+              "effect": "Tier 1-2 spell, 10+ min duration, non-Focused: extend duration until your next Long Rest."
+            },
+            {
+              "id": "shifting_resonance",
+              "name": "Shifting Resonance",
+              "cost": {
+                "resources": [
+                  {
+                    "id": "resonance",
+                    "amount": "2_per_spell_tier"
+                  }
+                ]
+              },
+              "effect": "Change a spell's area (Single -> Burst(Touch) -> Burst(Close) -> Wave(1 Zone) -> ...)."
+            },
+            {
+              "id": "surging_resonance",
+              "name": "Surging Resonance",
+              "cost": {
+                "resources": [
+                  {
+                    "id": "resonance",
+                    "amount": 2
+                  }
+                ]
+              },
+              "effect": "On a Decimation spell, add 2d4 elemental damage of choice."
+            }
           ]
         }
       ]
@@ -192,21 +424,57 @@
     {
       "id": "resonant_ambition",
       "name": "Resonant Ambition",
-      "tags": ["Eidolon"],
+      "tags": [
+        "Eidolon"
+      ],
       "path": null,
       "tier": 3,
       "trait": "Utility",
       "slot_type": "tactical",
-      "cost": { "ap": 1 },
+      "cost": {
+        "ap": 1
+      },
       "range": null,
       "duration": null,
-      "uses": { "count": 1, "recharge": "respite" },
+      "uses": {
+        "count": 1,
+        "recharge": "respite"
+      },
       "feat_dc": null,
-      "prerequisites": ["expanded_resonance", "magical_resonance"],
+      "prerequisites": [
+        "expanded_resonance",
+        "magical_resonance"
+      ],
       "description": "Once per Respite, spend Ambition in place of Reservoir to create Resonance, and gain a new spell shape from either Expanded Resonance or Magical Resonance. (Source prerequisite 'Expanded Shapes' encoded as expanded_resonance; verify.)",
       "boons": [
-        { "type": "resource_conversion", "uses": { "count": 1, "recharge": "respite" }, "modes": [{ "spend": { "id": "ambition", "amount": "any" }, "gain": { "id": "resonance", "amount": "equivalent" } }] },
-        { "type": "grants_spell_shapes", "extends": "spell_shaping", "count": 1, "from": ["expanded_resonance", "magical_resonance"] }
+        {
+          "type": "resource_conversion",
+          "uses": {
+            "count": 1,
+            "recharge": "respite"
+          },
+          "modes": [
+            {
+              "spend": {
+                "id": "ambition",
+                "amount": "any"
+              },
+              "gain": {
+                "id": "resonance",
+                "amount": "equivalent"
+              }
+            }
+          ]
+        },
+        {
+          "type": "grants_spell_shapes",
+          "extends": "spell_shaping",
+          "count": 1,
+          "from": [
+            "expanded_resonance",
+            "magical_resonance"
+          ]
+        }
       ]
     }
   ]

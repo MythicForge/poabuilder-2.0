@@ -2753,38 +2753,8 @@
       "amps": []
     },
     {
-      "id": "while-other-spellcasters-require-to-cast-a-spell-to-detect-sources-at-will-you-have-innate-talent-in-detecting-and-knowing-it-you-learn",
-      "name": "- While other spellcasters require to cast a spell to detect sources at will, you have innate talent in detecting and knowing it. You learn",
-      "tier": 0,
-      "is_cantrip": true,
-      "school": null,
-      "spheres": [],
-      "range": null,
-      "duration": null,
-      "cost": 0,
-      "area": null,
-      "description": "Referenced by feature text; full definition not embedded here.",
-      "amps": [],
-      "reference_only": true
-    },
-    {
       "id": "when-used-as-a",
       "name": ". When used as a",
-      "tier": 0,
-      "is_cantrip": true,
-      "school": null,
-      "spheres": [],
-      "range": null,
-      "duration": null,
-      "cost": 0,
-      "area": null,
-      "description": "Referenced by feature text; full definition not embedded here.",
-      "amps": [],
-      "reference_only": true
-    },
-    {
-      "id": "",
-      "name": ". | |",
       "tier": 0,
       "is_cantrip": true,
       "school": null,
@@ -3165,21 +3135,6 @@
       "area": null,
       "description": "You can send a message to known target within range that is 5 seconds in length. The messenger is ethereal and cannot be physically seen or stopped by non-magical means.",
       "amps": []
-    },
-    {
-      "id": "",
-      "name": "| | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | |",
-      "tier": 0,
-      "is_cantrip": true,
-      "school": null,
-      "spheres": [],
-      "range": null,
-      "duration": null,
-      "cost": 0,
-      "area": null,
-      "description": "Referenced by feature text; full definition not embedded here.",
-      "amps": [],
-      "reference_only": true
     }
   ]
 }

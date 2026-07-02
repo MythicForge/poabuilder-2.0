@@ -228,14 +228,14 @@
           "cantrips": {
             "max": 5,
             "from": [
-              "apprentices_artifice",
-              "arcane_echo",
-              "arcane_lens",
-              "arcane_jolt",
-              "mages_ward",
-              "mana_dart",
-              "swift_scribe",
-              "system_shock"
+              "apprentice-s-artifice",
+              "arcane-echo",
+              "arcane-lens",
+              "arcane-jolt",
+              "mage-s-ward",
+              "mana-dart",
+              "swift-scribe",
+              "system-shock"
             ]
           }
         }

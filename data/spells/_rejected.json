@@ -1,0 +1,64 @@
+{
+  "$meta": {
+    "note": "Rows rejected during port (broken source extraction) — recover manually if any are real spells."
+  },
+  "rejected": [
+    {
+      "id": "while-other-spellcasters-require-to-cast-a-spell-to-detect-sources-at-will-you-have-innate-talent-in-detecting-and-knowing-it-you-learn",
+      "name": "- While other spellcasters require to cast a spell to detect sources at will, you have innate talent in detecting and knowing it. You learn",
+      "slug": "while-other-spellcasters-require-to-cast-a-spell-to-detect-sources-at-will-you-have-innate-talent-in-detecting-and-knowing-it-you-learn",
+      "tier": 0,
+      "tier_label": "Cantrips",
+      "is_cantrip": true,
+      "reference_only": true,
+      "school": "",
+      "school_display": "",
+      "sources": [],
+      "range": "",
+      "duration": "",
+      "description_markdown": "Referenced by feature text; full definition not embedded here.",
+      "raw_markdown": "",
+      "amps": [],
+      "area": "",
+      "spheres": []
+    },
+    {
+      "id": "",
+      "name": ". | |",
+      "slug": "",
+      "tier": 0,
+      "tier_label": "Cantrips",
+      "is_cantrip": true,
+      "reference_only": true,
+      "school": "",
+      "school_display": "",
+      "sources": [],
+      "range": "",
+      "duration": "",
+      "description_markdown": "Referenced by feature text; full definition not embedded here.",
+      "raw_markdown": "",
+      "amps": [],
+      "area": "",
+      "spheres": []
+    },
+    {
+      "id": "",
+      "name": "| | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | |",
+      "slug": "",
+      "tier": 0,
+      "tier_label": "Cantrips",
+      "is_cantrip": true,
+      "reference_only": true,
+      "school": "",
+      "school_display": "",
+      "sources": [],
+      "range": "",
+      "duration": "",
+      "description_markdown": "Referenced by feature text; full definition not embedded here.",
+      "raw_markdown": "",
+      "amps": [],
+      "area": "",
+      "spheres": []
+    }
+  ]
+}
