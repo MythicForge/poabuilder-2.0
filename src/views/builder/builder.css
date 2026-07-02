@@ -350,6 +350,17 @@
 }
 .bld-budget--over { color: var(--danger); }
 
+.bld-skill-ctl { display: inline-flex; align-items: center; gap: 8px; margin-right: 22px; }
+.bld-skill-lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  width: 58px;
+  text-align: right;
+}
+
 .bld-slots { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 4px; }
 .bld-slot-pill {
   font-family: var(--mono);

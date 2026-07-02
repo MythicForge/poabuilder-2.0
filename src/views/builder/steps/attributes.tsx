@@ -1,14 +1,23 @@
 import { REGISTRY } from "../../../core/data-registry.ts";
-import { ATTRIBUTES } from "../../../core/types.ts";
+import { ATTRIBUTES, SKILLS } from "../../../core/types.ts";
 import type { StepProps } from "../step.ts";
+
+const ATTR_CAP = 12; // hard cap per attribute (REFERENCE.md)
+const EXPERTISE_CAP = 3; // Trained → Expert → Master
 
 export function AttributesStep({ draft, update, computed }: StepProps) {
   const attrs = draft.build.attributes;
-  const budget = computed.attributeBudget;
-  const over = budget.spent > budget.earned;
+  const aBudget = computed.attributeBudget;
+  const aOver = aBudget.spent > aBudget.earned;
+  const aRemaining = aBudget.earned - aBudget.spent;
 
   const bump = (key: (typeof ATTRIBUTES)[number], delta: number) =>
-    update((d) => { d.build.attributes[key] = d.build.attributes[key] + delta; });
+    update((d) => {
+      const next = d.build.attributes[key] + delta;
+      if (next < 0 || next > ATTR_CAP) return;
+      if (delta > 0 && aRemaining <= 0) return;
+      d.build.attributes[key] = next;
+    });
 
   const prof = REGISTRY.professions.get(draft.build.profession_id);
   const skillSpec = prof?.proficiencies?.skills;
@@ -24,6 +33,30 @@ export function AttributesStep({ draft, update, computed }: StepProps) {
       d.build.skills.proficiencies = [...set];
     });
 
+  const sBudget = computed.skillPointBudget;
+  const bumpsSpent = Object.values(draft.build.skills.expertise_bumps).reduce((s, n) => s + n, 0);
+  const sSpent = sBudget.spent + bumpsSpent;
+  const sRemaining = sBudget.earned - sSpent;
+  const sOver = sSpent > sBudget.earned;
+
+  const bumpPoints = (skill: string, delta: number) =>
+    update((d) => {
+      const next = (d.build.skills.points[skill] ?? 0) + delta;
+      if (next < 0) return;
+      if (delta > 0 && sRemaining <= 0) return;
+      d.build.skills.points[skill] = next;
+    });
+
+  const bumpExpertise = (skill: string, delta: number) =>
+    update((d) => {
+      const cur = d.build.skills.expertise_bumps[skill] ?? 0;
+      const next = cur + delta;
+      const proficient = d.build.skills.proficiencies.includes(skill) ? 1 : 0;
+      if (next < 0 || proficient + next > EXPERTISE_CAP) return;
+      if (delta > 0 && sRemaining <= 0) return;
+      d.build.skills.expertise_bumps[skill] = next;
+    });
+
   return (
     <div>
       <div className="bld-field-label">Attributes</div>
@@ -31,14 +64,14 @@ export function AttributesStep({ draft, update, computed }: StepProps) {
         <div className="bld-meter" key={key}>
           <span className="bld-meter-name">{key}</span>
           <span className="bld-stepper">
-            <button onClick={() => bump(key, -1)}>−</button>
+            <button disabled={attrs[key] <= 0} onClick={() => bump(key, -1)}>−</button>
             <span className="bld-stepper-val">{attrs[key]}</span>
-            <button onClick={() => bump(key, 1)}>+</button>
+            <button disabled={aRemaining <= 0 || attrs[key] >= ATTR_CAP} onClick={() => bump(key, 1)}>+</button>
           </span>
         </div>
       ))}
-      <div className={`bld-budget${over ? " bld-budget--over" : ""}`}>
-        Points spent {budget.spent} / {budget.earned} earned
+      <div className={`bld-budget${aOver ? " bld-budget--over" : ""}`}>
+        Points spent {aBudget.spent} / {aBudget.earned} earned{aRemaining > 0 ? ` · ${aRemaining} left` : ""}
       </div>
 
       <div className="bld-field-label" style={{ marginTop: 28 }}>
@@ -63,6 +96,37 @@ export function AttributesStep({ draft, update, computed }: StepProps) {
           })}
         </div>
       )}
+
+      <div className="bld-field-label" style={{ marginTop: 28 }}>Skill Points &amp; Expertise</div>
+      {SKILLS.map((s) => {
+        const points = draft.build.skills.points[s] ?? 0;
+        const bumps = draft.build.skills.expertise_bumps[s] ?? 0;
+        const proficient = picked.has(s) ? 1 : 0;
+        return (
+          <div className="bld-meter" key={s}>
+            <span className="bld-meter-name" style={{ width: 96 }}>{s}</span>
+            <span className="bld-skill-ctl">
+              <span className="bld-skill-lbl">dice</span>
+              <span className="bld-stepper">
+                <button disabled={points <= 0} onClick={() => bumpPoints(s, -1)}>−</button>
+                <span className="bld-stepper-val" style={{ fontSize: 16, minWidth: 26 }}>{points}</span>
+                <button disabled={sRemaining <= 0} onClick={() => bumpPoints(s, 1)}>+</button>
+              </span>
+            </span>
+            <span className="bld-skill-ctl">
+              <span className="bld-skill-lbl">expertise</span>
+              <span className="bld-stepper">
+                <button disabled={bumps <= 0} onClick={() => bumpExpertise(s, -1)}>−</button>
+                <span className="bld-stepper-val" style={{ fontSize: 16, minWidth: 26 }}>{bumps}</span>
+                <button disabled={sRemaining <= 0 || proficient + bumps >= EXPERTISE_CAP} onClick={() => bumpExpertise(s, 1)}>+</button>
+              </span>
+            </span>
+          </div>
+        );
+      })}
+      <div className={`bld-budget${sOver ? " bld-budget--over" : ""}`}>
+        Skill points spent {sSpent} / {sBudget.earned} earned{sRemaining > 0 ? ` · ${sRemaining} left` : ""}
+      </div>
     </div>
   );
 }
