@@ -3,6 +3,7 @@ import { REGISTRY } from "./data-registry.ts";
 import { computeCharacter } from "./compute.ts";
 import { featEligibility, slotCapacity, slotState } from "./feat-eligibility.ts";
 import { validateCharacter } from "./validate-character.ts";
+import { matchItem, resolvePack } from "./pack-mapping.ts";
 import type { Feat, StoredCharacter } from "./types.ts";
 import brenJson from "@data/characters/fixture-bren-tier2-fighter.json";
 
@@ -147,5 +148,25 @@ describe("validateCharacter", () => {
     c.build.known_spell_ids = ["arc-lightning"];
     const issues = validateCharacter(c, REGISTRY, computeCharacter(c, REGISTRY));
     expect(issues.join()).toMatch(/no spellcasting grant/);
+  });
+});
+
+describe("pack mapping", () => {
+  const fighter = REGISTRY.professions.get("fighter")!;
+
+  it("profession slot tokens become category pickers with options", () => {
+    const { lines } = resolvePack(fighter, undefined, REGISTRY);
+    const melee = lines.find((l) => l.section === "weapons" && l.label === "Melee weapon");
+    expect(melee?.kind).toBe("category");
+    expect(melee!.options.length).toBeGreaterThan(0);
+  });
+
+  it("reads starting currency from the manifest", () => {
+    expect(resolvePack(fighter, undefined, REGISTRY).currency.gold).toBe(12);
+  });
+
+  it("matchItem resolves an exact catalog name, rejects noise", () => {
+    expect(matchItem("Dagger", REGISTRY)?.id).toBe("weapon-dagger");
+    expect(matchItem("zzz nonexistent gizmo", REGISTRY)).toBeNull();
   });
 });
