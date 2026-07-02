@@ -1,0 +1,29 @@
+{
+  "name": "poa-character-sheet",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "validate": "node tools/validate-data.mjs",
+    "convert": "node tools/convert-retired-boons.mjs && node tools/convert-spells.mjs && node tools/convert-items.mjs && node tools/convert-origins.mjs && node tools/enrich-conditions.mjs && node tools/fix-spell-refs.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "lucide-react": "^1.20.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.8"
+  }
+}
