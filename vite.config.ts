@@ -18,6 +18,7 @@ export default defineConfig({
       input: {
         main: "index.html",
         sheet: "sheet.html",
+        builder: "builder.html",
       },
     },
   },

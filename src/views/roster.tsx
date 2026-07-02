@@ -19,12 +19,15 @@ export function Roster() {
     window.location.href = "sheet.html";
   };
 
+  const build = (id: string) => {
+    CharStorage.setActive(id);
+    window.location.href = `builder.html?id=${encodeURIComponent(id)}`;
+  };
+
   const create = () => {
-    const name = prompt("Character name?");
-    if (name === null) return;
-    const c = CharStorage.newFromTemplate(name || "Unnamed");
+    const c = CharStorage.newFromTemplate("");
     CharStorage.save(c);
-    open(c.id);
+    build(c.id);
   };
 
   const doExport = (c: StoredCharacter) => {
@@ -101,6 +104,9 @@ export function Roster() {
               <div style={{ display: "flex", gap: 6, marginTop: 12 }} onClick={(e) => e.stopPropagation()}>
                 <button className="rest-btn" style={{ padding: "2px 8px" }} onClick={() => open(ch.id)}>
                   <span className="name">Open</span>
+                </button>
+                <button className="rest-btn" style={{ padding: "2px 8px" }} onClick={() => build(ch.id)}>
+                  <span className="name">Build</span>
                 </button>
                 <button className="rest-btn" style={{ padding: "2px 8px" }} onClick={() => { CharStorage.duplicate(ch.id); refresh(); }}>
                   <span className="name">Duplicate</span>
