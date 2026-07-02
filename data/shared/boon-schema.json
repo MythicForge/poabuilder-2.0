@@ -1,8 +1,11 @@
 {
   "$meta": {
     "name": "Path of Ambition \u2014 Boon Schema",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "source": "REFERENCE.md Boon Types (58 live + spell payload) + Description-Only (Retired)",
+    "changelog": [
+      "1.2.0 (R3 schema reconcile): enums.stats += spell_attack/spell_dc (display-only, wire in R4) + Brawn/Finesse/Mind/Will (attribute bumps); enums.triggers += 7 display-only triggers; stat_bonus.target & restore_resource.target relaxed enum->string (only \"self\" computes, others render on card per TRACKING-SCOPE); resistance.charges, heal.max_targets, summon.max_active, enchantment_option.max_placements changed number->formula (accept Tier/Mind/Will); craft_on_the_fly.count accepts literal \"any\" (=unlimited)."
+    ],
     "rule": "A boon is tracked only if it changes a tracked quantity AND its condition is sheet-knowable. Otherwise it belongs in the feat description. See TRACKING-SCOPE.md.",
     "field_kinds": {
       "string": "free text input",
@@ -30,7 +33,13 @@
       "Ambition Max",
       "AP",
       "attack_roll",
-      "size_category"
+      "size_category",
+      "spell_attack",
+      "spell_dc",
+      "Brawn",
+      "Finesse",
+      "Mind",
+      "Will"
     ],
     "defenses": [
       "Armor",
@@ -122,7 +131,14 @@
       "enemy_reduced_to_zero",
       "reduced_to_zero_vitality",
       "state_ends_or_downed",
-      "target_critical_save_failure"
+      "target_critical_save_failure",
+      "spell_critical_hit",
+      "targeted_by_spell_or_magic",
+      "cast_conjuration_spell",
+      "ally_in_close_would_gain_wounds",
+      "on_summon",
+      "cursed_souled_enemy_dies",
+      "arcane_shelter_resisted"
     ]
   },
   "types": {
@@ -144,9 +160,9 @@
         },
         {
           "name": "target",
-          "kind": "enum",
-          "enum": "targets",
-          "default": "self"
+          "kind": "string",
+          "default": "self",
+          "hint": "only \"self\" is computed; other-creature targets render on the card (display-only, TRACKING-SCOPE)"
         },
         {
           "name": "condition",
@@ -210,7 +226,7 @@
         },
         {
           "name": "charges",
-          "kind": "number"
+          "kind": "formula"
         },
         {
           "name": "uses",
@@ -308,7 +324,7 @@
         },
         {
           "name": "max_targets",
-          "kind": "number"
+          "kind": "formula"
         },
         {
           "name": "trigger_condition",
@@ -422,9 +438,9 @@
         },
         {
           "name": "target",
-          "kind": "enum",
-          "enum": "targets",
-          "default": "self"
+          "kind": "string",
+          "default": "self",
+          "hint": "only \"self\" is computed; other-creature targets render on the card (display-only, TRACKING-SCOPE)"
         },
         {
           "name": "minimum",
@@ -1186,7 +1202,7 @@
         },
         {
           "name": "max_placements",
-          "kind": "number",
+          "kind": "formula",
           "hint": "only if a specific cap applies"
         },
         {
@@ -1308,7 +1324,7 @@
         },
         {
           "name": "max_active",
-          "kind": "number"
+          "kind": "formula"
         },
         {
           "name": "leash",

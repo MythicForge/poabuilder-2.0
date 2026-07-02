@@ -135,15 +135,8 @@
               "value": "solace",
               "label": "Aspect of Solace",
               "grants": {
-                "boons": [
-                  {
-                    "type": "stat_bonus",
-                    "stat": "chosen_defense",
-                    "amount": "1 + Tier",
-                    "target": "tethered_allies",
-                    "note": "Player chooses which Attribute Defense."
-                  }
-                ]
+                "description": "Tethered allies gain +1 + Tier to one Attribute Defense of your choice.",
+                "boons": []
               }
             },
             {

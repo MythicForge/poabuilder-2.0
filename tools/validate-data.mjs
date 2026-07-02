@@ -41,7 +41,9 @@ const UNIVERSAL_RESOURCES = new Set((universalDoc?.resources ?? []).map((r) => r
 
 const ALL_FEAT_IDS = new Set();
 const ALL_CHOICE_KEYS = new Set();
-const RESOURCE_IDS = new Set(UNIVERSAL_RESOURCES);
+// "reservoir" is the engine's generic spellcasting pool (compute.ts → pools.reservoir),
+// aliased to a profession's source resource (e.g. mana) when one is defined.
+const RESOURCE_IDS = new Set([...UNIVERSAL_RESOURCES, "reservoir"]);
 const PROFESSION_IDS = new Set();
 const ORIGIN_IDS = new Set();
 const VOCATION_IDS = new Set();
@@ -77,6 +79,15 @@ function collectKeys(o) {
   for (const [k, v] of Object.entries(o)) if (k !== "_review") collectKeys(v);
 }
 for (const [, j] of docs) collectKeys(j);
+
+// resources are also minted by grants_resource boons (not just profession.resources)
+function collectResources(o) {
+  if (Array.isArray(o)) return o.forEach(collectResources);
+  if (!o || typeof o !== "object") return;
+  if (o.type === "grants_resource" && typeof o.resource_id === "string") RESOURCE_IDS.add(o.resource_id);
+  for (const [k, v] of Object.entries(o)) if (k !== "_review") collectResources(v);
+}
+for (const [, j] of docs) collectResources(j);
 
 // ── Boon validation ──────────────────────────────────────────────────────────
 const isBoon = (o) => {
@@ -124,7 +135,8 @@ function validateBoon(boon, file, path) {
       const r = checkFormula(v);
       if (!r.ok) warns.push(`${file} ${path}: ${boon.type}.${f.name} formula "${v}" — ${r.error}`);
     }
-    if (f.kind === "number" && typeof v !== "number") {
+    if (f.kind === "number" && typeof v !== "number" && v !== "any") {
+      // literal "any" = unlimited (e.g. craft_on_the_fly.count)
       warns.push(`${file} ${path}: ${boon.type}.${f.name} expected number, got ${JSON.stringify(v)}`);
     }
   }
