@@ -174,26 +174,8 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "Permanently learn spells from scrolls or spell tomes of your source and known Spheres. Make an Intuition check against DC (1 + Spell Tier). Critical success does not consume the scroll or tome. Learned spells do not count against known spells. Skill check to learn — skill: Intuition; dc_formula: 1 + SpellTier; item_types: [\"spell_scroll\",\"spell_tome\"]; source_filter: own_source_and_known_spheres; counts_against_known: false; on_critical_success: preserve_source_item.",
-      "boons": [],
-      "_review": [
-        {
-          "dropped_type": "skill_check_to_learn",
-          "original": {
-            "type": "skill_check_to_learn",
-            "skill": "Intuition",
-            "dc_formula": "1 + SpellTier",
-            "item_types": [
-              "spell_scroll",
-              "spell_tome"
-            ],
-            "source_filter": "own_source_and_known_spheres",
-            "counts_against_known": false,
-            "on_critical_success": "preserve_source_item"
-          },
-          "generated": "Skill check to learn — skill: Intuition; dc_formula: 1 + SpellTier; item_types: [\"spell_scroll\",\"spell_tome\"]; source_filter: own_source_and_known_spheres; counts_against_known: false; on_critical_success: preserve_source_item."
-        }
-      ]
+      "description": "Permanently learn spells from scrolls or spell tomes of your source and known Spheres. Make an Intuition check against DC (1 + Spell Tier). Critical success does not consume the scroll or tome. Learned spells do not count against known spells.",
+      "boons": []
     },
     {
       "id": "spellcasting",

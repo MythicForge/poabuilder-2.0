@@ -27,20 +27,8 @@
           "count": 0
         }
       },
-      "description": "You have Expertise on Lore checks, and always add your Ambition at no cost when the check relates to your Creed or Anathema. Dice size increase — amount: 1; target: Lore_skill_checks (Expertise.).",
-      "boons": [],
-      "_review": [
-        {
-          "dropped_type": "dice_size_increase",
-          "original": {
-            "type": "dice_size_increase",
-            "amount": 1,
-            "target": "Lore_skill_checks",
-            "note": "Expertise."
-          },
-          "generated": "Dice size increase — amount: 1; target: Lore_skill_checks (Expertise.)."
-        }
-      ]
+      "description": "You have Expertise on Lore checks, and always add your Ambition at no cost when the check relates to your Creed or Anathema.",
+      "boons": []
     },
     {
       "id": "ardent_retribution",
@@ -111,10 +99,9 @@
       "boons": [
         {
           "type": "activate_state",
-          "state": "aura_of_resolve_aura",
+          "state": "aura_of_resolve",
           "active_while": "conscious",
           "range": "10ft_or_engagement",
-          "note": "Source 'Will and Mind' encoded as Will Defense + Mental; verify.",
           "target": "allies_in_range",
           "boons": [
             {
@@ -129,9 +116,6 @@
               "amount": "Tier",
               "target": "allies_in_aura"
             }
-          ],
-          "_review": [
-            "aura converted; verify state name and target"
           ]
         }
       ]

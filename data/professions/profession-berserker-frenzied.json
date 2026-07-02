@@ -34,7 +34,7 @@
           "count": 0
         }
       },
-      "description": "Enter a frenzy, gaining the benefits of Berserker Rage. While frenzied, once per turn when you take damage you may spend 1 Ambition to reduce that damage by your Ambition die. Gain Weakened (1) when the rage ends or if you are downed. While this feat is known, your Ambition Max increases by 1. Apply condition — condition_id: WEK; target: self; stacks: 1. Conditional effect — trigger: state_ends_or_downed.",
+      "description": "Enter a frenzy, gaining the benefits of Berserker Rage. While frenzied, once per turn when you take damage you may spend 1 Ambition to reduce that damage by your Ambition die. Gain Weakened (1) when the rage ends or if you are downed. While this feat is known, your Ambition Max increases by 1.",
       "boons": [
         {
           "type": "stat_bonus",
@@ -51,27 +51,6 @@
             "1_minute_outside_combat"
           ],
           "boons": []
-        }
-      ],
-      "_review": [
-        {
-          "dropped_type": "apply_condition",
-          "original": {
-            "type": "apply_condition",
-            "condition_id": "WEK",
-            "target": "self",
-            "duration": null,
-            "stacks": 1
-          },
-          "generated": "Apply condition — condition_id: WEK; target: self; stacks: 1."
-        },
-        {
-          "dropped_type": "conditional_effect(emptied)",
-          "original": {
-            "type": "conditional_effect",
-            "trigger": "state_ends_or_downed"
-          },
-          "generated": "Conditional effect — trigger: state_ends_or_downed."
         }
       ]
     },

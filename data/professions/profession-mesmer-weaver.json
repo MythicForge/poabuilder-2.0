@@ -55,25 +55,13 @@
           "count": 0
         }
       },
-      "description": "Gain Expertise in Social skill checks (increased dice size). When you make a Deception-related skill check, you always start with 1 success. Dice size increase — amount: 1; target: Social_skill_checks (Expertise.).",
+      "description": "Gain Expertise in Social skill checks (increased dice size). When you make a Deception-related skill check, you always start with 1 success.",
       "boons": [
         {
           "type": "grants_free_success",
           "context": "deception_checks",
           "count": 1,
           "note": "Start with 1 success on Deception checks."
-        }
-      ],
-      "_review": [
-        {
-          "dropped_type": "dice_size_increase",
-          "original": {
-            "type": "dice_size_increase",
-            "amount": 1,
-            "target": "Social_skill_checks",
-            "note": "Expertise."
-          },
-          "generated": "Dice size increase — amount: 1; target: Social_skill_checks (Expertise.)."
         }
       ]
     },

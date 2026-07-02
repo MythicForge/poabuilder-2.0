@@ -53,30 +53,8 @@
           "count": 0
         }
       },
-      "description": "Gain Expertise in Social skill checks (increased dice size). Skill checks to detect lies have their Difficulty decreased by one rank. Dice size increase — amount: 1; target: Social_skill_checks (Expertise = +1 die size on Social checks.). Difficulty modifier — amount: -1; context: detect_lies_checks (Lowers Difficulty by one rank — niche; see rule-check.md.).",
-      "boons": [],
-      "_review": [
-        {
-          "dropped_type": "dice_size_increase",
-          "original": {
-            "type": "dice_size_increase",
-            "amount": 1,
-            "target": "Social_skill_checks",
-            "note": "Expertise = +1 die size on Social checks."
-          },
-          "generated": "Dice size increase — amount: 1; target: Social_skill_checks (Expertise = +1 die size on Social checks.)."
-        },
-        {
-          "dropped_type": "difficulty_modifier",
-          "original": {
-            "type": "difficulty_modifier",
-            "amount": -1,
-            "context": "detect_lies_checks",
-            "note": "Lowers Difficulty by one rank — niche; see rule-check.md."
-          },
-          "generated": "Difficulty modifier — amount: -1; context: detect_lies_checks (Lowers Difficulty by one rank — niche; see rule-check.md.)."
-        }
-      ]
+      "description": "Gain Expertise in Social skill checks (increased dice size). Skill checks to detect lies have their Difficulty decreased by one rank.",
+      "boons": []
     },
     {
       "id": "fight_with_confidence",
@@ -137,25 +115,13 @@
           "count": 0
         }
       },
-      "description": "Your Ambition die size increases by one step, and you gain additional Ambition Max equal to your Tier. Dice size increase — amount: 1; target: ambition_die (Raises the Ambition die one step.).",
+      "description": "Your Ambition die size increases by one step, and you gain additional Ambition Max equal to your Tier.",
       "boons": [
         {
           "type": "stat_bonus",
           "stat": "Ambition Max",
           "amount": "Tier",
           "target": "self"
-        }
-      ],
-      "_review": [
-        {
-          "dropped_type": "dice_size_increase",
-          "original": {
-            "type": "dice_size_increase",
-            "amount": 1,
-            "target": "ambition_die",
-            "note": "Raises the Ambition die one step."
-          },
-          "generated": "Dice size increase — amount: 1; target: ambition_die (Raises the Ambition die one step.)."
         }
       ]
     },

@@ -342,7 +342,7 @@
       },
       "feat_dc": null,
       "prerequisites": [],
-      "description": "Give a creature within range a Spark. A creature with a Spark may add Tier + your Ambition die to one skill check, attack roll, or spell attack. Only one Spark may be held at a time; it lasts until used or the creature finishes a Respite, then fades. Grant a number of Sparks per day equal to Tier × 2. Add to roll — formula: Tier + ambition_die; applies_to: [\"skill_check\",\"attack_roll\",\"spell_attack\"]; count: 1.",
+      "description": "Give a creature within range a Spark. A creature with a Spark may add Tier + your Ambition die to one skill check, attack roll, or spell attack. Only one Spark may be held at a time; it lasts until used or the creature finishes a Respite, then fades. Grant a number of Sparks per day equal to Tier × 2.",
       "boons": [
         {
           "type": "grant_token",
@@ -351,22 +351,6 @@
           "per_day": "Tier * 2",
           "expires": "on_use_or_respite",
           "note": "Spark token subsystem — see rule-check.md."
-        }
-      ],
-      "_review": [
-        {
-          "dropped_type": "add_to_roll",
-          "original": {
-            "type": "add_to_roll",
-            "formula": "Tier + ambition_die",
-            "applies_to": [
-              "skill_check",
-              "attack_roll",
-              "spell_attack"
-            ],
-            "count": 1
-          },
-          "generated": "Add to roll — formula: Tier + ambition_die; applies_to: [\"skill_check\",\"attack_roll\",\"spell_attack\"]; count: 1."
         }
       ]
     },

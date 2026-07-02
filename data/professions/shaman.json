@@ -174,7 +174,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "Summon a Primeval Vessel within Close range (spends from the Vessels pool). Choose which vessel to conjure. Vessels fade after 1 minute. Vessel stat block: Vitality = Will or Mind; Armor = 8 + Mind or Will; Fortitude 8 + Tier; Mental 8 + Tier; Will Defense 14 + Tier; Claws +Hit 1d4 Slash +2 + Tier melee. (Source 'Body/Mind/Will' defenses encoded Fortitude/Mental/Will Defense; verify.) Damage bonus — formula: 1d4; damage_type: Arcane; target: commanded_ally_attacks.",
+      "description": "Summon a Primeval Vessel within Close range (spends from the Vessels pool). Choose which vessel to conjure. Vessels fade after 1 minute. Vessel stat block: Vitality = Will or Mind; Armor = 8 + Mind or Will; Fortitude 8 + Tier; Mental 8 + Tier; Will Defense 14 + Tier; Claws +Hit 1d4 Slash +2 + Tier melee. (Source 'Body/Mind/Will' defenses encoded Fortitude/Mental/Will Defense; verify.)",
       "boons": [
         {
           "type": "grants_resource",
@@ -226,18 +226,6 @@
           ],
           "note": "Summon subsystem — see rule-check.md."
         }
-      ],
-      "_review": [
-        {
-          "dropped_type": "damage_bonus",
-          "original": {
-            "type": "damage_bonus",
-            "formula": "1d4",
-            "damage_type": "Arcane",
-            "target": "commanded_ally_attacks"
-          },
-          "generated": "Damage bonus — formula: 1d4; damage_type: Arcane; target: commanded_ally_attacks."
-        }
       ]
     },
     {
@@ -263,22 +251,8 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "Transform into wildlife of one tier less than yours, adopting that creature's stat block while keeping your mind and voice. You cannot Cast a Spell while in this form. Cost: 1 Reservoir per Tier. Shapechange — into: wildlife_one_tier_less; adopt_stat_block: true; keep_mind_and_voice: true; restriction: cannot_cast_spells (Shapechange subsystem — see rule-check.md.).",
-      "boons": [],
-      "_review": [
-        {
-          "dropped_type": "shapechange",
-          "original": {
-            "type": "shapechange",
-            "into": "wildlife_one_tier_less",
-            "adopt_stat_block": true,
-            "keep_mind_and_voice": true,
-            "restriction": "cannot_cast_spells",
-            "note": "Shapechange subsystem — see rule-check.md."
-          },
-          "generated": "Shapechange — into: wildlife_one_tier_less; adopt_stat_block: true; keep_mind_and_voice: true; restriction: cannot_cast_spells (Shapechange subsystem — see rule-check.md.)."
-        }
-      ]
+      "description": "Transform into wildlife of one tier less than yours, adopting that creature's stat block while keeping your mind and voice. You cannot Cast a Spell while in this form. Cost: 1 Reservoir per Tier.",
+      "boons": []
     },
     {
       "id": "vessel_of_nature",
@@ -296,7 +270,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "Gain commune with animals as a cantrip and you may cast spells through your Vessels. Gain Expertise in Lore (increased dice size). Dice size increase — amount: 1; target: Lore_skill_checks (Expertise.).",
+      "description": "Gain commune with animals as a cantrip and you may cast spells through your Vessels. Gain Expertise in Lore (increased dice size).",
       "boons": [
         {
           "type": "grants_cantrip",
@@ -306,18 +280,6 @@
         {
           "type": "cast_through_summon",
           "summon_id": "primeval_vessel"
-        }
-      ],
-      "_review": [
-        {
-          "dropped_type": "dice_size_increase",
-          "original": {
-            "type": "dice_size_increase",
-            "amount": 1,
-            "target": "Lore_skill_checks",
-            "note": "Expertise."
-          },
-          "generated": "Dice size increase — amount: 1; target: Lore_skill_checks (Expertise.)."
         }
       ]
     },
@@ -339,7 +301,7 @@
       "prerequisites": [
         "vessel_of_nature"
       ],
-      "description": "Your Primeval Form may now shift into creatures of equal or lesser tier. Gain Expertise in Vigor (increased dice size). Dice size increase — amount: 1; target: Vigor_skill_checks (Expertise.).",
+      "description": "Your Primeval Form may now shift into creatures of equal or lesser tier. Gain Expertise in Vigor (increased dice size).",
       "boons": [
         {
           "type": "upgrade_feat",
@@ -347,18 +309,6 @@
           "patch": {
             "into": "wildlife_equal_or_lesser_tier"
           }
-        }
-      ],
-      "_review": [
-        {
-          "dropped_type": "dice_size_increase",
-          "original": {
-            "type": "dice_size_increase",
-            "amount": 1,
-            "target": "Vigor_skill_checks",
-            "note": "Expertise."
-          },
-          "generated": "Dice size increase — amount: 1; target: Vigor_skill_checks (Expertise.)."
         }
       ]
     }

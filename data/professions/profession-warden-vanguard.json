@@ -56,9 +56,6 @@
                 "note": "Store-and-release spell on weapon — niche; see rule-check.md."
               }
             }
-          ],
-          "_review": [
-            "store_spell folded into enchantment_option; semantics need human verification"
           ]
         }
       ]
@@ -284,27 +281,8 @@
           "count": 2
         }
       },
-      "description": "Your Bound Armament gains autonomy: it floats next to you (not counting as held) and cannot travel further than 5ft/1.5m away. Command it with 1 AP to make an attack once per turn, stow itself in a void pocket (fully concealed), or summon itself back from the void. Animate bound weapon — leash: 5ft; command_cost: {\"ap\":1}; commands: [\"attack_once_per_turn\",\"stow_in_void\",\"summon_from_void\"] (Autonomous floating weapon — niche; see rule-check.md.).",
-      "boons": [],
-      "_review": [
-        {
-          "dropped_type": "animate_bound_weapon",
-          "original": {
-            "type": "animate_bound_weapon",
-            "leash": "5ft",
-            "command_cost": {
-              "ap": 1
-            },
-            "commands": [
-              "attack_once_per_turn",
-              "stow_in_void",
-              "summon_from_void"
-            ],
-            "note": "Autonomous floating weapon — niche; see rule-check.md."
-          },
-          "generated": "Animate bound weapon — leash: 5ft; command_cost: {\"ap\":1}; commands: [\"attack_once_per_turn\",\"stow_in_void\",\"summon_from_void\"] (Autonomous floating weapon — niche; see rule-check.md.)."
-        }
-      ]
+      "description": "Your Bound Armament gains autonomy: it floats next to you (not counting as held) and cannot travel further than 5ft/1.5m away. Command it with 1 AP to make an attack once per turn, stow itself in a void pocket (fully concealed), or summon itself back from the void.",
+      "boons": []
     }
   ]
 }

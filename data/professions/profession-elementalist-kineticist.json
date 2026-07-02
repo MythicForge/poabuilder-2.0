@@ -21,7 +21,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "You manifest weapons of pure primal energy. Attack rolls with these armaments use Will + Tier instead of physical attributes. Weapon manifestation is determined by your Elemental Core. Apply condition — condition_id: BRN; stacks: 1. Apply condition — condition_id: DAZ; duration: until_next_turn_start. Bonus attack — attack_type: grapple; on_success: {\"type\":\"forced_movement\",\"direction\":\"toward_user\",\"zones\":1}. Apply condition — condition_id: SAP; duration: until_next_turn_start. Apply condition — condition_id: PRN; save: {\"defense\":\"Fortitude\",\"dc_ref\":\"feat_dc\"}. Conditional effect — trigger: critical_hit_dealt. Apply condition — condition_id: BLN; duration: until_end_of_next_turn.",
+      "description": "You manifest weapons of pure primal energy. Attack rolls with these armaments use Will + Tier instead of physical attributes. Weapon manifestation is determined by your Elemental Core.",
       "boons": [
         {
           "type": "grants_weapon",
@@ -150,83 +150,6 @@
             }
           }
         }
-      ],
-      "_review": [
-        {
-          "dropped_type": "apply_condition",
-          "original": {
-            "type": "apply_condition",
-            "condition_id": "BRN",
-            "duration": null,
-            "stacks": 1
-          },
-          "generated": "Apply condition — condition_id: BRN; stacks: 1."
-        },
-        {
-          "dropped_type": "apply_condition",
-          "original": {
-            "type": "apply_condition",
-            "condition_id": "DAZ",
-            "duration": "until_next_turn_start",
-            "stacks": null
-          },
-          "generated": "Apply condition — condition_id: DAZ; duration: until_next_turn_start."
-        },
-        {
-          "dropped_type": "bonus_attack",
-          "original": {
-            "type": "bonus_attack",
-            "attack_type": "grapple",
-            "on_success": {
-              "type": "forced_movement",
-              "direction": "toward_user",
-              "zones": 1
-            }
-          },
-          "generated": "Bonus attack — attack_type: grapple; on_success: {\"type\":\"forced_movement\",\"direction\":\"toward_user\",\"zones\":1}."
-        },
-        {
-          "dropped_type": "apply_condition",
-          "original": {
-            "type": "apply_condition",
-            "condition_id": "SAP",
-            "duration": "until_next_turn_start",
-            "stacks": null
-          },
-          "generated": "Apply condition — condition_id: SAP; duration: until_next_turn_start."
-        },
-        {
-          "dropped_type": "apply_condition",
-          "original": {
-            "type": "apply_condition",
-            "condition_id": "PRN",
-            "duration": null,
-            "stacks": null,
-            "save": {
-              "defense": "Fortitude",
-              "dc_ref": "feat_dc"
-            }
-          },
-          "generated": "Apply condition — condition_id: PRN; save: {\"defense\":\"Fortitude\",\"dc_ref\":\"feat_dc\"}."
-        },
-        {
-          "dropped_type": "conditional_effect(emptied)",
-          "original": {
-            "type": "conditional_effect",
-            "trigger": "critical_hit_dealt"
-          },
-          "generated": "Conditional effect — trigger: critical_hit_dealt."
-        },
-        {
-          "dropped_type": "apply_condition",
-          "original": {
-            "type": "apply_condition",
-            "condition_id": "BLN",
-            "duration": "until_end_of_next_turn",
-            "stacks": null
-          },
-          "generated": "Apply condition — condition_id: BLN; duration: until_end_of_next_turn."
-        }
       ]
     },
     {
@@ -256,21 +179,8 @@
       "prerequisites": [
         "elemental_armaments"
       ],
-      "description": "After a successful strike with your Elemental Armament, expend Energy to make a second attack with the same weapon. Bonus attack — trigger: on_hit; trigger_weapon: elemental_armament; attack_type: elemental_armament; attack_modifier: Will + Tier.",
-      "boons": [],
-      "_review": [
-        {
-          "dropped_type": "bonus_attack",
-          "original": {
-            "type": "bonus_attack",
-            "trigger": "on_hit",
-            "trigger_weapon": "elemental_armament",
-            "attack_type": "elemental_armament",
-            "attack_modifier": "Will + Tier"
-          },
-          "generated": "Bonus attack — trigger: on_hit; trigger_weapon: elemental_armament; attack_type: elemental_armament; attack_modifier: Will + Tier."
-        }
-      ]
+      "description": "After a successful strike with your Elemental Armament, expend Energy to make a second attack with the same weapon.",
+      "boons": []
     }
   ]
 }

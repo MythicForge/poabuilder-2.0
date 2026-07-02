@@ -175,24 +175,13 @@
             {
               "value": "mortal",
               "label": "Mortal",
-              "description": "Linked: While summon is in your Engagement, you may use the summon's attribute modifiers. (Source uses 'MHT, DEX, INT' — likely Brawn/Finesse/Mind; attribute mapping needs verification.)",
+              "description": "Linked: while the summon is within your Engagement, you may use the summon's attribute modifiers in place of your own.",
               "grants": {
                 "summon_passive": {
                   "id": "linked",
                   "name": "Linked",
-                  "boons": [
-                    {
-                      "type": "stat_substitution",
-                      "replace": "UNMAPPED",
-                      "with": "summoned_creature",
-                      "with_kind": "summon_stat",
-                      "condition": "within_engagement",
-                      "note": "Source stat IDs (MHT, DEX, INT) are from a different system. Verify mapping to Brawn/Finesse/Mind/Will.",
-                      "_review": [
-                        "attribute_borrow had no explicit replace/with; verify mapping"
-                      ]
-                    }
-                  ]
+                  "description": "While within its summoner's Engagement, the summoner may use this creature's attribute modifiers in place of their own.",
+                  "boons": []
                 }
               }
             }
@@ -255,7 +244,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "Your summoned creatures gain passive effects based on your known Spheres of Magic. Effects apply until the creature is resummoned. Strain on — context: attacks_against_summoner; target: enemies_in_engagement; range: engagement. Shapechange — target_form: tiny_wildlife. Damage bonus — formula: 2d6; damage_type: Arcane; target: enemy. Conditional effect — trigger: on_hit; condition: melee_attack. Divination anchor — description: Divination spells cast upon summon travel with it for spell duration.. Shared vitality — source: summoned_creature; target: summoner (Both take damage when either is hit.).",
+      "description": "Your summoned creatures gain passive effects based on your known Spheres of Magic. Effects apply until the creature is resummoned. Divination anchor — description: Divination spells cast upon summon travel with it for spell duration.",
       "boons": [
         {
           "type": "summon_sphere_effect",
@@ -326,64 +315,6 @@
               }
             ]
           }
-        }
-      ],
-      "_review": [
-        {
-          "dropped_type": "strain_on",
-          "original": {
-            "type": "strain_on",
-            "context": "attacks_against_summoner",
-            "target": "enemies_in_engagement",
-            "range": "engagement"
-          },
-          "generated": "Strain on — context: attacks_against_summoner; target: enemies_in_engagement; range: engagement."
-        },
-        {
-          "dropped_type": "shapechange",
-          "original": {
-            "type": "shapechange",
-            "target_form": "tiny_wildlife",
-            "duration": null
-          },
-          "generated": "Shapechange — target_form: tiny_wildlife."
-        },
-        {
-          "dropped_type": "damage_bonus",
-          "original": {
-            "type": "damage_bonus",
-            "formula": "2d6",
-            "damage_type": "Arcane",
-            "target": "enemy"
-          },
-          "generated": "Damage bonus — formula: 2d6; damage_type: Arcane; target: enemy."
-        },
-        {
-          "dropped_type": "conditional_effect(emptied)",
-          "original": {
-            "type": "conditional_effect",
-            "trigger": "on_hit",
-            "condition": "melee_attack"
-          },
-          "generated": "Conditional effect — trigger: on_hit; condition: melee_attack."
-        },
-        {
-          "dropped_type": "divination_anchor",
-          "original": {
-            "type": "divination_anchor",
-            "description": "Divination spells cast upon summon travel with it for spell duration."
-          },
-          "generated": "Divination anchor — description: Divination spells cast upon summon travel with it for spell duration.."
-        },
-        {
-          "dropped_type": "shared_vitality",
-          "original": {
-            "type": "shared_vitality",
-            "source": "summoned_creature",
-            "target": "summoner",
-            "note": "Both take damage when either is hit."
-          },
-          "generated": "Shared vitality — source: summoned_creature; target: summoner (Both take damage when either is hit.)."
         }
       ]
     },

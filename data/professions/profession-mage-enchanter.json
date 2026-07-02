@@ -22,19 +22,8 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "When using a scroll or tome during Spell Research, add your Ambition die to the roll at no resource cost. Ambition die bonus — context: spell_research_roll.",
-      "boons": [],
-      "_review": [
-        {
-          "dropped_type": "ambition_die_bonus",
-          "original": {
-            "type": "ambition_die_bonus",
-            "context": "spell_research_roll",
-            "cost": null
-          },
-          "generated": "Ambition die bonus — context: spell_research_roll."
-        }
-      ]
+      "description": "When using a scroll or tome during Spell Research, add your Ambition die to the roll at no resource cost.",
+      "boons": []
     },
     {
       "id": "rune_wards",
@@ -107,9 +96,6 @@
                 "duration": "until_daily_preparation"
               }
             }
-          ],
-          "_review": [
-            "inscribe_spell folded into enchantment_option; semantics need human verification"
           ]
         }
       ]
@@ -139,7 +125,7 @@
           "count": 1
         }
       },
-      "description": "Apply magical augmentations to items with open augmentation slots. Max applications per day equal to your current Tier. Augmentations can only be added or changed during a Respite or Daily Preparation. Free action grant — actions: [\"Dash\"]; choose: 0; uses: {\"count\":1,\"recharge\":\"respite\"}.",
+      "description": "Apply magical augmentations to items with open augmentation slots. Max applications per day equal to your current Tier. Augmentations can only be added or changed during a Respite or Daily Preparation.",
       "boons": [
         {
           "type": "apply_augmentation",
@@ -269,23 +255,6 @@
             }
           ]
         }
-      ],
-      "_review": [
-        {
-          "dropped_type": "free_action_grant",
-          "original": {
-            "type": "free_action_grant",
-            "actions": [
-              "Dash"
-            ],
-            "choose": 0,
-            "uses": {
-              "count": 1,
-              "recharge": "respite"
-            }
-          },
-          "generated": "Free action grant — actions: [\"Dash\"]; choose: 0; uses: {\"count\":1,\"recharge\":\"respite\"}."
-        }
       ]
     },
     {
@@ -363,9 +332,6 @@
                 ]
               }
             }
-          ],
-          "_review": [
-            "bind_spells folded into enchantment_option; semantics need human verification"
           ]
         }
       ]

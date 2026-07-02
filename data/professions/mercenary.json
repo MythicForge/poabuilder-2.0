@@ -126,10 +126,7 @@
                   "count": 5,
                   "recharge": "daily_preparation",
                   "skill_choice_at": "daily_preparation",
-                  "note": "Auto-success kit emulation — niche; see rule-check.md.",
-                  "_review": [
-                    "emulate_kit converted; skill is chosen in context — verify wording"
-                  ]
+                  "note": "Auto-success kit emulation — niche; see rule-check.md."
                 }
               ]
             }

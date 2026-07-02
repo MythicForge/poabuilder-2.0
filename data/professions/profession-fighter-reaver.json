@@ -83,22 +83,8 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "When attacking with a weapon of your Signature School, critical hits occur on a roll of 19–20. Crit range expansion — rolls: [19,20]; condition: wielding_school_weapon.",
-      "boons": [],
-      "_review": [
-        {
-          "dropped_type": "crit_range_expansion",
-          "original": {
-            "type": "crit_range_expansion",
-            "rolls": [
-              19,
-              20
-            ],
-            "condition": "wielding_school_weapon"
-          },
-          "generated": "Crit range expansion — rolls: [19,20]; condition: wielding_school_weapon."
-        }
-      ]
+      "description": "When attacking with a weapon of your Signature School, critical hits occur on a roll of 19–20.",
+      "boons": []
     },
     {
       "id": "disciplined_strike",

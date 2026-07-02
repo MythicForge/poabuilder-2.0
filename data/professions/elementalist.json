@@ -339,28 +339,8 @@
                 },
                 "range": null,
                 "condition": "not_engaged",
-                "description": "Gain Dash and stride up to a target one zone away. Your next attack to hit deals additional Fire equal to Will. Resolve on — context: Dash. Damage bonus — formula: Will; damage_type: Fire; trigger: on_next_hit.",
-                "boons": [],
-                "_review": [
-                  {
-                    "dropped_type": "resolve_on",
-                    "original": {
-                      "type": "resolve_on",
-                      "context": "Dash"
-                    },
-                    "generated": "Resolve on — context: Dash."
-                  },
-                  {
-                    "dropped_type": "damage_bonus",
-                    "original": {
-                      "type": "damage_bonus",
-                      "formula": "Will",
-                      "damage_type": "Fire",
-                      "trigger": "on_next_hit"
-                    },
-                    "generated": "Damage bonus — formula: Will; damage_type: Fire; trigger: on_next_hit."
-                  }
-                ]
+                "description": "Gain Dash and stride up to a target one zone away. Your next attack to hit deals additional Fire equal to Will.",
+                "boons": []
               },
               {
                 "id": "aura_read",
@@ -375,20 +355,8 @@
                 },
                 "range": null,
                 "condition": "must_be_engaged",
-                "description": "Engaged enemies have Strain to hit you until the start of your next turn. Strain on — context: attacks_against_you; target: engaged_enemies; duration: until_next_turn_start.",
-                "boons": [],
-                "_review": [
-                  {
-                    "dropped_type": "strain_on",
-                    "original": {
-                      "type": "strain_on",
-                      "context": "attacks_against_you",
-                      "target": "engaged_enemies",
-                      "duration": "until_next_turn_start"
-                    },
-                    "generated": "Strain on — context: attacks_against_you; target: engaged_enemies; duration: until_next_turn_start."
-                  }
-                ]
+                "description": "Engaged enemies have Strain to hit you until the start of your next turn.",
+                "boons": []
               }
             ],
             "forest": [
@@ -433,34 +401,13 @@
                 },
                 "range": "Touch",
                 "condition": null,
-                "description": "Target gains a Reduction Pool equal to Will. When it depletes and the attacker is in melee range, that attacker takes 1d6 Puncture. Damage bonus — formula: 1d6; damage_type: Puncture; target: attacker. Conditional effect — trigger: reduction_pool_depleted; condition: attacker_in_melee.",
+                "description": "Target gains a Reduction Pool equal to Will. When it depletes and the attacker is in melee range, that attacker takes 1d6 Puncture.",
                 "boons": [
                   {
                     "type": "reduction_pool",
                     "formula": "Will",
                     "charges": null,
                     "target": "any"
-                  }
-                ],
-                "_review": [
-                  {
-                    "dropped_type": "damage_bonus",
-                    "original": {
-                      "type": "damage_bonus",
-                      "formula": "1d6",
-                      "damage_type": "Puncture",
-                      "target": "attacker"
-                    },
-                    "generated": "Damage bonus — formula: 1d6; damage_type: Puncture; target: attacker."
-                  },
-                  {
-                    "dropped_type": "conditional_effect(emptied)",
-                    "original": {
-                      "type": "conditional_effect",
-                      "trigger": "reduction_pool_depleted",
-                      "condition": "attacker_in_melee"
-                    },
-                    "generated": "Conditional effect — trigger: reduction_pool_depleted; condition: attacker_in_melee."
                   }
                 ]
               }
@@ -480,37 +427,13 @@
                 "range": null,
                 "duration": "Until Dispelled",
                 "condition": null,
-                "description": "Gain armor bonus of 3 + Will while active. Disengage and Dash cost an additional 1 AP. Disable as a free action. Reduce action cost — action: Disengage; amount: -1; condition: iron_defense_active; minimum: 1. Reduce action cost — action: Dash; amount: -1; condition: iron_defense_active; minimum: 1.",
+                "description": "Gain armor bonus of 3 + Will while active. Disengage and Dash cost an additional 1 AP. Disable as a free action.",
                 "boons": [
                   {
                     "type": "stat_bonus",
                     "stat": "Armor",
                     "amount": "3 + Will",
                     "condition": "iron_defense_active"
-                  }
-                ],
-                "_review": [
-                  {
-                    "dropped_type": "reduce_action_cost",
-                    "original": {
-                      "type": "reduce_action_cost",
-                      "action": "Disengage",
-                      "amount": -1,
-                      "condition": "iron_defense_active",
-                      "minimum": 1
-                    },
-                    "generated": "Reduce action cost — action: Disengage; amount: -1; condition: iron_defense_active; minimum: 1."
-                  },
-                  {
-                    "dropped_type": "reduce_action_cost",
-                    "original": {
-                      "type": "reduce_action_cost",
-                      "action": "Dash",
-                      "amount": -1,
-                      "condition": "iron_defense_active",
-                      "minimum": 1
-                    },
-                    "generated": "Reduce action cost — action: Dash; amount: -1; condition: iron_defense_active; minimum: 1."
                   }
                 ]
               },
@@ -556,22 +479,8 @@
                 "range": "Touch",
                 "duration": "3 Rounds",
                 "condition": null,
-                "description": "Selected target or yourself — all weapon attacks deal an additional 1d6 Slash for 3 rounds. Damage bonus — formula: 1d6; damage_type: Slash; trigger: on_weapon_attack; duration: 3 Rounds; target: any.",
-                "boons": [],
-                "_review": [
-                  {
-                    "dropped_type": "damage_bonus",
-                    "original": {
-                      "type": "damage_bonus",
-                      "formula": "1d6",
-                      "damage_type": "Slash",
-                      "trigger": "on_weapon_attack",
-                      "duration": "3 Rounds",
-                      "target": "any"
-                    },
-                    "generated": "Damage bonus — formula: 1d6; damage_type: Slash; trigger: on_weapon_attack; duration: 3 Rounds; target: any."
-                  }
-                ]
+                "description": "Selected target or yourself — all weapon attacks deal an additional 1d6 Slash for 3 rounds.",
+                "boons": []
               },
               {
                 "id": "healing_waters",
@@ -611,7 +520,7 @@
                 },
                 "range": null,
                 "condition": null,
-                "description": "Use Will for Stealth checks and roll those checks with Resolve. Resolve on — context: Stealth.",
+                "description": "Use Will for Stealth checks and roll those checks with Resolve.",
                 "boons": [
                   {
                     "type": "stat_substitution",
@@ -619,16 +528,6 @@
                     "with": "Will",
                     "with_kind": "attribute",
                     "context": "Stealth"
-                  }
-                ],
-                "_review": [
-                  {
-                    "dropped_type": "resolve_on",
-                    "original": {
-                      "type": "resolve_on",
-                      "context": "Stealth"
-                    },
-                    "generated": "Resolve on — context: Stealth."
                   }
                 ]
               },
@@ -645,20 +544,8 @@
                 },
                 "range": null,
                 "condition": null,
-                "description": "Your next ranged attack deals an additional 2d4 Slash. Damage bonus — formula: 2d4; damage_type: Slash; trigger: on_next_ranged_hit.",
-                "boons": [],
-                "_review": [
-                  {
-                    "dropped_type": "damage_bonus",
-                    "original": {
-                      "type": "damage_bonus",
-                      "formula": "2d4",
-                      "damage_type": "Slash",
-                      "trigger": "on_next_ranged_hit"
-                    },
-                    "generated": "Damage bonus — formula: 2d4; damage_type: Slash; trigger: on_next_ranged_hit."
-                  }
-                ]
+                "description": "Your next ranged attack deals an additional 2d4 Slash.",
+                "boons": []
               }
             ],
             "tempest": [
@@ -675,21 +562,8 @@
                 },
                 "range": null,
                 "condition": null,
-                "description": "The AP cost of your next Power Attack this turn is reduced by 1 AP (minimum 1 AP). Reduce action cost — action: Power Attack; amount: 1; condition: next_use_this_turn; minimum: 1.",
-                "boons": [],
-                "_review": [
-                  {
-                    "dropped_type": "reduce_action_cost",
-                    "original": {
-                      "type": "reduce_action_cost",
-                      "action": "Power Attack",
-                      "amount": 1,
-                      "condition": "next_use_this_turn",
-                      "minimum": 1
-                    },
-                    "generated": "Reduce action cost — action: Power Attack; amount: 1; condition: next_use_this_turn; minimum: 1."
-                  }
-                ]
+                "description": "The AP cost of your next Power Attack this turn is reduced by 1 AP (minimum 1 AP).",
+                "boons": []
               },
               {
                 "id": "blinding_bolt",
@@ -704,33 +578,12 @@
                 },
                 "range": "Close",
                 "condition": null,
-                "description": "Ranged attack using Will vs Armor. On hit, target takes 1d4 Electric and is Blinded until end of their next turn. Damage bonus — formula: 1d4; damage_type: Electric. Apply condition — condition_id: BLN; duration: until_end_of_next_turn.",
+                "description": "Ranged attack using Will vs Armor. On hit, target takes 1d4 Electric and is Blinded until end of their next turn.",
                 "boons": [
                   {
                     "type": "conditional_effect",
                     "trigger": "on_hit",
                     "effect": []
-                  }
-                ],
-                "_review": [
-                  {
-                    "dropped_type": "damage_bonus",
-                    "original": {
-                      "type": "damage_bonus",
-                      "formula": "1d4",
-                      "damage_type": "Electric"
-                    },
-                    "generated": "Damage bonus — formula: 1d4; damage_type: Electric."
-                  },
-                  {
-                    "dropped_type": "apply_condition",
-                    "original": {
-                      "type": "apply_condition",
-                      "condition_id": "BLN",
-                      "duration": "until_end_of_next_turn",
-                      "stacks": null
-                    },
-                    "generated": "Apply condition — condition_id: BLN; duration: until_end_of_next_turn."
                   }
                 ]
               }
@@ -793,7 +646,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "You focus your Core to become Fragmented (gain a second Core and associated feat abilities) or Regal (gain a secondary element for Primordial Strike and add your melee die to all Art damage or healing). Damage bonus — formula: melee_die; trigger: on_elemental_art_use.",
+      "description": "You focus your Core to become Fragmented (gain a second Core and associated feat abilities) or Regal (gain a secondary element for Primordial Strike and add your melee die to all Art damage or healing).",
       "boons": [
         {
           "type": "choice",
@@ -832,18 +685,7 @@
           "sky": "Gravity",
           "tempest": "Ether"
         }
-      },
-      "_review": [
-        {
-          "dropped_type": "damage_bonus",
-          "original": {
-            "type": "damage_bonus",
-            "formula": "melee_die",
-            "trigger": "on_elemental_art_use"
-          },
-          "generated": "Damage bonus — formula: melee_die; trigger: on_elemental_art_use."
-        }
-      ]
+      }
     }
   ]
 }

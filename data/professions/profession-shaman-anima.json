@@ -171,7 +171,7 @@
           "count": 1
         }
       },
-      "description": "Gain new spirits as options when summoning Primeval Vessels, and you may summon a total of Vessels equal to Tier × 2; they do not fade until the start of a long rest. When summoned, choose its aspect. Bonus attack — attack_type: ranged; damage: 2d4; damage_type: Fire. Conditional effect — trigger: ally_in_zone_hit.",
+      "description": "Gain new spirits as options when summoning Primeval Vessels, and you may summon a total of Vessels equal to Tier × 2; they do not fade until the start of a long rest. When summoned, choose its aspect.",
       "boons": [
         {
           "type": "upgrade_feat",
@@ -237,26 +237,6 @@
             }
           ]
         }
-      ],
-      "_review": [
-        {
-          "dropped_type": "bonus_attack",
-          "original": {
-            "type": "bonus_attack",
-            "attack_type": "ranged",
-            "damage": "2d4",
-            "damage_type": "Fire"
-          },
-          "generated": "Bonus attack — attack_type: ranged; damage: 2d4; damage_type: Fire."
-        },
-        {
-          "dropped_type": "conditional_effect(emptied)",
-          "original": {
-            "type": "conditional_effect",
-            "trigger": "ally_in_zone_hit"
-          },
-          "generated": "Conditional effect — trigger: ally_in_zone_hit."
-        }
       ]
     },
     {
@@ -290,22 +270,11 @@
           "count": 2
         }
       },
-      "description": "Teleport instantly next to a Vessel you can see. Gain access to the Conjuration sphere. Teleport — destination: adjacent_to_visible_vessel; range: Nearby.",
+      "description": "Teleport instantly next to a Vessel you can see. Gain access to the Conjuration sphere.",
       "boons": [
         {
           "type": "grants_sphere",
           "sphere": "conjuration"
-        }
-      ],
-      "_review": [
-        {
-          "dropped_type": "teleport",
-          "original": {
-            "type": "teleport",
-            "destination": "adjacent_to_visible_vessel",
-            "range": "Nearby"
-          },
-          "generated": "Teleport — destination: adjacent_to_visible_vessel; range: Nearby."
         }
       ]
     }
