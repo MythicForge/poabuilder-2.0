@@ -16,17 +16,6 @@ export function IdentityStep({ draft, update }: StepProps) {
       </div>
 
       <div className="bld-field">
-        <label className="bld-field-label" htmlFor="bld-pronouns">Pronouns</label>
-        <input
-          id="bld-pronouns"
-          className="bld-input"
-          value={id.pronouns}
-          placeholder="they/them"
-          onChange={(e) => update((d) => { d.identity.pronouns = e.target.value; })}
-        />
-      </div>
-
-      <div className="bld-field">
         <label className="bld-field-label" htmlFor="bld-tags">Tags</label>
         <input
           id="bld-tags"
