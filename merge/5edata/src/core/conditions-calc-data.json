@@ -1,0 +1,223 @@
+{
+  "conditions": {
+    "Blinded": {
+      "isNegative": true,
+      "summary": "Cannot see. Attacks suffer disadvantage; attackers gain advantage against you.",
+      "effects": [
+        { "text": "Your attack rolls: disadvantage", "negative": true },
+        { "text": "Attack rolls vs you: advantage", "negative": true },
+        { "text": "Ranged attacks: max 10ft range (BG3)", "negative": true },
+        { "text": "Auto-fail sight-based Perception checks", "negative": true }
+      ],
+      "bg3Note": "Ranged attacks capped at 10ft instead of full disadvantage at range."
+    },
+    "Burning": {
+      "isNegative": true,
+      "summary": "On fire. Take fire damage at start of each turn. Wet condition prevents and removes Burning.",
+      "effects": [
+        { "text": "Fire damage at start of each turn", "negative": true },
+        { "text": "Prevented/removed by Wet condition", "negative": false }
+      ],
+      "bg3Note": "BG3-specific condition. Damage amount varies by source of ignition."
+    },
+    "Charmed": {
+      "isNegative": true,
+      "summary": "Magically charmed. Cannot attack or target the charmer with harmful abilities.",
+      "effects": [
+        { "text": "Cannot attack or harm the charmer", "negative": true },
+        { "text": "Charmer has advantage on social checks vs you", "negative": true }
+      ]
+    },
+    "Downed": {
+      "isNegative": true,
+      "summary": "Incapacitated and prone. Making death saving throws each turn. Allies can revive.",
+      "effects": [
+        { "text": "Incapacitated — cannot take actions, reactions, or move", "negative": true },
+        { "text": "Prone — melee attacks vs you (≤10ft) have advantage", "negative": true },
+        { "text": "Rolling death saving throws each turn", "negative": true },
+        { "text": "Speed = 0", "negative": true }
+      ],
+      "bg3Note": "BG3 downed state; allies can spend an action to revive with 1 HP."
+    },
+    "Encumbered": {
+      "isNegative": true,
+      "summary": "Carrying over 80% of max capacity. Jump distance halved.",
+      "effects": [
+        { "text": "Jump distance halved", "negative": true }
+      ],
+      "bg3Note": "Triggers at >80% carry capacity. Threshold: 40 + (10 × STR score) × 0.8 kg."
+    },
+    "Ensnared": {
+      "isNegative": true,
+      "summary": "Entangled by roots or vines. Speed = 0. Disadvantage on DEX saves. Escape with STR check vs source DC.",
+      "effects": [
+        { "text": "Speed = 0", "negative": true },
+        { "text": "Disadvantage on DEX saving throws", "negative": true },
+        { "text": "Escape: STR check vs source DC", "negative": true }
+      ],
+      "bg3Note": "BG3-specific. Duration and DC set by source ability or spell."
+    },
+    "Enwebbed": {
+      "isNegative": true,
+      "summary": "Caught in spider webs. Speed halved. Disadvantage on attacks and DEX saves. Escape via ally Help action or own bonus action. Fire damage removes webs.",
+      "effects": [
+        { "text": "Speed halved", "negative": true },
+        { "text": "Disadvantage on attack rolls", "negative": true },
+        { "text": "Disadvantage on DEX saving throws", "negative": true },
+        { "text": "Escape: bonus action (self) or Help action (ally)", "negative": true },
+        { "text": "Fire damage removes the webs", "negative": true }
+      ],
+      "bg3Note": "BG3-specific. Applied by spider-type enemies and Web spell surfaces."
+    },
+    "Fearful": {
+      "isNegative": true,
+      "summary": "Like Frightened but stronger: must flee the source. No additional actions.",
+      "effects": [
+        { "text": "Must use movement to flee the fear source", "negative": true },
+        { "text": "No additional actions allowed", "negative": true },
+        { "text": "Cannot attack the fear source", "negative": true }
+      ],
+      "bg3Note": "BG3-specific variant of Frightened. Stronger — forced flight, no extra actions."
+    },
+    "Frightened": {
+      "isNegative": true,
+      "summary": "Cannot move at all. Cannot attack or target the source of fear.",
+      "effects": [
+        { "text": "Speed = 0 — cannot move (BG3: fully immobile)", "negative": true },
+        { "text": "Cannot attack or target the fear source", "negative": true }
+      ],
+      "bg3Note": "BG3: fully immobile. Standard 5e only prevents moving toward the source."
+    },
+    "Grappled": {
+      "isNegative": true,
+      "summary": "Grabbed. Speed reduced to 0.",
+      "effects": [
+        { "text": "Speed = 0", "negative": true }
+      ],
+      "bg3Note": "BG3: only applied by specific NPCs (Tentacle, Shadow Creeper). Not a player action."
+    },
+    "Heavily Encumbered": {
+      "isNegative": true,
+      "summary": "Carrying over 93% of max capacity. Cannot jump or climb.",
+      "effects": [
+        { "text": "Cannot jump", "negative": true },
+        { "text": "Cannot climb", "negative": true }
+      ],
+      "bg3Note": "Triggers at >93.33% carry capacity."
+    },
+    "Invisible": {
+      "isNegative": false,
+      "isBeneficial": true,
+      "summary": "Cannot be seen. Your attacks have advantage; attacks vs you have disadvantage.",
+      "effects": [
+        { "text": "Your attack rolls: advantage", "negative": false },
+        { "text": "Attack rolls vs you: disadvantage", "negative": false },
+        { "text": "Cannot be targeted by effects that require sight", "negative": false }
+      ]
+    },
+    "Paralyzed": {
+      "isNegative": true,
+      "summary": "Completely incapacitated. Auto-crit within 10ft. Auto-fail STR and DEX saves.",
+      "effects": [
+        { "text": "Incapacitated — cannot take any actions, reactions, or bonus actions", "negative": true },
+        { "text": "Speed = 0 — cannot move or speak", "negative": true },
+        { "text": "Attack rolls vs you: advantage", "negative": true },
+        { "text": "Attacks within 10ft are automatic critical hits (BG3)", "negative": true },
+        { "text": "Auto-fail STR and DEX saving throws", "negative": true }
+      ],
+      "bg3Note": "Auto-crit range extended to 10ft (standard 5e is 5ft)."
+    },
+    "Poisoned": {
+      "isNegative": true,
+      "summary": "Poisoned. Disadvantage on attack rolls and ability checks.",
+      "effects": [
+        { "text": "Attack rolls: disadvantage", "negative": true },
+        { "text": "Ability checks: disadvantage", "negative": true }
+      ]
+    },
+    "Prone": {
+      "isNegative": true,
+      "summary": "On the ground. Melee attackers within 10ft have advantage. Breaks concentration. Turn ends immediately.",
+      "effects": [
+        { "text": "Melee attacks vs you (≤10ft): advantage", "negative": true },
+        { "text": "Concentration broken automatically — no CON save (BG3)", "negative": true },
+        { "text": "Turn ends immediately when knocked prone (BG3)", "negative": true },
+        { "text": "Must spend half movement to stand up", "negative": true }
+      ],
+      "bg3Note": "No ranged disadvantage vs you while prone (standard 5e has ranged disadv). Concentration breaks with no save."
+    },
+    "Restrained": {
+      "isNegative": true,
+      "summary": "Held in place. Speed 0, attacks suffer disadvantage, attackers gain advantage.",
+      "effects": [
+        { "text": "Speed = 0", "negative": true },
+        { "text": "Your attack rolls: disadvantage", "negative": true },
+        { "text": "Attack rolls vs you: advantage", "negative": true },
+        { "text": "DEX saving throws: disadvantage", "negative": true }
+      ]
+    },
+    "Silenced": {
+      "isNegative": true,
+      "summary": "Cannot speak. Cannot cast spells with verbal components.",
+      "effects": [
+        { "text": "Cannot cast spells with verbal components", "negative": true },
+        { "text": "Cannot speak or communicate verbally", "negative": true }
+      ],
+      "bg3Note": "All spells have implicit verbal components in BG3. Exceptions: spells usable while Silenced (e.g., Subtle Spell metamagic)."
+    },
+    "Sleeping": {
+      "isNegative": true,
+      "summary": "Unconscious and asleep. Same rules as Unconscious. Melee attackers within range auto-crit. Woken by damage or loud noise nearby.",
+      "effects": [
+        { "text": "Incapacitated — cannot act, react, or move", "negative": true },
+        { "text": "Melee attacks from adjacent attackers: auto-crit", "negative": true },
+        { "text": "Woken by taking any damage", "negative": true },
+        { "text": "Woken by nearby loud noise", "negative": true }
+      ],
+      "bg3Note": "Duration depends on source (spell vs natural sleep)."
+    },
+    "Slowed": {
+      "isNegative": true,
+      "summary": "Speed reduced by 15 ft / 4.5 m. Loses bonus action and reaction.",
+      "effects": [
+        { "text": "Speed −15 ft (−4.5 m)", "negative": true },
+        { "text": "Loses bonus action", "negative": true },
+        { "text": "Loses reaction", "negative": true }
+      ],
+      "bg3Note": "Applied by spells, surfaces, or enemy abilities. Duration set by source."
+    },
+    "Stunned": {
+      "isNegative": true,
+      "summary": "Completely incapacitated. Auto-fail STR and DEX saves. Attackers have advantage.",
+      "effects": [
+        { "text": "Incapacitated — cannot take actions, reactions, or bonus actions", "negative": true },
+        { "text": "Speed = 0 — cannot move", "negative": true },
+        { "text": "Can only speak falteringly", "negative": true },
+        { "text": "Attack rolls vs you: advantage", "negative": true },
+        { "text": "Auto-fail STR and DEX saving throws", "negative": true }
+      ]
+    },
+    "Turned": {
+      "isNegative": true,
+      "summary": "Affected by Turn Undead or similar. Cannot willingly move toward the source.",
+      "effects": [
+        { "text": "Cannot willingly move toward the source", "negative": true },
+        { "text": "Won't dodge (BG3)", "negative": true },
+        { "text": "If immobile, stands idle (BG3)", "negative": true }
+      ],
+      "bg3Note": "BG3: dodging is disabled while Turned."
+    },
+    "Wet": {
+      "isNegative": false,
+      "isMixed": true,
+      "summary": "Soaked in water. Fire resistance and blocks Burning, but vulnerable to lightning and cold.",
+      "effects": [
+        { "text": "Resistance to fire damage", "negative": false },
+        { "text": "Immune to Burning condition while Wet", "negative": false },
+        { "text": "Vulnerable to lightning damage — doubled damage taken", "negative": true },
+        { "text": "Vulnerable to cold damage — doubled damage taken", "negative": true }
+      ],
+      "bg3Note": "BG3-specific condition. Mixed effect — beneficial against fire, dangerous against lightning/cold."
+    }
+  }
+}

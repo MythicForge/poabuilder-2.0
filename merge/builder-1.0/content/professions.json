@@ -1,0 +1,1317 @@
+{
+  "metadata": {
+    "schema_version": "poa.content.v1",
+    "collection": "professions"
+  },
+  "professions": [
+    {
+      "id": "agent",
+      "name": "Agent",
+      "slug": "agent",
+      "role": "The agent uses their speed and their mind to overcome all obstacles that come in their path. They excel at thievery, stealth, investigation, and scouting, while also hitting targets from their blindsides or the shadows. The two paths of the agent are the Alchemist and Infiltrator.",
+      "flavor": "*Thieves in the night, criminal book keepers, or spies for national powers, these masters of stealth and guile operate in the shadows of society. Agents are the unseen hands that manipulate events from behind curtains, the whispered legends whose true faces remain unknown to most. Whether serving a crown, guild, or their own ambitions, agents rely on their quick wits and nimble fingers rather than brute force. They are the lock-pickers, the poison-mixers, the information-gatherers who know that true power lies not in strength of arm but in knowledge obtained and secrets kept. In a world where kings rule by day, agents understand that true influence belongs to those who control the night.*",
+      "favored_attributes_raw": "Finesse and Mind",
+      "starting_vitality": "10 + Brawn",
+      "vitality_gained_per_tier": "2d8",
+      "body_modifier_bonus": "",
+      "wound_bonus_per_tier": 1,
+      "proficiencies": {
+        "vitals_skills": [
+          "Choose two",
+          "Intuition",
+          "Talent",
+          "Awareness",
+          "Social"
+        ],
+        "armaments": ["Finesse"],
+        "protection": ["Light"],
+        "tool_kits": [],
+        "raw": ""
+      },
+      "starting_pack": {
+        "weapons": {
+          "raw": "",
+          "items": []
+        },
+        "armor": {
+          "raw": "",
+          "items": []
+        },
+        "kit": {
+          "raw": "",
+          "items": []
+        },
+        "inventory": {
+          "raw": "",
+          "items": []
+        },
+        "starting_currency": null,
+        "raw": "Two daggers, Light bow with quiver (20 arrows), Thieves' tools, Grappling hook with 50 ft rope, 3 smoke pellets, Dark clothing set"
+      },
+      "path_options": ["Alchemist", "Infiltrator"],
+      "features": [
+        {
+          "id": "professions-agent-base-undercut",
+          "name": "Undercut",
+          "slug": "undercut",
+          "owner_type": "profession",
+          "owner_id": "agent",
+          "owner_name": "Agent",
+          "tag": "Agent",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Trigger",
+          "traits": ["Trigger"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "While **Hidden**, **Obscured**, or have an ally in your **Engagement**, while using a weapon with the *Light* trait, add an additional weapon die based on your tier.\n\n| Tier | Die                          |\n| ---- | ---------------------------- |\n| 1-2  | One additional weapon die    |\n| 3-4  | Two additional weapon dice   |\n| 5    | Three additional weapon dice |",
+          "raw_markdown": "**Trait** Trigger | **Cost** -\nWhile **Hidden**, **Obscured**, or have an ally in your **Engagement**, while using a weapon with the *Light* trait, add an additional weapon die based on your tier.\n\n| Tier | Die                          |\n| ---- | ---------------------------- |\n| 1-2  | One additional weapon die    |\n| 3-4  | Two additional weapon dice   |\n| 5    | Three additional weapon dice |"
+        },
+        {
+          "id": "professions-agent-base-agile",
+          "name": "Agile",
+          "slug": "agile",
+          "owner_type": "profession",
+          "owner_id": "agent",
+          "owner_name": "Agent",
+          "tag": "Agent",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "While wearing **light armor or no armor** and **not using a shield**, attacks that would target your **Armor Defense** instead target your **Agile Defense**.\n\n**Agile Defense** = *10 + (your light armor bonus, if any) + the higher of your Body or Mind*  \nThis does not function while wearing **medium or heavy armor**.",
+          "raw_markdown": "**Trait** Passive  | **Cost** -\nWhile wearing **light armor or no armor** and **not using a shield**, attacks that would target your **Armor Defense** instead target your **Agile Defense**.\n\n**Agile Defense** = *10 + (your light armor bonus, if any) + the higher of your Body or Mind*  \nThis does not function while wearing **medium or heavy armor**."
+        },
+        {
+          "id": "professions-agent-base-tread-lightly",
+          "name": "Tread Lightly",
+          "slug": "tread-lightly",
+          "owner_type": "profession",
+          "owner_id": "agent",
+          "owner_name": "Agent",
+          "tag": "Agent",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "Reduce the cost of the **Hide** action by **1 AP**.",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nReduce the cost of the **Hide** action by **1 AP**."
+        }
+      ]
+    },
+    {
+      "id": "berserker",
+      "name": "Berserker",
+      "slug": "berserker",
+      "role": "The berserker is the embodiment of martial ferocity, using their rage to shrug off wounds and deal devastating damage. They excel at frontline combat, intimidation, and serving as the party's damage-dealing tank. The two paths of the berserker are the Frenzied and the Titan.",
+      "flavor": "*Warriors who harness primal fury, they stand at the crossroads of savagery and strength. The berserker knows what civilized folk refuse to admit\u2014that within the heart of every mortal burns an ancient, untamed rage waiting to be unleashed. On the battlefield, they become living hurricanes of destruction, their blood-spattered forms inspiring terror in enemies and awe in allies. Yet this power comes at a price\u2014each time they surrender to the rage, a piece of their Ambition slips further away.*",
+      "favored_attributes_raw": "Brawn",
+      "starting_vitality": "14 + Brawn",
+      "vitality_gained_per_tier": "2d12 + 2",
+      "body_modifier_bonus": "",
+      "wound_bonus_per_tier": 1,
+      "proficiencies": {
+        "vitals_skills": ["Choose one", "Vigor", "Awareness", "Social"],
+        "armaments": ["Martial", "Simple"],
+        "protection": ["Light"],
+        "tool_kits": ["-"],
+        "raw": "**V.I.T.A.L.S. Skills** Choose one, Vigor, Awareness, Social\n**Armaments** Martial, Simple\n**Protection** Light\n**Tool Kit** -"
+      },
+      "starting_pack": {
+        "weapons": {
+          "raw": "Great axe or maul (player's choice), Two throwing axes, Survival knife",
+          "items": [
+            "Great axe or maul (player's choice)",
+            "Two throwing axes",
+            "Survival knife"
+          ]
+        },
+        "armor": {
+          "raw": "medium armor",
+          "items": ["medium armor"]
+        },
+        "kit": {
+          "raw": "Tribal tattoo kit",
+          "items": ["Tribal tattoo kit"]
+        },
+        "inventory": {
+          "raw": "Bone trophies from previous victories, Drinking horn",
+          "items": ["Bone trophies from previous victories", "Drinking horn"]
+        },
+        "starting_currency": "5 gold",
+        "raw": "**Weapons:** Great axe or maul (player's choice), Two throwing axes, Survival knife\n**Armor:** medium armor\n**Kit:** Tribal tattoo kit\n**Inventory:** Bone trophies from previous victories, Drinking horn\n**Starting Currency:** 5 gold"
+      },
+      "path_options": ["Frenzied", "Titan"],
+      "features": [
+        {
+          "id": "professions-berserker-base-berserker-rage",
+          "name": "Berserker Rage",
+          "slug": "berserker-rage",
+          "owner_type": "profession",
+          "owner_id": "berserker",
+          "owner_name": "Berserker",
+          "tag": "Berserker",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Narrative",
+          "traits": ["Narrative"],
+          "activation": {
+            "raw": "1 Ambition",
+            "resources": {
+              "ambition": 1
+            },
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You enter into a heightened state which improves your martial and physical prowess, as long as you have **Ambition**. While raging you add one additional weapon damage die to melee weapons and gain **Resolve** on skill checks which require **Body**. \n\nIn a state of **Rage** if you end your turn without achieving one of the following, dealing or taking damage, succeed using an *Offensive* action of **Body** skill checks, the **Rage** ends. Outside of combat, **Rage** lasts for 1 minute.",
+          "raw_markdown": "**Trait** Narrative | **Cost** 1 Ambition\nYou enter into a heightened state which improves your martial and physical prowess, as long as you have **Ambition**. While raging you add one additional weapon damage die to melee weapons and gain **Resolve** on skill checks which require **Body**. \n\nIn a state of **Rage** if you end your turn without achieving one of the following, dealing or taking damage, succeed using an *Offensive* action of **Body** skill checks, the **Rage** ends. Outside of combat, **Rage** lasts for 1 minute."
+        },
+        {
+          "id": "professions-berserker-base-unarmored-defense",
+          "name": "Unarmored Defense",
+          "slug": "unarmored-defense",
+          "owner_type": "profession",
+          "owner_id": "berserker",
+          "owner_name": "Berserker",
+          "tag": "Berserker",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "While wearing no **Armor**, you can add your **Body** modifier + Tier to your **Armor** defense.",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nWhile wearing no **Armor**, you can add your **Body** modifier + Tier to your **Armor** defense."
+        },
+        {
+          "id": "professions-berserker-base-hands-of-destruction",
+          "name": "Hands of Destruction",
+          "slug": "hands-of-destruction",
+          "owner_type": "profession",
+          "owner_id": "berserker",
+          "owner_name": "Berserker",
+          "tag": "Berserker",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "Your **unarmed** attacks deal damage based upon your tier, and increase each tier. When using fist weapons you add this in addition to the weapon damage.\n\n\n| Tier | Damage |\n| ---- | ------ |\n| 1    | 1d6    |\n| 2    | 1d8    |\n| 3    | 1d10   |\n| 4    | 2d6    |",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nYour **unarmed** attacks deal damage based upon your tier, and increase each tier. When using fist weapons you add this in addition to the weapon damage.\n\n\n| Tier | Damage |\n| ---- | ------ |\n| 1    | 1d6    |\n| 2    | 1d8    |\n| 3    | 1d10   |\n| 4    | 2d6    |"
+        }
+      ]
+    },
+    {
+      "id": "eidolon",
+      "name": "Eidolon",
+      "slug": "eidolon",
+      "role": "The scion is an intuitive spellcaster whose powers come from their inherited bloodline. They excel at elemental magic, adaptation, and enhancing their spells through their unique magical design. The two paths of the scion are the Spellshaper and the Prodigy.",
+      "flavor": "*Inheritors of ancient magical bloodlines who manipulate arcane energies with an instinctive flair. Unlike those who must laboriously study spellcraft, scions are made with magic flowing through their veins. Descendants of unions between mortals and supernatural beings, inheritors of experimental arcane modifications, or children touched by cosmic events before birth. Their magic operates on intuition and emotion rather than formula and calculation, allowing them to bend arcane rules in ways that conventional spellcasters find simultaneously brilliant and alarming.*",
+      "favored_attributes_raw": "Will",
+      "starting_vitality": "8 + Brawn",
+      "vitality_gained_per_tier": "2d8",
+      "body_modifier_bonus": "",
+      "wound_bonus_per_tier": 1,
+      "proficiencies": {
+        "vitals_skills": ["Choose one", "Awareness", "Lore", "Social"],
+        "armaments": ["Catalysts", "Simple"],
+        "protection": ["None"],
+        "tool_kits": ["Crafting", "Engineering or Medicine"],
+        "raw": "**V.I.T.A.L.S. Skills** Choose one, Awareness, Lore, Social\n**Armaments** Catalysts, one of choice\n**Protection** None\n**Tool Kit** Crafting, Engineering or Medicine"
+      },
+      "starting_pack": {
+        "weapons": {
+          "raw": "Magic wand, Dagger or light weapon of choice",
+          "items": ["Magic wand", "Dagger or light weapon of choice"]
+        },
+        "armor": {
+          "raw": "Heritage clothing",
+          "items": ["Heritage clothing"]
+        },
+        "kit": {
+          "raw": "None",
+          "items": []
+        },
+        "inventory": {
+          "raw": "Family heirloom with minor enchantment, Noble's signet ring, Fine clothing, Journal of lineage records",
+          "items": [
+            "Family heirloom with minor enchantment",
+            "Noble's signet ring",
+            "Fine clothing",
+            "Journal of lineage records"
+          ]
+        },
+        "starting_currency": "25 gold",
+        "raw": "**Weapons:** Magic wand, Dagger or light weapon of choice\n**Armor:** Heritage clothing \n**Kit:** None\n**Inventory:** Family heirloom with minor enchantment, Noble's signet ring, Fine clothing, Journal of lineage records\n**Starting Currency:** 25 gold"
+      },
+      "path_options": ["Spellshaper", "Prodigy"],
+      "features": [
+        {
+          "id": "professions-eidolon-base-resonance",
+          "name": "Resonance",
+          "slug": "resonance",
+          "owner_type": "profession",
+          "owner_id": "eidolon",
+          "owner_name": "Eidolon",
+          "tag": "Eidolon",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Maneuver (Resource)",
+          "traits": ["Maneuver"],
+          "activation": {
+            "raw": "1 AP",
+            "resources": {
+              "ap": 1
+            },
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "Your bloodline's legacy has given you the visionary foresight of a grand design. You gain **Resonance** and its total is equal to your **essence**. You start with **1** **Resonance** per day, and total starting per day increases by **1** ever **tier** after **tier 1**.\n\nYou can spend **resonance** to restore your anima **reservoir**, or expend your anima **reservoir** to regain **resonance**. To activate this conversion is 1 **AP** or **MP**, but can only be done once per turn.\n\n| Resource  | Spend       | Restored    |\n| --------- | ----------- | ----------- |\n| Reservoir | 1 Resonance | 2 Reservoir |\n| Resonance | 2 Reservoir | 1 Resonance |\n\nUnused resonance beyond your starting amount fades after a **long** or **full rest**.",
+          "raw_markdown": "**Trait** Maneuver (*Resource*) | **Cost** 1 AP\nYour bloodline's legacy has given you the visionary foresight of a grand design. You gain **Resonance** and its total is equal to your **essence**. You start with **1** **Resonance** per day, and total starting per day increases by **1** ever **tier** after **tier 1**.\n\nYou can spend **resonance** to restore your anima **reservoir**, or expend your anima **reservoir** to regain **resonance**. To activate this conversion is 1 **AP** or **MP**, but can only be done once per turn.\n\n| Resource  | Spend       | Restored    |\n| --------- | ----------- | ----------- |\n| Reservoir | 1 Resonance | 2 Reservoir |\n| Resonance | 2 Reservoir | 1 Resonance |\n\nUnused resonance beyond your starting amount fades after a **long** or **full rest**."
+        },
+        {
+          "id": "professions-eidolon-base-spell-shaping",
+          "name": "Spell Shaping",
+          "slug": "spell-shaping",
+          "owner_type": "profession",
+          "owner_id": "eidolon",
+          "owner_name": "Eidolon",
+          "tag": "Eidolon",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You are able to manipulate how the very essence of a spell functions with your **Resonance**. You know two **spell shapes**, and can have a total of two **prepared** a day. You activate a **spell shape** using a **free action**, and select the following effects provided you can pay the cost.\n- **Efficient Resonance** When you **cast a spell**, you spend **Resonance** equal to the tier of a spell and reduce the cost to cast the spell to 1 **AP**\n- **Cascading Resonance** When you **cast a spell**, spend **resonance** equal to two times the spell's tier, and you double the duration of a spell. The maximum duration a spell can be **cascaded** is 8 hours.",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nYou are able to manipulate how the very essence of a spell functions with your **Resonance**. You know two **spell shapes**, and can have a total of two **prepared** a day. You activate a **spell shape** using a **free action**, and select the following effects provided you can pay the cost.\n- **Efficient Resonance** When you **cast a spell**, you spend **Resonance** equal to the tier of a spell and reduce the cost to cast the spell to 1 **AP**\n- **Cascading Resonance** When you **cast a spell**, spend **resonance** equal to two times the spell's tier, and you double the duration of a spell. The maximum duration a spell can be **cascaded** is 8 hours."
+        },
+        {
+          "id": "professions-eidolon-base-spellcasting",
+          "name": "Spellcasting",
+          "slug": "spellcasting",
+          "owner_type": "profession",
+          "owner_id": "eidolon",
+          "owner_name": "Eidolon",
+          "tag": "Eidolon",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You have the ability due to the greatness of your linage you can cast spells. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\nGain the following features for **spellcasting**\n- You are a **Full-caster**.\n- Your **source** is **Anima**.\n- Your **Spellcasting Modifier** is **Will**.\n- Your total **reservoir** equals _(2 \u00d7 Tier) + Spellcasting Modifier_.\n- Start with Four **Known Spells** at Tier 1\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.\n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n\n> _Example:_  \n> A Tier 3 ***Eidolon*** with +8 Will has a reservoir of (2\u00d73)+8 = **14 spell points**.",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nYou have the ability due to the greatness of your linage you can cast spells. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\nGain the following features for **spellcasting**\n- You are a **Full-caster**.\n- Your **source** is **Anima**.\n- Your **Spellcasting Modifier** is **Will**.\n- Your total **reservoir** equals _(2 \u00d7 Tier) + Spellcasting Modifier_.\n- Start with Four **Known Spells** at Tier 1\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.\n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n\n> _Example:_  \n> A Tier 3 ***Eidolon*** with +8 Will has a reservoir of (2\u00d73)+8 = **14 spell points**.\n\n###### Cantrips \n\n**Mending Bond** \n**Range** Touch | **Duration** Instant\nYou create a bond using magical energy to reinforce or mend small fractures or tears in objects no larger than 1 ft / 0.3 m. This cannot restore a magical item's effects if it was destroyed.\n\n**Starfall**\n**Range** Nearby | **Duration** Instant\nYou launch loose debris and objects of minimal mass. Make a **spell attack roll**, on a hit deal 1d8 **gravity** plus **spell casting modifier**.\n\n**Starlight** \n**Range** Self | **Duration** 1 hour *(Focused)*\nYou create a small torch-sized light which emits 20 ft / 6 m of **dim-light** that hovers around you and follows you. It can be moved to any location within your **zone** using 1 MP.\n\n**Radiant Dart**\n**Range** Far | **Duration** 1 minute\nYou send a bolt of bright energy at a target. Make a **spell attack roll**, on a hit deal 1d4 **ether**, and on a **critical hit** that target is illuminated and cannot be a state of **hidden** or **Obscured** for duration."
+        }
+      ],
+      "custom_resource": {
+        "key": "resonance",
+        "label": "Resonance",
+        "max_formula": "tier",
+        "default_value": "max",
+        "restore": {
+          "long_rest": "max",
+          "full_rest": "max"
+        }
+      }
+    },
+    {
+      "id": "elementalist",
+      "name": "Elementalist",
+      "slug": "elementalist",
+      "role": "The Elementalist can play several different roles depending on their Element of choice, and fighting style of choice. They can fill the spot of a front-liner, support, or controller, but excel the most when they stick to one role. Their paths determine if they become more martial or caster like. The paths of the Elementalist are the Kineticist or Conduit",
+      "flavor": "*Born with the potential to master the elements bending them to your will, studied to achieve an inner connection with nature some could only dream. The Elementalist is a an adventurer that fights with the prowess of a martial with the mixture of mastery over the elements, or be able to bend the Elements with less effort than spell casters could ever dream.*",
+      "favored_attributes_raw": "Will, Finesse",
+      "starting_vitality": "10 + Brawn",
+      "vitality_gained_per_tier": "2d10",
+      "body_modifier_bonus": "",
+      "wound_bonus_per_tier": 1,
+      "proficiencies": {
+        "vitals_skills": ["Choose one", "Talent", "Awareness", "Lore"],
+        "armaments": ["Simple", "Unarmed"],
+        "protection": ["Light"],
+        "tool_kits": ["Alchemy", "Outrider"],
+        "raw": "**V.I.T.A.L.S. Skills** Choose one, Talent, Awareness, Lore\n**Armaments** Simple, Unarmed\n**Protection** Light\n**Tool Kit** Alchemy, Outrider"
+      },
+      "starting_pack": {
+        "weapons": {
+          "raw": "two simple melee weapons of choice",
+          "items": ["two simple melee weapons of choice"]
+        },
+        "armor": {
+          "raw": "Light armor",
+          "items": ["Light armor"]
+        },
+        "kit": {
+          "raw": "Survival Kit",
+          "items": ["Survival Kit"]
+        },
+        "inventory": {
+          "raw": "Nature press kit, Waterskin, weather cloak",
+          "items": ["Nature press kit", "Waterskin", "weather cloak"]
+        },
+        "starting_currency": "7 gold",
+        "raw": "**Weapons:** two simple melee weapons of choice\n**Armor:** Light armor\n**Kit:** Survival Kit\n**Inventory:** Nature press kit, Waterskin, weather cloak\n**Starting Currency:** 7 gold"
+      },
+      "path_options": ["Conduit", "Kineticist"],
+      "features": [
+        {
+          "id": "professions-elementalist-base-font-of-energy",
+          "name": "Font of Energy",
+          "slug": "font-of-energy",
+          "owner_type": "profession",
+          "owner_id": "elementalist",
+          "owner_name": "Elementalist",
+          "tag": "Elementalist",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You maintain an inner reservoir of elemental power. You gain a unique resource pool called **Energy**, which is consumed to activate specialized Elementalist feats.\n\n- **Maximum Energy:** Equal to your **Will** attribute score + your current **Tier**.\n    \n- **Recovery:** You restore 3 Energy during a Respite, and regain 9 Energy upon completing a Long Rest.",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nYou maintain an inner reservoir of elemental power. You gain a unique resource pool called **Energy**, which is consumed to activate specialized Elementalist feats.\n\n- **Maximum Energy:** Equal to your **Will** attribute score + your current **Tier**.\n    \n- **Recovery:** You restore 3 Energy during a Respite, and regain 9 Energy upon completing a Long Rest."
+        },
+        {
+          "id": "professions-elementalist-base-elemental-core",
+          "name": "Elemental Core",
+          "slug": "elemental-core",
+          "owner_type": "profession",
+          "owner_id": "elementalist",
+          "owner_name": "Elementalist",
+          "tag": "Elementalist",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You have dedicated your soul to mastering a singular focal point of the natural world. Select one Elemental Core from the table below; this choice governs your elemental manipulation limitations. You may only choose one Core.\n\n| **Elemental Core** | **Associated Elemental Disciplines** |\n| ------------------ | ------------------------------------ |\n| **Flame**          | Fire, Spirit                         |\n| **Forest**         | Wood, Vitality                       |\n| **Land**           | Stone, Metal                         |\n| **Ocean**          | Water, Ice                           |\n| **Sky**            | Air, Gravity                         |\n| **Tempest**        | Electric, Light                      |",
+          "raw_markdown": "**Trait** Passive | **Cost** -\n\nYou have dedicated your soul to mastering a singular focal point of the natural world. Select one Elemental Core from the table below; this choice governs your elemental manipulation limitations. You may only choose one Core.\n\n| **Elemental Core** | **Associated Elemental Disciplines** |\n| ------------------ | ------------------------------------ |\n| **Flame**          | Fire, Spirit                         |\n| **Forest**         | Wood, Vitality                       |\n| **Land**           | Stone, Metal                         |\n| **Ocean**          | Water, Ice                           |\n| **Sky**            | Air, Gravity                         |\n| **Tempest**        | Electric, Light                      |"
+        },
+        {
+          "id": "professions-elementalist-base-primordial-strike",
+          "name": "Primordial Strike",
+          "slug": "primordial-strike",
+          "owner_type": "profession",
+          "owner_id": "elementalist",
+          "owner_name": "Elementalist",
+          "tag": "Elementalist",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Offensive",
+          "traits": ["Offensive"],
+          "activation": {
+            "raw": "2 AP",
+            "resources": {
+              "ap": 2
+            },
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You turn your hands into weapons of the Elements. Based upon your *Core* when you make unarmed attacks you deal 1d6 + **Will** of your assigned damage type, and also gain a ranged attack with a range of Close which deals 1d6 + **Will** of your assigned damage type . Your dice size for all attacks increase by one per tier.\n\n| **Elemental Core** | Damage Type |\n| ------------------ | ----------- |\n| **Flame**          | Fire        |\n| **Forest**         | Corrosive   |\n| **Land**           | Blunt       |\n| **Ocean**          | Ice         |\n| **Sky**            | Slash       |\n| **Tempest**        | Electric    |\n\n| Tier | Melee | Ranged |\n| ---- | ----- | ------ |\n| 2    | 1d8   | 1d6    |\n| 3    | 1d10  | 1d8    |\n| 4    | 1d12  | 1d10   |\n| 5    | 2d8   | 1d12   |",
+          "raw_markdown": "**Trait** Offensive | **Cost** 2 AP\nYou turn your hands into weapons of the Elements. Based upon your *Core* when you make unarmed attacks you deal 1d6 + **Will** of your assigned damage type, and also gain a ranged attack with a range of Close which deals 1d6 + **Will** of your assigned damage type . Your dice size for all attacks increase by one per tier.\n\n| **Elemental Core** | Damage Type |\n| ------------------ | ----------- |\n| **Flame**          | Fire        |\n| **Forest**         | Corrosive   |\n| **Land**           | Blunt       |\n| **Ocean**          | Ice         |\n| **Sky**            | Slash       |\n| **Tempest**        | Electric    |\n\n| Tier | Melee | Ranged |\n| ---- | ----- | ------ |\n| 2    | 1d8   | 1d6    |\n| 3    | 1d10  | 1d8    |\n| 4    | 1d12  | 1d10   |\n| 5    | 2d8   | 1d12   |"
+        },
+        {
+          "id": "professions-elementalist-base-elemental-arts",
+          "name": "Elemental Arts",
+          "slug": "elemental-arts",
+          "owner_type": "profession",
+          "owner_id": "elementalist",
+          "owner_name": "Elementalist",
+          "tag": "Elementalist",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Maneuver",
+          "traits": ["Maneuver"],
+          "activation": {
+            "raw": "1 AP + Art Cost",
+            "resources": {
+              "ap": 1
+            },
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "Based upon your *Elemental Core*, you gain the following *Elemental Arts* which consume *Energy* upon use. All *Arts* use your **Will** modifier for attack rolls. Your ***Arts DC*** is $10 + Will + Tier$\n\n\n**Flame**\n- *Flame Jet* | **Cost** 1 Energy \u2014 You cannot be **Engaged** to use this *Art*. You gain *Dash* and stride up to a target up to one zone away. Your next attack to hit deals additional **Fire** equal to your **Will**. \n- *Aura Read* | **Cost** 2 Energy \u2014 You must be **Engaged** to use this *Art*. You sense the movements of enemies you're already **Engaged** with, they have **Strain** to hit you until the start of your next turn. \n\n**Forest**\n- *Leeching Seed* | **Cost** 2 Energy; **Range** Close \u2014 Make a ranged attack against a target's Fortitude. On a hit, the next time that target takes damage from any source, you or an ally within Close range restores Vitality equal to your **Will + Tier**.\n- *Shielding Burr* | **Cost** 2 Energy; **Range** Touch \u2014 Select a target or yourself in range, target gains a *Reduction Pool* equal to your **Will**. When it breaks and the attacker is in melee range, the target takes 1d6 **Puncture**.\n\n**Land**\n- *Iron Defense* | **Cost** 2 Energy \u2014 You surround yourself in chunks of stones and metal forming a heavy-like armor. While this armor is active, you gain an armor bonus of 3 + **Will**, but *Disengage* and *Dash* cost an additional 1 AP. It is a free action to disable the Armor.\n- *Rock Wall* | **Cost** 1 Energy \u2014 You create a rock wall up to 8ft/2.4m in height and up to 5ft/1.5m wide. It has an Armor value equal to 10 + **Will** and **Vitality** equal to **Will** times three.\n\n**Ocean**\n- *Torrent* | **Cost** 2 Energy; **Range** Touch \u2014 Select a target or yourself in range, all weapon attacks deal an additional 1d6 **Slash** for 3 rounds.\n- *Healing Waters* | **Cost** 1 Energy; **Range** Touch \u2014 You help restore a target's **Vitality**, you restore 1d4 +**Tier** of a target's **Vitality**.\n\n**Sky**\n-  *Deafen Sound* |**Cost** 1 Energy \u2014 You change the atmosphere around you to soften your footsteps. You use **Will** for your **Stealth** checks and roll with **Resolve**\n-  *Air Cutter* | **Cost** 2 Energy \u2014 Your next ranged attack deals an additional 2d4 **Slash**.\n\n**Tempest**\n- *Accelerated Strike* | **Cost** 1 Energy \u2014 The **AP** cost of your next *Power Attack* this turn is reduced by 1 AP (minimum 1 AP).\n- *Blinding Bolt* | **Cost** 2 Energy; **Range** Close \u2014 Make a ranged attack using **Will**. On a hit, target takes 1d4 **Electric** and is *Blinded* until end of next turn",
+          "raw_markdown": "**Trait** Maneuver | **Cost** 1 AP + Art Cost\nBased upon your *Elemental Core*, you gain the following *Elemental Arts* which consume *Energy* upon use. All *Arts* use your **Will** modifier for attack rolls. Your ***Arts DC*** is $10 + Will + Tier$\n\n\n**Flame**\n- *Flame Jet* | **Cost** 1 Energy \u2014 You cannot be **Engaged** to use this *Art*. You gain *Dash* and stride up to a target up to one zone away. Your next attack to hit deals additional **Fire** equal to your **Will**. \n- *Aura Read* | **Cost** 2 Energy \u2014 You must be **Engaged** to use this *Art*. You sense the movements of enemies you're already **Engaged** with, they have **Strain** to hit you until the start of your next turn. \n\n**Forest**\n- *Leeching Seed* | **Cost** 2 Energy; **Range** Close \u2014 Make a ranged attack against a target's Fortitude. On a hit, the next time that target takes damage from any source, you or an ally within Close range restores Vitality equal to your **Will + Tier**.\n- *Shielding Burr* | **Cost** 2 Energy; **Range** Touch \u2014 Select a target or yourself in range, target gains a *Reduction Pool* equal to your **Will**. When it breaks and the attacker is in melee range, the target takes 1d6 **Puncture**.\n\n**Land**\n- *Iron Defense* | **Cost** 2 Energy \u2014 You surround yourself in chunks of stones and metal forming a heavy-like armor. While this armor is active, you gain an armor bonus of 3 + **Will**, but *Disengage* and *Dash* cost an additional 1 AP. It is a free action to disable the Armor.\n- *Rock Wall* | **Cost** 1 Energy \u2014 You create a rock wall up to 8ft/2.4m in height and up to 5ft/1.5m wide. It has an Armor value equal to 10 + **Will** and **Vitality** equal to **Will** times three.\n\n**Ocean**\n- *Torrent* | **Cost** 2 Energy; **Range** Touch \u2014 Select a target or yourself in range, all weapon attacks deal an additional 1d6 **Slash** for 3 rounds.\n- *Healing Waters* | **Cost** 1 Energy; **Range** Touch \u2014 You help restore a target's **Vitality**, you restore 1d4 +**Tier** of a target's **Vitality**.\n\n**Sky**\n-  *Deafen Sound* |**Cost** 1 Energy \u2014 You change the atmosphere around you to soften your footsteps. You use **Will** for your **Stealth** checks and roll with **Resolve**\n-  *Air Cutter* | **Cost** 2 Energy \u2014 Your next ranged attack deals an additional 2d4 **Slash**.\n\n**Tempest**\n- *Accelerated Strike* | **Cost** 1 Energy \u2014 The **AP** cost of your next *Power Attack* this turn is reduced by 1 AP (minimum 1 AP).\n- *Blinding Bolt* | **Cost** 2 Energy; **Range** Close \u2014 Make a ranged attack using **Will**. On a hit, target takes 1d4 **Electric** and is *Blinded* until end of next turn"
+        }
+      ],
+      "custom_resource": {
+        "key": "energy",
+        "label": "Energy",
+        "max_formula": "attr + tier",
+        "max_attr": "will",
+        "default_value": "max",
+        "restore": {
+          "respite": 3,
+          "long_rest": 9,
+          "full_rest": "max"
+        }
+      }
+    },
+    {
+      "id": "fighter",
+      "name": "Fighter",
+      "slug": "fighter",
+      "role": "The fighter is the quintessential weapons master, equally adept with any armament. They excel at frontline combat, tactical positioning, and adapting to any battlefield situation with their versatile skills. The two paths of the fighter are the Sentinel and the Reaver.",
+      "flavor": "*Whether born to the sword as children of military traditions, forged in the fires of warfare as conscripted soldiers, or self-taught through bloody necessity, fighters share an unparalleled understanding of weapons, armor, and the art of combat. They are the front-line defenders, the tactical commanders, the duelists and champions whose names become legendary across battlefields. What separates a true fighter from any armed commoner is not merely skill but an intuitive understanding of combat's flow\u2014the perfect moment to strike, when to press the Resolve, how to exploit an enemy's weakness.*",
+      "favored_attributes_raw": "Brawn",
+      "starting_vitality": "12 + Brawn",
+      "vitality_gained_per_tier": "2d12",
+      "body_modifier_bonus": "",
+      "wound_bonus_per_tier": 1,
+      "proficiencies": {
+        "vitals_skills": ["Choose one", "Vigor", "Talent", "Awareness"],
+        "armaments": ["Simple", "Martial", "Finesse", "Ranged"],
+        "protection": ["Light", "Medium", "Heavy and Shields"],
+        "tool_kits": ["-"],
+        "raw": "**V.I.T.A.L.S. Skills** Choose one, Vigor, Talent, Awareness\n**Armaments** Simple, Martial, Finesse, Ranged\n**Protection** Light, Medium, Heavy and Shields\n**Tool Kit** -"
+      },
+      "starting_pack": {
+        "weapons": {
+          "raw": "two melee weapons of choice, one ranged weapon of choice or shield",
+          "items": [
+            "two melee weapons of choice",
+            "one ranged weapon of choice or shield"
+          ]
+        },
+        "armor": {
+          "raw": "medium armor, Shield",
+          "items": ["medium armor", "Shield"]
+        },
+        "kit": {
+          "raw": "Polishing kit",
+          "items": ["Polishing kit"]
+        },
+        "inventory": {
+          "raw": "Soldier's rations (1 week), Banner or insignia of previous allegiance",
+          "items": [
+            "Soldier's rations (1 week)",
+            "Banner or insignia of previous allegiance"
+          ]
+        },
+        "starting_currency": "12 gold",
+        "raw": "**Weapons:** two melee weapons of choice, one ranged weapon of choice or shield\n**Armor:** medium armor, Shield\n**Kit:** Polishing kit\n**Inventory:** Soldier's rations (1 week), Banner or insignia of previous allegiance\n**Starting Currency:** 12 gold"
+      },
+      "path_options": ["Sentinel", "Reaver"],
+      "features": [
+        {
+          "id": "professions-fighter-base-signature-school",
+          "name": "Signature School",
+          "slug": "signature-school",
+          "owner_type": "profession",
+          "owner_id": "fighter",
+          "owner_name": "Fighter",
+          "tag": "Fighter",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You were trained for war, and war is what you shall excel at. You pick which **School** you studied under and gain the following when you select one\n\n**Stances**\nA **Stance** is always active while you are wielding the weapon(s) of your **School**.\n\n**Maneuvers** \nActivating a **Maneuver** costs **1 AP + the listed Adrenaline**, and to be using a weapon from the associated **School**.\n\n| **School**   | Weapons                                  | **Stance**                                                                                         | **Maneuver**                                                                  |\n| ------------ | ---------------------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |\n| **Defender** | _Longswords, Shortswords, Greatswords_   | **+1 Armor** while wielding a Blade.                                                               | **(2 Adrenaline)** Make **one Weapon Strike** after a **Weapon Strike**.      |\n| **Dueler**   | _Rapier, Daggers, Scimitar, Fists_       | After you attack, gain **+2 Body Defense** until next turn.                                        | **(2 Adrenaline)** Make **two attacks**, each total at **half damage**.       |\n| **Enforcer** | _Hammers, Mauls, Maces, Staves, Shields_ | You have **Resolve on Shove** checks.                                                              | **(3 Adrenaline)** All engaged enemies **make Body check or fall Prone**.     |\n| **Lancer**   | _Lucerne, Javelin, Pike, Spear_          | Gain +2 on your next attacks when an enemy enters your **reach** or **engagement** until next turn | **(2 Adrenaline)**  Attempt a **Grapple** against targets at **Close** range. |\n| **Ranger**   | _Bows, Crossbows, Throwing Weapons_      | Increase the weapon\u2019s **range by one category**.                                                   | **(2 Adrenaline)** Make **two ranged attacks** on undamaged target            |\n| **Slayer**   | _Cleaver, Glaive, All Axes,_             | Your **first hit each turn** deals **+1 damage die**.                                              | **(2 Adrenaline)** Your next attack deals **+1 damage die per Tier**.         |",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nYou were trained for war, and war is what you shall excel at. You pick which **School** you studied under and gain the following when you select one\n\n**Stances**\nA **Stance** is always active while you are wielding the weapon(s) of your **School**.\n\n**Maneuvers** \nActivating a **Maneuver** costs **1 AP + the listed Adrenaline**, and to be using a weapon from the associated **School**.\n\n| **School**   | Weapons                                  | **Stance**                                                                                         | **Maneuver**                                                                  |\n| ------------ | ---------------------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |\n| **Defender** | _Longswords, Shortswords, Greatswords_   | **+1 Armor** while wielding a Blade.                                                               | **(2 Adrenaline)** Make **one Weapon Strike** after a **Weapon Strike**.      |\n| **Dueler**   | _Rapier, Daggers, Scimitar, Fists_       | After you attack, gain **+2 Body Defense** until next turn.                                        | **(2 Adrenaline)** Make **two attacks**, each total at **half damage**.       |\n| **Enforcer** | _Hammers, Mauls, Maces, Staves, Shields_ | You have **Resolve on Shove** checks.                                                              | **(3 Adrenaline)** All engaged enemies **make Body check or fall Prone**.     |\n| **Lancer**   | _Lucerne, Javelin, Pike, Spear_          | Gain +2 on your next attacks when an enemy enters your **reach** or **engagement** until next turn | **(2 Adrenaline)**  Attempt a **Grapple** against targets at **Close** range. |\n| **Ranger**   | _Bows, Crossbows, Throwing Weapons_      | Increase the weapon\u2019s **range by one category**.                                                   | **(2 Adrenaline)** Make **two ranged attacks** on undamaged target            |\n| **Slayer**   | _Cleaver, Glaive, All Axes,_             | Your **first hit each turn** deals **+1 damage die**.                                              | **(2 Adrenaline)** Your next attack deals **+1 damage die per Tier**.         |"
+        },
+        {
+          "id": "professions-fighter-base-adrenaline",
+          "name": "Adrenaline",
+          "slug": "adrenaline",
+          "owner_type": "profession",
+          "owner_id": "fighter",
+          "owner_name": "Fighter",
+          "tag": "Fighter",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive (Resource)",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "Your **Adrenaline** is a resource that allows you to push your body in ways that others cannot As you get stronger you may use your **Adrenaline** in other ways. There is no limit to how much **Adrenaline** can be used, unless you are **unconscious**. Your **Adrenaline** is equal to your **Body** + **Tier**. Your **Adrenaline** restores 3 per **Long Rest**, 6 per **Full Rest**. If you take or deal a Critical Hit, you restore 1 **Adrenaline**.",
+          "raw_markdown": "**Trait** Utility (*Resource*) | **Cost** -\nYour **Adrenaline** is a resource that allows you to push your body in ways that others cannot As you get stronger you may use your **Adrenaline** in other ways. There is no limit to how much **Adrenaline** can be used, unless you are **unconscious**. Your **Adrenaline** is equal to your **Body** + **Tier**. Your **Adrenaline** restores 3 per **Long Rest**, 6 per **Full Rest**. If you take or deal a Critical Hit, you restore 1 **Adrenaline**."
+        },
+        {
+          "id": "professions-fighter-base-second-breath",
+          "name": "Second Breath",
+          "slug": "second-breath",
+          "owner_type": "profession",
+          "owner_id": "fighter",
+          "owner_name": "Fighter",
+          "tag": "Fighter",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Narrative",
+          "traits": ["Narrative"],
+          "activation": {
+            "raw": "1 Adrenaline",
+            "resources": {
+              "adrenaline": 1
+            },
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "Once per skirmish, regain 2d6 Vitality.",
+          "raw_markdown": "**Trait** Narrative | **Cost** 1 Adrenaline\nOnce per skirmish, regain 2d6 Vitality."
+        }
+      ],
+      "custom_resource": {
+        "key": "adrenaline",
+        "label": "Adrenaline",
+        "max_formula": "attr + tier",
+        "max_attr": "brawn",
+        "default_value": "max",
+        "restore": {
+          "long_rest": 3,
+          "full_rest": 6
+        }
+      }
+    },
+    {
+      "id": "mage",
+      "name": "Mage",
+      "slug": "mage",
+      "role": "The mage is the quintessential arcane spellcaster, wielding powerful spells through disciplined study and research. They excel at battlefield control, utility magic, and providing knowledge about arcane matters. The two paths of the mage are the Runic and the Artifice.",
+      "flavor": "*Through years of dedicated study, careful experimentation, and the meticulous transcription of spells, these arcane intellectuals master magics that can reshape matter, bend minds, and harness elemental forces. Unlike those who receive magic through bloodlines or pacts, mages earn their power through sheer intellectual effort and unyielding discipline. Some study in formalized academies with extensive libraries, others under the tutelage of reclusive masters, or delving into ruins for forgotten magic, all share an insatiable curiosity about magic's deeper mysteries.",
+      "favored_attributes_raw": "Mind",
+      "starting_vitality": "8 + Brawn",
+      "vitality_gained_per_tier": "2d8",
+      "body_modifier_bonus": "",
+      "wound_bonus_per_tier": 1,
+      "proficiencies": {
+        "vitals_skills": ["Choose one", "Intuition", "Awareness", "Lore"],
+        "armaments": ["Simple", "Catalysts"],
+        "protection": ["None"],
+        "tool_kits": ["Crafting or Alchemy"],
+        "raw": "**V.I.T.A.L.S. Skills** Choose one, Intuition, Awareness, Lore\n**Armaments** Simple, Catalysts\n**Protection** None\n**Tool Kit** Crafting or Alchemy"
+      },
+      "starting_pack": {
+        "weapons": {
+          "raw": "Magic stave, Dagger",
+          "items": ["Magic stave", "Dagger"]
+        },
+        "armor": {
+          "raw": "Mage robes",
+          "items": ["Mage robes"]
+        },
+        "kit": {
+          "raw": "None",
+          "items": []
+        },
+        "inventory": {
+          "raw": "Spellbook or arcane focus, Component pouch, Scroll case with blank parchments, Ink and quill, 3 candles",
+          "items": [
+            "Spellbook or arcane focus",
+            "Component pouch",
+            "Scroll case with blank parchments",
+            "Ink and quill",
+            "3 candles"
+          ]
+        },
+        "starting_currency": "10 gold",
+        "raw": "**Weapons:** Magic stave, Dagger\n**Armor:** Mage robes\n**Kit:** None\n**Inventory:** Spellbook or arcane focus, Component pouch, Scroll case with blank parchments, Ink and quill, 3 candles\n**Starting Currency:** 10 gold"
+      },
+      "path_options": ["Enchanter", "Artificer"],
+      "features": [
+        {
+          "id": "professions-mage-base-magic-adept",
+          "name": "Magic Adept",
+          "slug": "magic-adept",
+          "owner_type": "profession",
+          "owner_id": "mage",
+          "owner_name": "Mage",
+          "tag": "Mage",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "While other spellcasters require to cast a spell to detect sources at will, you have innate talent in detecting and knowing it. You learn *detect magic*, it does not count against your known spells and is considered to be a **utility cantrip** costing no **reservoir** to use. You also may choose a **sphere of magic**, and gain access to the spells of that sphere. You gain two tier 1 spells that do not count against your known spells from your chosen sphere.\n\n| Sphere        | Example Spells (tier)                                             |\n| ------------- | ----------------------------------------------------------------- |\n| Aberration    | *cursed (1), invisibility (2), telepathy (4)*                     |\n| Augmentation  | *control element (1), rescaled (2), polymorph (5)*                |\n| Conjuration   | *summoned familiar (1), ethereal armament (2), wall of stone (5)* |\n| Decimation    | *arcane needles (1),  heat material (2), disintegration (6)*      |\n| Divination    | *detect life (1), primeval senses (2), dispel magic (4)*          |\n| Mortification | *animate carrion (1), vampiric touch (3), death ward (5)*         |\n| Reclamation   | *curse wounds (1), barrier (3), disrupt port (4)*                 |",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nWhile other spellcasters require to cast a spell to detect sources at will, you have innate talent in detecting and knowing it. You learn *detect magic*, it does not count against your known spells and is considered to be a **utility cantrip** costing no **reservoir** to use. You also may choose a **sphere of magic**, and gain access to the spells of that sphere. You gain two tier 1 spells that do not count against your known spells from your chosen sphere.\n\n| Sphere        | Example Spells (tier)                                             |\n| ------------- | ----------------------------------------------------------------- |\n| Aberration    | *cursed (1), invisibility (2), telepathy (4)*                     |\n| Augmentation  | *control element (1), rescaled (2), polymorph (5)*                |\n| Conjuration   | *summoned familiar (1), ethereal armament (2), wall of stone (5)* |\n| Decimation    | *arcane needles (1),  heat material (2), disintegration (6)*      |\n| Divination    | *detect life (1), primeval senses (2), dispel magic (4)*          |\n| Mortification | *animate carrion (1), vampiric touch (3), death ward (5)*         |\n| Reclamation   | *curse wounds (1), barrier (3), disrupt port (4)*                 |"
+        },
+        {
+          "id": "professions-mage-base-spell-research",
+          "name": "Spell Research",
+          "slug": "spell-research",
+          "owner_type": "profession",
+          "owner_id": "mage",
+          "owner_name": "Mage",
+          "tag": "Mage",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Narrative",
+          "traits": ["Narrative"],
+          "activation": {
+            "raw": "4 AP",
+            "resources": {
+              "ap": 4
+            },
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You can learn permanently spells from spell scrolls or spell tomes of your **source** and known **Spheres of Magic** . **DC Tier** of 1 + Spell Tier using a **Intuition** skill check, a critical success does not consume the scroll or tome. These learned spells do not count against **known spells**.",
+          "raw_markdown": "**Trait** Narrative | **Cost** 4 AP\nYou can learn permanently spells from spell scrolls or spell tomes of your **source** and known **Spheres of Magic** . **DC Tier** of 1 + Spell Tier using a **Intuition** skill check, a critical success does not consume the scroll or tome. These learned spells do not count against **known spells**."
+        },
+        {
+          "id": "professions-mage-base-spellcasting",
+          "name": "Spellcasting",
+          "slug": "spellcasting",
+          "owner_type": "profession",
+          "owner_id": "mage",
+          "owner_name": "Mage",
+          "tag": "Mage",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You have the ability to cast spells from years of studying and researching. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\n- You are a **Full-caster**.\n- Your **source** is **Mana**.\n- Your **Spellcasting Modifier** is **Mind**.\n- Your total **reservoir** equals _(2 \u00d7 Tier) + Spellcasting Modifier_.\n- Start with Four **Known Spells** at Tier 1\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.\n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n> _Example:_  \n> A Tier 3 ***Mage*** with +8 Will has a reservoir of (2\u00d73)+8 = **14 spell points**.",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nYou have the ability to cast spells from years of studying and researching. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\n- You are a **Full-caster**.\n- Your **source** is **Mana**.\n- Your **Spellcasting Modifier** is **Mind**.\n- Your total **reservoir** equals _(2 \u00d7 Tier) + Spellcasting Modifier_.\n- Start with Four **Known Spells** at Tier 1\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.\n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n> _Example:_  \n> A Tier 3 ***Mage*** with +8 Will has a reservoir of (2\u00d73)+8 = **14 spell points**.\n\n###### Cantrips\nYou may select up to 5 cantrips from the options below:\n\n**Apprentice's Artifice** \n**Range** Close\nYou perform a minor magical feats using your abilities such as:\n- **Alteration** You can change the physical state of an object's color, cleanliness, and temperature. If color or temperature the effect only lasts for 10 minutes. \n- **Illumination** You can instantly adjust the state of an object which can be lit by fire, or create small bursts of dim-light\n- **Sensory** Create small instant auditory, visual, or aroma effect, which is harmless in nature.\n\n**Arcane Echo** \n**Range** Self | **Duration** Instant\nYou momentarily project a flickering silhouette of a moment that occurred in the past hour at your current location. This lasts for only 10 seconds.\n- No sound is produced, and all figures are featureless shadows.  \n- If the moment involved **magic**, make an **Arcane** check vs the **Tier DC**.  \n  - **Success:** glimpse is clear.  \n  - **Failure:** the image shatters and the cantrip can\u2019t be used here again until after a **respite**.  \n\n**Arcane Lens** \n**Range** Self | **Duration** Instant\nYour able to determine if an item is magical or non-magical by laying hand in the object and casting magic to examine it. You cannot determine the source of the magic, or what it does but you can determine the **Sphere of Magic**. \n\n**Arcane Jolt**  \n**Range** Close, *line*\nMake a **ranged spell attack roll** against each creature in the line, up to 5 targets. On a **hit** a target takes **1d4 arcane** damage. On a **critical hit**, after resolving damage you can change the line's direction instead of going straight and repeats the attack roll against any new creatures in that space.\n\n**Mage's Ward**  \n**Range** Close | **Duration** 1 round  \nYou conjure a glyph that fills a **5ft/1.5m** area. When a creature **enters** the ward for the first time on a turn **or** starts its turn there. It must make a **body** check against your **Spell DC** or take **1d4 arcane** damage. The ward vanishes at the start of your next turn\n\n**Mana Dart**\n**Range** Close\nMake a **ranged spell attack roll**, on hit deal 1d4 **arcane** damage. On a **critical hit**, deal one extra dice per your current **tier**.\n\n**Swift Scribe** \n**Range** Self  | **Duration** Instant\nUsing your magic you can copy visual text or symbols by etching and imprinting onto objects. These copies are non-magical in nature. It takes 5 minutes to copy a whole page from a regular sized book.\n\n**System Shock**\n**Range** Touch\nMake **melee spell attack roll**, on a hit deal 2d4 **arcane** damage. On a **critical hit**, the target is **dazed** until the end of their next turn."
+        }
+      ]
+    },
+    {
+      "id": "mercenary",
+      "name": "Mercenary",
+      "slug": "mercenary",
+      "role": "The mercenary is the ultimate adaptable professional, borrowing techniques and skills from all walks of life. They excel at versatility, negotiation, and filling multiple roles within a party as needed. The two paths of the mercenary are the Freelancer and the Commander.",
+      "flavor": "*Professional soldiers of fortune who sell their considerable skills to the highest bidder, mercenaries represent the pragmatic, adaptable face of warfare. Unlike knights bound by oaths or conscripts serving a flag, these hardened veterans fight for coin, reputation, and survival. Through countless campaigns across diverse battlefields, mercenaries develop a versatile arsenal of techniques borrowed from every fighting tradition they've encountered.*",
+      "favored_attributes_raw": "Brawn",
+      "starting_vitality": "10 + Brawn",
+      "vitality_gained_per_tier": "2d10",
+      "body_modifier_bonus": "",
+      "wound_bonus_per_tier": 1,
+      "proficiencies": {
+        "vitals_skills": ["Choose two of any V.I.T.A.L.S."],
+        "armaments": ["Simple", "and two of choice"],
+        "protection": ["Light", "Medium", "Shields"],
+        "tool_kits": ["One of choice"],
+        "raw": "**V.I.T.A.L.S. Skills** Choose two of any V.I.T.A.L.S.\n**Armaments** Simple, and two of choice\n**Protection** Light, Medium, Shields\n**Tool Kit** One of choice"
+      },
+      "starting_pack": {
+        "weapons": {
+          "raw": "Two weapons of choice",
+          "items": ["Two weapons of choice"]
+        },
+        "armor": {
+          "raw": "Light or medium armor (player's choice), Shield",
+          "items": ["Light or medium armor (player's choice)", "Shield"]
+        },
+        "kit": {
+          "raw": "None",
+          "items": []
+        },
+        "inventory": {
+          "raw": "Contract logbook, Mercenary badge or token, Mess kit, Bedroll",
+          "items": [
+            "Contract logbook",
+            "Mercenary badge or token",
+            "Mess kit",
+            "Bedroll"
+          ]
+        },
+        "starting_currency": "20 gold",
+        "raw": "**Weapons:** Two weapons of choice\n**Armor:** Light or medium armor (player's choice), Shield\n**Kit:** None\n**Inventory:** Contract logbook, Mercenary badge or token, Mess kit, Bedroll\n**Starting Currency:** 20 gold"
+      },
+      "path_options": ["Freelancer", "Commander"],
+      "features": [
+        {
+          "id": "professions-mercenary-base-field-kit",
+          "name": "Field Kit",
+          "slug": "field-kit",
+          "owner_type": "profession",
+          "owner_id": "mercenary",
+          "owner_name": "Mercenary",
+          "tag": "Mercenary",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You have a specially made kit that you've tailored to fit your needs, or the company which you are serving. Whenever you finish a **daily preparation** you may carry **one** of the following modules on your person. You can swap it only at daily prep.\n- **Tacticians Compass** You roll with **Resolve** on initiative \n- **Alchemical Harness** You can store up to **one** alchemical items on this harness, these can be used with a **free action** when you use or consume them.\n- **Jury-rigged Kit** You emulate one **Kit** for Skill Checks to gain only an automatic success. You pick one **V.I.T.A.L.S** skill during **Daily Preparation**, this kit has only 5 uses.",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nYou have a specially made kit that you've tailored to fit your needs, or the company which you are serving. Whenever you finish a **daily preparation** you may carry **one** of the following modules on your person. You can swap it only at daily prep.\n- **Tacticians Compass** You roll with **Resolve** on initiative \n- **Alchemical Harness** You can store up to **one** alchemical items on this harness, these can be used with a **free action** when you use or consume them.\n- **Jury-rigged Kit** You emulate one **Kit** for Skill Checks to gain only an automatic success. You pick one **V.I.T.A.L.S** skill during **Daily Preparation**, this kit has only 5 uses."
+        },
+        {
+          "id": "professions-mercenary-base-manuscripts-of-techniques",
+          "name": "Manuscripts of Techniques",
+          "slug": "manuscripts-of-techniques",
+          "owner_type": "profession",
+          "owner_id": "mercenary",
+          "owner_name": "Mercenary",
+          "tag": "Mercenary",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You have trained under a wide variety of fighting styles, magical formulas, and esoteric disciplines. Choose **one** _signature feature_ from the list below as a **manuscript**. You gain the feature, and any scaling uses your **Mercenary tier**.\n\n| Class         | Manuscript                    |\n| ------------- | ----------------------------- |\n| **Agent**     | *Undercut*                    |\n| **Berserker** | *Berserker Rage*              |\n| **Duelist**   | *Cadance, Precision Strike*   |\n| **Fighter**   | *Adrenaline*, *Second Breath* |\n| **Stygian**   | *Soulglyph*                   |\n| **Warden**    | *Spell Scourge*               |",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nYou have trained under a wide variety of fighting styles, magical formulas, and esoteric disciplines. Choose **one** _signature feature_ from the list below as a **manuscript**. You gain the feature, and any scaling uses your **Mercenary tier**.\n\n| Class         | Manuscript                    |\n| ------------- | ----------------------------- |\n| **Agent**     | *Undercut*                    |\n| **Berserker** | *Berserker Rage*              |\n| **Duelist**   | *Cadance, Precision Strike*   |\n| **Fighter**   | *Adrenaline*, *Second Breath* |\n| **Stygian**   | *Soulglyph*                   |\n| **Warden**    | *Spell Scourge*               |"
+        },
+        {
+          "id": "professions-mercenary-base-skilled-improvisation",
+          "name": "Skilled Improvisation",
+          "slug": "skilled-improvisation",
+          "owner_type": "profession",
+          "owner_id": "mercenary",
+          "owner_name": "Mercenary",
+          "tag": "Mercenary",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "passive | -",
+          "traits": ["passive | -"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "Unlike others, you don't let not knowing everything stop you from at least trying. When you roll with **ambition** for a skill check you are **not proficient** in, you two of your **ambition** dice.",
+          "raw_markdown": "**Trait** passive | -\nUnlike others, you don't let not knowing everything stop you from at least trying. When you roll with **ambition** for a skill check you are **not proficient** in, you two of your **ambition** dice."
+        }
+      ]
+    },
+    {
+      "id": "mesmer",
+      "name": "Mesmer",
+      "slug": "mesmer",
+      "role": "The Mesmer is a psionic adept who manipulates reality through illusions, perception, and mental resonance. They excel at battlefield control, deception, and support through subtle influence and mirror constructs. The two paths of the weaver are the Spectre and the Weaver.",
+      "flavor": "*Individuals who have survived an encounter with powerful magical anomalies, and received realm altering abilities from those events. Where others see the world as fixed, Mesmers see it as pliable \u2014 a tapestry of memory, emotion, and illusion that can be rewoven with a single thought. Some are gifted manipulators of the psyche; others bend the light of existence itself, creating phantasms so convincing they can wound the mind and body alike.*",
+      "favored_attributes_raw": "Mind or Will",
+      "starting_vitality": "8 + Brawn",
+      "vitality_gained_per_tier": "2d8",
+      "body_modifier_bonus": "",
+      "wound_bonus_per_tier": 1,
+      "proficiencies": {
+        "vitals_skills": ["Choose one \u2014 Intuition", "Awareness", "Social"],
+        "armaments": ["Catalysts", "Finesse"],
+        "protection": ["Light"],
+        "tool_kits": ["None"],
+        "raw": "**V.I.T.A.L.S.:** Choose one \u2014 Intuition, Awareness, Social  \n**Armaments:** Catalysts, Finesse  \n**Protection:** Light  \n**Tool Kit:** None"
+      },
+      "starting_pack": {
+        "weapons": {
+          "raw": "Focus crystal or light weapon of choice",
+          "items": ["Focus crystal or light weapon of choice"]
+        },
+        "armor": {
+          "raw": "Fineweave robes or psionic garb",
+          "items": ["Fineweave robes or psionic garb"]
+        },
+        "kit": {
+          "raw": "None",
+          "items": []
+        },
+        "inventory": {
+          "raw": "Fragmented mirror, crystalline focus, journal of reflections, ornate pendant",
+          "items": [
+            "Fragmented mirror",
+            "crystalline focus",
+            "journal of reflections",
+            "ornate pendant"
+          ]
+        },
+        "starting_currency": "15 gold",
+        "raw": "**Weapons:** Focus crystal or light weapon of choice  \n**Armor:** Fineweave robes or psionic garb  \n**Kit:** None  \n**Inventory:** Fragmented mirror, crystalline focus, journal of reflections, ornate pendant  \n**Starting Currency:** 15 gold"
+      },
+      "path_options": ["Spectre", "Weaver"],
+      "features": [
+        {
+          "id": "professions-mesmer-base-tethers",
+          "name": "Tethers",
+          "slug": "tethers",
+          "owner_type": "profession",
+          "owner_id": "mesmer",
+          "owner_name": "Mesmer",
+          "tag": "Mesmer",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Narrative",
+          "traits": ["Narrative"],
+          "activation": {
+            "raw": "Free Action",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "Your mind reaches outward, anchoring itself to the thoughts, emotions, and sensations of others through unseen strands of psionic energy known as **tethers**.\n\nWhen you gain this feature, **choose one Tether Aspect**. You may form a total of **Tethers** equal to your **tier**. It the target is **unwilling** make a spell attack roll to connect the tether.\n\n**Aspect of Aberration** \nYou fray the boundaries of perception, making reality unreliable.\n- Hostile creatures tethered to you suffer 1d4 on their **attack rolls** against anyone other than you. \n\n**Aspect of Authority**\nYou weaponize the link between minds, tearing through the psyche to unmake your foes.\n- When you damage a tethered creature with a **phantasm** or **cord**, you deal +1d4 **psychic** damage.\n\n**Aspect of Solace**\nYou thread emotion and clarity through the tether, steadying your allies\u2019 minds.\n- Allies tethered to you gain 1 + your **tier** to **Attribute** Defense of **your choice**.\n\n**Aspect of Vestige** \nYou project mirrored fragments of yourself into the minds of those you bind.\n- When you or a tethered target are attacked, your echo interposes, giving **Strain** to one attack once per round.",
+          "raw_markdown": "**Trait** Narrative | **Cost** Free Action\nYour mind reaches outward, anchoring itself to the thoughts, emotions, and sensations of others through unseen strands of psionic energy known as **tethers**.\n\nWhen you gain this feature, **choose one Tether Aspect**. You may form a total of **Tethers** equal to your **tier**. It the target is **unwilling** make a spell attack roll to connect the tether.\n\n**Aspect of Aberration** \nYou fray the boundaries of perception, making reality unreliable.\n- Hostile creatures tethered to you suffer 1d4 on their **attack rolls** against anyone other than you. \n\n**Aspect of Authority**\nYou weaponize the link between minds, tearing through the psyche to unmake your foes.\n- When you damage a tethered creature with a **phantasm** or **cord**, you deal +1d4 **psychic** damage.\n\n**Aspect of Solace**\nYou thread emotion and clarity through the tether, steadying your allies\u2019 minds.\n- Allies tethered to you gain 1 + your **tier** to **Attribute** Defense of **your choice**.\n\n**Aspect of Vestige** \nYou project mirrored fragments of yourself into the minds of those you bind.\n- When you or a tethered target are attacked, your echo interposes, giving **Strain** to one attack once per round."
+        },
+        {
+          "id": "professions-mesmer-base-mindweave",
+          "name": "Mindweave",
+          "slug": "mindweave",
+          "owner_type": "profession",
+          "owner_id": "mesmer",
+          "owner_name": "Mesmer",
+          "tag": "Mesmer",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Narrative",
+          "traits": ["Narrative"],
+          "activation": {
+            "raw": "1 AP",
+            "resources": {
+              "ap": 1
+            },
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You can project strands of thought that connect you to nearby minds. You may link yourself to a willing target within **Nearby range** or an enemy you can see within **Close range** on successful **Mind** check using your **spellcasting modifier**.\nWhile linked:\n\n- You sense emotions and surface thoughts faintly.\n- The link fades after 1 minute or if broken by damage equal to your **Tier \u00d7 5**.",
+          "raw_markdown": "**Trait** Narrative | **Cost** 1 AP  \nYou can project strands of thought that connect you to nearby minds. You may link yourself to a willing target within **Nearby range** or an enemy you can see within **Close range** on successful **Mind** check using your **spellcasting modifier**.\nWhile linked:\n\n- You sense emotions and surface thoughts faintly.\n- The link fades after 1 minute or if broken by damage equal to your **Tier \u00d7 5**."
+        },
+        {
+          "id": "professions-mesmer-base-spellcasting",
+          "name": "Spellcasting",
+          "slug": "spellcasting",
+          "owner_type": "profession",
+          "owner_id": "mesmer",
+          "owner_name": "Mesmer",
+          "tag": "Mesmer",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You shape psionic force through thought, illusion, and resonance. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\n- You are a **Half-caster**.\n- Your **source** is **Anima**.\n- Your **Spellcasting Modifier** is **Mind** or **Will**.\n- Your total **reservoir** equals _(1 \u00d7 Tier) + Spellcasting Modifier_.\n- Start with Three **Known Spells** at Tier 1.\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.\n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n- You do not gain standard **Cantrips**. Instead, you gain two **Cords** from this feat, and your **Cords** are treated as spells for casting and spell attack purposes.\n\n> _Example:_  \n> A Tier 3 ***Mesmer*** with +8 Mind has a reservoir of (1 \u00d7 3) + 8 = **11 spell points**.",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nYou shape psionic force through thought, illusion, and resonance. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\n- You are a **Half-caster**.\n- Your **source** is **Anima**.\n- Your **Spellcasting Modifier** is **Mind** or **Will**.\n- Your total **reservoir** equals _(1 \u00d7 Tier) + Spellcasting Modifier_.\n- Start with Three **Known Spells** at Tier 1.\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.\n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n- You do not gain standard **Cantrips**. Instead, you gain two **Cords** from this feat, and your **Cords** are treated as spells for casting and spell attack purposes.\n\n> _Example:_  \n> A Tier 3 ***Mesmer*** with +8 Mind has a reservoir of (1 \u00d7 3) + 8 = **11 spell points**."
+        },
+        {
+          "id": "professions-mesmer-base-cords",
+          "name": "Cords",
+          "slug": "cords",
+          "owner_type": "profession",
+          "owner_id": "mesmer",
+          "owner_name": "Mesmer",
+          "tag": "Mesmer",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Offensive | Range Close",
+          "traits": ["Offensive | Range Close"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "Cords are unique to the **Mesmer** in that they can be amplified by your **Ambition** to **stitch** more powerful magic into them. When using your **cords** you roll as if **casting a spell**. You may pick two from the following **cords**:\n\n**Kinesis**\nYou are able to lift loose objects within range that weigh no more than 5 lbs / 2.5 kg and slowly move them within range of your position but not beyond. If the object is being held or secured in place, it cannot be moved. \n*Stitch* (**2 Ambition**) You increase the weight of an object you can move up to 45 lbs / 20 kg.\n\n**Render**\nYou lash out with energy which cuts through a target within range. Make an spell attack roll, on a hit you deal 1d6 **fire** or **slash** + your **spellcasting modifier**. \n*Stitch* (**1 Ambition per increase**) You increase the damage die by one step, per **thread** spent (d4 > d6 > d8 > d10 > d12).\n\n**Eviscerate**\nYou reach out and invade the **mind** of a target with your **threads** causing them pain. Make an attack roll with **threads** against the targets mind, on a hit you deal 2d4 **psychic** damage. \n*Stitch* (**1 Ambition**) You add your **threads** modifier to your damage, and on a critical hit the target becomes **dazed**\n\n**Mirage**\nYou weave light and thought around yourself, creating a shifting psionic afterimage that bends perception. Until the start of your next turn, you count as **half-covered** and cannot be **targeted** by **reflex strikes**. \n_Stitch_ (**2 Ambition**) You extend the veil to one **ally within Close range**, granting them the same benefits. If either you or the ally make an attack, the effect ends early.\n\n**Nullify**\nYou send a snapping cord of psychic energy toward a creature\u2019s mind. Make a **spell attack roll** against its **Will**. On a **hit**, the target takes 1d8 **psychic** damage + **spellcasting modifier**.\n_Stitch_ (**1 Ambition**) On a **hit**, must choose: lose 1 **AP** or take an additional 1d4 **psychic** damage.",
+          "raw_markdown": "Cords are unique to the **Mesmer** in that they can be amplified by your **Ambition** to **stitch** more powerful magic into them. When using your **cords** you roll as if **casting a spell**. You may pick two from the following **cords**:\n\n**Kinesis**\n**Trait** Utility | **Range** Close\nYou are able to lift loose objects within range that weigh no more than 5 lbs / 2.5 kg and slowly move them within range of your position but not beyond. If the object is being held or secured in place, it cannot be moved. \n*Stitch* (**2 Ambition**) You increase the weight of an object you can move up to 45 lbs / 20 kg.\n\n**Render**\n**Trait** Offensive | **Range** Nearby\nYou lash out with energy which cuts through a target within range. Make an spell attack roll, on a hit you deal 1d6 **fire** or **slash** + your **spellcasting modifier**. \n*Stitch* (**1 Ambition per increase**) You increase the damage die by one step, per **thread** spent (d4 > d6 > d8 > d10 > d12).\n\n**Eviscerate**\n**Trait** Offensive | **Range** Close\nYou reach out and invade the **mind** of a target with your **threads** causing them pain. Make an attack roll with **threads** against the targets mind, on a hit you deal 2d4 **psychic** damage. \n*Stitch* (**1 Ambition**) You add your **threads** modifier to your damage, and on a critical hit the target becomes **dazed**\n\n**Mirage**\n**Trait** Utility | **Range** Self  \nYou weave light and thought around yourself, creating a shifting psionic afterimage that bends perception. Until the start of your next turn, you count as **half-covered** and cannot be **targeted** by **reflex strikes**. \n_Stitch_ (**2 Ambition**) You extend the veil to one **ally within Close range**, granting them the same benefits. If either you or the ally make an attack, the effect ends early.\n\n**Nullify**\n**Trait** Offensive | **Range** Close  \nYou send a snapping cord of psychic energy toward a creature\u2019s mind. Make a **spell attack roll** against its **Will**. On a **hit**, the target takes 1d8 **psychic** damage + **spellcasting modifier**.\n_Stitch_ (**1 Ambition**) On a **hit**, must choose: lose 1 **AP** or take an additional 1d4 **psychic** damage."
+        }
+      ]
+    },
+    {
+      "id": "oathbound",
+      "name": "Oathbound",
+      "slug": "oathbound",
+      "role": "The oathbound is a divine spellcaster who channels their deity's power through sworn oaths. They excel at healing, protection, and combating supernatural threats that violate their divine principles. The two paths of the oathbound are the Herald and the Arbiter.",
+      "flavor": "*Champions of their ideology who draw power from sworn oaths or divine favor, balancing martial prowess or sacred magic. Their oaths are not mere words but metaphysical bindings that both empower and conStrain them, granting phenomenal abilities while demanding strict adherence to divine principles. In a world of moral ambiguity, the oathbound walks a path of defined purpose, seeing the divine hand in all things and serving as both beacon and sword for their faith's principles.*",
+      "favored_attributes_raw": "Mind or Will and Body",
+      "starting_vitality": "9 + Brawn",
+      "vitality_gained_per_tier": "2d10",
+      "body_modifier_bonus": "",
+      "wound_bonus_per_tier": 1,
+      "proficiencies": {
+        "vitals_skills": [
+          "Choose one",
+          "Intuition",
+          "Awareness",
+          "Lore",
+          "Social"
+        ],
+        "armaments": ["Simple", "Catalysts", "Light Crossbow"],
+        "protection": ["Light", "Shield"],
+        "tool_kits": ["Alchemy or Medicine"],
+        "raw": "**V.I.T.A.L.S. Skills** Choose one, Intuition, Awareness, Lore, Social\n**Armaments** Simple, Catalysts, Light Crossbow\n**Protection** Light, Shield\n**Tool Kit** Alchemy or Medicine"
+      },
+      "starting_pack": {
+        "weapons": {
+          "raw": "Simple Weapon of choice, and Magic Staff or Talisman",
+          "items": ["Simple Weapon of choice", "and Magic Staff or Talisman"]
+        },
+        "armor": {
+          "raw": "light armor, Shield",
+          "items": ["light armor", "Shield"]
+        },
+        "kit": {
+          "raw": "None",
+          "items": []
+        },
+        "inventory": {
+          "raw": "Holy symbol, Prayer book, Holy water (2 vials), Healer's kit",
+          "items": [
+            "Holy symbol",
+            "Prayer book",
+            "Holy water (2 vials)",
+            "Healer's kit"
+          ]
+        },
+        "starting_currency": "7 gold",
+        "raw": "**Weapons:** Simple Weapon of choice, and Magic Staff or Talisman\n**Armor:** light armor, Shield\n**Kit:** None\n**Inventory:** Holy symbol, Prayer book, Holy water (2 vials), Healer's kit\n**Starting Currency:** 7 gold"
+      },
+      "path_options": ["Herald", "Arbiter"],
+      "features": [
+        {
+          "id": "professions-oathbound-base-creed",
+          "name": "Creed",
+          "slug": "creed",
+          "owner_type": "profession",
+          "owner_id": "oathbound",
+          "owner_name": "Oathbound",
+          "tag": "Oathbound",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You have spent your life under an edict which has given you your purpose in life. Based upon what your **Creed** is, you have **Anathema** to your beliefs, and you gain certain **Boon** based upon your **Creed**.\n\n\n| Creeds       | Related Themes                | Anathema             | Boon                                                                                                                                               |\n| ------------ | ----------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Honor**    | Order, Light, Justice,        | *Chaos* or *Ruin*    | When you use *smite* against your **anathema** add an additional 1d8 **ether** or **void**                                                         |\n| **Serenity** | Nature, Life, Balance, Growth | *Ruin*               | When restoring **Vitality** add an additional 1d4 of healing                                                                                       |\n| **Dominion** | Knowledge, War, Protection    | *Neutral* or *Chaos* | You gain proficiency in **Martial** Armaments and **Medium** Protection                                                                            |\n| **Entropy**  | Death, Forbidden, Decay       | *Order*              | You gain access to Sphere of Magic **Mortification** and when using damage spells, deal an additional 1d4 **void** or **ether** to damaged targets |\n| **Paradox**  | Arcane, Deception, Revelation | *Order* or *Neutral* | You gain the spells *arcane needle* and can turn damage from spells into **arcane** damage                                                         |",
+          "raw_markdown": "**Trait** Passive\nYou have spent your life under an edict which has given you your purpose in life. Based upon what your **Creed** is, you have **Anathema** to your beliefs, and you gain certain **Boon** based upon your **Creed**.\n\n\n| Creeds       | Related Themes                | Anathema             | Boon                                                                                                                                               |\n| ------------ | ----------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **Honor**    | Order, Light, Justice,        | *Chaos* or *Ruin*    | When you use *smite* against your **anathema** add an additional 1d8 **ether** or **void**                                                         |\n| **Serenity** | Nature, Life, Balance, Growth | *Ruin*               | When restoring **Vitality** add an additional 1d4 of healing                                                                                       |\n| **Dominion** | Knowledge, War, Protection    | *Neutral* or *Chaos* | You gain proficiency in **Martial** Armaments and **Medium** Protection                                                                            |\n| **Entropy**  | Death, Forbidden, Decay       | *Order*              | You gain access to Sphere of Magic **Mortification** and when using damage spells, deal an additional 1d4 **void** or **ether** to damaged targets |\n| **Paradox**  | Arcane, Deception, Revelation | *Order* or *Neutral* | You gain the spells *arcane needle* and can turn damage from spells into **arcane** damage                                                         |"
+        },
+        {
+          "id": "professions-oathbound-base-spellcasting",
+          "name": "Spellcasting",
+          "slug": "spellcasting",
+          "owner_type": "profession",
+          "owner_id": "oathbound",
+          "owner_name": "Oathbound",
+          "tag": "Oathbound",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You have the ability to cast spells through devotion and sworn power. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\n- You are a **Half-caster**.\n- Your **source** is **Soul**.\n- Your **Spellcasting Modifier** is **Mind** or **Will**.\n- Your total **reservoir** equals _(1 \u00d7 Tier) + Spellcasting Modifier_.\n- Start with Three **Known Spells** at Tier 1.\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.\n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n- You gain three **Cantrips** listed from bellow\n-\n\n> _Example:_  \n> A Tier 3 ***Oathbound*** with +8 Mind has (1 \u00d7 3)+8 = **11 spell points**.",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nYou have the ability to cast spells through devotion and sworn power. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\n- You are a **Half-caster**.\n- Your **source** is **Soul**.\n- Your **Spellcasting Modifier** is **Mind** or **Will**.\n- Your total **reservoir** equals _(1 \u00d7 Tier) + Spellcasting Modifier_.\n- Start with Three **Known Spells** at Tier 1.\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.\n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n- You gain three **Cantrips** listed from bellow\n-\n\n> _Example:_  \n> A Tier 3 ***Oathbound*** with +8 Mind has (1 \u00d7 3)+8 = **11 spell points**.\n###### Spells Known\n\n###### Cantrips\n\n**Radiant Dart**\n**Range** Far | **Duration** 1 Minute\nYou send a bolt of bright energy at a target. Make a **spell attack roll**, on a hit deal 1d4 **ether**, and on a **critical hit** that target is illuminated and cannot be a state of **hidden** or **Obscured** for duration."
+        },
+        {
+          "id": "professions-oathbound-base-augur",
+          "name": "Augur",
+          "slug": "augur",
+          "owner_type": "profession",
+          "owner_id": "oathbound",
+          "owner_name": "Oathbound",
+          "tag": "Oathbound",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "Whether through sovereign inspiration, or devout understanding of the world, you have seen and understood the signs and shall heed them. You gain access to *smite* and *turn the heretics* and does not count as one of your known spells.",
+          "raw_markdown": "**Trait** Passive \nWhether through sovereign inspiration, or devout understanding of the world, you have seen and understood the signs and shall heed them. You gain access to *smite* and *turn the heretics* and does not count as one of your known spells."
+        }
+      ]
+    },
+    {
+      "id": "shaman",
+      "name": "Shaman",
+      "slug": "shaman",
+      "role": "The Shaman is a versatile spellcaster connected to primeval spirits, capable of altering the environment and shapeshifting. They excel at survival, nature magic, and adapting to changing circumstances. The two paths of the Shaman are the Conduit and Channeler.",
+      "flavor": "*Never staying in one place for too long, the Shaman exists at the boundaries between civilization and wilderness, between the mundane and the magical. Misunderstood and often feared, these enigmatic figures are whispered about in village tales\u2014shape-changers, skin-walkers, those touched by primal forces beyond mortal comprehension. Some are born with their strange gifts, others through communion with ancient spirits or cosmic accidents, but all Shamans carry within them a fragment of nature's raw, untamed essence.*",
+      "favored_attributes_raw": "Will, Brawn",
+      "starting_vitality": "9 + Brawn",
+      "vitality_gained_per_tier": "2d10",
+      "body_modifier_bonus": "",
+      "wound_bonus_per_tier": 1,
+      "proficiencies": {
+        "vitals_skills": ["Choose one", "Vigor", "Awareness", "Lore"],
+        "armaments": ["Primeval Form", "Simple", "Catalysts"],
+        "protection": ["Light"],
+        "tool_kits": ["Medicine or Alchemy"],
+        "raw": "**V.I.T.A.L.S. Skills** Choose one, Vigor, Awareness, Lore\n**Armaments** Primeval Form, Simple, Catalysts\n**Protection** Light\n**Tool Kit** Medicine or Alchemy"
+      },
+      "starting_pack": {
+        "weapons": {
+          "raw": "Quarterstaff, Two daggers",
+          "items": ["Quarterstaff", "Two daggers"]
+        },
+        "armor": {
+          "raw": "tribal vestments",
+          "items": ["tribal vestments"]
+        },
+        "kit": {
+          "raw": "Wilderness survival kit",
+          "items": ["Wilderness survival kit"]
+        },
+        "inventory": {
+          "raw": "Component pouch, Weather-resistant cloak, Wooden spirit mask",
+          "items": [
+            "Component pouch",
+            "Weather-resistant cloak",
+            "Wooden spirit mask"
+          ]
+        },
+        "starting_currency": "8 gold",
+        "raw": "**Weapons:** Quarterstaff, Two daggers\n**Armor:** tribal vestments\n**Kit:** Wilderness survival kit\n**Inventory:** Component pouch, Weather-resistant cloak, Wooden spirit mask\n**Starting Currency:** 8 gold"
+      },
+      "path_options": ["Anima", "Animus"],
+      "features": [
+        {
+          "id": "professions-shaman-base-spellcasting",
+          "name": "Spellcasting",
+          "slug": "spellcasting",
+          "owner_type": "profession",
+          "owner_id": "shaman",
+          "owner_name": "Shaman",
+          "tag": "Shaman",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You have enough understanding of magic to be able to wield it. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\nGain the following features for **spellcasting**\n- You are a **Full-caster**\n- Your **source** is **Primeval** \n- Your **Spellcasting Modifier** is **Will**\n- Your total **Reservoir** equals _(2 \u00d7 Tier) + Spellcasting Modifier_.\n- Start with Four **Known Spells** at Tier 1\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.    \n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n- You gain three **Cantrips** listed with the Shaman source.\n\n> _Example:_  \n> A Tier 3 ***Shaman*** with +8 Mind has (1 \u00d7 3)+8 = **11 spell points**.",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nYou have enough understanding of magic to be able to wield it. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\nGain the following features for **spellcasting**\n- You are a **Full-caster**\n- Your **source** is **Primeval** \n- Your **Spellcasting Modifier** is **Will**\n- Your total **Reservoir** equals _(2 \u00d7 Tier) + Spellcasting Modifier_.\n- Start with Four **Known Spells** at Tier 1\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.    \n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n- You gain three **Cantrips** listed with the Shaman source.\n\n> _Example:_  \n> A Tier 3 ***Shaman*** with +8 Mind has (1 \u00d7 3)+8 = **11 spell points**.\n\n\n###### Cantrips\n\n**Hunter's Stride** \n **Range** Touch  | **Duration** 1 Minute, *(Focused)*\n You lay hands in yourself or an ally within range, granting the benefit of a seasoned hunter. For the duration of the spell, target gains +2 to **stealth** checks, and cannot gain **crippled**.\n\n**Primeval Lure**\n **Range** Close | **Duration** Instant\nHurl an ethereal tether at a creature you can see. Make a **ranged spell attack** against its **Body**. On a **hit** the target takes 1d6 **elemental** damage and, if its size is **equal to or smaller than yours**, it is pulled one range band straight toward you. On a **critical hit** the pull is doubled.\n\n**Primeval Ward** \n**Range** Touch| **Duration** 1 Round\nYou twist ambient elements to blunt the blow. The target gains **resistance** to the triggering elemental damage, reducing it by an amount equal to your **spellcasting modifier** (min 1). Additional Ward castings before your next turn do not stack.\n\n**Unseen Messenger** \n**Range** Far| **Duration** 1 Round \nYou dispatch a whispering mote to a creature you have met. It travels unerringly, passing through non-magical barriers. Upon arrival it murmurs a **6 second message** in your voice, audible only to the recipient."
+        },
+        {
+          "id": "professions-shaman-base-primeval-vessels",
+          "name": "Primeval Vessels",
+          "slug": "primeval-vessels",
+          "owner_type": "profession",
+          "owner_id": "shaman",
+          "owner_name": "Shaman",
+          "tag": "Shaman",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Narrative (Resource)",
+          "traits": ["Narrative"],
+          "activation": {
+            "raw": "2 AP",
+            "resources": {
+              "ap": 2
+            },
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You are tied to the spirits of nature and can summon them to aid you. Summon within **Close** range a **Primeval Vessel**. You choose which vessel to conjure, and start with the following options:\n- **Healing Spirit** Once per round allies standing or touched by the vessel for heal for 2d6 **Vitality**.\n- **Pained Spirit** The spirit moves to whichever ally you command it to, as your ally attacks they add 1d4 **arcane** to their damage.\nOnce summoned, they fade after 1 minute. You can only summon a total per day based upon the limits of your tier.\n\n| Tier | Conjure Limit |\n| ---- | ------------- |\n| 1-2  | 2             |\n| 3-4  | 3             |\n| 5    | 4             |\n\n\n> ###### Primeval Vessel\n> *Primordial / Neutral (Shaman's Tier)* | **Lore** *Nature/Sacred* \n> **Vitality** equal to your **Will** or **Mind** | **Armor** 8 + **Mind or Will**\n> **Body** 8 + Shaman's tier  **Mind** 8 + Shaman's tier **Will** 14 + Shaman's tier \n> **\"Claws\"** +Hit, 1d4 Slash+2+**Shaman's Tier**, **Type**, Melee\n> *Formless* The Vessel takes the shape of whatever the summoner desires. \n> *Ether Form* Damage that deals physical damage can only roll d4s and no modifier to damage.",
+          "raw_markdown": "**Trait** Narrative (Resource) | **Cost** 2 AP\nYou are tied to the spirits of nature and can summon them to aid you. Summon within **Close** range a **Primeval Vessel**. You choose which vessel to conjure, and start with the following options:\n- **Healing Spirit** Once per round allies standing or touched by the vessel for heal for 2d6 **Vitality**.\n- **Pained Spirit** The spirit moves to whichever ally you command it to, as your ally attacks they add 1d4 **arcane** to their damage.\nOnce summoned, they fade after 1 minute. You can only summon a total per day based upon the limits of your tier.\n\n| Tier | Conjure Limit |\n| ---- | ------------- |\n| 1-2  | 2             |\n| 3-4  | 3             |\n| 5    | 4             |\n\n\n> ###### Primeval Vessel\n> *Primordial / Neutral (Shaman's Tier)* | **Lore** *Nature/Sacred* \n> **Vitality** equal to your **Will** or **Mind** | **Armor** 8 + **Mind or Will**\n> **Body** 8 + Shaman's tier  **Mind** 8 + Shaman's tier **Will** 14 + Shaman's tier \n> **\"Claws\"** +Hit, 1d4 Slash+2+**Shaman's Tier**, **Type**, Melee\n> *Formless* The Vessel takes the shape of whatever the summoner desires. \n> *Ether Form* Damage that deals physical damage can only roll d4s and no modifier to damage."
+        },
+        {
+          "id": "professions-shaman-base-primal-form",
+          "name": "Primal Form",
+          "slug": "primal-form",
+          "owner_type": "profession",
+          "owner_id": "shaman",
+          "owner_name": "Shaman",
+          "tag": "Shaman",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Narrative",
+          "traits": ["Narrative"],
+          "activation": {
+            "raw": "1 Reservoir per Tier",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "Transform into **wildlife** of one tier less than yours, you adopt the ***stat block*** of that creature, while keeping your mind and voice. You cannot **Cast a Spell** while in this form.",
+          "raw_markdown": "**Trait** Narrative | **Costs** 1 Reservoir per Tier\nTransform into **wildlife** of one tier less than yours, you adopt the ***stat block*** of that creature, while keeping your mind and voice. You cannot **Cast a Spell** while in this form."
+        }
+      ]
+    },
+    {
+      "id": "warden",
+      "name": "Warden",
+      "slug": "warden",
+      "role": "The warden is a dedicated magic hunter and neutralizer who combines martial skill with arcane knowledge. They excel at disrupting enemy spellcasters, protecting allies from magical effects, and maintaining the balance between magical and mundane worlds. The two paths of the warden are the Watcher and the Vanguard.",
+      "flavor": "*Wardens are known as warriors who have studied magic enough to understand it to counter the dangers it can bring. Whether they be inquisitors of a religious order, protectors of arcane secrets, or a mage hunter, the warden seeks to protect the land from magic and protect magic from the people.*",
+      "favored_attributes_raw": "Mind and Body",
+      "starting_vitality": "9 + Brawn",
+      "vitality_gained_per_tier": "2d10",
+      "body_modifier_bonus": "",
+      "wound_bonus_per_tier": 1,
+      "proficiencies": {
+        "vitals_skills": [
+          "Choose two",
+          "Vigor",
+          "Intuition",
+          "Talent",
+          "Awareness"
+        ],
+        "armaments": ["Catalysts", "Simple", "Finesse"],
+        "protection": ["Medium", "Light"],
+        "tool_kits": ["Medicine or Scouting"],
+        "raw": "**V.I.T.A.L.S. Skills** Choose two, Vigor, Intuition, Talent, Awareness\n**Armaments** Catalysts, Simple, Finesse\n**Protection** Medium, Light\n**Tool Kit** Medicine or Scouting"
+      },
+      "starting_pack": {
+        "weapons": {
+          "raw": "Simple Melee of choice, Arcane Implement",
+          "items": ["Simple Melee of choice", "Arcane Implement"]
+        },
+        "armor": {
+          "raw": "Light, Shield",
+          "items": ["Light", "Shield"]
+        },
+        "kit": {
+          "raw": "None",
+          "items": []
+        },
+        "inventory": {
+          "raw": "Magic dampening shackles, Spell detection amulet, Warding chalk, Anti-magic vials (2)",
+          "items": [
+            "Magic dampening shackles",
+            "Spell detection amulet",
+            "Warding chalk",
+            "Anti-magic vials (2)"
+          ]
+        },
+        "starting_currency": "15 gold",
+        "raw": "**Weapons:** Simple Melee of choice, Arcane Implement\n**Armor:** Light, Shield\n**Kit:** None\n**Inventory:** Magic dampening shackles, Spell detection amulet, Warding chalk, Anti-magic vials (2)\n**Starting Currency:** 15 gold"
+      },
+      "path_options": ["Watcher", "Vanguard"],
+      "features": [
+        {
+          "id": "professions-warden-base-bound-armament",
+          "name": "Bound Armament",
+          "slug": "bound-armament",
+          "owner_type": "profession",
+          "owner_id": "warden",
+          "owner_name": "Warden",
+          "tag": "Warden",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "During **daily preparation**, you may bind one weapon to your arcane will. The bound weapon gains:\n- Use your **Spellcasting Modifier** for **attack** and **damage** with this weapon.\n- Gains the **spell catalyst** trait.\n- You are considered **proficient** with this weapon while it is bound.\n- Only **one** weapon may be bound at a time. Binding another ends the previous binding.",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nDuring **daily preparation**, you may bind one weapon to your arcane will. The bound weapon gains:\n- Use your **Spellcasting Modifier** for **attack** and **damage** with this weapon.\n- Gains the **spell catalyst** trait.\n- You are considered **proficient** with this weapon while it is bound.\n- Only **one** weapon may be bound at a time. Binding another ends the previous binding."
+        },
+        {
+          "id": "professions-warden-base-warden-order",
+          "name": "Warden Order",
+          "slug": "warden-order",
+          "owner_type": "profession",
+          "owner_id": "warden",
+          "owner_name": "Warden",
+          "tag": "Warden",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "Spread out across the realms, different Warden's gather to form ***Orders*** to help tame the wilderness in the specific need to be met. Choose a ***Warden Order*** and gain the following\n\n| Order       | Boon                                                                                                                                                                                                                                                |     |\n| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |\n| Aegis       | When using a *Shield* add Armor Bonus to **Body** and **Mind** defense                                                                                                                                                                              |     |\n| Inquisition | Gain an additional **Tool** and **V.I.T.A.L.S** proficiency, , roll with **Resolve** on *Scan* action and **Intuition** or **Awareness** Skill Checks with **Mortals**                                                                              |     |\n| Severance   | +**Tier** to **attack/damage** vs **Magical** targets, on a **Critical Hit** the target's next *Cast a Spell* is made with **Strain** until end of your next turn.                                                                                  |     |\n| Thorns      | Once per turn, when a target in your **Engagement** uses **Disengage**, make an attack roll with your *Bound Armament*, on hit target takes damage equal to your spell casting modifier and cannot use **Dash** action until end of your next turn. |     |\n| Veil        | Learn the Spell *Protection from the Inhuman*, roll with **Resolve** on *Scan* action and **Intuition** or **Awareness** Skill Checks with **Eidolic** or **Occult**.                                                                               |     |",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nSpread out across the realms, different Warden's gather to form ***Orders*** to help tame the wilderness in the specific need to be met. Choose a ***Warden Order*** and gain the following\n\n| Order       | Boon                                                                                                                                                                                                                                                |     |\n| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |\n| Aegis       | When using a *Shield* add Armor Bonus to **Body** and **Mind** defense                                                                                                                                                                              |     |\n| Inquisition | Gain an additional **Tool** and **V.I.T.A.L.S** proficiency, , roll with **Resolve** on *Scan* action and **Intuition** or **Awareness** Skill Checks with **Mortals**                                                                              |     |\n| Severance   | +**Tier** to **attack/damage** vs **Magical** targets, on a **Critical Hit** the target's next *Cast a Spell* is made with **Strain** until end of your next turn.                                                                                  |     |\n| Thorns      | Once per turn, when a target in your **Engagement** uses **Disengage**, make an attack roll with your *Bound Armament*, on hit target takes damage equal to your spell casting modifier and cannot use **Dash** action until end of your next turn. |     |\n| Veil        | Learn the Spell *Protection from the Inhuman*, roll with **Resolve** on *Scan* action and **Intuition** or **Awareness** Skill Checks with **Eidolic** or **Occult**.                                                                               |     |"
+        },
+        {
+          "id": "professions-warden-base-spellcasting",
+          "name": "Spellcasting",
+          "slug": "spellcasting",
+          "owner_type": "profession",
+          "owner_id": "warden",
+          "owner_name": "Warden",
+          "tag": "Warden",
+          "tier": 0,
+          "trait_label": "Trait",
+          "trait_raw": "Passive",
+          "traits": ["Passive"],
+          "activation": {
+            "raw": "-",
+            "resources": {},
+            "properties": {},
+            "notes": []
+          },
+          "description_markdown": "You have enough understanding of magic to be able to wield it. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\nGain the following features for **spellcasting**\n- You are a **Half-caster**\n- Your **source** is **Mana** \n- Your **Spellcasting Modifier** is **Mind**\n- Your total **reservoir** equals _(1 \u00d7 Tier) + Spellcasting Modifier_.\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.    \n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n- You gain three **Cantrips** listed from bellow\n\n> _Example:_  \n> A Tier 3 ***Warden*** with +8 Mind has (1 \u00d7 3)+8 = **11 spell points**.",
+          "raw_markdown": "**Trait** Passive | **Cost** -\nYou have enough understanding of magic to be able to wield it. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\nGain the following features for **spellcasting**\n- You are a **Half-caster**\n- Your **source** is **Mana** \n- Your **Spellcasting Modifier** is **Mind**\n- Your total **reservoir** equals _(1 \u00d7 Tier) + Spellcasting Modifier_.\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.    \n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n- You gain three **Cantrips** listed from bellow\n\n> _Example:_  \n> A Tier 3 ***Warden*** with +8 Mind has (1 \u00d7 3)+8 = **11 spell points**.\n\n###### Cantrips \n\n**Apprentice's Artifice**\n**Range** Close | **Duration** Instant\nYou perform a minor magical feats using your abilities such as:\n- **Alteration** You can change the physical state of an object's color, cleanliness, and temperature. If color or temperature the effect only lasts for 10 minutes. \n- **Illumination** You can instantly adjust the state of an object which can be lit by fire, or create small bursts of dim-light\n- **Sensory** Create small instant auditory, visual, or aroma effect, which is harmless in nature.\n\n**Mana Dart**\n**Range** Close | **Duration** Instant\nMake a **spell attack roll**, on hit deal 1d4 **arcane** damage. On a **critical hit**, deal one extra dice per your current **tier**.\n\n**Swift Scribe** \n**Range** Touch | **Duration** Instant\nUsing your magic you can copy visual text or symbols by etching and imprinting onto objects. These copies are non-magical in nature.\n\n**System Shock**\n**Range** Melee | **Duration** Instant\nMake **spell attack roll**, on a hit deal 2d4 **arcane** damage. On a **critical hit**, the target is **dazed** until the end of their next turn."
+        }
+      ]
+    }
+  ]
+}

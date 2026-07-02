@@ -1,0 +1,306 @@
+{
+  "id": "reaver",
+  "name": "Reaver",
+  "profession": "fighter",
+  "description": "Reavers master a wide variety of weapons and techniques, becoming living weapons who strike with lethal precision and devastating power.",
+  "feats": [
+    {
+      "id": "war_tactics",
+      "name": "War Tactics",
+      "tags": ["Fighter", "Reaver"],
+      "path": "reaver",
+      "tier": 1,
+      "trait": "Narrative",
+      "slot_type": "narrative",
+      "cost": { "ap": 2, "resources": [{ "id": "adrenaline", "amount": 2 }] },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Choose one tactical option each activation.",
+      "boons": [
+        {
+          "type": "multi_choice",
+          "key": "war_tactics_option",
+          "count": 1,
+          "expandable_by": [],
+          "options": [
+            {
+              "value": "adamant_stance",
+              "label": "Adamant Stance",
+              "description": "Gain temporary vitality equal to Tier + Ambition.",
+              "boons": [{ "type": "heal", "formula": "Tier + Ambition", "target": "self", "temporary": true }]
+            },
+            {
+              "value": "precise_focus",
+              "label": "Precise Focus",
+              "description": "Choose to target Fortitude, Mental, or Will Defense instead of Armor for your next attack. (Source: Body, Mind, Will — Body mapped to Fortitude; verify.)",
+              "boons": []
+            },
+            {
+              "value": "battlefield_control",
+              "label": "Battlefield Control",
+              "description": "Prevent enemies from disengaging unless they pass a Will check vs your Fortitude. (Source: vs your Body — encoded as Fortitude; verify.)",
+              "boons": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weapon_familiarity",
+      "name": "Weapon Familiarity",
+      "tags": ["Fighter", "Reaver"],
+      "path": "reaver",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "When attacking with a weapon of your Signature School, critical hits occur on a roll of 19–20.",
+      "boons": [
+        { "type": "crit_range_expansion", "rolls": [19, 20], "condition": "wielding_school_weapon" }
+      ]
+    },
+    {
+      "id": "disciplined_strike",
+      "name": "Disciplined Strike",
+      "tags": ["Fighter", "Reaver"],
+      "path": "reaver",
+      "tier": 1,
+      "trait": "Offensive",
+      "slot_type": "tactical",
+      "cost": { "ap": 2, "resources": [{ "id": "adrenaline", "amount": 2 }] },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "reaver", "count": 2 } },
+      "description": "Deal regular weapon damage plus effects from your chosen Disciplined Strike. Choose two from six options. Expandable by Weapon Mastery.",
+      "boons": [
+        {
+          "type": "multi_choice",
+          "key": "disciplined_strikes",
+          "count": 2,
+          "expandable_by": ["weapon_mastery"],
+          "options": [
+            {
+              "value": "accurate_wound",
+              "label": "Accurate Wound",
+              "description": "Attack vs Fortitude. On hit, choose to apply Crippled or [INCOMPLETE — source text cut off]. (Source: attack vs body — encoded as Fortitude; verify.)",
+              "boons": []
+            },
+            {
+              "value": "concussive_strike",
+              "label": "Concussive Strike",
+              "description": "Attack roll adding Ambition. On success, deal half damage and apply Dazed until start of your next turn.",
+              "boons": []
+            },
+            {
+              "value": "driving_blow",
+              "label": "Driving Blow",
+              "description": "On hit, your next attack against a different target in the same Engagement gains +2 to hit and Ambition to damage.",
+              "boons": []
+            },
+            {
+              "value": "dragons_pursuit",
+              "label": "Dragon's Pursuit",
+              "description": "Add Ambition to attack and damage. On critical hit, if target is Prone they gain Maimed.",
+              "boons": []
+            },
+            {
+              "value": "sever_artery",
+              "label": "Sever Artery",
+              "description": "Add Ambition to attack roll. On critical hit, target gains Bleeding 2.",
+              "boons": []
+            },
+            {
+              "value": "shield_breaker",
+              "label": "Shield Breaker",
+              "description": "Attack against a shield-using target with +4 to hit. On critical hit, reduce target's Armor by Tier until the start of their next turn.",
+              "boons": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "warriors_spirit",
+      "name": "Warrior's Spirit",
+      "tags": ["Fighter", "Reaver"],
+      "path": "reaver",
+      "tier": 2,
+      "trait": "Utility",
+      "slot_type": "narrative",
+      "cost": { "ap": 1, "resources": [{ "id": "adrenaline", "amount": 2 }] },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "reaver", "count": 2 } },
+      "description": "Gain Resolve on your next attack roll. On critical hit, choose: gain temp vitality equal to Brawn, or regain Ambition equal to Tier x 2. (Source: Body — encoded as Brawn; verify.)",
+      "boons": [
+        {
+          "type": "conditional_effect",
+          "trigger": "critical_hit_dealt",
+          "effect": {
+            "type": "multi_choice",
+            "key": "warriors_spirit_crit",
+            "count": 1,
+            "expandable_by": [],
+            "options": [
+              {
+                "value": "temp_vitality",
+                "label": "Gain Temp Vitality",
+                "boons": [{ "type": "heal", "formula": "Brawn", "target": "self", "temporary": true }]
+              },
+              {
+                "value": "regain_ambition",
+                "label": "Regain Ambition",
+                "boons": [{ "type": "restore_resource", "resource": "ambition", "amount": "Tier * 2" }]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "opportunistic_strike",
+      "name": "Opportunistic Strike",
+      "tags": ["Fighter", "Reaver"],
+      "path": "reaver",
+      "tier": 2,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": { "ap": 1 },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "When an enemy in your Engagement takes the Disengage action, make an attack roll against them.",
+      "boons": []
+    },
+    {
+      "id": "weapon_mastery",
+      "name": "Weapon Mastery",
+      "tags": ["Fighter", "Reaver"],
+      "path": "reaver",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["disciplined_strike"], "path_investment": { "path": "reaver", "count": 2 } },
+      "description": "Gain one new Disciplined Strike option and an additional Signature Armament weapon type. Critical hits grant bonus effects based on weapon type: Axes — deal half your damage modifier again and inflict Bleeding 1; Bows/Crossbows — inflict Restrained; Clubs — knock Prone or Daze (choose one) as a Free Action; Daggers — make an additional Weapon Strike; Fists — Grapple or Shove (choose one) as a Free Action; Mauls — inflict Weakened 1; Polearms — make a Weapon Strike against an additional target in range; Spears — inflict Crippled; Swords — gain +1 Armor until the start of your next turn.",
+      "boons": [
+        { "type": "upgrade_feat", "target_feat": "disciplined_strike", "patch": { "boons[0].count": 3 } },
+        {
+          "type": "choice",
+          "key": "mastery_weapon_type",
+          "prompt": "Choose an additional weapon type for your Signature School",
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "relentless_critical",
+      "name": "Relentless Critical",
+      "tags": ["Fighter", "Reaver"],
+      "path": "reaver",
+      "tier": 3,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": { "count": 1, "recharge": "skirmish" },
+      "feat_dc": null,
+      "prerequisites": { "feats": ["weapon_mastery"], "path_investment": { "path": "reaver", "count": 4 } },
+      "description": "When you score a critical hit with a Signature School weapon, choose one effect.",
+      "boons": [
+        {
+          "type": "conditional_effect",
+          "trigger": "critical_hit_dealt",
+          "condition": "wielding_school_weapon",
+          "effect": {
+            "type": "multi_choice",
+            "key": "relentless_critical_effect",
+            "count": 1,
+            "expandable_by": [],
+            "options": [
+              {
+                "value": "movement",
+                "label": "Gain Dodge, Disengage, or Dash",
+                "boons": []
+              },
+              {
+                "value": "restore",
+                "label": "Restore 1d4 Adrenaline or 1d4 Wounds",
+                "boons": [
+                  {
+                    "type": "multi_choice",
+                    "key": "relentless_restore",
+                    "count": 1,
+                    "expandable_by": [],
+                    "options": [
+                      { "value": "adrenaline", "label": "Restore 1d4 Adrenaline", "boons": [{ "type": "restore_resource", "resource": "adrenaline", "amount": "1d4" }] },
+                      { "value": "wounds",     "label": "Restore 1d4 Wounds",     "boons": [{ "type": "restore_resource", "resource": "wounds",     "amount": "1d4" }] }
+                    ]
+                  }
+                ]
+              },
+              {
+                "value": "frighten",
+                "label": "Apply Frightened to a target in Close range",
+                "boons": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "flurry",
+      "name": "Flurry",
+      "tags": ["Fighter", "Reaver"],
+      "path": "reaver",
+      "tier": 3,
+      "trait": "Offensive",
+      "slot_type": "tactical",
+      "cost": { "ap": 3 },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "reaver", "count": 3 } },
+      "description": "Make two Weapon Strikes with a Signature School weapon, each at -3 to the attack roll.",
+      "boons": []
+    },
+    {
+      "id": "onslaught",
+      "name": "Onslaught",
+      "tags": ["Fighter", "Reaver"],
+      "path": "reaver",
+      "tier": 3,
+      "trait": "Offensive",
+      "slot_type": "tactical",
+      "cost": { "ap": 2, "resources": [{ "id": "adrenaline", "amount": 2 }] },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": ["flurry", "weapon_mastery"],
+      "description": "Your next attack action increases your weapon dice size by one step. If using 1d12, it changes to 2d8.",
+      "boons": []
+    }
+  ]
+}

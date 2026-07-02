@@ -1,0 +1,231 @@
+{
+  "id": "mage",
+  "name": "Mage",
+  "description": "Through years of dedicated study and meticulous transcription of spells, mages master arcane magic through sheer intellectual effort. They excel at battlefield control, utility magic, and providing arcane knowledge. Paths are the Enchanter and the Artificer.",
+  "favored_attributes": ["Mind"],
+  "vitality": {
+    "base": "8 + Brawn",
+    "per_tier": "2d8",
+    "brawn_bonus": { "dice": "1d6", "threshold": 5, "attribute": "Brawn" }
+  },
+  "wound_threshold_per_tier": 1,
+  "proficiencies": {
+    "skills": { "type": "choice", "count": 1, "from": ["Intuition", "Awareness", "Lore"] },
+    "armaments": ["Simple", "Catalysts"],
+    "protection": [],
+    "tools": { "type": "choice", "count": 1, "from": ["Crafting", "Alchemy"] }
+  },
+  "starting_pack": {
+    "weapons": ["magic_stave", "dagger"],
+    "armor": ["mage_robes"],
+    "kits": [],
+    "inventory": [
+      "spellbook_or_arcane_focus",
+      "component_pouch",
+      "scroll_case_with_blank_parchments",
+      "ink_and_quill",
+      "candles_3"
+    ],
+    "currency": { "gold": 10 }
+  },
+  "resources": [
+    {
+      "id": "mana",
+      "name": "Mana",
+      "max": "(2 * Tier) + Mind",
+      "recovery": {
+        "respite": { "formula": "Mind", "minimum": 3 }
+      }
+    }
+  ],
+  "paths": [
+    { "id": "enchanter", "name": "Enchanter", "note": "Source doc calls this path 'Runic' — encoded as 'Enchanter' to match feat examples; verify intended name." },
+    { "id": "artificer", "name": "Artificer", "note": "Source doc calls this path 'Artifice' — encoded as 'Artificer' to match feat examples; verify intended name." }
+  ],
+  "feats": [
+    {
+      "id": "magic_adept",
+      "name": "Magic Adept",
+      "tags": ["Mage"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You innately detect magical sources. Gain detect_magic as a free-activation utility cantrip not counted against known spells. Choose one Sphere of Magic and gain two tier 1 spells from that sphere that do not count against known spells.",
+      "boons": [
+        {
+          "type": "grants_cantrip",
+          "cantrip_id": "detect_magic",
+          "counts_against_known": false,
+          "free_activation": true
+        },
+        {
+          "type": "choice",
+          "key": "mage_sphere_primary",
+          "prompt": "Choose your Sphere of Magic",
+          "options": [
+            { "value": "aberration",    "label": "Aberration" },
+            { "value": "augmentation",  "label": "Augmentation" },
+            { "value": "conjuration",   "label": "Conjuration" },
+            { "value": "decimation",    "label": "Decimation" },
+            { "value": "divination",    "label": "Divination" },
+            { "value": "mortification", "label": "Mortification" },
+            { "value": "reclamation",   "label": "Reclamation" }
+          ]
+        },
+        {
+          "type": "grants_known_spells",
+          "count": 2,
+          "tier": 1,
+          "from_sphere": { "source": "choice", "key": "mage_sphere_primary" },
+          "counts_against_known": false
+        }
+      ]
+    },
+    {
+      "id": "spell_research",
+      "name": "Spell Research",
+      "tags": ["Mage"],
+      "path": null,
+      "tier": 0,
+      "trait": "Narrative",
+      "slot_type": null,
+      "cost": { "ap": 4 },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Permanently learn spells from scrolls or spell tomes of your source and known Spheres. Make an Intuition check against DC (1 + Spell Tier). Critical success does not consume the scroll or tome. Learned spells do not count against known spells.",
+      "boons": [
+        {
+          "type": "skill_check_to_learn",
+          "skill": "Intuition",
+          "dc_formula": "1 + SpellTier",
+          "item_types": ["spell_scroll", "spell_tome"],
+          "source_filter": "own_source_and_known_spheres",
+          "counts_against_known": false,
+          "on_critical_success": "preserve_source_item"
+        }
+      ]
+    },
+    {
+      "id": "spellcasting",
+      "name": "Spellcasting",
+      "tags": ["Mage", "Spellcasting"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": "10 + SpellTier + Mind",
+      "prerequisites": [],
+      "description": "You have the ability to cast spells through years of study. Full-caster; source is Mana; modifier is Mind. Reservoir = (2 × Tier) + Mind. Start with four known tier 1 spells. Prepared spells = Mind. Spell DC = 10 + Spell Tier + Mind. Respite restores Mind mana (minimum 3). Choose up to 5 cantrips.",
+      "boons": [
+        {
+          "type": "grants_spellcasting",
+          "caster_type": "full",
+          "source": "mana",
+          "modifier": "Mind",
+          "known_spells": { "start": 4, "tier": 1 },
+          "prepared_spells": "Mind",
+          "spell_dc": "10 + SpellTier + Mind",
+          "cantrips": {
+            "max": 5,
+            "from": [
+              "apprentices_artifice",
+              "arcane_echo",
+              "arcane_lens",
+              "arcane_jolt",
+              "mages_ward",
+              "mana_dart",
+              "swift_scribe",
+              "system_shock"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "pragmatic_utility",
+      "name": "Pragmatic Utility",
+      "tags": ["Mage"],
+      "path": null,
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Learn one universal tier 1 spell as a cantrip.",
+      "boons": [
+        {
+          "type": "grants_cantrip",
+          "from": "universal_tier_1_spells",
+          "count": 1,
+          "counts_against_known": false,
+          "player_choice": true
+        }
+      ]
+    },
+    {
+      "id": "astute_studies",
+      "name": "Astute Studies",
+      "tags": ["Mage"],
+      "path": null,
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Your cantrips gain one additional damage or healing die. Gain access to one new Sphere of Magic.",
+      "boons": [
+        { "type": "cantrip_upgrade", "bonus": "damage_or_healing_die", "count": 1 },
+        { "type": "grants_sphere", "count": 1, "player_choice": true }
+      ]
+    },
+    {
+      "id": "signature_spells",
+      "name": "Signature Spells",
+      "tags": ["Mage"],
+      "path": null,
+      "tier": 3,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": ["pragmatic_utility"],
+      "description": "During Daily Preparation, choose one known spell of tier equal to floor(Tier / 2) as your Signature Spell. Casting it costs 3 fewer mana. May be changed during downtime.",
+      "boons": [
+        {
+          "type": "signature_spell",
+          "select_during": "daily_preparation",
+          "count": 1,
+          "tier_max_formula": "floor(Tier / 2)",
+          "from": "known_spells",
+          "cost_reduction": 3,
+          "changeable_during": "downtime"
+        }
+      ]
+    }
+  ]
+}

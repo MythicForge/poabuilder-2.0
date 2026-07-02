@@ -1,0 +1,126 @@
+{
+  "id": "freelancer",
+  "name": "Freelancer",
+  "profession": "mercenary",
+  "description": "Mercenaries who follow the Path of the Freelancer specialize in hunting down targets and gaining fame and glory, with an emphasis on Ambition.",
+  "feats": [
+    {
+      "id": "blood_mettle",
+      "name": "Blood Mettle",
+      "tags": ["Mercenary", "Freelancer"],
+      "path": "freelancer",
+      "tier": 1,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "freelancer", "count": 0 } },
+      "description": "When you make an attack roll with your Ambition, add the Ambition roll to damage.",
+      "boons": []
+    },
+    {
+      "id": "known_reputation",
+      "name": "Known Reputation",
+      "tags": ["Mercenary", "Freelancer"],
+      "path": "freelancer",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "freelancer", "count": 0 } },
+      "description": "Gain Expertise in Social skill checks (increased dice size). Skill checks to detect lies have their Difficulty decreased by one rank.",
+      "boons": [
+        { "type": "dice_size_increase", "amount": 1, "target": "Social_skill_checks", "note": "Expertise = +1 die size on Social checks." },
+        { "type": "difficulty_modifier", "amount": -1, "context": "detect_lies_checks", "note": "Lowers Difficulty by one rank — niche; see rule-check.md." }
+      ]
+    },
+    {
+      "id": "fight_with_confidence",
+      "name": "Fight with Confidence",
+      "tags": ["Mercenary", "Freelancer"],
+      "path": "freelancer",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "freelancer", "count": 1 } },
+      "description": "You may use your Will in place of Brawn for weapon attack rolls and damage modifiers. (Source: Body — encoded as Brawn; verify.)",
+      "boons": [
+        { "type": "replace_stat", "context": "weapon_attack_and_damage", "replace": "Brawn", "with": "Will", "range": null }
+      ]
+    },
+    {
+      "id": "ambitious_drive",
+      "name": "Ambitious Drive",
+      "tags": ["Mercenary", "Freelancer"],
+      "path": "freelancer",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["blood_mettle"], "path_investment": { "path": "freelancer", "count": 0 } },
+      "description": "Your Ambition die size increases by one step, and you gain additional Ambition Max equal to your Tier.",
+      "boons": [
+        { "type": "dice_size_increase", "amount": 1, "target": "ambition_die", "note": "Raises the Ambition die one step." },
+        { "type": "stat_bonus", "stat": "Ambition Max", "amount": "Tier", "target": "self" }
+      ]
+    },
+    {
+      "id": "marked_for_death",
+      "name": "Marked for Death",
+      "tags": ["Mercenary", "Freelancer"],
+      "path": "freelancer",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["ambitious_drive"], "path_investment": { "path": "freelancer", "count": 3 } },
+      "description": "Choose a creature classification as your studied enemy. You have Resolve on Investigation actions related to them and add your Ambition to damage rolls against them.",
+      "boons": [
+        {
+          "type": "choice",
+          "key": "studied_enemy_classification",
+          "prompt": "Choose your studied enemy classification",
+          "options": [],
+          "note": "Creature classification list not defined in source — niche; see rule-check.md."
+        }
+      ]
+    },
+    {
+      "id": "intimidating_claim",
+      "name": "Intimidating Claim",
+      "tags": ["Mercenary", "Freelancer"],
+      "path": "freelancer",
+      "tier": 2,
+      "trait": "Narrative",
+      "slot_type": "narrative",
+      "cost": { "ap": 1 },
+      "range": "Close",
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "freelancer", "count": 0 } },
+      "description": "Assert dominance over a target you've wounded or have Resolve against. Make a Will check against the target's Will Defense. On success, the target is Frightened of you until the end of your next turn. On critical success, they also cannot use Retreat or Disengage actions for 1 round.",
+      "boons": []
+    }
+  ]
+}

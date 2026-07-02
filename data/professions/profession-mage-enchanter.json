@@ -1,0 +1,223 @@
+{
+  "id": "enchanter",
+  "name": "Enchanter",
+  "profession": "mage",
+  "description": "Enchanters focus on inscribing and unlocking the power of runes, binding spells into objects and armor, and augmenting equipment with magical properties.",
+  "note": "Source doc names this path 'Runic' in the profession description but 'Enchanter' throughout all feat examples. Encoded as 'Enchanter'; verify with user.",
+  "feats": [
+    {
+      "id": "arcane_author",
+      "name": "Arcane Author",
+      "tags": ["Mage", "Enchanter"],
+      "path": "enchanter",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "When using a scroll or tome during Spell Research, add your Ambition die to the roll at no resource cost.",
+      "boons": [
+        {
+          "type": "ambition_die_bonus",
+          "context": "spell_research_roll",
+          "cost": null
+        }
+      ]
+    },
+    {
+      "id": "rune_wards",
+      "name": "Rune Wards",
+      "tags": ["Mage", "Enchanter"],
+      "path": "enchanter",
+      "tier": 1,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": ["arcane_author"],
+      "description": "When you cast a spell, gain temporary vitality equal to the mana spent + (Tier × 2).",
+      "boons": [
+        {
+          "type": "conditional_effect",
+          "trigger": "on_spell_cast",
+          "effect": {
+            "type": "heal",
+            "formula": "mana_spent + (Tier * 2)",
+            "target": "self",
+            "temporary": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "rune_carving",
+      "name": "Rune Carving",
+      "tags": ["Mage", "Enchanter"],
+      "path": "enchanter",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": ["arcane_author"],
+      "description": "Inscribe a non-ritual, non-focused spell onto an object. Anyone can activate the inscription using your spellcasting stats and Spell DC. Inscriptions last until your next Daily Preparation. Maximum inscribed runes equal to your Mind.",
+      "boons": [
+        {
+          "type": "inscribe_spell",
+          "restriction": ["non_ritual", "non_focused"],
+          "uses_caster_stats": true,
+          "duration": "until_daily_preparation",
+          "max_inscribed": "Mind"
+        }
+      ]
+    },
+    {
+      "id": "temperate_augmentations",
+      "name": "Temperate Augmentations",
+      "tags": ["Mage", "Enchanter"],
+      "path": "enchanter",
+      "tier": 2,
+      "trait": "Utility",
+      "slot_type": "narrative",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["rune_carving"], "path_investment": { "path": "enchanter", "count": 1 } },
+      "description": "Apply magical augmentations to items with open augmentation slots. Max applications per day equal to your current Tier. Augmentations can only be added or changed during a Respite or Daily Preparation.",
+      "boons": [
+        {
+          "type": "apply_augmentation",
+          "max_per_day": "Tier",
+          "changeable_during": ["respite", "daily_preparation"],
+          "options": [
+            {
+              "value": "arcane_targeting",
+              "label": "Arcane Targeting",
+              "target_item": "weapon",
+              "boons": [{ "type": "stat_bonus", "stat": "attack_roll", "amount": 1 }]
+            },
+            {
+              "value": "automatic_feed",
+              "label": "Automatic Feed",
+              "target_item": "weapon",
+              "boons": [{ "type": "reduce_trait", "trait": "reload", "amount": 1 }]
+            },
+            {
+              "value": "arcane_parcel",
+              "label": "Arcane Parcel",
+              "target_item": "armor",
+              "boons": [{ "type": "carry_weight_multiplier", "amount": 2 }]
+            },
+            {
+              "value": "cantrip_prism",
+              "label": "Cantrip Prism",
+              "target_item": "any",
+              "boons": [{ "type": "cantrip_upgrade", "minimum_die_size": "d6" }]
+            },
+            {
+              "value": "spell_tuner",
+              "label": "Spell Tuner",
+              "target_item": ["weapon", "accessory"],
+              "boons": [
+                { "type": "stat_bonus", "stat": "spell_attack", "amount": 1 },
+                { "type": "stat_bonus", "stat": "spell_dc", "amount": 1 }
+              ]
+            },
+            {
+              "value": "shield_weave",
+              "label": "Shield Weave",
+              "target_item": ["armor", "shield"],
+              "boons": [{ "type": "armor_bonus", "amount": 1 }]
+            },
+            {
+              "value": "spell_weave",
+              "label": "Spell Weave",
+              "target_item": ["armor", "shield"],
+              "boons": [
+                { "type": "stat_bonus", "stat": "Brawn", "amount": 1, "note": "Source: Body — encoded as Brawn; verify." },
+                { "type": "stat_bonus", "stat": "Mind", "amount": 1 },
+                { "type": "stat_bonus", "stat": "Will", "amount": 1 }
+              ]
+            },
+            {
+              "value": "winged_boots",
+              "label": "Winged Boots",
+              "target_item": ["armor", "accessory"],
+              "boons": [
+                {
+                  "type": "free_action_grant",
+                  "actions": ["Dash"],
+                  "choose": 0,
+                  "uses": { "count": 1, "recharge": "respite" }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "robes_of_the_magi",
+      "name": "Robes of the Magi",
+      "tags": ["Mage", "Enchanter"],
+      "path": "enchanter",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Clothing you wear gains 1 augmentation slot for magical upgrades. The slot only functions while worn by you.",
+      "boons": [
+        {
+          "type": "grants_augment_slot",
+          "item_type": "clothing",
+          "count": 1,
+          "wearer_only": true
+        }
+      ]
+    },
+    {
+      "id": "spellmote",
+      "name": "Spellmote",
+      "tags": ["Mage", "Enchanter"],
+      "path": "enchanter",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["rune_carving"], "path_investment": { "path": "enchanter", "count": 3 } },
+      "description": "During a Respite or Daily Preparation, bind two spells (each one tier below your highest known spell tier) into a Spellmote. Activating costs 2 AP and casts both spells simultaneously. The Spellmote lasts 24 hours.",
+      "boons": [
+        {
+          "type": "bind_spells",
+          "max_bound": 2,
+          "tier_max": "highest_known_spell_tier - 1",
+          "activation_cost": { "ap": 2 },
+          "effect": "cast_all_stored_simultaneously",
+          "duration_hours": 24,
+          "prepare_during": ["respite", "daily_preparation"]
+        }
+      ]
+    }
+  ]
+}

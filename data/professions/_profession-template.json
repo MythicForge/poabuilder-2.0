@@ -1,0 +1,63 @@
+{
+  "id": "",
+  "name": "",
+  "description": "",
+  "favored_attributes": [],
+  "vitality": {
+    "base": "",
+    "per_tier": "",
+    "brawn_bonus": { "dice": "", "threshold": 0, "attribute": "" }
+  },
+  "wound_threshold_per_tier": 0,
+  "proficiencies": {
+    "skills": { "type": "choice", "count": 0, "from": [] },
+    "armaments": [],
+    "protection": [],
+    "tools": []
+  },
+  "starting_pack": {
+    "weapons": [],
+    "armor": [],
+    "kits": [],
+    "inventory": [],
+    "currency": { "gold": 0 }
+  },
+  "resources": [
+    {
+      "id": "",
+      "name": "",
+      "max": "",
+      "recovery": {
+        "respite": 0,
+        "long_rest": 0,
+        "full_rest": 0
+      },
+      "triggers": [
+        { "event": "", "amount": 0 }
+      ]
+    }
+  ],
+  "paths": [
+    { "id": "", "name": "" },
+    { "id": "", "name": "" }
+  ],
+  "feats": [
+    {
+      "id": "",
+      "name": "",
+      "tags": [],
+      "path": null,
+      "tier": 0,
+      "trait": "",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "",
+      "boons": []
+    }
+  ]
+}

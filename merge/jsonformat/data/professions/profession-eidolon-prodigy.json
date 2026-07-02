@@ -1,0 +1,190 @@
+{
+  "id": "prodigy",
+  "name": "Prodigy",
+  "profession": "eidolon",
+  "description": "Eidolons who follow the Path of the Prodigy embrace and enhance their supernatural heritage, leaning into the schools of Decimation, Reclamation, and Divination.",
+  "feats": [
+    {
+      "id": "demi_mortal",
+      "name": "Demi-Mortal",
+      "tags": ["Eidolon", "Prodigy"],
+      "path": "prodigy",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "prodigy", "count": 0 } },
+      "description": "Choose one bloodline (key: bloodline). Gain its effect and a defensive boon. (Source defensive boons '+1 Body/Mind/Will' encoded as Fortitude/Mental/Will Defense; verify.)",
+      "boons": [
+        {
+          "type": "choice",
+          "key": "bloodline",
+          "prompt": "Choose your bloodline",
+          "options": [
+            { "value": "astral",     "label": "Astral",     "grants": { "boons": [{ "type": "conditional_effect", "trigger": "on_spell_cast", "effect": { "type": "heal", "formula": "spell_tier", "target": "allies_in_zone", "resource": "reservoir", "temporary": true } }, { "type": "stat_bonus", "stat": "Fortitude", "amount": 1, "target": "self" }] } },
+            { "value": "occult",     "label": "Occult",     "grants": { "boons": [{ "type": "conditional_effect", "trigger": "spell_critical_hit", "effect": { "type": "heal", "formula": "2 * spell_tier", "target": "self", "temporary": true } }, { "type": "stat_bonus", "stat": "Mental", "amount": 1, "target": "self" }] } },
+            { "value": "primordial", "label": "Primordial", "grants": { "description": "When you cast a spell with elemental damage, add your spell tier to the damage.", "boons": [{ "type": "stat_bonus", "stat": "Will Defense", "amount": 1, "target": "self" }] } },
+            { "value": "wyrm",       "label": "Wyrm",       "grants": { "boons": [{ "type": "conditional_effect", "trigger": "spell_critical_hit", "effect": { "type": "stat_bonus", "stat": "Armor", "amount": "Tier", "target": "self" } }, { "type": "stat_bonus", "stat": "Armor", "amount": 1, "target": "self" }] } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sensory_enhancement",
+      "name": "Sensory Enhancement",
+      "tags": ["Eidolon", "Prodigy"],
+      "path": "prodigy",
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": "tactical",
+      "cost": { "ap": 2, "resources": [{ "id": "resonance", "amount": 2 }] },
+      "range": null,
+      "duration": "10 Minutes",
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "prodigy", "count": 0 } },
+      "description": "For 10 minutes, enhance one sense. Choose one when activated.",
+      "boons": [
+        {
+          "type": "multi_choice",
+          "key": "sensory_enhancement_sense",
+          "count": 1,
+          "expandable_by": [],
+          "options": [
+            { "value": "darkvision",     "label": "Darkvision",     "description": "See in shades of grey in pitch black up to 60 feet.", "boons": [] },
+            { "value": "acute_hearing",  "label": "Acute Hearing",  "description": "Resolve on perception checks involving sound.", "boons": [] },
+            { "value": "magical_sight",  "label": "Magical Sight",  "description": "Detect magical auras within touch range.", "boons": [] },
+            { "value": "thermal_vision", "label": "Thermal Vision", "description": "Resolve on perception checks involving hidden individuals.", "boons": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "blood_detection",
+      "name": "Blood Detection",
+      "tags": ["Eidolon", "Prodigy"],
+      "path": "prodigy",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["demi_mortal"], "path_investment": { "path": "prodigy", "count": 0 } },
+      "description": "Sense creatures that share aspects of your bloodline. Gain Resolve on checks to identify or recall information about beings related to your Bloodline, and sense the presence (not exact location) of such beings within adjacent zones.",
+      "boons": []
+    },
+    {
+      "id": "ancestral_boon",
+      "name": "Ancestral Boon",
+      "tags": ["Eidolon", "Prodigy"],
+      "path": "prodigy",
+      "tier": 2,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["demi_mortal"], "path_investment": { "path": "prodigy", "count": 2 } },
+      "description": "When you Cast a Spell and spend at least 1 Reservoir or Resonance, gain a bonus based on your Bloodline until the start of your next turn: Astral — add your Ambition die to your next attack or skill check; Occult — Resolve on saving throws against magic, and spells attacking you are made with Strain; Primordial — gain Resistance to a chosen Physical or elemental damage type; Wyrm — gain a Reduction Pool equal to twice the resource spent. (Source lists 'Eidolic' for Astral but Demi-Mortal offers 'Astral' — naming mismatch; see rule-check.md.)",
+      "boons": [
+        {
+          "type": "choice_conditional",
+          "choice_key": "bloodline",
+          "by_choice": {
+            "astral":     [],
+            "occult":     [],
+            "primordial": [{ "type": "resistance", "damage_type": "choice_physical_or_elemental" }],
+            "wyrm":       [{ "type": "reduction_pool", "formula": "2 * resource_spent" }]
+          }
+        }
+      ]
+    },
+    {
+      "id": "magical_inheritance",
+      "name": "Magical Inheritance",
+      "tags": ["Eidolon", "Prodigy"],
+      "path": "prodigy",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["demi_mortal"], "path_investment": { "path": "prodigy", "count": 1 } },
+      "description": "Gain access to a new Sphere of Magic: Decimation, Divination, or Reclamation. Gain effects based on your choice.",
+      "boons": [
+        {
+          "type": "choice",
+          "key": "magical_inheritance_sphere",
+          "prompt": "Choose a Sphere",
+          "options": [
+            { "value": "decimation",  "label": "Decimation",  "grants": { "sphere": "decimation",  "description": "Add your Ambition die to Decimation spell damage for spells one tier below your highest.", "boons": [] } },
+            { "value": "divination",  "label": "Divination",  "grants": { "sphere": "divination",  "description": "Add your Ambition die to your Divination spell effects.", "boons": [] } },
+            { "value": "reclamation", "label": "Reclamation", "grants": { "sphere": "reclamation", "description": "Add your Ambition die when you restore Vitality.", "boons": [] } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rite_of_reclamation",
+      "name": "Rite of Reclamation",
+      "tags": ["Eidolon", "Prodigy"],
+      "path": "prodigy",
+      "tier": 2,
+      "trait": "Utility",
+      "slot_type": "tactical",
+      "cost": { "ap": 3, "resources": [{ "id": "resonance", "amount": 3 }] },
+      "range": "Close",
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "prodigy", "count": 0 } },
+      "description": "Choose up to Tier creatures within Close range. Each regains 3d4 + your Will Vitality. You regain half of the total rolled.",
+      "boons": []
+    },
+    {
+      "id": "ancestral_instinct",
+      "name": "Ancestral Instinct",
+      "tags": ["Eidolon", "Prodigy"],
+      "path": "prodigy",
+      "tier": 3,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": { "resources": [{ "id": "resonance", "amount": 2 }] },
+      "range": null,
+      "duration": null,
+      "uses": { "count": 1, "recharge": "encounter" },
+      "feat_dc": null,
+      "prerequisites": { "feats": ["demi_mortal", "blood_detection"], "path_investment": { "path": "prodigy", "count": 0 } },
+      "description": "When targeted by a spell or magical effect, your bloodline reflexively responds. Once per encounter, until the start of your next turn, gain Resistance to the incoming damage type, or +3 to Fortitude, Mental, or Will Defense. (Source prerequisite 'Linage Detection' encoded as blood_detection; '+3 body/mind/will' encoded as Fortitude/Mental/Will Defense; verify.)",
+      "boons": [
+        {
+          "type": "conditional_effect",
+          "trigger": "targeted_by_spell_or_magic",
+          "effect": {
+            "type": "choice",
+            "key": "ancestral_instinct_response",
+            "prompt": "Choose a reflexive response",
+            "options": [
+              { "value": "resist",    "label": "Resistance to incoming damage type", "grants": { "boons": [{ "type": "resistance", "damage_type": "triggering_attack", "duration": "until_start_of_your_next_turn" }] } },
+              { "value": "fortitude", "label": "+3 Fortitude",    "grants": { "boons": [{ "type": "stat_bonus", "stat": "Fortitude",     "amount": 3, "target": "self", "duration": "until_start_of_your_next_turn" }] } },
+              { "value": "mental",    "label": "+3 Mental",       "grants": { "boons": [{ "type": "stat_bonus", "stat": "Mental",        "amount": 3, "target": "self", "duration": "until_start_of_your_next_turn" }] } },
+              { "value": "will",      "label": "+3 Will Defense", "grants": { "boons": [{ "type": "stat_bonus", "stat": "Will Defense",  "amount": 3, "target": "self", "duration": "until_start_of_your_next_turn" }] } }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

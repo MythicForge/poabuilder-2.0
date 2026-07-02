@@ -1,0 +1,2453 @@
+{
+  "features": [
+    {
+      "entity_type": "profession",
+      "entity_name": "Shaman",
+      "source_kind": "base_feature",
+      "feature_name": "Primeval Vessels",
+      "tier": null,
+      "path": null,
+      "choice_type": "activation_menu",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_activation",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Healing Spirit",
+          "effect_text": "Until the start of your next turn, allies standing in or entering for the first time heal 1d6."
+        },
+        {
+          "name": "Pained Spirit",
+          "effect_text": "The spirit moves to a chosen ally; that ally\u2019s attacks deal +1d4 arcane."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Shaman",
+      "source_kind": "tier_feat",
+      "feature_name": "Primal Origins",
+      "tier": 1,
+      "path": "Conduit",
+      "choice_type": "permanent_choice",
+      "selection_rule": "fixed_count",
+      "min_choices": 2,
+      "max_choices": 2,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Grants Primeval Skin, access to Augmentation, and choice of 2 Conduit cantrips.",
+      "options": [
+        {
+          "name": "Hunter\u2019s Stride",
+          "effect_text": "Target gains +2 stealth and cannot become crippled for 1 minute."
+        },
+        {
+          "name": "Primordial Strike",
+          "effect_text": "Melee weapon spell attack; on hit add extra weapon dice equal to half Tier (minimum 1), in a chosen elemental type."
+        },
+        {
+          "name": "Primeval Lure",
+          "effect_text": "Ranged spell attack vs Body; hit deals 1d6 elemental and pulls target closer."
+        },
+        {
+          "name": "Primeval Rebuke",
+          "effect_text": "Aura on a willing creature; when hit in melee, the attacker takes 1d6 elemental."
+        },
+        {
+          "name": "Primeval Ward",
+          "effect_text": "Gain resistance against triggering elemental damage equal to your spellcasting modifier."
+        },
+        {
+          "name": "Unseen Messenger",
+          "effect_text": "A whispering mote delivers a short message."
+        },
+        {
+          "name": "Volatile Burst",
+          "effect_text": "Self/engagement pulse dealing 1d8 spirit."
+        },
+        {
+          "name": "Wild Hunt",
+          "effect_text": "+2 Investigation in the current zone and ignore Strain from darkness, foliage, and light cover."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Shaman",
+      "source_kind": "tier_feat",
+      "feature_name": "Mantle of Elements",
+      "tier": 2,
+      "path": "Anima",
+      "choice_type": "prepared_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "daily_preparation",
+      "branches_from_feature": null,
+      "notes": "Choose one mantle during Daily Preparation.",
+      "options": [
+        {
+          "name": "Flame",
+          "effect_text": "Retaliate once per round on a melee miss for spellcasting-modifier damage."
+        },
+        {
+          "name": "Frost",
+          "effect_text": "Gain temporary vitality equal to Tier \u00d7 2 + spellcasting modifier; when broken, deal 2d6 frost in Burst (Touch)."
+        },
+        {
+          "name": "Land",
+          "effect_text": "Gain charges equal to your spellcasting modifier for physical resistance once per round."
+        },
+        {
+          "name": "Sky",
+          "effect_text": "Deal 1d4 electric in retaliation and give the attacker Strain against you until end of turn."
+        },
+        {
+          "name": "Water",
+          "effect_text": "Add 1d4 to vitality and Ambition restoration effects."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Shaman",
+      "source_kind": "tier_feat",
+      "feature_name": "Primordial Form",
+      "tier": 3,
+      "path": "Anima",
+      "choice_type": "activation_menu",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_activation",
+      "branches_from_feature": "Primeval Vessels",
+      "notes": "Bond with a Primeval Vessel and gain the matching effect.",
+      "options": [
+        {
+          "name": "Hastened",
+          "effect_text": "Gain +1 AP."
+        },
+        {
+          "name": "Healing",
+          "effect_text": "Spend 2 AP to heal 2d6 vitality within Touch."
+        },
+        {
+          "name": "Pained",
+          "effect_text": "All offensive actions deal +2d4 arcane."
+        },
+        {
+          "name": "Protecting",
+          "effect_text": "+2 to all defenses; may grant an ally a temporary shield reducing damage by 2d6."
+        },
+        {
+          "name": "Soothing",
+          "effect_text": "Vitality healing also restores Ambition equal to your spellcasting modifier."
+        },
+        {
+          "name": "Vengeful",
+          "effect_text": "When hit, the attacker takes 2d4 elemental of your choice."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Eidolon",
+      "source_kind": "tier_feat",
+      "feature_name": "Demi-Mortal",
+      "tier": 1,
+      "path": "Prodigy",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Astral",
+          "effect_text": "When you cast a spell, allies in your zone gain temporary Reservoir equal to spell tier; defensive boon +1 Body."
+        },
+        {
+          "name": "Occult",
+          "effect_text": "When a spell critically hits, gain temporary vitality equal to 2 \u00d7 spell tier; defensive boon +1 Mind."
+        },
+        {
+          "name": "Primordial",
+          "effect_text": "When you cast an elemental spell, add the spell tier to the damage total; defensive boon +1 Will."
+        },
+        {
+          "name": "Wyrm",
+          "effect_text": "When a spell critically hits, add your Tier to Armor; defensive boon +1 Armor."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Eidolon",
+      "source_kind": "tier_feat",
+      "feature_name": "Expanded Resonance",
+      "tier": 1,
+      "path": "Eidolon",
+      "choice_type": "permanent_choice",
+      "selection_rule": "grant_access",
+      "min_choices": 0,
+      "max_choices": 0,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Permanent Choice Set. This feat appears to grant access to the listed spell-shape options rather than requiring an immediate single pick.",
+      "options": [
+        {
+          "name": "Critical Resonance",
+          "effect_text": "Lower critical threshold by 1 for 5 Resonance; repeatable up to 3 times."
+        },
+        {
+          "name": "Fragmented Resonance",
+          "effect_text": "Duplicate a single-target spell onto extra targets."
+        },
+        {
+          "name": "Graceful Resonance",
+          "effect_text": "Exclude chosen targets from a zone spell."
+        },
+        {
+          "name": "Pursuing Resonance",
+          "effect_text": "Reroll a missed spell attack."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Eidolon",
+      "source_kind": "tier_feat",
+      "feature_name": "Sensory Enhancement",
+      "tier": 1,
+      "path": "Prodigy",
+      "choice_type": "activation_menu",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_activation",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Darkvision",
+          "effect_text": "Gain darkvision."
+        },
+        {
+          "name": "Acute Hearing",
+          "effect_text": "Gain Resolve on perception involving sound."
+        },
+        {
+          "name": "Magical Sight",
+          "effect_text": "Detect magical auras within Touch."
+        },
+        {
+          "name": "Thermal Vision",
+          "effect_text": "Gain Resolve on perception against hidden targets."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Eidolon",
+      "source_kind": "tier_feat",
+      "feature_name": "Channeled Emotions",
+      "tier": 2,
+      "path": "Spellshaper",
+      "choice_type": "activation_menu",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_activation",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Rage",
+          "effect_text": "Add Will to spell damage."
+        },
+        {
+          "name": "Sorrow",
+          "effect_text": "Apply sapped or weakened."
+        },
+        {
+          "name": "Joy",
+          "effect_text": "Heal an adjacent ally for 1d4 per spell tier."
+        },
+        {
+          "name": "Awe",
+          "effect_text": "Target makes attacks with Strain for 1 round."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Eidolon",
+      "source_kind": "tier_feat",
+      "feature_name": "Magical Inheritance",
+      "tier": 2,
+      "path": "Prodigy",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Decimation",
+          "effect_text": "Add Ambition dice to damage of Decimation spells one tier below your highest."
+        },
+        {
+          "name": "Divination",
+          "effect_text": "Add Ambition dice to Divination effects."
+        },
+        {
+          "name": "Reclamation",
+          "effect_text": "Add Ambition dice to vitality restoration."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Eidolon",
+      "source_kind": "tier_feat",
+      "feature_name": "Magical Resonance",
+      "tier": 2,
+      "path": "Eidolon",
+      "choice_type": "permanent_choice",
+      "selection_rule": "grant_access",
+      "min_choices": 0,
+      "max_choices": 0,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Permanent Choice Set. This feat appears to grant access to the listed spell-shape options rather than requiring an immediate single pick.",
+      "options": [
+        {
+          "name": "Fluctuating Resonance",
+          "effect_text": "Change damage type within category."
+        },
+        {
+          "name": "Acute Resonance",
+          "effect_text": "Reroll 1s on damage once."
+        },
+        {
+          "name": "Reverberating Resonance",
+          "effect_text": "Maintain a second focused spell briefly."
+        },
+        {
+          "name": "Shifting Resonance",
+          "effect_text": "Alter spell area size."
+        },
+        {
+          "name": "Surging Resonance",
+          "effect_text": "Add 2d4 elemental to Decimation spell damage."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Eidolon",
+      "source_kind": "tier_feat",
+      "feature_name": "Spellborn",
+      "tier": 2,
+      "path": "Spellshaper",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Aberration",
+          "effect_text": "Gain telepathic communion up to your Will total."
+        },
+        {
+          "name": "Conjuration",
+          "effect_text": "When casting Conjuration, spend 3 design to create an arcane wall in your zone for 2 rounds."
+        },
+        {
+          "name": "Mortification",
+          "effect_text": "When an ally within Close would gain downed, spend 8 design to restore vitality equal to Will."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Eidolon",
+      "source_kind": "tier_feat",
+      "feature_name": "Ancestral Boon",
+      "tier": 2,
+      "path": "Prodigy",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": "Demi-Mortal",
+      "notes": "Uses your bloodline. Source text is inconsistent: this entry references Eidolic while Demi-Mortal uses Astral.",
+      "options": [
+        {
+          "name": "Eidolic",
+          "effect_text": "Your next attack roll or skill check adds your Ambition die."
+        },
+        {
+          "name": "Occult",
+          "effect_text": "Source text is currently blank or incomplete."
+        },
+        {
+          "name": "Primordial",
+          "effect_text": "Gain resistance to a chosen physical or elemental damage type."
+        },
+        {
+          "name": "Wyrm",
+          "effect_text": "Gain a reduction pool equal to 2 \u00d7 Reservoir/Resonance spent."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Elementalist",
+      "source_kind": "base_feature",
+      "feature_name": "Elemental Core",
+      "tier": null,
+      "path": null,
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Flame",
+          "effect_text": "Fire, Spirit(Combat)"
+        },
+        {
+          "name": "Forest",
+          "effect_text": "Wood, Vitality (Support and Defense"
+        },
+        {
+          "name": "Land",
+          "effect_text": "Stone, Metal (Defense and Utility)"
+        },
+        {
+          "name": "Ocean",
+          "effect_text": "Water, Ice (Control and Healing)"
+        },
+        {
+          "name": "Sky",
+          "effect_text": "Air, Gravity (Stealth)"
+        },
+        {
+          "name": "Tempest",
+          "effect_text": "Electric, Light (Combat)"
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Elementalist",
+      "source_kind": "tier_feat",
+      "feature_name": "Core Cultivation",
+      "tier": 2,
+      "path": "Elementalist",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Pick Fragmented or Regal first; follow-up picks the core(s).",
+      "options": [
+        {
+          "name": "Fragmented",
+          "effect_text": "Gain access to a second Elemental Core and any abilities your previously selected Feats would give.",
+          "follow_up": {
+            "count": 1,
+            "pool": "inline",
+            "options": [
+              {
+                "name": "Flame",
+                "effect_text": "Fire, Spirit (Combat)"
+              },
+              {
+                "name": "Forest",
+                "effect_text": "Wood, Vitality (Support and Defense)"
+              },
+              {
+                "name": "Land",
+                "effect_text": "Stone, Metal (Defense and Utility)"
+              },
+              {
+                "name": "Ocean",
+                "effect_text": "Water, Ice (Control and Healing)"
+              },
+              {
+                "name": "Sky",
+                "effect_text": "Air, Gravity (Stealth)"
+              },
+              {
+                "name": "Tempest",
+                "effect_text": "Electric, Light (Combat)"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Regal",
+          "effect_text": "Gain access to another element for Primordial Strike; Elemental Art actions add your melee die to damage or healing total.",
+          "follow_up": {
+            "count": 1,
+            "pool": "inline",
+            "options": [
+              {
+                "name": "Flame",
+                "effect_text": "Spirit"
+              },
+              {
+                "name": "Forest",
+                "effect_text": "Poison"
+              },
+              {
+                "name": "Land",
+                "effect_text": "Void"
+              },
+              {
+                "name": "Ocean",
+                "effect_text": "Arcane"
+              },
+              {
+                "name": "Sky",
+                "effect_text": "Gravity"
+              },
+              {
+                "name": "Tempest",
+                "effect_text": "Ether"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Fighter",
+      "source_kind": "base_feature",
+      "feature_name": "Signature School",
+      "tier": null,
+      "path": null,
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Defender",
+          "effect_text": "Weapons: longswords, shortswords, greatswords. Stance: +1 Armor while wielding a blade. Maneuver: spend 2 Adrenaline to make one Weapon Strike after a Weapon Strike."
+        },
+        {
+          "name": "Dueler",
+          "effect_text": "Weapons: rapier, daggers, scimitar, fists. Stance: after you attack, gain +2 Body Defense until next turn. Maneuver: spend 2 Adrenaline to make two attacks at half damage."
+        },
+        {
+          "name": "Enforcer",
+          "effect_text": "Weapons: hammers, mauls, maces, staves, shields. Stance: gain Resolve on Shove. Maneuver: spend 3 Adrenaline; all engaged enemies make a Body check or fall Prone."
+        },
+        {
+          "name": "Lancer",
+          "effect_text": "Weapons: lucerne, javelin, pike, spear. Stance: +2 on next attacks when an enemy enters reach or engagement. Maneuver: spend 2 Adrenaline to attempt Grapple at Close range."
+        },
+        {
+          "name": "Ranger",
+          "effect_text": "Weapons: bows, crossbows, throwing weapons. Stance: increase range by one category. Maneuver: spend 2 Adrenaline to make two ranged attacks on an undamaged target."
+        },
+        {
+          "name": "Slayer",
+          "effect_text": "Weapons: cleaver, glaive, axes. Stance: first hit each turn deals +1 damage die. Maneuver: spend 2 Adrenaline; next attack deals +1 damage die per Tier."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Fighter",
+      "source_kind": "tier_feat",
+      "feature_name": "Bulwark Maneuver",
+      "tier": 1,
+      "path": "Sentinel",
+      "choice_type": "permanent_choice",
+      "selection_rule": "fixed_count",
+      "min_choices": 2,
+      "max_choices": 2,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Choose 2 maneuvers.",
+      "options": [
+        {
+          "name": "Bulwark Rally",
+          "effect_text": "You and one ally in engagement gain +1 armor defense until next turn."
+        },
+        {
+          "name": "Controlled Blows",
+          "effect_text": "Reduce weapon die size (minimum d4) and gain +2 armor defense until next turn."
+        },
+        {
+          "name": "Counter Strike",
+          "effect_text": "Prepare retaliation vs the next melee attack; if the attacker critically misses, gain +2 to hit."
+        },
+        {
+          "name": "Shield Charge",
+          "effect_text": "Shield bash; a critical hit dazes; gain +1 to hit if not engaged."
+        },
+        {
+          "name": "Weapon Disarm",
+          "effect_text": "Make a Body check to stop or drop an incoming melee weapon attack."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Fighter",
+      "source_kind": "tier_feat",
+      "feature_name": "Signature Armor",
+      "tier": 1,
+      "path": "Sentinel",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Reinforced Plates",
+          "effect_text": "Reduce damage from one attack by 1d6 once per turn."
+        },
+        {
+          "name": "Spiked Panels",
+          "effect_text": "Melee attackers take 1d6 puncture on critical failure; grappled foes take 1d6 puncture at the start of your turn."
+        },
+        {
+          "name": "Adaptive Layering",
+          "effect_text": "Gain resistance to a chosen elemental damage type; this can be changed during Daily Preparation."
+        },
+        {
+          "name": "Dampening",
+          "effect_text": "Remove loud from armor or gain Resolve on stealth if the armor lacks loud."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Fighter",
+      "source_kind": "tier_feat",
+      "feature_name": "War Tactics",
+      "tier": 1,
+      "path": "Reaver",
+      "choice_type": "activation_menu",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_activation",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Adamant Stance",
+          "effect_text": "Gain temporary vitality equal to Tier + Ambition."
+        },
+        {
+          "name": "Precise Focus",
+          "effect_text": "Target Body, Mind, or Will instead of Armor."
+        },
+        {
+          "name": "Battlefield Control",
+          "effect_text": "Enemies cannot Disengage unless they pass a Will check vs your Body."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Fighter",
+      "source_kind": "tier_feat",
+      "feature_name": "Disciplined Strike",
+      "tier": 1,
+      "path": "Reaver",
+      "choice_type": "permanent_choice",
+      "selection_rule": "fixed_count",
+      "min_choices": 2,
+      "max_choices": 2,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Choose 2 Disciplined Strikes. Source text for Accurate Wound appears truncated.",
+      "options": [
+        {
+          "name": "Accurate Wound",
+          "effect_text": "Attack vs Body; on hit applies a rider. Source text appears truncated after crippled."
+        },
+        {
+          "name": "Concussive Strike",
+          "effect_text": "Add Ambition to attack; on success deal half damage and daze."
+        },
+        {
+          "name": "Driving Blow",
+          "effect_text": "After a hit, the next attack vs a different target in the same engagement gains +2 to hit and Ambition to damage."
+        },
+        {
+          "name": "Dragon\u2019s Pursuit",
+          "effect_text": "Add Ambition to attack and damage; on a critical hit vs a prone target, inflict maimed."
+        },
+        {
+          "name": "Sever Artery",
+          "effect_text": "Add Ambition; a critical hit inflicts bleeding (2)."
+        },
+        {
+          "name": "Shield Breaker",
+          "effect_text": "Against shield users gain +4 to hit; a critical hit lowers armor by Tier."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Fighter",
+      "source_kind": "tier_feat",
+      "feature_name": "Fighting Technique",
+      "tier": 2,
+      "path": "Fighter",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": "Signature School",
+      "notes": "Uses your Signature School.",
+      "options": [
+        {
+          "name": "Defender",
+          "effect_text": "Once per turn on hit, an ally in engagement gains +1 Armor."
+        },
+        {
+          "name": "Dueler",
+          "effect_text": "Once per turn on hit, the target gets \u22122 to its next attack."
+        },
+        {
+          "name": "Enforcer",
+          "effect_text": "Once per turn on hit, the target makes a Body check or is Dazed."
+        },
+        {
+          "name": "Lancer",
+          "effect_text": "Once per turn on hit, gain Shove as a free action."
+        },
+        {
+          "name": "Ranger",
+          "effect_text": "Once per turn on hit, the target cannot Dash."
+        },
+        {
+          "name": "Slayer",
+          "effect_text": "Once per turn on hit, the target has \u22121 Armor until your next turn."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Fighter",
+      "source_kind": "tier_feat",
+      "feature_name": "Sentinel Armor",
+      "tier": 2,
+      "path": "Sentinel",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": null,
+      "notes": "Uses worn armor category rather than a separately named parent feature.",
+      "options": [
+        {
+          "name": "Light",
+          "effect_text": "+1 Body Defense, Resolve on Body checks against spells, and once per respite when taking damage gain disengage and reposition without Reflex Strike."
+        },
+        {
+          "name": "Medium",
+          "effect_text": "+1 Armor; may dual-wield non-Light weapons if they are from your Signature School; on a critical hit gain temporary vitality equal to Tier."
+        },
+        {
+          "name": "Heavy",
+          "effect_text": "+2 Armor; gain a Damage Reduction Pool (20); unarmed attacks gain the Enforcer school benefit and deal 2d4 bludgeoning."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Fighter",
+      "source_kind": "tier_feat",
+      "feature_name": "Weapon Mastery",
+      "tier": 2,
+      "path": "Reaver",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "This record captures the additional signature armament weapon-type choice granted by Weapon Mastery, along with that weapon type\u2019s critical effect.",
+      "options": [
+        {
+          "name": "Accurate Wound",
+          "effect_text": "Attack vs Body; on hit applies a rider. Source text appears truncated after crippled."
+        },
+        {
+          "name": "Concussive Strike",
+          "effect_text": "Add Ambition to attack; on success deal half damage and daze."
+        },
+        {
+          "name": "Driving Blow",
+          "effect_text": "After a hit, the next attack vs a different target in the same engagement gains +2 to hit and Ambition to damage."
+        },
+        {
+          "name": "Dragon\u2019s Pursuit",
+          "effect_text": "Add Ambition to attack and damage; on a critical hit vs a prone target, inflict maimed."
+        },
+        {
+          "name": "Sever Artery",
+          "effect_text": "Add Ambition; a critical hit inflicts bleeding (2)."
+        },
+        {
+          "name": "Shield Breaker",
+          "effect_text": "Against shield users gain +4 to hit; a critical hit lowers armor by Tier."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Fighter",
+      "source_kind": "tier_feat",
+      "feature_name": "Weapon Mastery",
+      "tier": 2,
+      "path": "Reaver",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "This record captures the additional signature armament weapon-type choice granted by Weapon Mastery, along with that weapon type\u2019s critical effect.",
+      "options": [
+        {
+          "name": "Axes",
+          "effect_text": "Weapon-type critical effect: extra damage and bleeding."
+        },
+        {
+          "name": "Bows/Crossbows",
+          "effect_text": "Weapon-type critical effect: Restrained."
+        },
+        {
+          "name": "Clubs",
+          "effect_text": "Weapon-type critical effect: knock prone or daze."
+        },
+        {
+          "name": "Daggers",
+          "effect_text": "Weapon-type critical effect: immediate free extra attack."
+        },
+        {
+          "name": "Fists",
+          "effect_text": "Weapon-type critical effect: free grapple or shove."
+        },
+        {
+          "name": "Mauls",
+          "effect_text": "Weapon-type critical effect: weakened (1)."
+        },
+        {
+          "name": "Polearms",
+          "effect_text": "Weapon-type critical effect: attack an additional target within range."
+        },
+        {
+          "name": "Spears",
+          "effect_text": "Weapon-type critical effect: crippled."
+        },
+        {
+          "name": "Swords",
+          "effect_text": "Weapon-type critical effect: +1 armor until next turn."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Fighter",
+      "source_kind": "tier_feat",
+      "feature_name": "Relentless Critical",
+      "tier": 3,
+      "path": "Reaver",
+      "choice_type": "activation_menu",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_activation",
+      "branches_from_feature": "Signature School",
+      "notes": "On a Signature School critical hit, choose one.",
+      "options": [
+        {
+          "name": "Mobility",
+          "effect_text": "Gain dodge, disengage, or dash."
+        },
+        {
+          "name": "Recovery",
+          "effect_text": "Restore 1d4 Adrenaline or 1d4 Wounds."
+        },
+        {
+          "name": "Frighten",
+          "effect_text": "Apply frightened to one target in Close."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mage",
+      "source_kind": "base_feature",
+      "feature_name": "Magic Adept",
+      "tier": null,
+      "path": "Mage",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Gain detect magic as a free utility cantrip, choose one sphere, and also gain 2 tier-1 spells from the chosen sphere that do not count against known spells.",
+      "options": [
+        {
+          "name": "Aberration",
+          "effect_text": "Chosen sphere for Magic Adept."
+        },
+        {
+          "name": "Augmentation",
+          "effect_text": "Chosen sphere for Magic Adept."
+        },
+        {
+          "name": "Conjuration",
+          "effect_text": "Chosen sphere for Magic Adept."
+        },
+        {
+          "name": "Decimation",
+          "effect_text": "Chosen sphere for Magic Adept."
+        },
+        {
+          "name": "Divination",
+          "effect_text": "Chosen sphere for Magic Adept."
+        },
+        {
+          "name": "Mortification",
+          "effect_text": "Chosen sphere for Magic Adept."
+        },
+        {
+          "name": "Reclamation",
+          "effect_text": "Chosen sphere for Magic Adept."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mage",
+      "source_kind": "tier_feat",
+      "feature_name": "Tailored Conjuration",
+      "tier": 1,
+      "path": "Artificer",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Choose a summon lore package.",
+      "options": [
+        {
+          "name": "Arcane / Reenergize",
+          "effect_text": "Summon critical hit restores mana equal to 3 \u00d7 its tier (minimum 3)."
+        },
+        {
+          "name": "Forbidden / Siphoned",
+          "effect_text": "Summon critical hit heals itself equal to your Intellect."
+        },
+        {
+          "name": "Nature / Evolve",
+          "effect_text": "Summon gains fly, burrow, or swim."
+        },
+        {
+          "name": "Sacred / Sanctum",
+          "effect_text": "Summon can grant 2d6 temporary vitality with its action."
+        },
+        {
+          "name": "Mortal / Linked",
+          "effect_text": "If the summon is in your engagement, you may use its attribute modifiers."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mage",
+      "source_kind": "tier_feat",
+      "feature_name": "Spheres of Influence",
+      "tier": 2,
+      "path": "Artificer",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": null,
+      "notes": "Applies to summons based on your known spheres.",
+      "options": [
+        {
+          "name": "Aberration",
+          "effect_text": "1 AP arcane mist causing attacks against you to have Strain."
+        },
+        {
+          "name": "Augmentation",
+          "effect_text": "Summon can reshape into tiny wildlife form."
+        },
+        {
+          "name": "Conjuration",
+          "effect_text": "Gain temporary vitality equal to highest known spell tier \u00d7 2."
+        },
+        {
+          "name": "Decimation",
+          "effect_text": "Melee attacks deal 2d6 arcane."
+        },
+        {
+          "name": "Divination",
+          "effect_text": "Divination magic can be cast upon the summon and travel with it."
+        },
+        {
+          "name": "Mortification",
+          "effect_text": "Summon shares vitality with summoner."
+        },
+        {
+          "name": "Reclamation",
+          "effect_text": "1 AP to gain +3 armor and \u22122 attacks."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mage",
+      "source_kind": "tier_feat",
+      "feature_name": "Temperate Augmentations",
+      "tier": 2,
+      "path": "Enchanter",
+      "choice_type": "prepared_choice",
+      "selection_rule": "dynamic_count",
+      "min_choices": 1,
+      "max_choices": null,
+      "selection_timing": "daily_preparation",
+      "branches_from_feature": null,
+      "notes": "Choose augmentation(s) to apply during Daily Preparation. The source sets the maximum number applied equal to your current tier.",
+      "options": [
+        {
+          "name": "Arcane Targeting",
+          "effect_text": "+1 attack rolls on weapons."
+        },
+        {
+          "name": "Automatic Feed",
+          "effect_text": "Reduce reload by 1."
+        },
+        {
+          "name": "Arcane Parcel",
+          "effect_text": "Double carry weight on armor."
+        },
+        {
+          "name": "Cantrip Prism",
+          "effect_text": "Increase cantrip die from d4 to d6."
+        },
+        {
+          "name": "Spell Tuner",
+          "effect_text": "+1 spell attacks and spell DCs."
+        },
+        {
+          "name": "Shield Weave",
+          "effect_text": "+1 armor."
+        },
+        {
+          "name": "Spell Weave",
+          "effect_text": "+1 Body, Mind, and Will."
+        },
+        {
+          "name": "Winged Boots",
+          "effect_text": "Once per respite, free dash."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mage",
+      "source_kind": "tier_feat",
+      "feature_name": "Reservoir Tuning",
+      "tier": 2,
+      "path": "Artificer",
+      "choice_type": "prepared_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "daily_preparation",
+      "branches_from_feature": null,
+      "notes": "Choose one during Daily Preparation.",
+      "options": [
+        {
+          "name": "Efficient Casting",
+          "effect_text": "Spells one tier below your tier cost 2 less Reservoir."
+        },
+        {
+          "name": "Overcharged",
+          "effect_text": "Direct and zone spells gain +2 attack rolls and +2 spell DCs, but cost +4 Reservoir."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mage",
+      "source_kind": "tier_feat",
+      "feature_name": "Modular Adaptation",
+      "tier": 3,
+      "path": "Artificer",
+      "choice_type": "prepared_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "daily_preparation",
+      "branches_from_feature": null,
+      "notes": "Choose one forgecast module.",
+      "options": [
+        {
+          "name": "Baseline Directive",
+          "effect_text": "Regains both action and maneuver."
+        },
+        {
+          "name": "Bulwark Directive",
+          "effect_text": "+2 Armor and can intercept one attack per combat."
+        },
+        {
+          "name": "Siege Directive",
+          "effect_text": "Gains a ranged attack dealing 2d8 arcane."
+        },
+        {
+          "name": "Scout Directive",
+          "effect_text": "Cannot attack; gains +2 zones on dash; grants you sight and hearing from its position until next turn."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mage",
+      "source_kind": "tier_feat",
+      "feature_name": "Signature Spells",
+      "tier": 3,
+      "path": "Mage",
+      "choice_type": "prepared_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "daily_preparation",
+      "branches_from_feature": null,
+      "notes": "Choose a known spell of spell tier equal to half your Tier; options are dynamic and depend on the character\u2019s current known-spell list.",
+      "options": []
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mercenary",
+      "source_kind": "base_feature",
+      "feature_name": "Field Kit",
+      "tier": null,
+      "path": "Mercenary",
+      "choice_type": "prepared_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "daily_preparation",
+      "branches_from_feature": null,
+      "notes": "Choose one module at Daily Preparation.",
+      "options": [
+        {
+          "name": "Tacticians Compass",
+          "effect_text": "Once per day, add Tier to group initiative."
+        },
+        {
+          "name": "Alchemical Harness",
+          "effect_text": "Store 1 alchemical item and use it with a free action."
+        },
+        {
+          "name": "Jury-rigged Kit",
+          "effect_text": "Emulate 1 kit; uses equal to Tier."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mercenary",
+      "source_kind": "base_feature",
+      "feature_name": "Manuscripts of Techniques",
+      "tier": null,
+      "path": "Mercenary",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Choose one manuscript. Scaling uses Mercenary tier.",
+      "options": [
+        {
+          "name": "Agent",
+          "effect_text": "Gain Undercut."
+        },
+        {
+          "name": "Berserker",
+          "effect_text": "Gain Berserker Rage."
+        },
+        {
+          "name": "Duelist",
+          "effect_text": "Gain Cadence and Precision Strike."
+        },
+        {
+          "name": "Fighter",
+          "effect_text": "Gain Adrenaline and Second Breath."
+        },
+        {
+          "name": "Vescent",
+          "effect_text": "Gain Soulglyph."
+        },
+        {
+          "name": "Warden",
+          "effect_text": "Gain Spell Scourge."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mercenary",
+      "source_kind": "tier_feat",
+      "feature_name": "New Manuscript",
+      "tier": 1,
+      "path": "Mercenary",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": "Manuscripts of Techniques",
+      "notes": "Gain another manuscript from the same manuscript list.",
+      "options": [
+        {
+          "name": "Agent",
+          "effect_text": "Gain Undercut."
+        },
+        {
+          "name": "Berserker",
+          "effect_text": "Gain Berserker Rage."
+        },
+        {
+          "name": "Duelist",
+          "effect_text": "Gain Cadence and Precision Strike."
+        },
+        {
+          "name": "Fighter",
+          "effect_text": "Gain Adrenaline and Second Breath."
+        },
+        {
+          "name": "Vescent",
+          "effect_text": "Gain Soulglyph."
+        },
+        {
+          "name": "Warden",
+          "effect_text": "Gain Spell Scourge."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mercenary",
+      "source_kind": "tier_feat",
+      "feature_name": "Commanding Tactics",
+      "tier": 2,
+      "path": "Commander",
+      "choice_type": "activation_menu",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_activation",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Push the assault",
+          "effect_text": "An ally gains dash and makes a single attack during movement."
+        },
+        {
+          "name": "Stand fast",
+          "effect_text": "Allies in your zone gain +2 armor until the end of your next turn."
+        },
+        {
+          "name": "Stop them",
+          "effect_text": "Allies in your zone may attack a target using disengage."
+        },
+        {
+          "name": "Get out of there",
+          "effect_text": "Two allies in your zone swap places, ignoring movement and disengage rules."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mercenary",
+      "source_kind": "tier_feat",
+      "feature_name": "Marked for Death",
+      "tier": 2,
+      "path": "Freelancer",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Choose a classification as your studied enemy; gain Resolve on related investigation and add Ambition to damage rolls.",
+      "options": [
+        {
+          "name": "Studied Enemy Classification",
+          "effect_text": "Dynamic classification choice; the source does not enumerate the full classification list in this entry."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mercenary",
+      "source_kind": "tier_feat",
+      "feature_name": "Upgraded Kit",
+      "tier": 2,
+      "path": "Mercenary",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": "Field Kit",
+      "notes": "Improves your selected Field Kit module.",
+      "options": [
+        {
+          "name": "Tacticians Compass",
+          "effect_text": "Now usable twice per day."
+        },
+        {
+          "name": "Alchemical Harness",
+          "effect_text": "Now holds 2 alchemical items."
+        },
+        {
+          "name": "Jury-rigged Kit",
+          "effect_text": "Uses equal to twice Tier."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mercenary",
+      "source_kind": "tier_feat",
+      "feature_name": "Advanced Manuscript",
+      "tier": 3,
+      "path": "Mercenary",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": "Manuscripts of Techniques",
+      "notes": "Gain access to the tier 1 core feat related to your manuscript.",
+      "options": [
+        {
+          "name": "Agent",
+          "effect_text": "Gain access to the Agent-related tier 1 core feat."
+        },
+        {
+          "name": "Berserker",
+          "effect_text": "Gain access to the Berserker-related tier 1 core feat."
+        },
+        {
+          "name": "Duelist",
+          "effect_text": "Gain access to the Duelist-related tier 1 core feat."
+        },
+        {
+          "name": "Fighter",
+          "effect_text": "Gain access to the Fighter-related tier 1 core feat."
+        },
+        {
+          "name": "Vescent",
+          "effect_text": "Gain access to the Vescent-related tier 1 core feat."
+        },
+        {
+          "name": "Warden",
+          "effect_text": "Gain access to the Warden-related tier 1 core feat."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mesmer",
+      "source_kind": "base_feature",
+      "feature_name": "Tethers",
+      "tier": null,
+      "path": "Mesmer",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Choose one Tether Aspect.",
+      "options": [
+        {
+          "name": "Aspect of Aberration",
+          "effect_text": "Hostile tethered creatures suffer 1d4 on attack rolls against anyone other than you."
+        },
+        {
+          "name": "Aspect of Authority",
+          "effect_text": "When you damage a tethered creature with a phantasm or cord, deal +1d4 psychic."
+        },
+        {
+          "name": "Aspect of Solace",
+          "effect_text": "Allies tethered to you gain 1 + Tier to an Attribute Defense of your choice."
+        },
+        {
+          "name": "Aspect of Vestige",
+          "effect_text": "When you or a tethered target are attacked, one attack gains Strain once per round."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mesmer",
+      "source_kind": "base_feature",
+      "feature_name": "Cords",
+      "tier": null,
+      "path": "Mesmer",
+      "choice_type": "permanent_choice",
+      "selection_rule": "fixed_count",
+      "min_choices": 2,
+      "max_choices": 2,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Pick 2 cords.",
+      "options": [
+        {
+          "name": "Kinesis",
+          "effect_text": "Move loose objects up to 5 lb; Stitch increases this to 45 lb."
+        },
+        {
+          "name": "Render",
+          "effect_text": "Ranged cord dealing 1d6 fire or slash + spellcasting modifier; Stitch increases die size."
+        },
+        {
+          "name": "Eviscerate",
+          "effect_text": "Attack vs Mind for 2d4 psychic; Stitch adds modifier to damage and critical hit dazes."
+        },
+        {
+          "name": "Mirage",
+          "effect_text": "Gain half-cover and immunity to Reflex Strikes until next turn; Stitch extends to one ally in Close."
+        },
+        {
+          "name": "Nullify",
+          "effect_text": "Attack vs Will for 1d8 psychic + spellcasting modifier; Stitch forces the target to lose 1 AP or take +1d4 psychic."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mesmer",
+      "source_kind": "tier_feat",
+      "feature_name": "Thread Weaving",
+      "tier": 1,
+      "path": "Weaver",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Choose one Thread style.",
+      "options": [
+        {
+          "name": "Gnosis",
+          "effect_text": "Trigger for 2 Threads to give Resolve or Strain on a save against a magical effect."
+        },
+        {
+          "name": "Kardia",
+          "effect_text": "Spend AP/Threads to heal 2d6 vitality, with range expansion."
+        },
+        {
+          "name": "Thara",
+          "effect_text": "When using Ambition on a skill check, attack roll, or spell attack, increase the Ambition die by one step."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mesmer",
+      "source_kind": "tier_feat",
+      "feature_name": "Deepen Aspects",
+      "tier": 2,
+      "path": "Mesmer",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": "Tethers",
+      "notes": "Uses your chosen Tether Aspect.",
+      "options": [
+        {
+          "name": "Aberration",
+          "effect_text": "Penalty die becomes 1d6; may spend 1 Reservoir to add Tier."
+        },
+        {
+          "name": "Authority",
+          "effect_text": "Bonus psychic damage scales further."
+        },
+        {
+          "name": "Solace",
+          "effect_text": "Tethered allies gain Resolve on skill and spell checks once per minute."
+        },
+        {
+          "name": "Vestige",
+          "effect_text": "Misses caused by Strain deal 1d6 psychic."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mesmer",
+      "source_kind": "tier_feat",
+      "feature_name": "Loom Threads",
+      "tier": 2,
+      "path": "Weaver",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": "Thread Weaving",
+      "notes": "Uses your chosen Weaving Style.",
+      "options": [
+        {
+          "name": "Gnosis",
+          "effect_text": "Gain extra Threads equal to Tier."
+        },
+        {
+          "name": "Kardia",
+          "effect_text": "Add your spellcasting modifier to vitality healing."
+        },
+        {
+          "name": "Thara",
+          "effect_text": "Add Ambition dice to Cord damage."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Mesmer",
+      "source_kind": "tier_feat",
+      "feature_name": "Warding Visions",
+      "tier": 2,
+      "path": "Spectre",
+      "choice_type": "activation_menu",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_activation",
+      "branches_from_feature": null,
+      "notes": "Collapse a phantasm for one effect.",
+      "options": [
+        {
+          "name": "Barrier",
+          "effect_text": "Reduce incoming damage by 2d6 + spellcasting modifier."
+        },
+        {
+          "name": "Clarification",
+          "effect_text": "End Enraged, Frightened, Stunned, Dazed, or Inert."
+        },
+        {
+          "name": "Rupture",
+          "effect_text": "Your next attack gains +1d12 psychic; if Ambition is used, add your Ambition die too."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Oathbound",
+      "source_kind": "base_feature",
+      "feature_name": "Creed",
+      "tier": null,
+      "path": "Oathbound",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Honor",
+          "effect_text": "Themes: Order, Light, Justice. Anathema: Chaos or Ruin. Boon: smite vs anathema gains +1d8 ether or void."
+        },
+        {
+          "name": "Serenity",
+          "effect_text": "Themes: Nature, Life, Balance, Growth. Anathema: Ruin. Boon: healing gains +1d4."
+        },
+        {
+          "name": "Dominion",
+          "effect_text": "Themes: Knowledge, War, Protection. Anathema: Neutral or Chaos. Boon: gain Martial armament and Medium protection proficiency."
+        },
+        {
+          "name": "Entropy",
+          "effect_text": "Themes: Death, Forbidden, Decay. Anathema: Order. Boon: gain Mortification sphere and +1d4 void/ether on spell damage against damaged targets."
+        },
+        {
+          "name": "Paradox",
+          "effect_text": "Themes: Arcane, Deception, Revelation. Anathema: Order or Neutral. Boon: gain arcane needle and may convert spell damage to arcane."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Oathbound",
+      "source_kind": "tier_feat",
+      "feature_name": "Ascendant Boons",
+      "tier": 1,
+      "path": "Oathbound",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_activation",
+      "branches_from_feature": "Creed",
+      "notes": "Activation Menu / Derived Branch. Based on Creed.",
+      "options": [
+        {
+          "name": "Honor",
+          "effect_text": "Aura lets allies add your Ambition die to checks once per round."
+        },
+        {
+          "name": "Serenity",
+          "effect_text": "Healing splashes 1d4 vitality to a nearby ally, up to Tier uses or targets."
+        },
+        {
+          "name": "Dominion",
+          "effect_text": "Choose a nearby target; attacks and spell attacks against it gain Resolve."
+        },
+        {
+          "name": "Entropy",
+          "effect_text": "When damaging an already-damaged close target, deal +1d4 void or ether."
+        },
+        {
+          "name": "Paradox",
+          "effect_text": "On damaging a target, may impose Strain on its next attack against someone else; critical success expands this."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Oathbound",
+      "source_kind": "tier_feat",
+      "feature_name": "Ardent Retribution",
+      "tier": 1,
+      "path": "Arbiter",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": "Creed",
+      "notes": "Source incomplete. The feat clearly branches by Creed when you cast smite, but the per-Creed effect list is not present in the current text. It still clearly grants upgraded armor proficiency and Decimation access.",
+      "options": []
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Oathbound",
+      "source_kind": "tier_feat",
+      "feature_name": "Covenant\u2019s Herald",
+      "tier": 1,
+      "path": "Herald",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": "Creed",
+      "notes": "Source incomplete. The feat branches by Creed, but the per-Creed emit effects are not present in the current text. It still upgrades the Herald to Full-caster, adds an extra Tier 1 spell, and grants Reclamation access.",
+      "options": []
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Oathbound",
+      "source_kind": "tier_feat",
+      "feature_name": "Aura of Creed",
+      "tier": 2,
+      "path": "Arbiter",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": "Creed",
+      "notes": null,
+      "options": [
+        {
+          "name": "Honor",
+          "effect_text": "Allies gain Resolve vs emotional conditions; enemies suffer Strain to inflict them."
+        },
+        {
+          "name": "Serenity",
+          "effect_text": "Once per turn, split incoming damage between you and an ally."
+        },
+        {
+          "name": "Dominion",
+          "effect_text": "Allies starting their turn in the aura gain a Reduction Pool = 1d4 + Tier."
+        },
+        {
+          "name": "Entropy",
+          "effect_text": "Damaged enemies in the aura may be forced to make a Mind check or their Maneuvers cost +1 AP."
+        },
+        {
+          "name": "Paradox",
+          "effect_text": "Once per turn, reduce an ally\u2019s critical hit to a normal hit and gain Resolve on your next attack."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Oathbound",
+      "source_kind": "tier_feat",
+      "feature_name": "Avowed Nemesis",
+      "tier": 2,
+      "path": "Arbiter",
+      "choice_type": "prepared_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "daily_preparation",
+      "branches_from_feature": "Creed",
+      "notes": "During Daily Preparation choose one Nemesis from your Creed list. Marked Nemesis effects: the target cannot hide from you; you gain Resolve to track, shove, and grapple them; and their Dash/Disengage improves your pursuit economy.",
+      "options": [
+        {
+          "name": "Honor",
+          "effect_text": "Choose one of: Deathless, Mortals, Monstrosities, Occult."
+        },
+        {
+          "name": "Serenity",
+          "effect_text": "Choose one of: Deathless, Forged, Occult, Wyrms."
+        },
+        {
+          "name": "Dominion",
+          "effect_text": "Choose one of: Monstrosities, Primordial, Wildlife, Wyrms."
+        },
+        {
+          "name": "Entropy",
+          "effect_text": "Choose one of: Eidolic, Mortals, Primordial, Wildlife."
+        },
+        {
+          "name": "Paradox",
+          "effect_text": "Choose one of: Eidolic, Forged, Occult, Primordial."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Oathbound",
+      "source_kind": "tier_feat",
+      "feature_name": "Creedbound Magic",
+      "tier": 2,
+      "path": "Herald",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": "Creed",
+      "notes": "Also learn 2 additional spells from the granted sphere.",
+      "options": [
+        {
+          "name": "Honor",
+          "effect_text": "Gain Divination."
+        },
+        {
+          "name": "Serenity",
+          "effect_text": "Gain Reclamation."
+        },
+        {
+          "name": "Dominion",
+          "effect_text": "Gain Decimation."
+        },
+        {
+          "name": "Entropy",
+          "effect_text": "Gain Conjuration."
+        },
+        {
+          "name": "Paradox",
+          "effect_text": "Gain Augmentation."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Oathbound",
+      "source_kind": "tier_feat",
+      "feature_name": "Hand of the Oath",
+      "tier": 2,
+      "path": "Herald",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": "Creed",
+      "notes": null,
+      "options": [
+        {
+          "name": "Honor",
+          "effect_text": "Gain Guidance as a touch cantrip, once per hour per target."
+        },
+        {
+          "name": "Serenity",
+          "effect_text": "Gain Healing Word as a touch cantrip, once per hour per target."
+        },
+        {
+          "name": "Dominion",
+          "effect_text": "Gain Turn the Heretic as an engagement-sized burst cantrip; success grants temporary immunity."
+        },
+        {
+          "name": "Entropy",
+          "effect_text": "Gain Grave Touch as a touch cantrip."
+        },
+        {
+          "name": "Paradox",
+          "effect_text": "Gain Torment as a touch cantrip."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Oathbound",
+      "source_kind": "tier_feat",
+      "feature_name": "Greater Covenant",
+      "tier": 3,
+      "path": "Herald",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": "Ascendant Boons",
+      "notes": "Gain another Ascendant Boon from another Creed. You do not gain the other Creed\u2019s full benefits, only its Ascendant Boon.",
+      "options": [
+        {
+          "name": "Honor",
+          "effect_text": "Aura lets allies add your Ambition die to checks once per round."
+        },
+        {
+          "name": "Serenity",
+          "effect_text": "Healing splashes 1d4 vitality to a nearby ally, up to Tier uses or targets."
+        },
+        {
+          "name": "Dominion",
+          "effect_text": "Choose a nearby target; attacks and spell attacks against it gain Resolve."
+        },
+        {
+          "name": "Entropy",
+          "effect_text": "When damaging an already-damaged close target, deal +1d4 void or ether."
+        },
+        {
+          "name": "Paradox",
+          "effect_text": "On damaging a target, may impose Strain on its next attack against someone else; critical success expands this."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Warden",
+      "source_kind": "base_feature",
+      "feature_name": "Warden Order",
+      "tier": null,
+      "path": "Warden",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Aegis",
+          "effect_text": "While using a shield, add Armor bonus to Body and Mind defense."
+        },
+        {
+          "name": "Inquisition",
+          "effect_text": "You gain *Expertise* in **1 Tool Kit** and **1 Skill of Choice; gain Resolve on Scan and Intuition/Awareness checks involving Mortals.",
+          "follow_up": {
+            "count": 1,
+            "pool": "vitals_skills",
+            "grants_expertise": true,
+            "bump_count": 1
+          }
+        },
+        {
+          "name": "Severance",
+          "effect_text": "Gain +Tier to attack and damage vs Magical targets; on a critical hit, the target\u2019s next Cast a Spell has Strain."
+        },
+        {
+          "name": "Thorns",
+          "effect_text": "Once per turn when a target in engagement uses Disengage, attack with Bound Armament; on hit deal damage equal to spellcasting modifier and prevent Dash until end of your next turn."
+        },
+        {
+          "name": "Veil",
+          "effect_text": "Learn Protection from the Inhuman; gain Resolve on Scan and Intuition/Awareness involving Eidolic or Occult."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Warden",
+      "source_kind": "tier_feat",
+      "feature_name": "Sphere of Influence",
+      "tier": 1,
+      "path": "Watcher",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Aberration",
+          "effect_text": "Gain Resonant Distortion."
+        },
+        {
+          "name": "Augmentation",
+          "effect_text": "Gain Fleet Footing."
+        },
+        {
+          "name": "Conjuration",
+          "effect_text": "Gain Imbue with Elements."
+        },
+        {
+          "name": "Decimation",
+          "effect_text": "Gain Seeking Bolt."
+        },
+        {
+          "name": "Divination",
+          "effect_text": "Gain Detect the Inhumane."
+        },
+        {
+          "name": "Mortification",
+          "effect_text": "Gain Torment."
+        },
+        {
+          "name": "Reclamation",
+          "effect_text": "Gain Healing Word."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Warden",
+      "source_kind": "tier_feat",
+      "feature_name": "Watcher\u2019s Gaze",
+      "tier": 1,
+      "path": "Watcher",
+      "choice_type": "activation_menu",
+      "selection_rule": "fixed_count",
+      "min_choices": 2,
+      "max_choices": 2,
+      "selection_timing": "on_activation",
+      "branches_from_feature": null,
+      "notes": "Choose 2 pieces of information about a target.",
+      "options": [
+        {
+          "name": "Resistance",
+          "effect_text": "Learn the target\u2019s resistance."
+        },
+        {
+          "name": "Immunity",
+          "effect_text": "Learn the target\u2019s immunity."
+        },
+        {
+          "name": "Weakness",
+          "effect_text": "Learn the target\u2019s weakness."
+        },
+        {
+          "name": "Weakest Defense",
+          "effect_text": "Learn the target\u2019s weakest defense."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Warden",
+      "source_kind": "tier_feat",
+      "feature_name": "Mystic Armament",
+      "tier": 2,
+      "path": "Vanguard",
+      "choice_type": "derived_branch",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "derived",
+      "branches_from_feature": null,
+      "notes": "Based on bound armament damage type.",
+      "options": [
+        {
+          "name": "Slashing",
+          "effect_text": "May target Body; a critical hit inflicts burning equal to Tier, but as arcane."
+        },
+        {
+          "name": "Piercing",
+          "effect_text": "May target Mind; a critical hit lowers armor by Tier against the next attack."
+        },
+        {
+          "name": "Bludgeoning",
+          "effect_text": "May target Will; a critical hit applies an attack-roll penalty equal to Tier until end of the target\u2019s turn."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Warden",
+      "source_kind": "tier_feat",
+      "feature_name": "Remnant Warrior",
+      "tier": 2,
+      "path": "Vanguard",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Choose one remnant to learn.",
+      "options": [
+        {
+          "name": "Chaotic",
+          "effect_text": "Reroll 1s on attack and skill rolls once while below half vitality or wounds."
+        },
+        {
+          "name": "Disruption",
+          "effect_text": "Once per target, hitting a spellcaster gives their next spell attack Strain."
+        },
+        {
+          "name": "Dissipation",
+          "effect_text": "Once per rest, attempt to collapse an incoming spell of equal or lower Tier."
+        },
+        {
+          "name": "Glint",
+          "effect_text": "Once per respite reduce damage by 1d12 and teleport 1 zone away."
+        },
+        {
+          "name": "Prism",
+          "effect_text": "Once per respite, elemental damage grants matching resistance and empowers your next attack with 2d4 of that element."
+        },
+        {
+          "name": "Phoenix",
+          "effect_text": "Once per day, when taking damage that would also cause Wounds, reduce that damage to 0 and remain at 1 vitality."
+        }
+      ]
+    },
+    {
+      "entity_type": "origin",
+      "entity_name": "Chosen",
+      "source_kind": "tier_feat",
+      "feature_name": "Adept Learner",
+      "tier": 1,
+      "path": null,
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Choose one proficiency group.",
+      "options": [
+        {
+          "name": "V.I.T.A.L.S",
+          "effect_text": "Gain one proficiency from the V.I.T.A.L.S. skill list."
+        },
+        {
+          "name": "Tools",
+          "effect_text": "Gain one tool proficiency."
+        }
+      ]
+    },
+    {
+      "entity_type": "origin",
+      "entity_name": "Chosen",
+      "source_kind": "tier_feat",
+      "feature_name": "Sign of Fate",
+      "tier": 1,
+      "path": null,
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Warrior",
+          "effect_text": "+1 Armor Defense while wearing armor."
+        },
+        {
+          "name": "Mother",
+          "effect_text": "+1 success on Medicine checks."
+        },
+        {
+          "name": "Trickster",
+          "effect_text": "+1 success on Stealth checks."
+        },
+        {
+          "name": "Lord",
+          "effect_text": "+1 Will."
+        },
+        {
+          "name": "Magi",
+          "effect_text": "+1 Mind."
+        }
+      ]
+    },
+    {
+      "entity_type": "origin",
+      "entity_name": "Farmhand",
+      "source_kind": "tier_feat",
+      "feature_name": "Nature\u2019s Companion",
+      "tier": 1,
+      "path": null,
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": null,
+      "options": [
+        {
+          "name": "Tracker",
+          "effect_text": "Attack: 1d6 Puncture. Special: gain Resolve on Lore (Nature) and Intuition checks to track or identify wildlife."
+        },
+        {
+          "name": "Prowler",
+          "effect_text": "Attack: 1d6 Slash. Special: gain Resolve on Stealth; enemies have Strain to detect it in dim light or foliage."
+        },
+        {
+          "name": "Guardian",
+          "effect_text": "Attack: 1d6 Blunt. Special: while in the same engagement you gain +1 Armor Defense; companion can Distract for 1 AP once per turn."
+        },
+        {
+          "name": "Burrower",
+          "effect_text": "Attack: 1d6 Blunt. Special: ignores difficult terrain and grants Resolve on finding natural hazards or hidden burrows."
+        }
+      ]
+    },
+    {
+      "entity_type": "origin",
+      "entity_name": "Nobility",
+      "source_kind": "tier_feat",
+      "feature_name": "Adept Learner",
+      "tier": 1,
+      "path": null,
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Choose one proficiency group.",
+      "options": [
+        {
+          "name": "V.I.T.A.L.S",
+          "effect_text": "Gain one proficiency from the V.I.T.A.L.S. skill list."
+        },
+        {
+          "name": "Tools",
+          "effect_text": "Gain one tool proficiency."
+        }
+      ]
+    },
+    {
+      "entity_type": "origin",
+      "entity_name": "Nomad",
+      "source_kind": "tier_feat",
+      "feature_name": "Nature\u2019s Companion",
+      "tier": 1,
+      "path": null,
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Same four companion traits as Farmhand.",
+      "options": [
+        {
+          "name": "Tracker",
+          "effect_text": "Attack: 1d6 Puncture. Special: gain Resolve on Lore (Nature) and Intuition checks to track or identify wildlife."
+        },
+        {
+          "name": "Prowler",
+          "effect_text": "Attack: 1d6 Slash. Special: gain Resolve on Stealth; enemies have Strain to detect it in dim light or foliage."
+        },
+        {
+          "name": "Guardian",
+          "effect_text": "Attack: 1d6 Blunt. Special: while in the same engagement you gain +1 Armor Defense; companion can Distract for 1 AP once per turn."
+        },
+        {
+          "name": "Burrower",
+          "effect_text": "Attack: 1d6 Blunt. Special: ignores difficult terrain and grants Resolve on finding natural hazards or hidden burrows."
+        }
+      ]
+    },
+    {
+      "entity_type": "origin",
+      "entity_name": "Soldier",
+      "source_kind": "tier_feat",
+      "feature_name": "Battle Maneuvers",
+      "tier": 1,
+      "path": null,
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": "Signature School",
+      "notes": "Gain one Fighter maneuver from the Fighter Signature School list, usable once per respite.",
+      "options": [
+        {
+          "name": "Defender",
+          "effect_text": "Make one Weapon Strike after a Weapon Strike."
+        },
+        {
+          "name": "Dueler",
+          "effect_text": "Make two attacks at half damage."
+        },
+        {
+          "name": "Enforcer",
+          "effect_text": "All engaged enemies make a Body check or fall Prone."
+        },
+        {
+          "name": "Lancer",
+          "effect_text": "Attempt Grapple at Close."
+        },
+        {
+          "name": "Ranger",
+          "effect_text": "Make two ranged attacks on an undamaged target."
+        },
+        {
+          "name": "Slayer",
+          "effect_text": "Your next attack deals +1 damage die per Tier."
+        }
+      ]
+    },
+    {
+      "entity_type": "origin",
+      "entity_name": "Soldier",
+      "source_kind": "tier_feat",
+      "feature_name": "Seasoned Infantry",
+      "tier": 2,
+      "path": null,
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Choose a weapon type (short sword, spear, dagger, etc.); gain proficiency with it and +1 to attacks and damage. Options are dynamic and not fully enumerated in the source excerpt.",
+      "options": []
+    },
+    {
+      "entity_type": "origin",
+      "entity_name": "Forbidden / Magic Initiate",
+      "source_kind": "secondary_menu",
+      "feature_name": "Dark Boon",
+      "tier": null,
+      "path": null,
+      "choice_type": "activation_menu",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_activation",
+      "branches_from_feature": null,
+      "notes": "Flagged as a secondary menu rather than a primary sub-feat pick.",
+      "options": [
+        {
+          "name": "Resistance",
+          "effect_text": "Gain resistance to the next damage for 1 minute."
+        },
+        {
+          "name": "Will Surge",
+          "effect_text": "Add Will to an attack or damage roll."
+        },
+        {
+          "name": "Ambition Surge",
+          "effect_text": "Add Ambition to any roll with no failure penalty."
+        }
+      ]
+    },
+    {
+      "entity_type": "origin",
+      "entity_name": "Socialite / Nobility",
+      "source_kind": "secondary_menu",
+      "feature_name": "Demoralize",
+      "tier": null,
+      "path": null,
+      "choice_type": "activation_menu",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_activation",
+      "branches_from_feature": null,
+      "notes": "Flagged as a secondary menu rather than a primary sub-feat pick. The selectable outcomes are gated by result tier: on success choose Dazed or Compelled; on critical success choose Enraged or Frightened.",
+      "options": [
+        {
+          "name": "Dazed",
+          "effect_text": "On success, choose Dazed."
+        },
+        {
+          "name": "Compelled",
+          "effect_text": "On success, choose Compelled."
+        },
+        {
+          "name": "Enraged",
+          "effect_text": "On critical success, choose Enraged."
+        },
+        {
+          "name": "Frightened",
+          "effect_text": "On critical success, choose Frightened."
+        }
+      ]
+    },
+    {
+      "entity_type": "origin",
+      "entity_name": "Acolyte",
+      "source_kind": "secondary_menu",
+      "feature_name": "Mantle of Reverence",
+      "tier": null,
+      "path": null,
+      "choice_type": "activation_menu",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_activation",
+      "branches_from_feature": null,
+      "notes": "Flagged as a secondary menu rather than a primary sub-feat pick.",
+      "options": [
+        {
+          "name": "Offense Aura",
+          "effect_text": "+2 to all Attack Rolls."
+        },
+        {
+          "name": "Defense Aura",
+          "effect_text": "+2 to all Stat Defense."
+        },
+        {
+          "name": "Insight Aura",
+          "effect_text": "Gain Resolve on Intuition and Social checks."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Agent",
+      "source_kind": "tier_feat",
+      "feature_name": "Skill Expert",
+      "tier": 1,
+      "path": "Agent",
+      "choice_type": "permanent_choice",
+      "selection_rule": "fixed_count",
+      "min_choices": 2,
+      "max_choices": 2,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Choose 2 VITALS skills to gain Expertise in.",
+      "grants_expertise": true,
+      "options": [
+        {
+          "name": "Vigor",
+          "effect_text": "Gain Expertise in Vigor."
+        },
+        {
+          "name": "Intuition",
+          "effect_text": "Gain Expertise in Intuition."
+        },
+        {
+          "name": "Talent",
+          "effect_text": "Gain Expertise in Talent."
+        },
+        {
+          "name": "Awareness",
+          "effect_text": "Gain Expertise in Awareness."
+        },
+        {
+          "name": "Lore",
+          "effect_text": "Gain Expertise in Lore."
+        },
+        {
+          "name": "Social",
+          "effect_text": "Gain Expertise in Social."
+        }
+      ]
+    },
+    {
+      "entity_type": "profession",
+      "entity_name": "Agent",
+      "source_kind": "tier_feat",
+      "feature_name": "Masterful Skill",
+      "tier": 3,
+      "path": "Agent",
+      "choice_type": "permanent_choice",
+      "selection_rule": "single",
+      "min_choices": 1,
+      "max_choices": 1,
+      "selection_timing": "on_gain",
+      "branches_from_feature": null,
+      "notes": "Pick mode first; follow-up picks the skill(s).",
+      "options": [
+        {
+          "name": "Double Rank (1 skill)",
+          "effect_text": "Choose 1 VITALS skill and gain 2 Expertise ranks in it.",
+          "follow_up": {
+            "count": 1,
+            "pool": "vitals_skills",
+            "grants_expertise": true,
+            "bump_count": 2
+          }
+        },
+        {
+          "name": "Split Rank (2 skills)",
+          "effect_text": "Choose 2 VITALS skills and gain 1 Expertise rank in each.",
+          "follow_up": {
+            "count": 2,
+            "pool": "vitals_skills",
+            "grants_expertise": true,
+            "bump_count": 1
+          }
+        }
+      ]
+    }
+  ]
+}

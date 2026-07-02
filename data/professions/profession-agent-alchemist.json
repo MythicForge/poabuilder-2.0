@@ -1,0 +1,194 @@
+{
+  "id": "alchemist",
+  "name": "Alchemist",
+  "profession": "agent",
+  "description": "Agents who follow the Path of the Alchemist master the creation and application of potions, poisons, and alchemical concoctions to gain advantages in and out of combat.",
+  "feats": [
+    {
+      "id": "concoction_kit",
+      "name": "Concoction Kit",
+      "tags": ["Agent", "Alchemist"],
+      "path": "alchemist",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "alchemist", "count": 0 } },
+      "description": "Gain proficiency with Alchemy Tool Kits. At Daily Preparation or during a respite, create concoctions up to a total of Mind + Tier. Concoctions remain usable until your next Daily Preparation.",
+      "boons": [
+        { "type": "proficiency", "category": "tool", "value": "Alchemy" },
+        {
+          "type": "crafting_pool",
+          "id": "concoction_kit",
+          "budget": "Mind + Tier",
+          "craft_during": ["daily_preparation", "respite"],
+          "expires": "next_daily_preparation",
+          "recipes": [
+            { "id": "minor_healing_salve", "name": "Minor Healing Salve", "boons": [{ "type": "heal", "formula": "1d4 + Mind", "target": "any", "temporary": false }] },
+            { "id": "panacea", "name": "Panacea", "boons": [{ "type": "cure_condition", "choose_at_brew": ["PSN", "SAP", "DAZ"] }] },
+            { "id": "smokescreen", "name": "Smokescreen", "boons": [{ "type": "zone_effect", "effects": ["half_cover", "dim_light"], "range": "zone", "duration": "1d6 rounds" }] },
+            { "id": "minor_poison_oil", "name": "Minor Poison Oil", "boons": [{ "type": "damage_bonus", "formula": "1d4 + Mind", "damage_type": "Poison", "application": "applied_to_weapon_or_thrown" }] }
+          ],
+          "note": "Craftable-item subsystem — niche; tracked as item counts. See rule-check.md."
+        }
+      ]
+    },
+    {
+      "id": "ease_of_use",
+      "name": "Ease of Use",
+      "tags": ["Agent", "Alchemist"],
+      "path": "alchemist",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": { "count": 1, "recharge": "turn" },
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "alchemist", "count": 0 } },
+      "description": "Once per turn, when using an Alchemical Item, reduce its AP cost by 1.",
+      "boons": []
+    },
+    {
+      "id": "potent_pain",
+      "name": "Potent Pain",
+      "tags": ["Agent", "Alchemist"],
+      "path": "alchemist",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["concoction_kit"], "path_investment": { "path": "alchemist", "count": 0 } },
+      "description": "When you deal damage with Poison or Salves, increase the dice size by one step.",
+      "boons": []
+    },
+    {
+      "id": "ambitious_hands",
+      "name": "Ambitious Hands",
+      "tags": ["Agent", "Alchemist"],
+      "path": "alchemist",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "alchemist", "count": 2 } },
+      "description": "When using Alchemical items, you may expend 1 Ambition to add your Ambition die to damage or healing rolls.",
+      "boons": []
+    },
+    {
+      "id": "explosive_workings",
+      "name": "Explosive Workings",
+      "tags": ["Agent", "Alchemist"],
+      "path": "alchemist",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["concoction_kit"], "path_investment": { "path": "alchemist", "count": 1 } },
+      "description": "At Daily Preparation, you can create deadlier alchemical creations in addition to your Concoction Kit. (Source: targets Body — encoded as Fortitude; verify.)",
+      "boons": [
+        {
+          "type": "crafting_pool_extend",
+          "target_pool": "concoction_kit",
+          "recipes": [
+            { "id": "flashbang", "name": "Flashbang", "boons": [{ "type": "attack_option", "targets_defense": "Fortitude" }, { "type": "apply_condition", "condition_id": "BLN", "target": "enemy", "duration": "1d4 rounds", "stacks": null }] },
+            { "id": "fragmented", "name": "Fragmented", "boons": [{ "type": "attack_option", "targets_defense": "Fortitude", "range": "Engagement" }, { "type": "damage_bonus", "formula": "2d4", "damage_type": "Puncture" }, { "type": "damage_bonus", "formula": "2d4", "damage_type": "Fire" }] },
+            { "id": "experimental", "name": "Experimental", "boons": [{ "type": "attack_option", "targets_defense": "Armor" }, { "type": "damage_bonus", "formula": "3d6", "damage_type_ref": { "source": "random_d6", "table": "experimental_damage_type" } }], "tables": { "experimental_damage_type": { "1": "Fire", "2": "Ice", "3": "Electric", "4": "Poison", "5": "Corrosive", "6": "Arcane" } } }
+          ],
+          "note": "Source 'Frost' -> Ice per damage-type registry. See rule-check.md."
+        }
+      ]
+    },
+    {
+      "id": "unstable_pressure",
+      "name": "Unstable Pressure",
+      "tags": ["Agent", "Alchemist"],
+      "path": "alchemist",
+      "tier": 2,
+      "trait": "Maneuver",
+      "slot_type": "tactical",
+      "cost": { "resources": [{ "id": "ambition", "amount": 2 }] },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "alchemist", "count": 3 } },
+      "description": "Expend Ambition to craft an item from your Concoction Kit on the spot. If not used by the end of your next turn, the unstable fusion explodes, dealing 3d6 Corrosive damage in a burst of Self range.",
+      "boons": [
+        { "type": "craft_on_the_fly", "from_pool": "concoction_kit", "count": 1 }
+      ]
+    },
+    {
+      "id": "master_alchemist",
+      "name": "Master Alchemist",
+      "tags": ["Agent", "Alchemist"],
+      "path": "alchemist",
+      "tier": 3,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": ["concoction_kit", "explosive_workings"],
+      "description": "You may create any of your concoctions on the fly in combat using the Alchemical Item action. These do not count toward your Daily Preparation budget and become unusable after combat ends. (Source prerequisite reads 'Steady Hands' — no such feat; encoded as concoction_kit pending confirmation — see rule-check.md.)",
+      "boons": [
+        { "type": "craft_on_the_fly", "from_pool": "concoction_kit", "count": "any", "in_combat": true, "expires": "end_of_combat", "counts_against_budget": false }
+      ]
+    },
+    {
+      "id": "alchemical_overload",
+      "name": "Alchemical Overload",
+      "tags": ["Agent", "Alchemist"],
+      "path": "alchemist",
+      "tier": 3,
+      "trait": "Offensive",
+      "slot_type": "tactical",
+      "cost": { "ap": 3 },
+      "range": "Zone",
+      "duration": null,
+      "uses": { "count": 1, "recharge": "respite" },
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "alchemist", "count": 3 } },
+      "description": "Make a ranged attack roll using Mind, releasing a devastating mixture of two combined concoctions from your Concoction Kit. All targets within the zone take the effects of both concoctions, resolved in the order you declare.",
+      "boons": []
+    },
+    {
+      "id": "catalyst_conversion",
+      "name": "Catalyst Conversion",
+      "tags": ["Agent", "Alchemist"],
+      "path": "alchemist",
+      "tier": 3,
+      "trait": "Narrative",
+      "slot_type": "narrative",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": { "count": 1, "recharge": "turn" },
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "alchemist", "count": 4 } },
+      "description": "Once per turn, convert an Alchemical item from your Concoction Kit into another item from your list.",
+      "boons": [
+        { "type": "convert_item", "from_pool": "concoction_kit", "note": "Swap one prepared concoction for another recipe." }
+      ]
+    }
+  ]
+}

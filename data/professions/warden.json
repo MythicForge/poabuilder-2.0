@@ -1,0 +1,246 @@
+{
+  "id": "warden",
+  "name": "Warden",
+  "description": "Warriors who study magic to counter its dangers — mage hunters and neutralizers who blend martial skill with arcane knowledge. They disrupt enemy casters and shield allies from magical effects. Half-caster. Paths are the Watcher and the Vanguard.",
+  "favored_attributes": ["Mind", "Brawn"],
+  "vitality": {
+    "base": "9 + Brawn",
+    "per_tier": "2d10",
+    "brawn_bonus": { "dice": "1d6", "threshold": 5, "attribute": "Brawn" }
+  },
+  "wound_threshold_per_tier": 2,
+  "proficiencies": {
+    "skills": { "type": "choice", "count": 2, "from": ["Vigor", "Intuition", "Talent", "Awareness"] },
+    "armaments": ["Catalysts", "Simple", "Finesse"],
+    "protection": ["Light", "Medium"],
+    "tools": { "type": "choice", "count": 1, "from": ["Medicine", "Scouting"] }
+  },
+  "starting_pack": {
+    "weapons": ["simple_melee_choice", "arcane_implement"],
+    "armor": ["light_armor", "shield"],
+    "kits": [],
+    "inventory": ["magic_dampening_shackles", "spell_detection_amulet", "warding_chalk", "anti_magic_vials_2"],
+    "currency": { "gold": 15 }
+  },
+  "resources": [
+    {
+      "id": "mana",
+      "name": "Reservoir",
+      "max": "(1 * Tier) + Mind",
+      "note": "Half-caster reservoir. Source = Mana, Spellcasting Modifier = Mind.",
+      "recovery": {
+        "respite": { "formula": "Mind", "minimum": 3 }
+      }
+    }
+  ],
+  "paths": [
+    { "id": "watcher",  "name": "Watcher" },
+    { "id": "vanguard", "name": "Vanguard" }
+  ],
+  "feats": [
+    {
+      "id": "spell_scourge",
+      "name": "Spell Scourge",
+      "tags": ["Warden"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Attacks from spells or magical effects against you suffer a -2 penalty. Applies to spell attacks, magical weapon attacks, and magical trap effects.",
+      "boons": []
+    },
+    {
+      "id": "bound_armament",
+      "name": "Bound Armament",
+      "tags": ["Warden"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "At daily preparation, bind one weapon to your arcane will. The bound weapon uses your Spellcasting Modifier (Mind) for attack and damage, gains the spell catalyst trait, and you are proficient with it while bound. Only one weapon may be bound at a time; binding another ends the previous binding.",
+      "boons": [
+        {
+          "type": "bind_weapon",
+          "select_during": "daily_preparation",
+          "max_bound": 1,
+          "grants": {
+            "attack_modifier": "Mind",
+            "damage_modifier": "Mind",
+            "traits": ["spell_catalyst"],
+            "proficient": true
+          },
+          "note": "New boon type — see rule-check.md. Referenced by Vanguard feats and Mercenary Manuscripts."
+        }
+      ]
+    },
+    {
+      "id": "warden_order",
+      "name": "Warden Order",
+      "tags": ["Warden"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Choose a Warden Order and gain its boon.",
+      "boons": [
+        {
+          "type": "choice",
+          "key": "warden_order",
+          "prompt": "Choose your Warden Order",
+          "options": [
+            {
+              "value": "aegis",
+              "label": "Aegis",
+              "description": "While using a Shield, add its Armor bonus to your Fortitude and Mental defenses. (Source: Body and Mind defense — encoded Fortitude/Mental; verify.)",
+              "grants": {
+                "boons": [
+                  { "type": "stat_bonus", "stat": "Fortitude", "amount": "shield_armor_bonus", "target": "self", "condition": "using_shield" },
+                  { "type": "stat_bonus", "stat": "Mental",    "amount": "shield_armor_bonus", "target": "self", "condition": "using_shield" }
+                ]
+              }
+            },
+            {
+              "value": "inquisition",
+              "label": "Inquisition",
+              "description": "Gain an additional Tool and V.I.T.A.L.S. proficiency. Roll with Resolve on the Scan action and on Intuition or Awareness checks involving Mortals.",
+              "grants": {
+                "boons": [
+                  { "type": "proficiency", "category": "tool", "value": "one_of_choice" },
+                  { "type": "proficiency", "category": "skill", "value": "one_of_choice" }
+                ]
+              }
+            },
+            {
+              "value": "severance",
+              "label": "Severance",
+              "description": "+Tier to attack and damage vs Magical targets. On a critical hit, the target's next Cast a Spell is made with Strain until the end of your next turn.",
+              "grants": {
+                "boons": []
+              }
+            },
+            {
+              "value": "thorns",
+              "label": "Thorns",
+              "description": "Once per turn, when a target in your Engagement uses Disengage, make an attack roll with your Bound Armament. On hit, the target takes damage equal to your Spellcasting Modifier and cannot use Dash until the end of your next turn.",
+              "grants": {
+                "boons": []
+              }
+            },
+            {
+              "value": "veil",
+              "label": "Veil",
+              "description": "Learn the spell Protection from the Inhuman. Roll with Resolve on the Scan action and on Intuition or Awareness checks involving Eidolic or Occult creatures.",
+              "grants": {
+                "boons": [
+                  { "type": "grants_known_spells", "spell_ids": ["protection_from_the_inhuman"], "counts_against_known": false }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spellcasting",
+      "name": "Spellcasting",
+      "tags": ["Warden", "Spellcasting"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": "10 + SpellTier + Mind",
+      "prerequisites": [],
+      "description": "You can cast spells. Half-caster; source is Mana; modifier is Mind. Reservoir = (1 × Tier) + Mind. Prepared spells = Mind. Spell DC = 10 + Spell Tier + Mind. Each Respite restores Mind reservoir (minimum 3). Gain three cantrips from the list. Known spells are gained via Spheres (Sphere of Influence, Warden Order: Veil).",
+      "boons": [
+        {
+          "type": "grants_spellcasting",
+          "caster_type": "limited",
+          "source": "mana",
+          "modifier": "Mind",
+          "known_spells": { "start": 0, "tier": 1, "note": "Warden gains known spells through Spheres, not a flat starting count." },
+          "prepared_spells": "Mind",
+          "spell_dc": "10 + SpellTier + Mind",
+          "cantrips": {
+            "max": 3,
+            "from": ["apprentices_artifice", "mana_dart", "swift_scribe", "system_shock"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "arcane_shelter",
+      "name": "Arcane Shelter",
+      "tags": ["Warden"],
+      "path": null,
+      "tier": 1,
+      "trait": "Trigger",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": { "count": 1, "recharge": "turn" },
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You have innate resistance to Magical damage. Once per turn, when you take damage of a Magical type, you have Resistance to that damage.",
+      "boons": [
+        {
+          "type": "conditional_effect",
+          "trigger": "on_damage_taken",
+          "condition": "magical_damage",
+          "uses": { "count": 1, "recharge": "turn" },
+          "effect": { "type": "resistance", "damage_type": "triggering_attack", "condition": "magical" }
+        }
+      ]
+    },
+    {
+      "id": "volatile_shielding",
+      "name": "Volatile Shielding",
+      "tags": ["Warden"],
+      "path": null,
+      "tier": 2,
+      "trait": "Trigger",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": { "count": 1, "recharge": "respite" },
+      "feat_dc": null,
+      "prerequisites": ["arcane_shelter"],
+      "description": "When you resist damage from Arcane Shelter, gain a temporary arcane ward: a Reduction Pool equal to (Tier × 2) + 2d6. When this ward is destroyed, it explodes, dealing 2d6 Arcane damage within Self range.",
+      "boons": [
+        {
+          "type": "conditional_effect",
+          "trigger": "arcane_shelter_resisted",
+          "effect": {
+            "type": "reduction_pool",
+            "formula": "(Tier * 2) + 2d6",
+            "charges": null,
+            "target": "self"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,440 @@
+{
+  "id": "elementalist",
+  "name": "Elementalist",
+  "description": "Born with the potential to master the elements bending them to your will. The Elementalist fights with martial prowess mixed with mastery over the elements, filling roles as front-liner, support, or controller.",
+  "favored_attributes": ["Will", "Finesse"],
+  "vitality": {
+    "base": "10 + Brawn",
+    "per_tier": "2d10",
+    "brawn_bonus": { "dice": "1d6", "threshold": 5, "attribute": "Brawn" }
+  },
+  "wound_threshold_per_tier": 1,
+  "proficiencies": {
+    "skills": { "type": "choice", "count": 1, "from": ["Talent", "Awareness", "Lore"] },
+    "armaments": ["Simple", "Unarmed"],
+    "protection": ["Light"],
+    "tools": ["Alchemy", "Outrider"]
+  },
+  "starting_pack": {
+    "weapons": ["simple_melee", "simple_melee"],
+    "armor": ["light_armor"],
+    "kits": ["survival_kit"],
+    "inventory": ["nature_press_kit", "waterskin", "weather_cloak"],
+    "currency": { "gold": 7 }
+  },
+  "resources": [
+    {
+      "id": "energy",
+      "name": "Energy",
+      "max": "Will + Tier",
+      "recovery": {
+        "respite": 3,
+        "long_rest": 9
+      },
+      "triggers": []
+    }
+  ],
+  "paths": [
+    { "id": "kineticist", "name": "Kineticist" },
+    { "id": "conduit",    "name": "Conduit" }
+  ],
+  "feats": [
+    {
+      "id": "font_of_energy",
+      "name": "Font of Energy",
+      "tags": ["Elementalist"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You maintain an inner reservoir of elemental power, gaining the Energy resource pool consumed to activate Elementalist feats.",
+      "boons": [
+        { "type": "grants_resource", "resource_id": "energy" }
+      ]
+    },
+    {
+      "id": "elemental_core",
+      "name": "Elemental Core",
+      "tags": ["Elementalist"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You dedicate your soul to mastering a singular focal point of the natural world. Select one Elemental Core; this choice governs your elemental manipulation. You may only choose one Core.",
+      "boons": [
+        {
+          "type": "choice",
+          "key": "elemental_core",
+          "prompt": "Select one Elemental Core",
+          "options": [
+            { "value": "flame",   "label": "Flame",   "grants": { "disciplines": ["Fire", "Spirit"] } },
+            { "value": "forest",  "label": "Forest",  "grants": { "disciplines": ["Wood", "Vitality"] } },
+            { "value": "land",    "label": "Land",    "grants": { "disciplines": ["Stone", "Metal"] } },
+            { "value": "ocean",   "label": "Ocean",   "grants": { "disciplines": ["Water", "Ice"] } },
+            { "value": "sky",     "label": "Sky",     "grants": { "disciplines": ["Air", "Gravity"] } },
+            { "value": "tempest", "label": "Tempest", "grants": { "disciplines": ["Electric", "Light"] } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primordial_strike",
+      "name": "Primordial Strike",
+      "tags": ["Elementalist"],
+      "path": null,
+      "tier": 0,
+      "trait": "Offensive",
+      "slot_type": null,
+      "cost": { "ap": 2 },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You turn your hands into weapons of the Elements. Unarmed attacks and a Close ranged attack both deal your core damage type + Will. Dice size increases each tier.",
+      "boons": [
+        {
+          "type": "attack_option",
+          "attack_type": "unarmed",
+          "damage_modifier": "Will",
+          "damage_type_ref": { "source": "table", "table": "core_damage_type", "key": "elemental_core" },
+          "targets_defense": "Armor",
+          "range": null,
+          "tier_scaling": [
+            { "tier": 1, "dice": "1d6" },
+            { "tier": 2, "dice": "1d8" },
+            { "tier": 3, "dice": "1d10" },
+            { "tier": 4, "dice": "1d12" },
+            { "tier": 5, "dice": "2d8" }
+          ]
+        },
+        {
+          "type": "attack_option",
+          "attack_type": "ranged",
+          "damage_modifier": "Will",
+          "damage_type_ref": { "source": "table", "table": "core_damage_type", "key": "elemental_core" },
+          "targets_defense": "Armor",
+          "range": "Close",
+          "tier_scaling": [
+            { "tier": 1, "dice": "1d6" },
+            { "tier": 2, "dice": "1d6" },
+            { "tier": 3, "dice": "1d8" },
+            { "tier": 4, "dice": "1d10" },
+            { "tier": 5, "dice": "1d12" }
+          ]
+        }
+      ],
+      "tables": {
+        "core_damage_type": {
+          "flame":   "Fire",
+          "forest":  "Corrosive",
+          "land":    "Blunt",
+          "ocean":   "Ice",
+          "sky":     "Slash",
+          "tempest": "Electric"
+        }
+      }
+    },
+    {
+      "id": "elemental_arts",
+      "name": "Elemental Arts",
+      "tags": ["Elementalist"],
+      "path": null,
+      "tier": 0,
+      "trait": "Maneuver",
+      "slot_type": null,
+      "cost": { "ap": 1 },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": "10 + Will + Tier",
+      "prerequisites": [],
+      "description": "Based on your Elemental Core you gain two Elemental Arts that consume Energy. All Arts use Will for attack rolls. Total cost to activate an Art is 1 AP + the Art's Energy cost.",
+      "boons": [
+        {
+          "type": "grants_arts",
+          "attack_modifier": "Will",
+          "by_core": {
+            "flame": [
+              {
+                "id": "flame_jet",
+                "name": "Flame Jet",
+                "cost": { "resources": [{ "id": "energy", "amount": 1 }] },
+                "range": null,
+                "condition": "not_engaged",
+                "description": "Gain Dash and stride up to a target one zone away. Your next attack to hit deals additional Fire equal to Will.",
+                "boons": [
+                  { "type": "resolve_on", "context": "Dash" },
+                  { "type": "damage_bonus", "formula": "Will", "damage_type": "Fire", "trigger": "on_next_hit" }
+                ]
+              },
+              {
+                "id": "aura_read",
+                "name": "Aura Read",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": null,
+                "condition": "must_be_engaged",
+                "description": "Engaged enemies have Strain to hit you until the start of your next turn.",
+                "boons": [
+                  { "type": "strain_on", "context": "attacks_against_you", "target": "engaged_enemies", "duration": "until_next_turn_start" }
+                ]
+              }
+            ],
+            "forest": [
+              {
+                "id": "leeching_seed",
+                "name": "Leeching Seed",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": "Close",
+                "condition": null,
+                "description": "Ranged attack vs Fortitude. On hit, the next time that target takes damage, you or an ally within Close restore Vitality equal to Will + Tier.",
+                "boons": [
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "on_hit",
+                    "effect": {
+                      "type": "heal",
+                      "formula": "Will + Tier",
+                      "target": "self_or_ally_close",
+                      "temporary": false,
+                      "trigger_condition": "marked_target_takes_damage"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "shielding_burr",
+                "name": "Shielding Burr",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": "Touch",
+                "condition": null,
+                "description": "Target gains a Reduction Pool equal to Will. When it depletes and the attacker is in melee range, that attacker takes 1d6 Puncture.",
+                "boons": [
+                  { "type": "reduction_pool", "formula": "Will", "charges": null, "target": "any" },
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "reduction_pool_depleted",
+                    "condition": "attacker_in_melee",
+                    "effect": { "type": "damage_bonus", "formula": "1d6", "damage_type": "Puncture", "target": "attacker" }
+                  }
+                ]
+              }
+            ],
+            "land": [
+              {
+                "id": "iron_defense",
+                "name": "Iron Defense",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": null,
+                "duration": "Until Dispelled",
+                "condition": null,
+                "description": "Gain armor bonus of 3 + Will while active. Disengage and Dash cost an additional 1 AP. Disable as a free action.",
+                "boons": [
+                  { "type": "armor_bonus", "amount": "3 + Will", "condition": "iron_defense_active" },
+                  { "type": "reduce_action_cost", "action": "Disengage", "amount": -1, "condition": "iron_defense_active", "minimum": 1 },
+                  { "type": "reduce_action_cost", "action": "Dash", "amount": -1, "condition": "iron_defense_active", "minimum": 1 }
+                ]
+              },
+              {
+                "id": "rock_wall",
+                "name": "Rock Wall",
+                "cost": { "resources": [{ "id": "energy", "amount": 1 }] },
+                "range": null,
+                "condition": null,
+                "description": "Create a rock wall up to 8ft high and 5ft wide. It has Armor equal to 10 + Will and Vitality equal to Will x 3.",
+                "boons": [
+                  {
+                    "type": "create_object",
+                    "object": {
+                      "name": "Rock Wall",
+                      "dimensions": "8ft height, 5ft wide",
+                      "armor": "10 + Will",
+                      "vitality": "Will * 3"
+                    }
+                  }
+                ]
+              }
+            ],
+            "ocean": [
+              {
+                "id": "torrent",
+                "name": "Torrent",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": "Touch",
+                "duration": "3 Rounds",
+                "condition": null,
+                "description": "Selected target or yourself — all weapon attacks deal an additional 1d6 Slash for 3 rounds.",
+                "boons": [
+                  { "type": "damage_bonus", "formula": "1d6", "damage_type": "Slash", "trigger": "on_weapon_attack", "duration": "3 Rounds", "target": "any" }
+                ]
+              },
+              {
+                "id": "healing_waters",
+                "name": "Healing Waters",
+                "cost": { "resources": [{ "id": "energy", "amount": 1 }] },
+                "range": "Touch",
+                "condition": null,
+                "description": "Restore 1d4 + Tier Vitality to a target.",
+                "boons": [
+                  { "type": "heal", "formula": "1d4 + Tier", "target": "any", "temporary": false }
+                ]
+              }
+            ],
+            "sky": [
+              {
+                "id": "deafen_sound",
+                "name": "Deafen Sound",
+                "cost": { "resources": [{ "id": "energy", "amount": 1 }] },
+                "range": null,
+                "condition": null,
+                "description": "Use Will for Stealth checks and roll those checks with Resolve.",
+                "boons": [
+                  { "type": "replace_stat", "context": "Stealth", "replace": "Finesse", "with": "Will", "range": null },
+                  { "type": "resolve_on", "context": "Stealth" }
+                ]
+              },
+              {
+                "id": "air_cutter",
+                "name": "Air Cutter",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": null,
+                "condition": null,
+                "description": "Your next ranged attack deals an additional 2d4 Slash.",
+                "boons": [
+                  { "type": "damage_bonus", "formula": "2d4", "damage_type": "Slash", "trigger": "on_next_ranged_hit" }
+                ]
+              }
+            ],
+            "tempest": [
+              {
+                "id": "accelerated_strike",
+                "name": "Accelerated Strike",
+                "cost": { "resources": [{ "id": "energy", "amount": 1 }] },
+                "range": null,
+                "condition": null,
+                "description": "The AP cost of your next Power Attack this turn is reduced by 1 AP (minimum 1 AP).",
+                "boons": [
+                  { "type": "reduce_action_cost", "action": "Power Attack", "amount": 1, "condition": "next_use_this_turn", "minimum": 1 }
+                ]
+              },
+              {
+                "id": "blinding_bolt",
+                "name": "Blinding Bolt",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": "Close",
+                "condition": null,
+                "description": "Ranged attack using Will vs Armor. On hit, target takes 1d4 Electric and is Blinded until end of their next turn.",
+                "boons": [
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "on_hit",
+                    "effect": [
+                      { "type": "damage_bonus", "formula": "1d4", "damage_type": "Electric" },
+                      { "type": "apply_condition", "condition_id": "BLN", "duration": "until_end_of_next_turn", "stacks": null }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "core_resistance",
+      "name": "Core Resistance",
+      "tags": ["Elementalist"],
+      "path": null,
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You gain resistance to your core's associated damage type.",
+      "boons": [
+        {
+          "type": "resistance",
+          "damage_type_ref": { "source": "table", "table": "core_resistance_type", "key": "elemental_core" }
+        }
+      ],
+      "tables": {
+        "core_resistance_type": {
+          "flame":   "Fire",
+          "forest":  "Blunt",
+          "land":    "Puncture",
+          "ocean":   "Ice",
+          "sky":     "Slash",
+          "tempest": "Electric"
+        }
+      }
+    },
+    {
+      "id": "core_cultivation",
+      "name": "Core Cultivation",
+      "tags": ["Elementalist"],
+      "path": null,
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You focus your Core to become Fragmented (gain a second Core and associated feat abilities) or Regal (gain a secondary element for Primordial Strike and add your melee die to all Art damage or healing).",
+      "boons": [
+        {
+          "type": "choice",
+          "key": "core_cultivation",
+          "prompt": "Choose Fragmented or Regal",
+          "options": [
+            {
+              "value": "fragmented",
+              "label": "Fragmented",
+              "grants": {
+                "second_elemental_core": true,
+                "note": "Grants full access to a second Elemental Core, including all core-conditional abilities from already-purchased feats."
+              }
+            },
+            {
+              "value": "regal",
+              "label": "Regal",
+              "grants": {
+                "second_primordial_strike_element": true,
+                "second_damage_type_ref": { "source": "table", "table": "regal_damage_type", "key": "elemental_core" },
+                "art_bonus": { "type": "damage_bonus", "formula": "melee_die", "trigger": "on_elemental_art_use" }
+              }
+            }
+          ]
+        }
+      ],
+      "tables": {
+        "regal_damage_type": {
+          "flame":   "Spirit",
+          "forest":  "Poison",
+          "land":    "Void",
+          "ocean":   "Arcane",
+          "sky":     "Gravity",
+          "tempest": "Ether"
+        }
+      }
+    }
+  ]
+}

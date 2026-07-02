@@ -1,0 +1,423 @@
+{
+  "id": "artificer",
+  "name": "Artificer",
+  "profession": "mage",
+  "description": "Artificers specialize in conjuration and summoning, creating servants and constructs to do their bidding. Their primary spheres of magic are Conjuration and Augmentation.",
+  "note": "Source doc names this path 'Artifice' in the profession description but 'Artificer' throughout all feat examples. Encoded as 'Artificer'; verify with user.",
+  "feats": [
+    {
+      "id": "skilled_summoner",
+      "name": "Skilled Summoner",
+      "tags": ["Mage", "Artificer"],
+      "path": "artificer",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Gain summon_familiar as a cantrip (if not already known); its duration becomes Until Dispelled. Creatures summoned from the Conjuration sphere gain additional Vitality equal to 4 × Tier.",
+      "boons": [
+        {
+          "type": "grants_cantrip",
+          "cantrip_id": "summon_familiar",
+          "condition": "not_already_known",
+          "upgrade": { "duration": "until_dispelled" }
+        },
+        {
+          "type": "summon_vitality_bonus",
+          "formula": "4 * Tier",
+          "applies_to_sphere": "conjuration"
+        }
+      ]
+    },
+    {
+      "id": "tailored_conjuration",
+      "name": "Tailored Conjuration",
+      "tags": ["Mage", "Artificer"],
+      "path": "artificer",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": ["skilled_summoner"],
+      "description": "When you summon or create a creature, it gains a passive ability based on your chosen Study of Lore.",
+      "boons": [
+        {
+          "type": "choice",
+          "key": "study_of_lore",
+          "prompt": "Choose your Study of Lore",
+          "options": [
+            {
+              "value": "arcane",
+              "label": "Arcane",
+              "description": "Reenergize: Once per turn, when summon lands a critical hit, summoner regains mana equal to 3 × summon tier (minimum 3).",
+              "grants": {
+                "summon_passive": {
+                  "id": "reenergize",
+                  "name": "Reenergize",
+                  "trigger": "critical_hit_dealt",
+                  "uses": { "count": 1, "recharge": "turn" },
+                  "boons": [
+                    { "type": "restore_resource", "resource": "mana", "amount": "summon_tier * 3", "minimum": 3, "target": "summoner" }
+                  ]
+                }
+              }
+            },
+            {
+              "value": "forbidden",
+              "label": "Forbidden",
+              "description": "Siphoned: Once per turn, when summon lands a critical hit, it heals itself equal to summoner's Mind.",
+              "grants": {
+                "summon_passive": {
+                  "id": "siphoned",
+                  "name": "Siphoned",
+                  "trigger": "critical_hit_dealt",
+                  "uses": { "count": 1, "recharge": "turn" },
+                  "boons": [
+                    { "type": "heal", "formula": "Mind", "target": "self", "temporary": false }
+                  ]
+                }
+              }
+            },
+            {
+              "value": "nature",
+              "label": "Nature",
+              "description": "Evolve: When summoned, gains one chosen movement type: fly, burrow, or swim.",
+              "grants": {
+                "summon_passive": {
+                  "id": "evolve",
+                  "name": "Evolve",
+                  "trigger": "on_summon",
+                  "boons": [
+                    {
+                      "type": "choice",
+                      "key": "evolve_movement_type",
+                      "prompt": "Choose movement type for this summon",
+                      "options": [
+                        { "value": "fly",    "label": "Fly" },
+                        { "value": "burrow", "label": "Burrow" },
+                        { "value": "swim",   "label": "Swim" }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "value": "sacred",
+              "label": "Sacred",
+              "description": "Sanctum: Summon can spend 1 AP to grant 2d6 temporary vitality to any target.",
+              "grants": {
+                "summon_passive": {
+                  "id": "sanctum",
+                  "name": "Sanctum",
+                  "boons": [
+                    {
+                      "type": "action_option",
+                      "cost": { "ap": 1 },
+                      "effect": { "type": "heal", "formula": "2d6", "target": "any", "temporary": true }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "value": "mortal",
+              "label": "Mortal",
+              "description": "Linked: While summon is in your Engagement, you may use the summon's attribute modifiers. (Source uses 'MHT, DEX, INT' — likely Brawn/Finesse/Mind; attribute mapping needs verification.)",
+              "grants": {
+                "summon_passive": {
+                  "id": "linked",
+                  "name": "Linked",
+                  "boons": [
+                    {
+                      "type": "attribute_borrow",
+                      "source": "summoned_creature",
+                      "condition": "within_engagement",
+                      "note": "Source stat IDs (MHT, DEX, INT) are from a different system. Verify mapping to Brawn/Finesse/Mind/Will."
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arcane_forgecast",
+      "name": "Arcane Forgecast",
+      "tags": ["Mage", "Artificer"],
+      "path": "artificer",
+      "tier": 1,
+      "trait": "Narrative",
+      "slot_type": "narrative",
+      "cost": { "ap": 2 },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": ["tailored_conjuration"],
+      "description": "Create a permanent Forgecast companion using your chosen Study of Lore. Acts independently but requires the Command action to direct (Command cost always capped at 1 AP). If destroyed, it is repaired by next Daily Preparation.",
+      "boons": [
+        {
+          "type": "grants_companion",
+          "companion_id": "forgecast",
+          "permanent": true,
+          "uses_lore": { "source": "choice", "key": "study_of_lore" },
+          "command_action": { "max_ap_cost": 1 },
+          "on_destroy": "repairs_at_daily_preparation"
+        }
+      ]
+    },
+    {
+      "id": "spheres_of_influence",
+      "name": "Spheres of Influence",
+      "tags": ["Mage", "Artificer"],
+      "path": "artificer",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Your summoned creatures gain passive effects based on your known Spheres of Magic. Effects apply until the creature is resummoned.",
+      "boons": [
+        {
+          "type": "summon_sphere_effect",
+          "applies_to": "all_summoned_creatures",
+          "reset_on": "resummon",
+          "by_sphere": {
+            "aberration": [
+              {
+                "type": "action_option",
+                "cost": { "ap": 1 },
+                "effect": { "type": "strain_on", "context": "attacks_against_summoner", "target": "enemies_in_engagement", "range": "engagement" }
+              }
+            ],
+            "augmentation": [
+              {
+                "type": "action_option",
+                "cost": { "ap": 2 },
+                "effect": { "type": "shapechange", "target_form": "tiny_wildlife", "duration": null }
+              }
+            ],
+            "conjuration": [
+              {
+                "type": "conditional_effect",
+                "trigger": "on_summon",
+                "effect": { "type": "heal", "formula": "highest_known_spell_tier * 2", "target": "self", "temporary": true }
+              }
+            ],
+            "decimation": [
+              {
+                "type": "conditional_effect",
+                "trigger": "on_hit",
+                "condition": "melee_attack",
+                "effect": { "type": "damage_bonus", "formula": "2d6", "damage_type": "Arcane", "target": "enemy" }
+              }
+            ],
+            "divination": [
+              {
+                "type": "divination_anchor",
+                "description": "Divination spells cast upon summon travel with it for spell duration."
+              }
+            ],
+            "mortification": [
+              {
+                "type": "shared_vitality",
+                "source": "summoned_creature",
+                "target": "summoner",
+                "note": "Both take damage when either is hit."
+              }
+            ],
+            "reclamation": [
+              {
+                "type": "action_option",
+                "cost": { "ap": 1 },
+                "effect": {
+                  "type": "multi_choice",
+                  "key": "reclamation_form",
+                  "count": 1,
+                  "expandable_by": [],
+                  "options": [
+                    {
+                      "value": "hardened",
+                      "label": "Harden Form",
+                      "boons": [
+                        { "type": "armor_bonus", "amount": 3 },
+                        { "type": "stat_bonus", "stat": "attack_roll", "amount": -2 }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "forgecast_autonomy",
+      "name": "Forgecast Autonomy",
+      "tags": ["Mage", "Artificer"],
+      "path": "artificer",
+      "tier": 2,
+      "trait": "Utility",
+      "slot_type": "narrative",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": { "count": 1, "recharge": "skirmish" },
+      "feat_dc": null,
+      "prerequisites": { "feats": ["arcane_forgecast"], "path_investment": { "path": "artificer", "count": 2 } },
+      "description": "Once per skirmish, your Forgecast acts independently for one round without requiring the Command action.",
+      "boons": [
+        {
+          "type": "companion_autonomy",
+          "companion_id": "forgecast",
+          "duration": "1_round",
+          "uses": { "count": 1, "recharge": "skirmish" }
+        }
+      ]
+    },
+    {
+      "id": "reservoir_tuning",
+      "name": "Reservoir Tuning",
+      "tags": ["Mage", "Artificer"],
+      "path": "artificer",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "artificer", "count": 1 } },
+      "description": "During Daily Preparation, optionally choose one tuning mode. Can be deactivated during a Respite but cannot be reactivated until next Daily Preparation.",
+      "boons": [
+        {
+          "type": "daily_mode_choice",
+          "key": "reservoir_tuning_mode",
+          "optional": true,
+          "changeable_during": ["daily_preparation"],
+          "deactivatable_during": ["respite"],
+          "reactivatable_during": ["daily_preparation"],
+          "options": [
+            {
+              "value": "efficient_casting",
+              "label": "Efficient Casting",
+              "description": "When casting a spell one tier below your current Tier, reduce mana cost by 2.",
+              "boons": [
+                {
+                  "type": "spell_cost_reduction",
+                  "amount": 2,
+                  "condition": "spell_tier_one_below_character_tier"
+                }
+              ]
+            },
+            {
+              "value": "overcharged",
+              "label": "Overcharged",
+              "description": "Direct and zone spell attack rolls and spell DCs gain +2 (including non-Forgecast summons). Mana cost of those spells increases by 4.",
+              "boons": [
+                { "type": "stat_bonus", "stat": "spell_attack", "amount": 2, "context": ["direct_spell", "zone_spell"] },
+                { "type": "stat_bonus", "stat": "spell_dc",     "amount": 2, "context": ["direct_spell", "zone_spell"] },
+                { "type": "spell_cost_modifier", "amount": 4,   "context": ["direct_spell", "zone_spell"] }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "modular_adaptation",
+      "name": "Modular Adaptation",
+      "tags": ["Mage", "Artificer"],
+      "path": "artificer",
+      "tier": 3,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Modify your Forgecast's directive during Daily Preparation. While in any non-Baseline directive, it may only take an action (not a maneuver) on its turn.",
+      "boons": [
+        {
+          "type": "companion_directive",
+          "companion_id": "forgecast",
+          "key": "forgecast_directive",
+          "changeable_during": ["daily_preparation"],
+          "non_baseline_restriction": "action_only",
+          "options": [
+            {
+              "value": "baseline",
+              "label": "Baseline Directive",
+              "description": "Forgecast regains its ability to use both an action and a maneuver on its turn.",
+              "boons": []
+            },
+            {
+              "value": "bulwark",
+              "label": "Bulwark Directive",
+              "description": "+2 Armor on the Forgecast. Can intercept one attack per combat directed at you.",
+              "boons": [
+                { "type": "armor_bonus", "amount": 2, "target": "companion:forgecast" },
+                {
+                  "type": "conditional_effect",
+                  "trigger": "summoner_targeted",
+                  "uses": { "count": 1, "recharge": "skirmish" },
+                  "effect": { "type": "redirect_attack", "from": "summoner", "to": "companion:forgecast" }
+                }
+              ]
+            },
+            {
+              "value": "siege",
+              "label": "Siege Directive",
+              "description": "Forgecast gains a ranged attack dealing 2d8 Arcane damage.",
+              "boons": [
+                {
+                  "type": "attack_option",
+                  "attack_type": "ranged",
+                  "damage": "2d8",
+                  "damage_type": "Arcane",
+                  "targets_defense": "Armor",
+                  "range": "Nearby",
+                  "tier_scaling": []
+                }
+              ]
+            },
+            {
+              "value": "scout",
+              "label": "Scout Directive",
+              "description": "Cannot attack. Gains 2 zones of movement when dashing. Grants summoner sight and hearing from its position until your next turn.",
+              "boons": [
+                { "type": "restrict_action", "action": "Attack", "target": "companion:forgecast", "duration": "while_directive_active" },
+                { "type": "movement_bonus", "action": "Dash", "bonus_zones": 2, "target": "companion:forgecast" },
+                {
+                  "type": "conditional_effect",
+                  "trigger": "each_turn",
+                  "effect": { "type": "sense_sharing", "senses": ["sight", "hearing"], "source": "companion:forgecast", "target": "summoner", "duration": "until_next_turn" }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

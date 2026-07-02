@@ -1,0 +1,1804 @@
+{
+  "$meta": {
+    "name": "Path of Ambition \u2014 Boon Schema",
+    "version": "1.1.0",
+    "source": "REFERENCE.md Boon Types (58 live + spell payload) + Description-Only (Retired)",
+    "rule": "A boon is tracked only if it changes a tracked quantity AND its condition is sheet-knowable. Otherwise it belongs in the feat description. See TRACKING-SCOPE.md.",
+    "field_kinds": {
+      "string": "free text input",
+      "formula": "number or formula string (Brawn/Finesse/Mind/Will/Tier, + - * / ceil floor max)",
+      "number": "integer input",
+      "boolean": "checkbox",
+      "enum": "select from named enum list",
+      "list": "array of strings (comma-separated input)",
+      "uses": "composite { count, recharge }",
+      "cost": "JSON object \u2014 { \"ap\": N } and/or { \"resources\": [{ \"id\", \"amount\" }] }",
+      "json": "freeform JSON object/array (validated on save)",
+      "boon": "single nested boon object (must be a live type)",
+      "boons": "array of nested boon objects (must be live types)",
+      "options": "structured option list \u2014 value/label/description + nested tracked boons (or single effect boon)"
+    }
+  },
+  "enums": {
+    "stats": [
+      "Armor",
+      "Fortitude",
+      "Mental",
+      "Will Defense",
+      "All Defenses",
+      "Vitality Max",
+      "Ambition Max",
+      "AP",
+      "attack_roll",
+      "size_category"
+    ],
+    "defenses": [
+      "Armor",
+      "Fortitude",
+      "Mental",
+      "Will Defense"
+    ],
+    "targets": [
+      "self",
+      "ally",
+      "enemy",
+      "any",
+      "engaged_enemies",
+      "allies_in_range",
+      "creatures_in_range"
+    ],
+    "recharges": [
+      "turn",
+      "skirmish",
+      "respite",
+      "long_rest",
+      "daily",
+      "daily_preparation"
+    ],
+    "caster_types": [
+      "full",
+      "limited"
+    ],
+    "with_kinds": [
+      "attribute",
+      "resource",
+      "summon_stat"
+    ],
+    "equipment_rules": [
+      "remove_trait",
+      "allow_dual_wield",
+      "range_increase",
+      "reduce_trait",
+      "carry_weight_multiplier"
+    ],
+    "target_items": [
+      "weapon",
+      "armor",
+      "shield",
+      "accessory",
+      "clothing",
+      "any"
+    ],
+    "feat_traits": [
+      "Passive",
+      "Offensive",
+      "Trigger",
+      "Maneuver",
+      "Narrative",
+      "Utility",
+      "Support"
+    ],
+    "slot_types": [
+      "tactical",
+      "narrative",
+      "minor"
+    ],
+    "ranges": [
+      "Touch",
+      "Close",
+      "Nearby",
+      "Far",
+      "Self"
+    ],
+    "triggers": [
+      "critical_success",
+      "critical_hit_dealt",
+      "critical_hit_taken",
+      "on_hit",
+      "on_damage_taken",
+      "enemy_disengages_in_engagement",
+      "enemy_enters_engagement",
+      "targeted_by_melee_in_engagement",
+      "attacker_critical_miss_melee",
+      "grappled_target_turn_start",
+      "ally_in_engagement_targeted",
+      "melee_attack_misses_self",
+      "melee_attack_critical_miss_self",
+      "self_or_ally_targeted",
+      "area_or_zone_damage",
+      "after_attack",
+      "after_weapon_strike",
+      "on_spell_cast",
+      "enemy_reduced_to_zero",
+      "reduced_to_zero_vitality",
+      "state_ends_or_downed",
+      "target_critical_save_failure"
+    ]
+  },
+  "types": {
+    "stat_bonus": {
+      "category": "Stat & Defense",
+      "summary": "Adds an amount to a stat, defense, or tracked max. Absorbs old armor_bonus.",
+      "fields": [
+        {
+          "name": "stat",
+          "kind": "enum",
+          "enum": "stats",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "kind": "formula",
+          "required": true,
+          "hint": "signed formula OK, e.g. \"Tier * -1\"; string like \"Large\" for size_category"
+        },
+        {
+          "name": "target",
+          "kind": "enum",
+          "enum": "targets",
+          "default": "self"
+        },
+        {
+          "name": "condition",
+          "kind": "string",
+          "hint": "sheet-knowable only, e.g. \"unarmored\", \"state:rage\""
+        },
+        {
+          "name": "duration",
+          "kind": "string"
+        },
+        {
+          "name": "uses",
+          "kind": "uses"
+        }
+      ]
+    },
+    "alternate_defense": {
+      "category": "Stat & Defense",
+      "summary": "Replaces a defense's entire base formula when the condition holds (e.g. Agile Defense).",
+      "fields": [
+        {
+          "name": "name",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "formula",
+          "kind": "formula",
+          "required": true
+        },
+        {
+          "name": "replaces",
+          "kind": "enum",
+          "enum": "defenses",
+          "default": "Armor"
+        },
+        {
+          "name": "condition",
+          "kind": "string",
+          "required": true,
+          "hint": "e.g. \"light_or_no_armor AND no_shield\""
+        }
+      ]
+    },
+    "resistance": {
+      "category": "Stat & Defense",
+      "summary": "Standing damage resistance, optionally use-counter gated.",
+      "fields": [
+        {
+          "name": "damage_type",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "condition",
+          "kind": "string"
+        },
+        {
+          "name": "duration",
+          "kind": "string"
+        },
+        {
+          "name": "charges",
+          "kind": "number"
+        },
+        {
+          "name": "uses",
+          "kind": "uses"
+        }
+      ]
+    },
+    "stat_substitution": {
+      "category": "Substitution & Equipment",
+      "summary": "One value stands in for another in formulas. Absorbs replace_stat / attribute_swap / resource_as_stat / attribute_borrow.",
+      "fields": [
+        {
+          "name": "replace",
+          "kind": "string",
+          "required": true,
+          "hint": "the stat being replaced, e.g. \"Ambition\""
+        },
+        {
+          "name": "with",
+          "kind": "string",
+          "required": true,
+          "hint": "attribute, resource id, or summon stat"
+        },
+        {
+          "name": "with_kind",
+          "kind": "enum",
+          "enum": "with_kinds",
+          "default": "attribute"
+        },
+        {
+          "name": "context",
+          "kind": "string"
+        },
+        {
+          "name": "contexts",
+          "kind": "list",
+          "hint": "e.g. skill_check, attack_roll"
+        }
+      ]
+    },
+    "equipment_rule_override": {
+      "category": "Substitution & Equipment",
+      "summary": "Standing passive tweak to an equipment rule. Absorbs remove_trait / allow_dual_wield / range_increase / reduce_trait / carry_weight_multiplier.",
+      "fields": [
+        {
+          "name": "rule",
+          "kind": "enum",
+          "enum": "equipment_rules",
+          "required": true
+        },
+        {
+          "name": "trait",
+          "kind": "string",
+          "hint": "for remove_trait / reduce_trait"
+        },
+        {
+          "name": "categories",
+          "kind": "number",
+          "hint": "for range_increase"
+        },
+        {
+          "name": "restriction",
+          "kind": "string",
+          "hint": "for allow_dual_wield"
+        },
+        {
+          "name": "amount",
+          "kind": "formula",
+          "hint": "for reduce_trait / carry_weight_multiplier"
+        },
+        {
+          "name": "condition",
+          "kind": "string"
+        }
+      ]
+    },
+    "heal": {
+      "category": "Healing & Pools",
+      "summary": "Restores Vitality or grants Temp Vitality (temporary: true, highest source wins).",
+      "fields": [
+        {
+          "name": "formula",
+          "kind": "formula",
+          "required": true
+        },
+        {
+          "name": "target",
+          "kind": "string",
+          "default": "any"
+        },
+        {
+          "name": "temporary",
+          "kind": "boolean",
+          "default": false
+        },
+        {
+          "name": "max_targets",
+          "kind": "number"
+        },
+        {
+          "name": "trigger_condition",
+          "kind": "string"
+        },
+        {
+          "name": "resource",
+          "kind": "string"
+        },
+        {
+          "name": "recharge",
+          "kind": "enum",
+          "enum": "recharges"
+        },
+        {
+          "name": "uses",
+          "kind": "uses"
+        }
+      ]
+    },
+    "reduction_pool": {
+      "category": "Healing & Pools",
+      "summary": "Persistent damage-reduction pool. Stacks with Temp Vitality and other pools.",
+      "fields": [
+        {
+          "name": "formula",
+          "kind": "formula",
+          "required": true,
+          "hint": "value per charge when charges set"
+        },
+        {
+          "name": "charges",
+          "kind": "number"
+        },
+        {
+          "name": "target",
+          "kind": "string"
+        },
+        {
+          "name": "apply_to",
+          "kind": "string"
+        },
+        {
+          "name": "source",
+          "kind": "string"
+        },
+        {
+          "name": "on_charge_used",
+          "kind": "boon",
+          "hint": "fires each time a charge is spent"
+        },
+        {
+          "name": "uses",
+          "kind": "uses"
+        }
+      ]
+    },
+    "cure_condition": {
+      "category": "Healing & Pools",
+      "summary": "Removes a condition instead of restoring Vitality.",
+      "fields": [
+        {
+          "name": "conditions",
+          "kind": "list",
+          "hint": "3-letter condition IDs"
+        },
+        {
+          "name": "choose",
+          "kind": "number",
+          "hint": "player picks at time of use"
+        },
+        {
+          "name": "choose_at_brew",
+          "kind": "list",
+          "hint": "locked in at preparation (Alchemist)"
+        },
+        {
+          "name": "cost_per_condition",
+          "kind": "json"
+        },
+        {
+          "name": "target",
+          "kind": "string"
+        }
+      ]
+    },
+    "prevent_wounds": {
+      "category": "Healing & Pools",
+      "summary": "Spends a tracked resource to reduce incoming Wounds.",
+      "fields": [
+        {
+          "name": "amount",
+          "kind": "formula",
+          "required": true
+        }
+      ]
+    },
+    "restore_resource": {
+      "category": "Resources",
+      "summary": "Restores points of a resource pool.",
+      "fields": [
+        {
+          "name": "resource",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "kind": "formula",
+          "required": true
+        },
+        {
+          "name": "target",
+          "kind": "enum",
+          "enum": "targets",
+          "default": "self"
+        },
+        {
+          "name": "minimum",
+          "kind": "number"
+        },
+        {
+          "name": "trigger",
+          "kind": "string"
+        }
+      ]
+    },
+    "grants_resource": {
+      "category": "Resources",
+      "summary": "Grants a whole new resource pool.",
+      "fields": [
+        {
+          "name": "resource_id",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "max",
+          "kind": "formula"
+        },
+        {
+          "name": "recovery",
+          "kind": "json"
+        }
+      ]
+    },
+    "upgrade_resource": {
+      "category": "Resources",
+      "summary": "Permanently raises a resource's max \u2014 additive (max_bonus) or replacing the formula (max_override).",
+      "fields": [
+        {
+          "name": "resource",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "max_bonus",
+          "kind": "formula"
+        },
+        {
+          "name": "max_override",
+          "kind": "formula"
+        }
+      ]
+    },
+    "resource_conversion": {
+      "category": "Resources",
+      "summary": "Trade one resource pool for another at fixed rates.",
+      "fields": [
+        {
+          "name": "modes",
+          "kind": "json",
+          "required": true,
+          "hint": "[{ \"spend\": {id, amount}, \"gain\": {id, amount} }]"
+        },
+        {
+          "name": "cost",
+          "kind": "cost"
+        },
+        {
+          "name": "uses",
+          "kind": "uses"
+        }
+      ]
+    },
+    "proficiency": {
+      "category": "Proficiency & Learning",
+      "summary": "Adds a proficiency list entry.",
+      "fields": [
+        {
+          "name": "category",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "value",
+          "kind": "string",
+          "required": true
+        }
+      ]
+    },
+    "grants_free_success": {
+      "category": "Proficiency & Learning",
+      "summary": "Tracked count of automatic successes on a named check. Absorbs emulate_kit / free_success.",
+      "fields": [
+        {
+          "name": "context",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "count",
+          "kind": "number",
+          "default": 1
+        },
+        {
+          "name": "recharge",
+          "kind": "enum",
+          "enum": "recharges"
+        }
+      ]
+    },
+    "feat_grant": {
+      "category": "Feats & Choices",
+      "summary": "Grants another feat by ID.",
+      "fields": [
+        {
+          "name": "feat_id",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "condition",
+          "kind": "string"
+        }
+      ]
+    },
+    "upgrade_feat": {
+      "category": "Feats & Choices",
+      "summary": "Patches an already-held feat.",
+      "fields": [
+        {
+          "name": "target_feat",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "patch",
+          "kind": "json",
+          "required": true
+        }
+      ]
+    },
+    "choice": {
+      "category": "Feats & Choices",
+      "summary": "Build selection \u2014 stores which option the player picked.",
+      "fields": [
+        {
+          "name": "key",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "prompt",
+          "kind": "string"
+        },
+        {
+          "name": "options",
+          "kind": "options",
+          "hint": "[{ value, label, grants }]"
+        }
+      ]
+    },
+    "multi_choice": {
+      "category": "Feats & Choices",
+      "summary": "Pick N options from a list; expandable by other feats.",
+      "fields": [
+        {
+          "name": "key",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "count",
+          "kind": "number"
+        },
+        {
+          "name": "expandable_by",
+          "kind": "list"
+        },
+        {
+          "name": "options",
+          "kind": "options",
+          "hint": "[{ value, label, description }]"
+        }
+      ]
+    },
+    "grants_weapon": {
+      "category": "Weapons & Arts",
+      "summary": "Grants a conjured/bound weapon (possibly core-keyed). Attack/damage output stays description-only.",
+      "fields": [
+        {
+          "name": "attack_modifier",
+          "kind": "formula"
+        },
+        {
+          "name": "damage_modifier",
+          "kind": "formula"
+        },
+        {
+          "name": "by_core",
+          "kind": "json",
+          "hint": "{ core_id: { name, weapons, choice, passive, crit_effect } }"
+        }
+      ]
+    },
+    "grants_arts": {
+      "category": "Weapons & Arts",
+      "summary": "Grants a pool of activatable arts (core-keyed).",
+      "fields": [
+        {
+          "name": "attack_modifier",
+          "kind": "formula"
+        },
+        {
+          "name": "extends_feat",
+          "kind": "string",
+          "hint": "feat ID when adding to an existing pool"
+        },
+        {
+          "name": "by_core",
+          "kind": "json"
+        }
+      ]
+    },
+    "bind_weapon": {
+      "category": "Weapons & Arts",
+      "summary": "Player selects a bound weapon at daily prep; binding grants the listed stats.",
+      "fields": [
+        {
+          "name": "select_during",
+          "kind": "string",
+          "default": "daily_preparation"
+        },
+        {
+          "name": "max_bound",
+          "kind": "number",
+          "default": 1
+        },
+        {
+          "name": "grants",
+          "kind": "json",
+          "hint": "{ attack_modifier, damage_modifier, traits, proficient }"
+        }
+      ]
+    },
+    "action_option": {
+      "category": "Weapons & Arts",
+      "summary": "Standalone activatable ability (maneuver): tracked cost + prose payoff; effect boon only when the payoff itself is tracked.",
+      "fields": [
+        {
+          "name": "name",
+          "kind": "string",
+          "hint": "e.g. \"Defender Maneuver\""
+        },
+        {
+          "name": "cost",
+          "kind": "cost",
+          "required": true
+        },
+        {
+          "name": "condition",
+          "kind": "string",
+          "hint": "e.g. \"wielding_school_weapon\""
+        },
+        {
+          "name": "description",
+          "kind": "string",
+          "hint": "what it does \u2014 attack/damage output stays prose here"
+        },
+        {
+          "name": "effect",
+          "kind": "boon",
+          "hint": "only when the payoff is a tracked mechanic"
+        }
+      ]
+    },
+    "grants_cords": {
+      "category": "Weapons & Arts",
+      "summary": "Mesmer Cord pool \u2014 selectable abilities with stitch upgrade costs.",
+      "fields": [
+        {
+          "name": "count",
+          "kind": "number"
+        },
+        {
+          "name": "options",
+          "kind": "json",
+          "hint": "[{ id, name, trait, range, description, stitch, boons }]"
+        }
+      ]
+    },
+    "grants_spell_shapes": {
+      "category": "Weapons & Arts",
+      "summary": "Eidolon Spell Shape pool \u2014 known + prepared-per-day selections.",
+      "fields": [
+        {
+          "name": "known",
+          "kind": "number"
+        },
+        {
+          "name": "prepared_per_day",
+          "kind": "number"
+        },
+        {
+          "name": "activation",
+          "kind": "string"
+        },
+        {
+          "name": "extends",
+          "kind": "string"
+        },
+        {
+          "name": "from",
+          "kind": "string"
+        },
+        {
+          "name": "count",
+          "kind": "number"
+        },
+        {
+          "name": "options",
+          "kind": "json",
+          "hint": "[{ id, name, cost, effect }]"
+        }
+      ]
+    },
+    "create_object": {
+      "category": "Objects & Storage",
+      "summary": "Summoned object stat block \u2014 tracked like a summon.",
+      "fields": [
+        {
+          "name": "object",
+          "kind": "json",
+          "required": true,
+          "hint": "{ name, dimensions, armor, vitality, capacity, movement, concentration }"
+        }
+      ]
+    },
+    "item_storage": {
+      "category": "Objects & Storage",
+      "summary": "Tracked inventory slot for a specific item type.",
+      "fields": [
+        {
+          "name": "capacity",
+          "kind": "number",
+          "default": 1
+        },
+        {
+          "name": "item_type",
+          "kind": "string"
+        },
+        {
+          "name": "wearer_only",
+          "kind": "boolean"
+        },
+        {
+          "name": "use_action",
+          "kind": "string"
+        }
+      ]
+    },
+    "conditional_effect": {
+      "category": "Wrappers & Conditionals",
+      "summary": "Fires a live-boon effect when a trigger occurs. Retired types inside effect are not boons \u2014 describe them instead.",
+      "fields": [
+        {
+          "name": "trigger",
+          "kind": "enum",
+          "enum": "triggers",
+          "required": true
+        },
+        {
+          "name": "condition",
+          "kind": "string"
+        },
+        {
+          "name": "uses",
+          "kind": "uses"
+        },
+        {
+          "name": "effect",
+          "kind": "boon",
+          "required": true
+        }
+      ]
+    },
+    "choice_conditional": {
+      "category": "Wrappers & Conditionals",
+      "summary": "Applies a boon array matching the character's stored choice.",
+      "fields": [
+        {
+          "name": "choice_key",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "by_choice",
+          "kind": "json",
+          "required": true,
+          "hint": "{ option_value: [boons] }"
+        }
+      ]
+    },
+    "armor_type_conditional": {
+      "category": "Wrappers & Conditionals",
+      "summary": "Applies a boon array matching the equipped armor category.",
+      "fields": [
+        {
+          "name": "by_armor_type",
+          "kind": "json",
+          "required": true,
+          "hint": "{ light: [boons], medium: [...], heavy: [...] }"
+        }
+      ]
+    },
+    "multi_boon": {
+      "category": "Wrappers & Conditionals",
+      "summary": "Bundles an ordered boon array as one effect (for single-boon slots).",
+      "fields": [
+        {
+          "name": "boons",
+          "kind": "boons",
+          "required": true
+        }
+      ]
+    },
+    "grants_spellcasting": {
+      "category": "Spellcasting",
+      "summary": "Grants spellcasting. Feat must also carry the Spellcasting tag.",
+      "fields": [
+        {
+          "name": "caster_type",
+          "kind": "enum",
+          "enum": "caster_types",
+          "required": true
+        },
+        {
+          "name": "source",
+          "kind": "string",
+          "hint": "resource ID in profession resources"
+        },
+        {
+          "name": "modifier",
+          "kind": "string"
+        },
+        {
+          "name": "modifier_choice",
+          "kind": "list"
+        },
+        {
+          "name": "known_spells",
+          "kind": "json",
+          "hint": "{ start, tier }"
+        },
+        {
+          "name": "prepared_spells",
+          "kind": "formula"
+        },
+        {
+          "name": "spell_dc",
+          "kind": "formula"
+        },
+        {
+          "name": "cantrips",
+          "kind": "json",
+          "hint": "{ max, from }"
+        }
+      ]
+    },
+    "upgrade_spellcasting": {
+      "category": "Spellcasting",
+      "summary": "Upgrades an existing caster grant (e.g. limited \u2192 full).",
+      "fields": [
+        {
+          "name": "caster_type",
+          "kind": "enum",
+          "enum": "caster_types"
+        },
+        {
+          "name": "reservoir_formula",
+          "kind": "formula"
+        }
+      ]
+    },
+    "grants_cantrip": {
+      "category": "Spellcasting",
+      "summary": "Grants or upgrades a cantrip.",
+      "fields": [
+        {
+          "name": "cantrip_id",
+          "kind": "string"
+        },
+        {
+          "name": "from",
+          "kind": "string",
+          "hint": "pool ID when player picks from a category"
+        },
+        {
+          "name": "count",
+          "kind": "number",
+          "default": 1
+        },
+        {
+          "name": "condition",
+          "kind": "string"
+        },
+        {
+          "name": "counts_against_known",
+          "kind": "boolean"
+        },
+        {
+          "name": "free_activation",
+          "kind": "boolean"
+        },
+        {
+          "name": "player_choice",
+          "kind": "boolean"
+        },
+        {
+          "name": "limit",
+          "kind": "json"
+        },
+        {
+          "name": "range_override",
+          "kind": "string"
+        },
+        {
+          "name": "upgrade",
+          "kind": "json",
+          "hint": "property change to a held cantrip"
+        }
+      ]
+    },
+    "cantrip_upgrade": {
+      "category": "Spellcasting",
+      "summary": "Upgrades cantrip dice/properties across the board.",
+      "fields": [
+        {
+          "name": "bonus",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "count",
+          "kind": "number"
+        },
+        {
+          "name": "minimum_die_size",
+          "kind": "string"
+        }
+      ]
+    },
+    "grants_known_spells": {
+      "category": "Spellcasting",
+      "summary": "Adds spells to the known list.",
+      "fields": [
+        {
+          "name": "count",
+          "kind": "number",
+          "required": true
+        },
+        {
+          "name": "tier",
+          "kind": "number"
+        },
+        {
+          "name": "from",
+          "kind": "string"
+        },
+        {
+          "name": "from_sphere",
+          "kind": "json",
+          "hint": "{ source: \"choice\", key }"
+        },
+        {
+          "name": "spell_ids",
+          "kind": "list"
+        },
+        {
+          "name": "exclude",
+          "kind": "list"
+        },
+        {
+          "name": "counts_against_known",
+          "kind": "boolean"
+        }
+      ]
+    },
+    "grants_sphere": {
+      "category": "Spellcasting",
+      "summary": "Adds a spell sphere.",
+      "fields": [
+        {
+          "name": "count",
+          "kind": "number",
+          "default": 1
+        },
+        {
+          "name": "from",
+          "kind": "string"
+        },
+        {
+          "name": "sphere",
+          "kind": "string"
+        },
+        {
+          "name": "player_choice",
+          "kind": "boolean"
+        }
+      ]
+    },
+    "grants_spells": {
+      "category": "Spellcasting",
+      "summary": "Grants specific spells \u2014 flat list or core-gated, not both.",
+      "fields": [
+        {
+          "name": "spell_ids",
+          "kind": "list"
+        },
+        {
+          "name": "by_core",
+          "kind": "json",
+          "hint": "{ core_id: [spell_ids] }"
+        },
+        {
+          "name": "cost_resource",
+          "kind": "string"
+        },
+        {
+          "name": "cost_method",
+          "kind": "string"
+        }
+      ]
+    },
+    "spell_cost_modifier": {
+      "category": "Spell Economy",
+      "summary": "Signed spell cost change (negative = reduction). Absorbs spell_cost_reduction.",
+      "fields": [
+        {
+          "name": "amount",
+          "kind": "number",
+          "required": true
+        },
+        {
+          "name": "context",
+          "kind": "list"
+        },
+        {
+          "name": "condition",
+          "kind": "string"
+        }
+      ]
+    },
+    "signature_spell": {
+      "category": "Spell Economy",
+      "summary": "Tracked signature spell selection with cost reduction.",
+      "fields": [
+        {
+          "name": "select_during",
+          "kind": "string",
+          "default": "daily_preparation"
+        },
+        {
+          "name": "count",
+          "kind": "number",
+          "default": 1
+        },
+        {
+          "name": "tier_max_formula",
+          "kind": "formula"
+        },
+        {
+          "name": "from",
+          "kind": "string",
+          "default": "known_spells"
+        },
+        {
+          "name": "cost_reduction",
+          "kind": "number"
+        },
+        {
+          "name": "changeable_during",
+          "kind": "string"
+        }
+      ]
+    },
+    "free_recast": {
+      "category": "Spell Economy",
+      "summary": "Repeatable free recast, frequency-gated for a duration.",
+      "fields": [
+        {
+          "name": "spell_tier_max",
+          "kind": "number"
+        },
+        {
+          "name": "frequency",
+          "kind": "string",
+          "hint": "e.g. once_per_turn"
+        },
+        {
+          "name": "duration",
+          "kind": "string"
+        },
+        {
+          "name": "restriction",
+          "kind": "string"
+        },
+        {
+          "name": "no_reservoir_cost",
+          "kind": "boolean"
+        }
+      ]
+    },
+    "apply_augmentation": {
+      "category": "Augments & Enchantments",
+      "summary": "Applies slot-limited augments to items (Armor 1\u20135, Weapon \u22643, single-slot items 1).",
+      "fields": [
+        {
+          "name": "max_per_day",
+          "kind": "formula"
+        },
+        {
+          "name": "changeable_during",
+          "kind": "list"
+        },
+        {
+          "name": "learn_count",
+          "kind": "number"
+        },
+        {
+          "name": "options",
+          "kind": "options",
+          "hint": "[{ value, label, target_item, boons, uses_no_slot? }]"
+        }
+      ]
+    },
+    "grants_augment_slot": {
+      "category": "Augments & Enchantments",
+      "summary": "Adds augment slots to an item type.",
+      "fields": [
+        {
+          "name": "item_type",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "count",
+          "kind": "number",
+          "default": 1
+        },
+        {
+          "name": "wearer_only",
+          "kind": "boolean"
+        }
+      ]
+    },
+    "enchantment_option": {
+      "category": "Augments & Enchantments",
+      "summary": "Placement-unlimited enchantments (vs slot-limited augments). Spell payload absorbs bind_spells / inscribe_spell / store_spell.",
+      "fields": [
+        {
+          "name": "target_item",
+          "kind": "string"
+        },
+        {
+          "name": "max_placements",
+          "kind": "number",
+          "hint": "only if a specific cap applies"
+        },
+        {
+          "name": "options",
+          "kind": "options",
+          "hint": "[{ value, label, effect }] \u2014 effect may be { type: \"spell\", ... }",
+          "opt_shape": "effect"
+        }
+      ]
+    },
+    "spell": {
+      "category": "Augments & Enchantments",
+      "summary": "Enchantment payload: a spell bound to an object, activated later.",
+      "fields": [
+        {
+          "name": "spell_id",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "uses_caster_stats",
+          "kind": "boolean"
+        },
+        {
+          "name": "duration",
+          "kind": "string"
+        },
+        {
+          "name": "max_inscribed",
+          "kind": "formula"
+        },
+        {
+          "name": "release_trigger",
+          "kind": "string"
+        },
+        {
+          "name": "aoe_becomes",
+          "kind": "string"
+        },
+        {
+          "name": "expires",
+          "kind": "string"
+        }
+      ]
+    },
+    "grants_companion": {
+      "category": "Companions & Summons",
+      "summary": "Grants a persistent companion with a stat block reference.",
+      "fields": [
+        {
+          "name": "companion_id",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "permanent",
+          "kind": "boolean"
+        },
+        {
+          "name": "uses_lore",
+          "kind": "json"
+        },
+        {
+          "name": "command_action",
+          "kind": "json"
+        },
+        {
+          "name": "on_destroy",
+          "kind": "string"
+        }
+      ]
+    },
+    "companion_autonomy": {
+      "category": "Companions & Summons",
+      "summary": "Grants a companion limited independent action.",
+      "fields": [
+        {
+          "name": "companion_id",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "duration",
+          "kind": "string"
+        },
+        {
+          "name": "uses",
+          "kind": "uses"
+        }
+      ]
+    },
+    "cast_through_summon": {
+      "category": "Companions & Summons",
+      "summary": "Standing permission to cast spells through a named summon.",
+      "fields": [
+        {
+          "name": "summon_id",
+          "kind": "string",
+          "required": true
+        }
+      ]
+    },
+    "summon": {
+      "category": "Companions & Summons",
+      "summary": "Core creature summon: stat block + selectable option menu.",
+      "fields": [
+        {
+          "name": "summon_id",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "from_pool",
+          "kind": "string"
+        },
+        {
+          "name": "duration",
+          "kind": "string"
+        },
+        {
+          "name": "max_active",
+          "kind": "number"
+        },
+        {
+          "name": "leash",
+          "kind": "string"
+        },
+        {
+          "name": "stat_block",
+          "kind": "json"
+        },
+        {
+          "name": "options",
+          "kind": "options",
+          "hint": "[{ value, label, boons }]"
+        },
+        {
+          "name": "on_killed_by_crit",
+          "kind": "string"
+        },
+        {
+          "name": "can_attack_and_cast_from",
+          "kind": "boolean"
+        }
+      ]
+    },
+    "summon_options_extend": {
+      "category": "Companions & Summons",
+      "summary": "Adds entries to an existing summon's option menu.",
+      "fields": [
+        {
+          "name": "summon_id",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "options",
+          "kind": "options",
+          "required": true
+        }
+      ]
+    },
+    "summon_vitality_bonus": {
+      "category": "Companions & Summons",
+      "summary": "Vitality bonus for summons (optionally sphere-scoped).",
+      "fields": [
+        {
+          "name": "formula",
+          "kind": "formula",
+          "required": true
+        },
+        {
+          "name": "applies_to_sphere",
+          "kind": "string"
+        }
+      ]
+    },
+    "summon_sphere_effect": {
+      "category": "Companions & Summons",
+      "summary": "Applies boon arrays to all active summons keyed by known spheres.",
+      "fields": [
+        {
+          "name": "applies_to",
+          "kind": "string"
+        },
+        {
+          "name": "reset_on",
+          "kind": "string"
+        },
+        {
+          "name": "by_sphere",
+          "kind": "json",
+          "required": true,
+          "hint": "{ sphere_id: [boons] }"
+        }
+      ]
+    },
+    "crafting_pool": {
+      "category": "Crafting & Tokens",
+      "summary": "Tracked craft budget plus prepared recipe list (Alchemist concoctions).",
+      "fields": [
+        {
+          "name": "id",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "budget",
+          "kind": "formula",
+          "required": true
+        },
+        {
+          "name": "craft_during",
+          "kind": "list"
+        },
+        {
+          "name": "expires",
+          "kind": "string"
+        },
+        {
+          "name": "recipes",
+          "kind": "json",
+          "hint": "[{ id, name, boons }]"
+        }
+      ]
+    },
+    "crafting_pool_extend": {
+      "category": "Crafting & Tokens",
+      "summary": "Adds recipes to an existing crafting pool.",
+      "fields": [
+        {
+          "name": "target_pool",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "recipes",
+          "kind": "json",
+          "required": true
+        }
+      ]
+    },
+    "convert_item": {
+      "category": "Crafting & Tokens",
+      "summary": "Swaps which recipes are currently prepared in a pool.",
+      "fields": [
+        {
+          "name": "from_pool",
+          "kind": "string",
+          "required": true
+        }
+      ]
+    },
+    "craft_on_the_fly": {
+      "category": "Crafting & Tokens",
+      "summary": "Use-counter for pool access outside the normal prep window.",
+      "fields": [
+        {
+          "name": "from_pool",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "count",
+          "kind": "number",
+          "default": 1
+        },
+        {
+          "name": "counts_against_budget",
+          "kind": "boolean"
+        },
+        {
+          "name": "expires",
+          "kind": "string"
+        },
+        {
+          "name": "in_combat",
+          "kind": "boolean"
+        }
+      ]
+    },
+    "grant_token": {
+      "category": "Crafting & Tokens",
+      "summary": "Trackable held-token resource (count, cap, expiry). Momentary spend effects stay description-only.",
+      "fields": [
+        {
+          "name": "token",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "max_held_per_creature",
+          "kind": "number"
+        },
+        {
+          "name": "per_day",
+          "kind": "formula"
+        },
+        {
+          "name": "expires",
+          "kind": "string"
+        },
+        {
+          "name": "effect",
+          "kind": "json",
+          "hint": "spend effect \u2014 if momentary, describe in feat description instead"
+        }
+      ]
+    },
+    "daily_mode_choice": {
+      "category": "Modes & States",
+      "summary": "Persistent mode selected at Daily Preparation.",
+      "fields": [
+        {
+          "name": "key",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "optional",
+          "kind": "boolean"
+        },
+        {
+          "name": "changeable_during",
+          "kind": "list"
+        },
+        {
+          "name": "deactivatable_during",
+          "kind": "list"
+        },
+        {
+          "name": "reactivatable_during",
+          "kind": "list"
+        },
+        {
+          "name": "options",
+          "kind": "options",
+          "hint": "[{ value, label, description, boons }]"
+        }
+      ]
+    },
+    "activate_state": {
+      "category": "Modes & States",
+      "summary": "Tracked on/off state (Rage, Hidden, Aura). Absorbs apply_state / aura. Attack/damage bonuses while active stay description-only.",
+      "fields": [
+        {
+          "name": "state",
+          "kind": "string",
+          "required": true
+        },
+        {
+          "name": "inherits",
+          "kind": "string",
+          "hint": "another state whose boons stack under this one"
+        },
+        {
+          "name": "ends_when",
+          "kind": "list"
+        },
+        {
+          "name": "active_while",
+          "kind": "string",
+          "hint": "auto-on passive condition (old apply_state/aura)"
+        },
+        {
+          "name": "range",
+          "kind": "string",
+          "hint": "for aura-style states"
+        },
+        {
+          "name": "target",
+          "kind": "string",
+          "default": "self"
+        },
+        {
+          "name": "boons",
+          "kind": "boons",
+          "hint": "stat/defense/resource modifiers only"
+        }
+      ]
+    }
+  },
+  "retired": {
+    "resolve_on": {
+      "action": "describe",
+      "reason": "Resolve is an instant roll modifier, not tracked state."
+    },
+    "strain_on": {
+      "action": "describe",
+      "reason": "Strain is an instant roll modifier, not tracked state."
+    },
+    "apply_condition": {
+      "action": "describe",
+      "reason": "Conditions on targets live GM-side. If genuinely a tracked self-toggle, use activate_state."
+    },
+    "reduce_action_cost": {
+      "action": "describe",
+      "reason": "Action economy / AP-cost change."
+    },
+    "free_action_grant": {
+      "action": "describe",
+      "reason": "Action economy."
+    },
+    "restrict_action": {
+      "action": "describe",
+      "reason": "Action economy."
+    },
+    "attack_option": {
+      "action": "describe",
+      "reason": "Attack-roll output."
+    },
+    "bonus_attack": {
+      "action": "describe",
+      "reason": "Attack-roll output."
+    },
+    "multi_attack": {
+      "action": "describe",
+      "reason": "Attack-roll output."
+    },
+    "damage_modifier": {
+      "action": "describe",
+      "reason": "Damage-roll output."
+    },
+    "damage_bonus": {
+      "action": "describe",
+      "reason": "Damage-roll output."
+    },
+    "dice_size_increase": {
+      "action": "describe",
+      "reason": "Damage-roll output."
+    },
+    "crit_range_expansion": {
+      "action": "describe",
+      "reason": "Attack-roll output."
+    },
+    "crit_bonus_by_weapon_type": {
+      "action": "describe",
+      "reason": "Crit-moment output."
+    },
+    "targets_defense_override": {
+      "action": "describe",
+      "reason": "Attack-roll output."
+    },
+    "opposed_check": {
+      "action": "describe",
+      "reason": "Momentary combat resolution."
+    },
+    "negate_attack": {
+      "action": "describe",
+      "reason": "Momentary combat resolution."
+    },
+    "disarm_target": {
+      "action": "describe",
+      "reason": "Momentary combat resolution."
+    },
+    "redirect_attack": {
+      "action": "describe",
+      "reason": "Momentary combat resolution."
+    },
+    "grants_cover": {
+      "action": "describe",
+      "reason": "Situational; no tracked quantity."
+    },
+    "skill_check_to_learn": {
+      "action": "describe",
+      "reason": "One-off procedure; model the result as grants_known_spells."
+    },
+    "ambition_die_bonus": {
+      "action": "describe",
+      "reason": "Momentary roll addition."
+    },
+    "add_to_roll": {
+      "action": "describe",
+      "reason": "Momentary roll addition."
+    },
+    "companion_directive": {
+      "action": "describe",
+      "reason": "Companion action economy."
+    },
+    "penetrate_resistance": {
+      "action": "describe",
+      "reason": "Standing rule note; state it in prose."
+    },
+    "animate_bound_weapon": {
+      "action": "describe",
+      "reason": "Narrative ability."
+    },
+    "difficulty_modifier": {
+      "action": "describe",
+      "reason": "Passive DC shift \u2014 same bucket as Resolve/Strain."
+    },
+    "divination_anchor": {
+      "action": "describe",
+      "reason": "Pure narrative fact."
+    },
+    "forced_movement": {
+      "action": "describe",
+      "reason": "Momentary movement effect."
+    },
+    "movement_bonus": {
+      "action": "describe",
+      "reason": "Momentary movement effect."
+    },
+    "teleport": {
+      "action": "describe",
+      "reason": "Momentary movement effect."
+    },
+    "sense_sharing": {
+      "action": "describe",
+      "reason": "Narrative ability."
+    },
+    "shapechange": {
+      "action": "describe",
+      "reason": "Narrative ability."
+    },
+    "shared_vitality": {
+      "action": "describe",
+      "reason": "Narrative link, no formula."
+    },
+    "zone_effect": {
+      "action": "describe",
+      "reason": "Momentary battlefield effect, GM-side."
+    },
+    "armor_bonus": {
+      "action": "merge",
+      "into": "stat_bonus",
+      "note": "Same shape \u2014 set stat: \"Armor\"."
+    },
+    "replace_stat": {
+      "action": "merge",
+      "into": "stat_substitution",
+      "note": "with_kind: \"attribute\"."
+    },
+    "attribute_swap": {
+      "action": "merge",
+      "into": "stat_substitution",
+      "note": "with_kind: \"attribute\"; key \u2192 replace, can_use \u2192 with."
+    },
+    "resource_as_stat": {
+      "action": "merge",
+      "into": "stat_substitution",
+      "note": "with_kind: \"resource\"; resource \u2192 with, replaces \u2192 replace."
+    },
+    "attribute_borrow": {
+      "action": "merge",
+      "into": "stat_substitution",
+      "note": "with_kind: \"summon_stat\"."
+    },
+    "remove_trait": {
+      "action": "merge",
+      "into": "equipment_rule_override",
+      "note": "rule: \"remove_trait\"."
+    },
+    "allow_dual_wield": {
+      "action": "merge",
+      "into": "equipment_rule_override",
+      "note": "rule: \"allow_dual_wield\"."
+    },
+    "range_increase": {
+      "action": "merge",
+      "into": "equipment_rule_override",
+      "note": "rule: \"range_increase\"."
+    },
+    "carry_weight_multiplier": {
+      "action": "merge",
+      "into": "equipment_rule_override",
+      "note": "rule: \"carry_weight_multiplier\"; amount = multiplier."
+    },
+    "reduce_trait": {
+      "action": "merge",
+      "into": "equipment_rule_override",
+      "note": "rule: \"reduce_trait\"."
+    },
+    "spell_cost_reduction": {
+      "action": "merge",
+      "into": "spell_cost_modifier",
+      "note": "Negate the amount (reduction = negative)."
+    },
+    "bind_spells": {
+      "action": "merge",
+      "into": "enchantment_option",
+      "note": "Options with effect { type: \"spell\" }."
+    },
+    "inscribe_spell": {
+      "action": "merge",
+      "into": "enchantment_option",
+      "note": "Options with effect { type: \"spell\" }."
+    },
+    "store_spell": {
+      "action": "merge",
+      "into": "enchantment_option",
+      "note": "effect { type: \"spell\", release_trigger, aoe_becomes, expires }."
+    },
+    "apply_state": {
+      "action": "merge",
+      "into": "activate_state",
+      "note": "Use active_while for the auto-on condition."
+    },
+    "aura": {
+      "action": "merge",
+      "into": "activate_state",
+      "note": "Use active_while + range + target: \"allies_in_range\"; effects \u2192 boons."
+    },
+    "emulate_kit": {
+      "action": "merge",
+      "into": "grants_free_success",
+      "note": "uses.count \u2192 count; skill named in context."
+    },
+    "free_success": {
+      "action": "merge",
+      "into": "grants_free_success",
+      "note": "Same fields, new name."
+    }
+  }
+}

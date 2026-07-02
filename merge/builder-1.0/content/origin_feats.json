@@ -1,0 +1,1368 @@
+{
+  "metadata": {
+    "schema_version": "poa.content.v1",
+    "collection": "origin_feats"
+  },
+  "owners": [
+    {
+      "id": "acolyte",
+      "name": "Acolyte"
+    },
+    {
+      "id": "boroughborn",
+      "name": "Boroughborn"
+    },
+    {
+      "id": "chosen",
+      "name": "Chosen"
+    },
+    {
+      "id": "commonfolk",
+      "name": "Commonfolk"
+    },
+    {
+      "id": "cursed",
+      "name": "Cursed"
+    },
+    {
+      "id": "farmhand",
+      "name": "Farmhand"
+    },
+    {
+      "id": "guildmate",
+      "name": "Guildmate"
+    },
+    {
+      "id": "magic-initiate",
+      "name": "Magic Initiate"
+    },
+    {
+      "id": "nobility",
+      "name": "Nobility"
+    },
+    {
+      "id": "nomad",
+      "name": "Nomad"
+    },
+    {
+      "id": "outlaw",
+      "name": "Outlaw"
+    },
+    {
+      "id": "soldier",
+      "name": "Soldier"
+    },
+    {
+      "id": "universal",
+      "name": "Universal"
+    }
+  ],
+  "feats": [
+    {
+      "id": "origin-feats-acolyte-1-blessings-of-devotion",
+      "name": "Blessings of Devotion",
+      "slug": "blessings-of-devotion",
+      "owner_type": "origin",
+      "owner_id": "acolyte",
+      "owner_name": "Acolyte",
+      "tag": "Acolyte",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Utility",
+      "traits": [
+        "Utility"
+      ],
+      "activation": {
+        "raw": "2 AP | Duration 1 Minute",
+        "resources": {
+          "ap": 2
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Your early training taught you to sanctify the moment with decisive clarity.\n\nChoose yourself or an ally within **close** range.  \nUntil the end of their next turn, they gain:\n\n- **+2** to their next **Skill Check** **OR** **Attack Roll**\n\nIf that roll is a **critical success**, you regain **1 Ambition** (once per respite).",
+      "raw_markdown": "**Trait** Utility | **Cost** 2 AP | **Duration** 1 Minute  \nYour early training taught you to sanctify the moment with decisive clarity.\n\nChoose yourself or an ally within **close** range.  \nUntil the end of their next turn, they gain:\n\n- **+2** to their next **Skill Check** **OR** **Attack Roll**\n\nIf that roll is a **critical success**, you regain **1 Ambition** (once per respite).",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-acolyte-1-ritual-adept",
+      "name": "Ritual Adept",
+      "slug": "ritual-adept",
+      "owner_type": "origin",
+      "owner_id": "acolyte",
+      "owner_name": "Acolyte",
+      "tag": "Acolyte",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Your upbringing refined your understanding of sacred practices.\n\nYou gain:\n\n- **Resolve** on Skill Checks to identify or interpret **rituals, divine symbols, sacred writings, or divine magic**\n    \n- Perform **non-combat ritual actions** in **half the normal time**\n    \n- Once per **long rest**, you may grant **+1 DC Tier** to a ritual when assisting another caster\n    \n\nThis does _not_ grant spellcasting or ritual slots.",
+      "raw_markdown": "**Trait** Passive  \nYour upbringing refined your understanding of sacred practices.\n\nYou gain:\n\n- **Resolve** on Skill Checks to identify or interpret **rituals, divine symbols, sacred writings, or divine magic**\n    \n- Perform **non-combat ritual actions** in **half the normal time**\n    \n- Once per **long rest**, you may grant **+1 DC Tier** to a ritual when assisting another caster\n    \n\nThis does _not_ grant spellcasting or ritual slots.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-acolyte-1-sanctified-bearing",
+      "name": "Sanctified Bearing",
+      "slug": "sanctified-bearing",
+      "owner_type": "origin",
+      "owner_id": "acolyte",
+      "owner_name": "Acolyte",
+      "tag": "Acolyte",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Your disciplined upbringing grants an unshakable presence.\n\n- **+1 Will Defense**\n    \n- **Resolve** on checks to resist **fear**, **charm**, and **compel** effects",
+      "raw_markdown": "**Trait** Passive  \nYour disciplined upbringing grants an unshakable presence.\n\n- **+1 Will Defense**\n    \n- **Resolve** on checks to resist **fear**, **charm**, and **compel** effects",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-acolyte-1-insightful-wisdom",
+      "name": "Insightful Wisdom",
+      "slug": "insightful-wisdom",
+      "owner_type": "origin",
+      "owner_id": "acolyte",
+      "owner_name": "Acolyte",
+      "tag": "Acolyte",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Utility",
+      "traits": [
+        "Utility"
+      ],
+      "activation": {
+        "raw": "2 AP | Range Close | Duration 1 Minute",
+        "resources": {
+          "ap": 2
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You provides clarity in moments of doubt.\n\nChoose a creature within range to gain one **benefit**:\n\n- Remove **Strain** from one attack\n- Give Resolve on a **Social** or **Intuition** check",
+      "raw_markdown": "**Trait** Utility | **Cost** 2 AP | **Range** Close | **Duration** 1 Minute  \nYou provides clarity in moments of doubt.\n\nChoose a creature within range to gain one **benefit**:\n\n- Remove **Strain** from one attack\n- Give Resolve on a **Social** or **Intuition** check",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-acolyte-2-devout-fortitude",
+      "name": "Devout Fortitude",
+      "slug": "devout-fortitude",
+      "owner_type": "origin",
+      "owner_id": "acolyte",
+      "owner_name": "Acolyte",
+      "tag": "Acolyte",
+      "tier": 2,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Your devotion reinforces body and spirit in moments of danger.\n\nYou gain:\n- +2 maximum **Vitality**\n- +1 to **Body** Defense\n- When you roll **Ambition** on a saving throw (any defense), you may treat results of **1** as **2** instead.    \n\nOnce per **Respite**, when you would gain **Weakened**, you instead ignore it.",
+      "raw_markdown": "**Path Investment** *1 Acolyte Feats*\n**Trait** Passive  \nYour devotion reinforces body and spirit in moments of danger.\n\nYou gain:\n- +2 maximum **Vitality**\n- +1 to **Body** Defense\n- When you roll **Ambition** on a saving throw (any defense), you may treat results of **1** as **2** instead.    \n\nOnce per **Respite**, when you would gain **Weakened**, you instead ignore it.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "1 Acolyte Feats"
+    },
+    {
+      "id": "origin-feats-acolyte-2-channeled-focus",
+      "name": "Channeled Focus",
+      "slug": "channeled-focus",
+      "owner_type": "origin",
+      "owner_id": "acolyte",
+      "owner_name": "Acolyte",
+      "tag": "Acolyte",
+      "tier": 2,
+      "trait_label": "Trait",
+      "trait_raw": "Utility",
+      "traits": [
+        "Utility"
+      ],
+      "activation": {
+        "raw": "2 AP | Duration 1 Minute",
+        "resources": {
+          "ap": 2
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Your training allows you to anchor the spiritual flow around you.\n\nChoose a creature within **close** range.  \nUntil the end of their next turn, they gain **one** of the following:\n\n- +2 to **Spell Attacks** \n- +1 to **Spell DC**\n- **Resistance** to **ether**, **divine**, or **elemental** damage (choose one)\n\nIf the creature uses a **Spell** while this is active and have a **critical success**, you regain 1 **Reservoir** or **Ambition** once per target per **Long Rest**.",
+      "raw_markdown": "**Path Investment** *1 Acolyte Feats*\n**Trait** Utility | **Cost** 2 AP | **Duration** 1 Minute\nYour training allows you to anchor the spiritual flow around you.\n\nChoose a creature within **close** range.  \nUntil the end of their next turn, they gain **one** of the following:\n\n- +2 to **Spell Attacks** \n- +1 to **Spell DC**\n- **Resistance** to **ether**, **divine**, or **elemental** damage (choose one)\n\nIf the creature uses a **Spell** while this is active and have a **critical success**, you regain 1 **Reservoir** or **Ambition** once per target per **Long Rest**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "1 Acolyte Feats"
+    },
+    {
+      "id": "origin-feats-acolyte-2-tenets-of-discipline",
+      "name": "Tenets of Discipline",
+      "slug": "tenets-of-discipline",
+      "owner_type": "origin",
+      "owner_id": "acolyte",
+      "owner_name": "Acolyte",
+      "tag": "Acolyte",
+      "tier": 2,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Your early religious instruction instilled a rigid mental discipline.\n\nYou gain:\n- **Resolve** on skill checks involving **concentration, meditation, vigilance, or resisting distraction**\n- +2 **Mind** Defense\n    \n\nIn addition, once per **respite**, when you would lose **Ambition** from stress or failure, you do not lose **Ambition**.",
+      "raw_markdown": "**Path Investment** *1 Acolyte Feats*\n**Trait** Passive  \nYour early religious instruction instilled a rigid mental discipline.\n\nYou gain:\n- **Resolve** on skill checks involving **concentration, meditation, vigilance, or resisting distraction**\n- +2 **Mind** Defense\n    \n\nIn addition, once per **respite**, when you would lose **Ambition** from stress or failure, you do not lose **Ambition**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "1 Acolyte Feats"
+    },
+    {
+      "id": "origin-feats-acolyte-2-consecrated-action",
+      "name": "Consecrated Action",
+      "slug": "consecrated-action",
+      "owner_type": "origin",
+      "owner_id": "acolyte",
+      "owner_name": "Acolyte",
+      "tag": "Acolyte",
+      "tier": 2,
+      "trait_label": "Trait",
+      "trait_raw": "Trigger",
+      "traits": [
+        "Trigger"
+      ],
+      "activation": {
+        "raw": "1 AP",
+        "resources": {
+          "ap": 1
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Your movements carry spiritual weight, letting you mark the moment with sacred authority. When you **hit** or **succeed** on **Skill check** (Social, Lore, Intuition, or Awareness) against a target.\n\nYou may apply one of the following effects to the target:\n\n- **Dazed** (1 round)\n- **Sapped** (1 round)  \n- Your next **attack** against them has **Resolve**    \n- An ally within **Close** range gains +2 to their next roll against them\n\nOn a **critical success** this may instead apply **Frightened (1 round)**.",
+      "raw_markdown": "**Path Investment** *1 Acolyte Feats*\n**Trait** Trigger | **Cost** 1 AP  \nYour movements carry spiritual weight, letting you mark the moment with sacred authority. When you **hit** or **succeed** on **Skill check** (Social, Lore, Intuition, or Awareness) against a target.\n\nYou may apply one of the following effects to the target:\n\n- **Dazed** (1 round)\n- **Sapped** (1 round)  \n- Your next **attack** against them has **Resolve**    \n- An ally within **Close** range gains +2 to their next roll against them\n\nOn a **critical success** this may instead apply **Frightened (1 round)**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "1 Acolyte Feats"
+    },
+    {
+      "id": "origin-feats-acolyte-3-sacrosanct-vigor",
+      "name": "Sacrosanct Vigor",
+      "slug": "sacrosanct-vigor",
+      "owner_type": "origin",
+      "owner_id": "acolyte",
+      "owner_name": "Acolyte",
+      "tag": "Acolyte",
+      "tier": 3,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Your spirit hardens your flesh; your faith reinforces your life force.\n\nYou gain:\n\n- **+5 Maximum Vitality**   \n- **+1 to all three Defenses (Body, Mind, Will)**\n- When you receive healing from any source, restore an additional **+1d4 Vitality**\n\nAdditionally, once per **full rest**, when you would be reduced to **0 vitality**, instead remain at **1 vitality** and gain **Dodge**.",
+      "raw_markdown": "**Path Investment** *2 Acolyte Feats*\n**Trait** Passive  \nYour spirit hardens your flesh; your faith reinforces your life force.\n\nYou gain:\n\n- **+5 Maximum Vitality**   \n- **+1 to all three Defenses (Body, Mind, Will)**\n- When you receive healing from any source, restore an additional **+1d4 Vitality**\n\nAdditionally, once per **full rest**, when you would be reduced to **0 vitality**, instead remain at **1 vitality** and gain **Dodge**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "2 Acolyte Feats"
+    },
+    {
+      "id": "origin-feats-acolyte-3-rite-of-binding",
+      "name": "Rite of Binding",
+      "slug": "rite-of-binding",
+      "owner_type": "origin",
+      "owner_id": "acolyte",
+      "owner_name": "Acolyte",
+      "tag": "Acolyte",
+      "tier": 3,
+      "trait_label": "Trait",
+      "trait_raw": "Trigger",
+      "traits": [
+        "Trigger"
+      ],
+      "activation": {
+        "raw": "2 AP",
+        "resources": {
+          "ap": 2
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Your ritual training lets you bind foes with sacred force. When a creature within **Close** range attempts to **move**, **dash**, **disengage**, or take a **mobility** action.\n\nMake an opposing **Will check** against their **Will Defense**.\n\n-  On **success**, the action is **canceled**, and the creature is **Slowed** until the end of its next turn.\n\n-  On **critical success**, the creature becomes **Restrained** for 1 round.    \n\nOnce per **respite**, if this cancels a movement that would leave **Engagement** with an ally, the ally also gains **+2 to Attacks** until the end of their next turn.",
+      "raw_markdown": "**Path Investment** *2 Acolyte Feats*\n**Trait** Trigger | **Cost** 2 AP  \nYour ritual training lets you bind foes with sacred force. When a creature within **Close** range attempts to **move**, **dash**, **disengage**, or take a **mobility** action.\n\nMake an opposing **Will check** against their **Will Defense**.\n\n-  On **success**, the action is **canceled**, and the creature is **Slowed** until the end of its next turn.\n\n-  On **critical success**, the creature becomes **Restrained** for 1 round.    \n\nOnce per **respite**, if this cancels a movement that would leave **Engagement** with an ally, the ally also gains **+2 to Attacks** until the end of their next turn.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "2 Acolyte Feats"
+    },
+    {
+      "id": "origin-feats-acolyte-3-mantle-of-reverence",
+      "name": "Mantle of Reverence",
+      "slug": "mantle-of-reverence",
+      "owner_type": "origin",
+      "owner_id": "acolyte",
+      "owner_name": "Acolyte",
+      "tag": "Acolyte",
+      "tier": 3,
+      "trait_label": "Trait",
+      "trait_raw": "Utility",
+      "traits": [
+        "Utility"
+      ],
+      "activation": {
+        "raw": "1 AP | Duration 1 Round",
+        "resources": {
+          "ap": 1
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You manifest the presence of your faith as a commanding aura.\n\nCreatures of your choice within **Close** range gain one of the following:\n\n- +2 to all **Attack Rolls**\n- +2 to all **Stat** Defense\n- Resolve on **Intuition** and **Social** checks\n\nOnce per target, enemies entering your **Engagement** during this effect must make a **Will** check against your **Mind**, or suffer **Strain** on their next attack.\n\nOnce per **long rest**, you may instead extend the duration to **2 rounds**.",
+      "raw_markdown": "**Path Investment** *2 Acolyte Feats*\n**Trait** Utility | **Cost** 1 AP | **Duration** 1 Round  \nYou manifest the presence of your faith as a commanding aura.\n\nCreatures of your choice within **Close** range gain one of the following:\n\n- +2 to all **Attack Rolls**\n- +2 to all **Stat** Defense\n- Resolve on **Intuition** and **Social** checks\n\nOnce per target, enemies entering your **Engagement** during this effect must make a **Will** check against your **Mind**, or suffer **Strain** on their next attack.\n\nOnce per **long rest**, you may instead extend the duration to **2 rounds**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "2 Acolyte Feats"
+    },
+    {
+      "id": "origin-feats-acolyte-3-sacred-insight",
+      "name": "Sacred Insight",
+      "slug": "sacred-insight",
+      "owner_type": "origin",
+      "owner_id": "acolyte",
+      "owner_name": "Acolyte",
+      "tag": "Acolyte",
+      "tier": 3,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You’ve been shaped by years of study, meditation, and spiritual training.\n\nYou gain:\n\n- **Resolve** on any roll involving **forewarning**, **intuition**, **omen-reading**, or **discerning truth**\n- You may reroll one failed **attack roll** or **skill check** per **respite**\n- When you would be affected by a **hidden** danger (trap, ambush, deceit, magical effect), you may use your **Mind** instead of **Body** or **Will** (your choice)    \n\nAdditionally, when you succeed you and all allies within **Nearby** gain +2 to their **Defense** from the same **hidden** danger until the start of their next turn.",
+      "raw_markdown": "**Path Investment** *2 Acolyte Feats*\n**Trait** Passive  \nYou’ve been shaped by years of study, meditation, and spiritual training.\n\nYou gain:\n\n- **Resolve** on any roll involving **forewarning**, **intuition**, **omen-reading**, or **discerning truth**\n- You may reroll one failed **attack roll** or **skill check** per **respite**\n- When you would be affected by a **hidden** danger (trap, ambush, deceit, magical effect), you may use your **Mind** instead of **Body** or **Will** (your choice)    \n\nAdditionally, when you succeed you and all allies within **Nearby** gain +2 to their **Defense** from the same **hidden** danger until the start of their next turn.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "2 Acolyte Feats"
+    },
+    {
+      "id": "origin-feats-boroughborn-1-guiding-voice",
+      "name": "Guiding Voice",
+      "slug": "guiding-voice",
+      "owner_type": "origin",
+      "owner_id": "boroughborn",
+      "owner_name": "Boroughborn",
+      "tag": "Boroughborn",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Utility",
+      "traits": [
+        "Utility"
+      ],
+      "activation": {
+        "raw": "1 AP | Range Close | Duration 1 Round",
+        "resources": {
+          "ap": 1
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You are able to inspire those around you even at a distance. Choose a target within range, they gain +2 to their next **Skill Check** or **Attack Roll**.",
+      "raw_markdown": "**Trait** Utility | **Cost** 1 AP | **Range** Close | **Duration** 1 Round\nYou are able to inspire those around you even at a distance. Choose a target within range, they gain +2 to their next **Skill Check** or **Attack Roll**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-boroughborn-1-look-for-an-opening",
+      "name": "Look For An Opening",
+      "slug": "look-for-an-opening",
+      "owner_type": "origin",
+      "owner_id": "boroughborn",
+      "owner_name": "Boroughborn",
+      "tag": "Boroughborn",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Utility",
+      "traits": [
+        "Utility"
+      ],
+      "activation": {
+        "raw": "2 AP | Range Close",
+        "resources": {
+          "ap": 2
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You are able to see openings at a distance. Once per target, you cause the same effect as a **Flank**. After you use this, the target is immune for 1 minute to this feature.",
+      "raw_markdown": "**Trait** Utility | **Cost** 2 AP | **Range** Close\nYou are able to see openings at a distance. Once per target, you cause the same effect as a **Flank**. After you use this, the target is immune for 1 minute to this feature.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-boroughborn-1-form-up",
+      "name": "Form Up",
+      "slug": "form-up",
+      "owner_type": "origin",
+      "owner_id": "boroughborn",
+      "owner_name": "Boroughborn",
+      "tag": "Boroughborn",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Trigger",
+      "traits": [
+        "Trigger"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "When you're using a **shield** and an ally in your **Engagement** is attacked, you may use your shield's **Reduction Pool** to take the damage.",
+      "raw_markdown": "**Trait** Trigger | **Cost** - \nWhen you're using a **shield** and an ally in your **Engagement** is attacked, you may use your shield's **Reduction Pool** to take the damage.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-boroughborn-1-quick-feet",
+      "name": "Quick Feet",
+      "slug": "quick-feet",
+      "owner_type": "origin",
+      "owner_id": "boroughborn",
+      "owner_name": "Boroughborn",
+      "tag": "Boroughborn",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Once per **respite**, you may reduce the cost of **Dash**, **Disengage** or **Dodge** by 1 AP.",
+      "raw_markdown": "**Trait** Passive | **Cost** - \nOnce per **respite**, you may reduce the cost of **Dash**, **Disengage** or **Dodge** by 1 AP.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-chosen-1-fated-resolve",
+      "name": "Fated Resolve",
+      "slug": "fated-resolve",
+      "owner_type": "origin",
+      "owner_id": "chosen",
+      "owner_name": "Chosen",
+      "tag": "Chosen",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "Free Action",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Whenever you roll a 1 on a **d20** or on one d6 doing **Skill Check**, you may reroll the a single dice one.",
+      "raw_markdown": "**Trait** Passive | **Cost** Free Action\nWhenever you roll a 1 on a **d20** or on one d6 doing **Skill Check**, you may reroll the a single dice one.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-chosen-1-sign-of-fate",
+      "name": "Sign of Fate",
+      "slug": "sign-of-fate",
+      "owner_type": "origin",
+      "owner_id": "chosen",
+      "owner_name": "Chosen",
+      "tag": "Chosen",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You have a birthmark which has been said to match the **Star** you were born under. Based on your chosen **Star** you gain the following.\n\n| Star      | Boon                                       |\n| --------- | ------------------------------------------ |\n| Warrior   | +1 to **Armor Defense** when wearing Armor |\n| Mother    | +1 Success on all **Medicine** checks      |\n| Trickster | +1 Success on all **Stealth** checks       |\n| Lord      | +1 to **Will**                             |\n| Magi      | +1 to **Mind**                             |",
+      "raw_markdown": "**Trait** Passive | **Cost** -\nYou have a birthmark which has been said to match the **Star** you were born under. Based on your chosen **Star** you gain the following.\n\n| Star      | Boon                                       |\n| --------- | ------------------------------------------ |\n| Warrior   | +1 to **Armor Defense** when wearing Armor |\n| Mother    | +1 Success on all **Medicine** checks      |\n| Trickster | +1 Success on all **Stealth** checks       |\n| Lord      | +1 to **Will**                             |\n| Magi      | +1 to **Mind**                             |",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-chosen-1-adept-learner",
+      "name": "Adept Learner",
+      "slug": "adept-learner",
+      "owner_type": "origin",
+      "owner_id": "chosen",
+      "owner_name": "Chosen",
+      "tag": "Chosen",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You gain one proficiency that you do not already have in one of the following groups.\n- **V.I.T.I.A.L.S**\n- **Tools**",
+      "raw_markdown": "**Trait** Passive | **Cost** - \nYou gain one proficiency that you do not already have in one of the following groups.\n- **V.I.T.I.A.L.S**\n- **Tools**",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-chosen-1-guiding-voice",
+      "name": "Guiding Voice",
+      "slug": "guiding-voice",
+      "owner_type": "origin",
+      "owner_id": "chosen",
+      "owner_name": "Chosen",
+      "tag": "Chosen",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Utility",
+      "traits": [
+        "Utility"
+      ],
+      "activation": {
+        "raw": "1 AP | Range Close | Duration 1 Round",
+        "resources": {
+          "ap": 1
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You are able to inspire those around you even at a distance. Choose a target within range, they gain +2 to their next **Skill Check** or **Attack Roll**.",
+      "raw_markdown": "**Trait** Utility | **Cost** 1 AP | **Range** Close | **Duration** 1 Round\nYou are able to inspire those around you even at a distance. Choose a target within range, they gain +2 to their next **Skill Check** or **Attack Roll**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-chosen-3-sacred-insight",
+      "name": "Sacred Insight",
+      "slug": "sacred-insight",
+      "owner_type": "origin",
+      "owner_id": "chosen",
+      "owner_name": "Chosen",
+      "tag": "Chosen",
+      "tier": 3,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You’ve been shaped by years of study, meditation, and spiritual training.\n\nYou gain:\n\n- **Resolve** on any roll involving **forewarning**, **intuition**, **omen-reading**, or **discerning truth**\n- You may reroll one failed **attack roll** or **skill check** per **respite**\n- When you would be affected by a **hidden** danger (trap, ambush, deceit, magical effect), you may use your **Mind** instead of **Body** or **Will** (your choice)    \n\nAdditionally, when you succeed you and all allies within **Nearby** gain +2 to their **Defense** from the same **hidden** danger until the start of their next turn.",
+      "raw_markdown": "**Path Investment** *2 Chosen Feats*\n**Trait** Passive  \nYou’ve been shaped by years of study, meditation, and spiritual training.\n\nYou gain:\n\n- **Resolve** on any roll involving **forewarning**, **intuition**, **omen-reading**, or **discerning truth**\n- You may reroll one failed **attack roll** or **skill check** per **respite**\n- When you would be affected by a **hidden** danger (trap, ambush, deceit, magical effect), you may use your **Mind** instead of **Body** or **Will** (your choice)    \n\nAdditionally, when you succeed you and all allies within **Nearby** gain +2 to their **Defense** from the same **hidden** danger until the start of their next turn.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "2 Chosen Feats"
+    },
+    {
+      "id": "origin-feats-commonfolk-1-quick-repair",
+      "name": "Quick Repair",
+      "slug": "quick-repair",
+      "owner_type": "origin",
+      "owner_id": "commonfolk",
+      "owner_name": "Commonfolk",
+      "tag": "Commonfolk",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Utility",
+      "traits": [
+        "Utility"
+      ],
+      "activation": {
+        "raw": "2 AP | Range Touch",
+        "resources": {
+          "ap": 2
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You can select an object with in range and restore it. If the object was **non-magical** and **non-organic**, and has either a **Reduction Pool** or **Vitality**, you can restore it up to 2d6 once per day.",
+      "raw_markdown": "**Trait** Utility | **Cost** 2 AP | **Range** Touch \nYou can select an object with in range and restore it. If the object was **non-magical** and **non-organic**, and has either a **Reduction Pool** or **Vitality**, you can restore it up to 2d6 once per day.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-commonfolk-1-read-the-room",
+      "name": "Read The Room",
+      "slug": "read-the-room",
+      "owner_type": "origin",
+      "owner_id": "commonfolk",
+      "owner_name": "Commonfolk",
+      "tag": "Commonfolk",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive| Range Close",
+      "traits": [
+        "Passive| Range Close"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You may use **Will** in place of **Mind** when using the **Perception** or **Scan** action against targets in **range**.",
+      "raw_markdown": "**Trait** Passive| **Range** Close\nYou may use **Will** in place of **Mind** when using the **Perception** or **Scan** action against targets in **range**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-commonfolk-1-iron-gut",
+      "name": "Iron Gut",
+      "slug": "iron-gut",
+      "owner_type": "origin",
+      "owner_id": "commonfolk",
+      "owner_name": "Commonfolk",
+      "tag": "Commonfolk",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You are use to dealing with concoctions that would make even the strongest men churn. You gain **Resistance** to **Poison** damage, and **Resolve** on checks for resisting the **Poisoned** condition.",
+      "raw_markdown": "**Trait** Passive \nYou are use to dealing with concoctions that would make even the strongest men churn. You gain **Resistance** to **Poison** damage, and **Resolve** on checks for resisting the **Poisoned** condition.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-cursed-1-broken-as-well",
+      "name": "Broken As Well",
+      "slug": "broken-as-well",
+      "owner_type": "origin",
+      "owner_id": "cursed",
+      "owner_name": "Cursed",
+      "tag": "Cursed",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Trigger  | Range Nearby",
+      "traits": [
+        "Trigger  | Range Nearby"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "When you land a **Critical Hit** or are struck by a **Critical Hit**, you may choose one target within range to suffer 1d4 penalty to **Attack Rolls** until the end of your next turn. The target is considered to be **Hexed**.",
+      "raw_markdown": "**Trait** Trigger  | **Range** Nearby\nWhen you land a **Critical Hit** or are struck by a **Critical Hit**, you may choose one target within range to suffer 1d4 penalty to **Attack Rolls** until the end of your next turn. The target is considered to be **Hexed**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-cursed-1-bond-mark",
+      "name": "Bond Mark",
+      "slug": "bond-mark",
+      "owner_type": "origin",
+      "owner_id": "cursed",
+      "owner_name": "Cursed",
+      "tag": "Cursed",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Utility",
+      "traits": [
+        "Utility"
+      ],
+      "activation": {
+        "raw": "1 AP | Range Touch",
+        "resources": {
+          "ap": 1
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You mark one willing creature, as long as this creature is within 1 mile, both of you can sense each others **emotions** and **vitals**. You are also unable to lie to each other.",
+      "raw_markdown": "**Trait** Utility |**Cost** 1 AP | **Range** Touch\nYou mark one willing creature, as long as this creature is within 1 mile, both of you can sense each others **emotions** and **vitals**. You are also unable to lie to each other.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-cursed-1-forbidden-knowledge",
+      "name": "Forbidden Knowledge",
+      "slug": "forbidden-knowledge",
+      "owner_type": "origin",
+      "owner_id": "cursed",
+      "owner_name": "Cursed",
+      "tag": "Cursed",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "When dealing with matters revolving around **Forbidden** lore and research, you have **Resolve** on **Skill Checks** related to it.",
+      "raw_markdown": "**Trait** Passive\nWhen dealing with matters revolving around **Forbidden** lore and research, you have **Resolve** on **Skill Checks** related to it.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-guildmate-5-freedom-of-movement",
+      "name": "Freedom of Movement",
+      "slug": "freedom-of-movement",
+      "owner_type": "origin",
+      "owner_id": "guildmate",
+      "owner_name": "Guildmate",
+      "tag": "Courier",
+      "tier": 5,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Your **Mobile** feat can now be used once per turn.",
+      "raw_markdown": "**Required** *Tier 4 Courier* | **Path Investment** *4 Guildmate Feats* \n**Trait** Passive | **Cost** - \nYour **Mobile** feat can now be used once per turn.",
+      "collection_type": "origin_feat",
+      "required": "Tier 4 Courier",
+      "path_investment": "4 Guildmate Feats"
+    },
+    {
+      "id": "origin-feats-magic-initiate-1-sphere-access",
+      "name": "Sphere Access",
+      "slug": "sphere-access",
+      "owner_type": "origin",
+      "owner_id": "magic-initiate",
+      "owner_name": "Magic Initiate",
+      "tag": "Magic Initiate",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You gain access to one **Sphere of Magic** that you do not already have. You gain one additional **Spell** that does not count against your current **Known Spells**",
+      "raw_markdown": "**Trait** Passive\nYou gain access to one **Sphere of Magic** that you do not already have. You gain one additional **Spell** that does not count against your current **Known Spells**",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-magic-initiate-1-reckless-casting",
+      "name": "Reckless Casting",
+      "slug": "reckless-casting",
+      "owner_type": "origin",
+      "owner_id": "magic-initiate",
+      "owner_name": "Magic Initiate",
+      "tag": "Magic Initiate",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Utility",
+      "traits": [
+        "Utility"
+      ],
+      "activation": {
+        "raw": "3 Ambition per Spell Tier",
+        "resources": {
+          "ambition": 3
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You care not for safety and need your spells to active regardless. Once per **Long Rest**, you spend **Ambition** equal to three times the tier of a **Spell**.",
+      "raw_markdown": "**Trait** Utility | **Cost** 3 Ambition per Spell Tier\nYou care not for safety and need your spells to active regardless. Once per **Long Rest**, you spend **Ambition** equal to three times the tier of a **Spell**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-magic-initiate-1-chaos-magic",
+      "name": "Chaos Magic",
+      "slug": "chaos-magic",
+      "owner_type": "origin",
+      "owner_id": "magic-initiate",
+      "owner_name": "Magic Initiate",
+      "tag": "Magic Initiate",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Your spellcasting grows unstable. You gain additional **2 Reservoir**.  \nWhenever you cast a **spell of Tier 1** or **higher**, roll a **Chaos Die** (starting at d12).  \n- On a roll of 1, activate the **Chaos Table**.  \n- On any other result, degrade the **Chaos Die** one step (d12 → d10 → d8 → d6 → d4).  \n\nAfter triggering the **Chaos Table**, the **Chaos Die** resets to d12.\n\n**Chaos Table**\n\n| d12    | Chaos Effect                                                                                                                                                                                                                            |\n| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **1**  | **Backfire** The spell fizzles. You take **1d4 arcane damage** and the spell has no effect.                                                                                                                                             |\n| **2**  | **Spell Ricochet** The spell re-targets a random nearby creature. Costs no AP but still consumes resources. Roll a d6 **even numbers** target an enemy of choice, **odd numbers** target an ally of choice.                             |\n| **3**  | **Ethereal Flicker** You partially phase out. Gain **Dodge** but suffer **–2 to Spell Attacks** until the start of your next turn.                                                                                                      |\n| **4**  | **Chaos Pulse:** All creatures within **Close** range take 1d4 **arcane** damage.                                                                                                                                                       |\n| **5**  | **Sideways Spells** For your next two turns, you gain **+1 Spell DC** but suffer **–1 Spell Attack**.                                                                                                                                   |\n| **6**  | **Mind Spark** Your head emits flickering light, acting as a **torch**. Gain **+1 Mind Defense** for 1 round, and light for 1 hour.                                                                                                     |\n| **7**  | **Twisted Intent** Your spell’s effect warps. It gains **1d12 damage** or 1d6 added to **Spell Attack**, but you gain **Weakened 1** and 1 **Wound**.                                                                                   |\n| **8**  | **Spectral Hands** Ghostly hands manifest. You may immediately take a free **Assist** or and additional **Interact** action.                                                                                                            |\n| **9**  | **Reservoir Overflow** You regain **1 Ambition or 1 Reservoir** (your choice; cannot exceed max).                                                                                                                                       |\n| **10** | **Crackling Chaos** Residual energy crackles. Your next spell gains **Resolve** on its **Spell Attack**, but causes a loud noise that can be heard from 1 mile away.                                                                    |\n| **11** | **Slipstream** A distortion in reality opens, You swap places with one chosen target within **Close** range. When you re-appear everyone with **touch** (including yourself) takes 1d4 **Arcane** damage.                               |\n| **12** | **Reality Bends:** Colors invert, sounds distort, gravity ripples. For the next 10 minutes you have **Strain** on **Skill Checks** related to **Awareness** and **Intution**, but **Resolve** on **Vigor**, **Talent**, and **Social**. |",
+      "raw_markdown": "**Trait** Passive  \nYour spellcasting grows unstable. You gain additional **2 Reservoir**.  \nWhenever you cast a **spell of Tier 1** or **higher**, roll a **Chaos Die** (starting at d12).  \n- On a roll of 1, activate the **Chaos Table**.  \n- On any other result, degrade the **Chaos Die** one step (d12 → d10 → d8 → d6 → d4).  \n\nAfter triggering the **Chaos Table**, the **Chaos Die** resets to d12.\n\n**Chaos Table**\n\n| d12    | Chaos Effect                                                                                                                                                                                                                            |\n| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **1**  | **Backfire** The spell fizzles. You take **1d4 arcane damage** and the spell has no effect.                                                                                                                                             |\n| **2**  | **Spell Ricochet** The spell re-targets a random nearby creature. Costs no AP but still consumes resources. Roll a d6 **even numbers** target an enemy of choice, **odd numbers** target an ally of choice.                             |\n| **3**  | **Ethereal Flicker** You partially phase out. Gain **Dodge** but suffer **–2 to Spell Attacks** until the start of your next turn.                                                                                                      |\n| **4**  | **Chaos Pulse:** All creatures within **Close** range take 1d4 **arcane** damage.                                                                                                                                                       |\n| **5**  | **Sideways Spells** For your next two turns, you gain **+1 Spell DC** but suffer **–1 Spell Attack**.                                                                                                                                   |\n| **6**  | **Mind Spark** Your head emits flickering light, acting as a **torch**. Gain **+1 Mind Defense** for 1 round, and light for 1 hour.                                                                                                     |\n| **7**  | **Twisted Intent** Your spell’s effect warps. It gains **1d12 damage** or 1d6 added to **Spell Attack**, but you gain **Weakened 1** and 1 **Wound**.                                                                                   |\n| **8**  | **Spectral Hands** Ghostly hands manifest. You may immediately take a free **Assist** or and additional **Interact** action.                                                                                                            |\n| **9**  | **Reservoir Overflow** You regain **1 Ambition or 1 Reservoir** (your choice; cannot exceed max).                                                                                                                                       |\n| **10** | **Crackling Chaos** Residual energy crackles. Your next spell gains **Resolve** on its **Spell Attack**, but causes a loud noise that can be heard from 1 mile away.                                                                    |\n| **11** | **Slipstream** A distortion in reality opens, You swap places with one chosen target within **Close** range. When you re-appear everyone with **touch** (including yourself) takes 1d4 **Arcane** damage.                               |\n| **12** | **Reality Bends:** Colors invert, sounds distort, gravity ripples. For the next 10 minutes you have **Strain** on **Skill Checks** related to **Awareness** and **Intution**, but **Resolve** on **Vigor**, **Talent**, and **Social**. |",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-nomad-1-nature-s-companion",
+      "name": "Nature's Companion",
+      "slug": "nature-s-companion",
+      "owner_type": "origin",
+      "owner_id": "nomad",
+      "owner_name": "Nomad",
+      "tag": "Nomad",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You gain a **Wildlife** companion that strengthens as you do. The creature's size is **small** and cannot be used as a **mount** unless mounted by a **tiny** creature. Pick one of the following **Traits** for the companion to have to determine stats.\n\n>**Nature Companion**\n> _Wildlife / Neutral_ | **Lore** _Nature_  (*small*)\n> **Vitality** 8 + your **Tier** | **Defense** 11 + your **Tier**  \n> **Body** 8 + your **Tier** |  **Mind** 6  | **Will** 6  \n> **Attacks** 1d6 based on **Trait**  \n> **AP** 3\n\n\n| Trait        | Attack           | Special                                                                                                                    |\n| ------------ | ---------------- | -------------------------------------------------------------------------------------------------------------------------- |\n| **Tracker**  | 1d6 **Puncture** | Gain **Resolve** on **Lore** (Nature) and **Intuition** checks to track or identify wildlife.                              |\n| **Prowler**  | 1d6 **Slash**    | Gain **Resolve** on **Stealth** checks; enemies have **Strain** to detect it while in dim-light or foliage.                |\n| **Guardian** | 1d6 **Blunt**    | When in the same **Engagement**, you gain +1 **Armor Defense**; the companion can use **Distract** for 1 AP once per turn. |\n| **Burrower** | 1d6 **Blunt**    | Ignores difficult terrain and grants you **Resolve** on finding natural hazards or hidden burrows.                         |",
+      "raw_markdown": "**Trait** Passive | **Cost** - \nYou gain a **Wildlife** companion that strengthens as you do. The creature's size is **small** and cannot be used as a **mount** unless mounted by a **tiny** creature. Pick one of the following **Traits** for the companion to have to determine stats.\n\n>**Nature Companion**\n> _Wildlife / Neutral_ | **Lore** _Nature_  (*small*)\n> **Vitality** 8 + your **Tier** | **Defense** 11 + your **Tier**  \n> **Body** 8 + your **Tier** |  **Mind** 6  | **Will** 6  \n> **Attacks** 1d6 based on **Trait**  \n> **AP** 3\n\n\n| Trait        | Attack           | Special                                                                                                                    |\n| ------------ | ---------------- | -------------------------------------------------------------------------------------------------------------------------- |\n| **Tracker**  | 1d6 **Puncture** | Gain **Resolve** on **Lore** (Nature) and **Intuition** checks to track or identify wildlife.                              |\n| **Prowler**  | 1d6 **Slash**    | Gain **Resolve** on **Stealth** checks; enemies have **Strain** to detect it while in dim-light or foliage.                |\n| **Guardian** | 1d6 **Blunt**    | When in the same **Engagement**, you gain +1 **Armor Defense**; the companion can use **Distract** for 1 AP once per turn. |\n| **Burrower** | 1d6 **Blunt**    | Ignores difficult terrain and grants you **Resolve** on finding natural hazards or hidden burrows.                         |",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-nomad-1-live-off-the-land",
+      "name": "Live Off The Land",
+      "slug": "live-off-the-land",
+      "owner_type": "origin",
+      "owner_id": "nomad",
+      "owner_name": "Nomad",
+      "tag": "Nomad",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Narrative",
+      "traits": [
+        "Narrative"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You know how to forage and collect resources. You gain **proficiency** in **Awareness** and **Outrider** tools.",
+      "raw_markdown": "**Trait** Narrative | **Cost** -\nYou know how to forage and collect resources. You gain **proficiency** in **Awareness** and **Outrider** tools.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-nomad-1-hawk-eyes",
+      "name": "Hawk-eyes",
+      "slug": "hawk-eyes",
+      "owner_type": "origin",
+      "owner_id": "nomad",
+      "owner_name": "Nomad",
+      "tag": "Nomad",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Creatures attempting to become **Obscured** or **Hidden** from you have **Strain** on their **Stealth Check**.",
+      "raw_markdown": "**Trait** Passive | **Cost** -\nCreatures attempting to become **Obscured** or **Hidden** from you have **Strain** on their **Stealth Check**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-outlaw-2-worth-the-risk",
+      "name": "Worth the Risk",
+      "slug": "worth-the-risk",
+      "owner_type": "origin",
+      "owner_id": "outlaw",
+      "owner_name": "Outlaw",
+      "tag": "Outlaw",
+      "tier": 2,
+      "trait_label": "Trait",
+      "trait_raw": "Trigger",
+      "traits": [
+        "Trigger"
+      ],
+      "activation": {
+        "raw": "Free Action",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "Only those that take risks are the ones who survive. When rolling with **Ambition** and would fail a **Skill Check**, you may reroll up to 2d6 to try and succeed. However if you still **fail** the check, you loss **Ambition** equal to the amount rolled on your **Ambition** die, this cannot be reduced.",
+      "raw_markdown": "**Trait** Trigger | **Cost** Free Action\nOnly those that take risks are the ones who survive. When rolling with **Ambition** and would fail a **Skill Check**, you may reroll up to 2d6 to try and succeed. However if you still **fail** the check, you loss **Ambition** equal to the amount rolled on your **Ambition** die, this cannot be reduced.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-soldier-1-battle-maneuvers",
+      "name": "Battle Maneuvers",
+      "slug": "battle-maneuvers",
+      "owner_type": "origin",
+      "owner_id": "soldier",
+      "owner_name": "Soldier",
+      "tag": "Soldier",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Offensive",
+      "traits": [
+        "Offensive"
+      ],
+      "activation": {
+        "raw": "2 AP",
+        "resources": {
+          "ap": 2
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You learned enough from other skilled warriors to learn from them. Gain one of the Fighter's **Manuvers** from their **Schools**, but may only use it once per **respite**.",
+      "raw_markdown": "**Trait** Offensive | **Cost** 2 AP\nYou learned enough from other skilled warriors to learn from them. Gain one of the Fighter's **Manuvers** from their **Schools**, but may only use it once per **respite**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-soldier-1-form-up",
+      "name": "Form Up",
+      "slug": "form-up",
+      "owner_type": "origin",
+      "owner_id": "soldier",
+      "owner_name": "Soldier",
+      "tag": "Soldier",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Trigger",
+      "traits": [
+        "Trigger"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "When you're using a **shield** and an ally in your **Engagement** is attacked, you may use your shield's **Reduction Pool** to take the damage.",
+      "raw_markdown": "**Trait** Trigger | **Cost** - \nWhen you're using a **shield** and an ally in your **Engagement** is attacked, you may use your shield's **Reduction Pool** to take the damage.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-soldier-1-feeding-an-army",
+      "name": "Feeding An Army",
+      "slug": "feeding-an-army",
+      "owner_type": "origin",
+      "owner_id": "soldier",
+      "owner_name": "Soldier",
+      "tag": "Soldier",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "After finishing a **Long Rest**, you may choose to restore extra **Vitality** or **Ambition** equal to 1d4 to a total of allies not counting yourself, equal to your **Tier**.",
+      "raw_markdown": "**Trait** Passive | **Cost** - \nAfter finishing a **Long Rest**, you may choose to restore extra **Vitality** or **Ambition** equal to 1d4 to a total of allies not counting yourself, equal to your **Tier**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-soldier-1-triage",
+      "name": "Triage",
+      "slug": "triage",
+      "owner_type": "origin",
+      "owner_id": "soldier",
+      "owner_name": "Soldier",
+      "tag": "Soldier",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You know how to close **Wounds**. After finishing a **Long Rest**, you may choose to restore **Wounds** equal to your **Tier** to a total of allies counting yourself, equal to your **Tier**. A creature can only be effected by this once per seven days.",
+      "raw_markdown": "**Trait** Passive | **Cost** - \nYou know how to close **Wounds**. After finishing a **Long Rest**, you may choose to restore **Wounds** equal to your **Tier** to a total of allies counting yourself, equal to your **Tier**. A creature can only be effected by this once per seven days.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-soldier-2-seasoned-infantry",
+      "name": "Seasoned Infantry",
+      "slug": "seasoned-infantry",
+      "owner_type": "origin",
+      "owner_id": "soldier",
+      "owner_name": "Soldier",
+      "tag": "Soldier",
+      "tier": 2,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You have fought in enough battles to know your favorite weapon. Choose a weapon type (short sword, spear, dagger, etc.), and gain **proficiency** with it. In addition you gain +1 to **attacks** and **damage** rolls.",
+      "raw_markdown": "**Path Investment** *1 Soldier Feats*\n**Trait** Passive | **Cost** - \nYou have fought in enough battles to know your favorite weapon. Choose a weapon type (short sword, spear, dagger, etc.), and gain **proficiency** with it. In addition you gain +1 to **attacks** and **damage** rolls.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "1 Soldier Feats"
+    },
+    {
+      "id": "origin-feats-soldier-2-stop-the-bleeding",
+      "name": "Stop The Bleeding",
+      "slug": "stop-the-bleeding",
+      "owner_type": "origin",
+      "owner_id": "soldier",
+      "owner_name": "Soldier",
+      "tag": "Soldier",
+      "tier": 2,
+      "trait_label": "Trait",
+      "trait_raw": "Utility",
+      "traits": [
+        "Utility"
+      ],
+      "activation": {
+        "raw": "2 AP + 2 Ambition | Range Touch",
+        "resources": {
+          "ap": 2
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You are able to heal your allies in a pinch. You restore **Vitality** equal to 2d4.",
+      "raw_markdown": "**Path Investment** *1 Soldier Feats*\n**Trait** Utility | **Cost** 2 AP + 2 Ambition | **Range** Touch\nYou are able to heal your allies in a pinch. You restore **Vitality** equal to 2d4.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "1 Soldier Feats"
+    },
+    {
+      "id": "origin-feats-soldier-2-motivational-leader",
+      "name": "Motivational Leader",
+      "slug": "motivational-leader",
+      "owner_type": "origin",
+      "owner_id": "soldier",
+      "owner_name": "Soldier",
+      "tag": "Soldier",
+      "tier": 2,
+      "trait_label": "Trait",
+      "trait_raw": "Narrative",
+      "traits": [
+        "Narrative"
+      ],
+      "activation": {
+        "raw": "1 Ambition",
+        "resources": {
+          "ambition": 1
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You give hope to your allies. Only during a **rest**, you may spend **Ambition** to provide a temporary **Reduction Pool** equal to your **Will** + **Tier** and to a total of targets equal to your **Will**",
+      "raw_markdown": "**Path Investment** *1 Soldier Feats*\n**Trait** Narrative | **Cost** 1 Ambition\nYou give hope to your allies. Only during a **rest**, you may spend **Ambition** to provide a temporary **Reduction Pool** equal to your **Will** + **Tier** and to a total of targets equal to your **Will**",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "1 Soldier Feats"
+    },
+    {
+      "id": "origin-feats-soldier-2-protect-the-flank",
+      "name": "Protect The Flank",
+      "slug": "protect-the-flank",
+      "owner_type": "origin",
+      "owner_id": "soldier",
+      "owner_name": "Soldier",
+      "tag": "Soldier",
+      "tier": 2,
+      "trait_label": "Trait",
+      "trait_raw": "Utility",
+      "traits": [
+        "Utility"
+      ],
+      "activation": {
+        "raw": "1 AP | Duration 1 Round",
+        "resources": {
+          "ap": 1
+        },
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "When in an **Engagement** with allies, chose one ally within that **Engagement** and you are both **immune** from **Flank** until either of you take a hostile action, or the duration ends.",
+      "raw_markdown": "**Path Investment** *1 Soldier Feats*\n**Trait** Utility | **Cost** 1 AP | **Duration** 1 Round\nWhen in an **Engagement** with allies, chose one ally within that **Engagement** and you are both **immune** from **Flank** until either of you take a hostile action, or the duration ends.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "1 Soldier Feats"
+    },
+    {
+      "id": "origin-feats-universal-1-angler",
+      "name": "Angler",
+      "slug": "angler",
+      "owner_type": "origin",
+      "owner_id": "universal",
+      "owner_name": "Universal",
+      "tag": "Universal",
+      "tier": 1,
+      "trait_label": "Activation",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You have learned how to tangle with the largest and come out on top. Using the **Grapple** action now only costs 1 **AP**",
+      "raw_markdown": "**Activation** Passive  \nYou have learned how to tangle with the largest and come out on top. Using the **Grapple** action now only costs 1 **AP**",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-universal-1-durable",
+      "name": "Durable",
+      "slug": "durable",
+      "owner_type": "origin",
+      "owner_id": "universal",
+      "owner_name": "Universal",
+      "tag": "Universal",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Trigger",
+      "traits": [
+        "Trigger"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "When you would suffer a **Critical** or **Critically Fail** a spell that would damage you, you may reduce it from a **Critical** to a **Normal** attack and suffer 2 **Wounds**.",
+      "raw_markdown": "**Path Investment** *2 Tier 1 Profession Feats*\n**Trait** Trigger\nWhen you would suffer a **Critical** or **Critically Fail** a spell that would damage you, you may reduce it from a **Critical** to a **Normal** attack and suffer 2 **Wounds**.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": "2 Tier 1 Profession Feats"
+    },
+    {
+      "id": "origin-feats-universal-1-grit-your-teeth",
+      "name": "Grit Your Teeth",
+      "slug": "grit-your-teeth",
+      "owner_type": "origin",
+      "owner_id": "universal",
+      "owner_name": "Universal",
+      "tag": "Universal",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You gain an additional 1 **Wound** to your maximum **Wound** threshold.",
+      "raw_markdown": "**Trait** Passive\nYou gain an additional 1 **Wound** to your maximum **Wound** threshold.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-universal-1-replenished-reservoir",
+      "name": "Replenished Reservoir",
+      "slug": "replenished-reservoir",
+      "owner_type": "origin",
+      "owner_id": "universal",
+      "owner_name": "Universal",
+      "tag": "Universal",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "During rests you add your **Tier** when restoring **Reservoir**.",
+      "raw_markdown": "**Required** *Spellcasting*\n**Trait** Passive\nDuring rests you add your **Tier** when restoring **Reservoir**.",
+      "collection_type": "origin_feat",
+      "required": "Spellcasting",
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-universal-1-pugilist",
+      "name": "Pugilist",
+      "slug": "pugilist",
+      "owner_type": "origin",
+      "owner_id": "universal",
+      "owner_name": "Universal",
+      "tag": "Universal",
+      "tier": 1,
+      "trait_label": "Activation",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You've been in enough fist fights to know how to defend yourself. When using unarmed or cestus weapons, add +1 to your **Armor** defense.",
+      "raw_markdown": "**Activation** Passive  \nYou've been in enough fist fights to know how to defend yourself. When using unarmed or cestus weapons, add +1 to your **Armor** defense.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    },
+    {
+      "id": "origin-feats-universal-1-pack-mule",
+      "name": "Pack Mule",
+      "slug": "pack-mule",
+      "owner_type": "origin",
+      "owner_id": "universal",
+      "owner_name": "Universal",
+      "tag": "Universal",
+      "tier": 1,
+      "trait_label": "Trait",
+      "trait_raw": "Passive",
+      "traits": [
+        "Passive"
+      ],
+      "activation": {
+        "raw": "-",
+        "resources": {},
+        "properties": {},
+        "notes": []
+      },
+      "description_markdown": "You are able to carry more weight than the average adventurer. You gain +5 to your **Carry Weight** and gain an additional +2 when this feat is taken again.",
+      "raw_markdown": "**Trait** Passive\nYou are able to carry more weight than the average adventurer. You gain +5 to your **Carry Weight** and gain an additional +2 when this feat is taken again.",
+      "collection_type": "origin_feat",
+      "required": null,
+      "path_investment": null
+    }
+  ]
+}

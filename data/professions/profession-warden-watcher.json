@@ -1,0 +1,129 @@
+{
+  "id": "watcher",
+  "name": "Watcher",
+  "profession": "warden",
+  "description": "Wardens who follow the Path of the Watcher seek out magical threats and neutralize them at their source, gaining access to spheres of magic such as Augmentation and Divination.",
+  "feats": [
+    {
+      "id": "sphere_of_influence",
+      "name": "Sphere of Influence",
+      "tags": ["Warden", "Watcher"],
+      "path": "watcher",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "watcher", "count": 0 } },
+      "description": "Choose a Sphere of Magic. You gain access to its spells and add the listed spell to your known spells (except spells that require a Creed).",
+      "boons": [
+        {
+          "type": "choice",
+          "key": "watcher_sphere",
+          "prompt": "Choose a Sphere of Magic",
+          "options": [
+            { "value": "aberration",    "label": "Aberration",    "grants": { "sphere": "aberration",    "known_spell": "resonant_distortion" } },
+            { "value": "augmentation",  "label": "Augmentation",  "grants": { "sphere": "augmentation",  "known_spell": "fleet_footing" } },
+            { "value": "conjuration",   "label": "Conjuration",   "grants": { "sphere": "conjuration",   "known_spell": "imbue_with_elements" } },
+            { "value": "decimation",    "label": "Decimation",    "grants": { "sphere": "decimation",    "known_spell": "seeking_bolt" } },
+            { "value": "divination",    "label": "Divination",    "grants": { "sphere": "divination",    "known_spell": "detect_the_inhumane" } },
+            { "value": "mortification", "label": "Mortification", "grants": { "sphere": "mortification", "known_spell": "torment" } },
+            { "value": "reclamation",   "label": "Reclamation",   "grants": { "sphere": "reclamation",   "known_spell": "healing_word" } }
+          ]
+        },
+        { "type": "grants_sphere", "count": 1, "from": { "source": "choice", "key": "watcher_sphere" } },
+        { "type": "grants_known_spells", "from": { "source": "choice", "key": "watcher_sphere", "field": "known_spell" }, "exclude": "creed_spells", "counts_against_known": false }
+      ]
+    },
+    {
+      "id": "watchers_gaze",
+      "name": "Watcher's Gaze",
+      "tags": ["Warden", "Watcher"],
+      "path": "watcher",
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": "tactical",
+      "cost": { "ap": 1 },
+      "range": "Close",
+      "duration": null,
+      "uses": { "count": 1, "recharge": "respite" },
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "watcher", "count": 0 } },
+      "description": "Analyze a creature within Close range and learn two of: whether it has a Resistance, an Immunity, a Weakness, or its weakest defense. Against this target, you deal an additional 1d4 damage on your attacks until the end of the skirmish.",
+      "boons": []
+    },
+    {
+      "id": "mystic_charge",
+      "name": "Mystic Charge",
+      "tags": ["Warden", "Watcher"],
+      "path": "watcher",
+      "tier": 1,
+      "trait": "Maneuver",
+      "slot_type": "tactical",
+      "cost": { "ap": 1, "resources": [{ "id": "mana", "amount": 1 }] },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["watchers_gaze"], "path_investment": { "path": "watcher", "count": 0 } },
+      "description": "Propel yourself forward with arcane energy. You gain Dash, and your next attack this turn deals an additional 1d8 Arcane damage.",
+      "boons": []
+    },
+    {
+      "id": "rending_energy",
+      "name": "Rending Energy",
+      "tags": ["Warden", "Watcher"],
+      "path": "watcher",
+      "tier": 2,
+      "trait": "Utility",
+      "slot_type": "tactical",
+      "cost": { "ap": 1 },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "watcher", "count": 2 } },
+      "description": "Through any weapon you strike with, shift all damage to Arcane damage plus an additional 2d4, until the start of your next turn.",
+      "boons": []
+    },
+    {
+      "id": "nexus_anchor",
+      "name": "Nexus Anchor",
+      "tags": ["Warden", "Watcher"],
+      "path": "watcher",
+      "tier": 2,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": { "count": 1, "recharge": "respite" },
+      "feat_dc": null,
+      "prerequisites": { "feats": ["mystic_charge"], "path_investment": { "path": "watcher", "count": 0 } },
+      "description": "Once per respite, after using Mystic Charge, leave an arcane anchor in the zone you left. Until the end of your next turn, you can use a Free Action to return to that anchor's position.",
+      "boons": []
+    },
+    {
+      "id": "gateway_surveyor",
+      "name": "Gateway Surveyor",
+      "tags": ["Warden", "Watcher"],
+      "path": "watcher",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "watcher", "count": 0 } },
+      "description": "When traveling or exploring, make a Lore (Arcane) check to identify hidden magical effects, lingering spell energy or magical traps; the presence of a portal, teleportation, or realm travel; or whether an area has been recently warped by spheres you are studied in. You also gain access to the Divination sphere.",
+      "boons": [
+        { "type": "grants_sphere", "count": 1, "sphere": "divination" }
+      ]
+    }
+  ]
+}

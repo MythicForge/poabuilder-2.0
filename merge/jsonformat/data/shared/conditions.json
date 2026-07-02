@@ -1,0 +1,26 @@
+{
+  "conditions": [
+    { "id": "BLD", "name": "Bleeding" },
+    { "id": "BLN", "name": "Blinded" },
+    { "id": "BRN", "name": "Burning" },
+    { "id": "CHR", "name": "Charmed" },
+    { "id": "CMP", "name": "Compelled" },
+    { "id": "CRP", "name": "Crippled" },
+    { "id": "DAZ", "name": "Dazed" },
+    { "id": "DEF", "name": "Deafened" },
+    { "id": "DOM", "name": "Dominated" },
+    { "id": "ENR", "name": "Enraged" },
+    { "id": "FRT", "name": "Frightened" },
+    { "id": "IMM", "name": "Immobilized" },
+    { "id": "INT", "name": "Inert" },
+    { "id": "MMD", "name": "Maimed" },
+    { "id": "PSN", "name": "Poisoned" },
+    { "id": "PRN", "name": "Prone" },
+    { "id": "RST", "name": "Restrained" },
+    { "id": "SAP", "name": "Sapped" },
+    { "id": "SIL", "name": "Silenced" },
+    { "id": "STN", "name": "Stunned" },
+    { "id": "UNC", "name": "Unconscious" },
+    { "id": "WEK", "name": "Weakened" }
+  ]
+}

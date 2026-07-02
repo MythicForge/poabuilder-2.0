@@ -1,0 +1,141 @@
+{
+  "id": "weaver",
+  "name": "Weaver",
+  "profession": "mesmer",
+  "description": "Mesmers who follow the Path of the Weaver manipulate the unseen filaments of consciousness that bind minds, creating psionic threads that transmit emotion, sensation, or illusion between allies and enemies alike.",
+  "feats": [
+    {
+      "id": "woven_lies",
+      "name": "Woven Lies",
+      "tags": ["Mesmer", "Weaver"],
+      "path": "weaver",
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": "tactical",
+      "cost": { "ap": 2 },
+      "range": "Close",
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "weaver", "count": 0 } },
+      "description": "Speak lies into an enemy's mind. Make a check against their Will Defense using your Spellcasting Modifier. On success, their next attack roll is reduced by 1d4. On a critical, you deal Psychic damage equal to your Spellcasting Modifier, and the 1d4 applies to their next two attacks.",
+      "boons": []
+    },
+    {
+      "id": "crafted_stories",
+      "name": "Crafted Stories",
+      "tags": ["Mesmer", "Weaver"],
+      "path": "weaver",
+      "tier": 1,
+      "trait": "Narrative",
+      "slot_type": "narrative",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "weaver", "count": 0 } },
+      "description": "Gain Expertise in Social skill checks (increased dice size). When you make a Deception-related skill check, you always start with 1 success.",
+      "boons": [
+        { "type": "dice_size_increase", "amount": 1, "target": "Social_skill_checks", "note": "Expertise." },
+        { "type": "free_success", "context": "deception_checks", "count": 1, "note": "Start with 1 success on Deception checks." }
+      ]
+    },
+    {
+      "id": "thread_weaving",
+      "name": "Thread Weaving",
+      "tags": ["Mesmer", "Weaver"],
+      "path": "weaver",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "weaver", "count": 2 } },
+      "description": "Spin fragments of thought into metaphysical Threads. Choose one Weaving Style (key: weaving_style) to awaken. You gain a pool of Threads equal to 2 + your Spellcasting Modifier, refreshing on a Long Rest.",
+      "boons": [
+        {
+          "type": "grants_resource",
+          "resource_id": "threads",
+          "max": "2 + SpellMod",
+          "recovery": { "long_rest": "full" }
+        },
+        {
+          "type": "choice",
+          "key": "weaving_style",
+          "prompt": "Choose a Weaving Style",
+          "options": [
+            { "value": "gnosis", "label": "Gnosis", "grants": { "description": "Spend 2 Threads: when a tethered target within Close range attempts a save against your spell, give it Resolve or Strain.", "boons": [] } },
+            { "value": "kardia", "label": "Kardia", "grants": { "description": "Spend 1 AP and 1 Thread to heal a creature within Touch for 2d6 (range extendable up to Nearby for +1 AP and +1 Thread per range step).", "boons": [] } },
+            { "value": "thara", "label": "Thara", "grants": { "description": "Spend 1 Thread when making a skill check, attack, or spell using Ambition to increase your Ambition die one step.", "boons": [] } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "heard_it_before",
+      "name": "Heard It Before",
+      "tags": ["Mesmer", "Weaver"],
+      "path": "weaver",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": "Engagement",
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "weaver", "count": 0 } },
+      "description": "You and allies within range gain Resolve on checks made to end the Frightened, Charmed, or Compelled conditions affecting you.",
+      "boons": []
+    },
+    {
+      "id": "loom_threads",
+      "name": "Loom Threads",
+      "tags": ["Mesmer", "Weaver"],
+      "path": "weaver",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["thread_weaving"], "path_investment": { "path": "weaver", "count": 2 } },
+      "description": "Gain a passive based on your Weaving Style, and gain access to the Augmentation sphere. Gnosis — increase your maximum Threads by your Tier. Kardia — add your Spellcasting Modifier to your Vitality healing. Thara — when you use a Cord, add your Ambition die to the Cord's damage.",
+      "boons": [
+        { "type": "grants_sphere", "sphere": "augmentation" },
+        {
+          "type": "choice_conditional",
+          "choice_key": "weaving_style",
+          "by_choice": {
+            "gnosis": [{ "type": "upgrade_resource", "resource": "threads", "max_bonus": "Tier" }],
+            "kardia": [],
+            "thara":  []
+          }
+        }
+      ]
+    },
+    {
+      "id": "puppeteer",
+      "name": "Puppeteer",
+      "tags": ["Mesmer", "Weaver"],
+      "path": "weaver",
+      "tier": 2,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": { "resources": [{ "id": "threads", "amount": 1 }] },
+      "range": "Nearby",
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["thread_weaving"], "path_investment": { "path": "weaver", "count": 0 } },
+      "description": "When a creature within range makes a hostile action requiring an attack or spell attack roll, make a check against their Mental using your Spellcasting Modifier. Critical Success: as success, and recover 1 Thread. Success: the attack misses. Failure: the creature gains Strain on its next attack roll. Critical Failure: no effect.",
+      "boons": []
+    }
+  ]
+}

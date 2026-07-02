@@ -1,0 +1,26 @@
+{
+  "id": "",
+  "name": "",
+  "origin": "",
+  "description": "",
+  "attribute_bonus": { "attribute": "", "amount": 1 },
+  "feats": [
+    {
+      "id": "",
+      "name": "",
+      "tags": [],
+      "tier": 0,
+      "trait": "",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "",
+      "boons": []
+    }
+  ],
+  "spellcasting": null
+}

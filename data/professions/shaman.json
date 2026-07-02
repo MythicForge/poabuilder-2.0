@@ -1,0 +1,175 @@
+{
+  "id": "shaman",
+  "name": "Shaman",
+  "description": "Versatile spellcasters connected to primeval spirits, capable of altering the environment and shapeshifting. They excel at survival, nature magic, and adaptation. Full-caster. Paths are the Anima and the Animus.",
+  "favored_attributes": ["Will", "Brawn"],
+  "vitality": {
+    "base": "9 + Brawn",
+    "per_tier": "2d10",
+    "brawn_bonus": { "dice": "1d6", "threshold": 5, "attribute": "Brawn" }
+  },
+  "wound_threshold_per_tier": 1,
+  "proficiencies": {
+    "skills": { "type": "choice", "count": 1, "from": ["Vigor", "Awareness", "Lore"] },
+    "armaments": ["Primeval Form", "Simple", "Catalysts"],
+    "protection": ["Light"],
+    "tools": { "type": "choice", "count": 1, "from": ["Medicine", "Alchemy"] }
+  },
+  "starting_pack": {
+    "weapons": ["quarterstaff", "dagger", "dagger"],
+    "armor": ["tribal_vestments"],
+    "kits": ["wilderness_survival_kit"],
+    "inventory": ["component_pouch", "weather_resistant_cloak", "wooden_spirit_mask"],
+    "currency": { "gold": 8 }
+  },
+  "resources": [
+    {
+      "id": "primeval",
+      "name": "Reservoir",
+      "max": "(2 * Tier) + Will",
+      "note": "Full-caster reservoir; source = Primeval, modifier = Will.",
+      "recovery": { "respite": { "formula": "Will", "minimum": 3 } }
+    },
+    {
+      "id": "vessels",
+      "name": "Primeval Vessels",
+      "max": "tier_gated",
+      "max_by_tier": [
+        { "tier": 1, "value": 2 },
+        { "tier": 3, "value": 3 },
+        { "tier": 5, "value": 4 }
+      ],
+      "note": "Per-day summon limit (T1-2: 2, T3-4: 3, T5: 4). Tracked as a daily-charge pool. Matches universal-resources res_sham_vessels.",
+      "recovery": { "long_rest": "full" }
+    }
+  ],
+  "paths": [
+    { "id": "anima",  "name": "Anima",  "note": "Confirmed: old role-text name 'Channeler' maps to Anima." },
+    { "id": "animus", "name": "Animus", "note": "Confirmed: old role-text name 'Conduit' maps to Animus." }
+  ],
+  "feats": [
+    {
+      "id": "spellcasting",
+      "name": "Spellcasting",
+      "tags": ["Shaman", "Spellcasting"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": "10 + SpellTier + Will",
+      "prerequisites": [],
+      "description": "Full-caster; source is Primeval; modifier is Will. Reservoir = (2 × Tier) + Will. Start with four known tier 1 spells. Prepared spells = Will. Spell DC = 10 + Spell Tier + Will. Respite restores Will reservoir (minimum 3). Gain three cantrips from the Shaman list.",
+      "boons": [
+        {
+          "type": "grants_spellcasting",
+          "caster_type": "full",
+          "source": "primeval",
+          "modifier": "Will",
+          "known_spells": { "start": 4, "tier": 1 },
+          "prepared_spells": "Will",
+          "spell_dc": "10 + SpellTier + Will",
+          "cantrips": { "max": 3, "from": ["hunters_stride", "primeval_lure", "primeval_ward", "unseen_messenger"] }
+        }
+      ]
+    },
+    {
+      "id": "primeval_vessels",
+      "name": "Primeval Vessels",
+      "tags": ["Shaman"],
+      "path": null,
+      "tier": 0,
+      "trait": "Narrative",
+      "slot_type": null,
+      "cost": { "ap": 2 },
+      "range": "Close",
+      "duration": "1 Minute",
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Summon a Primeval Vessel within Close range (spends from the Vessels pool). Choose which vessel to conjure. Vessels fade after 1 minute. Vessel stat block: Vitality = Will or Mind; Armor = 8 + Mind or Will; Fortitude 8 + Tier; Mental 8 + Tier; Will Defense 14 + Tier; Claws +Hit 1d4 Slash +2 + Tier melee. (Source 'Body/Mind/Will' defenses encoded Fortitude/Mental/Will Defense; verify.)",
+      "boons": [
+        { "type": "grants_resource", "resource_id": "vessels" },
+        {
+          "type": "summon",
+          "summon_id": "primeval_vessel",
+          "from_pool": "vessels",
+          "duration": "1_minute",
+          "stat_block": {
+            "vitality": "Will_or_Mind", "armor": "8 + Mind_or_Will",
+            "fortitude": "8 + Tier", "mental": "8 + Tier", "will_defense": "14 + Tier",
+            "attack": { "name": "Claws", "damage": "1d4", "damage_type": "Slash", "flat_damage": { "amount": 2 }, "tier_bonus": true, "range": "Melee" }
+          },
+          "options": [
+            { "value": "healing_spirit", "label": "Healing Spirit", "boons": [{ "type": "heal", "formula": "2d6", "target": "allies_touching_or_standing_on", "uses": { "count": 1, "recharge": "turn" } }] },
+            { "value": "pained_spirit", "label": "Pained Spirit", "boons": [{ "type": "damage_bonus", "formula": "1d4", "damage_type": "Arcane", "target": "commanded_ally_attacks" }] }
+          ],
+          "note": "Summon subsystem — see rule-check.md."
+        }
+      ]
+    },
+    {
+      "id": "primal_form",
+      "name": "Primal Form",
+      "tags": ["Shaman"],
+      "path": null,
+      "tier": 0,
+      "trait": "Narrative",
+      "slot_type": null,
+      "cost": { "resources": [{ "id": "primeval", "amount": "1_per_tier" }] },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Transform into wildlife of one tier less than yours, adopting that creature's stat block while keeping your mind and voice. You cannot Cast a Spell while in this form. Cost: 1 Reservoir per Tier.",
+      "boons": [
+        { "type": "shapechange", "into": "wildlife_one_tier_less", "adopt_stat_block": true, "keep_mind_and_voice": true, "restriction": "cannot_cast_spells", "note": "Shapechange subsystem — see rule-check.md." }
+      ]
+    },
+    {
+      "id": "vessel_of_nature",
+      "name": "Vessel of Nature",
+      "tags": ["Shaman"],
+      "path": null,
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Gain commune with animals as a cantrip and you may cast spells through your Vessels. Gain Expertise in Lore (increased dice size).",
+      "boons": [
+        { "type": "grants_cantrip", "cantrip_id": "commune_with_animals", "counts_against_known": false },
+        { "type": "cast_through_summon", "summon_id": "primeval_vessel" },
+        { "type": "dice_size_increase", "amount": 1, "target": "Lore_skill_checks", "note": "Expertise." }
+      ]
+    },
+    {
+      "id": "evolved_form",
+      "name": "Evolved Form",
+      "tags": ["Shaman"],
+      "path": null,
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": ["vessel_of_nature"],
+      "description": "Your Primeval Form may now shift into creatures of equal or lesser tier. Gain Expertise in Vigor (increased dice size).",
+      "boons": [
+        { "type": "upgrade_feat", "target_feat": "primal_form", "patch": { "into": "wildlife_equal_or_lesser_tier" } },
+        { "type": "dice_size_increase", "amount": 1, "target": "Vigor_skill_checks", "note": "Expertise." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "",
+  "name": "",
+  "profession": "",
+  "description": "",
+  "feats": [
+    {
+      "id": "",
+      "name": "",
+      "tags": [],
+      "path": "",
+      "tier": 1,
+      "trait": "",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "", "count": 0 }
+      },
+      "description": "",
+      "boons": []
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "Cantrip": [
+    {
+      "name": "Friends",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Charm one creature (Wis save); ends if you attack or deal damage" }
+      ]
+    },
+    {
+      "name": "Guidance",
+      "effects": [
+        { "type": "skill_bonus", "value": "1d4", "condition": "one chosen skill check", "note": "+1d4 to one ability check using a chosen skill" }
+      ]
+    },
+    {
+      "name": "Resistance",
+      "effects": [
+        { "type": "damage_reduction", "value": "1d4", "condition": "one chosen damage type", "note": "Reduce one incoming damage instance of chosen type by 1d4" }
+      ]
+    }
+  ],
+  "1st": [
+    {
+      "name": "Beast Bond",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Telepathic link with a beast; share its senses" }
+      ]
+    },
+    {
+      "name": "Bless",
+      "effects": [
+        { "type": "attack_bonus", "value": "1d4", "note": "+1d4 to attack rolls for up to 3 creatures" },
+        { "type": "save_bonus", "value": "1d4", "note": "+1d4 to saving throws for up to 3 creatures" }
+      ],
+      "scalesWithSlot": {
+        "base": 1,
+        "affectsTargets": true,
+        "note": "+1 creature target per slot level above 1st"
+      }
+    },
+    {
+      "name": "Ceremony",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Various ritual rites: Coming of Age (+1d4 to one check/save for 24h), Wedding (+2 AC to bonded pair), etc." }
+      ]
+    },
+    {
+      "name": "False Life",
+      "effects": [
+        { "type": "temp_hp", "value": "2d4+4", "note": "Gain 2d4+4 temporary HP" }
+      ],
+      "scalesWithSlot": {
+        "base": 1,
+        "valuePerSlot": 5,
+        "note": "+5 temp HP per slot level above 1st"
+      }
+    },
+    {
+      "name": "Longstrider",
+      "effects": [
+        { "type": "speed_bonus", "value": 10, "note": "+10 ft. to speed" }
+      ],
+      "scalesWithSlot": {
+        "base": 1,
+        "affectsTargets": true,
+        "note": "+1 creature target per slot level above 1st"
+      }
+    },
+    {
+      "name": "Mage Armor",
+      "effects": [
+        { "type": "ac_base", "value": "13+DEX", "condition": "not wearing armor", "note": "Base AC = 13 + DEX modifier (replaces no-armor AC)" }
+      ]
+    },
+    {
+      "name": "Protection from Evil and Good",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Warded against Aberrations, Celestials, Elementals, Fey, Fiends, Undead: they can't charm/frighten/possess you, and their attacks are at disadvantage" }
+      ]
+    },
+    {
+      "name": "Sanctuary",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Attackers must succeed Wis save or choose a different target; ends if you attack or cast a harmful spell" }
+      ]
+    },
+    {
+      "name": "Shield of Faith",
+      "effects": [
+        { "type": "ac_bonus", "value": 2, "note": "+2 bonus to AC" }
+      ]
+    },
+    {
+      "name": "Silvery Barbs",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Reaction: force triggering creature to reroll (use lower); give one ally advantage on next d20 test within 1 min" }
+      ]
+    }
+  ],
+  "2nd": [
+    {
+      "name": "Aid",
+      "effects": [
+        { "type": "hp_max", "value": 5, "note": "+5 to HP maximum and current HP for up to 3 creatures" }
+      ],
+      "scalesWithSlot": {
+        "base": 2,
+        "valuePerSlot": 5,
+        "note": "+5 HP per slot level above 2nd (e.g., 3rd slot = +10 HP)"
+      }
+    },
+    {
+      "name": "Air Bubble",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Spectral globe of fresh air around target's head; breathe in any environment" }
+      ],
+      "scalesWithSlot": {
+        "base": 2,
+        "affectsTargets": true,
+        "note": "+2 additional globes per slot level above 2nd"
+      }
+    },
+    {
+      "name": "Barkskin",
+      "effects": [
+        { "type": "ac_base", "value": 17, "condition": "if current AC is lower than 17", "note": "AC can't be less than 17 (regardless of armor or lack thereof)" }
+      ]
+    },
+    {
+      "name": "Darkvision",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Target gains darkvision with a range of 150 ft." }
+      ],
+      "scalesWithSlot": {
+        "base": 2,
+        "affectsTargets": true,
+        "note": "+2 additional targets per slot level above 2nd"
+      }
+    },
+    {
+      "name": "Enhance Ability",
+      "effects": [
+        { "type": "advantage", "value": 0, "condition": "ability checks using chosen ability", "note": "Advantage on ability checks of one chosen ability (STR/DEX/CON/INT/WIS/CHA)" }
+      ],
+      "scalesWithSlot": {
+        "base": 2,
+        "affectsTargets": true,
+        "note": "+1 creature target per slot level above 2nd (each can use a different ability)"
+      }
+    },
+    {
+      "name": "Enlarge/Reduce",
+      "effects": [
+        { "type": "damage_die", "value": "1d4", "condition": "Enlarge: weapon/unarmed attacks", "note": "Enlarge: +1d4 damage on all attacks; Reduce: −1d4 damage on all attacks" }
+      ]
+    },
+    {
+      "name": "Kinetic Jaunt",
+      "effects": [
+        { "type": "speed_bonus", "value": 10, "note": "+10 ft. to walking speed and no opportunity attacks provoked" }
+      ]
+    },
+    {
+      "name": "Magic Weapon",
+      "effects": [
+        { "type": "attack_bonus", "value": 1, "note": "+1 to attack rolls with touched weapon" },
+        { "type": "damage_bonus", "value": 1, "note": "+1 to damage rolls with touched weapon" }
+      ],
+      "scalesWithSlot": {
+        "base": 2,
+        "thresholds": [[3, 2], [6, 3]],
+        "note": "Bonus becomes +2 at slot 3–5, +3 at slot 6+"
+      }
+    },
+    {
+      "name": "Pass without Trace",
+      "effects": [
+        { "type": "skill_bonus", "value": 10, "condition": "Stealth (DEX) checks only", "note": "+10 to Dexterity (Stealth) checks; leave no tracks" }
+      ]
+    },
+    {
+      "name": "Protection from Poison",
+      "effects": [
+        { "type": "resistance", "value": 0, "damageTypes": ["poison"], "note": "Resistance to Poison damage" },
+        { "type": "advantage", "value": 0, "condition": "saving throws to avoid or end Poisoned condition", "note": "Advantage on saves vs. Poison; also ends Poisoned condition on cast" }
+      ]
+    },
+    {
+      "name": "Spider Climb",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Climb speed equal to walking speed; climb on walls and ceilings without hands" }
+      ]
+    },
+    {
+      "name": "Tortoise Shell",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "BG3 protective shell spell (no 5etools data)" }
+      ]
+    },
+    {
+      "name": "Warding Bond",
+      "effects": [
+        { "type": "ac_bonus", "value": 1, "note": "+1 bonus to AC for bonded target" },
+        { "type": "save_bonus", "value": 1, "note": "+1 bonus to saving throws for bonded target" },
+        { "type": "resistance", "value": 0, "damageTypes": ["all"], "note": "Resistance to all damage for bonded target (caster shares the damage taken)" }
+      ]
+    }
+  ],
+  "3rd": [
+    {
+      "name": "Beacon of Hope",
+      "effects": [
+        { "type": "advantage", "value": 0, "condition": "Wisdom saving throws and Death Saving Throws", "note": "Advantage on Wis saves and death saves; any healing restores maximum HP" }
+      ]
+    },
+    {
+      "name": "Catnap",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Up to 3 targets fall unconscious for 1 min and gain benefits of a short rest" }
+      ],
+      "scalesWithSlot": {
+        "base": 3,
+        "affectsTargets": true,
+        "note": "+1 target per slot level above 3rd"
+      }
+    },
+    {
+      "name": "Gaseous Form",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Transform to misty cloud: fly 10 ft., resistance to B/P/S, can't attack or cast spells" }
+      ],
+      "scalesWithSlot": {
+        "base": 3,
+        "affectsTargets": true,
+        "note": "+1 target per slot level above 3rd"
+      }
+    },
+    {
+      "name": "Haste",
+      "effects": [
+        { "type": "speed_multiply", "value": 2, "note": "Speed doubled" },
+        { "type": "ac_bonus", "value": 2, "note": "+2 bonus to AC" },
+        { "type": "advantage", "value": 0, "condition": "Dexterity saving throws", "note": "Advantage on DEX saving throws" }
+      ]
+    },
+    {
+      "name": "Intellect Fortress",
+      "effects": [
+        { "type": "resistance", "value": 0, "damageTypes": ["psychic"], "note": "Resistance to psychic damage" },
+        { "type": "advantage", "value": 0, "condition": "Intelligence, Wisdom, and Charisma saving throws", "note": "Advantage on INT, WIS, and CHA saving throws" }
+      ],
+      "scalesWithSlot": {
+        "base": 3,
+        "affectsTargets": true,
+        "note": "+1 target per slot level above 3rd (all within 30 ft. of each other)"
+      }
+    },
+    {
+      "name": "Motivational Speech",
+      "effects": [
+        { "type": "temp_hp", "value": 5, "note": "5 temporary HP for up to 5 creatures" },
+        { "type": "advantage", "value": 0, "condition": "Wisdom saving throws; next attack/ability check/save after being hit", "note": "Advantage on Wis saves; advantage on next roll after being hit" }
+      ],
+      "scalesWithSlot": {
+        "base": 3,
+        "valuePerSlot": 5,
+        "note": "+5 temp HP per slot level above 3rd"
+      }
+    },
+    {
+      "name": "Protection from Energy",
+      "effects": [
+        { "type": "resistance", "value": 0, "damageTypes": ["chosen: acid, cold, fire, lightning, or thunder"], "note": "Resistance to one chosen damage type (Acid, Cold, Fire, Lightning, or Thunder)" }
+      ]
+    },
+    {
+      "name": "Remove Curse",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Ends all curses on target (one-time effect; no ongoing bonus)" }
+      ]
+    },
+    {
+      "name": "Water Breathing",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Up to 10 willing creatures breathe underwater for 24 hours" }
+      ]
+    }
+  ],
+  "4th": [
+    {
+      "name": "Aura of Purity",
+      "effects": [
+        { "type": "resistance", "value": 0, "damageTypes": ["poison"], "note": "Resistance to Poison damage for you and allies in 30-ft. aura" },
+        { "type": "advantage", "value": 0, "condition": "saving throws to avoid or end conditions (Blinded, Charmed, Deafened, Frightened, Paralyzed, Poisoned, Stunned)", "note": "Advantage on saves vs. listed conditions" }
+      ]
+    },
+    {
+      "name": "Death Ward",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "First time target would drop to 0 HP, drop to 1 HP instead (spell then ends); also negates one instant-kill effect" }
+      ]
+    },
+    {
+      "name": "Freedom of Movement",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Ignore difficult terrain; can't be paralyzed or restrained; movement underwater costs no extra; can escape magical restraints with 5 ft. of movement" }
+      ]
+    },
+    {
+      "name": "Guardian of Nature",
+      "effects": [
+        { "type": "advantage", "value": 0, "condition": "Primal Beast: STR attack rolls; Great Tree: CON, WIS, and DEX saving throws", "note": "Primal Beast: darkvision 120 ft., fly/swim 40 ft., advantage on STR attacks | Great Tree: 10 temp HP, advantage on CON/WIS/DEX saves" }
+      ]
+    },
+    {
+      "name": "Stoneskin",
+      "effects": [
+        { "type": "resistance", "value": 0, "damageTypes": ["bludgeoning", "piercing", "slashing"], "condition": "nonmagical only", "note": "Resistance to nonmagical Bludgeoning, Piercing, and Slashing damage" }
+      ]
+    }
+  ],
+  "5th": [
+    {
+      "name": "Circle of Power",
+      "effects": [
+        { "type": "advantage", "value": 0, "condition": "saving throws against spells and other magical effects", "note": "Advantage on saves vs. spells/magic in 30-ft. aura; on a success where half damage is normally taken, no damage instead" }
+      ]
+    },
+    {
+      "name": "Hallow",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Sanctify an area (up to 60-ft. radius): ward against specified creature types + one chosen extra effect (e.g., Courage, Darkness, Daylight, Silence, etc.)" }
+      ]
+    },
+    {
+      "name": "Skill Empowerment",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Target gains Expertise in one skill it's proficient in (doubles proficiency bonus for that skill)" }
+      ]
+    },
+    {
+      "name": "Swift Quiver",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "As a Bonus Action, make 2 attacks with a ranged ammunition weapon (spell creates ammo); usable each turn for duration" }
+      ]
+    }
+  ],
+  "6th": [
+    {
+      "name": "Soul Cage",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Trap dying humanoid's soul: regain 2d8 HP (bonus action), gain advantage on one roll (bonus action), ask soul a question, or create a remote sensor at a known location" }
+      ]
+    },
+    {
+      "name": "Tasha's Otherworldly Guise",
+      "effects": [
+        { "type": "ac_bonus", "value": 2, "note": "+2 bonus to AC" },
+        { "type": "speed_bonus", "value": 40, "condition": "fly speed", "note": "Fly speed of 40 ft." },
+        { "type": "immunity", "value": 0, "damageTypes": ["fire", "poison"], "condition": "Lower Planes variant", "note": "Immunity to Fire and Poison damage (Lower Planes); OR Radiant and Necrotic (Upper Planes)" }
+      ]
+    },
+    {
+      "name": "Tenser's Transformation",
+      "effects": [
+        { "type": "temp_hp", "value": "2d12+5", "note": "Gain 2d12+5 temporary HP" },
+        { "type": "advantage", "value": 0, "condition": "attack rolls using STR or DEX weapons", "note": "Advantage on attack rolls with STR or DEX-based weapons; proficiency with all weapons; extra Attack action" }
+      ]
+    },
+    {
+      "name": "Wind Walk",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "You and up to 10 allies become gaseous clouds with 300 ft. fly speed and hover; immune to Prone; can revert to normal form as Bonus Action" }
+      ]
+    }
+  ],
+  "7th": [
+    {
+      "name": "Etherealness",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Step into the Border Ethereal; can move in any direction; invisible and can't interact with non-Ethereal creatures" }
+      ],
+      "scalesWithSlot": {
+        "base": 7,
+        "affectsTargets": true,
+        "note": "+3 willing creature targets per slot level above 7th (must be within 10 ft.)"
+      }
+    },
+    {
+      "name": "Power Word Fortify",
+      "effects": [
+        { "type": "temp_hp", "value": 120, "condition": "split among up to 6 targets", "note": "120 temporary HP distributed freely among up to 6 creatures you can see" }
+      ]
+    }
+  ],
+  "8th": [],
+  "9th": [
+    {
+      "name": "Foresight",
+      "effects": [
+        { "type": "advantage", "value": 0, "condition": "all D20 Tests (attack rolls, ability checks, saving throws)", "note": "Advantage on all D20 Tests; other creatures have Disadvantage on attack rolls against you" }
+      ]
+    },
+    {
+      "name": "True Polymorph",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Transform target creature into another creature (CR ≤ target's CR/level) or nonmagical object; gains new form's HP as temp HP" }
+      ]
+    },
+    {
+      "name": "Wish",
+      "effects": [
+        { "type": "utility", "value": 0, "note": "Duplicate any spell of 8th level or lower, or alter reality as described by one sentence; safest use: cast another spell" }
+      ]
+    }
+  ]
+}

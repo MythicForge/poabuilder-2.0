@@ -1,0 +1,60 @@
+{
+  "resources": [
+    {
+      "id": "ambition",
+      "name": "Ambition",
+      "description": "Universal resource for pushing limits. Every character has this pool.",
+      "max": "4 + Tier + floor(Will / 3)",
+      "die_size": {
+        "type": "table",
+        "key": "max(Will, Tier)",
+        "rows": [
+          { "range": [0, 3],   "die": "1d4" },
+          { "range": [4, 7],   "die": "1d6" },
+          { "range": [8, 9],   "die": "1d8" },
+          { "range": [10, 11], "die": "1d10" },
+          { "range": [12, 12], "die": "1d12" }
+        ]
+      },
+      "recovery": {
+        "respite":   { "formula": "Will", "minimum": 3 },
+        "long_rest": { "formula": "Will * 2", "minimum": 8 }
+      },
+      "triggers": []
+    },
+    {
+      "id": "vitality",
+      "name": "Vitality",
+      "description": "General health pool. Base is universal; profession and feats modify it.",
+      "max": "4 + profession_vitality + feat_vitality_bonus",
+      "components": {
+        "base": 4,
+        "profession_vitality": "Resolved from profession.vitality at character creation and each tier.",
+        "feat_vitality_bonus": "Sum of all stat_bonus boons where stat is Vitality Max."
+      },
+      "recovery": {
+        "respite": 0,
+        "long_rest": 0,
+        "full_rest": 0
+      },
+      "triggers": []
+    },
+    {
+      "id": "wounds",
+      "name": "Wounds",
+      "description": "Physical damage threshold. Reaching max wounds = instant death.",
+      "max": "1 + (profession_wound_per_tier * Tier) + floor(Brawn / 3)",
+      "components": {
+        "base": 1,
+        "profession_wound_per_tier": "Resolved from profession.wound_threshold_per_tier.",
+        "brawn_scaling": "floor(Brawn / 3)"
+      },
+      "recovery": {
+        "respite": 0,
+        "long_rest": 0,
+        "full_rest": 0
+      },
+      "triggers": []
+    }
+  ]
+}

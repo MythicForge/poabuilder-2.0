@@ -1,0 +1,832 @@
+[
+  {
+    "Name": "Ravenloft: The Horrors Within",
+    "Data": "06/15/2026",
+    "Id": "rhw"
+  },
+  {
+    "Name": "Borderlands Quest: Dagger Danger! International Day of Play 1–1",
+    "Data": "05/27/2026",
+    "Id": "bqdd"
+  },
+  {
+    "Name": "Crochet: A Book of Many Patterns",
+    "Data": "03/30/2026",
+    "Id": "cabomp"
+  },
+  {
+    "Name": "Fated Flight of the Recluse Eberron 3–3",
+    "Data": "12/08/2025",
+    "Id": "ffotr"
+  },
+  {
+    "Name": "Eberron: Forge of the Artificer",
+    "Data": "12/08/2025",
+    "Id": "efa"
+  },
+  {
+    "Name": "Lorwyn: First Light",
+    "Data": "11/17/2025",
+    "Id": "lfl"
+  },
+  {
+    "Name": "The Lost Library of Lethchauntos Forgotten Realms 1–3",
+    "Data": "11/10/2025",
+    "Id": "fraif-tllol"
+  },
+  {
+    "Name": "Netheril's Fall",
+    "Data": "11/10/2025",
+    "Id": "nf"
+  },
+  {
+    "Name": "Forgotten Realms: Heroes of Faerûn",
+    "Data": "11/10/2025",
+    "Id": "frhof"
+  },
+  {
+    "Name": "Forgotten Realms: Adventures in Faerûn",
+    "Data": "11/10/2025",
+    "Id": "fraif"
+  },
+  {
+    "Name": "Astarion's Book of Hungers",
+    "Data": "11/10/2025",
+    "Id": "abh"
+  },
+  {
+    "Name": "Stranger Things: Welcome to the Hellfire Club Stranger Things 1–3",
+    "Data": "10/06/2025",
+    "Id": "wtthc"
+  },
+  {
+    "Name": "Heroes of the Borderlands Starter Set 1–3",
+    "Data": "09/15/2025",
+    "Id": "hotb"
+  },
+  {
+    "Name": "Dragon Delves: The Will of Orcus Dragon Delves 4–4",
+    "Data": "07/07/2025",
+    "Id": "drde-twoo"
+  },
+  {
+    "Name": "Dragon Delves: The Forbidden Vale Dragon Delves 9–9",
+    "Data": "07/07/2025",
+    "Id": "drde-tfv"
+  },
+  {
+    "Name": "Dragon Delves: The Dragon of Najkir Dragon Delves 7–7",
+    "Data": "07/07/2025",
+    "Id": "drde-tdon"
+  },
+  {
+    "Name": "Dragon Delves: Shivering Death Dragon Delves 11–11",
+    "Data": "07/07/2025",
+    "Id": "drde-sd"
+  },
+  {
+    "Name": "Dragon Delves: For Whom the Void Calls Dragon Delves 5–5",
+    "Data": "07/07/2025",
+    "Id": "drde-fwtvc"
+  },
+  {
+    "Name": "Dragon Delves: Dragons of the Sandstone City Dragon Delves 12–12",
+    "Data": "07/07/2025",
+    "Id": "drde-dotsc"
+  },
+  {
+    "Name": "Dragon Delves: Death at Sunset Dragon Delves 1–3",
+    "Data": "07/07/2025",
+    "Id": "drde-das"
+  },
+  {
+    "Name": "Dragon Delves: Before the Storm Dragon Delves 10–10",
+    "Data": "07/07/2025",
+    "Id": "drde-bts"
+  },
+  {
+    "Name": "Dragon Delves: Baker's Doesn't Dragon Delves 3–3",
+    "Data": "07/07/2025",
+    "Id": "drde-bd"
+  },
+  {
+    "Name": "Dragon Delves: A Copper for a Song Dragon Delves 12–12",
+    "Data": "07/07/2025",
+    "Id": "drde-acfas"
+  },
+  {
+    "Name": "Borderlands Quest: Goblin Trouble International Day of Play 1–1",
+    "Data": "06/03/2025",
+    "Id": "bqgt"
+  },
+  {
+    "Name": "Monsters of Drakkenheim",
+    "Data": "06/02/2025",
+    "Id": "monstersofdrakkenheim"
+  },
+  {
+    "Name": "Sage Advice Compendium (2025)",
+    "Data": "04/29/2025",
+    "Id": "xsac"
+  },
+  {
+    "Name": "Monster Manual (2025)",
+    "Data": "02/17/2025",
+    "Id": "xmm"
+  },
+  {
+    "Name": "Hold Back The Dead Animated Series 4–4",
+    "Data": "02/06/2025",
+    "Id": "hbtd"
+  },
+  {
+    "Name": "The Lord of the Rings Roleplaying",
+    "Data": "11/25/2024",
+    "Id": "tlotrr"
+  },
+  {
+    "Name": "Dungeon Master's Screen (2024)",
+    "Data": "11/11/2024",
+    "Id": "xscreen"
+  },
+  {
+    "Name": "Dungeon Master's Guide (2024)",
+    "Data": "11/11/2024",
+    "Id": "xdmg"
+  },
+  {
+    "Name": "Scions of Elemental Evil Animated Series 4–4",
+    "Data": "10/23/2024",
+    "Id": "scoee"
+  },
+  {
+    "Name": "Uni and the Hunt for the Lost Horn Animated Series 4–4",
+    "Data": "09/23/2024",
+    "Id": "uthftlh"
+  },
+  {
+    "Name": "Player's Handbook (2024)",
+    "Data": "09/16/2024",
+    "Id": "xphb"
+  },
+  {
+    "Name": "Puncheons and Flagons",
+    "Data": "08/26/2024",
+    "Id": "paf"
+  },
+  {
+    "Name": "Quests from the Infinite Staircase Quests from the Infinite Staircase 1–13",
+    "Data": "07/15/2024",
+    "Id": "qftis"
+  },
+  {
+    "Name": "Vecna: Eve of Ruin Vecna 10–20",
+    "Data": "05/20/2024",
+    "Id": "veor"
+  },
+  {
+    "Name": "Vecna: Nest of the Eldritch Eye Vecna 3–3",
+    "Data": "04/15/2024",
+    "Id": "vnotee"
+  },
+  {
+    "Name": "Red Dragon's Tale: A LEGO Adventure LEGO 5–5",
+    "Data": "03/31/2024",
+    "Id": "lrdt"
+  },
+  {
+    "Name": "Descent into the Lost Caverns of Tsojcanth Quests from the Infinite Staircase 9–9",
+    "Data": "03/25/2024",
+    "Id": "ditlcot"
+  },
+  {
+    "Name": "Dungeons of Drakkenheim Drakkenheim 1–13",
+    "Data": "12/20/2023",
+    "Id": "dungeonsdrakkenheim"
+  },
+  {
+    "Name": "The Illrigger Revised",
+    "Data": "12/04/2023",
+    "Id": "illriggerrevised"
+  },
+  {
+    "Name": "Heroes' Feast: Saving the Children's Menu Heroes' Feast 10–10",
+    "Data": "11/20/2023",
+    "Id": "hfstcm"
+  },
+  {
+    "Name": "Peril in Pinebrook Family Friendly 1–1",
+    "Data": "11/19/2023",
+    "Id": "pip"
+  },
+  {
+    "Name": "The Deck of Many Things: Card Reference Guide",
+    "Data": "11/13/2023",
+    "Id": "dmtcrg"
+  },
+  {
+    "Name": "The Book of Many Things",
+    "Data": "11/13/2023",
+    "Id": "bmt"
+  },
+  {
+    "Name": "Heroes' Feast Flavors of the Multiverse",
+    "Data": "11/06/2023",
+    "Id": "hffotm"
+  },
+  {
+    "Name": "Chains of Asmodeus Extra Life 11–20",
+    "Data": "10/29/2023",
+    "Id": "coa"
+  },
+  {
+    "Name": "Adventure Atlas: The Mortuary",
+    "Data": "10/16/2023",
+    "Id": "aatm"
+  },
+  {
+    "Name": "Turn of Fortune's Wheel Planescape 3–18",
+    "Data": "10/06/2023",
+    "Id": "tofw"
+  },
+  {
+    "Name": "Sigil and the Outlands",
+    "Data": "10/06/2023",
+    "Id": "sato"
+  },
+  {
+    "Name": "Morte's Planar Parade",
+    "Data": "10/06/2023",
+    "Id": "mpp"
+  },
+  {
+    "Name": "Lightning Keep Minecraft 3–3",
+    "Data": "09/25/2023",
+    "Id": "lk"
+  },
+  {
+    "Name": "Monstrous Compendium Volume 4: Eldraine Creatures",
+    "Data": "09/20/2023",
+    "Id": "mcv4ec"
+  },
+  {
+    "Name": "Phandelver and Below: The Shattered Obelisk Starter Set 1–12",
+    "Data": "09/18/2023",
+    "Id": "pabtso"
+  },
+  {
+    "Name": "Bigby Presents: Glory of the Giants",
+    "Data": "08/14/2023",
+    "Id": "bgg"
+  },
+  {
+    "Name": "Giants of the Star Forge Giants of the Star Forge 16–16",
+    "Data": "07/31/2023",
+    "Id": "gotsf"
+  },
+  {
+    "Name": "Tome of Beasts 1 (2023 Edition)",
+    "Data": "05/30/2023",
+    "Id": "tob1-2023"
+  },
+  {
+    "Name": "Thieves' Gallery",
+    "Data": "03/05/2023",
+    "Id": "hat-tg"
+  },
+  {
+    "Name": "Keys from the Golden Vault Keys from the Golden Vault 1–11",
+    "Data": "02/20/2023",
+    "Id": "kftgv"
+  },
+  {
+    "Name": "Dragonlance: Shadow of the Dragon Queen Dragonlance 1–11",
+    "Data": "11/21/2022",
+    "Id": "dsotdq"
+  },
+  {
+    "Name": "Light of Xaryxis Spelljammer 5–8",
+    "Data": "08/15/2022",
+    "Id": "lox"
+  },
+  {
+    "Name": "Dungeon Master's Screen: Spelljammer",
+    "Data": "08/15/2022",
+    "Id": "screenspelljammer"
+  },
+  {
+    "Name": "Boo's Astral Menagerie",
+    "Data": "08/15/2022",
+    "Id": "bam"
+  },
+  {
+    "Name": "Astral Adventurer's Guide",
+    "Data": "08/15/2022",
+    "Id": "aag"
+  },
+  {
+    "Name": "Spelljammer Academy Spelljammer 1–4",
+    "Data": "07/31/2022",
+    "Id": "sja"
+  },
+  {
+    "Name": "Dragons of Stormwreck Isle Starter Set 1–3",
+    "Data": "07/30/2022",
+    "Id": "dosi"
+  },
+  {
+    "Name": "Journeys through the Radiant Citadel Journeys through the Radiant Citadel 1–14",
+    "Data": "07/18/2022",
+    "Id": "jttrc"
+  },
+  {
+    "Name": "Tarot Deck",
+    "Data": "05/23/2022",
+    "Id": "td"
+  },
+  {
+    "Name": "Critical Role: Call of the Netherdeep Critical Role 3–13",
+    "Data": "03/14/2022",
+    "Id": "crcotn"
+  },
+  {
+    "Name": "Mordenkainen Presents: Monsters of the Multiverse",
+    "Data": "01/24/2022",
+    "Id": "mpmm"
+  },
+  {
+    "Name": "Strixhaven: A Reckoning in Ruins Strixhaven 8–10",
+    "Data": "12/06/2021",
+    "Id": "scc-arir"
+  },
+  {
+    "Name": "Strixhaven: The Magister's Masquerade Strixhaven 6–8",
+    "Data": "12/06/2021",
+    "Id": "scc-tmm"
+  },
+  {
+    "Name": "Strixhaven: Hunt for Mage Tower Strixhaven 4–6",
+    "Data": "12/06/2021",
+    "Id": "scc-hfmt"
+  },
+  {
+    "Name": "Strixhaven: Campus Kerfuffle Strixhaven 1–4",
+    "Data": "12/06/2021",
+    "Id": "scc-ck"
+  },
+  {
+    "Name": "Strixhaven: A Curriculum of Chaos",
+    "Data": "12/06/2021",
+    "Id": "scc"
+  },
+  {
+    "Name": "Fizban's Treasury of Dragons",
+    "Data": "10/25/2021",
+    "Id": "ftd"
+  },
+  {
+    "Name": "Minsc and Boo's Journal of Villainy",
+    "Data": "10/04/2021",
+    "Id": "mabjov"
+  },
+  {
+    "Name": "The Wild Beyond the Witchlight The Wild Beyond the Witchlight 1–8",
+    "Data": "09/20/2021",
+    "Id": "wbtw"
+  },
+  {
+    "Name": "Domains of Delight",
+    "Data": "09/20/2021",
+    "Id": "dod"
+  },
+  {
+    "Name": "NERDS Restoring Harmony: Adventure Together NERDS Restoring Harmony 1–3",
+    "Data": "08/31/2021",
+    "Id": "nrh-at"
+  },
+  {
+    "Name": "NERDS Restoring Harmony: A Web of Lies NERDS Restoring Harmony 1–3",
+    "Data": "08/31/2021",
+    "Id": "nrh-awol"
+  },
+  {
+    "Name": "NERDS Restoring Harmony: The Lost Tomb NERDS Restoring Harmony 1–3",
+    "Data": "08/31/2021",
+    "Id": "nrh-tlt"
+  },
+  {
+    "Name": "NERDS Restoring Harmony: Circus of Illusion NERDS Restoring Harmony 1–3",
+    "Data": "08/31/2021",
+    "Id": "nrh-coi"
+  },
+  {
+    "Name": "NERDS Restoring Harmony: A Sticky Situation NERDS Restoring Harmony 1–3",
+    "Data": "08/31/2021",
+    "Id": "nrh-ass"
+  },
+  {
+    "Name": "NERDS Restoring Harmony: A Voice in the Wilderness NERDS Restoring Harmony 1–3",
+    "Data": "08/31/2021",
+    "Id": "nrh-avitw"
+  },
+  {
+    "Name": "NERDS Restoring Harmony: The Candy Mountain Caper NERDS Restoring Harmony 1–3",
+    "Data": "08/31/2021",
+    "Id": "nrh-tcmc"
+  },
+  {
+    "Name": "Adventures in the Forgotten Realms: From Cyan Depths Adventures in the Forgotten Realms 10–10",
+    "Data": "07/27/2021",
+    "Id": "aitfr-fcd"
+  },
+  {
+    "Name": "Adventures in the Forgotten Realms: Deepest Night Adventures in the Forgotten Realms 9–10",
+    "Data": "07/20/2021",
+    "Id": "aitfr-dn"
+  },
+  {
+    "Name": "Adventures in the Forgotten Realms: A Verdant Tomb Adventures in the Forgotten Realms 9–9",
+    "Data": "07/13/2021",
+    "Id": "aitfr-avt"
+  },
+  {
+    "Name": "Adventures in the Forgotten Realms: The Hidden Page Adventures in the Forgotten Realms 8–9",
+    "Data": "07/06/2021",
+    "Id": "aitfr-thp"
+  },
+  {
+    "Name": "Adventures in the Forgotten Realms: In Scarlet Flames Adventures in the Forgotten Realms 8–8",
+    "Data": "06/29/2021",
+    "Id": "aitfr-isf"
+  },
+  {
+    "Name": "Return to the Glory Extra Life 6–8",
+    "Data": "05/20/2021",
+    "Id": "rtg"
+  },
+  {
+    "Name": "Ravenloft: The House of Lament Ravenloft 1–3",
+    "Data": "05/17/2021",
+    "Id": "hol"
+  },
+  {
+    "Name": "Van Richten's Guide to Ravenloft",
+    "Data": "05/17/2021",
+    "Id": "vrgr"
+  },
+  {
+    "Name": "Candlekeep Mysteries Candlekeep Mysteries 1–16",
+    "Data": "03/15/2021",
+    "Id": "cm"
+  },
+  {
+    "Name": "Muk's Guide to Everything He Learned From Tasha",
+    "Data": "11/30/2020",
+    "Id": "mgelft"
+  },
+  {
+    "Name": "Tasha's Cauldron of Everything",
+    "Data": "11/16/2020",
+    "Id": "tce"
+  },
+  {
+    "Name": "Dungeon Master's Screen: Wilderness Kit",
+    "Data": "11/16/2020",
+    "Id": "screenwildernesskit"
+  },
+  {
+    "Name": "Heroes' Feast",
+    "Data": "10/26/2020",
+    "Id": "hf"
+  },
+  {
+    "Name": "Dungeon Master's Screen: Dungeon Kit",
+    "Data": "09/20/2020",
+    "Id": "screendungeonkit"
+  },
+  {
+    "Name": "Icewind Dale: Rime of the Frostmaiden Icewind Dale 1–12",
+    "Data": "09/14/2020",
+    "Id": "idrotf"
+  },
+  {
+    "Name": "Theros: No Silent Secret Mythic Odysseys of Theros 1–2",
+    "Data": "06/01/2020",
+    "Id": "mot-nss"
+  },
+  {
+    "Name": "Mythic Odysseys of Theros",
+    "Data": "06/01/2020",
+    "Id": "mot"
+  },
+  {
+    "Name": "Wildemount: Unwelcome Spirits Wildemount 1–3",
+    "Data": "03/16/2020",
+    "Id": "us"
+  },
+  {
+    "Name": "Wildemount: Frozen Sick Wildemount 1–3",
+    "Data": "03/16/2020",
+    "Id": "fs"
+  },
+  {
+    "Name": "Wildemount: Dangerous Designs Wildemount 1–3",
+    "Data": "03/16/2020",
+    "Id": "dd"
+  },
+  {
+    "Name": "Wildemount: Tide of Retribution Wildemount 1–3",
+    "Data": "03/16/2020",
+    "Id": "tor"
+  },
+  {
+    "Name": "Explorer's Guide to Wildemount",
+    "Data": "03/16/2020",
+    "Id": "egw"
+  },
+  {
+    "Name": "The Lost Dungeon of Rickedness: Big Rick Energy Rick and Morty 1–3",
+    "Data": "11/18/2019",
+    "Id": "rmbre"
+  },
+  {
+    "Name": "Eberron: Forgotten Relics Eberron 1–2",
+    "Data": "11/18/2019",
+    "Id": "efr"
+  },
+  {
+    "Name": "Eberron: Rising from the Last War",
+    "Data": "11/18/2019",
+    "Id": "erlw"
+  },
+  {
+    "Name": "Dungeons & Dragons vs. Rick and Morty: Basic Rules",
+    "Data": "11/18/2019",
+    "Id": "rmr"
+  },
+  {
+    "Name": "Infernal Machine Rebuild Extra Life 5–10",
+    "Data": "11/11/2019",
+    "Id": "imr"
+  },
+  {
+    "Name": "Adventure with Muk",
+    "Data": "11/11/2019",
+    "Id": "awm"
+  },
+  {
+    "Name": "Locathah Rising Extra Life 9–9",
+    "Data": "09/18/2019",
+    "Id": "lr"
+  },
+  {
+    "Name": "Baldur's Gate: Descent Into Avernus Baldur's Gate 1–13",
+    "Data": "09/17/2019",
+    "Id": "bgdia"
+  },
+  {
+    "Name": "Essentials Kit: Divine Contention Essentials Kit 11–12",
+    "Data": "09/02/2019",
+    "Id": "dc"
+  },
+  {
+    "Name": "Essentials Kit: Sleeping Dragon's Wake Essentials Kit 9–11",
+    "Data": "09/02/2019",
+    "Id": "sdw"
+  },
+  {
+    "Name": "Essentials Kit: Storm Lord's Wrath Essentials Kit 7–9",
+    "Data": "09/02/2019",
+    "Id": "slw"
+  },
+  {
+    "Name": "Essentials Kit: Dragon of Icespire Peak Essentials Kit 1–6",
+    "Data": "06/23/2019",
+    "Id": "dip"
+  },
+  {
+    "Name": "The Orrery of the Wanderer Acquisitions Incorporated 1–6",
+    "Data": "06/17/2019",
+    "Id": "oow"
+  },
+  {
+    "Name": "Acquisitions Incorporated",
+    "Data": "06/17/2019",
+    "Id": "ai"
+  },
+  {
+    "Name": "Hunt for the Thessalhydra Stranger Things 3–4",
+    "Data": "05/20/2019",
+    "Id": "hftt"
+  },
+  {
+    "Name": "Ghosts of Saltmarsh Ghosts of Saltmarsh 1–12",
+    "Data": "05/20/2019",
+    "Id": "gos"
+  },
+  {
+    "Name": "A Zib for Your Thoughts Ravnica 2–2",
+    "Data": "03/04/2019",
+    "Id": "azfyt"
+  },
+  {
+    "Name": "Sage Advice Compendium (2014)",
+    "Data": "01/30/2019",
+    "Id": "sac"
+  },
+  {
+    "Name": "Krenko's Way Ravnica 1–2",
+    "Data": "11/19/2018",
+    "Id": "kkw"
+  },
+  {
+    "Name": "Guildmasters' Guide to Ravnica",
+    "Data": "11/19/2018",
+    "Id": "ggr"
+  },
+  {
+    "Name": "Waterdeep: Dungeon of the Mad Mage Waterdeep 5–20",
+    "Data": "11/12/2018",
+    "Id": "wdmm"
+  },
+  {
+    "Name": "Lost Laboratory of Kwalish Extra Life 5–10",
+    "Data": "11/09/2018",
+    "Id": "llk"
+  },
+  {
+    "Name": "Waterdeep: Dragon Heist Waterdeep 1–5",
+    "Data": "09/17/2018",
+    "Id": "wdh"
+  },
+  {
+    "Name": "Plane Shift: Dominaria",
+    "Data": "07/30/2018",
+    "Id": "ps-d"
+  },
+  {
+    "Name": "Mordenkainen's Tome of Foes",
+    "Data": "05/28/2018",
+    "Id": "mtf"
+  },
+  {
+    "Name": "Plane Shift: Ixalan",
+    "Data": "01/08/2018",
+    "Id": "ps-x"
+  },
+  {
+    "Name": "X Marks the Spot Ixalan 4–4",
+    "Data": "12/10/2017",
+    "Id": "xmts"
+  },
+  {
+    "Name": "The Lost Kenku Extra Life 4–4",
+    "Data": "11/27/2017",
+    "Id": "tlk"
+  },
+  {
+    "Name": "Xanathar's Guide to Everything",
+    "Data": "11/20/2017",
+    "Id": "xge"
+  },
+  {
+    "Name": "The Tortle Package Tomb of Annihilation 1–4",
+    "Data": "11/02/2017",
+    "Id": "ttp"
+  },
+  {
+    "Name": "One Grung Above",
+    "Data": "10/10/2017",
+    "Id": "oga"
+  },
+  {
+    "Name": "Tomb of Annihilation Tomb of Annihilation 1–11",
+    "Data": "09/18/2017",
+    "Id": "toa"
+  },
+  {
+    "Name": "Plane Shift: Amonkhet",
+    "Data": "07/05/2017",
+    "Id": "ps-a"
+  },
+  {
+    "Name": "Tales from the Yawning Portal: Tomb of Horrors Tales from the Yawning Portal 10–14",
+    "Data": "03/23/2017",
+    "Id": "tftyp-toh"
+  },
+  {
+    "Name": "Tales from the Yawning Portal: Against the Giants Tales from the Yawning Portal 11–14",
+    "Data": "03/23/2017",
+    "Id": "tftyp-atg"
+  },
+  {
+    "Name": "Tales from the Yawning Portal: Dead in Thay Tales from the Yawning Portal 9–11",
+    "Data": "03/23/2017",
+    "Id": "tftyp-dit"
+  },
+  {
+    "Name": "Tales from the Yawning Portal: White Plume Mountain Tales from the Yawning Portal 8–9",
+    "Data": "03/23/2017",
+    "Id": "tftyp-wpm"
+  },
+  {
+    "Name": "Tales from the Yawning Portal: The Hidden Shrine of Tamoachan Tales from the Yawning Portal 5–8",
+    "Data": "03/23/2017",
+    "Id": "tftyp-thsot"
+  },
+  {
+    "Name": "Tales from the Yawning Portal: The Forge of Fury Tales from the Yawning Portal 3–5",
+    "Data": "03/23/2017",
+    "Id": "tftyp-tfof"
+  },
+  {
+    "Name": "Tales from the Yawning Portal: The Sunless Citadel Tales from the Yawning Portal 1–3",
+    "Data": "03/23/2017",
+    "Id": "tftyp-tsc"
+  },
+  {
+    "Name": "Plane Shift: Kaladesh",
+    "Data": "02/15/2017",
+    "Id": "ps-k"
+  },
+  {
+    "Name": "Volo's Guide to Monsters",
+    "Data": "11/14/2016",
+    "Id": "vgm"
+  },
+  {
+    "Name": "Storm King's Thunder Storm King's Thunder 1–11",
+    "Data": "09/05/2016",
+    "Id": "skt"
+  },
+  {
+    "Name": "Organized Play Adventurers League",
+    "Data": "08/25/2016",
+    "Id": "al"
+  },
+  {
+    "Name": "Plane Shift: Innistrad",
+    "Data": "07/11/2016",
+    "Id": "ps-i"
+  },
+  {
+    "Name": "Plane Shift: Zendikar",
+    "Data": "04/26/2016",
+    "Id": "ps-z"
+  },
+  {
+    "Name": "Curse of Strahd Ravenloft 1–10",
+    "Data": "03/14/2016",
+    "Id": "cos"
+  },
+  {
+    "Name": "Sword Coast Adventurer's Guide",
+    "Data": "11/02/2015",
+    "Id": "scag"
+  },
+  {
+    "Name": "Out of the Abyss Rage of Demons 1–15",
+    "Data": "09/14/2015",
+    "Id": "oota"
+  },
+  {
+    "Name": "Princes of the Apocalypse Elemental Evil 1–15",
+    "Data": "04/06/2015",
+    "Id": "pota"
+  },
+  {
+    "Name": "Dungeon Master's Screen",
+    "Data": "01/19/2015",
+    "Id": "screen"
+  },
+  {
+    "Name": "Dungeon Master's Guide (2014)",
+    "Data": "12/08/2014",
+    "Id": "dmg"
+  },
+  {
+    "Name": "Rise of Tiamat Tyranny of Dragons 8–15",
+    "Data": "11/03/2014",
+    "Id": "rot"
+  },
+  {
+    "Name": "Monster Manual (2014)",
+    "Data": "09/29/2014",
+    "Id": "mm"
+  },
+  {
+    "Name": "Hoard of the Dragon Queen Tyranny of Dragons 1–7",
+    "Data": "08/18/2014",
+    "Id": "hotdq"
+  },
+  {
+    "Name": "Player's Handbook (2014)",
+    "Data": "08/18/2014",
+    "Id": "phb"
+  },
+  {
+    "Name": "Lost Mine of Phandelver Starter Set 1–5",
+    "Data": "07/14/2014",
+    "Id": "lmop"
+  }
+]

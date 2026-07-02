@@ -1,0 +1,25 @@
+// Side-effect imports — each file registers its ClassMechanics at module load time.
+import './barbarian';
+import './bard';
+import './cleric';
+import './druid';
+import './fighter';
+import './monk';
+import './paladin';
+import './paladin-bg3';
+import './ranger';
+import './ranger-bg3';
+import './rogue';
+import './sorcerer';
+import './warlock';
+import './wizard';
+import './artificer';
+import './apothecary';
+import './captain';
+import './champion';
+import './illrigger';
+import './messenger';
+import './scholar';
+import './treasure-hunter';
+import './warden';
+import './mystic';

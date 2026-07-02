@@ -1,0 +1,147 @@
+{
+  "id": "commander",
+  "name": "Commander",
+  "profession": "mercenary",
+  "description": "Mercenaries who follow the Path of the Commander specialize in leading others and coordinating battlefield tactics.",
+  "feats": [
+    {
+      "id": "rallied",
+      "name": "Rallied",
+      "tags": ["Mercenary", "Commander"],
+      "path": "commander",
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": "tactical",
+      "cost": { "ap": 1, "resources": [{ "id": "ambition", "amount": 1 }] },
+      "range": "Close",
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "commander", "count": 0 } },
+      "description": "Allies within Close range (earshot) gain temporary Vitality equal to your Ambition roll. You may target a number of allies equal to your Tier.",
+      "boons": [
+        { "type": "heal", "formula": "ambition_die", "target": "allies_in_range", "temporary": true, "max_targets": "Tier" }
+      ]
+    },
+    {
+      "id": "synchronized",
+      "name": "Synchronized",
+      "tags": ["Mercenary", "Commander"],
+      "path": "commander",
+      "tier": 1,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": { "resources": [{ "id": "ambition", "amount": 2 }] },
+      "range": "Close",
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["rallied"], "path_investment": { "path": "commander", "count": 0 } },
+      "description": "When you use a Maneuver action, select a number of allies up to half your Will. They may take the same action without spending AP.",
+      "boons": []
+    },
+    {
+      "id": "called_shot",
+      "name": "Called Shot",
+      "tags": ["Mercenary", "Commander"],
+      "path": "commander",
+      "tier": 1,
+      "trait": "Offensive",
+      "slot_type": "tactical",
+      "cost": { "ap": 1, "resources": [{ "id": "ambition", "amount": 1 }] },
+      "range": "Adjacent",
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["rallied"], "path_investment": { "path": "commander", "count": 0 } },
+      "description": "Call out a target. The next attack against them has Resolve and adds your Ambition dice to the attack roll until they are hit. When hit, your Ambition dice is also added to damage.",
+      "boons": []
+    },
+    {
+      "id": "hindrance",
+      "name": "Hindrance",
+      "tags": ["Mercenary", "Commander"],
+      "path": "commander",
+      "tier": 2,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": { "resources": [{ "id": "ambition", "amount": 2 }] },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "commander", "count": 2 } },
+      "description": "When an ally within your Engagement would be hit with an attack, reduce the damage by three times your Tier.",
+      "boons": []
+    },
+    {
+      "id": "commanding_tactics",
+      "name": "Commanding Tactics",
+      "tags": ["Mercenary", "Commander"],
+      "path": "commander",
+      "tier": 2,
+      "trait": "Utility",
+      "slot_type": "tactical",
+      "cost": { "ap": 2, "resources": [{ "id": "ambition", "amount": 2 }] },
+      "range": "Zone",
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "commander", "count": 3 } },
+      "description": "Issue a coordinated command. Choose one tactic, targeting yourself or allies within range.",
+      "boons": [
+        {
+          "type": "multi_choice",
+          "key": "commanding_tactic",
+          "count": 1,
+          "expandable_by": [],
+          "options": [
+            {
+              "value": "push_the_assault",
+              "label": "Push the Assault",
+              "description": "Selected ally gains Dash and makes a single attack roll as part of their movement, without using a Maneuver.",
+              "boons": []
+            },
+            {
+              "value": "stand_fast",
+              "label": "Stand Fast",
+              "description": "Allies in your zone gain +2 Armor until the end of your next turn.",
+              "boons": [
+                { "type": "stat_bonus", "stat": "Armor", "amount": 2, "target": "allies_in_range", "duration": "until_end_of_your_next_turn" }
+              ]
+            },
+            {
+              "value": "stop_them",
+              "label": "Stop Them",
+              "description": "Allies within your zone can make a single attack roll against a target that uses Disengage.",
+              "boons": []
+            },
+            {
+              "value": "get_out_of_there",
+              "label": "Get Out of There",
+              "description": "Two allies within your zone may immediately switch places, ignoring movement costs and Disengage rules.",
+              "boons": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "strong_presence",
+      "name": "Strong Presence",
+      "tags": ["Mercenary", "Commander"],
+      "path": "commander",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "commander", "count": 0 } },
+      "description": "You and allies within the same Zone as you have Resolve against the Frightened condition.",
+      "boons": []
+    }
+  ]
+}

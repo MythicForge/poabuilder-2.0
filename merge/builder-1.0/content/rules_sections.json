@@ -1,0 +1,1982 @@
+{
+  "schema_version": "1.0.0",
+  "system": {
+    "title": "Path Of Ambition",
+    "subtitle": "Playtest Booklet",
+    "version": "V1.2.4",
+    "release_date": "2026-03-27",
+    "publisher": "Mythic Forge Gaming",
+    "source_file": "v3Booklet.pdf",
+    "source_type": "playtest_booklet_pdf"
+  },
+  "format_notes": {
+    "purpose": "Canonical web content structure for rulebook/reference rendering.",
+    "section_id_rule": "kebab-case stable ids",
+    "content_model": {
+      "section": "Top-level or nested rulebook section",
+      "blocks": [
+        "paragraph",
+        "list",
+        "table",
+        "stat_line",
+        "entry_group",
+        "subheading"
+      ],
+      "children": "Nested subsections in display order"
+    }
+  },
+  "sections": [
+    {
+      "id": "playing-the-game",
+      "title": "Playing the Game",
+      "slug": "playing-the-game",
+      "order": 1,
+      "kind": "section",
+      "page_start": 2,
+      "page_end": 2,
+      "summary": "Core gameplay loop, scene types, dice systems, success states, and character fundamentals.",
+      "tags": ["core-rules", "gameplay-loop", "attributes"],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Playing the game unfolds in a repeating loop: the Keeper presents a scene, adventurers describe their response, checks may be called for, outcomes are resolved, and the scene continues until it ends."
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Downtime",
+              "text": "Training, tasks, injury recovery, business, and longer-term activity."
+            },
+            {
+              "name": "Exploration",
+              "text": "Travel across large areas or roaming the wilds."
+            },
+            {
+              "name": "Investigation",
+              "text": "Seeking information, dungeon searching, or urban inquiry."
+            },
+            {
+              "name": "Skirmish",
+              "text": "Conflict, chases, duels, or combat where time is kept strictly by rounds."
+            }
+          ],
+          "title": "Scene Types"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Combat",
+              "text": "Use a d20 roll plus modifiers against a defense or DC."
+            },
+            {
+              "name": "Skills",
+              "text": "Use a d6 dice-pool; count successes and meet or exceed the target."
+            }
+          ],
+          "title": "Dice Systems"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "D20 Resolve",
+              "text": "Roll twice and keep the higher result."
+            },
+            {
+              "name": "D20 Strain",
+              "text": "Roll twice and keep the lower result."
+            },
+            {
+              "name": "D6 Resolve",
+              "text": "Reroll up to 3 failed dice and keep the higher result."
+            },
+            {
+              "name": "D6 Strain",
+              "text": "Reroll up to 3 successful dice and keep the lower result."
+            }
+          ],
+          "title": "Resolve and Strain"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "D20 Critical Success",
+              "text": "10 or more above the target."
+            },
+            {
+              "name": "D20 Success",
+              "text": "Meet or exceed the target."
+            },
+            {
+              "name": "D20 Failure",
+              "text": "Below the target."
+            },
+            {
+              "name": "D20 Critical Failure",
+              "text": "10 or more below the target."
+            },
+            {
+              "name": "D6 Critical Success",
+              "text": "2 or more successes above target."
+            },
+            {
+              "name": "D6 Success",
+              "text": "Meets target exactly."
+            },
+            {
+              "name": "D6 Failure",
+              "text": "1 short of target."
+            },
+            {
+              "name": "D6 Critical Failure",
+              "text": "2 or more short of target."
+            }
+          ],
+          "title": "Degrees of Success"
+        },
+        {
+          "type": "subheading",
+          "text": "Attributes and Stats"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Body",
+              "text": "Physical control, power, and stability."
+            },
+            {
+              "name": "Mind",
+              "text": "Mental acuity, analysis, and memory."
+            },
+            {
+              "name": "Will",
+              "text": "Resolve, focus, and emotional composure."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "At creation, start with four +1 attribute points to distribute, with a maximum of +3 in any one attribute. Additional attributes are gained from vocation and by gaining +1 every two feats."
+        },
+        {
+          "type": "stat_line",
+          "label": "Tier",
+          "value": "Culmination of experience based on feats; caps at Tier 5."
+        },
+        {
+          "type": "stat_line",
+          "label": "Vitality",
+          "value": "Based on profession and Body; damage is absorbed here before wounds."
+        },
+        {
+          "type": "stat_line",
+          "label": "Wounds",
+          "value": "(Body \u00f7 2) + Tier. If total wounds taken meet or exceed this value, the adventurer dies immediately."
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Armor Defense",
+              "text": "10 + armor type or feats."
+            },
+            {
+              "name": "Body Defense",
+              "text": "10 + Body."
+            },
+            {
+              "name": "Mind Defense",
+              "text": "10 + Mind."
+            },
+            {
+              "name": "Will Defense",
+              "text": "10 + Will."
+            }
+          ],
+          "title": "Defense"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ambition is a universal resource spent to affect dice checks. The booklet includes an ambition die progression based on Will and Tier."
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "proficiency-and-skills",
+      "title": "Proficiency and Skills",
+      "slug": "proficiency-and-skills",
+      "order": 2,
+      "kind": "section",
+      "page_start": 3,
+      "page_end": 3,
+      "summary": "Skill framework, proficiencies, stealth rules, and spellcasting basics.",
+      "tags": ["skills", "proficiency", "spellcasting"],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "There are four proficiency categories gained from profession and origin: V.I.T.A.L.S., Tool Kits, Armaments, and Protections."
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "V.I.T.A.L.S.",
+              "text": "Skills used for skill checks. Add extra d6s equal to adventurer Tier to all checks using that skill."
+            },
+            {
+              "name": "Tool Kits",
+              "text": "Relevant kits grant bonuses when proficient."
+            },
+            {
+              "name": "Armaments",
+              "text": "Add Tier to attack and damage rolls with proficient weapon groups."
+            },
+            {
+              "name": "Protections",
+              "text": "Armor proficiency prevents penalties; without it, you take Strain on specified checks and attacks/casting."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "columns": ["Tier DC", "Target Successes", "Success on Die \u2265"],
+          "rows": [
+            ["1", "2", "3+"],
+            ["2", "3", "3+"],
+            ["3", "4", "4+"],
+            ["4", "4", "5+"],
+            ["5", "5", "5+"],
+            ["6", "6", "6+"],
+            ["7", "7", "6+"]
+          ],
+          "title": "Skill Check DCs"
+        },
+        {
+          "type": "table",
+          "columns": ["V.I.T.A.L.S.", "Associated Skills", "Attribute"],
+          "rows": [
+            ["Vigor", "Athletics; Fortitude", "Body"],
+            ["Intuition", "Research; Arcana; Crafting", "Mind"],
+            ["Talent", "Thievery; Mobility; Ruses", "Body / Mind"],
+            ["Awareness", "Perception; Survival; Medicine", "Mind"],
+            ["Lore", "Nature; Mysticism; Society", "Mind / Will"],
+            ["Social", "Influence; Performance; Intimidation", "Will / Body"]
+          ],
+          "title": "Associated Skills"
+        },
+        {
+          "type": "subheading",
+          "text": "Stealth Checks"
+        },
+        {
+          "type": "paragraph",
+          "text": "A stealth check is a d20 check: d20 + Body (if proficient in Talent) + bonuses against a target's Mind Defense."
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Unseen Success",
+              "text": "Become Hidden to all with equal or lower Mind Defense."
+            },
+            {
+              "name": "Unseen Critical Success",
+              "text": "As success, and gain +3 to Body Defense against Scan while Hidden."
+            },
+            {
+              "name": "Seen Success",
+              "text": "Gain Unaware against that target."
+            },
+            {
+              "name": "Seen Critical Success",
+              "text": "As success against all that see you."
+            }
+          ],
+          "title": "Stealth Outcomes"
+        },
+        {
+          "type": "subheading",
+          "text": "Spellcasting"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Full Caster",
+              "text": "(2 \u00d7 Tier) + Spellcasting Modifier"
+            },
+            {
+              "name": "Half Caster",
+              "text": "(1 \u00d7 Tier) + Spellcasting Modifier"
+            },
+            {
+              "name": "Limited Caster",
+              "text": "(1/2 \u00d7 Tier) + Spellcasting Modifier"
+            }
+          ],
+          "title": "Reservoir Formulas"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Spell Attack",
+              "text": "Spellcasting Modifier + Tier of Spell."
+            },
+            {
+              "name": "Spell DC",
+              "text": "10 + Tier of Spell + Spellcasting Modifier."
+            },
+            {
+              "name": "Prepared Spells",
+              "text": "Equal to Spellcasting Modifier."
+            }
+          ],
+          "title": "Spell Math"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Line",
+              "text": "Straight line from caster."
+            },
+            {
+              "name": "Cone",
+              "text": "Triangle shape from caster."
+            },
+            {
+              "name": "Burst",
+              "text": "Expands out from origin."
+            },
+            {
+              "name": "Emanation",
+              "text": "Follows the caster."
+            }
+          ],
+          "title": "Area Spell Shapes"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Pinpoint",
+              "text": "5 ft / 1.5 m or single target."
+            },
+            {
+              "name": "Cluster",
+              "text": "10 ft / 3 m or small room."
+            },
+            {
+              "name": "Sector",
+              "text": "20 ft / 6 m or large room."
+            },
+            {
+              "name": "Field",
+              "text": "30 ft / 10 m or grand room."
+            }
+          ],
+          "title": "Area Spell Sizes"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Focused Spells",
+              "text": "Only one Focused spell may occupy a caster's Focus at once."
+            },
+            {
+              "name": "Ritual Spells",
+              "text": "Cannot be used in a skirmish; take at least 10 minutes and use daily limits by tier."
+            },
+            {
+              "name": "Amps",
+              "text": "Optional spell upgrades paid with additional Reservoir."
+            },
+            {
+              "name": "Spell Vellums",
+              "text": "Single-use spell items used by casters or non-casters with checks as listed."
+            }
+          ],
+          "title": "Other Spell Rules"
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "adventurer-creation",
+      "title": "Adventurer Creation",
+      "slug": "adventurer-creation",
+      "order": 3,
+      "kind": "section",
+      "page_start": 4,
+      "page_end": 4,
+      "summary": "Character creation steps, starting stats, and origins/vocations.",
+      "tags": ["character-creation", "origins"],
+      "blocks": [
+        {
+          "type": "list",
+          "style": "ordered",
+          "items": [
+            "Assign Attributes (Body, Mind, Will).",
+            "Choose an Origin and Vocation.",
+            "Choose a Profession (class + combat role).",
+            "Select Starting Equipment.",
+            "Set Vitality, Defenses, and Ambition."
+          ]
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Body / Mind / Will",
+              "text": "Begin at 0 in each."
+            },
+            {
+              "name": "Point Allocation",
+              "text": "Distribute 4 points, maximum +3 per stat."
+            },
+            {
+              "name": "Origin Bonus",
+              "text": "Origin grants +1 to Body, Mind, or Will based on vocation."
+            }
+          ],
+          "title": "Starting Stats"
+        }
+      ],
+      "children": [
+        {
+          "id": "origins-and-vocation",
+          "title": "Origins and Vocation",
+          "slug": "origins-and-vocation",
+          "order": 1,
+          "kind": "subsection",
+          "page_start": 4,
+          "page_end": 4,
+          "summary": "Origins define upbringing; vocation determines which attribute bonus is gained.",
+          "tags": [],
+          "blocks": [
+            {
+              "type": "entry_group",
+              "entries": [
+                {
+                  "name": "Acolyte",
+                  "vocations": ["Pilgrim (B)", "Shaman (M)", "Zealot (W)"],
+                  "themes": "Religion or spirits",
+                  "starting_items": "Healing kit, religious items and clothing",
+                  "special": "Limited Primeval spellcasting (cantrips only)"
+                },
+                {
+                  "name": "Apprentice",
+                  "vocations": ["Builder (B)", "Artisan (M)", "Designer (W)"],
+                  "themes": "Crafting, assessment, creativity, improvisation",
+                  "starting_items": "Crafting supplies, personal project, rare sample"
+                },
+                {
+                  "name": "Boroughborn",
+                  "vocations": [
+                    "City Watch (B)",
+                    "Informant (M)",
+                    "Entertainer (W)"
+                  ],
+                  "themes": "Urban smarts, travel, social, investigation",
+                  "starting_items": "Personal stash, rumor leads, city passes"
+                },
+                {
+                  "name": "Chosen",
+                  "vocations": ["Starborn (B)", "Anointed (M)", "Fated (W)"],
+                  "themes": "Cosmic, prophecy, magic, luck",
+                  "starting_items": "Blessed trinket, journal, birthmark",
+                  "special": "Limited Anima spellcasting (cantrips only)"
+                },
+                {
+                  "name": "Commonfolk",
+                  "vocations": ["Mariner (B)", "Oddjob (M)", "Tavernhand (W)"],
+                  "themes": "Small town, people-smart, simple, adaptable",
+                  "starting_items": "Family heirloom, waterskin, walking staff"
+                },
+                {
+                  "name": "Cursed",
+                  "vocations": ["Exile (B)", "Host (M)", "Visitor (W)"],
+                  "themes": "Curses, soul-binding, supernatural affliction",
+                  "starting_items": "Exile pack, cursed trinket, ritual supplies",
+                  "special": "Limited Spellcasting (cantrips)"
+                },
+                {
+                  "name": "Farmhand",
+                  "vocations": [
+                    "Field Hand (B)",
+                    "Brewer (M)",
+                    "Caretaker (W)"
+                  ],
+                  "themes": "Agriculture, animals, endurance",
+                  "starting_items": "Farming tools, preserved food, animal kit"
+                },
+                {
+                  "name": "Guildmate",
+                  "vocations": [
+                    "Courier (B)",
+                    "Accountant (M)",
+                    "Hireling (W)"
+                  ],
+                  "themes": "Trade, contracts, logistics, urban work",
+                  "starting_items": "Trade tools, documents, guild contacts"
+                },
+                {
+                  "name": "Magic Initiate",
+                  "vocations": [
+                    "Self-Taught (B)",
+                    "Academic (M)",
+                    "Forbidden (W)"
+                  ],
+                  "themes": "Arcane study, theory, unstable magic",
+                  "starting_items": "Student pack, spellbook fragments",
+                  "special": "Limited Spellcasting (cantrips)"
+                },
+                {
+                  "name": "Nobility",
+                  "vocations": ["Warfare (B)", "Educated (M)", "Socialite (W)"],
+                  "themes": "Influence, privilege, command",
+                  "starting_items": "Fine clothing, signet, letters of introduction"
+                },
+                {
+                  "name": "Hunter",
+                  "vocations": [
+                    "Hunter (B)",
+                    "Herbalist (M)",
+                    "Pathfinder (W)"
+                  ],
+                  "themes": "Travel, wilderness survival, navigation",
+                  "starting_items": "Survival kit, trade goods, nomadic gear"
+                },
+                {
+                  "name": "Outlaw",
+                  "vocations": ["Brute (B)", "Thief (M)", "Hotshot (W)"],
+                  "themes": "Crime, evasion, intimidation",
+                  "starting_items": "Disguise tools, lockpicks, illicit contacts"
+                },
+                {
+                  "name": "Soldier",
+                  "vocations": ["Infantry (B)", "Medic (M)", "Thane (W)"],
+                  "themes": "Warfare, discipline, battlefield roles",
+                  "starting_items": "Uniform, field supplies, injury kit"
+                }
+              ],
+              "title": "Origins"
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "professions",
+      "title": "Professions",
+      "slug": "professions",
+      "order": 4,
+      "kind": "section",
+      "page_start": 4,
+      "page_end": 5,
+      "summary": "Core class definitions, resources, proficiencies, and class feats.",
+      "tags": ["classes", "professions"],
+      "blocks": [
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Agent",
+              "role": "Specialist who scouts, infiltrates, and strikes with tricks and alchemy.",
+              "favored_attributes": "Body, Mind",
+              "vitality": "Start 10 + Body; +2d8 per Tier",
+              "wounds": "1",
+              "key_resource": "None",
+              "proficiency": "Skills 2 (Tal/Aware/Int/Soc) | Kit Thievery | Arms Fins./Smpl. | Prot Light",
+              "class_features": ["Undercut", "Agile", "Tread Lightly"]
+            },
+            {
+              "name": "Berserker",
+              "role": "Frontline brute fueled for destruction through rage at a cost.",
+              "favored_attributes": "Body",
+              "vitality": "Start 14 + Body; +2d12 + 2 per Tier",
+              "wounds": "2",
+              "key_resource": "Ambition (Rage)",
+              "proficiency": "Skills 1 (Vig/Aware/Soc) | Arms Mrtl./Smpl./Defs. | Prot Light",
+              "class_features": [
+                "Berserker Rage",
+                "Unarmored Defense",
+                "Hands of Destruction"
+              ]
+            },
+            {
+              "name": "Shaman",
+              "role": "Adaptive primal half-caster mixing survival, shapeshifting, and spirit magic.",
+              "favored_attributes": "Will or Mind, Body",
+              "vitality": "Start 9 + Body; +2d10 per Tier",
+              "wounds": "1",
+              "key_resource": "Reservoir (Primeval)",
+              "proficiency": "Skills 1 (Vig/Aware/Lore) | Kit Med/Alc | Arms Primeval/Smpl./Caty. | Prot Light",
+              "class_features": [
+                "Primeval Form",
+                "Spellcasting",
+                "Primeval Vessels"
+              ]
+            },
+            {
+              "name": "Duelist",
+              "role": "Precision skirmisher dominates with techniques and counters.",
+              "favored_attributes": "Body, Mind",
+              "vitality": "Start 10 + Body; +2d10 per Tier",
+              "wounds": "1",
+              "key_resource": "Cadence",
+              "proficiency": "Skills 1 (Tal/Aware/Int) | Arms Fins./Smpl./Rngd. | Prot Light+Buck",
+              "class_features": [
+                "Cadence",
+                "Agile",
+                "Calculated Precision",
+                "Deflective Stance",
+                "Precision Strike"
+              ]
+            },
+            {
+              "name": "Eidolon",
+              "role": "Full-caster whose inherited magic bends and shapes magic.",
+              "favored_attributes": "Will",
+              "vitality": "Start 8 + Body; +2d8 per Tier",
+              "wounds": "1",
+              "key_resource": "Resonance",
+              "proficiency": "Skills 1 (Aware/Lore/Soc) | Kit Craft/Eng/Med | Arms Cat +1 choice | Prot None",
+              "class_features": [
+                "Resonance",
+                "Resonant Conversion",
+                "Spell Shaping",
+                "Spellcasting"
+              ]
+            },
+            {
+              "name": "Fighter",
+              "role": "Battlefield weapon master using schools, stances, and burst exertion.",
+              "favored_attributes": "Body",
+              "vitality": "Start 12 + Body; +2d12 per Tier",
+              "wounds": "2",
+              "key_resource": "Adrenaline",
+              "proficiency": "Skills 1 (Vig/Tal/Aware) | Arms All | Prot All",
+              "class_features": [
+                "Signature School",
+                "Adrenaline",
+                "Second Breath"
+              ]
+            },
+            {
+              "name": "Vescent",
+              "role": "Soul-powered full-caster trading life force for control, debuffs, and momentum.",
+              "favored_attributes": "Will",
+              "vitality": "Start 8 + Will; +2d8 per Tier",
+              "wounds": "1",
+              "key_resource": "Vitality + Soul Tokens",
+              "proficiency": "Skills 1 (Any) | Kit 1 (Outr./Thievery) | Arms Smpl./Caty. | Prot None",
+              "class_features": ["Lifeblood", "Soulglyph", "Spellcasting"]
+            },
+            {
+              "name": "Warden",
+              "role": "Anti-magic hunter blending martial pressure with arcane skill.",
+              "favored_attributes": "Mind, Body",
+              "vitality": "Start 9 + Body; +2d10 per Tier",
+              "wounds": "2",
+              "key_resource": "Reservoir (Mana)",
+              "proficiency": "Skills 2 (Vig/Intu/Tal/Aware) | Kit 1 (Med/Outr.) | Arms Caty./Simple/Fins. | Prot Light/Med",
+              "class_features": [
+                "Spell Scourge",
+                "Bound Armament",
+                "Warden Order",
+                "Spellcasting"
+              ]
+            },
+            {
+              "name": "Mage",
+              "role": "Scholarly full-caster who controls with prepared spells, spheres, and research.",
+              "favored_attributes": "Mind",
+              "vitality": "Start 8 + Body; +2d8 per Tier",
+              "wounds": "1",
+              "key_resource": "Reservoir (Mana)",
+              "proficiency": "Skills 1 (Intu/Aware/Lore) | Kit Craft/Alc | Arms Smpl./Caty. | Prot None",
+              "class_features": [
+                "Magic Adept",
+                "Spell Research",
+                "Spellcasting",
+                "Mage Cantrips"
+              ]
+            },
+            {
+              "name": "Mercenary",
+              "role": "Versatile hired blade who borrows techniques and fills gaps with modular training.",
+              "favored_attributes": "Body, Will",
+              "vitality": "Start 10 + Body; +2d10 per Tier",
+              "wounds": "2",
+              "key_resource": "Ambition and Field Kits",
+              "proficiency": "Skills 2 (Any) | Kit 1 choice | Arms Simple +1 choice | Prot L/M+Shields",
+              "class_features": [
+                "Field Kit",
+                "Manuscripts of Techniques",
+                "Skilled Improvisation"
+              ]
+            },
+            {
+              "name": "Mesmer",
+              "role": "Mental manipulator of perception and reality with tethers and stitched cords.",
+              "favored_attributes": "Mind or Will",
+              "vitality": "Start 8 + Body; +2d8 per Tier",
+              "wounds": "1",
+              "key_resource": "Tethers (Tier) + Ambition (Stitch)",
+              "proficiency": "Skills 1 (Intu/Aware/Soc) | Arms Caty./Fins. | Prot Light",
+              "class_features": [
+                "Tethers",
+                "Mindweave",
+                "Spellcasting",
+                "Mesmer Cantrips"
+              ]
+            },
+            {
+              "name": "Oathbound",
+              "role": "Devout half-caster who anchors power in a creed to heal, protect, and punish.",
+              "favored_attributes": "Body + (Mind or Will)",
+              "vitality": "Start 9 + Body; +2d10 per Tier",
+              "wounds": "1",
+              "key_resource": "Creed + Reservoir (Soul)",
+              "proficiency": "Skills (Intu/Aware/Lore/Soc) | Kit 1 (Alc/Med) | Arms Simple/Caty./Lt Xbow | Prot Light+Shield",
+              "class_features": [
+                "Creed",
+                "Spellcasting",
+                "Oathbound Cantrips",
+                "Augur"
+              ]
+            }
+          ],
+          "title": "Profession Overview"
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "character-progression",
+      "title": "Character Progression",
+      "slug": "character-progression",
+      "order": 5,
+      "kind": "section",
+      "page_start": 6,
+      "page_end": 6,
+      "summary": "Feat-based progression, renown economy, and path choices by profession.",
+      "tags": ["progression", "feats", "renown", "paths"],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Progression is primarily shaped through feats purchased with Renown gained from adventures and role-play."
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Profession",
+              "text": "Advance class and define mechanical identity."
+            },
+            {
+              "name": "Origin",
+              "text": "Provide thematic identity, utility, and narrative expression tied to origin."
+            },
+            {
+              "name": "Universal",
+              "text": "Flexible options for any build or playstyle."
+            }
+          ],
+          "title": "Feat Types"
+        },
+        {
+          "type": "table",
+          "columns": [
+            "Tier",
+            "Total Slots",
+            "Feats to Next Tier",
+            "Renown Cost by Tier"
+          ],
+          "rows": [
+            ["1", "4", "3", "6"],
+            ["2", "8", "6", "10"],
+            ["3", "11", "8", "14"],
+            ["4", "13", "10", "18"],
+            ["5", "16", "-", "22"]
+          ]
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "+1",
+              "text": "At start and end of session."
+            },
+            {
+              "name": "+1",
+              "text": "Per skirmish."
+            },
+            {
+              "name": "+2\u20133",
+              "text": "Defeating a boss."
+            },
+            {
+              "name": "+2\u20133",
+              "text": "Dungeon clear."
+            }
+          ],
+          "title": "Guaranteed Renown"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "+1",
+              "text": "Creative solutions."
+            },
+            {
+              "name": "+1",
+              "text": "Side quest or major quest."
+            },
+            {
+              "name": "+1",
+              "text": "Downtime or meaningful roleplay."
+            }
+          ],
+          "title": "Keeper Rewarded Renown"
+        }
+      ],
+      "children": [
+        {
+          "id": "the-path",
+          "title": "The Path",
+          "slug": "the-path",
+          "order": 1,
+          "kind": "subsection",
+          "page_start": 6,
+          "page_end": 6,
+          "summary": "Each profession has two path directions.",
+          "tags": [],
+          "blocks": [
+            {
+              "type": "entry_group",
+              "entries": [
+                {
+                  "name": "Agent",
+                  "text": "Path of the Alchemist; Path of the Infiltrator"
+                },
+                {
+                  "name": "Berserker",
+                  "text": "Path of the Frenzied; Path of the Titan"
+                },
+                {
+                  "name": "Shaman",
+                  "text": "Path of the Conduit; Path of the Channeler"
+                },
+                {
+                  "name": "Duelist",
+                  "text": "Path of the Gladiator; Path of the Marauder"
+                },
+                {
+                  "name": "Eidolon",
+                  "text": "Path of the Spellshaper; Path of the Prodigy"
+                },
+                {
+                  "name": "Fighter",
+                  "text": "Path of the Sentinel; Path of the Reaver"
+                },
+                {
+                  "name": "Mage",
+                  "text": "Path of the Enchanter; Artificer"
+                },
+                {
+                  "name": "Mercenary",
+                  "text": "Path of the Freelancer; Commander"
+                },
+                {
+                  "name": "Mesmer",
+                  "text": "Path of the Spectre; Path of the Weaver"
+                },
+                {
+                  "name": "Oathbound",
+                  "text": "Path of the Herald; Path of the Arbiter"
+                },
+                {
+                  "name": "Vescent",
+                  "text": "Path of the Anima; Path of the Animus"
+                },
+                {
+                  "name": "Warden",
+                  "text": "Path of the Watcher; Path of the Vanguard"
+                }
+              ],
+              "title": "Profession Paths"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "profession-packs",
+          "title": "Profession Packs",
+          "slug": "profession-packs",
+          "order": 2,
+          "kind": "subsection",
+          "page_start": 6,
+          "page_end": 6,
+          "summary": "",
+          "tags": [],
+          "blocks": [
+            {
+              "type": "entry_group",
+              "entries": [
+                {
+                  "name": "Agent",
+                  "text": "Two daggers; bow with quiver (20 arrows); thieves' tools; rope (50 ft); smoke pebbles (3)."
+                },
+                {
+                  "name": "Berserker",
+                  "text": "Great axe or maul; two throwing axes; base medium armor."
+                },
+                {
+                  "name": "Duelist",
+                  "text": "Rapier or longsword; short sword or cestus; buckler; base light armor."
+                },
+                {
+                  "name": "Shaman",
+                  "text": "Quarterstaff; two daggers; component pouch; wilderness survival kit; base light armor."
+                },
+                {
+                  "name": "Eidolon",
+                  "text": "Magic wand; dagger or light weapon of choice."
+                },
+                {
+                  "name": "Fighter",
+                  "text": "Two melee weapons of choice; one ranged weapon of choice or shield; base medium armor; shield."
+                },
+                {
+                  "name": "Mage",
+                  "text": "Magic stave; dagger; spellbook or arcane focus; component pouch."
+                },
+                {
+                  "name": "Mercenary",
+                  "text": "Two weapons of choice; base light or medium armor; shield."
+                },
+                {
+                  "name": "Mesmer",
+                  "text": "Focus crystal or light weapon of choice."
+                },
+                {
+                  "name": "Oathbound",
+                  "text": "Simple weapon of choice; magic staff or talisman; holy symbol; healer's kit; base light armor; shield."
+                },
+                {
+                  "name": "Vescent",
+                  "text": "Ritual dagger; occult staff or wand; component pouch."
+                },
+                {
+                  "name": "Warden",
+                  "text": "Simple melee of choice; arcane implement; anti-magic vials (2); base medium armor; shield."
+                }
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "combat",
+      "title": "Combat",
+      "slug": "combat",
+      "order": 6,
+      "kind": "section",
+      "page_start": 7,
+      "page_end": 8,
+      "summary": "Initiative, action points, engagement, damage, conditions, and recovery.",
+      "tags": ["combat", "actions", "conditions", "rest"],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A skirmish is structured combat resolved with d20 rolls for speed and clarity. Skill checks still use the d6 system but should be rare in battle."
+        },
+        {
+          "type": "list",
+          "style": "ordered",
+          "items": [
+            "Determine initiative.",
+            "On your turn, regain 4 AP and spend AP on actions.",
+            "Resolve attacks and effects.",
+            "Apply damage to Vitality; 0 Vitality risks wounds and death."
+          ]
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Party Roll",
+              "text": "Roll one d6 for each adventurer in the skirmish."
+            },
+            {
+              "name": "Keeper Roll",
+              "text": "Roll one fewer d6 than the party and add Adventurer Tier; the roll stays hidden until combat begins."
+            },
+            {
+              "name": "Ambition Option",
+              "text": "Before reveal, players may roll Ambition using the group's highest Ambition die to try to win initiative."
+            }
+          ],
+          "title": "Initiative"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Melee/Touch",
+              "text": "Within reach or engagement."
+            },
+            {
+              "name": "Self",
+              "text": "Originates from your position."
+            },
+            {
+              "name": "Close",
+              "text": "Within your zone."
+            },
+            {
+              "name": "Nearby",
+              "text": "One zone away."
+            },
+            {
+              "name": "Far",
+              "text": "Up to two zones away."
+            },
+            {
+              "name": "Distant",
+              "text": "Up to three zones away."
+            },
+            {
+              "name": "Sight",
+              "text": "Anything within sight."
+            }
+          ],
+          "title": "Range Bands"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Weapon Strike",
+              "text": "2 AP; weapon attack vs Armor."
+            },
+            {
+              "name": "Dual Strike",
+              "text": "2 AP; one attack per weapon; penalties apply."
+            },
+            {
+              "name": "Power Strike",
+              "text": "3 AP; double weapon/cantrip dice; -5 to hit."
+            },
+            {
+              "name": "Cast a Spell",
+              "text": "2 AP."
+            },
+            {
+              "name": "Snap Cantrip",
+              "text": "1 AP after Cast a Spell this turn."
+            },
+            {
+              "name": "Grapple / Shove / Trip",
+              "text": "Body-based control actions."
+            }
+          ],
+          "title": "Offensive Actions"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Dash",
+              "text": "2 AP; move to adjacent zone."
+            },
+            {
+              "name": "Disengage",
+              "text": "1 AP; end engagement."
+            },
+            {
+              "name": "Dodge",
+              "text": "2 AP; attacks against you have Strain until your next turn."
+            },
+            {
+              "name": "Hide",
+              "text": "2 AP; make a stealth check."
+            },
+            {
+              "name": "Jump",
+              "text": "1 AP; 5 ft / 1.5 m per point in Body."
+            }
+          ],
+          "title": "Maneuver Actions"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Aid",
+              "text": "Reduce or remove a condition with an appropriate check."
+            },
+            {
+              "name": "Assist",
+              "text": "Touch ally gains Resolve on next non-combat roll."
+            },
+            {
+              "name": "Distract",
+              "text": "Impair a target's next attack."
+            },
+            {
+              "name": "Flank",
+              "text": "Grant Resolve to next ally attack."
+            },
+            {
+              "name": "Scan",
+              "text": "d20 + Mind vs target Stealth DC."
+            },
+            {
+              "name": "Brace / Cover / Skill Use / Stand / Go Prone",
+              "text": "General tactical actions."
+            },
+            {
+              "name": "Command / Recollection / Persuade / Interact / Held Action",
+              "text": "Narrative and utility options."
+            }
+          ],
+          "title": "Utility and General Actions"
+        },
+        {
+          "type": "subheading",
+          "text": "Attacking and Engagement"
+        },
+        {
+          "type": "paragraph",
+          "text": "Most attacks roll a d20 against Armor, though some effects target Body, Mind, or Will. A successful melee hit creates engagement."
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Physical",
+              "text": "Slash, Blunt, Puncture, Poison."
+            },
+            {
+              "name": "Magical",
+              "text": "Arcane, Ether, Void, Psychic."
+            },
+            {
+              "name": "Elemental",
+              "text": "Fire, Ice, Electric, Corrosive."
+            },
+            {
+              "name": "Esoteric",
+              "text": "Cosmic, Gravity, Spirit."
+            }
+          ],
+          "title": "Damage Categories"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Resistance",
+              "text": "Step damage dice down by one size; d4 damage instead rolls with Strain."
+            },
+            {
+              "name": "Weakness",
+              "text": "Step damage dice up by one size; d12 damage instead rolls with Resolve."
+            },
+            {
+              "name": "Immunity",
+              "text": "No damage from that type."
+            }
+          ],
+          "title": "Damage Modifiers"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Crippled",
+              "text": "AP -1."
+            },
+            {
+              "name": "Bleeding",
+              "text": "Start-of-turn damage; stacks."
+            },
+            {
+              "name": "Burning",
+              "text": "Start-of-turn fire damage; stacks."
+            },
+            {
+              "name": "Blinded",
+              "text": "Strain attacks and Body checks; foes count Unaware to you."
+            },
+            {
+              "name": "Frightened",
+              "text": "Strain versus source."
+            },
+            {
+              "name": "Dazed",
+              "text": "Mind -4; -4 attacks."
+            },
+            {
+              "name": "Prone",
+              "text": "Restricted movement; Body -5."
+            },
+            {
+              "name": "Restrained",
+              "text": "Cannot move; must pass flat DC 5 to use actions."
+            },
+            {
+              "name": "Unconscious",
+              "text": "No AP; prone; recovery checks apply."
+            }
+          ],
+          "title": "Conditions"
+        },
+        {
+          "type": "subheading",
+          "text": "Resting and Restoration"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Respites",
+              "text": "10\u201360 minutes, 3 uses per adventurer; recover Vitality and Ambition."
+            },
+            {
+              "name": "Long Rest",
+              "text": "6\u20138 hours; recover larger Vitality, Ambition, and Reservoir amounts; regain 1 respite use."
+            },
+            {
+              "name": "Full Rest",
+              "text": "48 hours in a safe location; fully restores most resources and removes 1 wound."
+            },
+            {
+              "name": "Medicine Check Healing",
+              "text": "Awareness or Intuition check; healing amount based on chosen Tier DC; once per hour per target."
+            }
+          ]
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment",
+      "title": "Equipment",
+      "slug": "equipment",
+      "order": 7,
+      "kind": "section",
+      "page_start": 8,
+      "page_end": 10,
+      "summary": "Inventory, kits, weapons, armor, shields, qualities, augments, and item traits.",
+      "tags": ["equipment", "inventory", "weapons", "armor", "kits"],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Items usually take one slot unless they are Light or Heavy. Total item slots are based on Carry Weight: 5 + Body + Tier."
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Light",
+              "text": "Up to 10 count as one slot."
+            },
+            {
+              "name": "Heavy",
+              "text": "Takes two slots."
+            },
+            {
+              "name": "Full Inventory",
+              "text": "Items cannot be stowed, though they may still be physically carried."
+            }
+          ],
+          "title": "Inventory Rules"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kits improve task effectiveness. Relevant kits grant +1 automatic success, and proficiency upgrades the benefit further."
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Armaments",
+              "text": "Weapons grouped by proficiency: Simple, Martial, Finesse, Ranged, Defensive, Catalysts."
+            },
+            {
+              "name": "Protection",
+              "text": "Armor types are Light, Medium, and Heavy. Shields also have armor bonus and reduction pool values."
+            },
+            {
+              "name": "Ammunition",
+              "text": "Usually abstracted per skirmish unless using gritty tracking, thrown weapons, or special ammo."
+            },
+            {
+              "name": "Masterwork Quality",
+              "text": "Common +0, Superior +1, Mastered +2, Fabled +3."
+            },
+            {
+              "name": "Augments",
+              "text": "Installed in item slots; can be passive, triggered, or limited-use."
+            },
+            {
+              "name": "Magic Items",
+              "text": "Normal equipment with additional effects, often using charges or cooldowns."
+            }
+          ],
+          "title": "Equipment Concepts"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Adaptive",
+              "text": "Can be used one- or two-handed; 2H steps die up."
+            },
+            {
+              "name": "Brace",
+              "text": "Works with Brace action."
+            },
+            {
+              "name": "Catalyst",
+              "text": "Allows spellcasting while wielded."
+            },
+            {
+              "name": "Concealable / Hidden",
+              "text": "Can be hidden on the body."
+            },
+            {
+              "name": "Heavy / Light",
+              "text": "Weight and wielding implications."
+            },
+            {
+              "name": "Reach",
+              "text": "Melee strike without engaging."
+            },
+            {
+              "name": "Reload X",
+              "text": "AP needed to reload."
+            },
+            {
+              "name": "Rend / Piercer / Thrown / Two-handed",
+              "text": "Special combat properties."
+            }
+          ],
+          "title": "Item Traits"
+        }
+      ],
+      "children": [
+        {
+          "id": "weapon-list",
+          "title": "Weapon List",
+          "slug": "weapon-list",
+          "order": 1,
+          "kind": "subsection",
+          "page_start": 9,
+          "page_end": 9,
+          "summary": "",
+          "tags": [],
+          "blocks": [
+            {
+              "type": "table",
+              "columns": [
+                "Weapon",
+                "Prof",
+                "Damage",
+                "Range",
+                "Traits",
+                "Cost"
+              ],
+              "rows": [
+                ["Baton", "Smpl.", "1d4 B", "M", "Light", "4"],
+                ["Cestus", "Smpl./Fins.", "1d6 B", "M", "Hidden, Light", "3"],
+                ["Cleaver", "Mrtl.", "1d10 S", "M", "Heavy, Rend", "\u2014"],
+                [
+                  "Dagger",
+                  "Smpl./Fins.",
+                  "1d4 S/P",
+                  "M",
+                  "Light, Concealable",
+                  "4"
+                ],
+                [
+                  "Great axe",
+                  "Mrtl.",
+                  "1d12 S",
+                  "M; C",
+                  "Heavy, Rend, Thrown, 2H",
+                  "150"
+                ],
+                ["Greatclub", "Smpl.", "1d10 B", "M", "Heavy", "10"],
+                [
+                  "Greatsword",
+                  "Mrtl.",
+                  "1d10(2d6) S",
+                  "M",
+                  "Heavy, Adaptive",
+                  "200"
+                ],
+                ["Halberd", "Mrtl.", "1d10 P", "M", "Heavy, Reach, 2H", "75"],
+                ["Hand axe", "Smpl.", "1d6 S", "M; C", "Light, Thrown", "5"],
+                [
+                  "Hand crossbow",
+                  "Rngd./Fins.",
+                  "1d4 P",
+                  "C",
+                  "Concealable, Light, Reload 1",
+                  "15"
+                ],
+                [
+                  "Heavy crossbow",
+                  "Rngd./Mrtl.",
+                  "1d8 P",
+                  "F",
+                  "Brace, Piercer, Reload 1, 2H",
+                  "25"
+                ],
+                ["Javelin", "Smpl./Rngd.", "1d6 P", "N", "Thrown", "5"],
+                ["Light bow", "Rngd.", "1d6 P", "C", "Light, 2H", "15"],
+                [
+                  "Light crossbow",
+                  "Rngd./Fins.",
+                  "1d6 P",
+                  "N",
+                  "Piercer, Reload 1, 2H",
+                  "20"
+                ],
+                ["Longbow", "Rngd./Mrtl.", "1d10 P", "F", "Brace, 2H", "45"],
+                ["Longsword", "Mrtl.", "1d8(d10) S", "M", "Adaptive", "100"],
+                [
+                  "Lucerne",
+                  "Mrtl.",
+                  "1d12 B",
+                  "M",
+                  "Heavy, Piercer 2, 2H",
+                  "125"
+                ],
+                ["Mace", "Mrtl.", "1d8 B", "M", "Brace", "50"],
+                ["Morningstar", "Mrtl.", "1d6 B/P", "M", "Piercer", "40"],
+                ["Net", "Smpl./Rngd.", "\u2014", "C", "Restraint, Pull", "10"],
+                [
+                  "Pike",
+                  "Smpl./Mrtl.",
+                  "1d10 P",
+                  "M",
+                  "Heavy, 2H, Reach",
+                  "20"
+                ],
+                ["Quarterstaff", "Smpl.", "1d6(8) B", "M", "Adaptive", "2"],
+                ["Rapier", "Fins.", "1d8 P", "M", "Light, Piercer", "80"],
+                ["Scimitar", "Fins.", "1d6 S", "M", "Light, Rend", "50"],
+                ["Short sword", "Smpl./Fins.", "1d6 S/P", "M", "Light", "10"],
+                [
+                  "Sling",
+                  "Smpl./Rngd.",
+                  "Modifier",
+                  "C",
+                  "Hidden, Reload 1",
+                  "4"
+                ],
+                ["Spear", "Smpl.", "1d6(8) P", "M", "Adaptive", "5"],
+                [
+                  "Throwing axe",
+                  "Smpl./Rngd.",
+                  "1d4 S",
+                  "F",
+                  "Light, Thrown",
+                  "3"
+                ],
+                [
+                  "Throwing knife",
+                  "Fins./Rngd.",
+                  "2 P",
+                  "C",
+                  "Light, Hidden, Thrown",
+                  "1"
+                ],
+                ["War bow", "Rngd./Fins.", "1d8 P", "N", "2H", "25"],
+                ["Warhammer", "Mrtl.", "1d8(10) B", "M", "Adaptive", "75"]
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "armor-and-shields",
+          "title": "Armor and Shields",
+          "slug": "armor-and-shields",
+          "order": 2,
+          "kind": "subsection",
+          "page_start": 10,
+          "page_end": 10,
+          "summary": "",
+          "tags": [],
+          "blocks": [
+            {
+              "type": "table",
+              "columns": ["Type", "Bonus", "Trait", "Slots"],
+              "rows": [
+                ["Unarmored", "0", "\u2014", "0"],
+                ["Light", "+1-3", "\u2014", "0-1"],
+                ["Medium", "+3-5", "Loud (Some)", "1-2"],
+                ["Heavy", "+5-7", "Loud", "2-3"]
+              ],
+              "title": "Armor"
+            },
+            {
+              "type": "table",
+              "columns": [
+                "Shield Type",
+                "Armor Type",
+                "Bonus",
+                "Reduction Pool",
+                "Trait"
+              ],
+              "rows": [
+                ["Improvised Shield", "\u2014", "\u2014", "10", "Fragile 3"],
+                ["Buckler", "Light", "+1", "10", "\u2014"],
+                ["Shield", "Medium", "+1", "15", "\u2014"],
+                ["Reinforced Shield", "Medium", "+2", "25", "Brace"],
+                ["Tower Shield", "Heavy", "+2(3)", "40", "Adaptive (Brace)"]
+              ],
+              "title": "Shields"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "tool-kit-options",
+          "title": "Tool Kit Options",
+          "slug": "tool-kit-options",
+          "order": 3,
+          "kind": "subsection",
+          "page_start": 10,
+          "page_end": 10,
+          "summary": "",
+          "tags": [],
+          "blocks": [
+            {
+              "type": "entry_group",
+              "entries": [
+                {
+                  "name": "Thieves' Tools",
+                  "text": "Pick locks, disable traps, bypass mechanisms."
+                },
+                {
+                  "name": "Disguise Kit",
+                  "text": "Create disguises and false identities."
+                },
+                {
+                  "name": "Survival Kit",
+                  "text": "Forced marches, climate resistance, hazards."
+                },
+                {
+                  "name": "Wilderness Survival Kit",
+                  "text": "Track, forage, improvise shelter."
+                },
+                {
+                  "name": "Animal Handling Kit",
+                  "text": "Calm, direct, and diagnose animals."
+                },
+                {
+                  "name": "Navigation Tools",
+                  "text": "Chart courses and avoid becoming lost."
+                },
+                {
+                  "name": "Fishing Gear",
+                  "text": "Harvest aquatic food."
+                },
+                {
+                  "name": "Healer's Kit",
+                  "text": "First aid, stabilize, treat wounds."
+                },
+                {
+                  "name": "Injury Treatment Supplies",
+                  "text": "Battlefield triage."
+                },
+                {
+                  "name": "Trauma Kit",
+                  "text": "Suppress wounds on the recently fallen."
+                },
+                {
+                  "name": "Reactant Pouch",
+                  "text": "Identify magical residue and materials."
+                },
+                {
+                  "name": "Spare Parts / Repair Kit / Polishing Kit",
+                  "text": "Engineering and upkeep tools."
+                },
+                {
+                  "name": "Trade Tools / Quality Assessment Tools",
+                  "text": "Appraise, haggle, inspect workmanship."
+                },
+                {
+                  "name": "Tribal Tattoo Kit / Divination Scrolls / Personal Grooming Set / Forgery Tools",
+                  "text": "Unproficient or special-use kits."
+                }
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "known-spells-and-spell-list",
+      "title": "Known Spells and Spell List",
+      "slug": "known-spells-and-spell-list",
+      "order": 8,
+      "kind": "section",
+      "page_start": 10,
+      "page_end": 11,
+      "summary": "Known spell progression, spellcasting thresholds, and spell lists by source and sphere.",
+      "tags": ["spells", "sources", "spheres"],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Spellcasting advances when a character reaches 0, 3, 6, 8, 10, 12, and 14 unlocked feats purchased with Renown."
+        },
+        {
+          "type": "table",
+          "columns": [
+            "Type",
+            "Starting Known",
+            "Casting Tier",
+            "Spells per Threshold",
+            "Max Tier"
+          ],
+          "rows": [
+            ["Full", "4", "Per Tier", "3", "6th"],
+            ["Half", "3", "Per 2 Tiers", "2", "5th"],
+            ["Limited", "2", "Per 2 Tiers", "1", "4th"]
+          ],
+          "title": "Known Spells Progression"
+        }
+      ],
+      "children": [
+        {
+          "id": "spell-list-by-source",
+          "title": "Spell List by Source",
+          "slug": "spell-list-by-source",
+          "order": 1,
+          "kind": "subsection",
+          "page_start": 10,
+          "page_end": 10,
+          "summary": "",
+          "tags": [],
+          "blocks": [
+            {
+              "type": "entry_group",
+              "entries": [
+                {
+                  "name": "Anima",
+                  "text": "Includes Allure (T1), Altered Thoughts (T1), Healing Word (T1), Disrupt Magic (T2), Invisibility (T2), Barrier (T3), Lighting Bolt (T3), Void Warp (T3), and more."
+                },
+                {
+                  "name": "Mana",
+                  "text": "Includes Animate Carrion (T1), Arcane Needles (T1), Shield (T1), Arcane Chains (T2), Ethereal Armament (T2), Barrier (T3), Incinerate (T3), Temporal Distortion (T3), and more."
+                },
+                {
+                  "name": "Primeval",
+                  "text": "Includes Bitter Chill (T1), Cure Wounds (T1), Guidance (T1), Blight Cloud (T2), Primeval Growth (T2), Blind Sacrifice (T3), Stabilize (T3), and more."
+                },
+                {
+                  "name": "Soul",
+                  "text": "Includes Command (T1), Cure Wounds (T1), Shield of Faith (T1), Blinding Radiance (T2), Hysteria (T2), Vitality Transfer (T2), Barrier (T3), Harvest (T3), and more."
+                },
+                {
+                  "name": "Universal",
+                  "text": "Detect Life (T1), Fear (T1), Jump (T1), Light (T1), Mending (T1), Slow Fall (T1), Spell Armor (T1), Vital Reinforcement (T2)."
+                }
+              ]
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "spell-list-by-sphere",
+          "title": "Spell List by Sphere",
+          "slug": "spell-list-by-sphere",
+          "order": 2,
+          "kind": "subsection",
+          "page_start": 11,
+          "page_end": 11,
+          "summary": "",
+          "tags": [],
+          "blocks": [
+            {
+              "type": "entry_group",
+              "entries": [
+                {
+                  "name": "Aberration",
+                  "text": "Includes Allure (T1), Cursed (T1), Resonant Distortion (T1), Arcane Chains (T2), Hysteria (T2), Confusing Apparitions (T3), Shared Invisibility (T3)."
+                },
+                {
+                  "name": "Augmentation",
+                  "text": "Includes Altered Thoughts (T1), Fleet Footing (T1), Terraform (T1), Arcane Bastion (T2), Spider Climb (T2), Alacrity (T3), Mist Form (T3)."
+                },
+                {
+                  "name": "Conjuration",
+                  "text": "Includes Alarm (T1), Elderberry Vines (T1), Summoned Familiar (T1), Call of the Wild (T2), Summon Portals (T2), Banner of War (T3), Void Warp (T3)."
+                },
+                {
+                  "name": "Decimation",
+                  "text": "Includes Arcane Needles (T1), Bitter Chill (T1), Seeking Bolt (T1), Corrosive Lance (T2), Razor Wind (T2), Lighting Bolt (T3), Void Feast (T3)."
+                },
+                {
+                  "name": "Divination",
+                  "text": "Includes Commune with Animals (T1), Detect Life (T1), Detect Magic (T1), Astral Sign (T2), Inquiry (T2), Primeval Senses (T2)."
+                },
+                {
+                  "name": "Mortification",
+                  "text": "Includes Animate Carrion (T1), Grave Touch (T1), Torment (T1), Blight Cloud (T2), Crimson Veil (T2), Void Armor (T2), Enfeebled (T3), Harvest (T3)."
+                },
+                {
+                  "name": "Reclamation",
+                  "text": "Includes Calming Word (T1), Cure Wounds (T1), Shield (T1), Disrupt Magic (T2), Healing Spirit (T2), Mystic Bulwark (T2), Barrier (T3), Radiant Vitality (T3)."
+                }
+              ]
+            }
+          ],
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "keeper-guidance",
+      "title": "The Role of the Keeper",
+      "slug": "keeper-guidance",
+      "order": 9,
+      "kind": "section",
+      "page_start": 11,
+      "page_end": 12,
+      "summary": "GM-facing guidance for running sessions, awarding renown, and preparing skirmishes.",
+      "tags": ["gm", "keeper", "adventure-design"],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The Keeper is the primary storyteller and arbiter. Their role is not to defeat the adventurers, but to engage in narratives where player and Keeper choices matter."
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "World Building",
+              "text": "Develop settings, locations, and NPCs."
+            },
+            {
+              "name": "Rules Arbitration",
+              "text": "Make fair judgments on rules questions."
+            },
+            {
+              "name": "Narrative Direction",
+              "text": "Keep the story moving while staying flexible."
+            },
+            {
+              "name": "Challenge Creation",
+              "text": "Design encounters, puzzles, and combat."
+            },
+            {
+              "name": "Pacing",
+              "text": "Balance action, exploration, social scenes, and downtime."
+            },
+            {
+              "name": "Renown Distribution",
+              "text": "Award advancement consistently."
+            }
+          ],
+          "title": "Core Responsibilities"
+        },
+        {
+          "type": "stat_line",
+          "label": "Golden Rule",
+          "value": "If a rule interferes with enjoyment, change it."
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Opening",
+              "text": "Recap events, address questions, state objectives."
+            },
+            {
+              "name": "Adventure Segments",
+              "text": "Alternate exploration, social, and combat while watching pacing."
+            },
+            {
+              "name": "Rest Points",
+              "text": "Allow spell prep, plot hooks, and character moments."
+            },
+            {
+              "name": "Conclusion",
+              "text": "End at logical breakpoints; recap and gather player intentions."
+            }
+          ],
+          "title": "Session Structure"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Personal",
+              "text": "Tied to backstories."
+            },
+            {
+              "name": "Mysteries",
+              "text": "Unexplained events that provoke curiosity."
+            },
+            {
+              "name": "Threats",
+              "text": "Dangers to people adventurers care about."
+            },
+            {
+              "name": "Opportunities",
+              "text": "Wealth, knowledge, or power."
+            },
+            {
+              "name": "Requests",
+              "text": "Direct NPC or faction appeals."
+            }
+          ],
+          "title": "Adventure Hooks"
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Linear",
+              "text": "Straightforward progression."
+            },
+            {
+              "name": "Branching",
+              "text": "Divergent routes that reconverge later."
+            },
+            {
+              "name": "Open-World",
+              "text": "Sandbox with maximum freedom."
+            },
+            {
+              "name": "Hub-and-Spoke",
+              "text": "Central base with outward adventure sites."
+            }
+          ],
+          "title": "Adventure Structures"
+        },
+        {
+          "type": "subheading",
+          "text": "Preparing a Skirmish"
+        },
+        {
+          "type": "list",
+          "style": "ordered",
+          "items": [
+            "Choose the primary objective.",
+            "Sketch 3\u20136 zones with terrain details.",
+            "Select forces at roughly 1.5\u00d7 party tier in challenge value, then adjust.",
+            "Add 1\u20132 wildcards.",
+            "Define victory and failure states."
+          ]
+        },
+        {
+          "type": "entry_group",
+          "entries": [
+            {
+              "name": "Attrition",
+              "text": "One side breaks, flees, or is wiped out."
+            },
+            {
+              "name": "Capture",
+              "text": "Seize a living target, relic, or position and hold it."
+            },
+            {
+              "name": "Disruption",
+              "text": "Interrupt enemy activity before completion."
+            },
+            {
+              "name": "Escort",
+              "text": "Protect a target to destination."
+            },
+            {
+              "name": "Escape",
+              "text": "Reach an exit before the threat closes in."
+            },
+            {
+              "name": "Heist",
+              "text": "Infiltration, theft, and escape."
+            },
+            {
+              "name": "Peacemaker",
+              "text": "Reduce hostility through negotiation."
+            },
+            {
+              "name": "Puzzle",
+              "text": "Arcane machinery or riddles drive the encounter."
+            },
+            {
+              "name": "Rescue",
+              "text": "Liberate prisoners and extract them."
+            },
+            {
+              "name": "Stronghold",
+              "text": "Repel waves until relief arrives."
+            },
+            {
+              "name": "Timed",
+              "text": "Any objective under a hard clock."
+            }
+          ],
+          "title": "Objectives"
+        },
+        {
+          "type": "table",
+          "columns": ["Wildcard", "Effect"],
+          "rows": [
+            [
+              "Dangerous Object",
+              "Hazard HP = 5\u00d7 tier; mishandling triggers a zone-wide effect."
+            ],
+            ["Elite Danger", "Replace 1\u20132 foes with stronger versions."],
+            [
+              "Horde",
+              "Additional identical waves arrive every 2 rounds after the first is bloodied."
+            ],
+            [
+              "It's an Ambush",
+              "Enemies act in surprise Round 0 unless PCs succeed on Mind checks."
+            ],
+            ["Two Factions", "A second group with its own agenda arrives."],
+            [
+              "The Boss is Here",
+              "A major foe enters mid-fight or begins on the field."
+            ],
+            [
+              "Unseen Chance",
+              "Party starts unseen and may reposition before initiative."
+            ],
+            [
+              "Wipe the Floor",
+              "Opposition CR totals 50% lower than party tier."
+            ]
+          ],
+          "title": "Wildcards Quick Reference"
+        }
+      ],
+      "children": []
+    }
+  ]
+}

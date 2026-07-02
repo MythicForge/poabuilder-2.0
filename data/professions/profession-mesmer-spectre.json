@@ -1,0 +1,139 @@
+{
+  "id": "spectre",
+  "name": "Spectre",
+  "profession": "mesmer",
+  "description": "Mesmers who follow the Path of the Spectre weaponize illusion, reflection, and misdirection, projecting phantasms that haunt the senses and erode the line between real and imagined.",
+  "feats": [
+    {
+      "id": "invasive_mind",
+      "name": "Invasive Mind",
+      "tags": ["Mesmer", "Spectre"],
+      "path": "spectre",
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": "tactical",
+      "cost": { "ap": 2 },
+      "range": "Close",
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "spectre", "count": 0 } },
+      "description": "Probe the mind of others. If the target is unwilling, make a skill check against their Mental using your threads modifier. Critical Success: gain information in clear detail. Success: gain two pieces of vague information. Failure: target knows they were probed. Critical Failure: target knows your exact location and you lose Hidden/Obscured.",
+      "boons": []
+    },
+    {
+      "id": "manifest_phantasm",
+      "name": "Manifest Phantasm",
+      "tags": ["Mesmer", "Spectre"],
+      "path": "spectre",
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": "tactical",
+      "cost": { "ap": 1 },
+      "range": "Close",
+      "duration": "1 Minute",
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["invasive_mind"], "path_investment": { "path": "spectre", "count": 0 } },
+      "description": "Create a phantasmal echo of yourself; you may make attacks and target spells from its space. It has 0 Vitality, 1 Wound threshold, and uses your defenses. If killed by a critical hit, you suffer 1 Wound. You may control phantasms equal to your Tier. A phantasm can move once per turn within your zone or to a new zone, must stay within Nearby range (else it vanishes), and cannot be engaged or engage.",
+      "boons": [
+        { "type": "grants_resource", "resource_id": "phantasms" },
+        {
+          "type": "summon",
+          "summon_id": "phantasm",
+          "max_active": "Tier",
+          "duration": "1_minute",
+          "stat_block": { "vitality": 0, "wound_threshold": 1, "defenses": "uses_yours" },
+          "can_attack_and_cast_from": true,
+          "leash": "Nearby",
+          "on_killed_by_crit": { "type": "restore_resource", "resource": "wounds", "amount": -1, "note": "You take 1 Wound." },
+          "note": "Phantasm summon subsystem — see rule-check.md."
+        }
+      ]
+    },
+    {
+      "id": "refraction",
+      "name": "Refraction",
+      "tags": ["Mesmer", "Spectre"],
+      "path": "spectre",
+      "tier": 1,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": { "resources": [{ "id": "anima", "amount": 2 }] },
+      "range": "Close",
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["manifest_phantasm"], "path_investment": { "path": "spectre", "count": 0 } },
+      "description": "When you would be hit, place a phantasm of your choice in Close range in front of you to take the hit instead. You remain Engaged if already in an Engagement.",
+      "boons": []
+    },
+    {
+      "id": "warding_visions",
+      "name": "Warding Visions",
+      "tags": ["Mesmer", "Spectre"],
+      "path": "spectre",
+      "tier": 2,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": { "resources": [{ "id": "phantasms", "amount": 1 }] },
+      "range": "Close",
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["manifest_phantasm"], "path_investment": { "path": "spectre", "count": 3 } },
+      "description": "Collapse a phantasm into a burst of protective illusion when you or an ally within Close range of it would be affected. Destroy the phantasm to activate one option.",
+      "boons": [
+        {
+          "type": "multi_choice",
+          "key": "warding_visions_option",
+          "count": 1,
+          "expandable_by": [],
+          "options": [
+            { "value": "barrier",       "label": "Barrier",       "description": "Reduce the incoming attack's damage by 2d8 + Spellcasting Modifier.", "boons": [] },
+            { "value": "clarification", "label": "Clarification", "description": "End one of: Enraged, Frightened, Stunned, Dazed, or Inert on the target.", "boons": [{ "type": "cure_condition", "conditions": ["ENR", "FRT", "STN", "DAZ", "INT"], "choose": 1, "target": "affected" }] },
+            { "value": "rupture",       "label": "Rupture",       "description": "The targeted ally's next attack that hits deals an additional 1d12 psychic damage.", "boons": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "apparition",
+      "name": "Apparition",
+      "tags": ["Mesmer", "Spectre"],
+      "path": "spectre",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "spectre", "count": 0 } },
+      "description": "When you use a Control action, you may use your Spellcasting Modifier instead of Brawn. (Source: instead of Body — encoded as Brawn; verify.)",
+      "boons": [
+        { "type": "replace_stat", "context": "control_actions", "replace": "Brawn", "with": "SpellMod", "range": null }
+      ]
+    },
+    {
+      "id": "distorted_images",
+      "name": "Distorted Images",
+      "tags": ["Mesmer", "Spectre"],
+      "path": "spectre",
+      "tier": 2,
+      "trait": "Utility",
+      "slot_type": "tactical",
+      "cost": { "ap": 1 },
+      "range": "Close",
+      "duration": "1 Round",
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "spectre", "count": 2 } },
+      "description": "Choose one creature within range; it becomes Hexed for the duration. While Hexed, whenever the target is affected by an Aberration effect (spells or any magical illusion), it takes 1d4 psychic damage regardless of success or failure. You also gain access to the Aberration sphere.",
+      "boons": [
+        { "type": "grants_sphere", "sphere": "aberration" }
+      ]
+    }
+  ]
+}

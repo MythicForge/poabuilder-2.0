@@ -1,0 +1,63 @@
+{
+  "description": "Registry of trackable ACTIVE-STATES — on/off toggles the interactive sheet renders for the PLAYER. Feats reference these by id (e.g. condition: \"state:rage\"). Distinct from conditions.json (status effects, mostly inflicted on targets / GM-side) and from build selections (daily_mode_choice / choice). Grows as professions are added.",
+  "states": [
+    {
+      "id": "hidden",
+      "name": "Hidden",
+      "category": "stealth",
+      "ends_when": ["attack_made", "revealed", "moves_into_clear_sight"],
+      "note": "Player stealth state. Feats key off it (Agent Undercut, Lethal Precision, Nobody is Home, Blade in the Night)."
+    },
+    {
+      "id": "obscured",
+      "name": "Obscured",
+      "category": "stealth",
+      "ends_when": ["loses_cover_or_concealment"],
+      "note": "Partial-concealment state; referenced alongside Hidden by many Agent feats."
+    },
+    {
+      "id": "rage",
+      "name": "Berserker Rage",
+      "category": "profession",
+      "profession": "berserker",
+      "cost": { "resources": [{ "id": "ambition", "amount": 1 }] },
+      "ends_when": [
+        "turn_end_without_any_of: dealt_damage, took_damage, offensive_action_success, brawn_skill_check_success",
+        "1_minute_outside_combat"
+      ]
+    },
+    {
+      "id": "frenzied_rage",
+      "name": "Frenzied Rage",
+      "category": "profession",
+      "profession": "berserker",
+      "inherits": "rage",
+      "cost": { "resources": [{ "id": "ambition", "amount": 2 }] }
+    },
+    {
+      "id": "titans_rage",
+      "name": "Titan's Rage",
+      "category": "profession",
+      "profession": "berserker",
+      "inherits": "rage",
+      "cost": { "resources": [{ "id": "ambition", "amount": 2 }] }
+    },
+    {
+      "id": "primal_form",
+      "name": "Primal Form",
+      "category": "profession",
+      "profession": "shaman",
+      "note": "Shapechange state; cannot Cast a Spell while active. Stat block swap is future/summon-system work."
+    },
+    {
+      "id": "arbiter_aura",
+      "name": "Arbiter Aura(s)",
+      "category": "aura",
+      "profession": "oathbound",
+      "toggle": true,
+      "active_while": "conscious",
+      "note": "Multiple may be active at once (Aura of Resolve, Aura of Creed). Tracks defense/stat modifiers granted to allies; attack/damage parts are description."
+    }
+  ],
+  "not_in_registry": "Enemy-applied states (Hexed, Cursed, Marked-on-target) and all conditions.json statuses are NOT player active-states — they are description / GM-side. Build selections (Mantle, Field Kit module, Spell Shapes) are tracked via choice/daily_mode_choice, not here."
+}

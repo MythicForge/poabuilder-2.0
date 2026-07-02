@@ -1,0 +1,163 @@
+{
+  "id": "agent",
+  "name": "Agent",
+  "description": "Masters of stealth and guile — thieves, spies, and information-gatherers who rely on speed and wits over brute force. They excel at thievery, stealth, investigation, and scouting, striking from blindsides and shadows. Paths are the Alchemist and the Infiltrator.",
+  "favored_attributes": ["Finesse", "Mind"],
+  "vitality": {
+    "base": "10 + Brawn",
+    "per_tier": "2d8",
+    "brawn_bonus": { "dice": "1d6", "threshold": 5, "attribute": "Brawn" }
+  },
+  "wound_threshold_per_tier": 1,
+  "proficiencies": {
+    "skills": { "type": "choice", "count": 2, "from": ["Talent", "Awareness", "Intuition", "Social"] },
+    "armaments": ["Finesse"],
+    "protection": ["Light"],
+    "tools": []
+  },
+  "starting_pack": {
+    "weapons": ["dagger", "dagger", "light_bow_with_quiver_20"],
+    "armor": [],
+    "kits": ["thieves_tools"],
+    "inventory": ["grappling_hook_50ft_rope", "smoke_pellets_3", "dark_clothing_set"],
+    "currency": { "gold": 0 }
+  },
+  "resources": [],
+  "resource_notes": "No profession-specific pool. Agent uses Ambition (universal). Alchemist path adds a craftable-concoction pool (see Concoction Kit).",
+  "paths": [
+    { "id": "alchemist",    "name": "Alchemist" },
+    { "id": "infiltrator",  "name": "Infiltrator" }
+  ],
+  "feats": [
+    {
+      "id": "undercut",
+      "name": "Undercut",
+      "tags": ["Agent"],
+      "path": null,
+      "tier": 0,
+      "trait": "Trigger",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "While Hidden, Obscured, or with an ally in your Engagement, and using a weapon with the Light trait, add additional weapon dice based on your Tier (Tier 1-2: +1 die; Tier 3-4: +2 dice; Tier 5: +3 dice). Referenced by Mercenary Manuscripts.",
+      "boons": []
+    },
+    {
+      "id": "agile",
+      "name": "Agile",
+      "tags": ["Agent"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "While wearing light or no armor and not using a shield, attacks that would target your Armor defense instead target your Agile Defense = 10 + your light armor bonus (if any) + the higher of your Brawn or Mind. Does not function in medium or heavy armor. (Source: higher of Body or Mind — Body encoded as Brawn; verify.)",
+      "boons": [
+        {
+          "type": "alternate_defense",
+          "name": "Agile Defense",
+          "formula": "10 + light_armor_bonus + max(Brawn, Mind)",
+          "replaces": "Armor",
+          "condition": "light_or_no_armor AND no_shield",
+          "note": "New boon type — see rule-check.md."
+        }
+      ]
+    },
+    {
+      "id": "tread_lightly",
+      "name": "Tread Lightly",
+      "tags": ["Agent"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Reduce the cost of the Hide action by 1 AP.",
+      "boons": []
+    },
+    {
+      "id": "skill_expert",
+      "name": "Skill Expert",
+      "tags": ["Agent"],
+      "path": null,
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Select two V.I.T.A.L.S. skills to gain Expertise in (increased dice size).",
+      "boons": [
+        {
+          "type": "choice",
+          "key": "skill_expert_skills",
+          "prompt": "Choose two skills to gain Expertise in",
+          "count": 2,
+          "options": [],
+          "grants": { "expertise": true }
+        }
+      ]
+    },
+    {
+      "id": "grand_luck",
+      "name": "Grand Luck",
+      "tags": ["Agent"],
+      "path": null,
+      "tier": 2,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": { "resources": [{ "id": "ambition", "amount": 2 }] },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "When an attack would hit you, use the Dodge action, giving the attacker Strain to hit. If the attack still hits, reduce the damage by half.",
+      "boons": []
+    },
+    {
+      "id": "masterful_skill",
+      "name": "Masterful Skill",
+      "tags": ["Agent"],
+      "path": null,
+      "tier": 3,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": ["skill_expert"],
+      "description": "Choose either another V.I.T.A.L.S. skill to gain Proficiency and Expertise in, or upgrade a skill you already have Expertise in by another dice size.",
+      "boons": [
+        {
+          "type": "choice",
+          "key": "masterful_skill_choice",
+          "prompt": "Choose a skill upgrade",
+          "options": [
+            { "value": "new_skill",     "label": "New skill: Proficiency + Expertise", "grants": { "proficiency": true, "expertise": true } },
+            { "value": "upgrade_skill", "label": "Upgrade existing Expertise +1 die size", "grants": { "dice_size_increase": 1 } }
+          ]
+        }
+      ]
+    }
+  ]
+}

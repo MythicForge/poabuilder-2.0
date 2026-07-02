@@ -1,0 +1,305 @@
+{
+  "id": "conduit",
+  "name": "Conduit",
+  "profession": "elementalist",
+  "description": "Conduits channel their elemental energy to emulate spellcasting, converting Energy into spell-like effects and expanding their Elemental Arts repertoire with powerful new techniques.",
+  "feats": [
+    {
+      "id": "source_attunement",
+      "name": "Source Attunement",
+      "tags": ["Elementalist", "Conduit"],
+      "path": "conduit",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "narrative",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You emulate spellcasting using your own Energy. Based on your Core you gain three Tier 1 spells. To cast a spell or use its Amps, spend Energy equal to its Reservoir cost.",
+      "boons": [
+        {
+          "type": "grants_spells",
+          "cost_resource": "energy",
+          "cost_method": "equal_to_reservoir_cost",
+          "by_core": {
+            "flame":   ["calming_word", "ignition", "signal_fire"],
+            "forest":  ["false_shield", "elderberry_vines", "venom_spray"],
+            "land":    ["disrupt_footing", "launch", "push"],
+            "ocean":   ["bitter_chill", "cure_wounds", "pull"],
+            "sky":     ["augmented_facade", "seeking_bolt", "slow_fall"],
+            "tempest": ["arcane_needles", "light", "torment"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "primordial_art",
+      "name": "Primordial Art",
+      "tags": ["Elementalist", "Conduit"],
+      "path": "conduit",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "tactical",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["source_attunement"], "path_investment": { "path": "conduit", "count": 0 } },
+      "description": "Based on your Core you gain two additional Elemental Arts, expanding the options available through your Elemental Arts feat.",
+      "boons": [
+        {
+          "type": "grants_arts",
+          "attack_modifier": "Will",
+          "extends_feat": "elemental_arts",
+          "by_core": {
+            "flame": [
+              {
+                "id": "flame_shield",
+                "name": "Flame Shield",
+                "cost": { "resources": [{ "id": "energy", "amount": 3 }] },
+                "range": null,
+                "condition": null,
+                "description": "Gain a Flame Shield with 3 Charges. When hit, expend a charge to reduce damage by 1d6 + Will and deal that much Fire damage back to the attacker.",
+                "boons": [
+                  {
+                    "type": "reduction_pool",
+                    "formula": "1d6 + Will",
+                    "charges": 3,
+                    "on_charge_used": {
+                      "type": "damage_bonus",
+                      "formula": "reduction_amount",
+                      "damage_type": "Fire",
+                      "target": "attacker"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "burning_grasp",
+                "name": "Burning Grasp",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": null,
+                "condition": null,
+                "description": "Melee attack vs Fortitude using Will. On hit, target is Restrained and takes 3d4 Fire.",
+                "boons": [
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "on_hit",
+                    "effect": [
+                      { "type": "apply_condition", "condition_id": "RST", "duration": null, "stacks": null },
+                      { "type": "damage_bonus", "formula": "3d4", "damage_type": "Fire" }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "forest": [
+              {
+                "id": "entangle",
+                "name": "Entangle",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": "Close",
+                "condition": null,
+                "description": "Ranged attack vs Fortitude using Will. On hit, target is Immobilized. Target may attempt to break free using 1 AP against the Arts DC.",
+                "boons": [
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "on_hit",
+                    "effect": [
+                      { "type": "apply_condition", "condition_id": "IMM", "duration": "until_escaped", "stacks": null }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "splinter",
+                "name": "Splinter",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": null,
+                "condition": null,
+                "description": "Melee attack. On hit, deal weapon damage plus 2d4 Puncture and apply Bleeding 1. On critical hit, all enemies in the same Engagement also gain Bleeding 1.",
+                "boons": [
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "on_hit",
+                    "effect": [
+                      { "type": "damage_bonus", "formula": "2d4", "damage_type": "Puncture" },
+                      { "type": "apply_condition", "condition_id": "BLD", "duration": null, "stacks": 1 }
+                    ]
+                  },
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "critical_hit_dealt",
+                    "effect": { "type": "apply_condition", "condition_id": "BLD", "duration": null, "stacks": 1, "target": "engaged_enemies" }
+                  }
+                ]
+              }
+            ],
+            "land": [
+              {
+                "id": "bone_crusher",
+                "name": "Bone Crusher",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": null,
+                "condition": null,
+                "description": "Melee attack. On hit, deal 2d6 Blunt + Will and apply Crippled until end of target's next turn.",
+                "boons": [
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "on_hit",
+                    "effect": [
+                      { "type": "damage_bonus", "formula": "2d6 + Will", "damage_type": "Blunt" },
+                      { "type": "apply_condition", "condition_id": "CRP", "duration": "until_end_of_next_turn", "stacks": null }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "floating_disc",
+                "name": "Floating Disc",
+                "cost": { "resources": [{ "id": "energy", "amount": 1 }] },
+                "range": "Close",
+                "duration": "1 Minute",
+                "condition": null,
+                "description": "Create a 10ft radius platform that moves up to 20ft in any direction. Holds up to 500lbs. Extend indefinitely by maintaining concentration (only Dash, Disengage, Stand allowed while concentrating). Crumbles if you go Unconscious.",
+                "boons": [
+                  {
+                    "type": "create_object",
+                    "object": {
+                      "name": "Floating Disc",
+                      "size": "10ft radius",
+                      "capacity": "500lbs",
+                      "movement": "20ft in any direction",
+                      "concentration": {
+                        "extends_duration": true,
+                        "allowed_actions": ["Dash", "Disengage", "Stand"],
+                        "ends_on": ["UNC"]
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "ocean": [
+              {
+                "id": "biting_shard",
+                "name": "Biting Shard",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": "Nearby",
+                "condition": null,
+                "description": "Ranged attack vs Fortitude using Will. On hit, deal 1d4 Ice + Will and apply Stunned.",
+                "boons": [
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "on_hit",
+                    "effect": [
+                      { "type": "damage_bonus", "formula": "1d4 + Will", "damage_type": "Ice" },
+                      { "type": "apply_condition", "condition_id": "STN", "duration": null, "stacks": null }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "restoring_source",
+                "name": "Restoring Source",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": "Touch",
+                "condition": null,
+                "description": "Touch a target and restore 1d4 + Tier Vitality.",
+                "boons": [
+                  { "type": "heal", "formula": "1d4 + Tier", "target": "any", "temporary": false }
+                ]
+              }
+            ],
+            "sky": [
+              {
+                "id": "vacuum_seal",
+                "name": "Vacuum Seal",
+                "cost": { "resources": [{ "id": "energy", "amount": 1 }] },
+                "range": "Nearby",
+                "condition": null,
+                "description": "Select a target within range. Target gains the Deafened condition.",
+                "boons": [
+                  { "type": "apply_condition", "condition_id": "DEF", "duration": null, "stacks": null, "target": "enemy" }
+                ]
+              },
+              {
+                "id": "air_cutter_conduit",
+                "name": "Air Cutter",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": null,
+                "condition": null,
+                "description": "Your next ranged attack deals an additional 2d4 Slash.",
+                "boons": [
+                  { "type": "damage_bonus", "formula": "2d4", "damage_type": "Slash", "trigger": "on_next_ranged_hit" }
+                ]
+              }
+            ],
+            "tempest": [
+              {
+                "id": "accelerated_strike_conduit",
+                "name": "Accelerated Strike",
+                "cost": { "resources": [{ "id": "energy", "amount": 1 }] },
+                "range": null,
+                "condition": null,
+                "description": "The AP cost of your next Power Attack this turn is reduced by 1 AP (minimum 1 AP).",
+                "boons": [
+                  { "type": "reduce_action_cost", "action": "Power Attack", "amount": 1, "condition": "next_use_this_turn", "minimum": 1 }
+                ]
+              },
+              {
+                "id": "blinding_bolt_conduit",
+                "name": "Blinding Bolt",
+                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "range": "Close",
+                "condition": null,
+                "description": "Ranged attack using Will. On hit, target takes 1d4 Electric and is Blinded until end of their next turn.",
+                "boons": [
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "on_hit",
+                    "effect": [
+                      { "type": "damage_bonus", "formula": "1d4", "damage_type": "Electric" },
+                      { "type": "apply_condition", "condition_id": "BLN", "duration": "until_end_of_next_turn", "stacks": null }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "surmount_resistance",
+      "name": "Surmount Resistance",
+      "tags": ["Elementalist", "Conduit"],
+      "path": "conduit",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "conduit", "count": 1 } },
+      "description": "When encountering an enemy resistant to your Element, bypass their Resistance, downgrade Immunity to Resistance, and downgrade Absorb to Immunity.",
+      "boons": [
+        {
+          "type": "penetrate_resistance",
+          "element_ref": "elemental_core",
+          "rules": {
+            "Resistant": "bypass",
+            "Immune":    "Resistant",
+            "Absorb":    "Immune"
+          }
+        }
+      ]
+    }
+  ]
+}

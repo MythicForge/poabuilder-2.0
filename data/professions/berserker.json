@@ -1,0 +1,97 @@
+{
+  "id": "berserker",
+  "name": "Berserker",
+  "description": "Warriors who harness primal fury, standing at the crossroads of savagery and strength. They shrug off wounds and deal devastating damage on the frontline, but each surrender to the rage drains their Ambition. Paths are the Frenzied and the Titan.",
+  "favored_attributes": ["Brawn"],
+  "vitality": {
+    "base": "14 + Brawn",
+    "per_tier": "2d12 + 2",
+    "brawn_bonus": { "dice": "1d12", "threshold": 5, "attribute": "Brawn" }
+  },
+  "wound_threshold_per_tier": 2,
+  "proficiencies": {
+    "skills": { "type": "choice", "count": 1, "from": ["Vigor", "Awareness", "Social"] },
+    "armaments": ["Martial", "Simple"],
+    "protection": ["Light"],
+    "tools": []
+  },
+  "starting_pack": {
+    "weapons": ["greataxe_or_maul", "throwing_axe", "throwing_axe", "survival_knife"],
+    "armor": ["medium_armor"],
+    "kits": ["tribal_tattoo_kit"],
+    "inventory": ["bone_trophies", "drinking_horn"],
+    "currency": { "gold": 5 }
+  },
+  "resources": [],
+  "resource_notes": "Berserker has no profession-specific resource pool. Rage states are activated by spending Ambition (universal resource). Several feats raise Ambition Max — see 'Ambition Max' stat flag in rule-check.md.",
+  "paths": [
+    { "id": "frenzied", "name": "Frenzied" },
+    { "id": "titan",    "name": "Titan" }
+  ],
+  "feats": [
+    {
+      "id": "berserker_rage",
+      "name": "Berserker Rage",
+      "tags": ["Berserker"],
+      "path": null,
+      "tier": 0,
+      "trait": "Narrative",
+      "slot_type": null,
+      "cost": { "resources": [{ "id": "ambition", "amount": 1 }] },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Enter a heightened state that improves martial and physical prowess as long as you have Ambition. While raging, add one additional weapon damage die to melee weapons and gain Resolve on skill checks that require Brawn. (Source: Body — encoded as Brawn; verify.) In combat, Rage ends if you end your turn without dealing or taking damage, succeeding on an Offensive action, or succeeding on a Brawn skill check. Outside combat, Rage lasts 1 minute.",
+      "boons": [
+        {
+          "type": "activate_state",
+          "state": "rage",
+          "inherits": null,
+          "ends_when": [
+            "turn_end_without_any_of: dealt_damage, took_damage, offensive_action_success, brawn_skill_check_success",
+            "1_minute_outside_combat"
+          ],
+          "boons": []
+        }
+      ]
+    },
+    {
+      "id": "unarmored_defense",
+      "name": "Unarmored Defense",
+      "tags": ["Berserker"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "While wearing no Armor, add your Brawn modifier + Tier to your Armor defense. (Source: Body — encoded as Brawn; verify.)",
+      "boons": [
+        { "type": "stat_bonus", "stat": "Armor", "amount": "Brawn + Tier", "target": "self", "condition": "unarmored" }
+      ]
+    },
+    {
+      "id": "hands_of_destruction",
+      "name": "Hands of Destruction",
+      "tags": ["Berserker"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Your unarmed attacks deal tier-scaling damage (Tier 1: 1d6, Tier 2: 1d8, Tier 3: 1d10, Tier 4: 2d6), targeting Armor. When using fist weapons, add this damage on top of the weapon's damage.",
+      "boons": []
+    }
+  ]
+}

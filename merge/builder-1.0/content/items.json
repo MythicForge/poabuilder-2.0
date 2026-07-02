@@ -1,0 +1,3677 @@
+{
+  "metadata": {
+    "schema_version": "poa.items.v2",
+    "collection": "items",
+    "merged_from": ["equipment.normalized.json", "item_database.json"]
+  },
+  "item_traits": [
+    {
+      "id": "trait-adaptive",
+      "name": "Adaptive",
+      "alias": null,
+      "effect": "1H or 2H; if 2H, step damage die up, max d12"
+    },
+    {
+      "id": "trait-brace",
+      "name": "Brace",
+      "alias": null,
+      "effect": "Can be used with the Brace action"
+    },
+    {
+      "id": "trait-catalyst",
+      "name": "Catalyst",
+      "alias": null,
+      "effect": "Can cast spells while wielding this item"
+    },
+    {
+      "id": "trait-concealable",
+      "name": "Concealable",
+      "alias": null,
+      "effect": "Can attempt Dex skill check to keep it hidden"
+    },
+    {
+      "id": "trait-fragile-x",
+      "name": "Fragile X",
+      "alias": null,
+      "effect": "After dealing/taking damage, roll d6; if result <= X, it breaks and is unequipped"
+    },
+    {
+      "id": "trait-heavy",
+      "name": "Heavy",
+      "alias": null,
+      "effect": "Requires Body 3+ and Vigor, can't dual wield; +1 damage die on crits"
+    },
+    {
+      "id": "trait-hidden",
+      "name": "Hidden",
+      "alias": null,
+      "effect": "Can be concealed without a check"
+    },
+    {
+      "id": "trait-light",
+      "name": "Light",
+      "alias": null,
+      "effect": "No dual-wield attack penalty; can use Finesse as modifier"
+    },
+    {
+      "id": "trait-loud",
+      "name": "Loud",
+      "alias": null,
+      "effect": "Strain on Hide and while staying Hidden"
+    },
+    {
+      "id": "trait-reach",
+      "name": "Reach",
+      "alias": null,
+      "effect": "Melee strike without engaging"
+    },
+    {
+      "id": "trait-reload-x",
+      "name": "Reload X",
+      "alias": null,
+      "effect": "AP needed to reload"
+    },
+    {
+      "id": "trait-rend",
+      "name": "Rend",
+      "alias": null,
+      "effect": "1/turn after a hit, make one extra attack vs another target in engagement; deals weapon modifier damage"
+    },
+    {
+      "id": "trait-piercer-x",
+      "name": "Piercer X",
+      "alias": null,
+      "effect": "Vs heavy armor/natural armor, deal +2 damage per Piercer level"
+    },
+    {
+      "id": "trait-thrown",
+      "name": "Thrown",
+      "alias": null,
+      "effect": "Can be used at range"
+    },
+    {
+      "id": "trait-two-handed",
+      "name": "Two-handed",
+      "alias": "2H",
+      "effect": "Requires two hands"
+    }
+  ],
+  "armor_types": [
+    {
+      "id": "heavy",
+      "type": "Heavy",
+      "stat": "brawn",
+      "stat_cap_base": 3,
+      "shield_allowed": true,
+      "traits": ["Loud"],
+      "requirements": "brawn >= 3"
+    },
+    {
+      "id": "medium",
+      "type": "Medium",
+      "stat": "brawn_or_finesse",
+      "stat_cap_base": 3,
+      "shield_allowed": true,
+      "traits": []
+    },
+    {
+      "id": "light",
+      "type": "Light",
+      "stat": "finesse",
+      "stat_cap_base": 5,
+      "shield_allowed": false,
+      "traits": []
+    },
+    {
+      "id": "spell_armor",
+      "type": "Spell Armor",
+      "stat": "spell_mod",
+      "stat_cap_base": 9,
+      "shield_allowed": false,
+      "traits": [],
+      "formula_override": "6 + tier + spell_mod"
+    },
+    {
+      "id": "berserker_unarmored",
+      "type": "Berserker Unarmored",
+      "stat": "brawn",
+      "stat_cap_base": 9,
+      "shield_allowed": false,
+      "traits": [],
+      "formula_override": "6 + tier + brawn"
+    }
+  ],
+  "masterwork_quality": null,
+  "abbreviations": {
+    "damage_types": {
+      "B": "Blunt",
+      "P": "Puncture",
+      "S": "Slash"
+    },
+    "ranges": {
+      "M": "Melee",
+      "C": "Close",
+      "N": "Nearby",
+      "F": "Far"
+    }
+  },
+  "kit_legends": {
+    "legends": {
+      "bonus_label": "B",
+      "critical_label": "C"
+    }
+  },
+  "slot_definitions": {
+    "main_hand": {
+      "label": "Main Hand",
+      "max_items": 1
+    },
+    "off_hand": {
+      "label": "Off Hand",
+      "max_items": 1
+    },
+    "two_hands": {
+      "label": "Two Hands",
+      "max_items": 1,
+      "occupies": ["main_hand", "off_hand"]
+    },
+    "body": {
+      "label": "Body",
+      "max_items": 1
+    }
+  },
+  "inventory_entry_template": {
+    "id": "uuid",
+    "name": "Item name",
+    "category": "Weapon | Armor | Shield | Kit | Consumable | Currency | Misc",
+    "quantity": 1,
+    "weight": 1.0,
+    "total_weight": "computed: weight * quantity",
+    "slot": "Main Hand | Off Hand | Two Hands | Body | null",
+    "equipped": false,
+    "notes": null,
+    "source": "creation | manual",
+    "catalog_item_id": "reference to item catalog id"
+  },
+  "carry_rules": {
+    "carry_capacity_formula": "5 + Body + Tier",
+    "weight_unit": "slot_weight",
+    "warning_threshold_behavior": "Warn when total inventory weight exceeds carry capacity.",
+    "source_notes": [
+      "Pack upgrades can allow additional slots",
+      "Full inventory means items cannot be stowed but can still be physically carried"
+    ]
+  },
+  "catalog": {
+    "weapons": [
+      {
+        "id": "weapon-baton",
+        "name": "Baton",
+        "slug": "baton",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Simple"],
+        "damage": "1d4",
+        "damage_types": [
+          {
+            "code": "B",
+            "name": "Blunt"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Light"
+          }
+        ],
+        "cost": 4,
+        "stackable": true,
+        "stack_limit_per_weight_unit": 10,
+        "weight": 0.1,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Baton",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 0.1,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-baton"
+        }
+      },
+      {
+        "id": "weapon-cestus",
+        "name": "Cestus",
+        "slug": "cestus",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Simple", "Finesse"],
+        "damage": "1d6",
+        "damage_types": [
+          {
+            "code": "B",
+            "name": "Blunt"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Hidden"
+          },
+          {
+            "name": "Light"
+          }
+        ],
+        "cost": 3,
+        "stackable": true,
+        "stack_limit_per_weight_unit": 10,
+        "weight": 0.1,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Cestus",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 0.1,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-cestus"
+        }
+      },
+      {
+        "id": "weapon-cleaver",
+        "name": "Cleaver",
+        "slug": "cleaver",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Martial"],
+        "damage": "1d10",
+        "damage_types": [
+          {
+            "code": "S",
+            "name": "Slash"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Heavy"
+          },
+          {
+            "name": "Rend"
+          }
+        ],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 2.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Cleaver",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 2.0,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-cleaver"
+        }
+      },
+      {
+        "id": "weapon-dagger",
+        "name": "Dagger",
+        "slug": "dagger",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Simple", "Finesse"],
+        "damage": "1d4",
+        "damage_types": [
+          {
+            "code": "S",
+            "name": "Slash"
+          },
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Light"
+          },
+          {
+            "name": "Concealable"
+          }
+        ],
+        "cost": 4,
+        "stackable": true,
+        "stack_limit_per_weight_unit": 10,
+        "weight": 0.1,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Dagger",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 0.1,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-dagger"
+        }
+      },
+      {
+        "id": "weapon-great-axe",
+        "name": "Great axe",
+        "slug": "great-axe",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Martial"],
+        "damage": "1d12",
+        "damage_types": [
+          {
+            "code": "S",
+            "name": "Slash"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          },
+          {
+            "code": "C",
+            "name": "Close"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Heavy"
+          },
+          {
+            "name": "Rend"
+          },
+          {
+            "name": "Thrown"
+          },
+          {
+            "name": "2H"
+          }
+        ],
+        "cost": 150,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 2.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["two_hands"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Great axe",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 2.0,
+          "total_weight": null,
+          "slot": "two_hands",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-great-axe"
+        }
+      },
+      {
+        "id": "weapon-greatclub",
+        "name": "Greatclub",
+        "slug": "greatclub",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Simple"],
+        "damage": "1d10",
+        "damage_types": [
+          {
+            "code": "B",
+            "name": "Blunt"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Heavy"
+          }
+        ],
+        "cost": 10,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 2.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Greatclub",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 2.0,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-greatclub"
+        }
+      },
+      {
+        "id": "weapon-greatsword",
+        "name": "Greatsword",
+        "slug": "greatsword",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Martial"],
+        "damage": "1d10(2d6)",
+        "damage_types": [
+          {
+            "code": "S",
+            "name": "Slash"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Heavy"
+          },
+          {
+            "name": "Adaptive"
+          }
+        ],
+        "cost": 200,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 2.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Greatsword",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 2.0,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-greatsword"
+        }
+      },
+      {
+        "id": "weapon-halberd",
+        "name": "Halberd",
+        "slug": "halberd",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Martial"],
+        "damage": "1d10",
+        "damage_types": [
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Heavy"
+          },
+          {
+            "name": "Reach"
+          },
+          {
+            "name": "2H"
+          }
+        ],
+        "cost": 75,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 2.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["two_hands"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Halberd",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 2.0,
+          "total_weight": null,
+          "slot": "two_hands",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-halberd"
+        }
+      },
+      {
+        "id": "weapon-hand-axe",
+        "name": "Hand axe",
+        "slug": "hand-axe",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Simple"],
+        "damage": "1d6",
+        "damage_types": [
+          {
+            "code": "S",
+            "name": "Slash"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          },
+          {
+            "code": "C",
+            "name": "Close"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Light"
+          },
+          {
+            "name": "Thrown"
+          }
+        ],
+        "cost": 5,
+        "stackable": true,
+        "stack_limit_per_weight_unit": 10,
+        "weight": 0.1,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Hand axe",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 0.1,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-hand-axe"
+        }
+      },
+      {
+        "id": "weapon-hand-crossbow",
+        "name": "Hand crossbow",
+        "slug": "hand-crossbow",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Ranged", "Finesse"],
+        "damage": "1d4",
+        "damage_types": [
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "C",
+            "name": "Close"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Concealable"
+          },
+          {
+            "name": "Light"
+          },
+          {
+            "name": "Reload 1"
+          }
+        ],
+        "cost": 15,
+        "stackable": true,
+        "stack_limit_per_weight_unit": 10,
+        "weight": 0.1,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Hand crossbow",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 0.1,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-hand-crossbow"
+        }
+      },
+      {
+        "id": "weapon-heavy-crossbow",
+        "name": "Heavy crossbow",
+        "slug": "heavy-crossbow",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Ranged", "Martial"],
+        "damage": "1d8",
+        "damage_types": [
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "F",
+            "name": "Far"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Brace"
+          },
+          {
+            "name": "Piercer"
+          },
+          {
+            "name": "Reload 1"
+          },
+          {
+            "name": "2H"
+          }
+        ],
+        "cost": 25,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["two_hands"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Heavy crossbow",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "two_hands",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-heavy-crossbow"
+        }
+      },
+      {
+        "id": "weapon-javelin",
+        "name": "Javelin",
+        "slug": "javelin",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Simple", "Ranged"],
+        "damage": "1d6",
+        "damage_types": [
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "N",
+            "name": "Nearby"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Thrown"
+          }
+        ],
+        "cost": 5,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Javelin",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-javelin"
+        }
+      },
+      {
+        "id": "weapon-light-bow",
+        "name": "Light bow",
+        "slug": "light-bow",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Ranged"],
+        "damage": "1d6",
+        "damage_types": [
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "C",
+            "name": "Close"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Light"
+          },
+          {
+            "name": "2H"
+          }
+        ],
+        "cost": 15,
+        "stackable": true,
+        "stack_limit_per_weight_unit": 10,
+        "weight": 0.1,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["two_hands"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Light bow",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 0.1,
+          "total_weight": null,
+          "slot": "two_hands",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-light-bow"
+        }
+      },
+      {
+        "id": "weapon-light-crossbow",
+        "name": "Light crossbow",
+        "slug": "light-crossbow",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Ranged", "Finesse"],
+        "damage": "1d6",
+        "damage_types": [
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "N",
+            "name": "Nearby"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Piercer"
+          },
+          {
+            "name": "Reload 1"
+          },
+          {
+            "name": "Light"
+          },
+          {
+            "name": "2H"
+          }
+        ],
+        "cost": 20,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["two_hands"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Light crossbow",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "two_hands",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-light-crossbow"
+        }
+      },
+      {
+        "id": "weapon-longbow",
+        "name": "Longbow",
+        "slug": "longbow",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Ranged", "Martial"],
+        "damage": "1d10",
+        "damage_types": [
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "F",
+            "name": "Far"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Brace"
+          },
+          {
+            "name": "2H"
+          }
+        ],
+        "cost": 45,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["two_hands"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Longbow",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "two_hands",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-longbow"
+        }
+      },
+      {
+        "id": "weapon-longsword",
+        "name": "Longsword",
+        "slug": "longsword",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Martial"],
+        "damage": "1d8(d10)",
+        "damage_types": [
+          {
+            "code": "S",
+            "name": "Slash"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Adaptive"
+          }
+        ],
+        "cost": 100,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Longsword",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-longsword"
+        }
+      },
+      {
+        "id": "weapon-lucerne",
+        "name": "Lucerne",
+        "slug": "lucerne",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Martial"],
+        "damage": "1d12",
+        "damage_types": [
+          {
+            "code": "B",
+            "name": "Blunt"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Heavy"
+          },
+          {
+            "name": "Piercer 2"
+          },
+          {
+            "name": "2H"
+          }
+        ],
+        "cost": 125,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 2.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["two_hands"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Lucerne",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 2.0,
+          "total_weight": null,
+          "slot": "two_hands",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-lucerne"
+        }
+      },
+      {
+        "id": "weapon-mace",
+        "name": "Mace",
+        "slug": "mace",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Martial"],
+        "damage": "1d8",
+        "damage_types": [
+          {
+            "code": "B",
+            "name": "Blunt"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Brace"
+          }
+        ],
+        "cost": 50,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Mace",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-mace"
+        }
+      },
+      {
+        "id": "weapon-morningstar",
+        "name": "Morningstar",
+        "slug": "morningstar",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Martial"],
+        "damage": "1d6",
+        "damage_types": [
+          {
+            "code": "B",
+            "name": "Blunt"
+          },
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Piercer"
+          }
+        ],
+        "cost": 40,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Morningstar",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-morningstar"
+        }
+      },
+      {
+        "id": "weapon-net",
+        "name": "Net",
+        "slug": "net",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Simple", "Ranged"],
+        "damage": null,
+        "damage_types": [],
+        "range_bands": [
+          {
+            "code": "C",
+            "name": "Close"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Restraint"
+          },
+          {
+            "name": "Pull"
+          }
+        ],
+        "cost": 10,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Net",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-net"
+        }
+      },
+      {
+        "id": "weapon-pike",
+        "name": "Pike",
+        "slug": "pike",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Simple", "Martial"],
+        "damage": "1d10",
+        "damage_types": [
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Heavy"
+          },
+          {
+            "name": "2H"
+          },
+          {
+            "name": "Reach"
+          }
+        ],
+        "cost": 20,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 2.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["two_hands"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Pike",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 2.0,
+          "total_weight": null,
+          "slot": "two_hands",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-pike"
+        }
+      },
+      {
+        "id": "weapon-quarterstaff",
+        "name": "Quarterstaff",
+        "slug": "quarterstaff",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Simple"],
+        "damage": "1d6(d8)",
+        "damage_types": [
+          {
+            "code": "B",
+            "name": "Blunt"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Adaptive"
+          }
+        ],
+        "cost": 2,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Quarterstaff",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-quarterstaff"
+        }
+      },
+      {
+        "id": "weapon-rapier",
+        "name": "Rapier",
+        "slug": "rapier",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Finesse"],
+        "damage": "1d8",
+        "damage_types": [
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Light"
+          },
+          {
+            "name": "Piercer"
+          }
+        ],
+        "cost": 80,
+        "stackable": true,
+        "stack_limit_per_weight_unit": 10,
+        "weight": 0.1,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Rapier",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 0.1,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-rapier"
+        }
+      },
+      {
+        "id": "weapon-scimitar",
+        "name": "Scimitar",
+        "slug": "scimitar",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Finesse"],
+        "damage": "1d6",
+        "damage_types": [
+          {
+            "code": "S",
+            "name": "Slash"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Light"
+          },
+          {
+            "name": "Rend"
+          }
+        ],
+        "cost": 50,
+        "stackable": true,
+        "stack_limit_per_weight_unit": 10,
+        "weight": 0.1,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Scimitar",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 0.1,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-scimitar"
+        }
+      },
+      {
+        "id": "weapon-short-sword",
+        "name": "Short sword",
+        "slug": "short-sword",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Simple", "Finesse"],
+        "damage": "1d6",
+        "damage_types": [
+          {
+            "code": "S",
+            "name": "Slash"
+          },
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Light"
+          }
+        ],
+        "cost": 10,
+        "stackable": true,
+        "stack_limit_per_weight_unit": 10,
+        "weight": 0.1,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Short sword",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 0.1,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-short-sword"
+        }
+      },
+      {
+        "id": "weapon-sling",
+        "name": "Sling",
+        "slug": "sling",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Simple", "Ranged"],
+        "damage": "Modifier",
+        "damage_types": [],
+        "range_bands": [
+          {
+            "code": "C",
+            "name": "Close"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Hidden"
+          },
+          {
+            "name": "Reload 1"
+          }
+        ],
+        "cost": 4,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Sling",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-sling"
+        }
+      },
+      {
+        "id": "weapon-spear",
+        "name": "Spear",
+        "slug": "spear",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Simple"],
+        "damage": "1d6(8)",
+        "damage_types": [
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Adaptive"
+          }
+        ],
+        "cost": 5,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Spear",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-spear"
+        }
+      },
+      {
+        "id": "weapon-throwing-axe",
+        "name": "Throwing axe",
+        "slug": "throwing-axe",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Simple", "Ranged"],
+        "damage": "1d4",
+        "damage_types": [
+          {
+            "code": "S",
+            "name": "Slash"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "F",
+            "name": "Far"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Light"
+          },
+          {
+            "name": "Thrown"
+          }
+        ],
+        "cost": 3,
+        "stackable": true,
+        "stack_limit_per_weight_unit": 10,
+        "weight": 0.1,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Throwing axe",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 0.1,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-throwing-axe"
+        }
+      },
+      {
+        "id": "weapon-throwing-knife",
+        "name": "Throwing knife",
+        "slug": "throwing-knife",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Finesse", "Ranged"],
+        "damage": "2",
+        "damage_types": [
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "C",
+            "name": "Close"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Light"
+          },
+          {
+            "name": "Hidden"
+          },
+          {
+            "name": "Thrown"
+          }
+        ],
+        "cost": 1,
+        "stackable": true,
+        "stack_limit_per_weight_unit": 10,
+        "weight": 0.1,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Throwing knife",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 0.1,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-throwing-knife"
+        }
+      },
+      {
+        "id": "weapon-war-bow",
+        "name": "War bow",
+        "slug": "war-bow",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Ranged", "Finesse"],
+        "damage": "1d8",
+        "damage_types": [
+          {
+            "code": "P",
+            "name": "Puncture"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "N",
+            "name": "Nearby"
+          }
+        ],
+        "traits": [
+          {
+            "name": "2H"
+          },
+          {
+            "name": "Light"
+          }
+        ],
+        "cost": 25,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["two_hands"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "War bow",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "two_hands",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-war-bow"
+        }
+      },
+      {
+        "id": "weapon-warhammer",
+        "name": "Warhammer",
+        "slug": "warhammer",
+        "category": "Weapon",
+        "subcategory": "weapon",
+        "groups": ["Martial"],
+        "damage": "1d8(d10)",
+        "damage_types": [
+          {
+            "code": "B",
+            "name": "Blunt"
+          }
+        ],
+        "range_bands": [
+          {
+            "code": "M",
+            "name": "Melee"
+          }
+        ],
+        "traits": [
+          {
+            "name": "Adaptive"
+          }
+        ],
+        "cost": 75,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["main_hand", "off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Warhammer",
+          "category": "Weapon",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "main_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "weapon-warhammer"
+        }
+      }
+    ],
+    "armor": [
+      {
+        "id": "armor-type-unarmored",
+        "name": "Unarmored",
+        "slug": "unarmored",
+        "category": "Armor",
+        "subcategory": "armor_type_baseline",
+        "armor_type": "Unarmored",
+        "armor_bonus_range": {
+          "value": 0
+        },
+        "traits": [],
+        "augment_slots": "0",
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 0.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": false,
+        "is_template": true,
+        "notes": "Baseline armor type entry from booklet; create named armors later if needed.",
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Unarmored",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 0.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-type-unarmored"
+        }
+      },
+      {
+        "id": "armor-type-light",
+        "name": "Light",
+        "slug": "light",
+        "category": "Armor",
+        "subcategory": "armor_type_baseline",
+        "armor_type": "Light",
+        "armor_bonus_range": {
+          "min": 1,
+          "max": 3
+        },
+        "traits": [],
+        "augment_slots": "0-1",
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "is_template": true,
+        "notes": "Baseline armor type entry from booklet; create named armors later if needed.",
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Light",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-type-light"
+        }
+      },
+      {
+        "id": "armor-type-medium",
+        "name": "Medium",
+        "slug": "medium",
+        "category": "Armor",
+        "subcategory": "armor_type_baseline",
+        "armor_type": "Medium",
+        "armor_bonus_range": {
+          "min": 3,
+          "max": 5
+        },
+        "traits": [
+          {
+            "name": "Loud (Some)"
+          }
+        ],
+        "augment_slots": "1-2",
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 2.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "is_template": true,
+        "notes": "Baseline armor type entry from booklet; create named armors later if needed.",
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Medium",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 2.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-type-medium"
+        }
+      },
+      {
+        "id": "armor-type-heavy",
+        "name": "Heavy",
+        "slug": "heavy",
+        "category": "Armor",
+        "subcategory": "armor_type_baseline",
+        "armor_type": "Heavy",
+        "armor_bonus_range": {
+          "min": 5,
+          "max": 7
+        },
+        "traits": [
+          {
+            "name": "Loud"
+          }
+        ],
+        "augment_slots": "2-3",
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 3.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "is_template": true,
+        "notes": "Baseline armor type entry from booklet; create named armors later if needed.",
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Heavy",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 3.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-type-heavy"
+        }
+      },
+      {
+        "id": "armor-chainmail",
+        "name": "Chainmail",
+        "slug": "chainmail",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Heavy",
+        "armor_tier": "Standard",
+        "armor_bonus": {
+          "value": 3
+        },
+        "wound_bonus": 3,
+        "traits": [
+          {
+            "name": "Loud"
+          }
+        ],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 3.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Chainmail",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 3.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-chainmail"
+        }
+      },
+      {
+        "id": "armor-banded-mail",
+        "name": "Banded Mail",
+        "slug": "banded-mail",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Heavy",
+        "armor_tier": "Standard",
+        "armor_bonus": {
+          "value": 4
+        },
+        "wound_bonus": 3,
+        "traits": [
+          {
+            "name": "Loud"
+          }
+        ],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 3.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Banded Mail",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 3.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-banded-mail"
+        }
+      },
+      {
+        "id": "armor-splint-armor",
+        "name": "Splint Armor",
+        "slug": "splint-armor",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Heavy",
+        "armor_tier": "Enhanced",
+        "armor_bonus": {
+          "value": 5
+        },
+        "wound_bonus": 4,
+        "traits": [
+          {
+            "name": "Loud"
+          }
+        ],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 3.5,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Splint Armor",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 3.5,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-splint-armor"
+        }
+      },
+      {
+        "id": "armor-half-plate",
+        "name": "Half Plate",
+        "slug": "half-plate",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Heavy",
+        "armor_tier": "Enhanced",
+        "armor_bonus": {
+          "value": 6
+        },
+        "wound_bonus": 4,
+        "traits": [
+          {
+            "name": "Loud"
+          }
+        ],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 3.5,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Half Plate",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 3.5,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-half-plate"
+        }
+      },
+      {
+        "id": "armor-field-plate",
+        "name": "Field Plate",
+        "slug": "field-plate",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Heavy",
+        "armor_tier": "Enhanced",
+        "armor_bonus": {
+          "value": 7
+        },
+        "wound_bonus": 4,
+        "traits": [
+          {
+            "name": "Loud"
+          }
+        ],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 4.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Field Plate",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 4.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-field-plate"
+        }
+      },
+      {
+        "id": "armor-full-plate",
+        "name": "Full Plate",
+        "slug": "full-plate",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Heavy",
+        "armor_tier": "Fortified",
+        "armor_bonus": {
+          "value": 9
+        },
+        "wound_bonus": 5,
+        "traits": [
+          {
+            "name": "Loud"
+          }
+        ],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 4.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Full Plate",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 4.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-full-plate"
+        }
+      },
+      {
+        "id": "armor-warlord-plate",
+        "name": "Warlord Plate",
+        "slug": "warlord-plate",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Heavy",
+        "armor_tier": "Fortified",
+        "armor_bonus": {
+          "value": 8
+        },
+        "wound_bonus": 7,
+        "traits": [
+          {
+            "name": "Loud"
+          }
+        ],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 4.5,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Warlord Plate",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 4.5,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-warlord-plate"
+        }
+      },
+      {
+        "id": "armor-hide-armor",
+        "name": "Hide Armor",
+        "slug": "hide-armor",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Medium",
+        "armor_tier": "Standard",
+        "armor_bonus": {
+          "value": 3
+        },
+        "wound_bonus": 2,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 2.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Hide Armor",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 2.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-hide-armor"
+        }
+      },
+      {
+        "id": "armor-scale-mail",
+        "name": "Scale Mail",
+        "slug": "scale-mail",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Medium",
+        "armor_tier": "Standard",
+        "armor_bonus": {
+          "value": 2
+        },
+        "wound_bonus": 2,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 2.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Scale Mail",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 2.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-scale-mail"
+        }
+      },
+      {
+        "id": "armor-breastplate",
+        "name": "Breastplate",
+        "slug": "breastplate",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Medium",
+        "armor_tier": "Enhanced",
+        "armor_bonus": {
+          "value": 5
+        },
+        "wound_bonus": 3,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 2.5,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Breastplate",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 2.5,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-breastplate"
+        }
+      },
+      {
+        "id": "armor-brigandine",
+        "name": "Brigandine",
+        "slug": "brigandine",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Medium",
+        "armor_tier": "Enhanced",
+        "armor_bonus": {
+          "value": 4
+        },
+        "wound_bonus": 3,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 2.5,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Brigandine",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 2.5,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-brigandine"
+        }
+      },
+      {
+        "id": "armor-lamellar",
+        "name": "Lamellar Armor",
+        "slug": "lamellar",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Medium",
+        "armor_tier": "Fortified",
+        "armor_bonus": {
+          "value": 7
+        },
+        "wound_bonus": 4,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 3.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Lamellar Armor",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 3.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-lamellar"
+        }
+      },
+      {
+        "id": "armor-war-harness",
+        "name": "War Harness",
+        "slug": "war-harness",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Medium",
+        "armor_tier": "Fortified",
+        "armor_bonus": {
+          "value": 6
+        },
+        "wound_bonus": 5,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 3.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "War Harness",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 3.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-war-harness"
+        }
+      },
+      {
+        "id": "armor-padded-armor",
+        "name": "Padded Armor",
+        "slug": "padded-armor",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Light",
+        "armor_tier": "Standard",
+        "armor_bonus": {
+          "value": 2
+        },
+        "wound_bonus": 1,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Padded Armor",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-padded-armor"
+        }
+      },
+      {
+        "id": "armor-gambeson",
+        "name": "Gambeson",
+        "slug": "gambeson",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Light",
+        "armor_tier": "Standard",
+        "armor_bonus": {
+          "value": 1
+        },
+        "wound_bonus": 1,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Gambeson",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-gambeson"
+        }
+      },
+      {
+        "id": "armor-leather-armor",
+        "name": "Leather Armor",
+        "slug": "leather-armor",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Light",
+        "armor_tier": "Enhanced",
+        "armor_bonus": {
+          "value": 3
+        },
+        "wound_bonus": 2,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Leather Armor",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-leather-armor"
+        }
+      },
+      {
+        "id": "armor-ring-leather",
+        "name": "Ring Leather",
+        "slug": "ring-leather",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Light",
+        "armor_tier": "Enhanced",
+        "armor_bonus": {
+          "value": 4
+        },
+        "wound_bonus": 2,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.5,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Ring Leather",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 1.5,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-ring-leather"
+        }
+      },
+      {
+        "id": "armor-studded-leather",
+        "name": "Studded Leather",
+        "slug": "studded-leather",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Light",
+        "armor_tier": "Fortified",
+        "armor_bonus": {
+          "value": 5
+        },
+        "wound_bonus": 3,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.5,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Studded Leather",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 1.5,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-studded-leather"
+        }
+      },
+      {
+        "id": "armor-shadow-weave",
+        "name": "Shadow Weave",
+        "slug": "shadow-weave",
+        "category": "Armor",
+        "subcategory": "armor",
+        "armor_type": "Light",
+        "armor_tier": "Fortified",
+        "armor_bonus": {
+          "value": 4
+        },
+        "wound_bonus": 4,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["body"],
+        "equippable": true,
+        "masterwork_eligible": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Shadow Weave",
+          "category": "Armor",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "body",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "armor-shadow-weave"
+        }
+      }
+    ],
+    "shields": [
+      {
+        "id": "shield-improvised-shield",
+        "name": "Improvised Shield",
+        "slug": "improvised-shield",
+        "category": "Shield",
+        "subcategory": "shield",
+        "shield_type": null,
+        "armor_type": null,
+        "armor_bonus": {
+          "raw": null,
+          "value": 0
+        },
+        "reduction_pool": 10,
+        "traits": [
+          {
+            "name": "Fragile 3"
+          }
+        ],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Improvised Shield",
+          "category": "Shield",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "off_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "shield-improvised-shield"
+        }
+      },
+      {
+        "id": "shield-buckler",
+        "name": "Buckler",
+        "slug": "buckler",
+        "category": "Shield",
+        "subcategory": "shield",
+        "shield_type": "Light",
+        "armor_type": "Light",
+        "armor_bonus": {
+          "raw": "+1 to +2",
+          "value": 1
+        },
+        "reduction_pool": 10,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 0.1,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Buckler",
+          "category": "Shield",
+          "quantity": 1,
+          "weight": 0.1,
+          "total_weight": null,
+          "slot": "off_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "shield-buckler"
+        },
+        "armor_bonus_max": 2
+      },
+      {
+        "id": "shield-shield",
+        "name": "Shield",
+        "slug": "shield",
+        "category": "Shield",
+        "subcategory": "shield",
+        "shield_type": "Medium",
+        "armor_type": "Medium",
+        "armor_bonus": {
+          "raw": "+2 to +3",
+          "value": 2
+        },
+        "reduction_pool": 15,
+        "traits": [],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Shield",
+          "category": "Shield",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "off_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "shield-shield"
+        },
+        "armor_bonus_max": 3
+      },
+      {
+        "id": "shield-reinforced-shield",
+        "name": "Reinforced Shield",
+        "slug": "reinforced-shield",
+        "category": "Shield",
+        "subcategory": "shield",
+        "shield_type": "Heavy",
+        "armor_type": "Medium",
+        "armor_bonus": {
+          "raw": "+2 to +4",
+          "value": 2
+        },
+        "reduction_pool": 20,
+        "traits": [
+          {
+            "name": "Brace"
+          }
+        ],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Reinforced Shield",
+          "category": "Shield",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": "off_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "shield-reinforced-shield"
+        },
+        "armor_bonus_max": 4
+      },
+      {
+        "id": "shield-tower-shield",
+        "name": "Tower Shield",
+        "slug": "tower-shield",
+        "category": "Shield",
+        "subcategory": "shield",
+        "shield_type": "Heavy",
+        "armor_type": "Heavy",
+        "armor_bonus": {
+          "raw": "+2 to +4",
+          "value": 2
+        },
+        "reduction_pool": 40,
+        "traits": [
+          {
+            "name": "Adaptive (Brace)"
+          }
+        ],
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 2.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": ["off_hand"],
+        "equippable": true,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Tower Shield",
+          "category": "Shield",
+          "quantity": 1,
+          "weight": 2.0,
+          "total_weight": null,
+          "slot": "off_hand",
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "shield-tower-shield"
+        },
+        "armor_bonus_max": 4
+      }
+    ],
+    "kits": [
+      {
+        "id": "kit-medical-healer-s-kit",
+        "name": "Healer's Kit",
+        "slug": "healer-s-kit",
+        "category": "Kit",
+        "subcategory": "medical",
+        "uses": ["first aid", "treat wounds", "stabilize"],
+        "bonus": "+1d4 Vitality on Medical healing checks",
+        "critical": "Remove persistent non-magical condition",
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Healer's Kit",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-medical-healer-s-kit"
+        }
+      },
+      {
+        "id": "kit-medical-injury-treatment-supplies",
+        "name": "Injury Treatment Supplies",
+        "slug": "injury-treatment-supplies",
+        "category": "Kit",
+        "subcategory": "medical",
+        "uses": ["battlefield triage"],
+        "bonus": "Reduce Weakened by 1",
+        "critical": "1/day reduce Wounds by 1",
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Injury Treatment Supplies",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-medical-injury-treatment-supplies"
+        }
+      },
+      {
+        "id": "kit-medical-trauma-kit",
+        "name": "Trauma Kit",
+        "slug": "trauma-kit",
+        "category": "Kit",
+        "subcategory": "medical",
+        "uses": ["suppress wounds on recently fallen"],
+        "bonus": "Suppress 1 Wound for an hour",
+        "critical": "1/day reduce Wounds by 1",
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Trauma Kit",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-medical-trauma-kit"
+        }
+      },
+      {
+        "id": "kit-alchemy-reactant-pouch",
+        "name": "Reactant Pouch",
+        "slug": "reactant-pouch",
+        "category": "Kit",
+        "subcategory": "alchemy",
+        "uses": ["identify magical residue/materials"],
+        "bonus": null,
+        "critical": "Identify Sphere + Source",
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Reactant Pouch",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-alchemy-reactant-pouch"
+        }
+      },
+      {
+        "id": "kit-engineering-spare-parts",
+        "name": "Spare Parts",
+        "slug": "spare-parts",
+        "category": "Kit",
+        "subcategory": "engineering",
+        "uses": ["craft", "repair", "modify equipment"],
+        "bonus": null,
+        "critical": "Crafting/repair time halved",
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Spare Parts",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-engineering-spare-parts"
+        }
+      },
+      {
+        "id": "kit-engineering-repair-kit",
+        "name": "Repair Kit",
+        "slug": "repair-kit",
+        "category": "Kit",
+        "subcategory": "engineering",
+        "uses": ["emergency repairs"],
+        "bonus": null,
+        "critical": "Temporary +1 Masterwork for 8 hours",
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Repair Kit",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-engineering-repair-kit"
+        }
+      },
+      {
+        "id": "kit-engineering-polishing-kit",
+        "name": "Polishing Kit",
+        "slug": "polishing-kit",
+        "category": "Kit",
+        "subcategory": "engineering",
+        "uses": ["weapon upkeep"],
+        "bonus": "First attack each turn using polished weapon gains Resolve next skirmish",
+        "critical": null,
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Polishing Kit",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-engineering-polishing-kit"
+        }
+      },
+      {
+        "id": "kit-crafting-trade-tools",
+        "name": "Trade Tools",
+        "slug": "trade-tools",
+        "category": "Kit",
+        "subcategory": "crafting",
+        "uses": ["appraise goods", "haggle", "draft basic terms"],
+        "bonus": "Gain Resolve on the check",
+        "critical": null,
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Trade Tools",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-crafting-trade-tools"
+        }
+      },
+      {
+        "id": "kit-crafting-quality-assessment-tools",
+        "name": "Quality Assessment Tools",
+        "slug": "quality-assessment-tools",
+        "category": "Kit",
+        "subcategory": "crafting",
+        "uses": [
+          "inspect workmanship",
+          "spot counterfeits",
+          "evaluate condition"
+        ],
+        "bonus": null,
+        "critical": "Detect hidden flaws, curses, or enhancements",
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Quality Assessment Tools",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-crafting-quality-assessment-tools"
+        }
+      },
+      {
+        "id": "kit-unproficient-tribal-tattoo-kit",
+        "name": "Tribal Tattoo Kit",
+        "slug": "tribal-tattoo-kit",
+        "category": "Kit",
+        "subcategory": "unproficient",
+        "uses": ["intimidate", "persuade when displaying recognized markings"],
+        "bonus": null,
+        "critical": null,
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Tribal Tattoo Kit",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-unproficient-tribal-tattoo-kit"
+        }
+      },
+      {
+        "id": "kit-unproficient-divination-scrolls",
+        "name": "Divination Scrolls",
+        "slug": "divination-scrolls",
+        "category": "Kit",
+        "subcategory": "unproficient",
+        "uses": [
+          "Mysticism (Occult/Divine)",
+          "relevant Society checks for omens, rituals, doctrine"
+        ],
+        "bonus": null,
+        "critical": null,
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Divination Scrolls",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-unproficient-divination-scrolls"
+        }
+      },
+      {
+        "id": "kit-unproficient-personal-grooming-set",
+        "name": "Personal Grooming Set",
+        "slug": "personal-grooming-set",
+        "category": "Kit",
+        "subcategory": "unproficient",
+        "uses": ["prepare appearance for social encounters"],
+        "bonus": null,
+        "critical": null,
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Personal Grooming Set",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-unproficient-personal-grooming-set"
+        }
+      },
+      {
+        "id": "kit-unproficient-forgery-tools",
+        "name": "Forgery Tools",
+        "slug": "forgery-tools",
+        "category": "Kit",
+        "subcategory": "unproficient",
+        "uses": ["create false documents/seals"],
+        "bonus": "+1 auto on Academics/Sleight when forging",
+        "critical": "Forgery passes non-magical scrutiny on critical success",
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Forgery Tools",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-unproficient-forgery-tools"
+        }
+      },
+      {
+        "id": "kit-thievery-thieves-tools",
+        "name": "Thieves' Tools",
+        "slug": "thieves-tools",
+        "category": "Kit",
+        "subcategory": "thievery",
+        "uses": ["pick locks", "disable traps", "bypass simple mechanisms"],
+        "bonus": "Upgrade 2d6 to 2d8 on the check",
+        "critical": null,
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Thieves' Tools",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-thievery-thieves-tools"
+        }
+      },
+      {
+        "id": "kit-thievery-disguise-kit",
+        "name": "Disguise Kit",
+        "slug": "disguise-kit",
+        "category": "Kit",
+        "subcategory": "thievery",
+        "uses": ["create a disguise", "maintain a false identity"],
+        "bonus": "+1 automatic success to Deception",
+        "critical": null,
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Disguise Kit",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-thievery-disguise-kit"
+        }
+      },
+      {
+        "id": "kit-outrider-survival-kit",
+        "name": "Survival Kit",
+        "slug": "survival-kit",
+        "category": "Kit",
+        "subcategory": "outrider",
+        "uses": ["endure forced marches", "resist climate/hazards"],
+        "bonus": "Upgrade 2d6 to 2d8 on the check",
+        "critical": null,
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Survival Kit",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-outrider-survival-kit"
+        }
+      },
+      {
+        "id": "kit-outrider-wilderness-survival-kit",
+        "name": "Wilderness Survival Kit",
+        "slug": "wilderness-survival-kit",
+        "category": "Kit",
+        "subcategory": "outrider",
+        "uses": ["track", "forage", "improvise shelter"],
+        "bonus": "+1 auto on Survival (Awareness); in natural terrain, treat two dice showing 1-2 as 3",
+        "critical": null,
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Wilderness Survival Kit",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-outrider-wilderness-survival-kit"
+        }
+      },
+      {
+        "id": "kit-outrider-animal-handling-kit",
+        "name": "Animal Handling Kit",
+        "slug": "animal-handling-kit",
+        "category": "Kit",
+        "subcategory": "outrider",
+        "uses": ["calm/direct/diagnose animals", "use treats"],
+        "bonus": null,
+        "critical": "Animals treat you friendlier or indifferent",
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Animal Handling Kit",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-outrider-animal-handling-kit"
+        }
+      },
+      {
+        "id": "kit-outrider-navigation-tools",
+        "name": "Navigation Tools",
+        "slug": "navigation-tools",
+        "category": "Kit",
+        "subcategory": "outrider",
+        "uses": ["chart a course", "use maps to avoid becoming lost"],
+        "bonus": null,
+        "critical": "Travel time -50%",
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Navigation Tools",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-outrider-navigation-tools"
+        }
+      },
+      {
+        "id": "kit-outrider-fishing-gear",
+        "name": "Fishing Gear",
+        "slug": "fishing-gear",
+        "category": "Kit",
+        "subcategory": "outrider",
+        "uses": ["harvest aquatic food"],
+        "bonus": null,
+        "critical": "Double quantity or choose higher quality catch",
+        "default_uses": 10,
+        "cost": null,
+        "stackable": false,
+        "stack_limit_per_weight_unit": 1,
+        "weight": 1.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "rules_reference": {
+          "source_pages": [16, 17, 18, 19]
+        },
+        "inventory_template": {
+          "id": null,
+          "name": "Fishing Gear",
+          "category": "Kit",
+          "quantity": 1,
+          "weight": 1.0,
+          "total_weight": null,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "kit-outrider-fishing-gear"
+        }
+      }
+    ],
+    "consumables": [],
+    "currency": [
+      {
+        "id": "currency-gold",
+        "name": "Gold",
+        "slug": "gold",
+        "category": "Currency",
+        "subcategory": "currency",
+        "stackable": true,
+        "stack_limit_per_weight_unit": null,
+        "weight": 0.0,
+        "weight_unit": "slot_weight",
+        "equip_slots": [],
+        "equippable": false,
+        "notes": "Tracked as a row or dedicated character field per UI choice.",
+        "inventory_template": {
+          "id": null,
+          "name": "Gold",
+          "category": "Currency",
+          "quantity": 0,
+          "weight": 0.0,
+          "total_weight": 0.0,
+          "slot": null,
+          "equipped": false,
+          "notes": null,
+          "source": "creation",
+          "catalog_item_id": "currency-gold"
+        }
+      }
+    ],
+    "misc": []
+  }
+}

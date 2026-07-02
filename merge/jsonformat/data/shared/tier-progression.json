@@ -1,0 +1,46 @@
+{
+  "max_feats": 16,
+  "attribute_point_per_purchased_feat": 1,
+  "skill_point_per_even_feat": 1,
+  "tiers": [
+    {
+      "tier": 1,
+      "feats_to_advance": 3,
+      "cumulative_feats_required": 3,
+      "slots": { "tactical": 1, "narrative": 1, "minor": 1 }
+    },
+    {
+      "tier": 2,
+      "feats_to_advance": 3,
+      "cumulative_feats_required": 6,
+      "slots": { "tactical": 1, "narrative": 1, "minor": 1 }
+    },
+    {
+      "tier": 3,
+      "feats_to_advance": 2,
+      "cumulative_feats_required": 8,
+      "slots": { "tactical": 1, "narrative": 1, "minor": 0 }
+    },
+    {
+      "tier": 4,
+      "feats_to_advance": 2,
+      "cumulative_feats_required": 10,
+      "slots": {
+        "minor": 1,
+        "choice": { "count": 1, "from": ["tactical", "narrative"] }
+      }
+    },
+    {
+      "tier": 5,
+      "feats_to_advance": null,
+      "cumulative_feats_required": 16,
+      "slots": { "tactical": 2, "narrative": 2, "minor": 2 }
+    }
+  ],
+  "notes": {
+    "purchased_feat": "Any feat that is not a profession starting feat (tier 0 in profession feats array).",
+    "path_feat": "Same as purchased_feat — used interchangeably for attribute point tracking.",
+    "tier_4_choice": "Player picks either 1 Tactical or 1 Narrative for the flexible slot — tracked on character record.",
+    "tier_5": "6 feat slots (2 of each type) before hitting the hard cap of 16."
+  }
+}

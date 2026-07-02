@@ -1,0 +1,296 @@
+{
+  "id": "sentinel",
+  "name": "Sentinel",
+  "profession": "fighter",
+  "description": "Sentinels focus on defense, armor mastery, and becoming an immovable bulwark on the battlefield.",
+  "feats": [
+    {
+      "id": "signature_armor",
+      "name": "Signature Armor",
+      "tags": ["Fighter", "Sentinel"],
+      "path": "sentinel",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Gain +1 Armor while wearing your signature armor. Select one armor modification; it does not fill an augmentation slot.",
+      "boons": [
+        { "type": "armor_bonus", "amount": 1, "condition": "wearing_signature_armor" },
+        {
+          "type": "choice",
+          "key": "signature_armor_mod",
+          "prompt": "Select one armor modification",
+          "options": [
+            {
+              "value": "reinforced_plates",
+              "label": "Reinforced Plates",
+              "grants": {
+                "description": "Reduce damage from one attack by 1d6, once per turn.",
+                "boons": [{ "type": "reduction_pool", "formula": "1d6", "charges": null, "uses": { "count": 1, "recharge": "turn" } }]
+              }
+            },
+            {
+              "value": "spiked_panels",
+              "label": "Spiked Panels",
+              "grants": {
+                "description": "Melee attackers suffer 1d6 Puncture on critical failure. Grappled foes take 1d6 Puncture at start of their turn.",
+                "boons": []
+              }
+            },
+            {
+              "value": "adaptive_layering",
+              "label": "Adaptive Layering",
+              "grants": {
+                "description": "Gain resistance to one elemental damage type; changeable during Daily Preparation.",
+                "boons": [
+                  {
+                    "type": "choice",
+                    "key": "adaptive_layering_element",
+                    "prompt": "Choose elemental damage type to resist (changeable at Daily Preparation)",
+                    "options": []
+                  },
+                  { "type": "resistance", "damage_type_ref": { "source": "choice", "key": "adaptive_layering_element" } }
+                ]
+              }
+            },
+            {
+              "value": "dampening",
+              "label": "Dampening",
+              "grants": {
+                "description": "Remove the loud trait from your armor. If armor has no loud trait, gain Resolve on Stealth checks instead.",
+                "boons": [
+                  { "type": "remove_trait", "trait": "loud", "condition": "armor_has_loud_trait" }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "defensive_stance",
+      "name": "Defensive Stance",
+      "tags": ["Fighter", "Sentinel"],
+      "path": "sentinel",
+      "tier": 1,
+      "trait": "Maneuver",
+      "slot_type": "tactical",
+      "cost": { "ap": 1 },
+      "range": null,
+      "duration": "until_next_turn_start",
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Gain +2 Armor and grant allies the ability to use you as cover. Cannot use the Dash action until the start of your next turn.",
+      "boons": [
+        { "type": "armor_bonus", "amount": 2, "condition": "defensive_stance_active" }
+      ]
+    },
+    {
+      "id": "bulwark_maneuver",
+      "name": "Bulwark Maneuver",
+      "tags": ["Fighter", "Sentinel"],
+      "path": "sentinel",
+      "tier": 1,
+      "trait": "Maneuver",
+      "slot_type": "tactical",
+      "cost": { "ap": 1, "resources": [{ "id": "adrenaline", "amount": 2 }] },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": [], "path_investment": { "path": "sentinel", "count": 2 } },
+      "description": "Choose two Bulwark Maneuvers. Expandable to three by Brace for Impact.",
+      "boons": [
+        {
+          "type": "multi_choice",
+          "key": "bulwark_maneuvers",
+          "count": 2,
+          "expandable_by": ["brace_for_impact"],
+          "options": [
+            {
+              "value": "bulwark_rally",
+              "label": "Bulwark Rally",
+              "description": "Until start of your next turn, you and one ally in your Engagement both gain +1 Armor.",
+              "boons": [
+                { "type": "armor_bonus", "amount": 1, "target": "self", "duration": "until_next_turn_start" },
+                { "type": "armor_bonus", "amount": 1, "target": "ally_in_engagement", "duration": "until_next_turn_start" }
+              ]
+            },
+            {
+              "value": "controlled_blows",
+              "label": "Controlled Blows",
+              "description": "Until start of your next turn, decrease weapon die size (min d4) and gain +2 Armor.",
+              "boons": [
+                { "type": "armor_bonus", "amount": 2, "duration": "until_next_turn_start" }
+              ]
+            },
+            {
+              "value": "counter_strike",
+              "label": "Counter Strike",
+              "description": "Until start of your next turn, when a target in your Engagement makes a melee attack against you, retaliate with one attack. Gain +2 to hit if their attack is a critical miss.",
+              "boons": []
+            },
+            {
+              "value": "shield_charge",
+              "label": "Shield Charge",
+              "description": "Make a shield bash attack. On critical hit, target is Dazed until end of its turn. Gain +1 to hit if not already Engaged with the target.",
+              "boons": []
+            },
+            {
+              "value": "weapon_disarm",
+              "label": "Weapon Disarm",
+              "description": "Until start of your next turn, when a target in Engagement makes a melee attack against you, make a Fortitude check vs their Fortitude. On success, stop the attack. On critical success, their weapon is dropped. (Source: Body check vs body defense — verify stat.)",
+              "boons": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tactical_fortification",
+      "name": "Tactical Fortification",
+      "tags": ["Fighter", "Sentinel"],
+      "path": "sentinel",
+      "tier": 2,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "When an ally within your Engagement would be hit, you may redirect the attack to yourself and impose Strain on the attacker.",
+      "boons": []
+    },
+    {
+      "id": "sentinel_armor",
+      "name": "Sentinel Armor",
+      "tags": ["Fighter", "Sentinel"],
+      "path": "sentinel",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["signature_armor"], "path_investment": { "path": "sentinel", "count": 3 } },
+      "description": "Reforge your armor into a battlefield-ready suit. Gain upgrades based on your worn armor category. Light — +1 Fortitude, Resolve on Fortitude checks against spells, and once per respite when you take damage you may Disengage as a Free Action (move without provoking a Reflex Strike). Medium — +1 Armor, you may dual-wield Signature School weapons without the Light trait, and on a critical hit gain temporary Vitality equal to your Tier. Heavy — +2 Armor, a 20-point Reduction Pool, and an unarmed strike dealing 2d4 Blunt targeting Armor that gains the Enforcer school benefit. (Source: light Body Defense/checks — verify stat.)",
+      "boons": [
+        {
+          "type": "armor_type_conditional",
+          "by_armor_type": {
+            "light": [
+              { "type": "stat_bonus", "stat": "Fortitude", "amount": 1, "note": "Source: Body Defense — verify stat." }
+            ],
+            "medium": [
+              { "type": "armor_bonus", "amount": 1, "condition": "wearing_medium_armor" },
+              { "type": "allow_dual_wield", "restriction": "no_light_trait_required", "condition": "signature_school_weapons" },
+              {
+                "type": "conditional_effect",
+                "trigger": "critical_hit_dealt",
+                "effect": { "type": "heal", "formula": "Tier", "target": "self", "temporary": true }
+              }
+            ],
+            "heavy": [
+              { "type": "armor_bonus", "amount": 2, "condition": "wearing_heavy_armor" },
+              { "type": "reduction_pool", "formula": "20", "charges": null }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "brace_for_impact",
+      "name": "Brace for Impact",
+      "tags": ["Fighter", "Sentinel"],
+      "path": "sentinel",
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": "minor",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["bulwark_maneuver"], "path_investment": { "path": "sentinel", "count": 1 } },
+      "description": "When taking damage from area effects or zone spells, reduce that damage using a shield's reduction pool. Gain one additional Bulwark Maneuver option.",
+      "boons": [
+        {
+          "type": "conditional_effect",
+          "trigger": "area_or_zone_damage",
+          "effect": { "type": "reduction_pool", "source": "shield", "apply_to": "area_damage" }
+        },
+        { "type": "upgrade_feat", "target_feat": "bulwark_maneuver", "patch": { "boons[0].count": 3 } }
+      ]
+    },
+    {
+      "id": "mobile_fortress",
+      "name": "Mobile Fortress",
+      "tags": ["Fighter", "Sentinel"],
+      "path": "sentinel",
+      "tier": 3,
+      "trait": "Maneuver",
+      "slot_type": "tactical",
+      "cost": { "ap": 3 },
+      "range": null,
+      "duration": "until_end_of_next_turn",
+      "uses": { "count": 1, "recharge": "respite" },
+      "feat_dc": null,
+      "prerequisites": ["sentinel_armor"],
+      "description": "Gain Disengage and Dash, and +3 Armor until end of your next turn. If a melee attack misses you while active, attempt a Shove. On critical miss, attempt a Trip instead.",
+      "boons": [
+        { "type": "armor_bonus", "amount": 3, "duration": "until_end_of_next_turn" }
+      ]
+    },
+    {
+      "id": "impervious_bastion",
+      "name": "Impervious Bastion",
+      "tags": ["Fighter", "Sentinel"],
+      "path": "sentinel",
+      "tier": 3,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": { "resources": [{ "id": "adrenaline", "amount": 3 }] },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": { "feats": ["sentinel_armor"], "path_investment": { "path": "sentinel", "count": 4 } },
+      "description": "When you or an ally within your Engagement or Zone (if not engaged) would be hit, that target gains +4 Armor until end of their next turn.",
+      "boons": [
+        {
+          "type": "conditional_effect",
+          "trigger": "self_or_ally_targeted",
+          "condition": "within_engagement_or_zone",
+          "effect": { "type": "armor_bonus", "amount": 4, "target": "triggering_target", "duration": "until_end_of_next_turn" }
+        }
+      ]
+    },
+    {
+      "id": "adaptive_fortress",
+      "name": "Adaptive Fortress",
+      "tags": ["Fighter", "Sentinel"],
+      "path": "sentinel",
+      "tier": 3,
+      "trait": "Utility",
+      "slot_type": "narrative",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": { "count": 1, "recharge": "respite" },
+      "feat_dc": null,
+      "prerequisites": { "feats": ["sentinel_armor"], "path_investment": { "path": "sentinel", "count": 4 } },
+      "description": "As a free action at the start of any round, instantly switch your Sentinel Armor's category, or reconfigure its resistance, even outside Daily Preparation.",
+      "boons": []
+    }
+  ]
+}

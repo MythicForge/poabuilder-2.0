@@ -1,0 +1,34 @@
+{
+  "id": "",
+  "name": "",
+  "description": "",
+  "pack": {
+    "consumables": [],
+    "kits": [],
+    "clothing": [],
+    "misc": { "type": "choice", "count": 0, "from": [] }
+  },
+  "vocations": [],
+  "feats": [
+    {
+      "id": "",
+      "name": "",
+      "tags": [],
+      "path": null,
+      "tier": 1,
+      "trait": "",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": { "origin": "", "count": 0 }
+      },
+      "description": "",
+      "boons": []
+    }
+  ]
+}

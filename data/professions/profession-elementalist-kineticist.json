@@ -1,0 +1,142 @@
+{
+  "id": "kineticist",
+  "name": "Kineticist",
+  "profession": "elementalist",
+  "description": "Kineticists channel elemental energy directly into physical weapons and strikes, becoming devastating martial combatants who fight with manifested elemental armaments.",
+  "feats": [
+    {
+      "id": "elemental_armaments",
+      "name": "Elemental Armaments",
+      "tags": ["Elementalist", "Kineticist"],
+      "path": "kineticist",
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": "tactical",
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You manifest weapons of pure primal energy. Attack rolls with these armaments use Will + Tier instead of physical attributes. Weapon manifestation is determined by your Elemental Core.",
+      "boons": [
+        {
+          "type": "grants_weapon",
+          "attack_modifier": "Will + Tier",
+          "damage_modifier": "Will",
+          "by_core": {
+            "flame": {
+              "name": "Flame Blades",
+              "choice": {
+                "key": "flame_blade_type",
+                "prompt": "Choose your Flame Blade manifestation",
+                "options": [
+                  {
+                    "value": "greatsword",
+                    "label": "Greatsword",
+                    "weapon": { "type": "Greatsword", "damage": "1d10", "damage_type": "Fire", "range": null }
+                  },
+                  {
+                    "value": "daggers",
+                    "label": "Daggers",
+                    "weapon": { "type": "Daggers", "damage": "1d4", "damage_type": "Fire", "range": null }
+                  }
+                ]
+              },
+              "crit_effect": [
+                { "type": "apply_condition", "condition_id": "BRN", "duration": null, "stacks": 1 }
+              ]
+            },
+            "forest": {
+              "name": "Bastion",
+              "weapons": [
+                { "type": "Mace", "damage": "1d6", "damage_type": "Blunt", "range": null },
+                { "type": "Light Shield", "damage": null, "damage_type": null, "range": null }
+              ],
+              "passive": {
+                "description": "Once per turn when you would take Physical or Elemental damage (except Fire), gain Resistance to that specific attack.",
+                "boons": [
+                  { "type": "resistance", "damage_type": "triggering_attack", "condition": "physical_or_elemental_not_fire", "uses": { "count": 1, "recharge": "turn" } }
+                ]
+              },
+              "crit_effect": [
+                { "type": "apply_condition", "condition_id": "DAZ", "duration": "until_next_turn_start", "stacks": null }
+              ]
+            },
+            "land": {
+              "name": "Iron Spike",
+              "weapons": [
+                { "type": "Javelin", "damage": "1d8", "damage_type": "Puncture", "range": "Close", "traits": ["returning"] }
+              ],
+              "crit_effect": [
+                { "type": "bonus_attack", "attack_type": "grapple", "on_success": { "type": "forced_movement", "direction": "toward_user", "zones": 1 } }
+              ]
+            },
+            "ocean": {
+              "name": "Ice Knives",
+              "weapons": [
+                { "type": "Throwing Knives", "damage": "1d4", "damage_type": "Ice", "flat_damage": { "amount": 2, "damage_type": "Puncture" }, "range": "Close" }
+              ],
+              "crit_effect": [
+                { "type": "apply_condition", "condition_id": "SAP", "duration": "until_next_turn_start", "stacks": null }
+              ]
+            },
+            "sky": {
+              "name": "Zephyr Bow",
+              "weapons": [
+                { "type": "Bow", "damage": "1d6", "damage_type": "Puncture", "range": "Far" }
+              ],
+              "crit_effect": [
+                {
+                  "type": "conditional_effect",
+                  "trigger": "critical_hit_dealt",
+                  "effect": {
+                    "type": "apply_condition",
+                    "condition_id": "PRN",
+                    "duration": null,
+                    "stacks": null,
+                    "save": { "defense": "Fortitude", "dc_ref": "feat_dc" }
+                  }
+                }
+              ]
+            },
+            "tempest": {
+              "name": "Stormbringer",
+              "weapons": [
+                { "type": "Melee", "damage": "1d6", "damage_type": "Electric", "range": null, "traits": ["Rend"] }
+              ],
+              "crit_effect": [
+                { "type": "apply_condition", "condition_id": "BLN", "duration": "until_end_of_next_turn", "stacks": null }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "kinetic_strike",
+      "name": "Kinetic Strike",
+      "tags": ["Elementalist", "Kineticist"],
+      "path": "kineticist",
+      "tier": 1,
+      "trait": "Trigger",
+      "slot_type": "tactical",
+      "cost": { "ap": 1, "resources": [{ "id": "energy", "amount": 1 }] },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": ["elemental_armaments"],
+      "description": "After a successful strike with your Elemental Armament, expend Energy to make a second attack with the same weapon.",
+      "boons": [
+        {
+          "type": "bonus_attack",
+          "trigger": "on_hit",
+          "trigger_weapon": "elemental_armament",
+          "attack_type": "elemental_armament",
+          "attack_modifier": "Will + Tier"
+        }
+      ]
+    }
+  ]
+}
