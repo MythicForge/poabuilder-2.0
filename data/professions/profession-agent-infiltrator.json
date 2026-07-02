@@ -7,7 +7,10 @@
     {
       "id": "fade_away",
       "name": "Fade Away",
-      "tags": ["Agent", "Infiltrator"],
+      "tags": [
+        "Agent",
+        "Infiltrator"
+      ],
       "path": "infiltrator",
       "tier": 1,
       "trait": "Passive",
@@ -17,16 +20,31 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "infiltrator", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "infiltrator",
+          "count": 0
+        }
+      },
       "description": "When in dim-light or pitch black, you have Resolve on Stealth checks and become Hidden to targets that have seen you.",
       "boons": [
-        { "type": "apply_state", "state": "Hidden", "target": "self", "condition": "dim_light_or_pitch_black", "note": "Hidden even from those who have seen you." }
+        {
+          "type": "activate_state",
+          "state": "Hidden",
+          "active_while": "dim_light_or_pitch_black",
+          "target": "self",
+          "note": "Hidden even from those who have seen you."
+        }
       ]
     },
     {
       "id": "lethal_precision",
       "name": "Lethal Precision",
-      "tags": ["Agent", "Infiltrator"],
+      "tags": [
+        "Agent",
+        "Infiltrator"
+      ],
       "path": "infiltrator",
       "tier": 1,
       "trait": "Passive",
@@ -36,14 +54,25 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["fade_away"], "path_investment": { "path": "infiltrator", "count": 0 } },
+      "prerequisites": {
+        "feats": [
+          "fade_away"
+        ],
+        "path_investment": {
+          "path": "infiltrator",
+          "count": 0
+        }
+      },
       "description": "While Hidden or Obscured and you land an attack, on a hit the target gains Bleeding 1. On a critical hit, the bleeding damage die increases from d6 to d8.",
       "boons": []
     },
     {
       "id": "lightfoot",
       "name": "Lightfoot",
-      "tags": ["Agent", "Infiltrator"],
+      "tags": [
+        "Agent",
+        "Infiltrator"
+      ],
       "path": "infiltrator",
       "tier": 1,
       "trait": "Passive",
@@ -51,16 +80,28 @@
       "cost": null,
       "range": null,
       "duration": null,
-      "uses": { "count": 1, "recharge": "turn" },
+      "uses": {
+        "count": 1,
+        "recharge": "turn"
+      },
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "infiltrator", "count": 2 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "infiltrator",
+          "count": 2
+        }
+      },
       "description": "Once per turn, reduce the cost of the Dash and Dodge actions by 1 AP.",
       "boons": []
     },
     {
       "id": "opportunist",
       "name": "Opportunist",
-      "tags": ["Agent", "Infiltrator"],
+      "tags": [
+        "Agent",
+        "Infiltrator"
+      ],
       "path": "infiltrator",
       "tier": 2,
       "trait": "Passive",
@@ -70,16 +111,30 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "infiltrator", "count": 2 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "infiltrator",
+          "count": 2
+        }
+      },
       "description": "You can use Undercut as long as an ally is in your Engagement (broadening its trigger conditions).",
       "boons": [
-        { "type": "upgrade_feat", "target_feat": "undercut", "patch": {}, "note": "Adds/relaxes the ally-in-engagement trigger for Undercut." }
+        {
+          "type": "upgrade_feat",
+          "target_feat": "undercut",
+          "patch": {},
+          "note": "Adds/relaxes the ally-in-engagement trigger for Undercut."
+        }
       ]
     },
     {
       "id": "slip_and_strike",
       "name": "Slip and Strike",
-      "tags": ["Agent", "Infiltrator"],
+      "tags": [
+        "Agent",
+        "Infiltrator"
+      ],
       "path": "infiltrator",
       "tier": 2,
       "trait": "Trigger",
@@ -89,31 +144,53 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "infiltrator", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "infiltrator",
+          "count": 0
+        }
+      },
       "description": "After you land a critical hit, you gain Disengage.",
       "boons": []
     },
     {
       "id": "cut_the_bone",
       "name": "Cut The Bone",
-      "tags": ["Agent", "Infiltrator"],
+      "tags": [
+        "Agent",
+        "Infiltrator"
+      ],
       "path": "infiltrator",
       "tier": 2,
       "trait": "Passive",
       "slot_type": "tactical",
-      "cost": { "ap": 2 },
+      "cost": {
+        "ap": 2
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["opportunist"], "path_investment": { "path": "infiltrator", "count": 3 } },
+      "prerequisites": {
+        "feats": [
+          "opportunist"
+        ],
+        "path_investment": {
+          "path": "infiltrator",
+          "count": 3
+        }
+      },
       "description": "While you can use Undercut, you may target Fortitude defense instead of Armor, and deal an additional 2d4 damage. (Source: Body Defense — encoded as Fortitude; verify.)",
       "boons": []
     },
     {
       "id": "nobody_is_home",
       "name": "Nobody is Home",
-      "tags": ["Agent", "Infiltrator"],
+      "tags": [
+        "Agent",
+        "Infiltrator"
+      ],
       "path": "infiltrator",
       "tier": 3,
       "trait": "Passive",
@@ -123,16 +200,31 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "infiltrator", "count": 2 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "infiltrator",
+          "count": 2
+        }
+      },
       "description": "When you are Hidden or Obscured, add +5 to your Fortitude defense. (Source: Body Defense — encoded as Fortitude; verify.)",
       "boons": [
-        { "type": "stat_bonus", "stat": "Fortitude", "amount": 5, "target": "self", "condition": "hidden_or_obscured" }
+        {
+          "type": "stat_bonus",
+          "stat": "Fortitude",
+          "amount": 5,
+          "target": "self",
+          "condition": "hidden_or_obscured"
+        }
       ]
     },
     {
       "id": "misguiding",
       "name": "Misguiding",
-      "tags": ["Agent", "Infiltrator"],
+      "tags": [
+        "Agent",
+        "Infiltrator"
+      ],
       "path": "infiltrator",
       "tier": 3,
       "trait": "Trigger",
@@ -140,16 +232,28 @@
       "cost": null,
       "range": null,
       "duration": null,
-      "uses": { "count": 1, "recharge": "respite" },
+      "uses": {
+        "count": 1,
+        "recharge": "respite"
+      },
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "infiltrator", "count": 3 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "infiltrator",
+          "count": 3
+        }
+      },
       "description": "When a target would attack you, make a Brawn or Mind check against its Mental defense. On success, redirect the attack to another target in your Engagement using the original roll. (Source: Body or Mind check vs Mind Defense — encoded Brawn/Mind vs Mental; verify.)",
       "boons": []
     },
     {
       "id": "blade_in_the_night",
       "name": "Blade In the Night",
-      "tags": ["Agent", "Infiltrator"],
+      "tags": [
+        "Agent",
+        "Infiltrator"
+      ],
       "path": "infiltrator",
       "tier": 3,
       "trait": "Passive",
@@ -159,7 +263,15 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["cut_the_bone"], "path_investment": { "path": "infiltrator", "count": 4 } },
+      "prerequisites": {
+        "feats": [
+          "cut_the_bone"
+        ],
+        "path_investment": {
+          "path": "infiltrator",
+          "count": 4
+        }
+      },
       "description": "When Hidden, or in dim-light or pitch black, add +5 to your attack rolls.",
       "boons": []
     }

@@ -7,87 +7,174 @@
     {
       "id": "mana_strike",
       "name": "Mana Strike",
-      "tags": ["Warden", "Vanguard"],
+      "tags": [
+        "Warden",
+        "Vanguard"
+      ],
       "path": "vanguard",
       "tier": 1,
       "trait": "Narrative",
       "slot_type": "narrative",
-      "cost": { "ap": 1, "resources": [{ "id": "mana", "amount": "spell_tier" }] },
+      "cost": {
+        "ap": 1,
+        "resources": [
+          {
+            "id": "mana",
+            "amount": "spell_tier"
+          }
+        ]
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["bound_armament"], "path_investment": { "path": "vanguard", "count": 0 } },
+      "prerequisites": {
+        "feats": [
+          "bound_armament"
+        ],
+        "path_investment": {
+          "path": "vanguard",
+          "count": 0
+        }
+      },
       "description": "Channel magical power into your Bound Armament, storing an offensive spell within it (pay the spell's Reservoir cost when storing). When you hit a target with your Bound Armament, you may unleash the stored spell against that target. Area-of-effect spells instead affect only the chosen target. Power Strike does not affect the stored spell. The spell dissipates if not used by the end of the skirmish.",
       "boons": [
         {
-          "type": "store_spell",
-          "into": "bound_armament",
-          "spell_filter": "offensive",
-          "release_trigger": "on_hit_with_bound_armament",
-          "aoe_becomes": "single_target",
-          "expires": "end_of_skirmish",
-          "note": "Store-and-release spell on weapon — niche; see rule-check.md."
+          "type": "enchantment_option",
+          "target_item": "bound_armament",
+          "max_placements": 1,
+          "options": [
+            {
+              "value": "store_spell",
+              "label": "Store spell",
+              "effect": {
+                "type": "spell",
+                "spell_filter": "offensive",
+                "release_trigger": "on_hit_with_bound_armament",
+                "aoe_becomes": "single_target",
+                "expires": "end_of_skirmish",
+                "note": "Store-and-release spell on weapon — niche; see rule-check.md."
+              }
+            }
+          ],
+          "_review": [
+            "store_spell folded into enchantment_option; semantics need human verification"
+          ]
         }
       ]
     },
     {
       "id": "spell_rancor",
       "name": "Spell Rancor",
-      "tags": ["Warden", "Vanguard"],
+      "tags": [
+        "Warden",
+        "Vanguard"
+      ],
       "path": "vanguard",
       "tier": 1,
       "trait": "Trigger",
       "slot_type": "tactical",
-      "cost": { "resources": [{ "id": "mana", "amount": 2 }] },
+      "cost": {
+        "resources": [
+          {
+            "id": "mana",
+            "amount": 2
+          }
+        ]
+      },
       "range": null,
       "duration": "1 Minute",
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["mana_strike"], "path_investment": { "path": "vanguard", "count": 0 } },
+      "prerequisites": {
+        "feats": [
+          "mana_strike"
+        ],
+        "path_investment": {
+          "path": "vanguard",
+          "count": 0
+        }
+      },
       "description": "Deploy a field of unstable arcane energy. For the next minute, when you Cast a Spell, use Mana Strike, or use a magic item, your next Weapon Strike made with your Bound Armament costs 1 less AP (minimum 1 AP).",
       "boons": []
     },
     {
       "id": "spell_parry",
       "name": "Spell Parry",
-      "tags": ["Warden", "Vanguard"],
+      "tags": [
+        "Warden",
+        "Vanguard"
+      ],
       "path": "vanguard",
       "tier": 1,
       "trait": "Trigger",
       "slot_type": "tactical",
-      "cost": { "resources": [{ "id": "mana", "amount": "spell_tier" }] },
+      "cost": {
+        "resources": [
+          {
+            "id": "mana",
+            "amount": "spell_tier"
+          }
+        ]
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "vanguard", "count": 2 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "vanguard",
+          "count": 2
+        }
+      },
       "description": "When a spell targets or affects you, raise your Bound Armament to intercept. Reduce the spell's damage by your Spellcasting Modifier + 2d6. If this reduces the damage to 0, you ignore any secondary or additional effects of the spell. You also gain proficiency with shields.",
       "boons": [
-        { "type": "proficiency", "category": "protection", "value": "Shields" }
+        {
+          "type": "proficiency",
+          "category": "protection",
+          "value": "Shields"
+        }
       ]
     },
     {
       "id": "mystic_armament",
       "name": "Mystic Armament",
-      "tags": ["Warden", "Vanguard"],
+      "tags": [
+        "Warden",
+        "Vanguard"
+      ],
       "path": "vanguard",
       "tier": 2,
       "trait": "Utility",
       "slot_type": "tactical",
-      "cost": { "ap": 1 },
+      "cost": {
+        "ap": 1
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["mana_strike", "remnant_warrior"], "path_investment": { "path": "vanguard", "count": 0 } },
+      "prerequisites": {
+        "feats": [
+          "mana_strike",
+          "remnant_warrior"
+        ],
+        "path_investment": {
+          "path": "vanguard",
+          "count": 0
+        }
+      },
       "description": "If your Bound Armament would be separated from you, use a Free Action to summon it to your hand. Additionally, based on your Bound Armament's damage type, it gains the listed effect: Slashing — attacks target Fortitude, and on a critical hit inflict Burning (stacks equal to your Tier, dealt as Arcane); Piercing — attacks target Mental, and on a critical hit reduce the target's Armor by your Tier against the next attack made against them; Bludgeoning — attacks target Will Defense, and on a critical hit the target's attack rolls suffer -Tier until the end of their turn. (Source: Slashing/Piercing/Bludgeoning — encoded as Slash/Puncture/Blunt; target defenses Body→Fortitude, Mind→Mental, Will→Will Defense; verify.)",
       "boons": []
     },
     {
       "id": "remnant_warrior",
       "name": "Remnant Warrior",
-      "tags": ["Warden", "Vanguard"],
+      "tags": [
+        "Warden",
+        "Vanguard"
+      ],
       "path": "vanguard",
       "tier": 2,
       "trait": "Passive",
@@ -97,22 +184,78 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "vanguard", "count": 3 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "vanguard",
+          "count": 3
+        }
+      },
       "description": "At Daily Preparation, imbue Remnants onto eligible items up to your Tier; these do not take an augmentation slot. Choose one Remnant to learn. NICHE — remnant/augmentation subsystem; see rule-check.md.",
       "boons": [
         {
           "type": "apply_augmentation",
           "max_per_day": "Tier",
-          "changeable_during": ["daily_preparation"],
+          "changeable_during": [
+            "daily_preparation"
+          ],
           "uses_no_slot": true,
           "learn_count": 1,
           "options": [
-            { "value": "chaotic",     "label": "Chaotic (Accessory)",         "target_item": "accessory",        "description": "While below half Vitality or half Wounds, you may re-roll 1s once on attack rolls or skill checks.", "boons": [] },
-            { "value": "disruption",  "label": "Disruption (Weapon)",          "target_item": "weapon",           "description": "Once per target, when you hit a spellcaster, their next spell attack is rolled with Strain.", "boons": [] },
-            { "value": "dissipation", "label": "Dissipation (Accessory/Weapon)", "target_item": ["accessory", "weapon"], "description": "Once per rest, when a spell of equal Tier or less targets you, use your Maneuver to collapse it — roll Mind vs caster's DC; on success the spell fizzles.", "boons": [] },
-            { "value": "glint",       "label": "Glint (Armor/Accessory)",      "target_item": ["armor", "accessory"], "description": "Once per respite, reduce any damage by 1d12 and teleport 1 zone away.", "boons": [] },
-            { "value": "prism",       "label": "Prism (Armor/Shield)",         "target_item": ["armor", "shield"], "description": "Once per respite, when you take elemental damage, gain Resistance to that element until the end of your next turn and may deal 2d4 of that element on your next attack.", "boons": [] },
-            { "value": "phoenix",     "label": "Phoenix (Armor/Weapon)",       "target_item": ["armor", "weapon"], "description": "Once per day, when you receive damage and gain Wounds, reduce the damage to 0 and drop to 1 Vitality instead.", "boons": [] }
+            {
+              "value": "chaotic",
+              "label": "Chaotic (Accessory)",
+              "target_item": "accessory",
+              "description": "While below half Vitality or half Wounds, you may re-roll 1s once on attack rolls or skill checks.",
+              "boons": []
+            },
+            {
+              "value": "disruption",
+              "label": "Disruption (Weapon)",
+              "target_item": "weapon",
+              "description": "Once per target, when you hit a spellcaster, their next spell attack is rolled with Strain.",
+              "boons": []
+            },
+            {
+              "value": "dissipation",
+              "label": "Dissipation (Accessory/Weapon)",
+              "target_item": [
+                "accessory",
+                "weapon"
+              ],
+              "description": "Once per rest, when a spell of equal Tier or less targets you, use your Maneuver to collapse it — roll Mind vs caster's DC; on success the spell fizzles.",
+              "boons": []
+            },
+            {
+              "value": "glint",
+              "label": "Glint (Armor/Accessory)",
+              "target_item": [
+                "armor",
+                "accessory"
+              ],
+              "description": "Once per respite, reduce any damage by 1d12 and teleport 1 zone away.",
+              "boons": []
+            },
+            {
+              "value": "prism",
+              "label": "Prism (Armor/Shield)",
+              "target_item": [
+                "armor",
+                "shield"
+              ],
+              "description": "Once per respite, when you take elemental damage, gain Resistance to that element until the end of your next turn and may deal 2d4 of that element on your next attack.",
+              "boons": []
+            },
+            {
+              "value": "phoenix",
+              "label": "Phoenix (Armor/Weapon)",
+              "target_item": [
+                "armor",
+                "weapon"
+              ],
+              "description": "Once per day, when you receive damage and gain Wounds, reduce the damage to 0 and drop to 1 Vitality instead.",
+              "boons": []
+            }
           ],
           "note": "Remnant options carry mostly description-level effects; flesh boons out once the augmentation subsystem is defined. See rule-check.md."
         }
@@ -121,7 +264,10 @@
     {
       "id": "familiar_weapon",
       "name": "Familiar Weapon",
-      "tags": ["Warden", "Vanguard"],
+      "tags": [
+        "Warden",
+        "Vanguard"
+      ],
       "path": "vanguard",
       "tier": 2,
       "trait": "Passive",
@@ -131,15 +277,32 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "vanguard", "count": 2 } },
-      "description": "Your Bound Armament gains autonomy: it floats next to you (not counting as held) and cannot travel further than 5ft/1.5m away. Command it with 1 AP to make an attack once per turn, stow itself in a void pocket (fully concealed), or summon itself back from the void.",
-      "boons": [
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "vanguard",
+          "count": 2
+        }
+      },
+      "description": "Your Bound Armament gains autonomy: it floats next to you (not counting as held) and cannot travel further than 5ft/1.5m away. Command it with 1 AP to make an attack once per turn, stow itself in a void pocket (fully concealed), or summon itself back from the void. Animate bound weapon — leash: 5ft; command_cost: {\"ap\":1}; commands: [\"attack_once_per_turn\",\"stow_in_void\",\"summon_from_void\"] (Autonomous floating weapon — niche; see rule-check.md.).",
+      "boons": [],
+      "_review": [
         {
-          "type": "animate_bound_weapon",
-          "leash": "5ft",
-          "command_cost": { "ap": 1 },
-          "commands": ["attack_once_per_turn", "stow_in_void", "summon_from_void"],
-          "note": "Autonomous floating weapon — niche; see rule-check.md."
+          "dropped_type": "animate_bound_weapon",
+          "original": {
+            "type": "animate_bound_weapon",
+            "leash": "5ft",
+            "command_cost": {
+              "ap": 1
+            },
+            "commands": [
+              "attack_once_per_turn",
+              "stow_in_void",
+              "summon_from_void"
+            ],
+            "note": "Autonomous floating weapon — niche; see rule-check.md."
+          },
+          "generated": "Animate bound weapon — leash: 5ft; command_cost: {\"ap\":1}; commands: [\"attack_once_per_turn\",\"stow_in_void\",\"summon_from_void\"] (Autonomous floating weapon — niche; see rule-check.md.)."
         }
       ]
     }

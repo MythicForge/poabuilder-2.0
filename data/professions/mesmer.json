@@ -2,26 +2,57 @@
   "id": "mesmer",
   "name": "Mesmer",
   "description": "Psionic adepts who manipulate reality through illusion, perception, and mental resonance. They excel at battlefield control, deception, and support through subtle influence and mirror constructs. Half-caster. Paths are the Spectre and the Weaver.",
-  "favored_attributes": ["Mind", "Will"],
+  "favored_attributes": [
+    "Mind",
+    "Will"
+  ],
   "favored_attributes_note": "Source: 'Mind or Will' — player picks one as Spellcasting Modifier.",
   "vitality": {
     "base": "8 + Brawn",
     "per_tier": "2d8",
-    "brawn_bonus": { "dice": "1d6", "threshold": 5, "attribute": "Brawn" }
+    "brawn_bonus": {
+      "dice": "1d6",
+      "threshold": 5,
+      "attribute": "Brawn"
+    }
   },
   "wound_threshold_per_tier": 1,
   "proficiencies": {
-    "skills": { "type": "choice", "count": 1, "from": ["Intuition", "Awareness", "Social"] },
-    "armaments": ["Catalysts", "Finesse"],
-    "protection": ["Light"],
+    "skills": {
+      "type": "choice",
+      "count": 1,
+      "from": [
+        "Intuition",
+        "Awareness",
+        "Social"
+      ]
+    },
+    "armaments": [
+      "Catalysts",
+      "Finesse"
+    ],
+    "protection": [
+      "Light"
+    ],
     "tools": []
   },
   "starting_pack": {
-    "weapons": ["focus_crystal_or_light_weapon_choice"],
-    "armor": ["fineweave_robes_or_psionic_garb"],
+    "weapons": [
+      "focus_crystal_or_light_weapon_choice"
+    ],
+    "armor": [
+      "fineweave_robes_or_psionic_garb"
+    ],
     "kits": [],
-    "inventory": ["fragmented_mirror", "crystalline_focus", "journal_of_reflections", "ornate_pendant"],
-    "currency": { "gold": 15 }
+    "inventory": [
+      "fragmented_mirror",
+      "crystalline_focus",
+      "journal_of_reflections",
+      "ornate_pendant"
+    ],
+    "currency": {
+      "gold": 15
+    }
   },
   "resources": [
     {
@@ -29,7 +60,12 @@
       "name": "Reservoir",
       "max": "(1 * Tier) + SpellMod",
       "note": "Half-caster reservoir; source = Anima, modifier = Mind or Will.",
-      "recovery": { "respite": { "formula": "SpellMod", "minimum": 3 } }
+      "recovery": {
+        "respite": {
+          "formula": "SpellMod",
+          "minimum": 3
+        }
+      }
     },
     {
       "id": "tethers",
@@ -40,19 +76,29 @@
     }
   ],
   "paths": [
-    { "id": "spectre", "name": "Spectre" },
-    { "id": "weaver",  "name": "Weaver" }
+    {
+      "id": "spectre",
+      "name": "Spectre"
+    },
+    {
+      "id": "weaver",
+      "name": "Weaver"
+    }
   ],
   "feats": [
     {
       "id": "tethers",
       "name": "Tethers",
-      "tags": ["Mesmer"],
+      "tags": [
+        "Mesmer"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Narrative",
       "slot_type": null,
-      "cost": { "action": "free" },
+      "cost": {
+        "action": "free"
+      },
       "range": null,
       "duration": null,
       "uses": null,
@@ -60,16 +106,54 @@
       "prerequisites": [],
       "description": "Anchor your mind to others through psionic Tethers. Choose one Tether Aspect (key: tether_aspect). You may form Tethers equal to your Tier. If the target is unwilling, make a spell attack to connect the tether.",
       "boons": [
-        { "type": "grants_resource", "resource_id": "tethers" },
+        {
+          "type": "grants_resource",
+          "resource_id": "tethers"
+        },
         {
           "type": "choice",
           "key": "tether_aspect",
           "prompt": "Choose your Tether Aspect",
           "options": [
-            { "value": "aberration", "label": "Aspect of Aberration", "grants": { "description": "A tethered enemy attacking anyone other than you suffers -1d4 to the attack roll.", "boons": [] } },
-            { "value": "authority",  "label": "Aspect of Authority",  "grants": { "description": "Deal +1d4 Psychic damage against a tethered target affected by a Phantasm or Cord.", "boons": [] } },
-            { "value": "solace",     "label": "Aspect of Solace",     "grants": { "boons": [{ "type": "stat_bonus", "stat": "chosen_defense", "amount": "1 + Tier", "target": "tethered_allies", "note": "Player chooses which Attribute Defense." }] } },
-            { "value": "vestige",    "label": "Aspect of Vestige",    "grants": { "description": "Once per round, when you or a tethered creature is attacked, impose Strain on one attack.", "boons": [] } }
+            {
+              "value": "aberration",
+              "label": "Aspect of Aberration",
+              "grants": {
+                "description": "A tethered enemy attacking anyone other than you suffers -1d4 to the attack roll.",
+                "boons": []
+              }
+            },
+            {
+              "value": "authority",
+              "label": "Aspect of Authority",
+              "grants": {
+                "description": "Deal +1d4 Psychic damage against a tethered target affected by a Phantasm or Cord.",
+                "boons": []
+              }
+            },
+            {
+              "value": "solace",
+              "label": "Aspect of Solace",
+              "grants": {
+                "boons": [
+                  {
+                    "type": "stat_bonus",
+                    "stat": "chosen_defense",
+                    "amount": "1 + Tier",
+                    "target": "tethered_allies",
+                    "note": "Player chooses which Attribute Defense."
+                  }
+                ]
+              }
+            },
+            {
+              "value": "vestige",
+              "label": "Aspect of Vestige",
+              "grants": {
+                "description": "Once per round, when you or a tethered creature is attacked, impose Strain on one attack.",
+                "boons": []
+              }
+            }
           ]
         }
       ]
@@ -77,12 +161,16 @@
     {
       "id": "mindweave",
       "name": "Mindweave",
-      "tags": ["Mesmer"],
+      "tags": [
+        "Mesmer"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Narrative",
       "slot_type": null,
-      "cost": { "ap": 1 },
+      "cost": {
+        "ap": 1
+      },
       "range": "Nearby",
       "duration": "1 Minute",
       "uses": null,
@@ -94,7 +182,10 @@
     {
       "id": "spellcasting",
       "name": "Spellcasting",
-      "tags": ["Mesmer", "Spellcasting"],
+      "tags": [
+        "Mesmer",
+        "Spellcasting"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -112,21 +203,120 @@
           "caster_type": "limited",
           "source": "anima",
           "modifier": "SpellMod",
-          "modifier_choice": ["Mind", "Will"],
-          "known_spells": { "start": 3, "tier": 1 },
+          "modifier_choice": [
+            "Mind",
+            "Will"
+          ],
+          "known_spells": {
+            "start": 3,
+            "tier": 1
+          },
           "prepared_spells": "SpellMod",
           "spell_dc": "10 + SpellTier + SpellMod",
-          "cantrips": { "max": 0 }
+          "cantrips": {
+            "max": 0
+          }
         },
         {
           "type": "grants_cords",
           "count": 2,
           "options": [
-            { "id": "kinesis",    "name": "Kinesis",    "trait": "Utility",   "range": "Close",  "description": "Lift loose objects up to 5 lbs and move them within range.", "stitch": { "cost": { "resources": [{ "id": "ambition", "amount": 2 }] }, "effect": "increase movable weight to 45 lbs" }, "boons": [] },
-            { "id": "render",     "name": "Render",     "trait": "Offensive", "range": "Nearby", "description": "Spell attack vs Armor; on hit deal 1d6 Fire or Slash + Spellcasting Modifier.", "stitch": { "cost": { "resources": [{ "id": "ambition", "amount": 1 }], "per": "increase" }, "effect": "increase damage die one step per thread spent (d4>d6>d8>d10>d12)" }, "boons": [] },
-            { "id": "eviscerate", "name": "Eviscerate", "trait": "Offensive", "range": "Close",  "description": "Attack vs Mental; on hit deal 2d4 Psychic.", "stitch": { "cost": { "resources": [{ "id": "ambition", "amount": 1 }] }, "effect": "add threads modifier to damage; on crit target is Dazed" }, "boons": [] },
-            { "id": "mirage",     "name": "Mirage",     "trait": "Utility",   "range": "Self",   "description": "Until your next turn you count as half-covered and cannot be targeted by reflex strikes.", "stitch": { "cost": { "resources": [{ "id": "ambition", "amount": 2 }] }, "effect": "extend to an ally within Close; ends early if either attacks" }, "boons": [] },
-            { "id": "nullify",    "name": "Nullify",    "trait": "Offensive", "range": "Close",  "description": "Spell attack vs Will Defense; on hit deal 1d8 Psychic + Spellcasting Modifier.", "stitch": { "cost": { "resources": [{ "id": "ambition", "amount": 1 }] }, "effect": "on hit target loses 1 AP or takes +1d4 Psychic" }, "boons": [] }
+            {
+              "id": "kinesis",
+              "name": "Kinesis",
+              "trait": "Utility",
+              "range": "Close",
+              "description": "Lift loose objects up to 5 lbs and move them within range.",
+              "stitch": {
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "ambition",
+                      "amount": 2
+                    }
+                  ]
+                },
+                "effect": "increase movable weight to 45 lbs"
+              },
+              "boons": []
+            },
+            {
+              "id": "render",
+              "name": "Render",
+              "trait": "Offensive",
+              "range": "Nearby",
+              "description": "Spell attack vs Armor; on hit deal 1d6 Fire or Slash + Spellcasting Modifier.",
+              "stitch": {
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "ambition",
+                      "amount": 1
+                    }
+                  ],
+                  "per": "increase"
+                },
+                "effect": "increase damage die one step per thread spent (d4>d6>d8>d10>d12)"
+              },
+              "boons": []
+            },
+            {
+              "id": "eviscerate",
+              "name": "Eviscerate",
+              "trait": "Offensive",
+              "range": "Close",
+              "description": "Attack vs Mental; on hit deal 2d4 Psychic.",
+              "stitch": {
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "ambition",
+                      "amount": 1
+                    }
+                  ]
+                },
+                "effect": "add threads modifier to damage; on crit target is Dazed"
+              },
+              "boons": []
+            },
+            {
+              "id": "mirage",
+              "name": "Mirage",
+              "trait": "Utility",
+              "range": "Self",
+              "description": "Until your next turn you count as half-covered and cannot be targeted by reflex strikes.",
+              "stitch": {
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "ambition",
+                      "amount": 2
+                    }
+                  ]
+                },
+                "effect": "extend to an ally within Close; ends early if either attacks"
+              },
+              "boons": []
+            },
+            {
+              "id": "nullify",
+              "name": "Nullify",
+              "trait": "Offensive",
+              "range": "Close",
+              "description": "Spell attack vs Will Defense; on hit deal 1d8 Psychic + Spellcasting Modifier.",
+              "stitch": {
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "ambition",
+                      "amount": 1
+                    }
+                  ]
+                },
+                "effect": "on hit target loses 1 AP or takes +1d4 Psychic"
+              },
+              "boons": []
+            }
           ],
           "note": "Cords replace cantrips; Stitch = Ambition amplification. See rule-check.md."
         }
@@ -135,18 +325,31 @@
     {
       "id": "musing_spark",
       "name": "Musing Spark",
-      "tags": ["Mesmer"],
+      "tags": [
+        "Mesmer"
+      ],
       "path": null,
       "tier": 1,
       "trait": "Utility",
       "slot_type": "tactical",
-      "cost": { "ap": 1, "resources": [{ "id": "ambition", "amount": 1 }] },
+      "cost": {
+        "ap": 1,
+        "resources": [
+          {
+            "id": "ambition",
+            "amount": 1
+          }
+        ]
+      },
       "range": "Close",
       "duration": null,
-      "uses": { "count": "2 * Tier", "recharge": "daily" },
+      "uses": {
+        "count": "2 * Tier",
+        "recharge": "daily"
+      },
       "feat_dc": null,
       "prerequisites": [],
-      "description": "Give a creature within range a Spark. A creature with a Spark may add Tier + your Ambition die to one skill check, attack roll, or spell attack. Only one Spark may be held at a time; it lasts until used or the creature finishes a Respite, then fades. Grant a number of Sparks per day equal to Tier × 2.",
+      "description": "Give a creature within range a Spark. A creature with a Spark may add Tier + your Ambition die to one skill check, attack roll, or spell attack. Only one Spark may be held at a time; it lasts until used or the creature finishes a Respite, then fades. Grant a number of Sparks per day equal to Tier × 2. Add to roll — formula: Tier + ambition_die; applies_to: [\"skill_check\",\"attack_roll\",\"spell_attack\"]; count: 1.",
       "boons": [
         {
           "type": "grant_token",
@@ -154,15 +357,32 @@
           "max_held_per_creature": 1,
           "per_day": "Tier * 2",
           "expires": "on_use_or_respite",
-          "effect": { "type": "add_to_roll", "formula": "Tier + ambition_die", "applies_to": ["skill_check", "attack_roll", "spell_attack"], "count": 1 },
           "note": "Spark token subsystem — see rule-check.md."
+        }
+      ],
+      "_review": [
+        {
+          "dropped_type": "add_to_roll",
+          "original": {
+            "type": "add_to_roll",
+            "formula": "Tier + ambition_die",
+            "applies_to": [
+              "skill_check",
+              "attack_roll",
+              "spell_attack"
+            ],
+            "count": 1
+          },
+          "generated": "Add to roll — formula: Tier + ambition_die; applies_to: [\"skill_check\",\"attack_roll\",\"spell_attack\"]; count: 1."
         }
       ]
     },
     {
       "id": "deepen_aspects",
       "name": "Deepen Aspects",
-      "tags": ["Mesmer"],
+      "tags": [
+        "Mesmer"
+      ],
       "path": null,
       "tier": 2,
       "trait": "Passive",
@@ -172,17 +392,28 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": ["tethers"],
+      "prerequisites": [
+        "tethers"
+      ],
       "description": "Strengthen your Tethers, gaining an enhanced feature based on your chosen Aspect: Aberration — the attack-roll penalty increases to 1d6, and you may spend 1 Reservoir to add your Tier to the penalty; Authority — the bonus Psychic damage becomes +1d4, plus an additional 1d4 per Tier, against a tethered target; Solace — once per minute, tethered allies roll skill and spell checks with Resolve; Vestige — when a tethered creature misses via the Strain you imposed, it takes 1d6 Psychic damage.",
       "boons": [
         {
           "type": "choice_conditional",
           "choice_key": "tether_aspect",
           "by_choice": {
-            "aberration": [{ "type": "upgrade_feat", "target_feat": "tethers", "patch": { "aberration_penalty": "1d6" }, "note": "Spend 1 Reservoir to add Tier to the penalty." }],
-            "authority":  [],
-            "solace":     [],
-            "vestige":    []
+            "aberration": [
+              {
+                "type": "upgrade_feat",
+                "target_feat": "tethers",
+                "patch": {
+                  "aberration_penalty": "1d6"
+                },
+                "note": "Spend 1 Reservoir to add Tier to the penalty."
+              }
+            ],
+            "authority": [],
+            "solace": [],
+            "vestige": []
           }
         }
       ]

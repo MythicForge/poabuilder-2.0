@@ -7,17 +7,33 @@
     {
       "id": "titans_rage",
       "name": "Titan's Rage",
-      "tags": ["Berserker", "Titan"],
+      "tags": [
+        "Berserker",
+        "Titan"
+      ],
       "path": "titan",
       "tier": 1,
       "trait": "Narrative",
       "slot_type": "narrative",
-      "cost": { "resources": [{ "id": "ambition", "amount": 2 }] },
+      "cost": {
+        "resources": [
+          {
+            "id": "ambition",
+            "amount": 2
+          }
+        ]
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "titan", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "titan",
+          "count": 0
+        }
+      },
       "description": "Enter a rage befitting a titan, gaining the benefits of Berserker Rage. While in a Titan's Rage, after landing an attack you may use Shove or Trip as a Free Action. On a critical hit, the target also gains Dazed.",
       "boons": [
         {
@@ -35,24 +51,40 @@
     {
       "id": "titans_charge",
       "name": "Titan's Charge",
-      "tags": ["Berserker", "Titan"],
+      "tags": [
+        "Berserker",
+        "Titan"
+      ],
       "path": "titan",
       "tier": 1,
       "trait": "Maneuver",
       "slot_type": "tactical",
-      "cost": { "ap": 2 },
+      "cost": {
+        "ap": 2
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["titans_rage"], "path_investment": { "path": "titan", "count": 0 } },
+      "prerequisites": {
+        "feats": [
+          "titans_rage"
+        ],
+        "path_investment": {
+          "path": "titan",
+          "count": 0
+        }
+      },
       "description": "While in a Titan's Rage, rush a target and make a Strike against their Fortitude. On success, knock the target Prone. Gain Resolve if you were not already engaged. (Source: against their Body — encoded as Fortitude; verify.)",
       "boons": []
     },
     {
       "id": "cracked_defense",
       "name": "Cracked Defense",
-      "tags": ["Berserker", "Titan"],
+      "tags": [
+        "Berserker",
+        "Titan"
+      ],
       "path": "titan",
       "tier": 1,
       "trait": "Trigger",
@@ -62,50 +94,100 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "titan", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "titan",
+          "count": 0
+        }
+      },
       "description": "While in a Rage, when you critically hit with a Power Strike, the target gains Weakened equal to your Tier. (Power Strike action not defined in this document — see rule-check.md.)",
       "boons": []
     },
     {
       "id": "titans_crush",
       "name": "Titan's Crush",
-      "tags": ["Berserker", "Titan"],
+      "tags": [
+        "Berserker",
+        "Titan"
+      ],
       "path": "titan",
       "tier": 2,
       "trait": "Maneuver",
       "slot_type": "tactical",
-      "cost": { "ap": 2, "resources": [{ "id": "ambition", "amount": 2 }] },
+      "cost": {
+        "ap": 2,
+        "resources": [
+          {
+            "id": "ambition",
+            "amount": 2
+          }
+        ]
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["titans_charge"], "path_investment": { "path": "titan", "count": 0 } },
+      "prerequisites": {
+        "feats": [
+          "titans_charge"
+        ],
+        "path_investment": {
+          "path": "titan",
+          "count": 0
+        }
+      },
       "description": "Make two Strikes against a single target. The multiple-attack penalty applies afterward. On a critical hit, the target gains Crippled.",
       "boons": []
     },
     {
       "id": "indomitable_presence",
       "name": "Indomitable Presence",
-      "tags": ["Berserker", "Titan"],
+      "tags": [
+        "Berserker",
+        "Titan"
+      ],
       "path": "titan",
       "tier": 2,
       "trait": "Narrative",
       "slot_type": "narrative",
-      "cost": { "resources": [{ "id": "ambition", "amount": 1 }] },
+      "cost": {
+        "resources": [
+          {
+            "id": "ambition",
+            "amount": 1
+          }
+        ]
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "titan", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "titan",
+          "count": 0
+        }
+      },
       "description": "When making Persuasion or Intimidation checks that would use Social, you may use your Vigor instead.",
       "boons": [
-        { "type": "replace_stat", "context": "persuasion_intimidation_checks", "replace": "Social", "with": "Vigor", "range": null }
+        {
+          "type": "stat_substitution",
+          "replace": "Social",
+          "with": "Vigor",
+          "with_kind": "attribute",
+          "context": "persuasion_intimidation_checks"
+        }
       ]
     },
     {
       "id": "giant_strength",
       "name": "Giant Strength",
-      "tags": ["Berserker", "Titan"],
+      "tags": [
+        "Berserker",
+        "Titan"
+      ],
       "path": "titan",
       "tier": 2,
       "trait": "Passive",
@@ -115,33 +197,64 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "titan", "count": 2 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "titan",
+          "count": 2
+        }
+      },
       "description": "While in a state of Rage, you are considered Large for Shove, Grapple, or lifting checks.",
       "boons": [
-        { "type": "stat_bonus", "stat": "size_category", "amount": "Large", "target": "self", "condition": "state:rage_any AND (shove OR grapple OR lifting)" }
+        {
+          "type": "stat_bonus",
+          "stat": "size_category",
+          "amount": "Large",
+          "target": "self",
+          "condition": "state:rage_any AND (shove OR grapple OR lifting)"
+        }
       ]
     },
     {
       "id": "colossus_stomp",
       "name": "Colossus Stomp",
-      "tags": ["Berserker", "Titan"],
+      "tags": [
+        "Berserker",
+        "Titan"
+      ],
       "path": "titan",
       "tier": 3,
       "trait": "Offensive",
       "slot_type": "tactical",
-      "cost": { "ap": 3 },
+      "cost": {
+        "ap": 3
+      },
       "range": "Self",
       "duration": null,
-      "uses": { "count": 1, "recharge": "respite" },
+      "uses": {
+        "count": 1,
+        "recharge": "respite"
+      },
       "feat_dc": null,
-      "prerequisites": { "feats": ["giant_strength"], "path_investment": { "path": "titan", "count": 2 } },
+      "prerequisites": {
+        "feats": [
+          "giant_strength"
+        ],
+        "path_investment": {
+          "path": "titan",
+          "count": 2
+        }
+      },
       "description": "Once per respite, while in a Titan's Rage, slam the ground against all creatures in your zone. Targets make a Fortitude save against your Fortitude defense. On a failure, they are knocked Prone. On a critical failure, their Armor is reduced by your Tier until the end of your next turn. (Source: body save vs body defense — encoded as Fortitude; verify.)",
       "boons": []
     },
     {
       "id": "unyielding_juggernaut",
       "name": "Unyielding Juggernaut",
-      "tags": ["Berserker", "Titan"],
+      "tags": [
+        "Berserker",
+        "Titan"
+      ],
       "path": "titan",
       "tier": 3,
       "trait": "Trigger",
@@ -149,9 +262,21 @@
       "cost": null,
       "range": null,
       "duration": null,
-      "uses": { "count": 1, "recharge": "respite" },
+      "uses": {
+        "count": 1,
+        "recharge": "respite"
+      },
       "feat_dc": null,
-      "prerequisites": { "feats": ["indomitable_presence", "titans_charge"], "path_investment": { "path": "titan", "count": 0 } },
+      "prerequisites": {
+        "feats": [
+          "indomitable_presence",
+          "titans_charge"
+        ],
+        "path_investment": {
+          "path": "titan",
+          "count": 0
+        }
+      },
       "description": "While raging, if you would be reduced to 0 Vitality, instead take 1 Wound and restore Vitality equal to twice your Brawn. (Source: Body — encoded as Brawn; verify. Source prerequisite reads 'Titan's Stride' — no such feat exists; encoded as titans_charge pending confirmation — see rule-check.md.)",
       "boons": [
         {
@@ -161,8 +286,18 @@
           "effect": {
             "type": "multi_boon",
             "boons": [
-              { "type": "restore_resource", "resource": "wounds", "amount": -1, "note": "Take 1 Wound (negative = spend/lose)." },
-              { "type": "heal", "formula": "Brawn * 2", "target": "self", "temporary": false }
+              {
+                "type": "restore_resource",
+                "resource": "wounds",
+                "amount": -1,
+                "note": "Take 1 Wound (negative = spend/lose)."
+              },
+              {
+                "type": "heal",
+                "formula": "Brawn * 2",
+                "target": "self",
+                "temporary": false
+              }
             ]
           }
         }

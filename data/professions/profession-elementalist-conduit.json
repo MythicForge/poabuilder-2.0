@@ -7,7 +7,10 @@
     {
       "id": "source_attunement",
       "name": "Source Attunement",
-      "tags": ["Elementalist", "Conduit"],
+      "tags": [
+        "Elementalist",
+        "Conduit"
+      ],
       "path": "conduit",
       "tier": 1,
       "trait": "Passive",
@@ -25,12 +28,36 @@
           "cost_resource": "energy",
           "cost_method": "equal_to_reservoir_cost",
           "by_core": {
-            "flame":   ["calming_word", "ignition", "signal_fire"],
-            "forest":  ["false_shield", "elderberry_vines", "venom_spray"],
-            "land":    ["disrupt_footing", "launch", "push"],
-            "ocean":   ["bitter_chill", "cure_wounds", "pull"],
-            "sky":     ["augmented_facade", "seeking_bolt", "slow_fall"],
-            "tempest": ["arcane_needles", "light", "torment"]
+            "flame": [
+              "calming_word",
+              "ignition",
+              "signal_fire"
+            ],
+            "forest": [
+              "false_shield",
+              "elderberry_vines",
+              "venom_spray"
+            ],
+            "land": [
+              "disrupt_footing",
+              "launch",
+              "push"
+            ],
+            "ocean": [
+              "bitter_chill",
+              "cure_wounds",
+              "pull"
+            ],
+            "sky": [
+              "augmented_facade",
+              "seeking_bolt",
+              "slow_fall"
+            ],
+            "tempest": [
+              "arcane_needles",
+              "light",
+              "torment"
+            ]
           }
         }
       ]
@@ -38,7 +65,10 @@
     {
       "id": "primordial_art",
       "name": "Primordial Art",
-      "tags": ["Elementalist", "Conduit"],
+      "tags": [
+        "Elementalist",
+        "Conduit"
+      ],
       "path": "conduit",
       "tier": 1,
       "trait": "Passive",
@@ -48,7 +78,15 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["source_attunement"], "path_investment": { "path": "conduit", "count": 0 } },
+      "prerequisites": {
+        "feats": [
+          "source_attunement"
+        ],
+        "path_investment": {
+          "path": "conduit",
+          "count": 0
+        }
+      },
       "description": "Based on your Core you gain two additional Elemental Arts, expanding the options available through your Elemental Arts feat.",
       "boons": [
         {
@@ -60,39 +98,77 @@
               {
                 "id": "flame_shield",
                 "name": "Flame Shield",
-                "cost": { "resources": [{ "id": "energy", "amount": 3 }] },
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "energy",
+                      "amount": 3
+                    }
+                  ]
+                },
                 "range": null,
                 "condition": null,
-                "description": "Gain a Flame Shield with 3 Charges. When hit, expend a charge to reduce damage by 1d6 + Will and deal that much Fire damage back to the attacker.",
+                "description": "Gain a Flame Shield with 3 Charges. When hit, expend a charge to reduce damage by 1d6 + Will and deal that much Fire damage back to the attacker. Damage bonus — formula: reduction_amount; damage_type: Fire; target: attacker.",
                 "boons": [
                   {
                     "type": "reduction_pool",
                     "formula": "1d6 + Will",
-                    "charges": 3,
-                    "on_charge_used": {
+                    "charges": 3
+                  }
+                ],
+                "_review": [
+                  {
+                    "dropped_type": "damage_bonus",
+                    "original": {
                       "type": "damage_bonus",
                       "formula": "reduction_amount",
                       "damage_type": "Fire",
                       "target": "attacker"
-                    }
+                    },
+                    "generated": "Damage bonus — formula: reduction_amount; damage_type: Fire; target: attacker."
                   }
                 ]
               },
               {
                 "id": "burning_grasp",
                 "name": "Burning Grasp",
-                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "energy",
+                      "amount": 2
+                    }
+                  ]
+                },
                 "range": null,
                 "condition": null,
-                "description": "Melee attack vs Fortitude using Will. On hit, target is Restrained and takes 3d4 Fire.",
+                "description": "Melee attack vs Fortitude using Will. On hit, target is Restrained and takes 3d4 Fire. Apply condition — condition_id: RST. Damage bonus — formula: 3d4; damage_type: Fire.",
                 "boons": [
                   {
                     "type": "conditional_effect",
                     "trigger": "on_hit",
-                    "effect": [
-                      { "type": "apply_condition", "condition_id": "RST", "duration": null, "stacks": null },
-                      { "type": "damage_bonus", "formula": "3d4", "damage_type": "Fire" }
-                    ]
+                    "effect": []
+                  }
+                ],
+                "_review": [
+                  {
+                    "dropped_type": "apply_condition",
+                    "original": {
+                      "type": "apply_condition",
+                      "condition_id": "RST",
+                      "duration": null,
+                      "stacks": null
+                    },
+                    "generated": "Apply condition — condition_id: RST."
+                  },
+                  {
+                    "dropped_type": "damage_bonus",
+                    "original": {
+                      "type": "damage_bonus",
+                      "formula": "3d4",
+                      "damage_type": "Fire"
+                    },
+                    "generated": "Damage bonus — formula: 3d4; damage_type: Fire."
                   }
                 ]
               }
@@ -101,40 +177,96 @@
               {
                 "id": "entangle",
                 "name": "Entangle",
-                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "energy",
+                      "amount": 2
+                    }
+                  ]
+                },
                 "range": "Close",
                 "condition": null,
-                "description": "Ranged attack vs Fortitude using Will. On hit, target is Immobilized. Target may attempt to break free using 1 AP against the Arts DC.",
+                "description": "Ranged attack vs Fortitude using Will. On hit, target is Immobilized. Target may attempt to break free using 1 AP against the Arts DC. Apply condition — condition_id: IMM; duration: until_escaped.",
                 "boons": [
                   {
                     "type": "conditional_effect",
                     "trigger": "on_hit",
-                    "effect": [
-                      { "type": "apply_condition", "condition_id": "IMM", "duration": "until_escaped", "stacks": null }
-                    ]
+                    "effect": []
+                  }
+                ],
+                "_review": [
+                  {
+                    "dropped_type": "apply_condition",
+                    "original": {
+                      "type": "apply_condition",
+                      "condition_id": "IMM",
+                      "duration": "until_escaped",
+                      "stacks": null
+                    },
+                    "generated": "Apply condition — condition_id: IMM; duration: until_escaped."
                   }
                 ]
               },
               {
                 "id": "splinter",
                 "name": "Splinter",
-                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "energy",
+                      "amount": 2
+                    }
+                  ]
+                },
                 "range": null,
                 "condition": null,
-                "description": "Melee attack. On hit, deal weapon damage plus 2d4 Puncture and apply Bleeding 1. On critical hit, all enemies in the same Engagement also gain Bleeding 1.",
+                "description": "Melee attack. On hit, deal weapon damage plus 2d4 Puncture and apply Bleeding 1. On critical hit, all enemies in the same Engagement also gain Bleeding 1. Damage bonus — formula: 2d4; damage_type: Puncture. Apply condition — condition_id: BLD; stacks: 1. Apply condition — condition_id: BLD; stacks: 1; target: engaged_enemies. Conditional effect — trigger: critical_hit_dealt.",
                 "boons": [
                   {
                     "type": "conditional_effect",
                     "trigger": "on_hit",
-                    "effect": [
-                      { "type": "damage_bonus", "formula": "2d4", "damage_type": "Puncture" },
-                      { "type": "apply_condition", "condition_id": "BLD", "duration": null, "stacks": 1 }
-                    ]
+                    "effect": []
+                  }
+                ],
+                "_review": [
+                  {
+                    "dropped_type": "damage_bonus",
+                    "original": {
+                      "type": "damage_bonus",
+                      "formula": "2d4",
+                      "damage_type": "Puncture"
+                    },
+                    "generated": "Damage bonus — formula: 2d4; damage_type: Puncture."
                   },
                   {
-                    "type": "conditional_effect",
-                    "trigger": "critical_hit_dealt",
-                    "effect": { "type": "apply_condition", "condition_id": "BLD", "duration": null, "stacks": 1, "target": "engaged_enemies" }
+                    "dropped_type": "apply_condition",
+                    "original": {
+                      "type": "apply_condition",
+                      "condition_id": "BLD",
+                      "duration": null,
+                      "stacks": 1
+                    },
+                    "generated": "Apply condition — condition_id: BLD; stacks: 1."
+                  },
+                  {
+                    "dropped_type": "apply_condition",
+                    "original": {
+                      "type": "apply_condition",
+                      "condition_id": "BLD",
+                      "duration": null,
+                      "stacks": 1,
+                      "target": "engaged_enemies"
+                    },
+                    "generated": "Apply condition — condition_id: BLD; stacks: 1; target: engaged_enemies."
+                  },
+                  {
+                    "dropped_type": "conditional_effect(emptied)",
+                    "original": {
+                      "type": "conditional_effect",
+                      "trigger": "critical_hit_dealt"
+                    },
+                    "generated": "Conditional effect — trigger: critical_hit_dealt."
                   }
                 ]
               }
@@ -143,25 +275,57 @@
               {
                 "id": "bone_crusher",
                 "name": "Bone Crusher",
-                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "energy",
+                      "amount": 2
+                    }
+                  ]
+                },
                 "range": null,
                 "condition": null,
-                "description": "Melee attack. On hit, deal 2d6 Blunt + Will and apply Crippled until end of target's next turn.",
+                "description": "Melee attack. On hit, deal 2d6 Blunt + Will and apply Crippled until end of target's next turn. Damage bonus — formula: 2d6 + Will; damage_type: Blunt. Apply condition — condition_id: CRP; duration: until_end_of_next_turn.",
                 "boons": [
                   {
                     "type": "conditional_effect",
                     "trigger": "on_hit",
-                    "effect": [
-                      { "type": "damage_bonus", "formula": "2d6 + Will", "damage_type": "Blunt" },
-                      { "type": "apply_condition", "condition_id": "CRP", "duration": "until_end_of_next_turn", "stacks": null }
-                    ]
+                    "effect": []
+                  }
+                ],
+                "_review": [
+                  {
+                    "dropped_type": "damage_bonus",
+                    "original": {
+                      "type": "damage_bonus",
+                      "formula": "2d6 + Will",
+                      "damage_type": "Blunt"
+                    },
+                    "generated": "Damage bonus — formula: 2d6 + Will; damage_type: Blunt."
+                  },
+                  {
+                    "dropped_type": "apply_condition",
+                    "original": {
+                      "type": "apply_condition",
+                      "condition_id": "CRP",
+                      "duration": "until_end_of_next_turn",
+                      "stacks": null
+                    },
+                    "generated": "Apply condition — condition_id: CRP; duration: until_end_of_next_turn."
                   }
                 ]
               },
               {
                 "id": "floating_disc",
                 "name": "Floating Disc",
-                "cost": { "resources": [{ "id": "energy", "amount": 1 }] },
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "energy",
+                      "amount": 1
+                    }
+                  ]
+                },
                 "range": "Close",
                 "duration": "1 Minute",
                 "condition": null,
@@ -176,8 +340,14 @@
                       "movement": "20ft in any direction",
                       "concentration": {
                         "extends_duration": true,
-                        "allowed_actions": ["Dash", "Disengage", "Stand"],
-                        "ends_on": ["UNC"]
+                        "allowed_actions": [
+                          "Dash",
+                          "Disengage",
+                          "Stand"
+                        ],
+                        "ends_on": [
+                          "UNC"
+                        ]
                       }
                     }
                   }
@@ -188,30 +358,67 @@
               {
                 "id": "biting_shard",
                 "name": "Biting Shard",
-                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "energy",
+                      "amount": 2
+                    }
+                  ]
+                },
                 "range": "Nearby",
                 "condition": null,
-                "description": "Ranged attack vs Fortitude using Will. On hit, deal 1d4 Ice + Will and apply Stunned.",
+                "description": "Ranged attack vs Fortitude using Will. On hit, deal 1d4 Ice + Will and apply Stunned. Damage bonus — formula: 1d4 + Will; damage_type: Ice. Apply condition — condition_id: STN.",
                 "boons": [
                   {
                     "type": "conditional_effect",
                     "trigger": "on_hit",
-                    "effect": [
-                      { "type": "damage_bonus", "formula": "1d4 + Will", "damage_type": "Ice" },
-                      { "type": "apply_condition", "condition_id": "STN", "duration": null, "stacks": null }
-                    ]
+                    "effect": []
+                  }
+                ],
+                "_review": [
+                  {
+                    "dropped_type": "damage_bonus",
+                    "original": {
+                      "type": "damage_bonus",
+                      "formula": "1d4 + Will",
+                      "damage_type": "Ice"
+                    },
+                    "generated": "Damage bonus — formula: 1d4 + Will; damage_type: Ice."
+                  },
+                  {
+                    "dropped_type": "apply_condition",
+                    "original": {
+                      "type": "apply_condition",
+                      "condition_id": "STN",
+                      "duration": null,
+                      "stacks": null
+                    },
+                    "generated": "Apply condition — condition_id: STN."
                   }
                 ]
               },
               {
                 "id": "restoring_source",
                 "name": "Restoring Source",
-                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "energy",
+                      "amount": 2
+                    }
+                  ]
+                },
                 "range": "Touch",
                 "condition": null,
                 "description": "Touch a target and restore 1d4 + Tier Vitality.",
                 "boons": [
-                  { "type": "heal", "formula": "1d4 + Tier", "target": "any", "temporary": false }
+                  {
+                    "type": "heal",
+                    "formula": "1d4 + Tier",
+                    "target": "any",
+                    "temporary": false
+                  }
                 ]
               }
             ],
@@ -219,23 +426,58 @@
               {
                 "id": "vacuum_seal",
                 "name": "Vacuum Seal",
-                "cost": { "resources": [{ "id": "energy", "amount": 1 }] },
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "energy",
+                      "amount": 1
+                    }
+                  ]
+                },
                 "range": "Nearby",
                 "condition": null,
-                "description": "Select a target within range. Target gains the Deafened condition.",
-                "boons": [
-                  { "type": "apply_condition", "condition_id": "DEF", "duration": null, "stacks": null, "target": "enemy" }
+                "description": "Select a target within range. Target gains the Deafened condition. Apply condition — condition_id: DEF; target: enemy.",
+                "boons": [],
+                "_review": [
+                  {
+                    "dropped_type": "apply_condition",
+                    "original": {
+                      "type": "apply_condition",
+                      "condition_id": "DEF",
+                      "duration": null,
+                      "stacks": null,
+                      "target": "enemy"
+                    },
+                    "generated": "Apply condition — condition_id: DEF; target: enemy."
+                  }
                 ]
               },
               {
                 "id": "air_cutter_conduit",
                 "name": "Air Cutter",
-                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "energy",
+                      "amount": 2
+                    }
+                  ]
+                },
                 "range": null,
                 "condition": null,
-                "description": "Your next ranged attack deals an additional 2d4 Slash.",
-                "boons": [
-                  { "type": "damage_bonus", "formula": "2d4", "damage_type": "Slash", "trigger": "on_next_ranged_hit" }
+                "description": "Your next ranged attack deals an additional 2d4 Slash. Damage bonus — formula: 2d4; damage_type: Slash; trigger: on_next_ranged_hit.",
+                "boons": [],
+                "_review": [
+                  {
+                    "dropped_type": "damage_bonus",
+                    "original": {
+                      "type": "damage_bonus",
+                      "formula": "2d4",
+                      "damage_type": "Slash",
+                      "trigger": "on_next_ranged_hit"
+                    },
+                    "generated": "Damage bonus — formula: 2d4; damage_type: Slash; trigger: on_next_ranged_hit."
+                  }
                 ]
               }
             ],
@@ -243,29 +485,72 @@
               {
                 "id": "accelerated_strike_conduit",
                 "name": "Accelerated Strike",
-                "cost": { "resources": [{ "id": "energy", "amount": 1 }] },
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "energy",
+                      "amount": 1
+                    }
+                  ]
+                },
                 "range": null,
                 "condition": null,
-                "description": "The AP cost of your next Power Attack this turn is reduced by 1 AP (minimum 1 AP).",
-                "boons": [
-                  { "type": "reduce_action_cost", "action": "Power Attack", "amount": 1, "condition": "next_use_this_turn", "minimum": 1 }
+                "description": "The AP cost of your next Power Attack this turn is reduced by 1 AP (minimum 1 AP). Reduce action cost — action: Power Attack; amount: 1; condition: next_use_this_turn; minimum: 1.",
+                "boons": [],
+                "_review": [
+                  {
+                    "dropped_type": "reduce_action_cost",
+                    "original": {
+                      "type": "reduce_action_cost",
+                      "action": "Power Attack",
+                      "amount": 1,
+                      "condition": "next_use_this_turn",
+                      "minimum": 1
+                    },
+                    "generated": "Reduce action cost — action: Power Attack; amount: 1; condition: next_use_this_turn; minimum: 1."
+                  }
                 ]
               },
               {
                 "id": "blinding_bolt_conduit",
                 "name": "Blinding Bolt",
-                "cost": { "resources": [{ "id": "energy", "amount": 2 }] },
+                "cost": {
+                  "resources": [
+                    {
+                      "id": "energy",
+                      "amount": 2
+                    }
+                  ]
+                },
                 "range": "Close",
                 "condition": null,
-                "description": "Ranged attack using Will. On hit, target takes 1d4 Electric and is Blinded until end of their next turn.",
+                "description": "Ranged attack using Will. On hit, target takes 1d4 Electric and is Blinded until end of their next turn. Damage bonus — formula: 1d4; damage_type: Electric. Apply condition — condition_id: BLN; duration: until_end_of_next_turn.",
                 "boons": [
                   {
                     "type": "conditional_effect",
                     "trigger": "on_hit",
-                    "effect": [
-                      { "type": "damage_bonus", "formula": "1d4", "damage_type": "Electric" },
-                      { "type": "apply_condition", "condition_id": "BLN", "duration": "until_end_of_next_turn", "stacks": null }
-                    ]
+                    "effect": []
+                  }
+                ],
+                "_review": [
+                  {
+                    "dropped_type": "damage_bonus",
+                    "original": {
+                      "type": "damage_bonus",
+                      "formula": "1d4",
+                      "damage_type": "Electric"
+                    },
+                    "generated": "Damage bonus — formula: 1d4; damage_type: Electric."
+                  },
+                  {
+                    "dropped_type": "apply_condition",
+                    "original": {
+                      "type": "apply_condition",
+                      "condition_id": "BLN",
+                      "duration": "until_end_of_next_turn",
+                      "stacks": null
+                    },
+                    "generated": "Apply condition — condition_id: BLN; duration: until_end_of_next_turn."
                   }
                 ]
               }
@@ -277,7 +562,10 @@
     {
       "id": "surmount_resistance",
       "name": "Surmount Resistance",
-      "tags": ["Elementalist", "Conduit"],
+      "tags": [
+        "Elementalist",
+        "Conduit"
+      ],
       "path": "conduit",
       "tier": 1,
       "trait": "Passive",
@@ -287,17 +575,28 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "conduit", "count": 1 } },
-      "description": "When encountering an enemy resistant to your Element, bypass their Resistance, downgrade Immunity to Resistance, and downgrade Absorb to Immunity.",
-      "boons": [
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "conduit",
+          "count": 1
+        }
+      },
+      "description": "When encountering an enemy resistant to your Element, bypass their Resistance, downgrade Immunity to Resistance, and downgrade Absorb to Immunity. Penetrate resistance — element_ref: elemental_core; rules: {\"Resistant\":\"bypass\",\"Immune\":\"Resistant\",\"Absorb\":\"Immune\"}.",
+      "boons": [],
+      "_review": [
         {
-          "type": "penetrate_resistance",
-          "element_ref": "elemental_core",
-          "rules": {
-            "Resistant": "bypass",
-            "Immune":    "Resistant",
-            "Absorb":    "Immune"
-          }
+          "dropped_type": "penetrate_resistance",
+          "original": {
+            "type": "penetrate_resistance",
+            "element_ref": "elemental_core",
+            "rules": {
+              "Resistant": "bypass",
+              "Immune": "Resistant",
+              "Absorb": "Immune"
+            }
+          },
+          "generated": "Penetrate resistance — element_ref: elemental_core; rules: {\"Resistant\":\"bypass\",\"Immune\":\"Resistant\",\"Absorb\":\"Immune\"}."
         }
       ]
     }

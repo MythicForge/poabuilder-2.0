@@ -8,7 +8,10 @@
     {
       "id": "skilled_summoner",
       "name": "Skilled Summoner",
-      "tags": ["Mage", "Artificer"],
+      "tags": [
+        "Mage",
+        "Artificer"
+      ],
       "path": "artificer",
       "tier": 1,
       "trait": "Passive",
@@ -25,7 +28,9 @@
           "type": "grants_cantrip",
           "cantrip_id": "summon_familiar",
           "condition": "not_already_known",
-          "upgrade": { "duration": "until_dispelled" }
+          "upgrade": {
+            "duration": "until_dispelled"
+          }
         },
         {
           "type": "summon_vitality_bonus",
@@ -37,7 +42,10 @@
     {
       "id": "tailored_conjuration",
       "name": "Tailored Conjuration",
-      "tags": ["Mage", "Artificer"],
+      "tags": [
+        "Mage",
+        "Artificer"
+      ],
       "path": "artificer",
       "tier": 1,
       "trait": "Passive",
@@ -47,7 +55,9 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": ["skilled_summoner"],
+      "prerequisites": [
+        "skilled_summoner"
+      ],
       "description": "When you summon or create a creature, it gains a passive ability based on your chosen Study of Lore.",
       "boons": [
         {
@@ -64,9 +74,18 @@
                   "id": "reenergize",
                   "name": "Reenergize",
                   "trigger": "critical_hit_dealt",
-                  "uses": { "count": 1, "recharge": "turn" },
+                  "uses": {
+                    "count": 1,
+                    "recharge": "turn"
+                  },
                   "boons": [
-                    { "type": "restore_resource", "resource": "mana", "amount": "summon_tier * 3", "minimum": 3, "target": "summoner" }
+                    {
+                      "type": "restore_resource",
+                      "resource": "mana",
+                      "amount": "summon_tier * 3",
+                      "minimum": 3,
+                      "target": "summoner"
+                    }
                   ]
                 }
               }
@@ -80,9 +99,17 @@
                   "id": "siphoned",
                   "name": "Siphoned",
                   "trigger": "critical_hit_dealt",
-                  "uses": { "count": 1, "recharge": "turn" },
+                  "uses": {
+                    "count": 1,
+                    "recharge": "turn"
+                  },
                   "boons": [
-                    { "type": "heal", "formula": "Mind", "target": "self", "temporary": false }
+                    {
+                      "type": "heal",
+                      "formula": "Mind",
+                      "target": "self",
+                      "temporary": false
+                    }
                   ]
                 }
               }
@@ -102,9 +129,18 @@
                       "key": "evolve_movement_type",
                       "prompt": "Choose movement type for this summon",
                       "options": [
-                        { "value": "fly",    "label": "Fly" },
-                        { "value": "burrow", "label": "Burrow" },
-                        { "value": "swim",   "label": "Swim" }
+                        {
+                          "value": "fly",
+                          "label": "Fly"
+                        },
+                        {
+                          "value": "burrow",
+                          "label": "Burrow"
+                        },
+                        {
+                          "value": "swim",
+                          "label": "Swim"
+                        }
                       ]
                     }
                   ]
@@ -122,8 +158,15 @@
                   "boons": [
                     {
                       "type": "action_option",
-                      "cost": { "ap": 1 },
-                      "effect": { "type": "heal", "formula": "2d6", "target": "any", "temporary": true }
+                      "cost": {
+                        "ap": 1
+                      },
+                      "effect": {
+                        "type": "heal",
+                        "formula": "2d6",
+                        "target": "any",
+                        "temporary": true
+                      }
                     }
                   ]
                 }
@@ -139,10 +182,15 @@
                   "name": "Linked",
                   "boons": [
                     {
-                      "type": "attribute_borrow",
-                      "source": "summoned_creature",
+                      "type": "stat_substitution",
+                      "replace": "UNMAPPED",
+                      "with": "summoned_creature",
+                      "with_kind": "summon_stat",
                       "condition": "within_engagement",
-                      "note": "Source stat IDs (MHT, DEX, INT) are from a different system. Verify mapping to Brawn/Finesse/Mind/Will."
+                      "note": "Source stat IDs (MHT, DEX, INT) are from a different system. Verify mapping to Brawn/Finesse/Mind/Will.",
+                      "_review": [
+                        "attribute_borrow had no explicit replace/with; verify mapping"
+                      ]
                     }
                   ]
                 }
@@ -155,25 +203,37 @@
     {
       "id": "arcane_forgecast",
       "name": "Arcane Forgecast",
-      "tags": ["Mage", "Artificer"],
+      "tags": [
+        "Mage",
+        "Artificer"
+      ],
       "path": "artificer",
       "tier": 1,
       "trait": "Narrative",
       "slot_type": "narrative",
-      "cost": { "ap": 2 },
+      "cost": {
+        "ap": 2
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": ["tailored_conjuration"],
+      "prerequisites": [
+        "tailored_conjuration"
+      ],
       "description": "Create a permanent Forgecast companion using your chosen Study of Lore. Acts independently but requires the Command action to direct (Command cost always capped at 1 AP). If destroyed, it is repaired by next Daily Preparation.",
       "boons": [
         {
           "type": "grants_companion",
           "companion_id": "forgecast",
           "permanent": true,
-          "uses_lore": { "source": "choice", "key": "study_of_lore" },
-          "command_action": { "max_ap_cost": 1 },
+          "uses_lore": {
+            "source": "choice",
+            "key": "study_of_lore"
+          },
+          "command_action": {
+            "max_ap_cost": 1
+          },
           "on_destroy": "repairs_at_daily_preparation"
         }
       ]
@@ -181,7 +241,10 @@
     {
       "id": "spheres_of_influence",
       "name": "Spheres of Influence",
-      "tags": ["Mage", "Artificer"],
+      "tags": [
+        "Mage",
+        "Artificer"
+      ],
       "path": "artificer",
       "tier": 2,
       "trait": "Passive",
@@ -192,7 +255,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "Your summoned creatures gain passive effects based on your known Spheres of Magic. Effects apply until the creature is resummoned.",
+      "description": "Your summoned creatures gain passive effects based on your known Spheres of Magic. Effects apply until the creature is resummoned. Strain on — context: attacks_against_summoner; target: enemies_in_engagement; range: engagement. Shapechange — target_form: tiny_wildlife. Damage bonus — formula: 2d6; damage_type: Arcane; target: enemy. Conditional effect — trigger: on_hit; condition: melee_attack. Divination anchor — description: Divination spells cast upon summon travel with it for spell duration.. Shared vitality — source: summoned_creature; target: summoner (Both take damage when either is hit.).",
       "boons": [
         {
           "type": "summon_sphere_effect",
@@ -202,50 +265,40 @@
             "aberration": [
               {
                 "type": "action_option",
-                "cost": { "ap": 1 },
-                "effect": { "type": "strain_on", "context": "attacks_against_summoner", "target": "enemies_in_engagement", "range": "engagement" }
+                "cost": {
+                  "ap": 1
+                }
               }
             ],
             "augmentation": [
               {
                 "type": "action_option",
-                "cost": { "ap": 2 },
-                "effect": { "type": "shapechange", "target_form": "tiny_wildlife", "duration": null }
+                "cost": {
+                  "ap": 2
+                }
               }
             ],
             "conjuration": [
               {
                 "type": "conditional_effect",
                 "trigger": "on_summon",
-                "effect": { "type": "heal", "formula": "highest_known_spell_tier * 2", "target": "self", "temporary": true }
+                "effect": {
+                  "type": "heal",
+                  "formula": "highest_known_spell_tier * 2",
+                  "target": "self",
+                  "temporary": true
+                }
               }
             ],
-            "decimation": [
-              {
-                "type": "conditional_effect",
-                "trigger": "on_hit",
-                "condition": "melee_attack",
-                "effect": { "type": "damage_bonus", "formula": "2d6", "damage_type": "Arcane", "target": "enemy" }
-              }
-            ],
-            "divination": [
-              {
-                "type": "divination_anchor",
-                "description": "Divination spells cast upon summon travel with it for spell duration."
-              }
-            ],
-            "mortification": [
-              {
-                "type": "shared_vitality",
-                "source": "summoned_creature",
-                "target": "summoner",
-                "note": "Both take damage when either is hit."
-              }
-            ],
+            "decimation": [],
+            "divination": [],
+            "mortification": [],
             "reclamation": [
               {
                 "type": "action_option",
-                "cost": { "ap": 1 },
+                "cost": {
+                  "ap": 1
+                },
                 "effect": {
                   "type": "multi_choice",
                   "key": "reclamation_form",
@@ -256,8 +309,16 @@
                       "value": "hardened",
                       "label": "Harden Form",
                       "boons": [
-                        { "type": "armor_bonus", "amount": 3 },
-                        { "type": "stat_bonus", "stat": "attack_roll", "amount": -2 }
+                        {
+                          "type": "stat_bonus",
+                          "stat": "Armor",
+                          "amount": 3
+                        },
+                        {
+                          "type": "stat_bonus",
+                          "stat": "attack_roll",
+                          "amount": -2
+                        }
                       ]
                     }
                   ]
@@ -266,12 +327,73 @@
             ]
           }
         }
+      ],
+      "_review": [
+        {
+          "dropped_type": "strain_on",
+          "original": {
+            "type": "strain_on",
+            "context": "attacks_against_summoner",
+            "target": "enemies_in_engagement",
+            "range": "engagement"
+          },
+          "generated": "Strain on — context: attacks_against_summoner; target: enemies_in_engagement; range: engagement."
+        },
+        {
+          "dropped_type": "shapechange",
+          "original": {
+            "type": "shapechange",
+            "target_form": "tiny_wildlife",
+            "duration": null
+          },
+          "generated": "Shapechange — target_form: tiny_wildlife."
+        },
+        {
+          "dropped_type": "damage_bonus",
+          "original": {
+            "type": "damage_bonus",
+            "formula": "2d6",
+            "damage_type": "Arcane",
+            "target": "enemy"
+          },
+          "generated": "Damage bonus — formula: 2d6; damage_type: Arcane; target: enemy."
+        },
+        {
+          "dropped_type": "conditional_effect(emptied)",
+          "original": {
+            "type": "conditional_effect",
+            "trigger": "on_hit",
+            "condition": "melee_attack"
+          },
+          "generated": "Conditional effect — trigger: on_hit; condition: melee_attack."
+        },
+        {
+          "dropped_type": "divination_anchor",
+          "original": {
+            "type": "divination_anchor",
+            "description": "Divination spells cast upon summon travel with it for spell duration."
+          },
+          "generated": "Divination anchor — description: Divination spells cast upon summon travel with it for spell duration.."
+        },
+        {
+          "dropped_type": "shared_vitality",
+          "original": {
+            "type": "shared_vitality",
+            "source": "summoned_creature",
+            "target": "summoner",
+            "note": "Both take damage when either is hit."
+          },
+          "generated": "Shared vitality — source: summoned_creature; target: summoner (Both take damage when either is hit.)."
+        }
       ]
     },
     {
       "id": "forgecast_autonomy",
       "name": "Forgecast Autonomy",
-      "tags": ["Mage", "Artificer"],
+      "tags": [
+        "Mage",
+        "Artificer"
+      ],
       "path": "artificer",
       "tier": 2,
       "trait": "Utility",
@@ -279,23 +401,40 @@
       "cost": null,
       "range": null,
       "duration": null,
-      "uses": { "count": 1, "recharge": "skirmish" },
+      "uses": {
+        "count": 1,
+        "recharge": "skirmish"
+      },
       "feat_dc": null,
-      "prerequisites": { "feats": ["arcane_forgecast"], "path_investment": { "path": "artificer", "count": 2 } },
+      "prerequisites": {
+        "feats": [
+          "arcane_forgecast"
+        ],
+        "path_investment": {
+          "path": "artificer",
+          "count": 2
+        }
+      },
       "description": "Once per skirmish, your Forgecast acts independently for one round without requiring the Command action.",
       "boons": [
         {
           "type": "companion_autonomy",
           "companion_id": "forgecast",
           "duration": "1_round",
-          "uses": { "count": 1, "recharge": "skirmish" }
+          "uses": {
+            "count": 1,
+            "recharge": "skirmish"
+          }
         }
       ]
     },
     {
       "id": "reservoir_tuning",
       "name": "Reservoir Tuning",
-      "tags": ["Mage", "Artificer"],
+      "tags": [
+        "Mage",
+        "Artificer"
+      ],
       "path": "artificer",
       "tier": 2,
       "trait": "Passive",
@@ -305,16 +444,28 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "artificer", "count": 1 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "artificer",
+          "count": 1
+        }
+      },
       "description": "During Daily Preparation, optionally choose one tuning mode. Can be deactivated during a Respite but cannot be reactivated until next Daily Preparation.",
       "boons": [
         {
           "type": "daily_mode_choice",
           "key": "reservoir_tuning_mode",
           "optional": true,
-          "changeable_during": ["daily_preparation"],
-          "deactivatable_during": ["respite"],
-          "reactivatable_during": ["daily_preparation"],
+          "changeable_during": [
+            "daily_preparation"
+          ],
+          "deactivatable_during": [
+            "respite"
+          ],
+          "reactivatable_during": [
+            "daily_preparation"
+          ],
           "options": [
             {
               "value": "efficient_casting",
@@ -322,8 +473,8 @@
               "description": "When casting a spell one tier below your current Tier, reduce mana cost by 2.",
               "boons": [
                 {
-                  "type": "spell_cost_reduction",
-                  "amount": 2,
+                  "type": "spell_cost_modifier",
+                  "amount": -2,
                   "condition": "spell_tier_one_below_character_tier"
                 }
               ]
@@ -333,9 +484,32 @@
               "label": "Overcharged",
               "description": "Direct and zone spell attack rolls and spell DCs gain +2 (including non-Forgecast summons). Mana cost of those spells increases by 4.",
               "boons": [
-                { "type": "stat_bonus", "stat": "spell_attack", "amount": 2, "context": ["direct_spell", "zone_spell"] },
-                { "type": "stat_bonus", "stat": "spell_dc",     "amount": 2, "context": ["direct_spell", "zone_spell"] },
-                { "type": "spell_cost_modifier", "amount": 4,   "context": ["direct_spell", "zone_spell"] }
+                {
+                  "type": "stat_bonus",
+                  "stat": "spell_attack",
+                  "amount": 2,
+                  "context": [
+                    "direct_spell",
+                    "zone_spell"
+                  ]
+                },
+                {
+                  "type": "stat_bonus",
+                  "stat": "spell_dc",
+                  "amount": 2,
+                  "context": [
+                    "direct_spell",
+                    "zone_spell"
+                  ]
+                },
+                {
+                  "type": "spell_cost_modifier",
+                  "amount": 4,
+                  "context": [
+                    "direct_spell",
+                    "zone_spell"
+                  ]
+                }
               ]
             }
           ]
@@ -345,7 +519,10 @@
     {
       "id": "modular_adaptation",
       "name": "Modular Adaptation",
-      "tags": ["Mage", "Artificer"],
+      "tags": [
+        "Mage",
+        "Artificer"
+      ],
       "path": "artificer",
       "tier": 3,
       "trait": "Passive",
@@ -356,66 +533,103 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "Modify your Forgecast's directive during Daily Preparation. While in any non-Baseline directive, it may only take an action (not a maneuver) on its turn.",
-      "boons": [
+      "description": "Modify your Forgecast's directive during Daily Preparation. While in any non-Baseline directive, it may only take an action (not a maneuver) on its turn. Companion directive — companion_id: forgecast; key: forgecast_directive; changeable_during: [\"daily_preparation\"]; non_baseline_restriction: action_only; options: [{\"value\":\"baseline\",\"label\":\"Baseline Directive\",\"description\":\"Forgecast regains its ability to use both an action and a maneuver on its turn.\",\"boons\":[]},{\"value\":\"bulwark\",\"label\":\"Bulwark Directive\",\"description\":\"+2 Armor on the Forgecast. Can intercept one attack per combat directed at you.\",\"boons\":[{\"type\":\"armor_bonus\",\"amount\":2,\"target\":\"companion:forgecast\"},{\"type\":\"conditional_effect\",\"trigger\":\"summoner_targeted\",\"uses\":{\"count\":1,\"recharge\":\"skirmish\"},\"effect\":{\"type\":\"redirect_attack\",\"from\":\"summoner\",\"to\":\"companion:forgecast\"}}]},{\"value\":\"siege\",\"label\":\"Siege Directive\",\"description\":\"Forgecast gains a ranged attack dealing 2d8 Arcane damage.\",\"boons\":[{\"type\":\"attack_option\",\"attack_type\":\"ranged\",\"damage\":\"2d8\",\"damage_type\":\"Arcane\",\"targets_defense\":\"Armor\",\"range\":\"Nearby\",\"tier_scaling\":[]}]},{\"value\":\"scout\",\"label\":\"Scout Directive\",\"description\":\"Cannot attack. Gains 2 zones of movement when dashing. Grants summoner sight and hearing from its position until your next turn.\",\"boons\":[{\"type\":\"restrict_action\",\"action\":\"Attack\",\"target\":\"companion:forgecast\",\"duration\":\"while_directive_active\"},{\"type\":\"movement_bonus\",\"action\":\"Dash\",\"bonus_zones\":2,\"target\":\"companion:forgecast\"},{\"type\":\"conditional_effect\",\"trigger\":\"each_turn\",\"effect\":{\"type\":\"sense_sharing\",\"senses\":[\"sight\",\"hearing\"],\"source\":\"companion:forgecast\",\"target\":\"summoner\",\"duration\":\"until_next_turn\"}}]}].",
+      "boons": [],
+      "_review": [
         {
-          "type": "companion_directive",
-          "companion_id": "forgecast",
-          "key": "forgecast_directive",
-          "changeable_during": ["daily_preparation"],
-          "non_baseline_restriction": "action_only",
-          "options": [
-            {
-              "value": "baseline",
-              "label": "Baseline Directive",
-              "description": "Forgecast regains its ability to use both an action and a maneuver on its turn.",
-              "boons": []
-            },
-            {
-              "value": "bulwark",
-              "label": "Bulwark Directive",
-              "description": "+2 Armor on the Forgecast. Can intercept one attack per combat directed at you.",
-              "boons": [
-                { "type": "armor_bonus", "amount": 2, "target": "companion:forgecast" },
-                {
-                  "type": "conditional_effect",
-                  "trigger": "summoner_targeted",
-                  "uses": { "count": 1, "recharge": "skirmish" },
-                  "effect": { "type": "redirect_attack", "from": "summoner", "to": "companion:forgecast" }
-                }
-              ]
-            },
-            {
-              "value": "siege",
-              "label": "Siege Directive",
-              "description": "Forgecast gains a ranged attack dealing 2d8 Arcane damage.",
-              "boons": [
-                {
-                  "type": "attack_option",
-                  "attack_type": "ranged",
-                  "damage": "2d8",
-                  "damage_type": "Arcane",
-                  "targets_defense": "Armor",
-                  "range": "Nearby",
-                  "tier_scaling": []
-                }
-              ]
-            },
-            {
-              "value": "scout",
-              "label": "Scout Directive",
-              "description": "Cannot attack. Gains 2 zones of movement when dashing. Grants summoner sight and hearing from its position until your next turn.",
-              "boons": [
-                { "type": "restrict_action", "action": "Attack", "target": "companion:forgecast", "duration": "while_directive_active" },
-                { "type": "movement_bonus", "action": "Dash", "bonus_zones": 2, "target": "companion:forgecast" },
-                {
-                  "type": "conditional_effect",
-                  "trigger": "each_turn",
-                  "effect": { "type": "sense_sharing", "senses": ["sight", "hearing"], "source": "companion:forgecast", "target": "summoner", "duration": "until_next_turn" }
-                }
-              ]
-            }
-          ]
+          "dropped_type": "companion_directive",
+          "original": {
+            "type": "companion_directive",
+            "companion_id": "forgecast",
+            "key": "forgecast_directive",
+            "changeable_during": [
+              "daily_preparation"
+            ],
+            "non_baseline_restriction": "action_only",
+            "options": [
+              {
+                "value": "baseline",
+                "label": "Baseline Directive",
+                "description": "Forgecast regains its ability to use both an action and a maneuver on its turn.",
+                "boons": []
+              },
+              {
+                "value": "bulwark",
+                "label": "Bulwark Directive",
+                "description": "+2 Armor on the Forgecast. Can intercept one attack per combat directed at you.",
+                "boons": [
+                  {
+                    "type": "armor_bonus",
+                    "amount": 2,
+                    "target": "companion:forgecast"
+                  },
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "summoner_targeted",
+                    "uses": {
+                      "count": 1,
+                      "recharge": "skirmish"
+                    },
+                    "effect": {
+                      "type": "redirect_attack",
+                      "from": "summoner",
+                      "to": "companion:forgecast"
+                    }
+                  }
+                ]
+              },
+              {
+                "value": "siege",
+                "label": "Siege Directive",
+                "description": "Forgecast gains a ranged attack dealing 2d8 Arcane damage.",
+                "boons": [
+                  {
+                    "type": "attack_option",
+                    "attack_type": "ranged",
+                    "damage": "2d8",
+                    "damage_type": "Arcane",
+                    "targets_defense": "Armor",
+                    "range": "Nearby",
+                    "tier_scaling": []
+                  }
+                ]
+              },
+              {
+                "value": "scout",
+                "label": "Scout Directive",
+                "description": "Cannot attack. Gains 2 zones of movement when dashing. Grants summoner sight and hearing from its position until your next turn.",
+                "boons": [
+                  {
+                    "type": "restrict_action",
+                    "action": "Attack",
+                    "target": "companion:forgecast",
+                    "duration": "while_directive_active"
+                  },
+                  {
+                    "type": "movement_bonus",
+                    "action": "Dash",
+                    "bonus_zones": 2,
+                    "target": "companion:forgecast"
+                  },
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "each_turn",
+                    "effect": {
+                      "type": "sense_sharing",
+                      "senses": [
+                        "sight",
+                        "hearing"
+                      ],
+                      "source": "companion:forgecast",
+                      "target": "summoner",
+                      "duration": "until_next_turn"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "generated": "Companion directive — companion_id: forgecast; key: forgecast_directive; changeable_during: [\"daily_preparation\"]; non_baseline_restriction: action_only; options: [{\"value\":\"baseline\",\"label\":\"Baseline Directive\",\"description\":\"Forgecast regains its ability to use both an action and a maneuver on its turn.\",\"boons\":[]},{\"value\":\"bulwark\",\"label\":\"Bulwark Directive\",\"description\":\"+2 Armor on the Forgecast. Can intercept one attack per combat directed at you.\",\"boons\":[{\"type\":\"armor_bonus\",\"amount\":2,\"target\":\"companion:forgecast\"},{\"type\":\"conditional_effect\",\"trigger\":\"summoner_targeted\",\"uses\":{\"count\":1,\"recharge\":\"skirmish\"},\"effect\":{\"type\":\"redirect_attack\",\"from\":\"summoner\",\"to\":\"companion:forgecast\"}}]},{\"value\":\"siege\",\"label\":\"Siege Directive\",\"description\":\"Forgecast gains a ranged attack dealing 2d8 Arcane damage.\",\"boons\":[{\"type\":\"attack_option\",\"attack_type\":\"ranged\",\"damage\":\"2d8\",\"damage_type\":\"Arcane\",\"targets_defense\":\"Armor\",\"range\":\"Nearby\",\"tier_scaling\":[]}]},{\"value\":\"scout\",\"label\":\"Scout Directive\",\"description\":\"Cannot attack. Gains 2 zones of movement when dashing. Grants summoner sight and hearing from its position until your next turn.\",\"boons\":[{\"type\":\"restrict_action\",\"action\":\"Attack\",\"target\":\"companion:forgecast\",\"duration\":\"while_directive_active\"},{\"type\":\"movement_bonus\",\"action\":\"Dash\",\"bonus_zones\":2,\"target\":\"companion:forgecast\"},{\"type\":\"conditional_effect\",\"trigger\":\"each_turn\",\"effect\":{\"type\":\"sense_sharing\",\"senses\":[\"sight\",\"hearing\"],\"source\":\"companion:forgecast\",\"target\":\"summoner\",\"duration\":\"until_next_turn\"}}]}]."
         }
       ]
     }

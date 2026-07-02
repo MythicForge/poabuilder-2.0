@@ -2,25 +2,63 @@
   "id": "fighter",
   "name": "Fighter",
   "description": "The quintessential weapons master, equally adept with any armament. Fighters excel at frontline combat, tactical positioning, and adapting to any battlefield situation. Paths are the Sentinel and the Reaver.",
-  "favored_attributes": ["Brawn"],
+  "favored_attributes": [
+    "Brawn"
+  ],
   "vitality": {
     "base": "12 + Brawn",
     "per_tier": "2d12",
-    "brawn_bonus": { "dice": "1d8", "threshold": 5, "attribute": "Brawn" }
+    "brawn_bonus": {
+      "dice": "1d8",
+      "threshold": 5,
+      "attribute": "Brawn"
+    }
   },
   "wound_threshold_per_tier": 2,
   "proficiencies": {
-    "skills": { "type": "choice", "count": 1, "from": ["Vigor", "Talent", "Awareness"] },
-    "armaments": ["Simple", "Martial", "Finesse", "Ranged"],
-    "protection": ["Light", "Medium", "Heavy", "Shields"],
+    "skills": {
+      "type": "choice",
+      "count": 1,
+      "from": [
+        "Vigor",
+        "Talent",
+        "Awareness"
+      ]
+    },
+    "armaments": [
+      "Simple",
+      "Martial",
+      "Finesse",
+      "Ranged"
+    ],
+    "protection": [
+      "Light",
+      "Medium",
+      "Heavy",
+      "Shields"
+    ],
     "tools": []
   },
   "starting_pack": {
-    "weapons": ["melee_weapon", "melee_weapon", "ranged_weapon_or_shield"],
-    "armor": ["medium_armor", "shield"],
-    "kits": ["polishing_kit"],
-    "inventory": ["soldiers_rations_1_week", "banner_or_insignia"],
-    "currency": { "gold": 12 }
+    "weapons": [
+      "melee_weapon",
+      "melee_weapon",
+      "ranged_weapon_or_shield"
+    ],
+    "armor": [
+      "medium_armor",
+      "shield"
+    ],
+    "kits": [
+      "polishing_kit"
+    ],
+    "inventory": [
+      "soldiers_rations_1_week",
+      "banner_or_insignia"
+    ],
+    "currency": {
+      "gold": 12
+    }
   },
   "resources": [
     {
@@ -33,20 +71,34 @@
         "full_rest": 6
       },
       "triggers": [
-        { "event": "critical_hit_dealt", "amount": 1 },
-        { "event": "critical_hit_taken", "amount": 1 }
+        {
+          "event": "critical_hit_dealt",
+          "amount": 1
+        },
+        {
+          "event": "critical_hit_taken",
+          "amount": 1
+        }
       ]
     }
   ],
   "paths": [
-    { "id": "sentinel", "name": "Sentinel" },
-    { "id": "reaver",   "name": "Reaver" }
+    {
+      "id": "sentinel",
+      "name": "Sentinel"
+    },
+    {
+      "id": "reaver",
+      "name": "Reaver"
+    }
   ],
   "feats": [
     {
       "id": "signature_school",
       "name": "Signature School",
-      "tags": ["Fighter"],
+      "tags": [
+        "Fighter"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -68,13 +120,32 @@
               "value": "defender",
               "label": "Defender",
               "grants": {
-                "weapons": ["Longsword", "Shortsword", "Greatsword"],
+                "weapons": [
+                  "Longsword",
+                  "Shortsword",
+                  "Greatsword"
+                ],
                 "stance": {
                   "description": "+1 Armor while wielding a Blade.",
-                  "boons": [{ "type": "armor_bonus", "amount": 1, "condition": "wielding_school_weapon" }]
+                  "boons": [
+                    {
+                      "type": "stat_bonus",
+                      "stat": "Armor",
+                      "amount": 1,
+                      "condition": "wielding_school_weapon"
+                    }
+                  ]
                 },
                 "maneuver": {
-                  "cost": { "ap": 1, "resources": [{ "id": "adrenaline", "amount": 2 }] },
+                  "cost": {
+                    "ap": 1,
+                    "resources": [
+                      {
+                        "id": "adrenaline",
+                        "amount": 2
+                      }
+                    ]
+                  },
                   "description": "Make one Weapon Strike after a Weapon Strike.",
                   "boons": []
                 }
@@ -84,13 +155,26 @@
               "value": "dueler",
               "label": "Dueler",
               "grants": {
-                "weapons": ["Rapier", "Dagger", "Scimitar", "Fists"],
+                "weapons": [
+                  "Rapier",
+                  "Dagger",
+                  "Scimitar",
+                  "Fists"
+                ],
                 "stance": {
                   "description": "After you attack, gain +2 Fortitude until next turn. (Source: Body Defense — verify stat.)",
                   "boons": []
                 },
                 "maneuver": {
-                  "cost": { "ap": 1, "resources": [{ "id": "adrenaline", "amount": 2 }] },
+                  "cost": {
+                    "ap": 1,
+                    "resources": [
+                      {
+                        "id": "adrenaline",
+                        "amount": 2
+                      }
+                    ]
+                  },
                   "description": "Make two attacks, each dealing half damage.",
                   "boons": []
                 }
@@ -100,13 +184,27 @@
               "value": "enforcer",
               "label": "Enforcer",
               "grants": {
-                "weapons": ["Hammer", "Maul", "Mace", "Staff", "Shield"],
+                "weapons": [
+                  "Hammer",
+                  "Maul",
+                  "Mace",
+                  "Staff",
+                  "Shield"
+                ],
                 "stance": {
                   "description": "Resolve on Shove checks.",
                   "boons": []
                 },
                 "maneuver": {
-                  "cost": { "ap": 1, "resources": [{ "id": "adrenaline", "amount": 3 }] },
+                  "cost": {
+                    "ap": 1,
+                    "resources": [
+                      {
+                        "id": "adrenaline",
+                        "amount": 3
+                      }
+                    ]
+                  },
                   "description": "All engaged enemies make a Fortitude check or fall Prone. (Source: Body check — verify stat.)",
                   "boons": []
                 }
@@ -116,13 +214,26 @@
               "value": "lancer",
               "label": "Lancer",
               "grants": {
-                "weapons": ["Lucerne", "Javelin", "Pike", "Spear"],
+                "weapons": [
+                  "Lucerne",
+                  "Javelin",
+                  "Pike",
+                  "Spear"
+                ],
                 "stance": {
                   "description": "Gain +2 to attack rolls when an enemy enters your reach or engagement, until your next turn.",
                   "boons": []
                 },
                 "maneuver": {
-                  "cost": { "ap": 1, "resources": [{ "id": "adrenaline", "amount": 2 }] },
+                  "cost": {
+                    "ap": 1,
+                    "resources": [
+                      {
+                        "id": "adrenaline",
+                        "amount": 2
+                      }
+                    ]
+                  },
                   "description": "Attempt a Grapple against targets at Close range.",
                   "boons": []
                 }
@@ -132,13 +243,32 @@
               "value": "ranger",
               "label": "Ranger",
               "grants": {
-                "weapons": ["Bow", "Crossbow", "Throwing Weapon"],
+                "weapons": [
+                  "Bow",
+                  "Crossbow",
+                  "Throwing Weapon"
+                ],
                 "stance": {
                   "description": "Increase the weapon's range by one category.",
-                  "boons": [{ "type": "range_increase", "categories": 1, "condition": "wielding_school_weapon" }]
+                  "boons": [
+                    {
+                      "type": "equipment_rule_override",
+                      "rule": "range_increase",
+                      "categories": 1,
+                      "condition": "wielding_school_weapon"
+                    }
+                  ]
                 },
                 "maneuver": {
-                  "cost": { "ap": 1, "resources": [{ "id": "adrenaline", "amount": 2 }] },
+                  "cost": {
+                    "ap": 1,
+                    "resources": [
+                      {
+                        "id": "adrenaline",
+                        "amount": 2
+                      }
+                    ]
+                  },
                   "description": "Make two ranged attacks against an undamaged target.",
                   "boons": []
                 }
@@ -148,13 +278,25 @@
               "value": "slayer",
               "label": "Slayer",
               "grants": {
-                "weapons": ["Cleaver", "Glaive", "Axe"],
+                "weapons": [
+                  "Cleaver",
+                  "Glaive",
+                  "Axe"
+                ],
                 "stance": {
                   "description": "Your first hit each turn deals +1 damage die.",
                   "boons": []
                 },
                 "maneuver": {
-                  "cost": { "ap": 1, "resources": [{ "id": "adrenaline", "amount": 2 }] },
+                  "cost": {
+                    "ap": 1,
+                    "resources": [
+                      {
+                        "id": "adrenaline",
+                        "amount": 2
+                      }
+                    ]
+                  },
                   "description": "Your next attack deals +1 damage die per Tier.",
                   "boons": []
                 }
@@ -167,7 +309,9 @@
     {
       "id": "adrenaline_resource",
       "name": "Adrenaline",
-      "tags": ["Fighter"],
+      "tags": [
+        "Fighter"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Utility",
@@ -180,21 +324,36 @@
       "prerequisites": [],
       "description": "You gain the Adrenaline resource pool. No per-turn limit on spending unless Unconscious.",
       "boons": [
-        { "type": "grants_resource", "resource_id": "adrenaline" }
+        {
+          "type": "grants_resource",
+          "resource_id": "adrenaline"
+        }
       ]
     },
     {
       "id": "second_breath",
       "name": "Second Breath",
-      "tags": ["Fighter"],
+      "tags": [
+        "Fighter"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Narrative",
       "slot_type": null,
-      "cost": { "resources": [{ "id": "adrenaline", "amount": 1 }] },
+      "cost": {
+        "resources": [
+          {
+            "id": "adrenaline",
+            "amount": 1
+          }
+        ]
+      },
       "range": null,
       "duration": null,
-      "uses": { "count": 1, "recharge": "skirmish" },
+      "uses": {
+        "count": 1,
+        "recharge": "skirmish"
+      },
       "feat_dc": null,
       "prerequisites": [],
       "description": "Once per skirmish, regain 2d6 Vitality.",
@@ -203,15 +362,27 @@
     {
       "id": "adrenaline_rush",
       "name": "Adrenaline Rush",
-      "tags": ["Fighter"],
+      "tags": [
+        "Fighter"
+      ],
       "path": null,
       "tier": 1,
       "trait": "Narrative",
       "slot_type": "narrative",
-      "cost": { "resources": [{ "id": "adrenaline", "amount": 4 }] },
+      "cost": {
+        "resources": [
+          {
+            "id": "adrenaline",
+            "amount": 4
+          }
+        ]
+      },
       "range": null,
       "duration": null,
-      "uses": { "count": 1, "recharge": "respite" },
+      "uses": {
+        "count": 1,
+        "recharge": "respite"
+      },
       "feat_dc": null,
       "prerequisites": [],
       "description": "Once per respite, spend 4 Adrenaline to gain an additional 1 AP. Cannot be used if you lack the Adrenaline.",
@@ -220,7 +391,9 @@
     {
       "id": "fighting_technique",
       "name": "Fighting Technique",
-      "tags": ["Fighter"],
+      "tags": [
+        "Fighter"
+      ],
       "path": null,
       "tier": 2,
       "trait": "Passive",
@@ -237,7 +410,9 @@
     {
       "id": "warriors_tenacity",
       "name": "Warrior's Tenacity",
-      "tags": ["Fighter"],
+      "tags": [
+        "Fighter"
+      ],
       "path": null,
       "tier": 3,
       "trait": "Passive",
@@ -247,11 +422,27 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": ["adrenaline_rush"],
+      "prerequisites": [
+        "adrenaline_rush"
+      ],
       "description": "Use Brawn as your Ambition modifier. Spend Adrenaline in place of Ambition on skill checks or attack rolls. Second Breath now heals for 3d6. (Source: Body — encoded as Brawn; verify.)",
       "boons": [
-        { "type": "attribute_swap", "key": "ambition_modifier", "can_use": "Brawn" },
-        { "type": "resource_as_stat", "resource": "adrenaline", "replaces": "Ambition", "contexts": ["skill_check", "attack_roll"] }
+        {
+          "type": "stat_substitution",
+          "replace": "ambition_modifier",
+          "with": "Brawn",
+          "with_kind": "attribute"
+        },
+        {
+          "type": "stat_substitution",
+          "replace": "Ambition",
+          "with": "adrenaline",
+          "with_kind": "resource",
+          "contexts": [
+            "skill_check",
+            "attack_roll"
+          ]
+        }
       ]
     }
   ]

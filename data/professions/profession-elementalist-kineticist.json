@@ -7,7 +7,10 @@
     {
       "id": "elemental_armaments",
       "name": "Elemental Armaments",
-      "tags": ["Elementalist", "Kineticist"],
+      "tags": [
+        "Elementalist",
+        "Kineticist"
+      ],
       "path": "kineticist",
       "tier": 1,
       "trait": "Passive",
@@ -18,7 +21,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "You manifest weapons of pure primal energy. Attack rolls with these armaments use Will + Tier instead of physical attributes. Weapon manifestation is determined by your Elemental Core.",
+      "description": "You manifest weapons of pure primal energy. Attack rolls with these armaments use Will + Tier instead of physical attributes. Weapon manifestation is determined by your Elemental Core. Apply condition — condition_id: BRN; stacks: 1. Apply condition — condition_id: DAZ; duration: until_next_turn_start. Bonus attack — attack_type: grapple; on_success: {\"type\":\"forced_movement\",\"direction\":\"toward_user\",\"zones\":1}. Apply condition — condition_id: SAP; duration: until_next_turn_start. Apply condition — condition_id: PRN; save: {\"defense\":\"Fortitude\",\"dc_ref\":\"feat_dc\"}. Conditional effect — trigger: critical_hit_dealt. Apply condition — condition_id: BLN; duration: until_end_of_next_turn.",
       "boons": [
         {
           "type": "grants_weapon",
@@ -34,107 +37,238 @@
                   {
                     "value": "greatsword",
                     "label": "Greatsword",
-                    "weapon": { "type": "Greatsword", "damage": "1d10", "damage_type": "Fire", "range": null }
+                    "weapon": {
+                      "type": "Greatsword",
+                      "damage": "1d10",
+                      "damage_type": "Fire",
+                      "range": null
+                    }
                   },
                   {
                     "value": "daggers",
                     "label": "Daggers",
-                    "weapon": { "type": "Daggers", "damage": "1d4", "damage_type": "Fire", "range": null }
+                    "weapon": {
+                      "type": "Daggers",
+                      "damage": "1d4",
+                      "damage_type": "Fire",
+                      "range": null
+                    }
                   }
                 ]
               },
-              "crit_effect": [
-                { "type": "apply_condition", "condition_id": "BRN", "duration": null, "stacks": 1 }
-              ]
+              "crit_effect": []
             },
             "forest": {
               "name": "Bastion",
               "weapons": [
-                { "type": "Mace", "damage": "1d6", "damage_type": "Blunt", "range": null },
-                { "type": "Light Shield", "damage": null, "damage_type": null, "range": null }
+                {
+                  "type": "Mace",
+                  "damage": "1d6",
+                  "damage_type": "Blunt",
+                  "range": null
+                },
+                {
+                  "type": "Light Shield",
+                  "damage": null,
+                  "damage_type": null,
+                  "range": null
+                }
               ],
               "passive": {
                 "description": "Once per turn when you would take Physical or Elemental damage (except Fire), gain Resistance to that specific attack.",
                 "boons": [
-                  { "type": "resistance", "damage_type": "triggering_attack", "condition": "physical_or_elemental_not_fire", "uses": { "count": 1, "recharge": "turn" } }
+                  {
+                    "type": "resistance",
+                    "damage_type": "triggering_attack",
+                    "condition": "physical_or_elemental_not_fire",
+                    "uses": {
+                      "count": 1,
+                      "recharge": "turn"
+                    }
+                  }
                 ]
               },
-              "crit_effect": [
-                { "type": "apply_condition", "condition_id": "DAZ", "duration": "until_next_turn_start", "stacks": null }
-              ]
+              "crit_effect": []
             },
             "land": {
               "name": "Iron Spike",
               "weapons": [
-                { "type": "Javelin", "damage": "1d8", "damage_type": "Puncture", "range": "Close", "traits": ["returning"] }
+                {
+                  "type": "Javelin",
+                  "damage": "1d8",
+                  "damage_type": "Puncture",
+                  "range": "Close",
+                  "traits": [
+                    "returning"
+                  ]
+                }
               ],
-              "crit_effect": [
-                { "type": "bonus_attack", "attack_type": "grapple", "on_success": { "type": "forced_movement", "direction": "toward_user", "zones": 1 } }
-              ]
+              "crit_effect": []
             },
             "ocean": {
               "name": "Ice Knives",
               "weapons": [
-                { "type": "Throwing Knives", "damage": "1d4", "damage_type": "Ice", "flat_damage": { "amount": 2, "damage_type": "Puncture" }, "range": "Close" }
+                {
+                  "type": "Throwing Knives",
+                  "damage": "1d4",
+                  "damage_type": "Ice",
+                  "flat_damage": {
+                    "amount": 2,
+                    "damage_type": "Puncture"
+                  },
+                  "range": "Close"
+                }
               ],
-              "crit_effect": [
-                { "type": "apply_condition", "condition_id": "SAP", "duration": "until_next_turn_start", "stacks": null }
-              ]
+              "crit_effect": []
             },
             "sky": {
               "name": "Zephyr Bow",
               "weapons": [
-                { "type": "Bow", "damage": "1d6", "damage_type": "Puncture", "range": "Far" }
-              ],
-              "crit_effect": [
                 {
-                  "type": "conditional_effect",
-                  "trigger": "critical_hit_dealt",
-                  "effect": {
-                    "type": "apply_condition",
-                    "condition_id": "PRN",
-                    "duration": null,
-                    "stacks": null,
-                    "save": { "defense": "Fortitude", "dc_ref": "feat_dc" }
-                  }
+                  "type": "Bow",
+                  "damage": "1d6",
+                  "damage_type": "Puncture",
+                  "range": "Far"
                 }
-              ]
+              ],
+              "crit_effect": []
             },
             "tempest": {
               "name": "Stormbringer",
               "weapons": [
-                { "type": "Melee", "damage": "1d6", "damage_type": "Electric", "range": null, "traits": ["Rend"] }
+                {
+                  "type": "Melee",
+                  "damage": "1d6",
+                  "damage_type": "Electric",
+                  "range": null,
+                  "traits": [
+                    "Rend"
+                  ]
+                }
               ],
-              "crit_effect": [
-                { "type": "apply_condition", "condition_id": "BLN", "duration": "until_end_of_next_turn", "stacks": null }
-              ]
+              "crit_effect": []
             }
           }
+        }
+      ],
+      "_review": [
+        {
+          "dropped_type": "apply_condition",
+          "original": {
+            "type": "apply_condition",
+            "condition_id": "BRN",
+            "duration": null,
+            "stacks": 1
+          },
+          "generated": "Apply condition — condition_id: BRN; stacks: 1."
+        },
+        {
+          "dropped_type": "apply_condition",
+          "original": {
+            "type": "apply_condition",
+            "condition_id": "DAZ",
+            "duration": "until_next_turn_start",
+            "stacks": null
+          },
+          "generated": "Apply condition — condition_id: DAZ; duration: until_next_turn_start."
+        },
+        {
+          "dropped_type": "bonus_attack",
+          "original": {
+            "type": "bonus_attack",
+            "attack_type": "grapple",
+            "on_success": {
+              "type": "forced_movement",
+              "direction": "toward_user",
+              "zones": 1
+            }
+          },
+          "generated": "Bonus attack — attack_type: grapple; on_success: {\"type\":\"forced_movement\",\"direction\":\"toward_user\",\"zones\":1}."
+        },
+        {
+          "dropped_type": "apply_condition",
+          "original": {
+            "type": "apply_condition",
+            "condition_id": "SAP",
+            "duration": "until_next_turn_start",
+            "stacks": null
+          },
+          "generated": "Apply condition — condition_id: SAP; duration: until_next_turn_start."
+        },
+        {
+          "dropped_type": "apply_condition",
+          "original": {
+            "type": "apply_condition",
+            "condition_id": "PRN",
+            "duration": null,
+            "stacks": null,
+            "save": {
+              "defense": "Fortitude",
+              "dc_ref": "feat_dc"
+            }
+          },
+          "generated": "Apply condition — condition_id: PRN; save: {\"defense\":\"Fortitude\",\"dc_ref\":\"feat_dc\"}."
+        },
+        {
+          "dropped_type": "conditional_effect(emptied)",
+          "original": {
+            "type": "conditional_effect",
+            "trigger": "critical_hit_dealt"
+          },
+          "generated": "Conditional effect — trigger: critical_hit_dealt."
+        },
+        {
+          "dropped_type": "apply_condition",
+          "original": {
+            "type": "apply_condition",
+            "condition_id": "BLN",
+            "duration": "until_end_of_next_turn",
+            "stacks": null
+          },
+          "generated": "Apply condition — condition_id: BLN; duration: until_end_of_next_turn."
         }
       ]
     },
     {
       "id": "kinetic_strike",
       "name": "Kinetic Strike",
-      "tags": ["Elementalist", "Kineticist"],
+      "tags": [
+        "Elementalist",
+        "Kineticist"
+      ],
       "path": "kineticist",
       "tier": 1,
       "trait": "Trigger",
       "slot_type": "tactical",
-      "cost": { "ap": 1, "resources": [{ "id": "energy", "amount": 1 }] },
+      "cost": {
+        "ap": 1,
+        "resources": [
+          {
+            "id": "energy",
+            "amount": 1
+          }
+        ]
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": ["elemental_armaments"],
-      "description": "After a successful strike with your Elemental Armament, expend Energy to make a second attack with the same weapon.",
-      "boons": [
+      "prerequisites": [
+        "elemental_armaments"
+      ],
+      "description": "After a successful strike with your Elemental Armament, expend Energy to make a second attack with the same weapon. Bonus attack — trigger: on_hit; trigger_weapon: elemental_armament; attack_type: elemental_armament; attack_modifier: Will + Tier.",
+      "boons": [],
+      "_review": [
         {
-          "type": "bonus_attack",
-          "trigger": "on_hit",
-          "trigger_weapon": "elemental_armament",
-          "attack_type": "elemental_armament",
-          "attack_modifier": "Will + Tier"
+          "dropped_type": "bonus_attack",
+          "original": {
+            "type": "bonus_attack",
+            "trigger": "on_hit",
+            "trigger_weapon": "elemental_armament",
+            "attack_type": "elemental_armament",
+            "attack_modifier": "Will + Tier"
+          },
+          "generated": "Bonus attack — trigger: on_hit; trigger_weapon: elemental_armament; attack_type: elemental_armament; attack_modifier: Will + Tier."
         }
       ]
     }

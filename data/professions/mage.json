@@ -2,22 +2,51 @@
   "id": "mage",
   "name": "Mage",
   "description": "Through years of dedicated study and meticulous transcription of spells, mages master arcane magic through sheer intellectual effort. They excel at battlefield control, utility magic, and providing arcane knowledge. Paths are the Enchanter and the Artificer.",
-  "favored_attributes": ["Mind"],
+  "favored_attributes": [
+    "Mind"
+  ],
   "vitality": {
     "base": "8 + Brawn",
     "per_tier": "2d8",
-    "brawn_bonus": { "dice": "1d6", "threshold": 5, "attribute": "Brawn" }
+    "brawn_bonus": {
+      "dice": "1d6",
+      "threshold": 5,
+      "attribute": "Brawn"
+    }
   },
   "wound_threshold_per_tier": 1,
   "proficiencies": {
-    "skills": { "type": "choice", "count": 1, "from": ["Intuition", "Awareness", "Lore"] },
-    "armaments": ["Simple", "Catalysts"],
+    "skills": {
+      "type": "choice",
+      "count": 1,
+      "from": [
+        "Intuition",
+        "Awareness",
+        "Lore"
+      ]
+    },
+    "armaments": [
+      "Simple",
+      "Catalysts"
+    ],
     "protection": [],
-    "tools": { "type": "choice", "count": 1, "from": ["Crafting", "Alchemy"] }
+    "tools": {
+      "type": "choice",
+      "count": 1,
+      "from": [
+        "Crafting",
+        "Alchemy"
+      ]
+    }
   },
   "starting_pack": {
-    "weapons": ["magic_stave", "dagger"],
-    "armor": ["mage_robes"],
+    "weapons": [
+      "magic_stave",
+      "dagger"
+    ],
+    "armor": [
+      "mage_robes"
+    ],
     "kits": [],
     "inventory": [
       "spellbook_or_arcane_focus",
@@ -26,7 +55,9 @@
       "ink_and_quill",
       "candles_3"
     ],
-    "currency": { "gold": 10 }
+    "currency": {
+      "gold": 10
+    }
   },
   "resources": [
     {
@@ -34,19 +65,32 @@
       "name": "Mana",
       "max": "(2 * Tier) + Mind",
       "recovery": {
-        "respite": { "formula": "Mind", "minimum": 3 }
+        "respite": {
+          "formula": "Mind",
+          "minimum": 3
+        }
       }
     }
   ],
   "paths": [
-    { "id": "enchanter", "name": "Enchanter", "note": "Source doc calls this path 'Runic' — encoded as 'Enchanter' to match feat examples; verify intended name." },
-    { "id": "artificer", "name": "Artificer", "note": "Source doc calls this path 'Artifice' — encoded as 'Artificer' to match feat examples; verify intended name." }
+    {
+      "id": "enchanter",
+      "name": "Enchanter",
+      "note": "Source doc calls this path 'Runic' — encoded as 'Enchanter' to match feat examples; verify intended name."
+    },
+    {
+      "id": "artificer",
+      "name": "Artificer",
+      "note": "Source doc calls this path 'Artifice' — encoded as 'Artificer' to match feat examples; verify intended name."
+    }
   ],
   "feats": [
     {
       "id": "magic_adept",
       "name": "Magic Adept",
-      "tags": ["Mage"],
+      "tags": [
+        "Mage"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -70,20 +114,44 @@
           "key": "mage_sphere_primary",
           "prompt": "Choose your Sphere of Magic",
           "options": [
-            { "value": "aberration",    "label": "Aberration" },
-            { "value": "augmentation",  "label": "Augmentation" },
-            { "value": "conjuration",   "label": "Conjuration" },
-            { "value": "decimation",    "label": "Decimation" },
-            { "value": "divination",    "label": "Divination" },
-            { "value": "mortification", "label": "Mortification" },
-            { "value": "reclamation",   "label": "Reclamation" }
+            {
+              "value": "aberration",
+              "label": "Aberration"
+            },
+            {
+              "value": "augmentation",
+              "label": "Augmentation"
+            },
+            {
+              "value": "conjuration",
+              "label": "Conjuration"
+            },
+            {
+              "value": "decimation",
+              "label": "Decimation"
+            },
+            {
+              "value": "divination",
+              "label": "Divination"
+            },
+            {
+              "value": "mortification",
+              "label": "Mortification"
+            },
+            {
+              "value": "reclamation",
+              "label": "Reclamation"
+            }
           ]
         },
         {
           "type": "grants_known_spells",
           "count": 2,
           "tier": 1,
-          "from_sphere": { "source": "choice", "key": "mage_sphere_primary" },
+          "from_sphere": {
+            "source": "choice",
+            "key": "mage_sphere_primary"
+          },
           "counts_against_known": false
         }
       ]
@@ -91,34 +159,49 @@
     {
       "id": "spell_research",
       "name": "Spell Research",
-      "tags": ["Mage"],
+      "tags": [
+        "Mage"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Narrative",
       "slot_type": null,
-      "cost": { "ap": 4 },
+      "cost": {
+        "ap": 4
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "Permanently learn spells from scrolls or spell tomes of your source and known Spheres. Make an Intuition check against DC (1 + Spell Tier). Critical success does not consume the scroll or tome. Learned spells do not count against known spells.",
-      "boons": [
+      "description": "Permanently learn spells from scrolls or spell tomes of your source and known Spheres. Make an Intuition check against DC (1 + Spell Tier). Critical success does not consume the scroll or tome. Learned spells do not count against known spells. Skill check to learn — skill: Intuition; dc_formula: 1 + SpellTier; item_types: [\"spell_scroll\",\"spell_tome\"]; source_filter: own_source_and_known_spheres; counts_against_known: false; on_critical_success: preserve_source_item.",
+      "boons": [],
+      "_review": [
         {
-          "type": "skill_check_to_learn",
-          "skill": "Intuition",
-          "dc_formula": "1 + SpellTier",
-          "item_types": ["spell_scroll", "spell_tome"],
-          "source_filter": "own_source_and_known_spheres",
-          "counts_against_known": false,
-          "on_critical_success": "preserve_source_item"
+          "dropped_type": "skill_check_to_learn",
+          "original": {
+            "type": "skill_check_to_learn",
+            "skill": "Intuition",
+            "dc_formula": "1 + SpellTier",
+            "item_types": [
+              "spell_scroll",
+              "spell_tome"
+            ],
+            "source_filter": "own_source_and_known_spheres",
+            "counts_against_known": false,
+            "on_critical_success": "preserve_source_item"
+          },
+          "generated": "Skill check to learn — skill: Intuition; dc_formula: 1 + SpellTier; item_types: [\"spell_scroll\",\"spell_tome\"]; source_filter: own_source_and_known_spheres; counts_against_known: false; on_critical_success: preserve_source_item."
         }
       ]
     },
     {
       "id": "spellcasting",
       "name": "Spellcasting",
-      "tags": ["Mage", "Spellcasting"],
+      "tags": [
+        "Mage",
+        "Spellcasting"
+      ],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -136,7 +219,10 @@
           "caster_type": "full",
           "source": "mana",
           "modifier": "Mind",
-          "known_spells": { "start": 4, "tier": 1 },
+          "known_spells": {
+            "start": 4,
+            "tier": 1
+          },
           "prepared_spells": "Mind",
           "spell_dc": "10 + SpellTier + Mind",
           "cantrips": {
@@ -158,7 +244,9 @@
     {
       "id": "pragmatic_utility",
       "name": "Pragmatic Utility",
-      "tags": ["Mage"],
+      "tags": [
+        "Mage"
+      ],
       "path": null,
       "tier": 1,
       "trait": "Passive",
@@ -183,7 +271,9 @@
     {
       "id": "astute_studies",
       "name": "Astute Studies",
-      "tags": ["Mage"],
+      "tags": [
+        "Mage"
+      ],
       "path": null,
       "tier": 2,
       "trait": "Passive",
@@ -196,14 +286,24 @@
       "prerequisites": [],
       "description": "Your cantrips gain one additional damage or healing die. Gain access to one new Sphere of Magic.",
       "boons": [
-        { "type": "cantrip_upgrade", "bonus": "damage_or_healing_die", "count": 1 },
-        { "type": "grants_sphere", "count": 1, "player_choice": true }
+        {
+          "type": "cantrip_upgrade",
+          "bonus": "damage_or_healing_die",
+          "count": 1
+        },
+        {
+          "type": "grants_sphere",
+          "count": 1,
+          "player_choice": true
+        }
       ]
     },
     {
       "id": "signature_spells",
       "name": "Signature Spells",
-      "tags": ["Mage"],
+      "tags": [
+        "Mage"
+      ],
       "path": null,
       "tier": 3,
       "trait": "Passive",
@@ -213,7 +313,9 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": ["pragmatic_utility"],
+      "prerequisites": [
+        "pragmatic_utility"
+      ],
       "description": "During Daily Preparation, choose one known spell of tier equal to floor(Tier / 2) as your Signature Spell. Casting it costs 3 fewer mana. May be changed during downtime.",
       "boons": [
         {

@@ -7,24 +7,38 @@
     {
       "id": "vessel_healing",
       "name": "Vessel Healing",
-      "tags": ["Shaman", "Anima"],
+      "tags": [
+        "Shaman",
+        "Anima"
+      ],
       "path": "anima",
       "tier": 1,
       "trait": "Utility",
       "slot_type": "tactical",
-      "cost": { "ap": 2 },
+      "cost": {
+        "ap": 2
+      },
       "range": "Close",
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "anima", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "anima",
+          "count": 0
+        }
+      },
       "description": "Target one of your summoned Primeval Vessels and draw its energy to heal a target within range for 2d6 + Spellcasting Modifier Vitality (you may split the healing). The Vessel loses 1d4 Vitality after use.",
       "boons": []
     },
     {
       "id": "mantle_of_elements",
       "name": "Mantle of Elements",
-      "tags": ["Shaman", "Anima"],
+      "tags": [
+        "Shaman",
+        "Anima"
+      ],
       "path": "anima",
       "tier": 1,
       "trait": "Passive",
@@ -34,19 +48,70 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "anima", "count": 2 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "anima",
+          "count": 2
+        }
+      },
       "description": "At Daily Preparation, choose a Mantle.",
       "boons": [
         {
           "type": "daily_mode_choice",
           "key": "elemental_mantle",
-          "changeable_during": ["daily_preparation"],
+          "changeable_during": [
+            "daily_preparation"
+          ],
           "options": [
-            { "value": "flame", "label": "Flame", "description": "When missed in melee, retaliate once per round for Spellcasting Modifier Fire damage.", "boons": [] },
-            { "value": "frost", "label": "Frost", "description": "Gain temp Vitality (Tier × 2 + Spellcasting Modifier); deals 2d6 Ice in a touch burst when broken. Restores after a Respite.", "boons": [{ "type": "heal", "formula": "(Tier * 2) + Will", "target": "self", "temporary": true, "recharge": "respite" }] },
-            { "value": "earth", "label": "Earth", "description": "Gain charges equal to Spellcasting Modifier to gain Resistance to Physical damage once per Respite.", "boons": [{ "type": "resistance", "damage_type": "Physical", "charges": "Will", "uses": { "count": 1, "recharge": "respite" } }] },
-            { "value": "storm", "label": "Storm", "description": "Disrupt enemy attacks with electric retaliation: 1d4 damage and Strain to attack you until end of their turn.", "boons": [] },
-            { "value": "water", "label": "Water", "description": "Add 1d6 to all Vitality healing effects.", "boons": [] }
+            {
+              "value": "flame",
+              "label": "Flame",
+              "description": "When missed in melee, retaliate once per round for Spellcasting Modifier Fire damage.",
+              "boons": []
+            },
+            {
+              "value": "frost",
+              "label": "Frost",
+              "description": "Gain temp Vitality (Tier × 2 + Spellcasting Modifier); deals 2d6 Ice in a touch burst when broken. Restores after a Respite.",
+              "boons": [
+                {
+                  "type": "heal",
+                  "formula": "(Tier * 2) + Will",
+                  "target": "self",
+                  "temporary": true,
+                  "recharge": "respite"
+                }
+              ]
+            },
+            {
+              "value": "earth",
+              "label": "Earth",
+              "description": "Gain charges equal to Spellcasting Modifier to gain Resistance to Physical damage once per Respite.",
+              "boons": [
+                {
+                  "type": "resistance",
+                  "damage_type": "Physical",
+                  "charges": "Will",
+                  "uses": {
+                    "count": 1,
+                    "recharge": "respite"
+                  }
+                }
+              ]
+            },
+            {
+              "value": "storm",
+              "label": "Storm",
+              "description": "Disrupt enemy attacks with electric retaliation: 1d4 damage and Strain to attack you until end of their turn.",
+              "boons": []
+            },
+            {
+              "value": "water",
+              "label": "Water",
+              "description": "Add 1d6 to all Vitality healing effects.",
+              "boons": []
+            }
           ]
         }
       ]
@@ -54,24 +119,40 @@
     {
       "id": "vessel_strength",
       "name": "Vessel Strength",
-      "tags": ["Shaman", "Anima"],
+      "tags": [
+        "Shaman",
+        "Anima"
+      ],
       "path": "anima",
       "tier": 2,
       "trait": "Utility",
       "slot_type": "tactical",
-      "cost": { "ap": 1 },
+      "cost": {
+        "ap": 1
+      },
       "range": "Close",
       "duration": "1 Minute",
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["vessel_healing"], "path_investment": { "path": "anima", "count": 0 } },
+      "prerequisites": {
+        "feats": [
+          "vessel_healing"
+        ],
+        "path_investment": {
+          "path": "anima",
+          "count": 0
+        }
+      },
       "description": "Target one of your Primeval Vessels to gain an additional damage die for your Primeval Form for 1 minute. The Vessel loses 1d6 Vitality.",
       "boons": []
     },
     {
       "id": "primordial_remnants",
       "name": "Primordial Remnants",
-      "tags": ["Shaman", "Anima"],
+      "tags": [
+        "Shaman",
+        "Anima"
+      ],
       "path": "anima",
       "tier": 2,
       "trait": "Passive",
@@ -81,41 +162,151 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["vessel_strength"], "path_investment": { "path": "anima", "count": 1 } },
-      "description": "Gain new spirits as options when summoning Primeval Vessels, and you may summon a total of Vessels equal to Tier × 2; they do not fade until the start of a long rest. When summoned, choose its aspect.",
+      "prerequisites": {
+        "feats": [
+          "vessel_strength"
+        ],
+        "path_investment": {
+          "path": "anima",
+          "count": 1
+        }
+      },
+      "description": "Gain new spirits as options when summoning Primeval Vessels, and you may summon a total of Vessels equal to Tier × 2; they do not fade until the start of a long rest. When summoned, choose its aspect. Bonus attack — attack_type: ranged; damage: 2d4; damage_type: Fire. Conditional effect — trigger: ally_in_zone_hit.",
       "boons": [
-        { "type": "upgrade_feat", "target_feat": "primeval_vessels", "patch": { "duration": "until_long_rest" } },
-        { "type": "upgrade_resource", "resource": "vessels", "max_override": "Tier * 2" },
+        {
+          "type": "upgrade_feat",
+          "target_feat": "primeval_vessels",
+          "patch": {
+            "duration": "until_long_rest"
+          }
+        },
+        {
+          "type": "upgrade_resource",
+          "resource": "vessels",
+          "max_override": "Tier * 2"
+        },
         {
           "type": "summon_options_extend",
           "summon_id": "primeval_vessel",
           "options": [
-            { "value": "hastened_spirit",   "label": "Hastened Spirit",   "boons": [{ "type": "stat_bonus", "stat": "AP", "amount": 1, "target": "ally_in_zone", "uses": { "count": 1, "recharge": "turn" } }] },
-            { "value": "protecting_spirit", "label": "Protecting Spirit", "boons": [{ "type": "heal", "formula": "2d12", "target": "ally_first_in_touch", "temporary": true, "note": "Floating shield, no proficiency needed." }] },
-            { "value": "soothing_spirit",   "label": "Soothing",          "boons": [{ "type": "restore_resource", "resource": "wounds", "amount": 1, "trigger": "interacted_in_touch" }] },
-            { "value": "vengeful_spirit",   "label": "Vengeful Spirit",   "boons": [{ "type": "conditional_effect", "trigger": "ally_in_zone_hit", "effect": { "type": "bonus_attack", "attack_type": "ranged", "damage": "2d4", "damage_type": "Fire" } }] }
+            {
+              "value": "hastened_spirit",
+              "label": "Hastened Spirit",
+              "boons": [
+                {
+                  "type": "stat_bonus",
+                  "stat": "AP",
+                  "amount": 1,
+                  "target": "ally_in_zone",
+                  "uses": {
+                    "count": 1,
+                    "recharge": "turn"
+                  }
+                }
+              ]
+            },
+            {
+              "value": "protecting_spirit",
+              "label": "Protecting Spirit",
+              "boons": [
+                {
+                  "type": "heal",
+                  "formula": "2d12",
+                  "target": "ally_first_in_touch",
+                  "temporary": true,
+                  "note": "Floating shield, no proficiency needed."
+                }
+              ]
+            },
+            {
+              "value": "soothing_spirit",
+              "label": "Soothing",
+              "boons": [
+                {
+                  "type": "restore_resource",
+                  "resource": "wounds",
+                  "amount": 1,
+                  "trigger": "interacted_in_touch"
+                }
+              ]
+            },
+            {
+              "value": "vengeful_spirit",
+              "label": "Vengeful Spirit",
+              "boons": []
+            }
           ]
+        }
+      ],
+      "_review": [
+        {
+          "dropped_type": "bonus_attack",
+          "original": {
+            "type": "bonus_attack",
+            "attack_type": "ranged",
+            "damage": "2d4",
+            "damage_type": "Fire"
+          },
+          "generated": "Bonus attack — attack_type: ranged; damage: 2d4; damage_type: Fire."
+        },
+        {
+          "dropped_type": "conditional_effect(emptied)",
+          "original": {
+            "type": "conditional_effect",
+            "trigger": "ally_in_zone_hit"
+          },
+          "generated": "Conditional effect — trigger: ally_in_zone_hit."
         }
       ]
     },
     {
       "id": "spirit_step",
       "name": "Spirit Step",
-      "tags": ["Shaman", "Anima"],
+      "tags": [
+        "Shaman",
+        "Anima"
+      ],
       "path": "anima",
       "tier": 2,
       "trait": "Maneuver",
       "slot_type": "tactical",
-      "cost": { "ap": 1, "resources": [{ "id": "primeval", "amount": 2 }] },
+      "cost": {
+        "ap": 1,
+        "resources": [
+          {
+            "id": "primeval",
+            "amount": 2
+          }
+        ]
+      },
       "range": "Nearby",
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "anima", "count": 2 } },
-      "description": "Teleport instantly next to a Vessel you can see. Gain access to the Conjuration sphere.",
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "anima",
+          "count": 2
+        }
+      },
+      "description": "Teleport instantly next to a Vessel you can see. Gain access to the Conjuration sphere. Teleport — destination: adjacent_to_visible_vessel; range: Nearby.",
       "boons": [
-        { "type": "teleport", "destination": "adjacent_to_visible_vessel", "range": "Nearby" },
-        { "type": "grants_sphere", "sphere": "conjuration" }
+        {
+          "type": "grants_sphere",
+          "sphere": "conjuration"
+        }
+      ],
+      "_review": [
+        {
+          "dropped_type": "teleport",
+          "original": {
+            "type": "teleport",
+            "destination": "adjacent_to_visible_vessel",
+            "range": "Nearby"
+          },
+          "generated": "Teleport — destination: adjacent_to_visible_vessel; range: Nearby."
+        }
       ]
     }
   ]

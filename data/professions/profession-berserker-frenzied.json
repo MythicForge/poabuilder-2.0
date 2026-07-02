@@ -7,20 +7,41 @@
     {
       "id": "frenzied_rage",
       "name": "Frenzied Rage",
-      "tags": ["Berserker", "Frenzied"],
+      "tags": [
+        "Berserker",
+        "Frenzied"
+      ],
       "path": "frenzied",
       "tier": 1,
       "trait": "Narrative",
       "slot_type": "narrative",
-      "cost": { "resources": [{ "id": "ambition", "amount": 2 }] },
+      "cost": {
+        "resources": [
+          {
+            "id": "ambition",
+            "amount": 2
+          }
+        ]
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "frenzied", "count": 0 } },
-      "description": "Enter a frenzy, gaining the benefits of Berserker Rage. While frenzied, once per turn when you take damage you may spend 1 Ambition to reduce that damage by your Ambition die. Gain Weakened (1) when the rage ends or if you are downed. While this feat is known, your Ambition Max increases by 1.",
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "frenzied",
+          "count": 0
+        }
+      },
+      "description": "Enter a frenzy, gaining the benefits of Berserker Rage. While frenzied, once per turn when you take damage you may spend 1 Ambition to reduce that damage by your Ambition die. Gain Weakened (1) when the rage ends or if you are downed. While this feat is known, your Ambition Max increases by 1. Apply condition — condition_id: WEK; target: self; stacks: 1. Conditional effect — trigger: state_ends_or_downed.",
       "boons": [
-        { "type": "stat_bonus", "stat": "Ambition Max", "amount": 1, "target": "self" },
+        {
+          "type": "stat_bonus",
+          "stat": "Ambition Max",
+          "amount": 1,
+          "target": "self"
+        },
         {
           "type": "activate_state",
           "state": "frenzied_rage",
@@ -29,37 +50,76 @@
             "turn_end_without_any_of: dealt_damage, took_damage, offensive_action_success, brawn_skill_check_success",
             "1_minute_outside_combat"
           ],
-          "boons": [
-            {
-              "type": "conditional_effect",
-              "trigger": "state_ends_or_downed",
-              "effect": { "type": "apply_condition", "condition_id": "WEK", "target": "self", "duration": null, "stacks": 1 }
-            }
-          ]
+          "boons": []
+        }
+      ],
+      "_review": [
+        {
+          "dropped_type": "apply_condition",
+          "original": {
+            "type": "apply_condition",
+            "condition_id": "WEK",
+            "target": "self",
+            "duration": null,
+            "stacks": 1
+          },
+          "generated": "Apply condition — condition_id: WEK; target: self; stacks: 1."
+        },
+        {
+          "dropped_type": "conditional_effect(emptied)",
+          "original": {
+            "type": "conditional_effect",
+            "trigger": "state_ends_or_downed"
+          },
+          "generated": "Conditional effect — trigger: state_ends_or_downed."
         }
       ]
     },
     {
       "id": "frenzied_strike",
       "name": "Frenzied Strike",
-      "tags": ["Berserker", "Frenzied"],
+      "tags": [
+        "Berserker",
+        "Frenzied"
+      ],
       "path": "frenzied",
       "tier": 1,
       "trait": "Utility",
       "slot_type": "tactical",
-      "cost": { "resources": [{ "id": "ambition", "amount": 1 }] },
+      "cost": {
+        "resources": [
+          {
+            "id": "ambition",
+            "amount": 1
+          }
+        ]
+      },
       "range": null,
       "duration": null,
-      "uses": { "count": 1, "recharge": "turn" },
+      "uses": {
+        "count": 1,
+        "recharge": "turn"
+      },
       "feat_dc": null,
-      "prerequisites": { "feats": ["frenzied_rage"], "path_investment": { "path": "frenzied", "count": 0 } },
+      "prerequisites": {
+        "feats": [
+          "frenzied_rage"
+        ],
+        "path_investment": {
+          "path": "frenzied",
+          "count": 0
+        }
+      },
       "description": "Once per turn, reduce the cost of your next Weapon Strike by 1 AP.",
       "boons": []
     },
     {
       "id": "destructive_throw",
       "name": "Destructive Throw",
-      "tags": ["Berserker", "Frenzied"],
+      "tags": [
+        "Berserker",
+        "Frenzied"
+      ],
       "path": "frenzied",
       "tier": 1,
       "trait": "Passive",
@@ -69,16 +129,31 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "frenzied", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "frenzied",
+          "count": 0
+        }
+      },
       "description": "When using weapons with the Thrown trait, add your extra Rage damage dice on successful ranged attack rolls. While in a Frenzied Rage, all weapons gain the Thrown trait with a range of Close.",
       "boons": [
-        { "type": "allow_dual_wield", "restriction": "grants_thrown_trait_all_weapons", "condition": "state:frenzied_rage", "note": "While frenzied, all weapons gain Thrown trait, range Close." }
+        {
+          "type": "equipment_rule_override",
+          "rule": "allow_dual_wield",
+          "restriction": "grants_thrown_trait_all_weapons",
+          "condition": "state:frenzied_rage",
+          "note": "While frenzied, all weapons gain Thrown trait, range Close."
+        }
       ]
     },
     {
       "id": "thrill_of_killing",
       "name": "Thrill of Killing",
-      "tags": ["Berserker", "Frenzied"],
+      "tags": [
+        "Berserker",
+        "Frenzied"
+      ],
       "path": "frenzied",
       "tier": 2,
       "trait": "Trigger",
@@ -88,21 +163,44 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "frenzied", "count": 1 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "frenzied",
+          "count": 1
+        }
+      },
       "description": "When you kill a target, regain Ambition equal to your Tier. You may permanently reduce your Mind by 1 to raise your Ambition Max by 1.",
       "boons": [
         {
           "type": "conditional_effect",
           "trigger": "enemy_reduced_to_zero",
-          "effect": { "type": "restore_resource", "resource": "ambition", "amount": "Tier" }
+          "effect": {
+            "type": "restore_resource",
+            "resource": "ambition",
+            "amount": "Tier"
+          }
         },
         {
           "type": "choice",
           "key": "thrill_mind_sacrifice",
           "prompt": "Permanently reduce Mind by 1 to raise Ambition Max by 1?",
           "options": [
-            { "value": "no", "label": "Keep Mind", "grants": {} },
-            { "value": "yes", "label": "-1 Mind, +1 Ambition Max", "grants": { "permanent_stat_change": { "Mind": -1, "Ambition Max": 1 } } }
+            {
+              "value": "no",
+              "label": "Keep Mind",
+              "grants": {}
+            },
+            {
+              "value": "yes",
+              "label": "-1 Mind, +1 Ambition Max",
+              "grants": {
+                "permanent_stat_change": {
+                  "Mind": -1,
+                  "Ambition Max": 1
+                }
+              }
+            }
           ]
         }
       ]
@@ -110,65 +208,124 @@
     {
       "id": "frenzied_rush",
       "name": "Frenzied Rush",
-      "tags": ["Berserker", "Frenzied"],
+      "tags": [
+        "Berserker",
+        "Frenzied"
+      ],
       "path": "frenzied",
       "tier": 2,
       "trait": "Trigger",
       "slot_type": "tactical",
-      "cost": { "resources": [{ "id": "ambition", "amount": 1 }] },
+      "cost": {
+        "resources": [
+          {
+            "id": "ambition",
+            "amount": 1
+          }
+        ]
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["frenzied_rage"], "path_investment": { "path": "frenzied", "count": 0 } },
+      "prerequisites": {
+        "feats": [
+          "frenzied_rage"
+        ],
+        "path_investment": {
+          "path": "frenzied",
+          "count": 0
+        }
+      },
       "description": "While in a Frenzied Rage and you land a Critical Hit, you may use this feat to gain Resistance to Physical damage.",
       "boons": [
         {
           "type": "conditional_effect",
           "trigger": "critical_hit_dealt",
           "condition": "state:frenzied_rage",
-          "effect": { "type": "resistance", "damage_type": "Physical" }
+          "effect": {
+            "type": "resistance",
+            "damage_type": "Physical"
+          }
         }
       ]
     },
     {
       "id": "vicious_swing",
       "name": "Vicious Swing",
-      "tags": ["Berserker", "Frenzied"],
+      "tags": [
+        "Berserker",
+        "Frenzied"
+      ],
       "path": "frenzied",
       "tier": 2,
       "trait": "Offensive",
       "slot_type": "tactical",
-      "cost": { "ap": 3, "resources": [{ "id": "ambition", "amount": 3 }] },
+      "cost": {
+        "ap": 3,
+        "resources": [
+          {
+            "id": "ambition",
+            "amount": 3
+          }
+        ]
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "frenzied", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "frenzied",
+          "count": 0
+        }
+      },
       "description": "Make an attack roll against all enemies in your Engagement, targeting Fortitude or Armor. On success, resolve as a Strike. On critical success, add your Ambition die to damage. (Source: targeting body — encoded as Fortitude; verify.)",
       "boons": []
     },
     {
       "id": "frenzied_march",
       "name": "Frenzied March",
-      "tags": ["Berserker", "Frenzied"],
+      "tags": [
+        "Berserker",
+        "Frenzied"
+      ],
       "path": "frenzied",
       "tier": 3,
       "trait": "Trigger",
       "slot_type": "tactical",
-      "cost": { "resources": [{ "id": "ambition", "amount": 3 }] },
+      "cost": {
+        "resources": [
+          {
+            "id": "ambition",
+            "amount": 3
+          }
+        ]
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["thrill_of_killing"], "path_investment": { "path": "frenzied", "count": 0 } },
+      "prerequisites": {
+        "feats": [
+          "thrill_of_killing"
+        ],
+        "path_investment": {
+          "path": "frenzied",
+          "count": 0
+        }
+      },
       "description": "While in a Frenzied Rage and you drop an enemy to 0 Vitality, spend Ambition to immediately make an attack against an enemy within your zone or Engagement. If that target is killed by this attack, regain 3 Ambition.",
       "boons": []
     },
     {
       "id": "bloodrush_overload",
       "name": "Bloodrush Overload",
-      "tags": ["Berserker", "Frenzied"],
+      "tags": [
+        "Berserker",
+        "Frenzied"
+      ],
       "path": "frenzied",
       "tier": 3,
       "trait": "Trigger",
@@ -176,9 +333,18 @@
       "cost": null,
       "range": null,
       "duration": null,
-      "uses": { "count": 1, "recharge": "respite" },
+      "uses": {
+        "count": 1,
+        "recharge": "respite"
+      },
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "frenzied", "count": 3 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "frenzied",
+          "count": 3
+        }
+      },
       "description": "When you land a critical hit while in a Frenzied Rage, immediately make another attack against a different target in your Engagement, ignoring Strain. On success, add your Ambition die to damage.",
       "boons": []
     }

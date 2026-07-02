@@ -7,7 +7,10 @@
     {
       "id": "arbiters_insight",
       "name": "Arbiter's Insight",
-      "tags": ["Oathbound", "Arbiter"],
+      "tags": [
+        "Oathbound",
+        "Arbiter"
+      ],
       "path": "arbiter",
       "tier": 1,
       "trait": "Passive",
@@ -17,16 +20,35 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "arbiter", "count": 0 } },
-      "description": "You have Expertise on Lore checks, and always add your Ambition at no cost when the check relates to your Creed or Anathema.",
-      "boons": [
-        { "type": "dice_size_increase", "amount": 1, "target": "Lore_skill_checks", "note": "Expertise." }
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "arbiter",
+          "count": 0
+        }
+      },
+      "description": "You have Expertise on Lore checks, and always add your Ambition at no cost when the check relates to your Creed or Anathema. Dice size increase — amount: 1; target: Lore_skill_checks (Expertise.).",
+      "boons": [],
+      "_review": [
+        {
+          "dropped_type": "dice_size_increase",
+          "original": {
+            "type": "dice_size_increase",
+            "amount": 1,
+            "target": "Lore_skill_checks",
+            "note": "Expertise."
+          },
+          "generated": "Dice size increase — amount: 1; target: Lore_skill_checks (Expertise.)."
+        }
       ]
     },
     {
       "id": "ardent_retribution",
       "name": "Ardent Retribution",
-      "tags": ["Oathbound", "Arbiter"],
+      "tags": [
+        "Oathbound",
+        "Arbiter"
+      ],
       "path": "arbiter",
       "tier": 1,
       "trait": "Passive",
@@ -36,17 +58,37 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "arbiter", "count": 0 }, "exclude_feats": ["covenants_herald"] },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "arbiter",
+          "count": 0
+        },
+        "exclude_feats": [
+          "covenants_herald"
+        ]
+      },
       "description": "Gain proficiency in Medium Protection (or Heavy if you already have Medium). Gain access to Decimation spells. Based on your Creed, when you cast smite you may apply an effect once per Skirmish: Honor — the target is Blinded until the end of its turn; Serenity — gain Resistance to a chosen damage type until the start of your next turn; Dominion — set the smite's damage to 2d12 against Anathema targets; Entropy — on a critical hit, the target is Stunned until the end of its turn; Paradox — split the smite's damage between two targets within range.",
       "boons": [
-        { "type": "proficiency", "category": "protection", "value": "Medium_or_Heavy", "note": "Heavy if Medium already held." },
-        { "type": "grants_sphere", "sphere": "decimation" }
+        {
+          "type": "proficiency",
+          "category": "protection",
+          "value": "Medium_or_Heavy",
+          "note": "Heavy if Medium already held."
+        },
+        {
+          "type": "grants_sphere",
+          "sphere": "decimation"
+        }
       ]
     },
     {
       "id": "aura_of_resolve",
       "name": "Aura of Resolve",
-      "tags": ["Oathbound", "Arbiter"],
+      "tags": [
+        "Oathbound",
+        "Arbiter"
+      ],
       "path": "arbiter",
       "tier": 1,
       "trait": "Narrative",
@@ -56,26 +98,51 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["ardent_retribution"], "path_investment": { "path": "arbiter", "count": 0 } },
+      "prerequisites": {
+        "feats": [
+          "ardent_retribution"
+        ],
+        "path_investment": {
+          "path": "arbiter",
+          "count": 0
+        }
+      },
       "description": "Emit an Aura that strengthens allies within 10ft or your Engagement: they add your Tier to their Will and Mind. You may activate/deactivate on your turn. Multiple Arbiter Auras may be active at once; active while conscious.",
       "boons": [
         {
-          "type": "aura",
-          "toggle": true,
+          "type": "activate_state",
+          "state": "aura_of_resolve_aura",
           "active_while": "conscious",
           "range": "10ft_or_engagement",
-          "effects": [
-            { "type": "stat_bonus", "stat": "Will Defense", "amount": "Tier", "target": "allies_in_aura" },
-            { "type": "stat_bonus", "stat": "Mental", "amount": "Tier", "target": "allies_in_aura" }
+          "note": "Source 'Will and Mind' encoded as Will Defense + Mental; verify.",
+          "target": "allies_in_range",
+          "boons": [
+            {
+              "type": "stat_bonus",
+              "stat": "Will Defense",
+              "amount": "Tier",
+              "target": "allies_in_aura"
+            },
+            {
+              "type": "stat_bonus",
+              "stat": "Mental",
+              "amount": "Tier",
+              "target": "allies_in_aura"
+            }
           ],
-          "note": "Source 'Will and Mind' encoded as Will Defense + Mental; verify."
+          "_review": [
+            "aura converted; verify state name and target"
+          ]
         }
       ]
     },
     {
       "id": "avowed_nemesis",
       "name": "Avowed Nemesis",
-      "tags": ["Oathbound", "Arbiter"],
+      "tags": [
+        "Oathbound",
+        "Arbiter"
+      ],
       "path": "arbiter",
       "tier": 2,
       "trait": "Narrative",
@@ -85,18 +152,79 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "arbiter", "count": 1 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "arbiter",
+          "count": 1
+        }
+      },
       "description": "At Daily Preparation, choose one Nemesis classification (from your Creed's list). When first encountered, they become Marked for the encounter. While Marked: they cannot become Hidden/Obscured to you; you have Resolve on checks to track, shove, or grapple them; if they Dash or Disengage, your next Dash or Disengage costs 1 AP less.",
       "boons": [
         {
           "type": "choice_conditional",
           "choice_key": "creed",
           "by_choice": {
-            "honor":    [{ "type": "choice", "key": "nemesis", "options": ["Deathless", "Mortals", "Monstrosities", "Occult"] }],
-            "serenity": [{ "type": "choice", "key": "nemesis", "options": ["Deathless", "Forged", "Occult", "Wyrms"] }],
-            "dominion": [{ "type": "choice", "key": "nemesis", "options": ["Monstrosities", "Primordial", "Wildlife", "Wyrms"] }],
-            "entropy":  [{ "type": "choice", "key": "nemesis", "options": ["Eidolic", "Mortals", "Primordial", "Wildlife"] }],
-            "paradox":  [{ "type": "choice", "key": "nemesis", "options": ["Eidolic", "Forged", "Occult", "Primordial"] }]
+            "honor": [
+              {
+                "type": "choice",
+                "key": "nemesis",
+                "options": [
+                  "Deathless",
+                  "Mortals",
+                  "Monstrosities",
+                  "Occult"
+                ]
+              }
+            ],
+            "serenity": [
+              {
+                "type": "choice",
+                "key": "nemesis",
+                "options": [
+                  "Deathless",
+                  "Forged",
+                  "Occult",
+                  "Wyrms"
+                ]
+              }
+            ],
+            "dominion": [
+              {
+                "type": "choice",
+                "key": "nemesis",
+                "options": [
+                  "Monstrosities",
+                  "Primordial",
+                  "Wildlife",
+                  "Wyrms"
+                ]
+              }
+            ],
+            "entropy": [
+              {
+                "type": "choice",
+                "key": "nemesis",
+                "options": [
+                  "Eidolic",
+                  "Mortals",
+                  "Primordial",
+                  "Wildlife"
+                ]
+              }
+            ],
+            "paradox": [
+              {
+                "type": "choice",
+                "key": "nemesis",
+                "options": [
+                  "Eidolic",
+                  "Forged",
+                  "Occult",
+                  "Primordial"
+                ]
+              }
+            ]
           }
         }
       ]
@@ -104,26 +232,63 @@
     {
       "id": "devote_warding",
       "name": "Devote Warding",
-      "tags": ["Oathbound", "Arbiter"],
+      "tags": [
+        "Oathbound",
+        "Arbiter"
+      ],
       "path": "arbiter",
       "tier": 2,
       "trait": "Utility",
       "slot_type": "tactical",
-      "cost": { "ap": 1, "resources": [{ "id": "soul", "amount": "1_per_condition" }] },
+      "cost": {
+        "ap": 1,
+        "resources": [
+          {
+            "id": "soul",
+            "amount": "1_per_condition"
+          }
+        ]
+      },
       "range": "Touch",
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "arbiter", "count": 2 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "arbiter",
+          "count": 2
+        }
+      },
       "description": "Lay hands on allies, removing any of: Bleeding, Crippled, Poisoned, or Sapped. Costs 1 Reservoir per condition removed.",
       "boons": [
-        { "type": "cure_condition", "conditions": ["BLD", "CRP", "PSN", "SAP"], "cost_per_condition": { "resources": [{ "id": "soul", "amount": 1 }] }, "target": "ally" }
+        {
+          "type": "cure_condition",
+          "conditions": [
+            "BLD",
+            "CRP",
+            "PSN",
+            "SAP"
+          ],
+          "cost_per_condition": {
+            "resources": [
+              {
+                "id": "soul",
+                "amount": 1
+              }
+            ]
+          },
+          "target": "ally"
+        }
       ]
     },
     {
       "id": "aura_of_creed",
       "name": "Aura of Creed",
-      "tags": ["Oathbound", "Arbiter"],
+      "tags": [
+        "Oathbound",
+        "Arbiter"
+      ],
       "path": "arbiter",
       "tier": 2,
       "trait": "Passive",
@@ -133,41 +298,81 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["aura_of_resolve"], "path_investment": { "path": "arbiter", "count": 2 } },
+      "prerequisites": {
+        "feats": [
+          "aura_of_resolve"
+        ],
+        "path_investment": {
+          "path": "arbiter",
+          "count": 2
+        }
+      },
       "description": "Gain a new Aura based on your Creed, affecting those within 10ft or your Engagement. Active while conscious. Honor — allies have Resolve to resist emotional conditions and enemies have Strain to inflict them. Serenity — once per turn when an ally in the aura takes damage, split it with you (you take half rounded up, the ally half rounded down). Dominion — an ally that starts its turn in the aura gains a 1d4 + Tier Reduction Pool until the start of your next turn. Entropy — once per turn when an enemy in the aura takes damage, make a Spell DC check vs their Mind; on failure their Maneuvers cost 1 more AP until the end of their next turn. Paradox — once per turn when an ally in the aura would be critically hit, downgrade the crit to a normal hit and gain Resolve on your next attack roll.",
       "boons": []
     },
     {
       "id": "will_of_the_warrior",
       "name": "Will of The Warrior",
-      "tags": ["Oathbound", "Arbiter"],
+      "tags": [
+        "Oathbound",
+        "Arbiter"
+      ],
       "path": "arbiter",
       "tier": 3,
       "trait": "Trigger",
       "slot_type": "tactical",
-      "cost": { "resources": [{ "id": "ambition", "amount": 2 }] },
+      "cost": {
+        "resources": [
+          {
+            "id": "ambition",
+            "amount": 2
+          }
+        ]
+      },
       "range": "Close",
       "duration": null,
-      "uses": { "count": 1, "recharge": "respite" },
+      "uses": {
+        "count": 1,
+        "recharge": "respite"
+      },
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "arbiter", "count": 3 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": {
+          "path": "arbiter",
+          "count": 3
+        }
+      },
       "description": "Once per Respite, when a target within range would take an action, make a check against their Mind or Will defense using your Spellcasting Modifier. Critical Success: as success, and they gain Compelled against you. Success: they must choose a new action or lose it. Failure: target loses 1 AP. Critical Failure: no effect.",
       "boons": []
     },
     {
       "id": "mark_of_judgement",
       "name": "Mark of Judgement",
-      "tags": ["Oathbound", "Arbiter"],
+      "tags": [
+        "Oathbound",
+        "Arbiter"
+      ],
       "path": "arbiter",
       "tier": 3,
       "trait": "Utility",
       "slot_type": "tactical",
-      "cost": { "ap": 1 },
+      "cost": {
+        "ap": 1
+      },
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["avowed_nemesis"], "path_investment": { "path": "arbiter", "count": 3 } },
+      "prerequisites": {
+        "feats": [
+          "avowed_nemesis"
+        ],
+        "path_investment": {
+          "path": "arbiter",
+          "count": 3
+        }
+      },
       "description": "When you encounter your chosen Nemesis, force them to make a Will check against your Spell DC. On failure, they become Compelled by you. On critical failure, they also become Frightened of you for 1 round.",
       "boons": []
     }
