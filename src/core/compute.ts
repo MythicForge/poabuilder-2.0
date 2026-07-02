@@ -378,7 +378,9 @@ export function computeCharacter(stored: StoredCharacter, reg: Registry): Comput
   }
 
   // budgets
-  const attrEarned = b.feats_purchased * reg.tierProgression.attribute_point_per_purchased_feat;
+  const attrEarned =
+    (reg.tierProgression.creation_attribute_points ?? 0) +
+    b.feats_purchased * reg.tierProgression.attribute_point_per_purchased_feat;
   const attrSpent = ATTRIBUTES.reduce((s, a) => s + b.attributes[a], 0);
   const skillEarned = Math.floor(b.feats_purchased / 2) * reg.tierProgression.skill_point_per_even_feat;
   const skillSpent = Object.values(b.skills.points).reduce((s, n) => s + n, 0);

@@ -9,6 +9,7 @@ import "./builder.css";
 import { CharStorage } from "../../core/storage.ts";
 import { REGISTRY } from "../../core/data-registry.ts";
 import { computeCharacter } from "../../core/compute.ts";
+import { validateCharacter } from "../../core/validate-character.ts";
 import type { StoredCharacter } from "../../core/types.ts";
 import { STEPS } from "./steps/index.ts";
 
@@ -24,7 +25,13 @@ export function Builder() {
   const [stepIx, setStepIx] = useState(0);
   const [savedAt, setSavedAt] = useState<string | null>(null);
 
-  const computed = useMemo(() => computeCharacter(draft, REGISTRY), [draft]);
+  // Engine warnings (data integrity) + build-legality issues, merged so the
+  // footer badge and Summary step reflect everything a player must resolve.
+  const computed = useMemo(() => {
+    const c = computeCharacter(draft, REGISTRY);
+    const issues = validateCharacter(draft, REGISTRY, c);
+    return { ...c, warnings: [...c.warnings, ...issues] };
+  }, [draft]);
 
   const update = (mutate: (d: StoredCharacter) => void) =>
     setDraft((d) => {

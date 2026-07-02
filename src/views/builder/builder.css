@@ -350,6 +350,31 @@
 }
 .bld-budget--over { color: var(--danger); }
 
+.bld-slots { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 4px; }
+.bld-slot-pill {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 11px;
+}
+.bld-slot-pill--over { color: var(--danger); border-color: var(--danger-dim); }
+
+.bld-pick--locked { opacity: 0.5; cursor: not-allowed; }
+.bld-pick--locked:hover { border-color: var(--border); }
+.bld-pick-flag {
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+.bld-pick-flag--block { color: var(--danger); text-transform: none; letter-spacing: 0.02em; }
+
 @media (max-width: 820px) {
   .bld-body { grid-template-columns: 1fr; }
   .bld-rail { border-right: none; border-bottom: 1px solid var(--border); }

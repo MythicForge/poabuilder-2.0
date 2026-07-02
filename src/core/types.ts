@@ -247,6 +247,8 @@ export interface ConditionDef {
 
 export interface TierProgression {
   max_feats: number;
+  /** Attribute points available at character creation, before per-feat gains. */
+  creation_attribute_points?: number;
   attribute_point_per_purchased_feat: number;
   skill_point_per_even_feat: number;
   tiers: {
