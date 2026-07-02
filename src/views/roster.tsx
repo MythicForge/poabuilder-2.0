@@ -24,6 +24,11 @@ export function Roster() {
     window.location.href = `builder.html?id=${encodeURIComponent(id)}`;
   };
 
+  const codex = (id: string) => {
+    CharStorage.setActive(id);
+    window.location.href = "sheet-skin.html";
+  };
+
   const create = () => {
     const c = CharStorage.newFromTemplate("");
     CharStorage.save(c);
@@ -107,6 +112,9 @@ export function Roster() {
                 </button>
                 <button className="rest-btn" style={{ padding: "2px 8px" }} onClick={() => build(ch.id)}>
                   <span className="name">Build</span>
+                </button>
+                <button className="rest-btn" style={{ padding: "2px 8px" }} onClick={() => codex(ch.id)}>
+                  <span className="name">Codex</span>
                 </button>
                 <button className="rest-btn" style={{ padding: "2px 8px" }} onClick={() => { CharStorage.duplicate(ch.id); refresh(); }}>
                   <span className="name">Duplicate</span>

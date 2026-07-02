@@ -20,6 +20,7 @@ export default defineConfig({
         main: "index.html",
         sheet: "sheet.html",
         builder: "builder.html",
+        sheetSkin: "sheet-skin.html",
       },
     },
   },
