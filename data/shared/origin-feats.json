@@ -1,3 +1,158 @@
 {
-  "feats": []
+  "$meta": {
+    "name": "Universal origin feats",
+    "source": "ported from builder-1.0 origin_feats.json"
+  },
+  "feats": [
+    {
+      "id": "origin-feats-universal-1-angler",
+      "name": "Angler",
+      "tags": [
+        "Universal"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "any",
+          "count": 0
+        }
+      },
+      "description": "You have learned how to tangle with the largest and come out on top. Using the **Grapple** action now only costs 1 **AP**",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-universal-1-durable",
+      "name": "Durable",
+      "tags": [
+        "Universal"
+      ],
+      "tier": 1,
+      "trait": "Trigger",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "any",
+          "count": 0
+        }
+      },
+      "description": "When you would suffer a **Critical** or **Critically Fail** a spell that would damage you, you may reduce it from a **Critical** to a **Normal** attack and suffer 2 **Wounds**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-universal-1-grit-your-teeth",
+      "name": "Grit Your Teeth",
+      "tags": [
+        "Universal"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "any",
+          "count": 0
+        }
+      },
+      "description": "You gain an additional 1 **Wound** to your maximum **Wound** threshold.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-universal-1-replenished-reservoir",
+      "name": "Replenished Reservoir",
+      "tags": [
+        "Universal"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "any",
+          "count": 0
+        }
+      },
+      "description": "During rests you add your **Tier** when restoring **Reservoir**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-universal-1-pugilist",
+      "name": "Pugilist",
+      "tags": [
+        "Universal"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "any",
+          "count": 0
+        }
+      },
+      "description": "You've been in enough fist fights to know how to defend yourself. When using unarmed or cestus weapons, add +1 to your **Armor** defense.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-universal-1-pack-mule",
+      "name": "Pack Mule",
+      "tags": [
+        "Universal"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "any",
+          "count": 0
+        }
+      },
+      "description": "You are able to carry more weight than the average adventurer. You gain +5 to your **Carry Weight** and gain an additional +2 when this feat is taken again.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ]
 }

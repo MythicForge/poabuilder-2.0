@@ -1,0 +1,32 @@
+{
+  "id": "cursed-visitor",
+  "name": "Visitor",
+  "origin": "cursed",
+  "description": "Was it a dream, why can you not get rid of this cursed trinket. You hoped that the Visitor was just a dream, or maybe the pact you signed was not real. Regardless, you know this trinket is the answer to your curse, and something must be done about it.",
+  "attribute_bonus": {
+    "attribute": "will",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-cursed-visitor-base-soul-brand",
+      "name": "Soul Brand",
+      "tags": [
+        "Visitor"
+      ],
+      "tier": 0,
+      "trait": "Narrative",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Not sure how why you started collecting, only that you were told to. Choose a target within **far** range and mark it with your **Soul Brand**. When you kill a marked target you gain a **Soul Token**; these tokens can be used in place of **Ambition** cost. You can hold 2 at a time.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

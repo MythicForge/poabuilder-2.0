@@ -1,0 +1,34 @@
+{
+  "id": "boroughborn-informant",
+  "name": "Informant",
+  "origin": "boroughborn",
+  "description": "The city speaks to those who know how to listen. You learned where secrets travel, how rumors grow, and which words open locked doors. Every whisper is a thread, and you know how to follow them to the source.",
+  "attribute_bonus": {
+    "attribute": "mind",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-boroughborn-informant-base-drudge-out",
+      "name": "Drudge Out",
+      "tags": [
+        "Informant"
+      ],
+      "tier": 0,
+      "trait": "Narrative",
+      "slot_type": null,
+      "cost": {
+        "ambition": 1
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You are always ambitious about gathering information. When used, you gain Resolve on **Skill Checks** related to **Lore**, **Social** or **Intuition**.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

@@ -1,0 +1,32 @@
+{
+  "id": "farmhand-brewer",
+  "name": "Brewer",
+  "origin": "farmhand",
+  "description": "Distilling spirits was more than just a skill—it was an art passed down through generations. You've learned the secrets of fermentation, the delicate balance of flavors that can make a drink legendary. Now, you seek to craft your own legend beyond the brewery.",
+  "attribute_bonus": {
+    "attribute": "mind",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-farmhand-brewer-base-cure-aliment",
+      "name": "Cure Aliment",
+      "tags": [
+        "Brewer"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You've seen that look enough times to know how to fix it, just one swing of your brew and it's all good. As part of your **Daily Preparation**, you create a single brew that will end the following conditions, **Dazed**, **Poisoned**, or **Unconscious**.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

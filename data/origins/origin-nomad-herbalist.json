@@ -1,0 +1,32 @@
+{
+  "id": "nomad-herbalist",
+  "name": "Herbalist",
+  "origin": "nomad",
+  "description": "You grasp nature in a way that most never will. You understand the secrets, the healing powers, the hidden strengths. What others see as simple wilderness, you see as a living breathing friend who has given you their bounty.",
+  "attribute_bonus": {
+    "attribute": "mind",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-nomad-herbalist-base-nature-s-cure",
+      "name": "Nature's Cure",
+      "tags": [
+        "Nomad"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You know how to quickly make a healing salve to prepare you for the day ahead. As part of your **Daily Preperation**, create a **minor healing potion** or **antidote**. Requires area to have **living fauna**.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

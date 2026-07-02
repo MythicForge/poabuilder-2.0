@@ -1,0 +1,35 @@
+{
+  "id": "guildmate-courier",
+  "name": "Courier",
+  "origin": "guildmate",
+  "description": "Speed is your greatest asset, and reliability your reputation. Through wind, rain, or treacherous roads, you've never failed to deliver. The guild taught you more than just how to carry messages—they taught you how to survive.",
+  "attribute_bonus": {
+    "attribute": "brawn",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-guildmate-courier-base-mobile",
+      "name": "Mobile",
+      "tags": [
+        "Courier"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Once per **respite**, you gain **disengage** or **dash** as a single **Free Action**.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null,
+  "_review": [
+    "attribute_bonus was \"+1 Body\" — mapped to brawn; verify Brawn vs Finesse"
+  ]
+}

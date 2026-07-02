@@ -1,0 +1,34 @@
+{
+  "id": "magic-initiate-academic",
+  "name": "Academic",
+  "origin": "magic-initiate",
+  "description": "The guild's rules were never quite enough to contain your ambition. You've learned the trade, made your connections, and now you're ready to carve your own path. No more playing by someone else's book—it's time to write your own.",
+  "attribute_bonus": {
+    "attribute": "mind",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-magic-initiate-academic-base-arcane-recall",
+      "name": "Arcane Recall",
+      "tags": [
+        "Academic"
+      ],
+      "tier": 0,
+      "trait": "Narrative",
+      "slot_type": null,
+      "cost": {
+        "ap": 2
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Once per **Long Rest**, you **Cast a spell** of **Tier 1** without expending **Reservoir**. You gain 2 **known spells** from your **Source**, they do not count against your known spells.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

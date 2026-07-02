@@ -1,0 +1,35 @@
+{
+  "id": "nobility-warfare",
+  "name": "Warfare",
+  "origin": "nobility",
+  "description": "War runs in your blood, as does your desire for glory. You've studied strategy, trained with the finest weapons, and understand that true power sometimes comes from the point of a sword. The battlefield is where legends are born.",
+  "attribute_bonus": {
+    "attribute": "brawn",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-nobility-warfare-base-not-on-my-watch",
+      "name": "\"Not on my watch!\"",
+      "tags": [
+        "Warfare"
+      ],
+      "tier": 0,
+      "trait": "Trigger | Range Engagement",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "If your allies are meant to die, it will not be when they are in your presence. Once per **long rest** when an attack will land on an ally, grant them an **Armor** bonus equal to your **Tier** for that attack.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null,
+  "_review": [
+    "attribute_bonus was \"+1 Body\" — mapped to brawn; verify Brawn vs Finesse"
+  ]
+}

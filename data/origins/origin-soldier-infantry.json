@@ -1,0 +1,37 @@
+{
+  "id": "soldier-infantry",
+  "name": "Infantry",
+  "origin": "soldier",
+  "description": "The front lines were your classroom, survival your most important lesson. You've marched through hell, stood when others fell, and learned that true strength is about more than just muscle. Though now that your lord's war is over, maybe it's time to find a less hellish venture.",
+  "attribute_bonus": {
+    "attribute": "brawn",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-soldier-infantry-base-charger",
+      "name": "Charger",
+      "tags": [
+        "Infantry"
+      ],
+      "tier": 0,
+      "trait": "Offensive",
+      "slot_type": null,
+      "cost": {
+        "ap": 2
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You charge into an enemy you were not **engaged** with and make an **attack** roll. Your attack roll has a +2 to hit. After your attack, regardless of hit or miss you and the target become **Engaged**.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null,
+  "_review": [
+    "attribute_bonus was \"+1 Body\" — mapped to brawn; verify Brawn vs Finesse"
+  ]
+}

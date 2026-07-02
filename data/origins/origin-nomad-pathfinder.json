@@ -1,0 +1,32 @@
+{
+  "id": "nomad-pathfinder",
+  "name": "Pathfinder",
+  "origin": "nomad",
+  "description": "Stars, wind, terrain—these are the maps others cannot read. You've traversed landscapes that would break most people, finding paths where others see only obstacles. The journey is your true destination.",
+  "attribute_bonus": {
+    "attribute": "mind",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-nomad-pathfinder-base-trappers-eyes",
+      "name": "Trappers Eyes",
+      "tags": [
+        "Pathfinder"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "When looking for traps, hazards, or other similar effects, you add your **ambition** without cost.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

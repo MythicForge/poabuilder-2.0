@@ -1,0 +1,32 @@
+{
+  "id": "magic-initiate-self-taught",
+  "name": "Self-taught",
+  "origin": "magic-initiate",
+  "description": "No master could contain your curiosity, no traditional path could guide your unique approach. You've pieced together magical knowledge through stolen scrolls, whispered secrets, and relentless practice. The world is your classroom, and magic bends to your will.",
+  "attribute_bonus": {
+    "attribute": "will",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-magic-initiate-self-taught-base-best-way-to-learn",
+      "name": "Best Way to Learn",
+      "tags": [
+        "Self-taught"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You pride yourself with being better prepared than any other **Spellcaster**. You known an additional two **Tier 1** spells of any **Source**, they do not count against your known spells.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

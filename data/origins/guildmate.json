@@ -1,0 +1,61 @@
+{
+  "id": "guildmate",
+  "name": "Guildmate",
+  "description": "You began your career within one of the powerful trade guilds, learning its secrets and building a network of contacts.",
+  "pack": {
+    "consumables": [
+      "None"
+    ],
+    "kits": [
+      "Trade tools",
+      "Trade sample case"
+    ],
+    "clothing": [
+      "Guild uniform/attire"
+    ],
+    "misc": {
+      "type": "choice",
+      "count": 2,
+      "from": [
+        "Guild membership badge",
+        "Official documents",
+        "Guild rulebook",
+        "Networking contact list",
+        "Contract templates",
+        "Official seal or stamp"
+      ]
+    }
+  },
+  "vocations": [
+    "guildmate-accountant",
+    "guildmate-courier",
+    "guildmate-hireling"
+  ],
+  "feats": [
+    {
+      "id": "origin-feats-guildmate-5-freedom-of-movement",
+      "name": "Freedom of Movement",
+      "tags": [
+        "Courier"
+      ],
+      "tier": 5,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "guildmate",
+          "count": 0
+        }
+      },
+      "description": "Your **Mobile** feat can now be used once per turn.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ]
+}

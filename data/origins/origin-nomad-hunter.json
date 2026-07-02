@@ -1,0 +1,37 @@
+{
+  "id": "nomad-hunter",
+  "name": "Hunter",
+  "origin": "nomad",
+  "description": "The wilderness is your home, prey your conversation. Every track tells a story, every movement a potential meal. You've learned to become one with the hunt, to survive where others would perish.",
+  "attribute_bonus": {
+    "attribute": "brawn",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-nomad-hunter-base-hunter-s-mark",
+      "name": "Hunter's Mark",
+      "tags": [
+        "Hunter"
+      ],
+      "tier": 0,
+      "trait": "Utility",
+      "slot_type": null,
+      "cost": {
+        "ap": 2
+      },
+      "range": null,
+      "duration": "1 Minute",
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Once per **respite**, you mark the target with your chosen marking tool, guiding your weapons to their heart. While the target is **Marked**, you can add 1d4 to damage and attack rolls. If the target escapes, you have **Resolve** to track them for two hours.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null,
+  "_review": [
+    "attribute_bonus was \"+1 Body\" — mapped to brawn; verify Brawn vs Finesse"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "magic-initiate-forbidden",
+  "name": "Forbidden",
+  "origin": "magic-initiate",
+  "description": "The darkest tomes, the most dangerous rituals—these are the paths you've chosen. Others warn you of the risks, but they don't understand the call of forbidden knowledge. Something within you knows there are secrets worth any price.",
+  "attribute_bonus": {
+    "attribute": "brawn",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-magic-initiate-forbidden-base-dark-boon",
+      "name": "Dark Boon",
+      "tags": [
+        "Forbidden"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": {
+        "ambition": 1
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You may expend **Vitality** equal to two times the **Tier** of spell in place of **Reservoir**.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

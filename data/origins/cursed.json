@@ -1,0 +1,128 @@
+{
+  "id": "cursed",
+  "name": "Cursed",
+  "description": "An unfathomable echo flows in your bloodline, marking you with both supernatural gifts and ominous burdens.",
+  "pack": {
+    "consumables": [
+      "Strange herbal remedies",
+      "Ritual cleansing materials",
+      "Symptom control potions (3)"
+    ],
+    "kits": [
+      "None"
+    ],
+    "clothing": [
+      "Concealing clothing/makeup"
+    ],
+    "misc": [
+      "Cursed trinket (cannot be discarded)",
+      "Journal of curse research",
+      "Protective amulet",
+      "Warning symbols",
+      "Family history scroll"
+    ]
+  },
+  "vocations": [
+    "cursed-exile",
+    "cursed-host",
+    "cursed-visitor"
+  ],
+  "feats": [
+    {
+      "id": "origins-cursed-base-spellcasting",
+      "name": "Spellcasting",
+      "tags": [
+        "Cursed"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Your curse grants you access to dangerous supernatural power. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\n- You are a **Limited-caster**.\n- Your **source** is **Soul**.\n- Your **Spellcasting Modifier** is **Will**.\n- Your total **reservoir** equals _(½ × Tier) + Spellcasting Modifier_ (rounded up).\n- Start with Two **Known Spells** at Tier 1.\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.\n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n- You gain two **Cantrips** from the **Soul** source.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-cursed-1-broken-as-well",
+      "name": "Broken As Well",
+      "tags": [
+        "Cursed"
+      ],
+      "tier": 1,
+      "trait": "Trigger  | Range Nearby",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "cursed",
+          "count": 0
+        }
+      },
+      "description": "When you land a **Critical Hit** or are struck by a **Critical Hit**, you may choose one target within range to suffer 1d4 penalty to **Attack Rolls** until the end of your next turn. The target is considered to be **Hexed**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-cursed-1-bond-mark",
+      "name": "Bond Mark",
+      "tags": [
+        "Cursed"
+      ],
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": null,
+      "cost": {
+        "ap": 1
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "cursed",
+          "count": 0
+        }
+      },
+      "description": "You mark one willing creature, as long as this creature is within 1 mile, both of you can sense each others **emotions** and **vitals**. You are also unable to lie to each other.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-cursed-1-forbidden-knowledge",
+      "name": "Forbidden Knowledge",
+      "tags": [
+        "Cursed"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "cursed",
+          "count": 0
+        }
+      },
+      "description": "When dealing with matters revolving around **Forbidden** lore and research, you have **Resolve** on **Skill Checks** related to it.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ]
+}

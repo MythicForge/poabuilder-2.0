@@ -1,0 +1,32 @@
+{
+  "id": "soldier-thane",
+  "name": "Thane",
+  "origin": "soldier",
+  "description": "War is fought with more than just swords. You've learned the battlefield of politics, the strategy of diplomacy. Words can be sharper than any blade, and you've mastered their use. Though your skills were never appreciated, let's see if they do once they are bowing before you.",
+  "attribute_bonus": {
+    "attribute": "will",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-soldier-thane-base-do-not-falter",
+      "name": "Do Not Falter",
+      "tags": [
+        "Thane"
+      ],
+      "tier": 0,
+      "trait": "Trigger | Range Close",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "When an ally nearby would have their **Ambition** reduced to 0, you inspire them to keep moving forward. They regain **Ambition** equal to your **ambition** dice. A target may only benefit from this once per **rest**.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

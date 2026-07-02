@@ -1,0 +1,35 @@
+{
+  "id": "outlaw-brute",
+  "name": "Brute",
+  "origin": "outlaw",
+  "description": "Strength is your answer to most problems. Subtlety was never your style—why whisper when you can make a statement with your fists? The world respects power, and you've got more than enough to spare.",
+  "attribute_bonus": {
+    "attribute": "brawn",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-outlaw-brute-base-push-them-around",
+      "name": "Push Them Around",
+      "tags": [
+        "Brute"
+      ],
+      "tier": 0,
+      "trait": "Trigger",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You got use to pushing people around enough that it comes with ease now. After you make a successful melee attack, you may immediately use **Shove** at no cost. On a **critical hit**, you gain **Resolve** on your next attack roll.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null,
+  "_review": [
+    "attribute_bonus was \"+1 Body\" — mapped to brawn; verify Brawn vs Finesse"
+  ]
+}

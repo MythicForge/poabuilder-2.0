@@ -1,0 +1,32 @@
+{
+  "id": "guildmate-accountant",
+  "name": "Accountant",
+  "origin": "guildmate",
+  "description": "Numbers have always made sense to you in a way people never did. Every ledger tells a story, every column of figures a hidden truth. Your mastery of mathematics might just be the key to unlocking opportunities far beyond simple bookkeeping.",
+  "attribute_bonus": {
+    "attribute": "mind",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-guildmate-accountant-base-crunch-the-numbers",
+      "name": "Crunch The Numbers",
+      "tags": [
+        "Accountant"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "When dealing with matters of money or expenses, you always add **ambition** without any cost.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

@@ -1,0 +1,243 @@
+{
+  "id": "soldier",
+  "name": "Soldier",
+  "description": "You served in a military force, learning discipline and the arts of war before choosing a different path.",
+  "pack": {
+    "consumables": [
+      "Field rations (1 week)",
+      "Tobacco or herb pipe"
+    ],
+    "kits": [
+      "Injury treatment supplies"
+    ],
+    "clothing": [
+      "Uniform (modified for civilian use)"
+    ],
+    "misc": {
+      "type": "choice",
+      "count": 2,
+      "from": [
+        "Medal or insignia",
+        "Military manual",
+        "War stories journal",
+        "Regulation mess kit",
+        "Former unit banner piece"
+      ]
+    }
+  },
+  "vocations": [
+    "soldier-medic",
+    "soldier-infantry",
+    "soldier-thane"
+  ],
+  "feats": [
+    {
+      "id": "origin-feats-soldier-1-battle-maneuvers",
+      "name": "Battle Maneuvers",
+      "tags": [
+        "Soldier"
+      ],
+      "tier": 1,
+      "trait": "Offensive",
+      "slot_type": null,
+      "cost": {
+        "ap": 2
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "soldier",
+          "count": 0
+        }
+      },
+      "description": "You learned enough from other skilled warriors to learn from them. Gain one of the Fighter's **Manuvers** from their **Schools**, but may only use it once per **respite**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-soldier-1-form-up",
+      "name": "Form Up",
+      "tags": [
+        "Soldier"
+      ],
+      "tier": 1,
+      "trait": "Trigger",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "soldier",
+          "count": 0
+        }
+      },
+      "description": "When you're using a **shield** and an ally in your **Engagement** is attacked, you may use your shield's **Reduction Pool** to take the damage.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-soldier-1-feeding-an-army",
+      "name": "Feeding An Army",
+      "tags": [
+        "Soldier"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "soldier",
+          "count": 0
+        }
+      },
+      "description": "After finishing a **Long Rest**, you may choose to restore extra **Vitality** or **Ambition** equal to 1d4 to a total of allies not counting yourself, equal to your **Tier**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-soldier-1-triage",
+      "name": "Triage",
+      "tags": [
+        "Soldier"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "soldier",
+          "count": 0
+        }
+      },
+      "description": "You know how to close **Wounds**. After finishing a **Long Rest**, you may choose to restore **Wounds** equal to your **Tier** to a total of allies counting yourself, equal to your **Tier**. A creature can only be effected by this once per seven days.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-soldier-2-seasoned-infantry",
+      "name": "Seasoned Infantry",
+      "tags": [
+        "Soldier"
+      ],
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "soldier",
+          "count": 0
+        }
+      },
+      "description": "You have fought in enough battles to know your favorite weapon. Choose a weapon type (short sword, spear, dagger, etc.), and gain **proficiency** with it. In addition you gain +1 to **attacks** and **damage** rolls.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-soldier-2-stop-the-bleeding",
+      "name": "Stop The Bleeding",
+      "tags": [
+        "Soldier"
+      ],
+      "tier": 2,
+      "trait": "Utility",
+      "slot_type": null,
+      "cost": {
+        "ap": 2
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "soldier",
+          "count": 0
+        }
+      },
+      "description": "You are able to heal your allies in a pinch. You restore **Vitality** equal to 2d4.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-soldier-2-motivational-leader",
+      "name": "Motivational Leader",
+      "tags": [
+        "Soldier"
+      ],
+      "tier": 2,
+      "trait": "Narrative",
+      "slot_type": null,
+      "cost": {
+        "ambition": 1
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "soldier",
+          "count": 0
+        }
+      },
+      "description": "You give hope to your allies. Only during a **rest**, you may spend **Ambition** to provide a temporary **Reduction Pool** equal to your **Will** + **Tier** and to a total of targets equal to your **Will**",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-soldier-2-protect-the-flank",
+      "name": "Protect The Flank",
+      "tags": [
+        "Soldier"
+      ],
+      "tier": 2,
+      "trait": "Utility",
+      "slot_type": null,
+      "cost": {
+        "ap": 1
+      },
+      "range": null,
+      "duration": "1 Round",
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "soldier",
+          "count": 0
+        }
+      },
+      "description": "When in an **Engagement** with allies, chose one ally within that **Engagement** and you are both **immune** from **Flank** until either of you take a hostile action, or the duration ends.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "farmhand-fieldhand",
+  "name": "Fieldhand",
+  "origin": "farmhand",
+  "description": "The soil has been your companion, your hands calloused from years of hard labor. You know every inch of the land, every furrow, every seed planted. But the world beyond the fields calls, and you're ready to see what else life has in store for you.",
+  "attribute_bonus": {
+    "attribute": "brawn",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-farmhand-fieldhand-base-tough-skin",
+      "name": "Tough Skin",
+      "tags": [
+        "Field Hand"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Your skin has become almost like a thick leather, and your used to hard laborious tasks. You gain **Vitality** equal to twice your **Tier** and increases as you level.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null,
+  "_review": [
+    "attribute_bonus was \"+1 Body\" — mapped to brawn; verify Brawn vs Finesse"
+  ]
+}

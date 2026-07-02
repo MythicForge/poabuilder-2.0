@@ -1,0 +1,32 @@
+{
+  "id": "commonfolk-oddjob",
+  "name": "Oddjob",
+  "origin": "commonfolk",
+  "description": "You were the reliable one—always helping fix a fence, patch a roof, mend a pot, carry a load, or solve a small problem that nobody else had time for. No formally training, but naturally handy and quick to pick things up. You became the person everyone relied on when something needed doing.",
+  "attribute_bonus": {
+    "attribute": "mind",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-commonfolk-oddjob-base-tool-expertise",
+      "name": "Tool Expertise",
+      "tags": [
+        "Oddjob"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You are always ready to work and get the job done. Whenever you make a **Check** using a **Tool** you are proficient with, you roll with **Resolve**.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

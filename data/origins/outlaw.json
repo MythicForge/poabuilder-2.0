@@ -1,0 +1,60 @@
+{
+  "id": "outlaw",
+  "name": "Outlaw",
+  "description": "Whether by choice or necessity, you lived outside the law, learning to survive by wit and guile.",
+  "pack": {
+    "consumables": [
+      "None"
+    ],
+    "kits": [
+      "Disguise kit or Forgery tools",
+      "Lockpicks"
+    ],
+    "clothing": [
+      "Dark hooded cloak"
+    ],
+    "misc": {
+      "type": "choice",
+      "count": 2,
+      "from": [
+        "False identities (3)",
+        "Warning signals handbook",
+        "Stolen item fence contacts",
+        "Suspicious maps with marked locations",
+        "Emergency escape tools"
+      ]
+    }
+  },
+  "vocations": [
+    "outlaw-brute",
+    "outlaw-hotshot",
+    "outlaw-thief"
+  ],
+  "feats": [
+    {
+      "id": "origin-feats-outlaw-2-worth-the-risk",
+      "name": "Worth the Risk",
+      "tags": [
+        "Outlaw"
+      ],
+      "tier": 2,
+      "trait": "Trigger",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "outlaw",
+          "count": 0
+        }
+      },
+      "description": "Only those that take risks are the ones who survive. When rolling with **Ambition** and would fail a **Skill Check**, you may reroll up to 2d6 to try and succeed. However if you still **fail** the check, you loss **Ambition** equal to the amount rolled on your **Ambition** die, this cannot be reduced.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "cursed-exile",
+  "name": "Exile",
+  "origin": "cursed",
+  "description": "Left in the cold, no one remembers your name, or at least they have tried to erase it from memory. Your blood runs deep with a curse no history has ever recalled. You have grown tired of this exile, whether you succumb to this curse or remove it, this exile will end.",
+  "attribute_bonus": {
+    "attribute": "brawn",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-cursed-exile-base-pass-the-curse",
+      "name": "Pass the Curse",
+      "tags": [
+        "Exile"
+      ],
+      "tier": 0,
+      "trait": "Trigger",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You would rather sell your soul then let death take you. Once per **Respite**, when an attack would **critically** hit you, you turn it into **regular** hit.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null,
+  "_review": [
+    "attribute_bonus was \"+1 Body\" — mapped to brawn; verify Brawn vs Finesse"
+  ]
+}

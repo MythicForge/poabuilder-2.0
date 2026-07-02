@@ -1,0 +1,111 @@
+{
+  "id": "commonfolk",
+  "name": "Commonfolk",
+  "description": "Everyone knew who you were, they even knew who your grandmother's childhood sweetheart was. You were raised to be prepared for the world, and the commonalities and vocations of life.",
+  "pack": {
+    "consumables": [
+      "1 Week of Rations"
+    ],
+    "kits": [
+      "Vocation dependent"
+    ],
+    "clothing": [
+      "Homemade clothing"
+    ],
+    "misc": {
+      "type": "choice",
+      "count": 2,
+      "from": [
+        "Picture Locket",
+        "Traditional family heirloom",
+        "Rough Regional map",
+        "Walking stick",
+        "Waterproof bag"
+      ]
+    }
+  },
+  "vocations": [
+    "commonfolk-mariner",
+    "commonfolk-tavernhand",
+    "commonfolk-oddjob"
+  ],
+  "feats": [
+    {
+      "id": "origin-feats-commonfolk-1-quick-repair",
+      "name": "Quick Repair",
+      "tags": [
+        "Commonfolk"
+      ],
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": null,
+      "cost": {
+        "ap": 2
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "commonfolk",
+          "count": 0
+        }
+      },
+      "description": "You can select an object with in range and restore it. If the object was **non-magical** and **non-organic**, and has either a **Reduction Pool** or **Vitality**, you can restore it up to 2d6 once per day.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-commonfolk-1-read-the-room",
+      "name": "Read The Room",
+      "tags": [
+        "Commonfolk"
+      ],
+      "tier": 1,
+      "trait": "Passive| Range Close",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "commonfolk",
+          "count": 0
+        }
+      },
+      "description": "You may use **Will** in place of **Mind** when using the **Perception** or **Scan** action against targets in **range**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-commonfolk-1-iron-gut",
+      "name": "Iron Gut",
+      "tags": [
+        "Commonfolk"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "commonfolk",
+          "count": 0
+        }
+      },
+      "description": "You are use to dealing with concoctions that would make even the strongest men churn. You gain **Resistance** to **Poison** damage, and **Resolve** on checks for resisting the **Poisoned** condition.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ]
+}

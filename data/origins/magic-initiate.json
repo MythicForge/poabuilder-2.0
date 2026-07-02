@@ -1,0 +1,132 @@
+{
+  "id": "magic-initiate",
+  "name": "Magic Initiate",
+  "description": "You received formal training in the arcane arts, though circumstances prevented you from completing your studies.",
+  "pack": {
+    "consumables": [
+      "Alchemical ingredients"
+    ],
+    "kits": [
+      "None"
+    ],
+    "clothing": [
+      "Academic robes"
+    ],
+    "misc": {
+      "type": "choice",
+      "count": 2,
+      "from": [
+        "Student's spellbook",
+        "Practice wand",
+        "Magical theory texts",
+        "Enchanted quill",
+        "Scroll of a tier 1 spell",
+        "Academy badge or token",
+        "Practice target dummy"
+      ]
+    }
+  },
+  "vocations": [
+    "magic-initiate-academic",
+    "magic-initiate-self-taught",
+    "magic-initiate-forbidden"
+  ],
+  "feats": [
+    {
+      "id": "origins-magic-initiate-base-spellcasting",
+      "name": "Spellcasting",
+      "tags": [
+        "Magic Initiate"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You gain access to **limited spell casting** using **Mana** if you do not already have a **Spellcasting** feat. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\n- You are a **Limited-caster**.\n- Your **source** is **Mana**.\n- Your **Spellcasting Modifier** is **Mind**.\n- Your total **reservoir** equals _(½ × Tier) + Spellcasting Modifier_ (rounded up).\n- Start with Two **Known Spells** at Tier 1.\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.\n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n- You gain two **Cantrips** from the **Magic Initiate** list.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-magic-initiate-1-sphere-access",
+      "name": "Sphere Access",
+      "tags": [
+        "Magic Initiate"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "magic-initiate",
+          "count": 0
+        }
+      },
+      "description": "You gain access to one **Sphere of Magic** that you do not already have. You gain one additional **Spell** that does not count against your current **Known Spells**",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-magic-initiate-1-reckless-casting",
+      "name": "Reckless Casting",
+      "tags": [
+        "Magic Initiate"
+      ],
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": null,
+      "cost": {
+        "ambition": 3
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "magic-initiate",
+          "count": 0
+        }
+      },
+      "description": "You care not for safety and need your spells to active regardless. Once per **Long Rest**, you spend **Ambition** equal to three times the tier of a **Spell**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-magic-initiate-1-chaos-magic",
+      "name": "Chaos Magic",
+      "tags": [
+        "Magic Initiate"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "magic-initiate",
+          "count": 0
+        }
+      },
+      "description": "Your spellcasting grows unstable. You gain additional **2 Reservoir**.  \nWhenever you cast a **spell of Tier 1** or **higher**, roll a **Chaos Die** (starting at d12).  \n- On a roll of 1, activate the **Chaos Table**.  \n- On any other result, degrade the **Chaos Die** one step (d12 → d10 → d8 → d6 → d4).  \n\nAfter triggering the **Chaos Table**, the **Chaos Die** resets to d12.\n\n**Chaos Table**\n\n| d12    | Chaos Effect                                                                                                                                                                                                                            |\n| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| **1**  | **Backfire** The spell fizzles. You take **1d4 arcane damage** and the spell has no effect.                                                                                                                                             |\n| **2**  | **Spell Ricochet** The spell re-targets a random nearby creature. Costs no AP but still consumes resources. Roll a d6 **even numbers** target an enemy of choice, **odd numbers** target an ally of choice.                             |\n| **3**  | **Ethereal Flicker** You partially phase out. Gain **Dodge** but suffer **–2 to Spell Attacks** until the start of your next turn.                                                                                                      |\n| **4**  | **Chaos Pulse:** All creatures within **Close** range take 1d4 **arcane** damage.                                                                                                                                                       |\n| **5**  | **Sideways Spells** For your next two turns, you gain **+1 Spell DC** but suffer **–1 Spell Attack**.                                                                                                                                   |\n| **6**  | **Mind Spark** Your head emits flickering light, acting as a **torch**. Gain **+1 Mind Defense** for 1 round, and light for 1 hour.                                                                                                     |\n| **7**  | **Twisted Intent** Your spell’s effect warps. It gains **1d12 damage** or 1d6 added to **Spell Attack**, but you gain **Weakened 1** and 1 **Wound**.                                                                                   |\n| **8**  | **Spectral Hands** Ghostly hands manifest. You may immediately take a free **Assist** or and additional **Interact** action.                                                                                                            |\n| **9**  | **Reservoir Overflow** You regain **1 Ambition or 1 Reservoir** (your choice; cannot exceed max).                                                                                                                                       |\n| **10** | **Crackling Chaos** Residual energy crackles. Your next spell gains **Resolve** on its **Spell Attack**, but causes a loud noise that can be heard from 1 mile away.                                                                    |\n| **11** | **Slipstream** A distortion in reality opens, You swap places with one chosen target within **Close** range. When you re-appear everyone with **touch** (including yourself) takes 1d4 **Arcane** damage.                               |\n| **12** | **Reality Bends:** Colors invert, sounds distort, gravity ripples. For the next 10 minutes you have **Strain** on **Skill Checks** related to **Awareness** and **Intution**, but **Resolve** on **Vigor**, **Talent**, and **Social**. |",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ]
+}

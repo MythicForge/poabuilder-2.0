@@ -1,0 +1,32 @@
+{
+  "id": "cursed-host",
+  "name": "Host",
+  "origin": "cursed",
+  "description": "You don't know how someone could be as unlucky as you, maybe it was the family you were born into, perhaps you should have listened and not gone into the woods at night, but now the voices won't stop. They bay you constantly to reach achieve it's goal, and now you've decided to finally do something about it. You need them to stop.",
+  "attribute_bonus": {
+    "attribute": "mind",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-cursed-host-base-already-claimed",
+      "name": "Already Claimed",
+      "tags": [
+        "Host"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You can cast spells without a **Spell Catalyst**, and without speaking, and have **Resolve** on saving throws against magical effects that attempt to **control**, **charm**, or **manipulate** you.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

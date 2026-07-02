@@ -1,26 +1,136 @@
 {
   "conditions": [
-    { "id": "BLD", "name": "Bleeding" },
-    { "id": "BLN", "name": "Blinded" },
-    { "id": "BRN", "name": "Burning" },
-    { "id": "CHR", "name": "Charmed" },
-    { "id": "CMP", "name": "Compelled" },
-    { "id": "CRP", "name": "Crippled" },
-    { "id": "DAZ", "name": "Dazed" },
-    { "id": "DEF", "name": "Deafened" },
-    { "id": "DOM", "name": "Dominated" },
-    { "id": "ENR", "name": "Enraged" },
-    { "id": "FRT", "name": "Frightened" },
-    { "id": "IMM", "name": "Immobilized" },
-    { "id": "INT", "name": "Inert" },
-    { "id": "MMD", "name": "Maimed" },
-    { "id": "PSN", "name": "Poisoned" },
-    { "id": "PRN", "name": "Prone" },
-    { "id": "RST", "name": "Restrained" },
-    { "id": "SAP", "name": "Sapped" },
-    { "id": "SIL", "name": "Silenced" },
-    { "id": "STN", "name": "Stunned" },
-    { "id": "UNC", "name": "Unconscious" },
-    { "id": "WEK", "name": "Weakened" }
+    {
+      "id": "BLD",
+      "name": "Bleeding",
+      "stacking": true,
+      "rules": "1d4 dmg/turn start. +1 die/stack. Ends: healed or roll 1 on dmg die."
+    },
+    {
+      "id": "BLN",
+      "name": "Blinded",
+      "stacking": false,
+      "rules": "Strain on attacks & physical checks. All foes Obscured."
+    },
+    {
+      "id": "BRN",
+      "name": "Burning",
+      "stacking": true,
+      "rules": "1d6 fire dmg to Vitality+Ambition/turn. +1 die/stack. Can't hide. Ends: Aid action or roll 1."
+    },
+    {
+      "id": "CHR",
+      "name": "Charmed",
+      "stacking": false,
+      "rules": "Can't act hostile vs source. Will save on dmg or turn start."
+    },
+    {
+      "id": "CMP",
+      "name": "Compelled",
+      "stacking": false,
+      "rules": "Strain on attacks vs non-source. Will save vs source Will each turn."
+    },
+    {
+      "id": "CRP",
+      "name": "Crippled",
+      "stacking": false,
+      "rules": "AP -1. Ends: magical heal or Medicine check."
+    },
+    {
+      "id": "DAZ",
+      "name": "Dazed",
+      "stacking": true,
+      "rules": "Mind checks & attacks -2. Stacks/sustains."
+    },
+    {
+      "id": "DEF",
+      "name": "Deafened",
+      "stacking": false,
+      "rules": "Auto-fail hearing Investigation. Immune to auditory effects."
+    },
+    {
+      "id": "DOM",
+      "name": "Dominated",
+      "stacking": false,
+      "rules": "Charmed + must obey source. Will save on dmg or turn end."
+    },
+    {
+      "id": "ENR",
+      "name": "Enraged",
+      "stacking": false,
+      "rules": "Can't focus sustained spells. Ends: no dmg before group's next turn."
+    },
+    {
+      "id": "FRT",
+      "name": "Frightened",
+      "stacking": false,
+      "rules": "Strain on attacks vs source & Will/Essence/Vigor checks. Ends: Will save, source leaves sight."
+    },
+    {
+      "id": "IMM",
+      "name": "Immobilized",
+      "stacking": false,
+      "rules": "Can't Dash or Disengage. Can still Flank if already engaged."
+    },
+    {
+      "id": "INT",
+      "name": "Inert",
+      "stacking": false,
+      "rules": "Can't spend AP. Can speak/gesture/reposition if not engaged. Ends: own turn end."
+    },
+    {
+      "id": "MMD",
+      "name": "Maimed",
+      "stacking": false,
+      "rules": "Max Vitality -25%. Can't regain Vitality. Ends: Full Rest or cure effect."
+    },
+    {
+      "id": "PSN",
+      "name": "Poisoned",
+      "stacking": true,
+      "rules": "Strain on targeted attribute checks (default: Brawn). Extra stacks hit more attrs."
+    },
+    {
+      "id": "PRN",
+      "name": "Prone",
+      "stacking": false,
+      "rules": "Fortitude -5. Can't reposition/Dash freely. Stand costs 1 AP. Stealth +3."
+    },
+    {
+      "id": "RST",
+      "name": "Restrained",
+      "stacking": false,
+      "rules": "No Dash/Dodge/Disengage/Flank. Moves with restrainer. Ends: Brawn check vs restrainer Fortitude."
+    },
+    {
+      "id": "SAP",
+      "name": "Sapped",
+      "stacking": false,
+      "rules": "Dmg dealt -1d10."
+    },
+    {
+      "id": "SIL",
+      "name": "Silenced",
+      "stacking": false,
+      "rules": "Can't speak or use verbal components."
+    },
+    {
+      "id": "STN",
+      "name": "Stunned",
+      "stacking": false,
+      "rules": "Max AP becomes 2."
+    },
+    {
+      "id": "UNC",
+      "name": "Unconscious",
+      "stacking": false,
+      "rules": "Prone + can't spend AP. Roll 1d20 on turn start or dmg taken; 10+ ends it."
+    },
+    {
+      "id": "WEK",
+      "name": "Weakened",
+      "stacking": true,
+      "rules": "All stats & defenses -1/stack. Max 4 stacks. At 5: Inert. -1 stack/rest."
+    }
   ]
 }

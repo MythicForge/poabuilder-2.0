@@ -1,0 +1,32 @@
+{
+  "id": "apprentice-artisan",
+  "name": "Artisan",
+  "origin": "apprentice",
+  "description": "You enjoy the finer crafts of life. Nothing brings you as much joy as seeing a beautifully made piece of work done by skilled hands and mind. You have come to the end of your apprenticeship, and now must find a way to carve your own work into history.",
+  "attribute_bonus": {
+    "attribute": "mind",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-apprentice-artisan-base-valuable-intuition",
+      "name": "Valuable Intuition",
+      "tags": [
+        "Artisan"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You're master taught you how to recognize a scam or trap from a mile away, and when something is authentic. You have **Resolve** on skill checks when identifying the origins or magical effects of an item.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

@@ -1,0 +1,32 @@
+{
+  "id": "commonfolk-tavernhand",
+  "name": "Tavernhand",
+  "origin": "commonfolk",
+  "description": "You worked at the local stop serving both your friends, rivals, first loves, and passing travelers. You've done a bit of everything there to gain some practical skills, but not enough to where you could run the place by yourself.",
+  "attribute_bonus": {
+    "attribute": "will",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-commonfolk-tavernhand-base-crowd-step",
+      "name": "Crowd Step",
+      "tags": [
+        "Tavern Hand"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You’ve learned to move through packed tables, drunk patrons, and tight crowds.  \nWhile **engaged by two or more enemies**, the **Dodge** action costs **1 AP less** (minimum 1).",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

@@ -1,0 +1,163 @@
+{
+  "id": "chosen",
+  "name": "Chosen",
+  "description": "Favor from beyond the stars marks your lineage. Whether born under an omen, shaped by prophecy, or carried by sheer stubborn will, destiny threads through your life in ways few can deny.",
+  "pack": {
+    "consumables": [
+      "None"
+    ],
+    "kits": [
+      "Divination tools"
+    ],
+    "clothing": [
+      "Ceremonial attire"
+    ],
+    "misc": {
+      "type": "choice",
+      "count": 2,
+      "from": [
+        "Celestial trinket",
+        "Silver mirror",
+        "Dream journal",
+        "Star chart",
+        "Mysterious glowing crystal",
+        "Family prophecy scroll",
+        "Unusual birthmark"
+      ]
+    }
+  },
+  "vocations": [
+    "chosen-starborn",
+    "chosen-anointed",
+    "chosen-fated"
+  ],
+  "feats": [
+    {
+      "id": "origin-feats-chosen-1-fated-resolve",
+      "name": "Fated Resolve",
+      "tags": [
+        "Chosen"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "chosen",
+          "count": 0
+        }
+      },
+      "description": "Whenever you roll a 1 on a **d20** or on one d6 doing **Skill Check**, you may reroll the a single dice one.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-chosen-1-sign-of-fate",
+      "name": "Sign of Fate",
+      "tags": [
+        "Chosen"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "chosen",
+          "count": 0
+        }
+      },
+      "description": "You have a birthmark which has been said to match the **Star** you were born under. Based on your chosen **Star** you gain the following.\n\n| Star      | Boon                                       |\n| --------- | ------------------------------------------ |\n| Warrior   | +1 to **Armor Defense** when wearing Armor |\n| Mother    | +1 Success on all **Medicine** checks      |\n| Trickster | +1 Success on all **Stealth** checks       |\n| Lord      | +1 to **Will**                             |\n| Magi      | +1 to **Mind**                             |",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-chosen-1-adept-learner",
+      "name": "Adept Learner",
+      "tags": [
+        "Chosen"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "chosen",
+          "count": 0
+        }
+      },
+      "description": "You gain one proficiency that you do not already have in one of the following groups.\n- **V.I.T.I.A.L.S**\n- **Tools**",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-chosen-1-guiding-voice",
+      "name": "Guiding Voice",
+      "tags": [
+        "Chosen"
+      ],
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": null,
+      "cost": {
+        "ap": 1
+      },
+      "range": null,
+      "duration": "1 Round",
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "chosen",
+          "count": 0
+        }
+      },
+      "description": "You are able to inspire those around you even at a distance. Choose a target within range, they gain +2 to their next **Skill Check** or **Attack Roll**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-chosen-3-sacred-insight",
+      "name": "Sacred Insight",
+      "tags": [
+        "Chosen"
+      ],
+      "tier": 3,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "chosen",
+          "count": 0
+        }
+      },
+      "description": "You’ve been shaped by years of study, meditation, and spiritual training.\n\nYou gain:\n\n- **Resolve** on any roll involving **forewarning**, **intuition**, **omen-reading**, or **discerning truth**\n- You may reroll one failed **attack roll** or **skill check** per **respite**\n- When you would be affected by a **hidden** danger (trap, ambush, deceit, magical effect), you may use your **Mind** instead of **Body** or **Will** (your choice)    \n\nAdditionally, when you succeed you and all allies within **Nearby** gain +2 to their **Defense** from the same **hidden** danger until the start of their next turn.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ]
+}

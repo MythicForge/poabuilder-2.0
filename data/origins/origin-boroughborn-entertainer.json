@@ -1,0 +1,32 @@
+{
+  "id": "boroughborn-entertainer",
+  "name": "Entertainer",
+  "origin": "boroughborn",
+  "description": "The crowd is your stage and attention is your currency. You’ve learned how to command eyes, stir emotion, and shape the mood of any gathering through presence alone.",
+  "attribute_bonus": {
+    "attribute": "will",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-boroughborn-entertainer-base-captivating-presence",
+      "name": "Captivating Presence",
+      "tags": [
+        "Entertainer"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "When you perform or engage an audience through **Performance** or **Persuasion**, you gain **Resolve** on the check. On a **critical success**, you gain additional +1 Skill Checks related to **Social** on affected targets until the next day.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

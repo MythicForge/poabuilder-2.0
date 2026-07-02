@@ -1,0 +1,35 @@
+{
+  "id": "acolyte-pilgrim",
+  "name": "Pilgrim",
+  "origin": "acolyte",
+  "description": "You've traveled long and hard in search of answers to life, to death, to immortality, or to whatever answer it is you seek to find. Long have you traveled this path, and continue on you shall.",
+  "attribute_bonus": {
+    "attribute": "brawn",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-acolyte-pilgrim-base-religious-insight",
+      "name": "Religious Insight",
+      "tags": [
+        "Pilgrim"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You have traveled enough roads and plains to see religions in all forms. You have **Resolve** on skill checks related to **religious knowledge or insight.**",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null,
+  "_review": [
+    "attribute_bonus was \"+1 Body\" — mapped to brawn; verify Brawn vs Finesse"
+  ]
+}

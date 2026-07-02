@@ -1,0 +1,111 @@
+{
+  "id": "nomad",
+  "name": "Nomad",
+  "description": "Your early years were spent traveling with your people or alone between settlements, learning to live off the land and navigate by the stars.",
+  "pack": {
+    "consumables": [
+      "Preserved uncommon foods",
+      "Trading goods from different regions"
+    ],
+    "kits": [
+      "Survival kit"
+    ],
+    "clothing": [
+      "None"
+    ],
+    "misc": {
+      "type": "choice",
+      "count": 2,
+      "from": [
+        "Weather-resistant tent",
+        "Map (partially filled)",
+        "Star navigation tools",
+        "Cultural tokens from various regions",
+        "Multi-purpose walking staff",
+        "Water purification stones"
+      ]
+    }
+  },
+  "vocations": [
+    "nomad-herbalist",
+    "nomad-hunter",
+    "nomad-pathfinder"
+  ],
+  "feats": [
+    {
+      "id": "origin-feats-nomad-1-nature-s-companion",
+      "name": "Nature's Companion",
+      "tags": [
+        "Nomad"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "nomad",
+          "count": 0
+        }
+      },
+      "description": "You gain a **Wildlife** companion that strengthens as you do. The creature's size is **small** and cannot be used as a **mount** unless mounted by a **tiny** creature. Pick one of the following **Traits** for the companion to have to determine stats.\n\n>**Nature Companion**\n> _Wildlife / Neutral_ | **Lore** _Nature_  (*small*)\n> **Vitality** 8 + your **Tier** | **Defense** 11 + your **Tier**  \n> **Body** 8 + your **Tier** |  **Mind** 6  | **Will** 6  \n> **Attacks** 1d6 based on **Trait**  \n> **AP** 3\n\n\n| Trait        | Attack           | Special                                                                                                                    |\n| ------------ | ---------------- | -------------------------------------------------------------------------------------------------------------------------- |\n| **Tracker**  | 1d6 **Puncture** | Gain **Resolve** on **Lore** (Nature) and **Intuition** checks to track or identify wildlife.                              |\n| **Prowler**  | 1d6 **Slash**    | Gain **Resolve** on **Stealth** checks; enemies have **Strain** to detect it while in dim-light or foliage.                |\n| **Guardian** | 1d6 **Blunt**    | When in the same **Engagement**, you gain +1 **Armor Defense**; the companion can use **Distract** for 1 AP once per turn. |\n| **Burrower** | 1d6 **Blunt**    | Ignores difficult terrain and grants you **Resolve** on finding natural hazards or hidden burrows.                         |",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-nomad-1-live-off-the-land",
+      "name": "Live Off The Land",
+      "tags": [
+        "Nomad"
+      ],
+      "tier": 1,
+      "trait": "Narrative",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "nomad",
+          "count": 0
+        }
+      },
+      "description": "You know how to forage and collect resources. You gain **proficiency** in **Awareness** and **Outrider** tools.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-nomad-1-hawk-eyes",
+      "name": "Hawk-eyes",
+      "tags": [
+        "Nomad"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "nomad",
+          "count": 0
+        }
+      },
+      "description": "Creatures attempting to become **Obscured** or **Hidden** from you have **Strain** on their **Stealth Check**.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "chosen-starborn",
+  "name": "Starborn",
+  "origin": "chosen",
+  "description": "The stars aligned at your birth, and the world’s momentum has always seemed to push you forward. You believe the heavens hold purpose for you—if you can only move fast enough to meet it.",
+  "attribute_bonus": {
+    "attribute": "brawn",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-chosen-starborn-base-ancestral-magic",
+      "name": "Ancestral Magic",
+      "tags": [
+        "Starborn"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "If you do not already have a **Spellcasting** feat, you gain **limited spellcasting** using **Anima**. You also learn two Tier 1 **anima** spells that do not count against your known spells, and learn two **Starborn** Cantrips",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origins-chosen-starborn-base-spellcasting",
+      "name": "Spellcasting",
+      "tags": [
+        "Starborn"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You carry celestial magic within you and can wield it directly. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\n- You are a **Limited-caster**.\n- Your **source** is **Anima**.\n- Your **Spellcasting Modifier** is **Will**.\n- Your total **reservoir** equals _(½ × Tier) + Spellcasting Modifier_ (rounded up).\n- Start with Two **Known Spells** at Tier 1.\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.\n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n- You gain two **Cantrips** from the **Anima** source.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null,
+  "_review": [
+    "attribute_bonus was \"+1 Body\" — mapped to brawn; verify Brawn vs Finesse"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "guildmate-hireling",
+  "name": "Hireling",
+  "origin": "guildmate",
+  "description": "The guild's rules were never quite enough to contain your ambition. You've learned the trade, made your connections, sold your skills to the highest bidder, and now you're ready to carve your own path. No more playing by someone else's book—it's time to write your own.",
+  "attribute_bonus": {
+    "attribute": "will",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-guildmate-hireling-base-opportunist",
+      "name": "Opportunist",
+      "tags": [
+        "Hireling"
+      ],
+      "tier": 0,
+      "trait": "Trigger",
+      "slot_type": null,
+      "cost": {
+        "ap": 1
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "When a target within **melee** range would try to **disengage**, you may attempt a **grapple** or **trip** action.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

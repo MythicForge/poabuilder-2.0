@@ -1,0 +1,32 @@
+{
+  "id": "chosen-fated",
+  "name": "Fated",
+  "origin": "chosen",
+  "description": "You began life as nothing—or so you believe. Yet fate continues to spare you, nudging you toward a future you haven’t yet deciphered. You refuse to fall before you discover why.",
+  "attribute_bonus": {
+    "attribute": "will",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-chosen-fated-base-deny-death",
+      "name": "Deny Death",
+      "tags": [
+        "Fated"
+      ],
+      "tier": 0,
+      "trait": "Trigger",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Once per **Long Rest**, when you would meet your **Wounds Threshold**, you instead regain **1 Vitality** and remain standing taking no **Wounds**. There is still more for you to do.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

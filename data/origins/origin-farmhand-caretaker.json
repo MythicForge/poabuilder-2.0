@@ -1,0 +1,32 @@
+{
+  "id": "farmhand-caretaker",
+  "name": "Caretaker",
+  "origin": "farmhand",
+  "description": "You've always enjoyed the company of animals more than people. Let's be honest, have you ever met a horse you didn't like, compared to a person? Though you have realized while your skills at home were useful for a time, maybe you can go out and do some good with your talent.",
+  "attribute_bonus": {
+    "attribute": "will",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-farmhand-caretaker-base-animal-person",
+      "name": "Animal Person",
+      "tags": [
+        "Caretaker"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You have a natural affinity with animals. Gain **Resolve** on **skill checks** and can attempt to communicate basic intentions with domesticated or wild animals even without a common language.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

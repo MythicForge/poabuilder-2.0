@@ -1,0 +1,37 @@
+{
+  "id": "apprentice-builder",
+  "name": "Builder",
+  "origin": "apprentice",
+  "description": "The walls of the city weren't built in one day, the grand wonders of the world were not made by one man, but the were for sure built by people like you. The work you've done has given you strength above the common folk, and while you may have enjoyed your apprenticeship, it's time to build your own legacy.",
+  "attribute_bonus": {
+    "attribute": "brawn",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-apprentice-builder-base-improvised-protection",
+      "name": "Improvised Protection",
+      "tags": [
+        "Builder"
+      ],
+      "tier": 0,
+      "trait": "Maneuver",
+      "slot_type": null,
+      "cost": {
+        "ap": 1
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You have built enough walls in your time to know how to manipulate the environment to protect your self for a moment. If large enough or loose items are available, you can use the environment to gain a +2 to **Armor**, for the next attack.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null,
+  "_review": [
+    "attribute_bonus was \"+1 Body\" — mapped to brawn; verify Brawn vs Finesse"
+  ]
+}

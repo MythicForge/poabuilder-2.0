@@ -1,0 +1,32 @@
+{
+  "id": "outlaw-hotshot",
+  "name": "Hotshot",
+  "origin": "outlaw",
+  "description": "Every interaction is a game, every conversation a potential score. You've learned to read people, to find the angle, to turn nothing into something. Survival is an art, and you're a master con artist.",
+  "attribute_bonus": {
+    "attribute": "will",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-outlaw-hotshot-base-red-handed",
+      "name": "Red-handed",
+      "tags": [
+        "Hotshot"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Once per **Long Rest**, when you or an ally would fail a skill check related to **Deception** or **Persuasion**, you may force them to make an opposing **Mind** or **Will** check against your **defenses**.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

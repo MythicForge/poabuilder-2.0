@@ -1,0 +1,34 @@
+{
+  "id": "farmhand",
+  "name": "Farmhand",
+  "description": "You worked the land from an early age, developing both physical strength and practical wisdom. Civilization and people are something you rarely encountered, as you prefer the fresh air and animals.",
+  "pack": {
+    "consumables": [
+      "Seed pouch",
+      "Homemade preserved foods",
+      "Folk medicine supplies"
+    ],
+    "kits": [
+      "Animal handling kit"
+    ],
+    "clothing": [
+      "Sturdy work clothes"
+    ],
+    "misc": {
+      "type": "choice",
+      "count": 2,
+      "from": [
+        "Farming tools",
+        "Weather prediction almanac",
+        "Harvest festival token",
+        "Animal whistle"
+      ]
+    }
+  },
+  "vocations": [
+    "farmhand-caretaker",
+    "farmhand-fieldhand",
+    "farmhand-brewer"
+  ],
+  "feats": []
+}

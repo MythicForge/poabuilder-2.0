@@ -1,0 +1,35 @@
+{
+  "id": "commonfolk-mariner",
+  "name": "Mariner",
+  "origin": "commonfolk",
+  "description": "Your town grew up close to the water, and you were a small fishing community that provided fish supplies to some of the larger cities. You have gain a lot of strength from working with aquatic life and also have heard some fascinating stories from the merchants who came to trade.",
+  "attribute_bonus": {
+    "attribute": "brawn",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-commonfolk-mariner-base-large-catch",
+      "name": "Large Catch",
+      "tags": [
+        "Mariner"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "When taking the **Grapple** action, you may grapple up to a size larger than you.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null,
+  "_review": [
+    "attribute_bonus was \"+1 Body\" — mapped to brawn; verify Brawn vs Finesse"
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "id": "boroughborn",
+  "name": "Boroughborn",
+  "description": "You were raised among stone and spectacle, where voices echo through narrow streets and power shifts between coin, law, and influence. The city shaped you — teaching you when to speak, when to stand firm, and when to bend the rules in your favor.",
+  "pack": {
+    "consumables": [
+      "None"
+    ],
+    "kits": [
+      "Writing Implements or Street Performer’s Tools",
+      "Local Map"
+    ],
+    "clothing": [
+      "Well-worn urban attire"
+    ],
+    "misc": {
+      "type": "choice",
+      "count": 2,
+      "from": [
+        "Familiar route tokens",
+        "Rumor ledger",
+        "Guild insignia",
+        "City pass writ",
+        "Hidden safehouse key"
+      ]
+    }
+  },
+  "vocations": [
+    "boroughborn-entertainer",
+    "boroughborn-informant",
+    "boroughborn-city-watch"
+  ],
+  "feats": [
+    {
+      "id": "origin-feats-boroughborn-1-guiding-voice",
+      "name": "Guiding Voice",
+      "tags": [
+        "Boroughborn"
+      ],
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": null,
+      "cost": {
+        "ap": 1
+      },
+      "range": null,
+      "duration": "1 Round",
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "boroughborn",
+          "count": 0
+        }
+      },
+      "description": "You are able to inspire those around you even at a distance. Choose a target within range, they gain +2 to their next **Skill Check** or **Attack Roll**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-boroughborn-1-look-for-an-opening",
+      "name": "Look For An Opening",
+      "tags": [
+        "Boroughborn"
+      ],
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": null,
+      "cost": {
+        "ap": 2
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "boroughborn",
+          "count": 0
+        }
+      },
+      "description": "You are able to see openings at a distance. Once per target, you cause the same effect as a **Flank**. After you use this, the target is immune for 1 minute to this feature.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-boroughborn-1-form-up",
+      "name": "Form Up",
+      "tags": [
+        "Boroughborn"
+      ],
+      "tier": 1,
+      "trait": "Trigger",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "boroughborn",
+          "count": 0
+        }
+      },
+      "description": "When you're using a **shield** and an ally in your **Engagement** is attacked, you may use your shield's **Reduction Pool** to take the damage.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-boroughborn-1-quick-feet",
+      "name": "Quick Feet",
+      "tags": [
+        "Boroughborn"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "boroughborn",
+          "count": 0
+        }
+      },
+      "description": "Once per **respite**, you may reduce the cost of **Dash**, **Disengage** or **Dodge** by 1 AP.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "nobility-educated",
+  "name": "Educated",
+  "origin": "nobility",
+  "description": "Knowledge was your birthright, libraries your playground. You've been groomed since childhood to understand the subtle arts of governance, diplomacy, and refined learning. The world is a chessboard, and you've been trained to play several moves ahead.",
+  "attribute_bonus": {
+    "attribute": "mind",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-nobility-educated-base-cultural-interests",
+      "name": "Cultural Interests",
+      "tags": [
+        "Educated"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You gain an two additional languages, one to speak and one to read, relevant to your world. In addition, you have **Resolve** when making **Skill Checks** related to **Social** or **Lore**.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

@@ -1,0 +1,35 @@
+{
+  "id": "apprentice",
+  "name": "Apprentice",
+  "description": "You learned your trade under a master craftsperson, developing both practical skills and an eye for quality workmanship.",
+  "pack": {
+    "consumables": [
+      "Material samples worth 20 gold"
+    ],
+    "kits": [
+      "Craftsman's tools (relevant to chosen craft)",
+      "Repair kit",
+      "Sizing tools"
+    ],
+    "clothing": [
+      "None"
+    ],
+    "misc": {
+      "type": "choice",
+      "count": 2,
+      "from": [
+        "Masterwork sample",
+        "Design sketches",
+        "Apprentice certificate",
+        "Merchant contacts list",
+        "Unfinished project"
+      ]
+    }
+  },
+  "vocations": [
+    "apprentice-artisan",
+    "apprentice-builder",
+    "apprentice-designer"
+  ],
+  "feats": []
+}

@@ -1,0 +1,37 @@
+{
+  "id": "boroughborn-city-watch",
+  "name": "City Watch",
+  "origin": "boroughborn",
+  "description": "You are the law given form. Whether driven by duty or necessity, you learned how to assert presence and maintain order through force, discipline, and authority.",
+  "attribute_bonus": {
+    "attribute": "brawn",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-boroughborn-city-watch-base-quick-grab",
+      "name": "Quick Grab",
+      "tags": [
+        "City Watch"
+      ],
+      "tier": 0,
+      "trait": "Trigger",
+      "slot_type": null,
+      "cost": {
+        "ap": 1
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "When you are **Engaged** with an enemy who is attempting to **Disengage** or **Dash**, you attempt a **Grapple** action within range of **touch**.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null,
+  "_review": [
+    "attribute_bonus was \"+1 Body\" — mapped to brawn; verify Brawn vs Finesse"
+  ]
+}

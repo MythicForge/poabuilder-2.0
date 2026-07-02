@@ -1,0 +1,34 @@
+{
+  "id": "soldier-medic",
+  "name": "Medic",
+  "origin": "soldier",
+  "description": "Healing is its own form of warfare. You've seen the worst of conflict, learned to patch up bodies and souls under the most extreme conditions. Your skills are a lifeline in a world of chaos. You've seen to many friends die due to the pants of a lord, now it's time to go help those who truly need help.",
+  "attribute_bonus": {
+    "attribute": "mind",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-soldier-medic-base-battle-medic",
+      "name": "Battle Medic",
+      "tags": [
+        "Medic"
+      ],
+      "tier": 0,
+      "trait": "Offensive",
+      "slot_type": null,
+      "cost": {
+        "ap": 3
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You attempt to repair the **body** of a target and keep it from bleeding out any further. Make an **intellect** roll against the targets **body** to heal **Vitality** equal to your **intellect**. On **critical success**, you add 2d4. This can only be used once **long rest** per target.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

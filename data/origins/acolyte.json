@@ -1,0 +1,347 @@
+{
+  "id": "acolyte",
+  "name": "Acolyte",
+  "description": "You served in a temple or shrine, traveled the world in search of answers, tending to sacred duties and learning the deeper mysteries of faith.",
+  "pack": {
+    "consumables": [
+      "Incense and burner",
+      "5 candles",
+      "Sanctified water (3 vials)"
+    ],
+    "kits": [
+      "Healer's kit"
+    ],
+    "clothing": [
+      "Ceremonial vestments"
+    ],
+    "misc": {
+      "type": "choice",
+      "count": 2,
+      "from": [
+        "Holy symbol",
+        "Prayer book",
+        "Religious texts (2)",
+        "Donation box"
+      ]
+    }
+  },
+  "vocations": [
+    "acolyte-pilgrim",
+    "acolyte-shaman",
+    "acolyte-zealot"
+  ],
+  "feats": [
+    {
+      "id": "origin-feats-acolyte-1-blessings-of-devotion",
+      "name": "Blessings of Devotion",
+      "tags": [
+        "Acolyte"
+      ],
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": null,
+      "cost": {
+        "ap": 2
+      },
+      "range": null,
+      "duration": "1 Minute",
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "acolyte",
+          "count": 0
+        }
+      },
+      "description": "Your early training taught you to sanctify the moment with decisive clarity.\n\nChoose yourself or an ally within **close** range.  \nUntil the end of their next turn, they gain:\n\n- **+2** to their next **Skill Check** **OR** **Attack Roll**\n\nIf that roll is a **critical success**, you regain **1 Ambition** (once per respite).",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-acolyte-1-ritual-adept",
+      "name": "Ritual Adept",
+      "tags": [
+        "Acolyte"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "acolyte",
+          "count": 0
+        }
+      },
+      "description": "Your upbringing refined your understanding of sacred practices.\n\nYou gain:\n\n- **Resolve** on Skill Checks to identify or interpret **rituals, divine symbols, sacred writings, or divine magic**\n    \n- Perform **non-combat ritual actions** in **half the normal time**\n    \n- Once per **long rest**, you may grant **+1 DC Tier** to a ritual when assisting another caster\n    \n\nThis does _not_ grant spellcasting or ritual slots.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-acolyte-1-sanctified-bearing",
+      "name": "Sanctified Bearing",
+      "tags": [
+        "Acolyte"
+      ],
+      "tier": 1,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "acolyte",
+          "count": 0
+        }
+      },
+      "description": "Your disciplined upbringing grants an unshakable presence.\n\n- **+1 Will Defense**\n    \n- **Resolve** on checks to resist **fear**, **charm**, and **compel** effects",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-acolyte-1-insightful-wisdom",
+      "name": "Insightful Wisdom",
+      "tags": [
+        "Acolyte"
+      ],
+      "tier": 1,
+      "trait": "Utility",
+      "slot_type": null,
+      "cost": {
+        "ap": 2
+      },
+      "range": null,
+      "duration": "1 Minute",
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "acolyte",
+          "count": 0
+        }
+      },
+      "description": "You provides clarity in moments of doubt.\n\nChoose a creature within range to gain one **benefit**:\n\n- Remove **Strain** from one attack\n- Give Resolve on a **Social** or **Intuition** check",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-acolyte-2-devout-fortitude",
+      "name": "Devout Fortitude",
+      "tags": [
+        "Acolyte"
+      ],
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "acolyte",
+          "count": 0
+        }
+      },
+      "description": "Your devotion reinforces body and spirit in moments of danger.\n\nYou gain:\n- +2 maximum **Vitality**\n- +1 to **Body** Defense\n- When you roll **Ambition** on a saving throw (any defense), you may treat results of **1** as **2** instead.    \n\nOnce per **Respite**, when you would gain **Weakened**, you instead ignore it.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-acolyte-2-channeled-focus",
+      "name": "Channeled Focus",
+      "tags": [
+        "Acolyte"
+      ],
+      "tier": 2,
+      "trait": "Utility",
+      "slot_type": null,
+      "cost": {
+        "ap": 2
+      },
+      "range": null,
+      "duration": "1 Minute",
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "acolyte",
+          "count": 0
+        }
+      },
+      "description": "Your training allows you to anchor the spiritual flow around you.\n\nChoose a creature within **close** range.  \nUntil the end of their next turn, they gain **one** of the following:\n\n- +2 to **Spell Attacks** \n- +1 to **Spell DC**\n- **Resistance** to **ether**, **divine**, or **elemental** damage (choose one)\n\nIf the creature uses a **Spell** while this is active and have a **critical success**, you regain 1 **Reservoir** or **Ambition** once per target per **Long Rest**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-acolyte-2-tenets-of-discipline",
+      "name": "Tenets of Discipline",
+      "tags": [
+        "Acolyte"
+      ],
+      "tier": 2,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "acolyte",
+          "count": 0
+        }
+      },
+      "description": "Your early religious instruction instilled a rigid mental discipline.\n\nYou gain:\n- **Resolve** on skill checks involving **concentration, meditation, vigilance, or resisting distraction**\n- +2 **Mind** Defense\n    \n\nIn addition, once per **respite**, when you would lose **Ambition** from stress or failure, you do not lose **Ambition**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-acolyte-2-consecrated-action",
+      "name": "Consecrated Action",
+      "tags": [
+        "Acolyte"
+      ],
+      "tier": 2,
+      "trait": "Trigger",
+      "slot_type": null,
+      "cost": {
+        "ap": 1
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "acolyte",
+          "count": 0
+        }
+      },
+      "description": "Your movements carry spiritual weight, letting you mark the moment with sacred authority. When you **hit** or **succeed** on **Skill check** (Social, Lore, Intuition, or Awareness) against a target.\n\nYou may apply one of the following effects to the target:\n\n- **Dazed** (1 round)\n- **Sapped** (1 round)  \n- Your next **attack** against them has **Resolve**    \n- An ally within **Close** range gains +2 to their next roll against them\n\nOn a **critical success** this may instead apply **Frightened (1 round)**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-acolyte-3-sacrosanct-vigor",
+      "name": "Sacrosanct Vigor",
+      "tags": [
+        "Acolyte"
+      ],
+      "tier": 3,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "acolyte",
+          "count": 0
+        }
+      },
+      "description": "Your spirit hardens your flesh; your faith reinforces your life force.\n\nYou gain:\n\n- **+5 Maximum Vitality**   \n- **+1 to all three Defenses (Body, Mind, Will)**\n- When you receive healing from any source, restore an additional **+1d4 Vitality**\n\nAdditionally, once per **full rest**, when you would be reduced to **0 vitality**, instead remain at **1 vitality** and gain **Dodge**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-acolyte-3-rite-of-binding",
+      "name": "Rite of Binding",
+      "tags": [
+        "Acolyte"
+      ],
+      "tier": 3,
+      "trait": "Trigger",
+      "slot_type": null,
+      "cost": {
+        "ap": 2
+      },
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "acolyte",
+          "count": 0
+        }
+      },
+      "description": "Your ritual training lets you bind foes with sacred force. When a creature within **Close** range attempts to **move**, **dash**, **disengage**, or take a **mobility** action.\n\nMake an opposing **Will check** against their **Will Defense**.\n\n-  On **success**, the action is **canceled**, and the creature is **Slowed** until the end of its next turn.\n\n-  On **critical success**, the creature becomes **Restrained** for 1 round.    \n\nOnce per **respite**, if this cancels a movement that would leave **Engagement** with an ally, the ally also gains **+2 to Attacks** until the end of their next turn.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-acolyte-3-mantle-of-reverence",
+      "name": "Mantle of Reverence",
+      "tags": [
+        "Acolyte"
+      ],
+      "tier": 3,
+      "trait": "Utility",
+      "slot_type": null,
+      "cost": {
+        "ap": 1
+      },
+      "range": null,
+      "duration": "1 Round",
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "acolyte",
+          "count": 0
+        }
+      },
+      "description": "You manifest the presence of your faith as a commanding aura.\n\nCreatures of your choice within **Close** range gain one of the following:\n\n- +2 to all **Attack Rolls**\n- +2 to all **Stat** Defense\n- Resolve on **Intuition** and **Social** checks\n\nOnce per target, enemies entering your **Engagement** during this effect must make a **Will** check against your **Mind**, or suffer **Strain** on their next attack.\n\nOnce per **long rest**, you may instead extend the duration to **2 rounds**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origin-feats-acolyte-3-sacred-insight",
+      "name": "Sacred Insight",
+      "tags": [
+        "Acolyte"
+      ],
+      "tier": 3,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": {
+        "feats": [],
+        "origin_investment": {
+          "origin": "acolyte",
+          "count": 0
+        }
+      },
+      "description": "You’ve been shaped by years of study, meditation, and spiritual training.\n\nYou gain:\n\n- **Resolve** on any roll involving **forewarning**, **intuition**, **omen-reading**, or **discerning truth**\n- You may reroll one failed **attack roll** or **skill check** per **respite**\n- When you would be affected by a **hidden** danger (trap, ambush, deceit, magical effect), you may use your **Mind** instead of **Body** or **Will** (your choice)    \n\nAdditionally, when you succeed you and all allies within **Nearby** gain +2 to their **Defense** from the same **hidden** danger until the start of their next turn.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ]
+}

@@ -1,0 +1,3185 @@
+{
+  "$meta": {
+    "name": "Path of Ambition — Spells",
+    "version": "2.0.0",
+    "source": "ported from builder-1.0 content/spells.json",
+    "cost_rule": "base cast costs mana equal to tier; cantrips are free; amps add listed extra cost"
+  },
+  "spells": [
+    {
+      "id": "alarm",
+      "name": "Alarm",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Universal"
+      ],
+      "range": "Self",
+      "duration": "8 hours",
+      "cost": 1,
+      "area": null,
+      "description": "You create magical strings that form a perimeter around the **zone**. If anything sets foot inside the **zone** an alarm will sound, loud enough to wake anyone unless under magical sleep.",
+      "amps": []
+    },
+    {
+      "id": "allure",
+      "name": "Allure",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Anima"
+      ],
+      "range": "Close",
+      "duration": "10 minutes",
+      "cost": 1,
+      "area": null,
+      "description": "You exert your presence to try and charm with words and magic. Make a spell attack roll against the target's **Will**. If you are in combat with the target, make this roll with **Strain**.\n\n> - **Critical Success** The target cannot take hostile actions against you or your allies.\n> - **Success** The target cannot take hostile actions against you.\n> - **Failure** The target knows an attempt was made, but not the source.\n> - **Critical Failure** The target knows you are the source of the spell.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Add your Tier to the roll total."
+        }
+      ]
+    },
+    {
+      "id": "animate-carrion",
+      "name": "Animate Carrion",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Mana"
+      ],
+      "range": "Touch",
+      "duration": "10 minutes",
+      "cost": 1,
+      "area": null,
+      "description": "You force magical life into a corpse or skeletal mass, and it becomes animated to your control. The **animated carrion** uses either the **shambling zombie** or **skeleton** stat block with a **Horde 1**. You can maintain a total of **animated carrion** equal to your spell casting modifier, every new **carrion** is considered a unit in the **Horde**. Recasting the spell extends the duration for all active **carrion** under your control.",
+      "amps": []
+    },
+    {
+      "id": "arcane-needles",
+      "name": "Arcane Needles",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Mana"
+      ],
+      "range": "Far",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You unleash arcane energy in the form of **three** thin needles that explode on a target. Roll 1d4 **Arcane** damage per needle. This spell automatically hits; roll only to determine whether each hit becomes a **critical** hit.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Form one additional needle per Amp."
+        }
+      ]
+    },
+    {
+      "id": "augmented-facade",
+      "name": "Augmented Facade",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Anima",
+        "Mana"
+      ],
+      "range": "Self",
+      "duration": "1 hour",
+      "cost": 1,
+      "area": null,
+      "description": "You weave magic into your skin to alter your appearance. You may appear as a different race, sex, or person with similar enough physiology.\n\nAn **Investigate** action against your **Mind** or **Will** must be made to notice the <b><u><i>Augmentation</b></u></i>.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Add 1 hour to the duration per Amp."
+        },
+        {
+          "cost": "+3",
+          "effect": "Add your Tier to the check against your <b><u><i>Augmentation</b></u></i>."
+        }
+      ]
+    },
+    {
+      "id": "bitter-chill",
+      "name": "Bitter Chill",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Soul",
+        "Primeval"
+      ],
+      "range": "Close",
+      "duration": "1 Round",
+      "cost": 1,
+      "area": null,
+      "description": "You cause the air surrounding your target to become bitterly cold. Make a spell attack roll against the target's **Body**.\n\n> - **Critical Success** As Success, and the target gains **Strain** on all rolls until the start of its next turn.\n> - **Success** Deal 4d4 **Ice** damage.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Spell becomes a Burst within a Cluster size."
+        }
+      ]
+    },
+    {
+      "id": "calming-word",
+      "name": "Calming Word",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Soul",
+        "Anima"
+      ],
+      "range": "Nearby",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You speak soothing words to restore mental composure. Roll a number of d4s equal to the spell tier cast; the selected target regains that total in **Ambition**.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase the spell tier of *Calming Word* by 1 per Amp."
+        }
+      ]
+    },
+    {
+      "id": "command",
+      "name": "Command",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Soul",
+        "Anima"
+      ],
+      "range": "Nearby",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You impose your will on another. Make a spell attack roll against the target's **Mind**.\n\n> - **Critical Success** As Success, and you may instead force the target to fall **Prone** or move in a chosen direction, unless that movement would cause immediate harm or enter a hazard.\n> - **Success** Command the target to flee, drop an item, or remain in its current zone.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Select two targets."
+        }
+      ]
+    },
+    {
+      "id": "commune-with-animals",
+      "name": "Commune with Animals",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "10 minutes",
+      "cost": 1,
+      "area": null,
+      "description": "You attune your senses to understand the emotions and thoughts of wildlife within your **zone**. This does **not** grant you the ability to speak with them.",
+      "amps": []
+    },
+    {
+      "id": "cure-wounds",
+      "name": "Cure Wounds",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Soul",
+        "Primeval"
+      ],
+      "range": "Touch",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You channel healing energy to restore vitality. The target regains **Vitality** equal to 1d8 + your spell casting modifier.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase healing by 1d8 per Amp."
+        }
+      ]
+    },
+    {
+      "id": "cursed",
+      "name": "Cursed",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Nearby",
+      "duration": "(Focused)",
+      "cost": 1,
+      "area": null,
+      "description": "You place a curse upon your enemies, depriving them of their senses and abilities. Choose one of the following curses to apply:\n\n> - **Broken** Reduce **Will** and related stats by 2.\n> - **Enfeebled** Reduce **Body** and related stats by 2.\n> - **Foggy** Reduce **Mind** and related stats by 2.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase the point reduction from 2 to 3."
+        },
+        {
+          "cost": "+2",
+          "effect": "May select up to two targets or one target with two curses"
+        }
+      ]
+    },
+    {
+      "id": "detect-life",
+      "name": "Detect Life",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Universal"
+      ],
+      "range": "Self",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You send a pulse of magical energy to try and detect living creatures. If anything living is within the **Burst** of magic sent you will detect the general location of life.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase duration to 30 seconds."
+        }
+      ]
+    },
+    {
+      "id": "detect-magic",
+      "name": "Detect Magic",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Universal"
+      ],
+      "range": "Self",
+      "duration": "Instant",
+      "cost": 1,
+      "area": "Burst (Sector)",
+      "description": "You send a pulse of magical energy to see what reacts. If anything magical is within the **Burst** of magic sent you will know its location.",
+      "amps": []
+    },
+    {
+      "id": "detect-the-inhuman",
+      "name": "Detect the Inhuman",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Mana",
+        "Soul"
+      ],
+      "range": "Self",
+      "duration": "10 Minutes (Focused)",
+      "cost": 1,
+      "area": null,
+      "description": "You maintain a sense for the presence of the inhuman. While this spell is maintained, you sense the general location of any non-mortal within your **zone**.",
+      "amps": []
+    },
+    {
+      "id": "disrupt-footing",
+      "name": "Disrupt Footing",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Mana",
+        "Primeval"
+      ],
+      "range": "Far",
+      "duration": "10 rounds",
+      "cost": 1,
+      "area": null,
+      "description": "You fracture and warp the ground in a selected zone, creating difficult terrain. Anyone entering or exiting the zone must make a **Body** check against your **Spell DC**.\n\n> - **Critical Success** Move normally.\n> - **Success** Move normally.\n> - **Failure** To move in a **Zone**, the target must **Dash**.\n> - **Critical Failure** As Failure, and the target falls **Prone**.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Fill the ground with sharp burrs, dealing 2d6 **Puncture** damage on failed checks."
+        }
+      ]
+    },
+    {
+      "id": "distorted-image",
+      "name": "Distorted Image",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Anima"
+      ],
+      "range": "Close",
+      "duration": "1 round",
+      "cost": 1,
+      "area": null,
+      "description": "You magically distort an adversary's vision. Make a spell attack roll against the adversary's **Mind**.\n\n> - **Critical Success** The adversary becomes **Unaware** of **you**.\n> - **Success** Choose an ally, or yourself, the adversary is aware of; the adversary becomes **Unaware** of that chosen target for the spell's duration or until that target takes an offensive action.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": []
+    },
+    {
+      "id": "elderberry-vines",
+      "name": "Elderberry Vines",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "1 hour",
+      "cost": 1,
+      "area": null,
+      "description": "You transfer **Primeval** magic into the earth, sprouting vines laden with magical elderberries. Eating one berry satiates hunger for 8 hours and restores 1d6 **vitality**. No more than one berry can be eaten per hour.",
+      "amps": []
+    },
+    {
+      "id": "elemental-scorn",
+      "name": "Elemental Scorn",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Anima",
+        "Primeval"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You channel a spike of elemental energy into a shard and launch it at your enemy. Make a spell attack roll against the target's **Armor**. On success, deal 4d4 damage of a chosen **Elemental** type.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase damage by 1d4 per Amp."
+        }
+      ]
+    },
+    {
+      "id": "false-shield",
+      "name": "False Shield",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Universal"
+      ],
+      "range": "Self",
+      "duration": "1 hour (Focused)",
+      "cost": 1,
+      "area": null,
+      "description": "You create a magical aura around yourself from primeval energy. You gain a **shield** with no defense bonus, but a damage reduction pool equal to twice your **spell casting modifier**.",
+      "amps": []
+    },
+    {
+      "id": "fear",
+      "name": "Fear",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Universal"
+      ],
+      "range": "Self",
+      "duration": "1 minute",
+      "cost": 1,
+      "area": null,
+      "description": "You manifest a terrifying aura. Make a spell attack roll against each adversary's **Will** in your zone.\n\n> - **Critical Success** The adversary gains **Frightened** for the duration of the spell.\n> - **Success** The adversary gains **Frightened** for the duration of the spell.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": []
+    },
+    {
+      "id": "fleet-footing",
+      "name": "Fleet Footing",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Mana",
+        "Primeval",
+        "Anima"
+      ],
+      "range": "Self",
+      "duration": "30 seconds",
+      "cost": 1,
+      "area": null,
+      "description": "You empower your feet with magical swiftness. For the duration of the spell, you may **Disengage** or **Dash** without expending **AP** once per round.",
+      "amps": []
+    },
+    {
+      "id": "gossamer-thread",
+      "name": "Gossamer Thread",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Anima"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You weave threads of fate to aid an ally’s future action. Grant **Resolve** on one ally’s chosen roll (attack, skill, etc.).",
+      "amps": []
+    },
+    {
+      "id": "grave-echo",
+      "name": "Grave Echo",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Mana",
+        "Soul"
+      ],
+      "range": "Touch",
+      "duration": "1 minute",
+      "cost": 1,
+      "area": null,
+      "description": "You draw lingering echoes of memory from a corpse. Touch a corpse that has died within the last **24 hours** and ask one question related to its final moments. The corpse responds with a brief whisper or impression. The corpse cannot reveal information it did not know in life.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase time since death by 24 hours per Amp."
+        },
+        {
+          "cost": "+1",
+          "effect": "Increase questions asked by 2 per Amp."
+        }
+      ]
+    },
+    {
+      "id": "grave-touch",
+      "name": "Grave Touch",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Mana",
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You reach out and cause pain and suffering, channeling the chill of death through your touch. Make a spell attack roll against the target's **Body**\n\n> - **Critical Success** As Success, and the target makes their next attack roll with **Strain**.\n> - **Success** Deal 2d4 **Ice** damage.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase damage by 1d4 per Amp."
+        }
+      ]
+    },
+    {
+      "id": "guidance",
+      "name": "Guidance",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Soul",
+        "Primeval"
+      ],
+      "range": "Close",
+      "duration": "1 hour (Focused)",
+      "cost": 1,
+      "area": null,
+      "description": "You guide an ally’s abilities with magical insight. For the duration of the spell, the selected ally gains 1d4 to **skill checks**.",
+      "amps": []
+    },
+    {
+      "id": "healing-word",
+      "name": "Healing Word",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Soul",
+        "Primeval",
+        "Anima"
+      ],
+      "range": "Nearby",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You speak soothing words that revitalize life. The target regains **Vitality** equal to 1d4 + your spell casting modifier.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase healing by 1d4 per Amp."
+        },
+        {
+          "cost": "+3",
+          "effect": "Change from selected targets to a Burst-sized Cluster."
+        }
+      ]
+    },
+    {
+      "id": "ignition",
+      "name": "Ignition",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Mana",
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "Instant",
+      "cost": 1,
+      "area": "Burst (Cluster)",
+      "description": "You ignite the air surrounding your position. Make a single spell attack roll against each target's **Body** in the blast. On success, deal 2d6 **Fire** damage.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase range to Close at a point you can see."
+        }
+      ]
+    },
+    {
+      "id": "imbue-with-elements",
+      "name": "Imbue with Elements",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Primeval"
+      ],
+      "range": "Close",
+      "duration": "3 rounds",
+      "cost": 1,
+      "area": null,
+      "description": "You channel elemental energy into a weapon. Damage dealt with that weapon adds +1d4 **Elemental** damage to its attacks for the duration. You choose the **Elemental** type upon casting.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Reduce the AP spell cost by 1."
+        },
+        {
+          "cost": "+1",
+          "effect": "Increase duration to 1 minute."
+        }
+      ]
+    },
+    {
+      "id": "jump",
+      "name": "Jump",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Universal"
+      ],
+      "range": "Self",
+      "duration": "1 minute",
+      "cost": 1,
+      "area": null,
+      "description": "Magical energy enhances your legs. Your jump height and distance triple for the duration.",
+      "amps": []
+    },
+    {
+      "id": "launch",
+      "name": "Launch",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Anima",
+        "Mana"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You launch a loose object weighing up to 10 lbs / 5 kg at a target within range. Make a spell attack roll against the target's **Armor**. On success, based on the object launched, deal 3d8 **Slash**, **Puncture**, or **Blunt** damage.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase damage by 1d8 and the weight limit by 5 lbs / 2.5 kg per Amp."
+        }
+      ]
+    },
+    {
+      "id": "light",
+      "name": "Light",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Universal"
+      ],
+      "range": "Close",
+      "duration": "1 hour",
+      "cost": 1,
+      "area": "Emanation (Sector)",
+      "description": "You create a mote of light bright enough to fill an entire room. For the duration of the spell, choose an object to emit light as bright as a **torch**.",
+      "amps": []
+    },
+    {
+      "id": "mending",
+      "name": "Mending",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Universal"
+      ],
+      "range": "Self",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You create a thread of mending energy to restore an object to its previous state before it broke, provided it has not been fragmented into several pieces. This does not work on magical items. If used on shields, it restores them to their maximum **Reduction**.",
+      "amps": []
+    },
+    {
+      "id": "misleading-disguise",
+      "name": "Misleading Disguise",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Mana",
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "(Focused)",
+      "cost": 1,
+      "area": null,
+      "description": "While you maintain focus, your magic cloaks you in the form of any mortal of similar stature to you, including attire. Removing, others interacting, or damaging any part of this illusory disguise disrupts the spell.",
+      "amps": []
+    },
+    {
+      "id": "preservation",
+      "name": "Preservation",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Soul",
+        "Primeval"
+      ],
+      "range": "Touch",
+      "duration": "10 Minutes (Focused)",
+      "cost": 1,
+      "area": null,
+      "description": "You prevent a living target from passing on to the next life. While you maintain focus, a target that has surpassed its **Wounds Threshold** cannot die, though it can still gain additional **Wounds**. If the target would die without the spell being active, it dies instantly.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Increase duration to 1 hour."
+        }
+      ]
+    },
+    {
+      "id": "protection-from-the-inhuman",
+      "name": "Protection from the Inhuman",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Mana",
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "1 Minute (Focused)",
+      "cost": 1,
+      "area": null,
+      "description": "While this spell is maintained, you protect a target (ally or yourself) from non-mortals. Any hostile action taken by a non-mortal against this protected target is made at **Strain**.",
+      "amps": []
+    },
+    {
+      "id": "pull",
+      "name": "Pull",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Mana",
+        "Anima"
+      ],
+      "range": "Far",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You hurl a torrent of magical force to drag an adversary within range. Make a spell attack roll against the target's **Body**.\n\n> - **Critical Success** As Success, and pull the target one additional zone closer to you.\n> - **Success** Deal 1d8 **Blunt** damage and pull the target up to one zone closer to you.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.\n\nWilling targets take no **damage**.",
+      "amps": []
+    },
+    {
+      "id": "purification",
+      "name": "Purification",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Anima",
+        "Soul",
+        "Primeval"
+      ],
+      "range": "Touch",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You direct magic into small cluster of objects to remove corrupted elements. Within a small sphere of 5ft/1.5m in size, you cure the objects of non-magical corruption.",
+      "amps": []
+    },
+    {
+      "id": "push",
+      "name": "Push",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Mana",
+        "Anima"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You release a burst of magical force that pushes back anyone in your **engagement**. Make a spell attack roll against the target's **Body**.\n\n> - **Critical Success** As Success, and push the target one additional zone away.\n> - **Success** Deal 1d8 **Blunt** damage and push the target up to one zone away.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.\n\nWilling targets take no **damage**.",
+      "amps": []
+    },
+    {
+      "id": "repelling-ward",
+      "name": "Repelling Ward",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Anima",
+        "Mana"
+      ],
+      "range": "Touch",
+      "duration": "3 rounds",
+      "cost": 1,
+      "area": null,
+      "description": "You create a ward that repels enemy attacks. While the ward is up, when something would target you attacking **Armor** they subtract 1d6 from the attack roll.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Add your tier to subtraction roll."
+        }
+      ]
+    },
+    {
+      "id": "resonant-distortion",
+      "name": "Resonant Distortion",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Anima"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You create a disruption in the fabric of reality, harming an adversary and those next to or **engaged** with it. Make a spell attack roll against the adversary's **Will**.\n\n> - **Critical Success** As Success, and the target becomes **Dazed** until the end of its next turn.\n> - **Success** Deal 1d8 **Arcane** damage.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": []
+    },
+    {
+      "id": "ruin",
+      "name": "Ruin",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Soul",
+        "Anima"
+      ],
+      "range": "Touch",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You cause the life force of a being to boil and pustulate. Make a spell attack roll against **Body** or **Will**.\n\n> - **Critical Success** As Success.\n> - **Success** Deal 3d4 **Void** damage. If the target is already damaged, the dice increase from d4 to d6.\n> - **Failure** Deal half damage. If the target is already damaged, the dice increase from d4 to d6 before halving.\n> - **Critical Failure** No effect.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase damage by 1d4 per Amp."
+        }
+      ]
+    },
+    {
+      "id": "seeking-bolt",
+      "name": "Seeking Bolt",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Soul",
+        "Anima"
+      ],
+      "range": "Nearby",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You fire a bolt infused with guiding magic. Make a spell attack roll against the adversary's **Defense**. On success, deal 3d4 **Ether** damage. The next ally to attack the same target gains **Resolve** on that attack.",
+      "amps": []
+    },
+    {
+      "id": "sending",
+      "name": "Sending",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Mana",
+        "Primeval"
+      ],
+      "range": "~1 mile / ~1.5 km",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "This spell allows for you to scry a message that is 5 seconds long to any target within range. The message can only be stopped by **anti-magic** zones, or the spell *mind shield*.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Message range increases to ~100 miles / ~150 km."
+        },
+        {
+          "cost": "+3",
+          "effect": "Message can be 20 seconds long."
+        }
+      ]
+    },
+    {
+      "id": "shield",
+      "name": "Shield",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Mana"
+      ],
+      "range": "Self",
+      "duration": "10 seconds",
+      "cost": 1,
+      "area": null,
+      "description": "You weave arcane defenses around yourself. Gain +3 to **Armor** and **Body** until the start of your next turn. This can be used as a **trigger** to any offensive roll that would target or damage you.",
+      "amps": []
+    },
+    {
+      "id": "shield-of-faith",
+      "name": "Shield of Faith",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Nearby",
+      "duration": "1 minute",
+      "cost": 1,
+      "area": null,
+      "description": "You shield yourself or an ally with divine protection. The target gains +2 to **Armor** for the duration.",
+      "amps": []
+    },
+    {
+      "id": "signal-fire",
+      "name": "Signal Fire",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Mana",
+        "Soul",
+        "Anima"
+      ],
+      "range": "Nearby",
+      "duration": "1 minute",
+      "cost": 1,
+      "area": "Burst (Sector)",
+      "description": "You send a blast of blinding light that illuminates the area and marks targets. For the duration of the spell, any target that enters or starts its turn in the light's location must make a **Body** check against your **Spell DC**.\n\n> - **Critical Success** No effect.\n> - **Success** No effect.\n> - **Failure** If **Hidden** or **Invisible**, the target becomes **Visible**.\n> - **Critical Failure** As Failure, and attacks against that target have **Resolve** until the start of its next turn.",
+      "amps": []
+    },
+    {
+      "id": "slow-fall",
+      "name": "Slow Fall",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Universal"
+      ],
+      "range": "Self",
+      "duration": "2 minutes",
+      "cost": 1,
+      "area": null,
+      "description": "You create a magical barrier that slows the descent of everyone affected. While active, you (and anyone included in the burst) take no fall damage.",
+      "amps": []
+    },
+    {
+      "id": "smite",
+      "name": "Smite",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You call upon the wrath of your vows and will. Make a spell attack roll against the target's **Body**. On success, deal 2d8 **Ether** or **Void** damage.",
+      "amps": []
+    },
+    {
+      "id": "spell-armor",
+      "name": "Spell Armor",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Universal"
+      ],
+      "range": "Self",
+      "duration": "8 hours",
+      "cost": 1,
+      "area": null,
+      "description": "You weave the source of your magic around you to create a protective barrier of magical armor. Your **defense** becomes 11 + spell casting modifier. This cannot be used if wearing any armor.",
+      "amps": []
+    },
+    {
+      "id": "summoned-familiar",
+      "name": "Summoned Familiar",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Mana",
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "24 hours",
+      "cost": 1,
+      "area": null,
+      "description": "You pull from Primevals of magic or nature to bind a being of magical essence to you. You have a creature of either **wildlife** or **occult** classification of tier 0. It can only travel up to 150 feet away from you before it dispells. It must be within earshot to be commanded, but understands instructions given to it.",
+      "amps": []
+    },
+    {
+      "id": "summoned-weapon",
+      "name": "Summoned Weapon",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Self",
+      "duration": "1 hour (Focused)",
+      "cost": 1,
+      "area": null,
+      "description": "You pull from the realm of ether and magic and produce a foreign weapon. You summon a weapon that takes the form of a **light bow**, **dagger**, **short sword**, **spear**, **morningstar**, or **quarterstaff**, using the stats and traits of the weapon, but using your **spell modifier** for attack rolls.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Add your spell casting modifier to damage rolls."
+        },
+        {
+          "cost": "+2",
+          "effect": "Your damage becomes either fire, electric, arcane, or void."
+        }
+      ]
+    },
+    {
+      "id": "tainted",
+      "name": "Tainted",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "1 Minute",
+      "cost": 1,
+      "area": null,
+      "description": "You cause the body of a being to become tainted with an affliction. Make a spell attack roll against the target's **Body**. Apply one of the following conditions for the duration: **Crippled**, **Dazed**, **Sapped**, or **Weakened**.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase the total number of targets by one per Amp. A separate spell attack roll is made for each additional target."
+        },
+        {
+          "cost": "+2",
+          "effect": "Gain the following additional options: **Blinded** or **Enraged**."
+        }
+      ]
+    },
+    {
+      "id": "terraform",
+      "name": "Terraform",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Mana",
+        "Primeval"
+      ],
+      "range": "Touch",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You channel magic into the earth to alter its shape and size. You can move loose or natural earth in a 5 ft / 1.5 m in any direction, but must maintain a physical connection to the source of the material.",
+      "amps": []
+    },
+    {
+      "id": "torment",
+      "name": "Torment",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Anima"
+      ],
+      "range": "Close",
+      "duration": "2 rounds",
+      "cost": 1,
+      "area": null,
+      "description": "You bend the will an sanity of another to cause harm when they seek to lash out. When an **adversary** makes an attack on you or an ally, they take 2d4 **Void** or **Ether** damage. Up casting the spell increases the duration by 1 per tier.",
+      "amps": []
+    },
+    {
+      "id": "turn-the-heretic",
+      "name": "Turn the Heretic",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Oathbound"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 1,
+      "area": "Cluster",
+      "description": "You rebuke those your **Creed** has deemed to be your **anathema**. You present the symbol of your **Creed**, bypassing any immunity or resistance to **fear** or **mental** effects. Make a spell attack roll against the target's **Will**.\n\n> - **Critical Success** Deal 2d6 **Ether** or **Void** damage matching your **cantrip's** alignment, and the adversary flees from you for 2 rounds.\n> - **Success** The adversary flees from you for 2 rounds.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.\n\n| Creeds | Anathema  |\n| ------------ | -------------------- |\n| **Honor** | *Chaos* or *Ruin* |\n| **Serenity** | *Ruin*  |\n| **Dominion** | *Neutral* or *Chaos* |\n| **Entropy** | *Order*  |\n| **Paradox** | *Order* or *Neutral* |",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Increase size to *Sector*."
+        }
+      ]
+    },
+    {
+      "id": "venom-spray",
+      "name": "Venom Spray",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "1 Round",
+      "cost": 1,
+      "area": "Cone (Cluster)",
+      "description": "You unleash a spray of caustic venom that sticks in the eyes of those hit. Make a spell attack roll against the target's **Body**.\n\n> - **Critical Success** As Success, and deal 2d4 **Corrosive** damage.\n> - **Success** The target gains **Blinded** for 2 rounds.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Deal damage on a Success, and increase the damage to 4d4 on a Critical Success."
+        }
+      ]
+    },
+    {
+      "id": "whispers-of-omen",
+      "name": "Whispers of Omen",
+      "tier": 1,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Anima"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 1,
+      "area": null,
+      "description": "You peel back the veil and open a creature's mind to the voices from beyond. Make a spell attack roll against the target's **Will**.\n\n> - **Critical Success** The target gains **Strain** on its next attack.\n> - **Success** The target gains **Strain** on its next attack.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": [
+        {
+          "cost": "+3",
+          "effect": "Increase the duration to 1 minute and require **Focus**. The target may make a **Will** check against your **Spell DC** at the start of its turn to end the effect."
+        }
+      ]
+    },
+    {
+      "id": "arcane-bastion",
+      "name": "Arcane Bastion",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Universal"
+      ],
+      "range": "Self",
+      "duration": "1 minute",
+      "cost": 2,
+      "area": null,
+      "description": "You bolster your defenses with magical energy, gaining +2 **Armor** and Resolve on **Body** checks against being forcibly moved or **Prone**.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Duration increases to 10 minutes."
+        }
+      ]
+    },
+    {
+      "id": "arcane-chains",
+      "name": "Arcane Chains",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Mana"
+      ],
+      "range": "Far",
+      "duration": "30 seconds",
+      "cost": 2,
+      "area": null,
+      "description": "You manifest chains of force around an adversary. Make a spell attack roll against the target's **Body**.\n\n> - **Critical Success** As Success, and the target gains **Inert**.\n> - **Success** The target gains **Immobilized**.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase duration by 2 rounds."
+        }
+      ]
+    },
+    {
+      "id": "astral-sign",
+      "name": "Astral Sign",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Mana",
+        "Anima"
+      ],
+      "range": "Beyond",
+      "duration": "8 hours (Focused)",
+      "cost": 2,
+      "area": null,
+      "description": "You send a magical signal into the sky. It is visible to all who can see the sky and carries a beckoning sense to your allies.\n\n- After placing the sign, you may rest for **4 hours** before needing to realign your focus on it again.",
+      "amps": []
+    },
+    {
+      "id": "blight-cloud",
+      "name": "Blight Cloud",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Primeval"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "You conjure a cloud of suffering upon a point you can see in range. Make a spell attack roll against the target's **Body** in a **Cluster**.\n\n> - **Critical Success** As Success, and the target gains **Poisoned**.\n> - **Success** Deal 2d10 **Poison** damage.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": []
+    },
+    {
+      "id": "blinding-radiance",
+      "name": "Blinding Radiance",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Soul",
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "Instant",
+      "cost": 2,
+      "area": "Burst (Cluster)",
+      "description": "You unleash a burst of intense light. Make a spell attack roll against the target's **Body**.\n\n> - **Critical Success** As Success, target's take 2d6 **Ether** damage\n> - **Success** The target's becomes **Blinded** for 3 rounds.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Add 2d6 **Ether** damage on a **Success**"
+        }
+      ]
+    },
+    {
+      "id": "blood-hunt",
+      "name": "Blood Hunt",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Primeval",
+        "Soul"
+      ],
+      "range": "Beyond",
+      "duration": "8 hours (Focused)",
+      "cost": 2,
+      "area": null,
+      "description": "You send a mark of execution to follow a target of inquiry. As long as this mark is present on this creature, you can detect its general location up to 5 miles away, and when dealing damage to the target add 2d6 **Spirit** damage. The spell ends when the target ceases to be alive. Works on **Deathless**.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase duration to 24 hours."
+        }
+      ]
+    },
+    {
+      "id": "bone-harvest",
+      "name": "Bone Harvest",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Soul",
+        "Primeval"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 2,
+      "area": "Burst (Cluster)",
+      "description": "You cause sharp bone shards to burst from a corpse, or exposed bones in range. Make a spell attack roll against the target's **Armor**.\n\n> - **Critical Success** As Success, and the target gains **Crippled**.\n> - **Success** Deal 3d6 **Puncture** damage.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.\n\nIf point of origin was an active skeletal creature, the damage increases to 3d10",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase damage by 1d6 per Amp."
+        }
+      ]
+    },
+    {
+      "id": "call-of-the-wild",
+      "name": "Call of the Wild",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Mana",
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "24 Hours",
+      "cost": 2,
+      "area": null,
+      "description": "You summon two animals as physical forms of energy taking whatever shape you need. You summon two **Tier 1 Wildlife** creatures with a **Horde 2**. They cannot venture beyond **300 ft/90 m** from you or the dissipate. If you cast this spell again, all creatures summoned with this spell appear next to your location and heal **Vitality** equal to your **Spell casting Modifier**. You may dismiss the creatures at anytime before the spell ends.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "You summon three animals."
+        }
+      ]
+    },
+    {
+      "id": "corrosive-lance",
+      "name": "Corrosive Lance",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Primeval",
+        "Mana"
+      ],
+      "range": "Far",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "You hurl a lance of corroding energy at a creature within range. Make a spell attack roll against the target's **Armor**.\n\n> - **Critical Success** As Success, and the target suffers -2 to **Armor** until the end of its next turn.\n> - **Success** The target takes 1d8 **Puncture** and 2d8 **Corrosive** damage.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase **Puncture** or **Corrosive** damage by 1d8 per Amp."
+        }
+      ]
+    },
+    {
+      "id": "cosmic-beam",
+      "name": "Cosmic Beam",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Primeval",
+        "Soul"
+      ],
+      "range": "Far",
+      "duration": "1 minute (Focused)",
+      "cost": 2,
+      "area": null,
+      "description": "You create a beam of cosmic energy that harms creatures standing within it. On first entry or when a creature starts its turn in the beam, it must make a **Body** check against your **Spell DC**.\n\n- **Critical Success** No effect.\n- **Success** No effect.\n- **Failure** Take 3d6 **Void** or **Ether** damage.\n- **Critical Failure** As Failure, and add +3 damage per die of the chosen type.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Increase damage by 1d6 per Amp."
+        }
+      ]
+    },
+    {
+      "id": "crimson-veil",
+      "name": "Crimson Veil",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "24 hours",
+      "cost": 2,
+      "area": null,
+      "description": "You place a veil over an ally to keep their soul anchored. The target gains **+2** to their total **Wounds threshold** for the duration. If the veil ends and the target’s current wounds exceed their normal threshold, they **die**.",
+      "amps": []
+    },
+    {
+      "id": "curse-of-frailty",
+      "name": "Curse of Frailty",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "30 seconds",
+      "cost": 2,
+      "area": null,
+      "description": "You curse a target, significantly weakening it. Make a spell attack roll against the target's **Will**.\n\n> - **Critical Success** As Success, lasts for 1 minute\n> - **Success** The target gains **Weakened** and **Sapped**.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase **Weakened** to **Weakened** (*2*)"
+        }
+      ]
+    },
+    {
+      "id": "darkness",
+      "name": "Darkness",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Mana",
+        "Soul"
+      ],
+      "range": "Nearby",
+      "duration": "1 minute",
+      "cost": 2,
+      "area": "Burst (Sector)",
+      "description": "You summon a cloud of darkness that envelops a point you can see. It creates a region of pitch-black darkness in a **Sector**.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "This affects creatures with magical vision."
+        }
+      ]
+    },
+    {
+      "id": "disrupt-magic",
+      "name": "Disrupt Magic",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Mana",
+        "Anima"
+      ],
+      "range": "Close",
+      "duration": "Up to 3 rounds",
+      "cost": 2,
+      "area": null,
+      "description": "You target a magical aura within range and you cause it to become inert for 30 seconds. If the effect is being caused by a spellcaster, make a spell attack roll against their **Spell DC**. On a success, the magical effect becomes inert for the duration. On a critical success, if the spell was equal or lesser tier than your cast, the effect is gone.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase the spell tier you can affect by 1 per Amp."
+        }
+      ]
+    },
+    {
+      "id": "echo-location",
+      "name": "Echo Location",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Primeval"
+      ],
+      "range": "Beyond",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "You release a pulse of primal magic that searches for a familiar presence. Choose one **specific non-magical object**, **wildlife creature**, or **plant species** you have personally encountered before. If a matching target exists within **1 mile**, you sense:\n\n- the **direction** to the nearest instance\n- an **approximate distance**\n- whether it is **moving or stationary**\n- the **direction of movement** if applicable\n\nThis spell cannot identify individual creatures of a species.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "You instead detect all matching targets within range and sense the direction of the nearest three."
+        }
+      ]
+    },
+    {
+      "id": "echoing-sorrow",
+      "name": "Echoing Sorrow",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Self",
+      "duration": "(Focused)",
+      "cost": 2,
+      "area": null,
+      "description": "You invoke whispers from beyond, disrupting the souls of adversaries. All enemies in your **Burst** are **hexed** and suffer Strain on attacks targeting allies within the zone.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Enemies within the zone also take 1d8 void damage at the start of their turns."
+        }
+      ]
+    },
+    {
+      "id": "elemental-surge",
+      "name": "Elemental Surge",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Mana",
+        "Anima",
+        "Primeval"
+      ],
+      "range": "Nearby",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "You release a surge of elemental energy, striking adversaries within a **Cone**. Targets must make a **Body** check against your **Spell DC**.\n\n- **Critical Success** No effect.\n- **Success** No effect.\n- **Failure** Suffer 3d8 damage of your chosen elemental type (**Fire**, **Ice**, or **Electric**).\n- **Critical Failure** Suffer 3d8 damage of your chosen elemental type (**Fire**, **Ice**, or **Electric**).",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Increase damage by 1d8."
+        }
+      ]
+    },
+    {
+      "id": "elemental-ward",
+      "name": "Elemental Ward",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Universal"
+      ],
+      "range": "Self",
+      "duration": "1 minute",
+      "cost": 2,
+      "area": "Burst (Cluster)",
+      "description": "You form a shield of energy attuned to an element to protect allies. Allies within range gain **Resistance** to one chosen element: **Fire**, **Ice**, or **Electric**. Enemies within the burst must make a **Body** check against your **Spell DC**.\n\n- **Critical Success** No effect.\n- **Success** No effect.\n- **Failure** Take 2d6 damage of the chosen element.\n- **Critical Failure** Take 2d6 damage of the chosen element.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "May also choose **Arcane**, **Ether**, or **Void**."
+        }
+      ]
+    },
+    {
+      "id": "ethereal-ammunition",
+      "name": "Ethereal Ammunition",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Mana",
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "10 minutes",
+      "cost": 2,
+      "area": null,
+      "description": "You conjure magical ammunition for ranged weapons, granting +2d6 **Arcane** or **Spirit** damage to ranged attacks.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Damage increases by +1d6."
+        }
+      ]
+    },
+    {
+      "id": "ethereal-armament",
+      "name": "Ethereal Armament",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Mana",
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "10 minutes",
+      "cost": 2,
+      "area": null,
+      "description": "You manifest a concentration of magical power, strong enough to take the form of an object of your choice that can fit into a 5' ft. / 1.5 m cube. The object is weightless, and uses your spell attack roll, dealing **Arcane** or **Ether** damage equal to 1d8 + spell modifier on **melee** and 1d6 + spell **modifier** on ranged.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase duration to 1 hour."
+        },
+        {
+          "cost": "+2",
+          "effect": "Dice size increases by one step."
+        }
+      ]
+    },
+    {
+      "id": "healing-spirit",
+      "name": "Healing Spirit",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Primeval",
+        "Soul",
+        "Anima"
+      ],
+      "range": "Touch",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "You imbue a target with primal rejuvenation. The target regains 2d8 **vitality** and removes one negative condition (**Dazed**, **Crippled**, **enfeebled**, etc.).",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Additional +1d8 healing."
+        }
+      ]
+    },
+    {
+      "id": "heat-material",
+      "name": "Heat Material",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Anima",
+        "Mana",
+        "Primeval"
+      ],
+      "range": "Close",
+      "duration": "1 minute",
+      "cost": 2,
+      "area": null,
+      "description": "You target a source of material within range and direct magic into it causing it to rapidly heat up. On first cast, it deals 3d6 **Fire** and an additional effect depending on the material. The spell can only affect up to a total of material 5' ft. / 1.5 m cubed in size. If the material is affixed to creature, the creature must spend **2 AP** to remove the material if it can.\n\n- **Stone** If target is not **immune** to **Fire**, reduces **resistance** or gains **weakness** to **Fire** if standing within **touch** of the material.\n\n- **Wood** The material and anything touching it gains **Burning**.\n\n- **Metal** If being worn, target has **Strain** on all attack rolls and skill checks.\n\n- **Water** Causes a **Burst** of steam to erupt, giving **cover** in the affected area and gives **Blinded** and **Hidden** to anyone in the steam.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Damage increases to 5d6."
+        }
+      ]
+    },
+    {
+      "id": "heroic-vitality",
+      "name": "Heroic Vitality",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Anima",
+        "Soul"
+      ],
+      "range": "Self",
+      "duration": "24 hours",
+      "cost": 2,
+      "area": null,
+      "description": "You increase the maximum vitality of up to six targets within range. Vitality for those targets is increased by 5 + the caster's tier.",
+      "amps": []
+    },
+    {
+      "id": "hysteria",
+      "name": "Hysteria",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Soul",
+        "Anima"
+      ],
+      "range": "Close",
+      "duration": "3 rounds",
+      "cost": 2,
+      "area": null,
+      "description": "You cause hysteria on up to three targets in range. On a success, targets become **Enraged** and **Dazed** for the next three rounds. They can attempt to save against this effect at the start of their turn.",
+      "amps": []
+    },
+    {
+      "id": "inquiry",
+      "name": "Inquiry",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Mana",
+        "Soul"
+      ],
+      "range": "Beyond",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "Target up to two allies you know within the same plane or planet as you, and make a check regarding their general health and general direction.",
+      "amps": []
+    },
+    {
+      "id": "invisibility",
+      "name": "Invisibility",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Mana",
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "10 minutes (Focused)",
+      "cost": 2,
+      "area": null,
+      "description": "You cast a shimmering veil which disrupts the light around your designated target. Select one target within range, and they gain the **Invisible** state. If the target takes a hostile action while invisible, the spell drops. In addition, if they fail to remain **Hidden** on a **Scan** check, they are considered as **Unaware**.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Duration increases to 1 hour, or can target up to three targets."
+        },
+        {
+          "cost": "+4",
+          "effect": "Target up to 6 targets within range."
+        }
+      ]
+    },
+    {
+      "id": "leeching-grasp",
+      "name": "Leeching Grasp",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Soul",
+        "Anima"
+      ],
+      "range": "Touch",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "You draw the vitality from your enemy to rejuvenate yourself. Deal 3d6 **Void** damage to the target and regain vitality equal to half the damage dealt.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase damage by +1d6."
+        },
+        {
+          "cost": "+1",
+          "effect": "Increase range to Close."
+        }
+      ]
+    },
+    {
+      "id": "major-resistance",
+      "name": "Major Resistance",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Primeval",
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "1 minute (Focused)",
+      "cost": 2,
+      "area": null,
+      "description": "For the duration of the spell, select one target within range. They gain Resistance to either all Physical, Magical, or Elemental damage for the duration of the spell.",
+      "amps": []
+    },
+    {
+      "id": "mana-infusion",
+      "name": "Mana Infusion",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Mana"
+      ],
+      "range": "Touch",
+      "duration": "1 hour",
+      "cost": 2,
+      "area": null,
+      "description": "You infuse a weapon or armor with arcane magic, adding +1 to attack rolls and granting +1d6 **Arcane** damage (weapon) or +2 to **Armor** (armor).",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Bonus damage increases to +1d8, armor bonus increases to +3."
+        }
+      ]
+    },
+    {
+      "id": "mirage-figures",
+      "name": "Mirage Figures",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Mana",
+        "Soul",
+        "Anima"
+      ],
+      "range": "Self",
+      "duration": "1 minute",
+      "cost": 2,
+      "area": null,
+      "description": "You create three mirages that look identical to yourself. When an attack would hit you, roll a d8. On a 1-2 the attack hits you, otherwise it hits one of your mirages. If it hits a mirage it dissipates; the next two hits are rolled d6 then d4 when a mirage is hit.",
+      "amps": []
+    },
+    {
+      "id": "mystic-bulwark",
+      "name": "Mystic Bulwark",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Primeval"
+      ],
+      "range": "Nearby",
+      "duration": "1 minute",
+      "cost": 2,
+      "area": null,
+      "description": "You form protective energy around up to three targets, granting +2 **Armor** and resistance to one selected damage type (**Fire**, **Ice**, **Electric**, **Arcane**) for the spell’s duration.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Extend duration by 5 rounds."
+        },
+        {
+          "cost": "+2",
+          "effect": "Increase targets protected from three to five."
+        }
+      ]
+    },
+    {
+      "id": "needle-storm",
+      "name": "Needle Storm",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Anima",
+        "Primeval"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "You unleash a storm of needle-thin projectiles at a creature. Make a spell attack roll against the target's **Body**.\n\n> - **Critical Success** As Success, and the target gains **Bleeding**.\n> - **Success** Deal 6d4 **Puncture** damage.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": []
+    },
+    {
+      "id": "offerings-of-war",
+      "name": "Offerings of War",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "1 minute (Focused)",
+      "cost": 2,
+      "area": null,
+      "description": "You form sigils of war above your allies granting them power. Gain 4 **war sigils** to distribute among allies. When the ally makes a **weapon attack roll**, they may spend a sigil to add **1d10** to the roll. A token is consumed **whether the attack hits or misses**.",
+      "amps": []
+    },
+    {
+      "id": "phantasmal-assault",
+      "name": "Phantasmal Assault",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Mana",
+        "Anima"
+      ],
+      "range": "Nearby",
+      "duration": "2 rounds",
+      "cost": 2,
+      "area": null,
+      "description": "You manifest horrifying illusions that assault the target's mind. Make a spell attack roll against the target's **Will**.\n\n> - **Critical Success** As Success, and the target takes 2d8 **Arcane** damage.\n> - **Success** The target gains **Frightened**.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase damage by 1d8."
+        }
+      ]
+    },
+    {
+      "id": "primeval-growth",
+      "name": "Primeval Growth",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Primeval"
+      ],
+      "range": "Nearby",
+      "duration": "1 minute",
+      "cost": 2,
+      "area": null,
+      "description": "You cause vines to erupt from the ground, entangling foes within range. When creatures enter the zone or start their turn in it, they must make a **Body** check against your **Spell DC**. On failure\n\n- **Critical Success** No effect.\n- **Success** No effect.\n- **Failure** Gain **Immobilized**.\n- **Critical Failure** Gain **Restrained**, and can reposition the target up to one Zone closer",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase duration to 10 minutes."
+        }
+      ]
+    },
+    {
+      "id": "primeval-senses",
+      "name": "Primeval Senses",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "10 minutes",
+      "cost": 2,
+      "area": null,
+      "description": "Your senses sharpen to supernatural levels. Choose one: **darkvision**, **tremorsense**, or **keen smell**. You gain that sense for the duration.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Extend duration to 1 hour."
+        },
+        {
+          "cost": "+2",
+          "effect": "Gain an additional sense and extend duration to 1 hour."
+        }
+      ]
+    },
+    {
+      "id": "probing-augur",
+      "name": "Probing Augur",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Anima",
+        "Soul"
+      ],
+      "range": "Touch",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "You press a hand to a solid surface sense what is on the other side. The magic you send from your hand travels up to 20ft / 6m providing insight what lies ahead. If surface is thicker than the distance you gain no information other than that. If it enters into an open area, you g0ain information within a **Cone** of **Close** range of shape of the room, formless silhouettes of creatures size and numbers. If anything is **Hidden** or **Invisible**, the spell will not detect it.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Reveal Hidden targets."
+        }
+      ]
+    },
+    {
+      "id": "razor-wind",
+      "name": "Razor Wind",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Mana",
+        "Primeval"
+      ],
+      "range": "Close",
+      "duration": "1 minute (Focused)",
+      "cost": 2,
+      "area": null,
+      "description": "You create a twister of cutting wind at a point you can see. When a creature is targeted by it, starts its turn in it, or enters it once per turn, it must make a **Body** check against your **Spell DC**. On a failure, it takes 3d6 **Slash** damage.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Increase damage by 1d6 per Amp."
+        }
+      ]
+    },
+    {
+      "id": "rescale",
+      "name": "Rescale",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Anima",
+        "Mana"
+      ],
+      "range": "Self",
+      "duration": "10 minutes",
+      "cost": 2,
+      "area": null,
+      "description": "You pulsate magic through a target to alter its size. The selected target can have its size increased or decreased by 1, and **Body**-related stats by 2. If the target is unwilling, make a spell attack roll against **Body**. The target cannot go smaller than **tiny** or larger than **titan**.",
+      "amps": [
+        {
+          "cost": "+3",
+          "effect": "Spell effect increases from 1 to 2 for size and 2 to 4 for Body."
+        }
+      ]
+    },
+    {
+      "id": "see-invisibility",
+      "name": "See Invisibility",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Anima",
+        "Soul"
+      ],
+      "range": "Self",
+      "duration": "10 minutes (Focused)",
+      "cost": 2,
+      "area": null,
+      "description": "Choose up to **two targets** within range. Affected targets can see **Invisible** creatures as though they were **Visible**.",
+      "amps": []
+    },
+    {
+      "id": "seized",
+      "name": "Seized",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Anima",
+        "Mana",
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "10 minutes (Focused)",
+      "cost": 2,
+      "area": null,
+      "description": "You cause a creature of equal size to you to seize up. Make a spell attack roll against the target's **Body**. On success, the target gains **Inert** and **Silenced** for the duration. The target may attempt a saving throw at the start of each turn to end the effect.",
+      "amps": []
+    },
+    {
+      "id": "shadow-step",
+      "name": "Shadow Step",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Anima",
+        "Mana"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "You vanish into shadows, teleporting up to range to a location you can see. If you arrive in a location that is dim-light or pitch black, become **Hidden** upon arrival.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Teleport range increases to Far."
+        }
+      ]
+    },
+    {
+      "id": "shatter",
+      "name": "Shatter",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Anima",
+        "Mana"
+      ],
+      "range": "Nearby",
+      "duration": "Instant",
+      "cost": 2,
+      "area": "Burst (Sector)",
+      "description": "You collapse gravity at a point you can see, creating a detonation of force. Make a spell attack roll against the target's **Armor**. On success, deal 2d10 **Gravity** damage to enemies in the blast. If a target is **Forged**, it takes +2d10 **Gravity** damage.",
+      "amps": []
+    },
+    {
+      "id": "shroud-of-obscurity",
+      "name": "Shroud of Obscurity",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Anima"
+      ],
+      "range": "Self",
+      "duration": "1 minute",
+      "cost": 2,
+      "area": null,
+      "description": "You wrap yourself in magical shadows, gaining +2 to **stealth** checks and imposing Strain on enemies’ perception rolls against you.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Size of spell increases to a burst."
+        }
+      ]
+    },
+    {
+      "id": "solar-rays",
+      "name": "Solar Rays",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Anima",
+        "Mana",
+        "Primeval"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "You unleash **three burning rays**, all at one target or split among up to three targets. Make a spell attack roll for each ray against the target's **Body**.\n\n> - **Critical Success** As Success, and the target gains **Burning 1** per ray.\n> - **Success** Deal 3d4 **Fire** damage.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Increase the number of rays by 1 per Amp."
+        }
+      ]
+    },
+    {
+      "id": "soul-barrier",
+      "name": "Soul Barrier",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "1 minute",
+      "cost": 2,
+      "area": null,
+      "description": "You protect up to three allies, granting them **Resistance** to **Void** and **Ether** damage. If a protected ally is targeted by a <b><u><i>Mortification</b></u></i> or <b><u><i>Decimation</b></u></i> spell, they regain 1d6 **Vitality**.",
+      "amps": [
+        {
+          "cost": "+3",
+          "effect": "Increase the number of allies protected from three to five."
+        }
+      ]
+    },
+    {
+      "id": "soul-burst",
+      "name": "Soul Burst",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Anima",
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "You rupture a creature's essence with a burst of ether. Make a spell attack roll against the target's **Body**. On success, deal 4d8 **Ether** damage. If the target is **Living**, the damage becomes 4d12 **Spirit**.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase damage to 6d8 and gains **Area** size of Burst (*Cluster*)."
+        }
+      ]
+    },
+    {
+      "id": "spectral-guardians",
+      "name": "Spectral Guardians",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Mana",
+        "Soul"
+      ],
+      "range": "Self",
+      "duration": "1 minute (Focused)",
+      "cost": 2,
+      "area": null,
+      "description": "Spectral entities protect you. Enemies within the burst suffer 2d6 **Arcane** damage each time they make an attack targeting you or your allies within the zone.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Damage increases to 3d8."
+        }
+      ]
+    },
+    {
+      "id": "spider-climb",
+      "name": "Spider Climb",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Mana",
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "10 minutes",
+      "cost": 2,
+      "area": null,
+      "description": "You can climb on any solid surface and ignore terrain that would impede your movement while climbing.",
+      "amps": []
+    },
+    {
+      "id": "summon-portals",
+      "name": "Summon Portals",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Anima"
+      ],
+      "range": "Close",
+      "duration": "1 minute (Focused)",
+      "cost": 2,
+      "area": null,
+      "description": "You create two portals which correspond to each other. Either can be placed within range at any point you can see, and any creature the same size or smaller than you can use these portals. A portal can be traveled through once per turn.",
+      "amps": []
+    },
+    {
+      "id": "summon-shelter",
+      "name": "Summon Shelter",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "24 hours",
+      "cost": 2,
+      "area": null,
+      "description": "You use the surrounding land to erect a structure that is hospitable to rest in. The structure is large enough to house up to six medium sized creatures. Anyone resting in this shelter is protected from the surrounding elements, unless stated otherwise.",
+      "amps": []
+    },
+    {
+      "id": "surge-of-vitality",
+      "name": "Surge of Vitality",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Anima",
+        "Primeval"
+      ],
+      "range": "Nearby",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "You send out a wave of healing energy. Allies within range regain 3d4 **Vitality**. Targets that regain vitality can immediately remove **Crippled** or **Poisoned**.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase **Vitality** regained by 1d4."
+        }
+      ]
+    },
+    {
+      "id": "vital-reinforcement",
+      "name": "Vital Reinforcement",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Universal"
+      ],
+      "range": "Touch",
+      "duration": "10 minutes (Focused)",
+      "cost": 2,
+      "area": null,
+      "description": "You enhance an ally's prowess with magical energy, granting +2 to a minor attribute of choice, and providing the benefit to **Body**, **Mind**, and **Will** for the duration of the spell.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Increase duration to 1 hour."
+        }
+      ]
+    },
+    {
+      "id": "vitality-transfer",
+      "name": "Vitality Transfer",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 2,
+      "area": null,
+      "description": "You create a link between life forces. Deal 1d8 **Void** damage to yourself and heal a willing target's vitality for twice that amount.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase damage/healing die by one size per tier (d8→d10→d12)."
+        }
+      ]
+    },
+    {
+      "id": "void-armor",
+      "name": "Void Armor",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Self",
+      "duration": "1 minute",
+      "cost": 2,
+      "area": null,
+      "description": "You envelop yourself in void energies. You have a pool of 5d6 **Void** damage. When an enemy attacks you, you may expend as many dice from the pool as you want. Once the pool is expended or the duration ends, the armor fades.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase duration to 10 minutes."
+        },
+        {
+          "cost": "+3",
+          "effect": "On a critical failure, attackers gain **Weakened**."
+        }
+      ]
+    },
+    {
+      "id": "wyrm-s-breath",
+      "name": "Wyrm’s Breath",
+      "tier": 2,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Primeval",
+        "Mana",
+        "Anima"
+      ],
+      "range": "Touch",
+      "duration": "1 minute",
+      "cost": 2,
+      "area": null,
+      "description": "You imbue a target with the breath of a Wyrm to cause destruction. For the duration, the target gains the ***Wyrm Breath*** action, choosing **Fire**, **Ice**, **Electric**, or **Corrosive** as the damage type. The attack roll uses the source's Spellcasting modifier.\n\n**Wyrm Breath**\n**Cost** 2 AP\nMake a spell attack roll in a **Cone (2)** originating from you in a **Sector**. On a success, deal **3d4** damage of the chosen Element.",
+      "amps": []
+    },
+    {
+      "id": "alacrity",
+      "name": "Alacrity",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Anima",
+        "Primeval"
+      ],
+      "range": "Close",
+      "duration": "1 Minute",
+      "cost": 3,
+      "area": null,
+      "description": "You enhance the movement of an ally's actions for brief moments in time. Choose a willing target within range; for the duration of the spell, at the beginning of each turn, their first action has its **AP** cost reduced by 1.",
+      "amps": [
+        {
+          "cost": "+4",
+          "effect": "Increase the reduction bonus to 2."
+        }
+      ]
+    },
+    {
+      "id": "banner-of-war",
+      "name": "Banner of War",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Oathbound"
+      ],
+      "range": "Self",
+      "duration": "1 Minute (Focused)",
+      "cost": 3,
+      "area": null,
+      "description": "You conjure a banner that emanates power to you and your allies. Summon a *Spear +1* with a banner attached; you are considered **proficient** with it and use your **spell casting modifier** for its modifiers. As long as you wield this banner, you **emanate** within your **Zone**, granting you and your allies an additional 1d4 **Ether** or **Void** damage when attacking with weapons or fists.",
+      "amps": []
+    },
+    {
+      "id": "barrier",
+      "name": "Barrier",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Anima",
+        "Mana",
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "1 hour",
+      "cost": 3,
+      "area": null,
+      "description": "You weave a magical barrier around your chosen targets, giving them protection from damage. You have 8d8 that you can distribute to as many targets as you have dice; each die gives a target a Reduction Pool equal to the total rolled.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase the die size to d10."
+        },
+        {
+          "cost": "+2",
+          "effect": "Increase the die size to d12."
+        }
+      ]
+    },
+    {
+      "id": "blind-sacrifice",
+      "name": "Blind Sacrifice",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Primeval",
+        "Soul"
+      ],
+      "range": "Self",
+      "duration": "1 Minute (Focused)",
+      "cost": 3,
+      "area": null,
+      "description": "You surrender your mortal sight to perceive the echoes of magic beyond the veil. For the duration, you perceive **magical creatures, magical plants, and magical objects** within **Close** range as clear luminous forms.\n\nNon-magical terrain appears only as **dim silhouettes**, allowing you to move normally but automatically fail visual **Perception** checks. All non-magical creatures and objects appear **Invisible** to you, but if **currently affected by magic** or possess **innate magical abilities** they appear as magical.",
+      "amps": []
+    },
+    {
+      "id": "confusing-apparitions",
+      "name": "Confusing Apparitions",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Anima",
+        "Mana"
+      ],
+      "range": "Nearby",
+      "duration": "1 Minute",
+      "cost": 3,
+      "area": "Burst (Sector)",
+      "description": "You create a series of illusory apparitions that cause panic and confusion among those caught in the blast. Make a spell attack roll against the target's **Will**. To end the effect, the target must succeed on a **Will** check at the start of each turn.\n\n> - **Critical Success** The target instead gains **Inert**; if damaged or if it passes its first save, it gains the effects of a **Success**.\n> - **Success** The target gains **Charmed** and is **Compelled** to fight an apparition.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": []
+    },
+    {
+      "id": "crippling-anguish",
+      "name": "Crippling Anguish",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Anima",
+        "Mana"
+      ],
+      "range": "Nearby",
+      "duration": "Instant",
+      "cost": 3,
+      "area": null,
+      "description": "You send a blast of energy that causes pain and anguish to a target's mind and body. Make a spell attack roll against the target's **Mind**.\n\n> - **Critical Success** As Success, and the target gains **Immobilized** until the end of its next turn.\n> - **Success** Deal 6d6 **Psychic** damage.\n> - **Failure** Deal 2d6 **Psychic** damage.\n> - **Critical Failure** No effect.",
+      "amps": []
+    },
+    {
+      "id": "detect-mortals",
+      "name": "Detect Mortals",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Anima",
+        "Soul"
+      ],
+      "range": "Self",
+      "duration": "(Focused)",
+      "cost": 3,
+      "area": null,
+      "description": "You maintain a sense for mortal life. While this spell is maintained, you sense the general location of any **Mortal** within your **zone**. It reveals **Hidden** targets.",
+      "amps": []
+    },
+    {
+      "id": "enfeebled",
+      "name": "Enfeebled",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Primeval",
+        "Soul"
+      ],
+      "range": "Nearby",
+      "duration": "1 minute (Focused)",
+      "cost": 3,
+      "area": "Burst (Sector)",
+      "description": "You send a blast of paralytic energy to targets within the detonation. Make a spell attack roll against up to 6 targets in a **Burst** originating from the spell's point of target. On a success, the effects last for the duration of the spell, and a save may be attempted at the end of each target's turn.\n\n> - **Critical Success** As Success, and the target also gains **Sapped**.\n> - **Success** The target gains **Crippled**.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": []
+    },
+    {
+      "id": "graviton-field",
+      "name": "Graviton Field",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Anima",
+        "Soul"
+      ],
+      "range": "Self",
+      "duration": "1 minute (Focused)",
+      "cost": 3,
+      "area": "Emanation (Cluster)",
+      "description": "You erect a field of overwhelming downward force, causing destruction and impeding movement. The spell is an **Emanation** that causes 2d4 **Gravity** damage when a creature enters it for the first time or starts the round in the field. When a creature enters the field, it must use the **Dash** action to leave it unless you move. You can choose which creatures are affected by the field's effects.",
+      "amps": []
+    },
+    {
+      "id": "harvest",
+      "name": "Harvest",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Mana",
+        "Soul"
+      ],
+      "range": "Self",
+      "duration": "Instant",
+      "cost": 3,
+      "area": "Burst (Sector)",
+      "description": "You draw the life force from all around you, funneling it toward your allies. All creatures within the vacuum must make a **Will** check against your **Spell DC**. You may elect which targets are affected.\n\n> - **Critical Success** Deal 1d4 **Void** damage. Allies gain no healing benefit.\n> - **Success** As Failure, and deal 2d6 **Void** damage.\n> - **Failure** Deal 2d8 **Void** damage. All allies within the burst regain **Vitality** equal to half the total damage dealt.\n> - **Critical Failure** As Failure, and the target also gains **Weakened** (*2*).",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Deathless instead take **Ether** damage and an additional 2d4."
+        }
+      ]
+    },
+    {
+      "id": "incinerate",
+      "name": "Incinerate",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Primeval",
+        "Mana"
+      ],
+      "range": "Nearby",
+      "duration": "Instant",
+      "cost": 3,
+      "area": null,
+      "description": "You throw magical fire at a point you can see, causing it to erupt and explode in a **Sector** at the point of impact. Targets caught in the blast must make a **Body** check against your **Spell DC**.\n\n> - **Critical Success** No effect.\n> - **Success** No effect.\n> - **Failure** Take 6d6 **Fire** damage.\n> - **Critical Failure** As Failure, and gain **Burning** (*2*).",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Increase damage by 1d6 per Amp."
+        }
+      ]
+    },
+    {
+      "id": "lightning-bolt",
+      "name": "Lightning Bolt",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Anima",
+        "Primeval",
+        "Mana"
+      ],
+      "range": "Nearby",
+      "duration": "Instant",
+      "cost": 3,
+      "area": "Line (Sector)",
+      "description": "You strike in a line at a target with a bolt of lightning that arcs from you. Make a spell attack roll against the target's **Body**.\n\n> - **Critical Success** As Success.\n> - **Success** Deal 5d10 **Electric** damage.\n> - **Failure** Deal **Electric** damage equal to your **spell casting modifier** to the target and to creatures within **Touch** range of the bolt.\n> - **Critical Failure** Deal **Electric** damage equal to your **spell casting modifier** to creatures within **Touch** range of the bolt.",
+      "amps": []
+    },
+    {
+      "id": "mist-form",
+      "name": "Mist Form",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Anima",
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "5 Minutes (Focused)",
+      "cost": 3,
+      "area": null,
+      "description": "You turn yourself or a willing target into a cloud of mist. While in this form, the target is considered **Hidden** and **Levitating**, and can only move or take **Dash**, **Disengage**, or **Dodge** actions. The target also gains Immunity to all **Physical** and **Gravity** damage. The target can willingly spend **2 AP** to shift between physical and mist form.",
+      "amps": []
+    },
+    {
+      "id": "primeval-engraving",
+      "name": "Primeval Engraving",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Primeval"
+      ],
+      "range": "Self",
+      "duration": "1 Minute (Focused)",
+      "cost": 3,
+      "area": null,
+      "description": "You conjure primeval runes upon the hilt or blade of a weapon. Damage dealt with this weapon adds 2d4 **Elemental** damage, the type chosen upon casting. Depending on the type, it gains the following **Critical Effect**:\n\n> - **Fire** Target gains **Burning** (*2*).\n> - **Ice** Target gains **Silenced** for 1 Round.\n> - **Electric** Target gains **Dazed** for 1 Round.\n> - **Corrosive** Target gains **Blinded** for 1 Round.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Increase the die size to d6."
+        }
+      ]
+    },
+    {
+      "id": "radiant-vitality",
+      "name": "Radiant Vitality",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Self",
+      "duration": "1 minute (Focused)",
+      "cost": 3,
+      "area": "Emanation (Sector)",
+      "description": "You create a warm, pulsating wave of magic that **Emanates** healing around you. At the start of your turn and upon casting, restore up to 4d4 **Vitality** to a single target or across multiple targets.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Increase the die size to d6."
+        }
+      ]
+    },
+    {
+      "id": "shared-invisibility",
+      "name": "Shared Invisibility",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Primeval",
+        "Mana"
+      ],
+      "range": "Self",
+      "duration": "10 minutes (Focused)",
+      "cost": 3,
+      "area": "Emanation (Sector)",
+      "description": "You create an **Emanation** for allies within range; anyone inside the aura gains **Invisibility**, but loses it if they travel outside of the aura. If anyone affected by the spell takes a hostile action, they lose **Invisibility** and cannot regain it until the spell is cast again.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Anyone using a **Scan** action to detect affected allies rolls with **Strain**."
+        }
+      ]
+    },
+    {
+      "id": "soul-tether",
+      "name": "Soul Tether",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Soul"
+      ],
+      "range": "Touch",
+      "duration": "1 hour",
+      "cost": 3,
+      "area": null,
+      "description": "You bind your life force to that of an ally. When the tethered creature would suffer **Wounds**, you may choose to suffer those **Wounds** instead. These wounds are applied to your **Wound Threshold** as though you had suffered the hit yourself. A creature may only be affected by **one Soul Tether** at a time.",
+      "amps": []
+    },
+    {
+      "id": "source-location",
+      "name": "Source Location",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Divination",
+      "spheres": [
+        "Mana",
+        "Primeval",
+        "Soul"
+      ],
+      "range": "Beyond",
+      "duration": "Instant",
+      "cost": 3,
+      "area": null,
+      "description": "You release a pulse of magic that seeks a **magical signature** you are familiar with. Choose one of the following:\n\n- a **type of magical source** you have encountered before _(such as a ley font, ritual site, or magical artifact)_\n- a **specific magical signature** you have personally studied\n\nIf such a source exists within **1 mile**, you learn:\n\n- its **direction**\n- an **approximate distance**\n- whether the source is **stationary or moving**\n\nIf you chose a **specific magical signature**, you may distinguish it from other magical sources in the area.",
+      "amps": []
+    },
+    {
+      "id": "stabilize",
+      "name": "Stabilize",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Mortification",
+      "spheres": [
+        "Primeval",
+        "Soul"
+      ],
+      "range": "Touch",
+      "duration": "Instant",
+      "cost": 3,
+      "area": null,
+      "description": "You reach out and lay hands to keep a target from passing to the next life. You heal a target's current **Wounds** by 1.",
+      "amps": [
+        {
+          "cost": "+2",
+          "effect": "Increase **Wounds** healed by 1."
+        },
+        {
+          "cost": "+3",
+          "effect": "Turn the spell into a Burst affecting your engagement, or extend the range to Nearby."
+        }
+      ]
+    },
+    {
+      "id": "stasis",
+      "name": "Stasis",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Augmentation",
+      "spheres": [
+        "Soul",
+        "Mana"
+      ],
+      "range": "Nearby",
+      "duration": "Varies",
+      "cost": 3,
+      "area": null,
+      "description": "You weave magic into a creature and bind it in time. Make a spell attack roll against the target's **Body**.\n\n> - **Critical Success** As Success, but the effect lasts for 4 rounds.\n> - **Success** The target becomes Immune to all damage, and gains **Inert** and **Unconscious**. The effect lasts for 2 rounds, and at the start of each round the target may attempt a **Body** check to reduce the remaining duration by 1 round.\n> - **Failure** The target gains **Stunned** for 1 round.\n> - **Critical Failure** No effect.\n\nTargets held in stasis **do not age** for the duration.",
+      "amps": [
+        {
+          "cost": "+4",
+          "effect": "On a willing or inanimate target, the duration increases to 8 hours. You may dismiss the spell at any point."
+        }
+      ]
+    },
+    {
+      "id": "temporal-distortion",
+      "name": "Temporal Distortion",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Aberration",
+      "spheres": [
+        "Mana"
+      ],
+      "range": "Nearby",
+      "duration": "1 minute",
+      "cost": 3,
+      "area": "Burst (Cluster)",
+      "description": "You distort time around you in a weave of magic. Enemies caught in the wave must make a **Mind** check against your **Spell DC** or gain **Stunned** for the spell's duration, making another save at the end of each of their turns. You and allies in the **Burst** gain +1 to **Armor** and **Resolve** on their next attack roll.",
+      "amps": []
+    },
+    {
+      "id": "void-feast",
+      "name": "Void Feast",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Anima",
+        "Primeval",
+        "Soul"
+      ],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 3,
+      "area": null,
+      "description": "You devour a target's essence with void and frost. Make a spell attack roll against the target's **Body**.\n\n> - **Critical Success** As Success, and the target becomes **Blinded** until the end of its next turn.\n> - **Success** The target takes 3d4 **Void** and 3d4 **Ice** damage, becomes **Sapped**, and you regain **Vitality** equal to half the damage dealt.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": []
+    },
+    {
+      "id": "void-warp",
+      "name": "Void Warp",
+      "tier": 3,
+      "is_cantrip": false,
+      "school": "Conjuration",
+      "spheres": [
+        "Anima",
+        "Mana"
+      ],
+      "range": "Nearby",
+      "duration": "1 Round",
+      "cost": 3,
+      "area": null,
+      "description": "You open a tear in the fabric of reality in two locations, causing a blast at the destination. You create a one-way portal which anyone can enter, and at the destination cause a blast in a **Cluster**. Targets caught in the blast must make a **Body** check against your **Spell DC**. On failure, target's take 4d6 **Void** damage.",
+      "amps": [
+        {
+          "cost": "+1",
+          "effect": "Restrict the portal so only allies may enter."
+        }
+      ]
+    },
+    {
+      "id": "disrupt-port",
+      "name": "Disrupt Port",
+      "tier": 4,
+      "is_cantrip": false,
+      "school": "Reclamation",
+      "spheres": [
+        "Mana",
+        "Soul"
+      ],
+      "range": "Far",
+      "duration": "Instant",
+      "cost": 4,
+      "area": null,
+      "description": "You sense a disruption in the fabric of reality and attempt to disrupt the magic further. When a **<b><u><i>Conjuration</b></u></i>** or **<b><u><i>Aberration</b></u></i>** spell opens a tear in reality, use ***Cast a Spell*** as a **trigger**, and make a spell attack roll against the **Armor** of the target that created the tear.\n\n> - **Critical Success** As Success, and the tear is delayed for 1 round. The target is stuck in the tear for that duration.\n> - **Success** Deal 6d8 **Arcane** damage.\n> - **Failure** No effect.\n> - **Critical Failure** No effect.",
+      "amps": []
+    },
+    {
+      "id": "thundercrash",
+      "name": "Thundercrash",
+      "tier": 4,
+      "is_cantrip": false,
+      "school": "Decimation",
+      "spheres": [
+        "Anima",
+        "Primeval"
+      ],
+      "range": "Far",
+      "duration": "Instant",
+      "cost": 4,
+      "area": null,
+      "description": "You become enveloped in lightning and propel yourself through the air, instantly moving up to **Far** range to a space you can see and move to.\n\nWhen you land, lightning erupts in a **Burst** affecting the *Cluster*, dealing 4d6 **Electric** damage to all targets in the area.\n\nIf you land in a space occupied by a creature or intentionally collide with one creature during the movement, make a spell attack roll against its **Body**.\n\n> - **Critical Success** As Success.\n> - **Success** The creature takes an additional 2d6 **Electric** and 2d6 **Blunt** damage.\n> - **Failure** No additional effect.\n> - **Critical Failure** No additional effect.",
+      "amps": []
+    },
+    {
+      "id": "while-other-spellcasters-require-to-cast-a-spell-to-detect-sources-at-will-you-have-innate-talent-in-detecting-and-knowing-it-you-learn",
+      "name": "- While other spellcasters require to cast a spell to detect sources at will, you have innate talent in detecting and knowing it. You learn",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": null,
+      "duration": null,
+      "cost": 0,
+      "area": null,
+      "description": "Referenced by feature text; full definition not embedded here.",
+      "amps": [],
+      "reference_only": true
+    },
+    {
+      "id": "when-used-as-a",
+      "name": ". When used as a",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": null,
+      "duration": null,
+      "cost": 0,
+      "area": null,
+      "description": "Referenced by feature text; full definition not embedded here.",
+      "amps": [],
+      "reference_only": true
+    },
+    {
+      "id": "",
+      "name": ". | |",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": null,
+      "duration": null,
+      "cost": 0,
+      "area": null,
+      "description": "Referenced by feature text; full definition not embedded here.",
+      "amps": [],
+      "reference_only": true
+    },
+    {
+      "id": "and-can-only-effect-a-target-once-an-hour",
+      "name": "and can only effect a target once an hour. | |",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": null,
+      "duration": null,
+      "cost": 0,
+      "area": null,
+      "description": "Referenced by feature text; full definition not embedded here.",
+      "amps": [],
+      "reference_only": true
+    },
+    {
+      "id": "apprentice-s-artifice",
+      "name": "Apprentice's Artifice",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 0,
+      "area": null,
+      "description": "You perform a minor magical feats using your abilities such as:\n- **Alteration** You can change the physical state of an object's color, cleanliness, and temperature. If color or temperature the effect only lasts for 10 minutes.\n- **Illumination** You can instantly adjust the state of an object which can be lit by fire, or create small bursts of dim-light\n- **Sensory** Create small instant auditory, visual, or aroma effect, which is harmless in nature.",
+      "amps": []
+    },
+    {
+      "id": "arcane-echo",
+      "name": "Arcane Echo",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Self",
+      "duration": "Instant",
+      "cost": 0,
+      "area": null,
+      "description": "You momentarily project a flickering silhouette of a moment that occurred in the past hour at your current location. This lasts for only 10 seconds.\n- No sound is produced, and all figures are featureless shadows.\n- If the moment involved **magic**, make an **Arcane** check vs the **Tier DC**.\n  - **Success:** glimpse is clear.\n  - **Failure:** the image shatters and the cantrip can’t be used here again until after a **respite**.",
+      "amps": []
+    },
+    {
+      "id": "arcane-jolt",
+      "name": "Arcane Jolt",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Close, line",
+      "duration": null,
+      "cost": 0,
+      "area": null,
+      "description": "Make a **ranged spell attack roll** against each creature in the line, up to 5 targets. On a **hit** a target takes **1d4 arcane** damage. On a **critical hit**, after resolving damage you can change the line's direction instead of going straight and repeats the attack roll against any new creatures in that space.",
+      "amps": []
+    },
+    {
+      "id": "arcane-lens",
+      "name": "Arcane Lens",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Self",
+      "duration": "Instant",
+      "cost": 0,
+      "area": null,
+      "description": "Your able to determine if an item is magical or non-magical by laying hand in the object and casting magic to examine it. You cannot determine the source of the magic, or what it does but you can determine the **Sphere of Magic**.",
+      "amps": []
+    },
+    {
+      "id": "blight-touch",
+      "name": "Blight Touch",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Close",
+      "duration": "1 Round",
+      "cost": 0,
+      "area": null,
+      "description": "Make a **spell attack roll**, on a hit deal 2d4 **poison** or **void**. On a **critical hit**, reduce the target's **body** by -2 until the end of its next turn. The target is also, considered **hexed** until the end of your next turn.",
+      "amps": []
+    },
+    {
+      "id": "double-the-carry-weight-capacity-when-slotted-onto-armor",
+      "name": "Double the carry weight capacity when slotted onto armor -",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": null,
+      "duration": null,
+      "cost": 0,
+      "area": null,
+      "description": "Referenced by feature text; full definition not embedded here.",
+      "amps": [],
+      "reference_only": true
+    },
+    {
+      "id": "grim-knowledge",
+      "name": "Grim Knowledge",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Nearby",
+      "duration": "Instant",
+      "cost": 0,
+      "area": null,
+      "description": "You are well acquainted with curses and hexes. You cast magic to detect if a creature within range has either a magic or spell effect from a curse or hex placed upon them.",
+      "amps": []
+    },
+    {
+      "id": "hex-barb",
+      "name": "Hex Barb",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Nearby",
+      "duration": "Instant",
+      "cost": 0,
+      "area": null,
+      "description": "Make a **spell attack roll**, on a hit deal 1d6 **void** and if the target is **hexed** or is suffering from a **condition**, damage increase to 1d12.",
+      "amps": []
+    },
+    {
+      "id": "hunter-s-stride",
+      "name": "Hunter's Stride",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Touch",
+      "duration": "1 Minute, (Focused)",
+      "cost": 0,
+      "area": null,
+      "description": "You lay hands in yourself or an ally within range, granting the benefit of a seasoned hunter. For the duration of the spell, target gains +2 to **stealth** checks, and cannot gain **crippled**.",
+      "amps": []
+    },
+    {
+      "id": "its-ranged-is-reduced-to",
+      "name": "its ranged is reduced to",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": null,
+      "duration": null,
+      "cost": 0,
+      "area": null,
+      "description": "Referenced by feature text; full definition not embedded here.",
+      "amps": [],
+      "reference_only": true
+    },
+    {
+      "id": "mage-s-ward",
+      "name": "Mage's Ward",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Close",
+      "duration": "1 round",
+      "cost": 0,
+      "area": null,
+      "description": "You conjure a glyph that fills a **5ft/1.5m** area. When a creature **enters** the ward for the first time on a turn **or** starts its turn there. It must make a **body** check against your **Spell DC** or take **1d4 arcane** damage. The ward vanishes at the start of your next turn",
+      "amps": []
+    },
+    {
+      "id": "mana-dart",
+      "name": "Mana Dart",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 0,
+      "area": null,
+      "description": "Make a **spell attack roll**, on hit deal 1d4 **arcane** damage. On a **critical hit**, deal one extra dice per your current **tier**.",
+      "amps": []
+    },
+    {
+      "id": "mending-bond",
+      "name": "Mending Bond",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Touch",
+      "duration": "Instant",
+      "cost": 0,
+      "area": null,
+      "description": "You create a bond using magical energy to reinforce or mend small fractures or tears in objects no larger than 1 ft / 0.3 m. This cannot restore a magical item's effects if it was destroyed.",
+      "amps": []
+    },
+    {
+      "id": "passive-you-gain",
+      "name": "Passive You gain",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": null,
+      "duration": null,
+      "cost": 0,
+      "area": null,
+      "description": "Referenced by feature text; full definition not embedded here.",
+      "amps": [],
+      "reference_only": true
+    },
+    {
+      "id": "passive-you-learn-one",
+      "name": "Passive You learn one",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": null,
+      "duration": null,
+      "cost": 0,
+      "area": null,
+      "description": "Referenced by feature text; full definition not embedded here.",
+      "amps": [],
+      "reference_only": true
+    },
+    {
+      "id": "primeval-lure",
+      "name": "Primeval Lure",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Close",
+      "duration": "Instant",
+      "cost": 0,
+      "area": null,
+      "description": "You lash out with a ethereal line, pulling a target closer to you. Make a **spell attack roll** against the **body** of the target. On hit, deal 1d6 **elemental** damage of choice, on a **critical hit** move the target one range closer towards you.",
+      "amps": []
+    },
+    {
+      "id": "primeval-rebuke",
+      "name": "Primeval Rebuke",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Close",
+      "duration": "1 Minute",
+      "cost": 0,
+      "area": null,
+      "description": "You place an **aura** around a willing target which creates a energy of primeval energy. When the target with this **aura** is hit, it releases the energy in a **elemental** damage type of choice, dealing 2d4 of that damage type.",
+      "amps": []
+    },
+    {
+      "id": "primeval-ward",
+      "name": "Primeval Ward",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Touch",
+      "duration": "1 Round",
+      "cost": 0,
+      "area": null,
+      "description": "You touch an ally or yourself, and until the end of your next turn, that target gains **resistance** to a **elemental** damage type of your choice equal to your **spell casting modifier**.",
+      "amps": []
+    },
+    {
+      "id": "radiant-dart",
+      "name": "Radiant Dart",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Self",
+      "duration": "Instant",
+      "cost": 0,
+      "area": null,
+      "description": "You send a bolt of bright energy at a target. Make a **spell attack roll**, on a hit deal 1d4 **ether**, and on a **critical hit** that target is illuminated and cannot be a state of **hidden** or **Obscured**.",
+      "amps": []
+    },
+    {
+      "id": "shallow-darkness",
+      "name": "Shallow Darkness",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Touch",
+      "duration": "1 minute",
+      "cost": 0,
+      "area": null,
+      "description": "You cast a **aura** upon a willing target, the next **stealth** check from that target gains a +2.",
+      "amps": []
+    },
+    {
+      "id": "starfall",
+      "name": "Starfall",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Nearby",
+      "duration": "Instant",
+      "cost": 0,
+      "area": null,
+      "description": "You launch loose debris and objects of minimal mass. Make a **spell attack roll**, on a hit deal 1d8 **gravity** plus **spell casting modifier**.",
+      "amps": []
+    },
+    {
+      "id": "starlight",
+      "name": "Starlight",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Self",
+      "duration": "1 hour (Focused)",
+      "cost": 0,
+      "area": null,
+      "description": "You create a small torch-sized light which emits 20 ft / 6 m of **dim-light** that hovers around you and follows you. It can be moved to any location within your **zone** once per turn, and follows if you change **zones**.",
+      "amps": []
+    },
+    {
+      "id": "swift-scribe",
+      "name": "Swift Scribe",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Touch",
+      "duration": "Instant",
+      "cost": 0,
+      "area": null,
+      "description": "Using your magic you can copy visual text or symbols by etching and imprinting onto objects. These copies are non-magical in nature.",
+      "amps": []
+    },
+    {
+      "id": "system-shock",
+      "name": "System Shock",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Melee",
+      "duration": "Instant",
+      "cost": 0,
+      "area": null,
+      "description": "Make **spell attack roll**, on a hit deal 2d4 **arcane** damage. On a **critical hit**, the target is **dazed** until the end of their next turn.",
+      "amps": []
+    },
+    {
+      "id": "unseen-messenger",
+      "name": "Unseen Messenger",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": "Far",
+      "duration": "Instant",
+      "cost": 0,
+      "area": null,
+      "description": "You can send a message to known target within range that is 5 seconds in length. The messenger is ethereal and cannot be physically seen or stopped by non-magical means.",
+      "amps": []
+    },
+    {
+      "id": "",
+      "name": "| | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | |",
+      "tier": 0,
+      "is_cantrip": true,
+      "school": null,
+      "spheres": [],
+      "range": null,
+      "duration": null,
+      "cost": 0,
+      "area": null,
+      "description": "Referenced by feature text; full definition not embedded here.",
+      "amps": [],
+      "reference_only": true
+    }
+  ]
+}

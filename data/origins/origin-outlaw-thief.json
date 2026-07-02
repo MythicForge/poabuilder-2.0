@@ -1,0 +1,32 @@
+{
+  "id": "outlaw-thief",
+  "name": "Thief",
+  "origin": "outlaw",
+  "description": "Locks are puzzles, security a challenge. You don't just steal—you perform. Each heist is a work of art, each stolen item a testament to your skill. The world is full of treasures, and you know exactly how to claim them.",
+  "attribute_bonus": {
+    "attribute": "mind",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-outlaw-thief-base-slick-hands",
+      "name": "Slick Hands",
+      "tags": [
+        "Thief"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "On your first attempt when making checks related to **Thievery** you add your **Ambition** without a cost.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

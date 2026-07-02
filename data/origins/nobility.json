@@ -1,0 +1,35 @@
+{
+  "id": "nobility",
+  "name": "Nobility",
+  "description": "Whether through birth or adoption, you were raised among the nobility and educated in the ways of privilege and power.",
+  "pack": {
+    "consumables": [
+      "None"
+    ],
+    "kits": [
+      "Personal grooming kit"
+    ],
+    "clothing": [
+      "Fine clothing (3 sets)"
+    ],
+    "misc": {
+      "type": "choice",
+      "count": 2,
+      "from": [
+        "Signet ring",
+        "Family crest",
+        "Letters of introduction",
+        "Servant's whistle",
+        "Small lockbox",
+        "Family tree document",
+        "Small purse of silver coins"
+      ]
+    }
+  },
+  "vocations": [
+    "nobility-educated",
+    "nobility-socialite",
+    "nobility-warfare"
+  ],
+  "feats": []
+}

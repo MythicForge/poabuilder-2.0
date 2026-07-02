@@ -1,0 +1,51 @@
+{
+  "id": "acolyte-shaman",
+  "name": "Shaman",
+  "origin": "acolyte",
+  "description": "You're connection to the weave of fate, deities, nature, or even the deathless have led you to become in tune with the fabrics of reality. Will you seek to continue your journey of duties you hold sacred, or will you give into your own ambition?",
+  "attribute_bonus": {
+    "attribute": "mind",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-acolyte-shaman-base-ritual-practice",
+      "name": "Ritual Practice",
+      "tags": [
+        "Shaman"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Rituals and ceremony are second nature to you. Regardless of your spell casting abilities, you learn one tier 1 **ritual** spell of your choice and can use it once per day. If you do not already have a **Spellcasting** feat, you gain access to **limited spell casting** using **Primeval**.",
+      "boons": [],
+      "_todo": "port-boons"
+    },
+    {
+      "id": "origins-acolyte-shaman-base-spellcasting",
+      "name": "Spellcasting",
+      "tags": [
+        "Shaman"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You have learned to channel sacred rites into direct magic. Gain access to actions and spells that require spell casting. Your spellcasting features are as follows:\n- You are a **Limited-caster**.\n- Your **source** is **Primeval**.\n- Your **Spellcasting Modifier** is **Mind**.\n- Your total **reservoir** equals _(½ × Tier) + Spellcasting Modifier_ (rounded up).\n- Start with Two **Known Spells** at Tier 1.\n- Your **prepared spells** equal your **Spellcasting Modifier**.\n- Your **Spell DC** = 10 + Spell Tier + Spellcasting Modifier.\n- Each **Respite** restores spell points equal to your **Spellcasting Modifier** (minimum 3).\n- You gain two **Cantrips** from the **Primeval** source.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

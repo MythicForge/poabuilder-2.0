@@ -1,0 +1,32 @@
+{
+  "id": "apprentice-designer",
+  "name": "Designer",
+  "origin": "apprentice",
+  "description": "Skill and strength are all fine and well, but unless someone has a clear vision or experience to guide their hands, what more can they do? You spent your early years training and learning from your master the eye of discernment, now it's time to go show others all of what you can do for them.",
+  "attribute_bonus": {
+    "attribute": "will",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-apprentice-designer-base-makeshift-intuition",
+      "name": "Makeshift Intuition",
+      "tags": [
+        "Designer"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You know how most things work, and can pretty well come up with a clever tool on the spot. When attempting craft an item of **Minimal** quality, you have **Resolve** on those **Skill Checks**.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}

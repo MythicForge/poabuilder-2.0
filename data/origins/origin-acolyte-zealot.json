@@ -1,0 +1,32 @@
+{
+  "id": "acolyte-zealot",
+  "name": "Zealot",
+  "origin": "acolyte",
+  "description": "The path before you is clear, and the only way forward for all is to convert people to your ideology. For to long you have seen the world fall apart, but now you know you have the answers to fix it.",
+  "attribute_bonus": {
+    "attribute": "will",
+    "amount": 1
+  },
+  "feats": [
+    {
+      "id": "origins-acolyte-zealot-base-vow-of-protection",
+      "name": "Vow of Protection",
+      "tags": [
+        "Zealot"
+      ],
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "Your path is true and righteous, your will allows you to protect yourself or your allies. Once per day, regardless of spell casting abilities, you can cast *[[Chapter 4.5 - Spell List (Old)#Shield of Faith|shield of faith]]* at tier 1.",
+      "boons": [],
+      "_todo": "port-boons"
+    }
+  ],
+  "spellcasting": null
+}
