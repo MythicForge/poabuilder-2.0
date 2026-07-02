@@ -113,6 +113,19 @@ describe("fixture: Bren (Tier-2 Fighter)", () => {
   });
 });
 
+describe("export envelope", () => {
+  it("round-trips a character", async () => {
+    const { exportCharacter, importCharacter } = await import("./export.ts");
+    const json = exportCharacter(bren);
+    const back = importCharacter(json);
+    expect(back).toEqual({ ...bren, schema_version: 1 });
+  });
+  it("rejects foreign JSON", async () => {
+    const { importCharacter } = await import("./export.ts");
+    expect(() => importCharacter('{"app":"other"}')).toThrow();
+  });
+});
+
 describe("fixture: Selene (Tier-3 Mage)", () => {
   const c = computeCharacter(selene, REGISTRY);
   it("tier + attributes (artisan +1 mind)", () => {
