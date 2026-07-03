@@ -11,6 +11,7 @@ import { REGISTRY } from "../../core/data-registry.ts";
 import { computeCharacter } from "../../core/compute.ts";
 import { validateCharacter } from "../../core/validate-character.ts";
 import type { StoredCharacter } from "../../core/types.ts";
+import { ViewSwitcher } from "../view-switcher.tsx";
 import { STEPS } from "./steps/index.ts";
 
 function initialDraft(): StoredCharacter {
@@ -65,7 +66,7 @@ export function Builder() {
           <span className="bld-top-name-label">EDITING</span>
           <span className="bld-top-name-val">{draft.identity.name || "Unnamed"}</span>
         </div>
-        <a className="bld-top-exit" href="index.html">← Roster</a>
+        <ViewSwitcher current="builder" charId={draft.id} />
       </header>
 
       <div className="bld-body">

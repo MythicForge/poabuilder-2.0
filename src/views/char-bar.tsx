@@ -5,6 +5,7 @@ import { useRef } from "react";
 import type { ComputedCharacter, StoredCharacter } from "../core/types.ts";
 import { REGISTRY } from "../core/data-registry.ts";
 import { ConditionsBar } from "../shared/condition-bar.tsx";
+import { ViewSwitcher } from "./view-switcher.tsx";
 
 interface CharBarProps {
   stored: StoredCharacter;
@@ -30,16 +31,7 @@ export function CharBar({ stored, c, setStored }: CharBarProps) {
   return (
     <div className="char-bar">
       <div className="char-bar-crumbs">
-        <button className="char-bar-crumb" onClick={() => (window.location.href = "index.html")}>
-          ← MY CHARACTERS
-        </button>
-        <button
-          className="char-bar-crumb"
-          style={{ marginLeft: "auto" }}
-          onClick={() => (window.location.href = `builder.html?id=${encodeURIComponent(stored.id)}`)}
-        >
-          EDIT IN BUILDER →
-        </button>
+        <ViewSwitcher current="sheet" charId={stored.id} />
       </div>
 
       <div className="top">

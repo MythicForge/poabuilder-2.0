@@ -9,6 +9,7 @@ import { REGISTRY } from "../../core/data-registry.ts";
 import { computeCharacter } from "../../core/compute.ts";
 import { CharStorage } from "../../core/storage.ts";
 import { ATTRIBUTES, type AttributeKey, type StoredCharacter } from "../../core/types.ts";
+import { ViewSwitcher } from "../view-switcher.tsx";
 import brenFixture from "@data/characters/fixture-bren-tier2-fighter.json";
 
 function loadInitial(): StoredCharacter {
@@ -31,8 +32,7 @@ export function SkinSheet() {
   return (
     <div className="codex">
       <div className="codex-crumbs">
-        <a className="codex-crumb" href="index.html">← Roster</a>
-        <a className="codex-crumb" href="sheet.html">Full sheet →</a>
+        <ViewSwitcher current="codex" charId={stored.id} />
       </div>
 
       <header className="codex-hero">

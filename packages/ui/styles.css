@@ -6743,3 +6743,29 @@ button.cost-badge.off {
         gap: 16px;
     }
 }
+
+/* ── View switcher (Roster / Sheet / Codex / Builder) ─────────────────────── */
+.view-switch {
+    display: inline-flex;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+}
+.view-switch-item {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border-radius: 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+    cursor: pointer;
+}
+.view-switch-item:hover { color: var(--text); }
+.view-switch-item--on {
+    background: var(--gold);
+    color: var(--bg);
+    cursor: default;
+}
