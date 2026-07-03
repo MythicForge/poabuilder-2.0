@@ -212,6 +212,18 @@ for (const f of originFiles) {
 for (const s of spellsDoc?.spells ?? []) {
   if (!s.id) errors.push(`data/spells/spells.json: spell with empty id (name: "${(s.name ?? "").slice(0, 40)}")`);
   else if (s.id.length > 60) warns.push(`data/spells/spells.json: suspicious slug id "${s.id.slice(0, 50)}…" (broken extraction?)`);
+  // amp stacking: stackable is a boolean, stack_max its (numeric) cap
+  for (const a of s.amps ?? []) {
+    if (a.stackable !== undefined && typeof a.stackable !== "boolean") {
+      warns.push(`data/spells/spells.json: ${s.id} amp.stackable expected boolean, got ${JSON.stringify(a.stackable)}`);
+    }
+    if (a.stack_max !== undefined && typeof a.stack_max !== "number") {
+      warns.push(`data/spells/spells.json: ${s.id} amp.stack_max expected number, got ${JSON.stringify(a.stack_max)}`);
+    }
+    if (a.stackable === true && typeof a.stack_max !== "number") {
+      warns.push(`data/spells/spells.json: ${s.id} amp is stackable but has no numeric stack_max`);
+    }
+  }
 }
 
 // ── Character fixtures ───────────────────────────────────────────────────────

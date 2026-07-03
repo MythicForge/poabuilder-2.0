@@ -16,7 +16,7 @@
     "cost": "number — base mana cost (= tier, 0 for cantrips)",
     "area": "string|null",
     "description": "markdown string",
-    "amps": "[{ cost: string (e.g. \"+2\"), effect: string }] — optional extra-mana upgrades",
+    "amps": "[{ cost: string (e.g. \"+2\"), effect: string, stackable?: boolean, stack_max?: number }] — optional extra-mana upgrades; stackable = amp may be applied more than once, stack_max = how many times",
     "reference_only": "boolean (optional) — imported entry kept for reference, not player-selectable"
   }
 }
