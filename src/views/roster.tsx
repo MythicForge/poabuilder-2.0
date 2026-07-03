@@ -8,11 +8,20 @@ import { REGISTRY } from "../core/data-registry.ts";
 import { computeCharacter } from "../core/compute.ts";
 import { exportCharacter, importCharacter } from "../core/export.ts";
 import type { StoredCharacter } from "../core/types.ts";
+import brenFixture from "@data/characters/fixture-bren-tier2-fighter.json";
+import seleneFixture from "@data/characters/fixture-selene-tier3-mage.json";
+
+const SAMPLES = [brenFixture, seleneFixture] as unknown as StoredCharacter[];
 
 export function Roster() {
   const [list, setList] = useState(() => CharStorage.loadAll());
   const fileRef = useRef<HTMLInputElement>(null);
   const refresh = () => setList(CharStorage.loadAll());
+
+  const loadSamples = () => {
+    for (const s of SAMPLES) if (!CharStorage.get(s.id)) CharStorage.save(structuredClone(s));
+    refresh();
+  };
 
   const open = (id: string) => {
     CharStorage.setActive(id);
@@ -64,6 +73,7 @@ export function Roster() {
         </div>
         <div className="top-right" style={{ gap: 10 }}>
           <button className="rest-btn" onClick={create}><span className="name">+ New Character</span></button>
+          <button className="rest-btn" onClick={loadSamples}><span className="name">Load Samples</span></button>
           <button className="rest-btn" onClick={() => fileRef.current?.click()}><span className="name">Import</span></button>
           <input
             ref={fileRef}
