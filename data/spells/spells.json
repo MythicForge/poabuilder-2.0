@@ -11,8 +11,8 @@
       "name": "Alarm",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Universal"
       ],
       "range": "Self",
@@ -27,8 +27,8 @@
       "name": "Allure",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Anima"
       ],
       "range": "Close",
@@ -48,8 +48,8 @@
       "name": "Animate Carrion",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Mana"
       ],
       "range": "Touch",
@@ -64,8 +64,8 @@
       "name": "Arcane Needles",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Mana"
       ],
       "range": "Far",
@@ -76,7 +76,9 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Form one additional needle per Amp."
+          "effect": "Form one additional needle per Amp (Max 3)",
+          "stackable": true,
+          "stack_max": 3
         }
       ]
     },
@@ -85,8 +87,8 @@
       "name": "Augmented Facade",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Anima",
         "Mana"
       ],
@@ -98,7 +100,10 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Add 1 hour to the duration per Amp."
+          "effect": "Add 1 hour to the duration per Amp.",
+          "stackable": true,
+          "stack_max": 7
+
         },
         {
           "cost": "+3",
@@ -111,8 +116,8 @@
       "name": "Bitter Chill",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Soul",
         "Primeval"
       ],
@@ -133,8 +138,8 @@
       "name": "Calming Word",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Soul",
         "Anima"
       ],
@@ -146,7 +151,9 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase the spell tier of *Calming Word* by 1 per Amp."
+          "effect": "Increase the spell tier of *Calming Word* by 1 per Amp. (Max 3)",
+          "stackable": true,
+          "stack_max": 3          
         }
       ]
     },
@@ -155,8 +162,8 @@
       "name": "Command",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Soul",
         "Anima"
       ],
@@ -177,8 +184,8 @@
       "name": "Commune with Animals",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Primeval"
       ],
       "range": "Self",
@@ -193,8 +200,8 @@
       "name": "Cure Wounds",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Soul",
         "Primeval"
       ],
@@ -206,7 +213,9 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase healing by 1d8 per Amp."
+          "effect": "Increase healing by 1d8 per Amp. (Max 3)",
+          "stackable": true,
+          "stack_max": 3        
         }
       ]
     },
@@ -215,8 +224,8 @@
       "name": "Cursed",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Soul"
       ],
       "range": "Nearby",
@@ -240,8 +249,8 @@
       "name": "Detect Life",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Universal"
       ],
       "range": "Self",
@@ -252,7 +261,7 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase duration to 30 seconds."
+          "effect": "Held until you drop the spell or make a hostile action."
         }
       ]
     },
@@ -261,8 +270,8 @@
       "name": "Detect Magic",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Universal"
       ],
       "range": "Self",
@@ -277,8 +286,8 @@
       "name": "Detect the Inhuman",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Mana",
         "Soul"
       ],
@@ -294,8 +303,8 @@
       "name": "Disrupt Footing",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Mana",
         "Primeval"
       ],
@@ -316,8 +325,8 @@
       "name": "Distorted Image",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Anima"
       ],
       "range": "Close",
@@ -332,8 +341,8 @@
       "name": "Elderberry Vines",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Primeval"
       ],
       "range": "Self",
@@ -348,8 +357,8 @@
       "name": "Elemental Scorn",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Anima",
         "Primeval"
       ],
@@ -361,7 +370,9 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase damage by 1d4 per Amp."
+          "effect": "Increase damage by 1d4 per Amp. (Max 2)",
+          "stackable": true,
+          "stack_max": 2                  
         }
       ]
     },
@@ -370,8 +381,8 @@
       "name": "False Shield",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Universal"
       ],
       "range": "Self",
@@ -386,8 +397,8 @@
       "name": "Fear",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Universal"
       ],
       "range": "Self",
@@ -402,8 +413,8 @@
       "name": "Fleet Footing",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Mana",
         "Primeval",
         "Anima"
@@ -420,8 +431,8 @@
       "name": "Gossamer Thread",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Anima"
       ],
       "range": "Close",
@@ -436,8 +447,8 @@
       "name": "Grave Echo",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Mana",
         "Soul"
       ],
@@ -449,11 +460,15 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase time since death by 24 hours per Amp."
+          "effect": "Increase time since death by 1 Day per Amp. (Max 2 Days)",
+          "stackable": true,
+          "stack_max": 2        
         },
         {
           "cost": "+1",
-          "effect": "Increase questions asked by 2 per Amp."
+          "effect": "Increase questions asked by 2 per Amp. (Max 2)",
+          "stackable": true,
+          "stack_max": 2        
         }
       ]
     },
@@ -462,8 +477,8 @@
       "name": "Grave Touch",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Mana",
         "Soul"
       ],
@@ -475,7 +490,9 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase damage by 1d4 per Amp."
+          "effect": "Increase damage by 1d4 per Amp. (Max 3)",
+          "stackable": true,
+          "stack_max": 3        
         }
       ]
     },
@@ -484,8 +501,8 @@
       "name": "Guidance",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Soul",
         "Primeval"
       ],
@@ -501,8 +518,8 @@
       "name": "Healing Word",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Soul",
         "Primeval",
         "Anima"
@@ -515,7 +532,9 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase healing by 1d4 per Amp."
+          "effect": "Increase healing by 1d4 per Amp. (Max 2)",
+          "stackable": true,
+          "stack_max": 2        
         },
         {
           "cost": "+3",
@@ -528,8 +547,8 @@
       "name": "Ignition",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Mana",
         "Primeval"
       ],
@@ -550,8 +569,8 @@
       "name": "Imbue with Elements",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Primeval"
       ],
       "range": "Close",
@@ -575,8 +594,8 @@
       "name": "Jump",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Universal"
       ],
       "range": "Self",
@@ -591,8 +610,8 @@
       "name": "Launch",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Anima",
         "Mana"
       ],
@@ -604,7 +623,9 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase damage by 1d8 and the weight limit by 5 lbs / 2.5 kg per Amp."
+          "effect": "Increase damage by 1d8 and the weight limit by 5 lbs / 2.5 kg per Amp. (Max 10)",
+          "stackable": true,
+          "stack_max": 10        
         }
       ]
     },
@@ -613,8 +634,8 @@
       "name": "Light",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Universal"
       ],
       "range": "Close",
@@ -629,8 +650,8 @@
       "name": "Mending",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Universal"
       ],
       "range": "Self",
@@ -645,8 +666,8 @@
       "name": "Misleading Disguise",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Mana",
         "Primeval"
       ],
@@ -662,8 +683,8 @@
       "name": "Preservation",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Soul",
         "Primeval"
       ],
@@ -684,8 +705,8 @@
       "name": "Protection from the Inhuman",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Mana",
         "Soul"
       ],
@@ -701,8 +722,8 @@
       "name": "Pull",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Mana",
         "Anima"
       ],
@@ -718,8 +739,8 @@
       "name": "Purification",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Anima",
         "Soul",
         "Primeval"
@@ -736,8 +757,8 @@
       "name": "Push",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Mana",
         "Anima"
       ],
@@ -753,8 +774,8 @@
       "name": "Repelling Ward",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Anima",
         "Mana"
       ],
@@ -775,8 +796,8 @@
       "name": "Resonant Distortion",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Anima"
       ],
       "range": "Close",
@@ -791,8 +812,8 @@
       "name": "Ruin",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Soul",
         "Anima"
       ],
@@ -804,7 +825,9 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase damage by 1d4 per Amp."
+          "effect": "Increase damage by 1d4 per Amp. (Max 3)",
+          "stackable": true,
+          "stack_max": 3        
         }
       ]
     },
@@ -813,8 +836,8 @@
       "name": "Seeking Bolt",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Soul",
         "Anima"
       ],
@@ -830,8 +853,8 @@
       "name": "Sending",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Mana",
         "Primeval"
       ],
@@ -856,8 +879,8 @@
       "name": "Shield",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Mana"
       ],
       "range": "Self",
@@ -872,8 +895,8 @@
       "name": "Shield of Faith",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Soul"
       ],
       "range": "Nearby",
@@ -888,8 +911,8 @@
       "name": "Signal Fire",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Mana",
         "Soul",
         "Anima"
@@ -906,8 +929,8 @@
       "name": "Slow Fall",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Universal"
       ],
       "range": "Self",
@@ -922,8 +945,8 @@
       "name": "Smite",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Soul"
       ],
       "range": "Close",
@@ -938,8 +961,8 @@
       "name": "Spell Armor",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Universal"
       ],
       "range": "Self",
@@ -954,8 +977,8 @@
       "name": "Summoned Familiar",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Mana",
         "Primeval"
       ],
@@ -971,8 +994,8 @@
       "name": "Summoned Weapon",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Soul"
       ],
       "range": "Self",
@@ -996,8 +1019,8 @@
       "name": "Tainted",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Soul"
       ],
       "range": "Close",
@@ -1008,7 +1031,9 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase the total number of targets by one per Amp. A separate spell attack roll is made for each additional target."
+          "effect": "Increase the total number of targets by one per Amp (Max 3). A separate spell attack roll is made for each additional target.",
+          "stackable": true,
+          "stack_max": 3        
         },
         {
           "cost": "+2",
@@ -1021,8 +1046,8 @@
       "name": "Terraform",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Mana",
         "Primeval"
       ],
@@ -1038,8 +1063,8 @@
       "name": "Torment",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Anima"
       ],
       "range": "Close",
@@ -1054,8 +1079,8 @@
       "name": "Turn the Heretic",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Oathbound"
       ],
       "range": "Close",
@@ -1075,8 +1100,8 @@
       "name": "Venom Spray",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Primeval"
       ],
       "range": "Self",
@@ -1096,8 +1121,8 @@
       "name": "Whispers of Omen",
       "tier": 1,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Anima"
       ],
       "range": "Close",
@@ -1117,8 +1142,8 @@
       "name": "Arcane Bastion",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Universal"
       ],
       "range": "Self",
@@ -1138,8 +1163,8 @@
       "name": "Arcane Chains",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Mana"
       ],
       "range": "Far",
@@ -1159,8 +1184,8 @@
       "name": "Astral Sign",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Mana",
         "Anima"
       ],
@@ -1176,8 +1201,8 @@
       "name": "Blight Cloud",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Primeval"
       ],
       "range": "Close",
@@ -1192,8 +1217,8 @@
       "name": "Blinding Radiance",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Soul",
         "Primeval"
       ],
@@ -1214,8 +1239,8 @@
       "name": "Blood Hunt",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Primeval",
         "Soul"
       ],
@@ -1236,8 +1261,8 @@
       "name": "Bone Harvest",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Soul",
         "Primeval"
       ],
@@ -1249,7 +1274,9 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase damage by 1d6 per Amp."
+          "effect": "Increase damage by 1d6 per Amp. (Max 4)",
+          "stackable": true,
+          "stack_max": 4        
         }
       ]
     },
@@ -1258,8 +1285,8 @@
       "name": "Call of the Wild",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Mana",
         "Primeval"
       ],
@@ -1280,8 +1307,8 @@
       "name": "Corrosive Lance",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Primeval",
         "Mana"
       ],
@@ -1293,7 +1320,9 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase **Puncture** or **Corrosive** damage by 1d8 per Amp."
+          "effect": "Increase **Puncture** or **Corrosive** damage by 1d8 per Amp. (Max 3)",
+          "stackable": true,
+          "stack_max": 3        
         }
       ]
     },
@@ -1302,8 +1331,8 @@
       "name": "Cosmic Beam",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Primeval",
         "Soul"
       ],
@@ -1315,7 +1344,9 @@
       "amps": [
         {
           "cost": "+2",
-          "effect": "Increase damage by 1d6 per Amp."
+          "effect": "Increase damage by 1d6 per Amp. (Max 3)",
+          "stackable": true,
+          "stack_max": 3        
         }
       ]
     },
@@ -1324,8 +1355,8 @@
       "name": "Crimson Veil",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Soul"
       ],
       "range": "Close",
@@ -1340,8 +1371,8 @@
       "name": "Curse of Frailty",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Soul"
       ],
       "range": "Close",
@@ -1361,8 +1392,8 @@
       "name": "Darkness",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Mana",
         "Soul"
       ],
@@ -1383,8 +1414,8 @@
       "name": "Disrupt Magic",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Mana",
         "Anima"
       ],
@@ -1396,7 +1427,9 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase the spell tier you can affect by 1 per Amp."
+          "effect": "Increase the spell tier you can affect by 1 per Amp. (Max 4)",
+          "stackable": true,
+          "stack_max": 4        
         }
       ]
     },
@@ -1405,8 +1438,8 @@
       "name": "Echo Location",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Primeval"
       ],
       "range": "Beyond",
@@ -1426,8 +1459,8 @@
       "name": "Echoing Sorrow",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Soul"
       ],
       "range": "Self",
@@ -1447,8 +1480,8 @@
       "name": "Elemental Surge",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Mana",
         "Anima",
         "Primeval"
@@ -1470,8 +1503,8 @@
       "name": "Elemental Ward",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Universal"
       ],
       "range": "Self",
@@ -1491,8 +1524,8 @@
       "name": "Ethereal Ammunition",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Mana",
         "Primeval"
       ],
@@ -1513,8 +1546,8 @@
       "name": "Ethereal Armament",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Mana",
         "Soul"
       ],
@@ -1539,8 +1572,8 @@
       "name": "Healing Spirit",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Primeval",
         "Soul",
         "Anima"
@@ -1562,8 +1595,8 @@
       "name": "Heat Material",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Anima",
         "Mana",
         "Primeval"
@@ -1585,8 +1618,8 @@
       "name": "Heroic Vitality",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Anima",
         "Soul"
       ],
@@ -1602,8 +1635,8 @@
       "name": "Hysteria",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Soul",
         "Anima"
       ],
@@ -1619,8 +1652,8 @@
       "name": "Inquiry",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Mana",
         "Soul"
       ],
@@ -1636,8 +1669,8 @@
       "name": "Invisibility",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Mana",
         "Primeval"
       ],
@@ -1662,8 +1695,8 @@
       "name": "Leeching Grasp",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Soul",
         "Anima"
       ],
@@ -1688,8 +1721,8 @@
       "name": "Major Resistance",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Primeval",
         "Soul"
       ],
@@ -1705,8 +1738,8 @@
       "name": "Mana Infusion",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Mana"
       ],
       "range": "Touch",
@@ -1726,8 +1759,8 @@
       "name": "Mirage Figures",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Mana",
         "Soul",
         "Anima"
@@ -1744,8 +1777,8 @@
       "name": "Mystic Bulwark",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Primeval"
       ],
       "range": "Nearby",
@@ -1769,8 +1802,8 @@
       "name": "Needle Storm",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Anima",
         "Primeval"
       ],
@@ -1786,8 +1819,8 @@
       "name": "Offerings of War",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Soul"
       ],
       "range": "Close",
@@ -1802,8 +1835,8 @@
       "name": "Phantasmal Assault",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Mana",
         "Anima"
       ],
@@ -1824,8 +1857,8 @@
       "name": "Primeval Growth",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Primeval"
       ],
       "range": "Nearby",
@@ -1845,8 +1878,8 @@
       "name": "Primeval Senses",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Primeval"
       ],
       "range": "Self",
@@ -1870,8 +1903,8 @@
       "name": "Probing Augur",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Anima",
         "Soul"
       ],
@@ -1892,8 +1925,8 @@
       "name": "Razor Wind",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Mana",
         "Primeval"
       ],
@@ -1905,7 +1938,9 @@
       "amps": [
         {
           "cost": "+2",
-          "effect": "Increase damage by 1d6 per Amp."
+          "effect": "Increase damage by 1d6 per Amp. (Max 2)",
+          "stackable": true,
+          "stack_max": 2        
         }
       ]
     },
@@ -1914,8 +1949,8 @@
       "name": "Rescale",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Anima",
         "Mana"
       ],
@@ -1936,8 +1971,8 @@
       "name": "See Invisibility",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Anima",
         "Soul"
       ],
@@ -1953,8 +1988,8 @@
       "name": "Seized",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Anima",
         "Mana",
         "Soul"
@@ -1971,8 +2006,8 @@
       "name": "Shadow Step",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Anima",
         "Mana"
       ],
@@ -1993,8 +2028,8 @@
       "name": "Shatter",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Anima",
         "Mana"
       ],
@@ -2010,8 +2045,8 @@
       "name": "Shroud of Obscurity",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Anima"
       ],
       "range": "Self",
@@ -2031,8 +2066,8 @@
       "name": "Solar Rays",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Anima",
         "Mana",
         "Primeval"
@@ -2045,7 +2080,9 @@
       "amps": [
         {
           "cost": "+2",
-          "effect": "Increase the number of rays by 1 per Amp."
+          "effect": "Increase the number of rays by 1 per Amp. (Max 2)",
+          "stackable": true,
+          "stack_max": 2        
         }
       ]
     },
@@ -2054,8 +2091,8 @@
       "name": "Soul Barrier",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Soul"
       ],
       "range": "Close",
@@ -2075,8 +2112,8 @@
       "name": "Soul Burst",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Anima",
         "Soul"
       ],
@@ -2097,8 +2134,8 @@
       "name": "Spectral Guardians",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Mana",
         "Soul"
       ],
@@ -2119,8 +2156,8 @@
       "name": "Spider Climb",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Mana",
         "Primeval"
       ],
@@ -2136,8 +2173,8 @@
       "name": "Summon Portals",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Anima"
       ],
       "range": "Close",
@@ -2152,8 +2189,8 @@
       "name": "Summon Shelter",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Primeval"
       ],
       "range": "Self",
@@ -2168,8 +2205,8 @@
       "name": "Surge of Vitality",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Anima",
         "Primeval"
       ],
@@ -2190,8 +2227,8 @@
       "name": "Vital Reinforcement",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Universal"
       ],
       "range": "Touch",
@@ -2211,8 +2248,8 @@
       "name": "Vitality Transfer",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Soul"
       ],
       "range": "Close",
@@ -2232,8 +2269,8 @@
       "name": "Void Armor",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Soul"
       ],
       "range": "Self",
@@ -2257,8 +2294,8 @@
       "name": "Wyrm’s Breath",
       "tier": 2,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Primeval",
         "Mana",
         "Anima"
@@ -2275,8 +2312,8 @@
       "name": "Alacrity",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Anima",
         "Primeval"
       ],
@@ -2297,8 +2334,8 @@
       "name": "Banner of War",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Oathbound"
       ],
       "range": "Self",
@@ -2313,8 +2350,8 @@
       "name": "Barrier",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Anima",
         "Mana",
         "Soul"
@@ -2340,8 +2377,8 @@
       "name": "Blind Sacrifice",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Primeval",
         "Soul"
       ],
@@ -2357,8 +2394,8 @@
       "name": "Confusing Apparitions",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Anima",
         "Mana"
       ],
@@ -2374,8 +2411,8 @@
       "name": "Crippling Anguish",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Anima",
         "Mana"
       ],
@@ -2391,8 +2428,8 @@
       "name": "Detect Mortals",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Anima",
         "Soul"
       ],
@@ -2408,8 +2445,8 @@
       "name": "Enfeebled",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Primeval",
         "Soul"
       ],
@@ -2425,8 +2462,8 @@
       "name": "Graviton Field",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Anima",
         "Soul"
       ],
@@ -2442,8 +2479,8 @@
       "name": "Harvest",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Mana",
         "Soul"
       ],
@@ -2464,8 +2501,8 @@
       "name": "Incinerate",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Primeval",
         "Mana"
       ],
@@ -2477,7 +2514,9 @@
       "amps": [
         {
           "cost": "+1",
-          "effect": "Increase damage by 1d6 per Amp."
+          "effect": "Increase damage by 1d6 per Amp. (Max 4)",
+          "stackable": true,
+          "stack_max": 4        
         }
       ]
     },
@@ -2486,8 +2525,8 @@
       "name": "Lightning Bolt",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Anima",
         "Primeval",
         "Mana"
@@ -2504,8 +2543,8 @@
       "name": "Mist Form",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Anima",
         "Primeval"
       ],
@@ -2521,8 +2560,8 @@
       "name": "Primeval Engraving",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Primeval"
       ],
       "range": "Self",
@@ -2542,8 +2581,8 @@
       "name": "Radiant Vitality",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Soul"
       ],
       "range": "Self",
@@ -2563,8 +2602,8 @@
       "name": "Shared Invisibility",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Primeval",
         "Mana"
       ],
@@ -2585,8 +2624,8 @@
       "name": "Soul Tether",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Soul"
       ],
       "range": "Touch",
@@ -2601,8 +2640,8 @@
       "name": "Source Location",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Divination",
-      "spheres": [
+      "spheres": "Divination",
+      "sources":[
         "Mana",
         "Primeval",
         "Soul"
@@ -2619,8 +2658,8 @@
       "name": "Stabilize",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Mortification",
-      "spheres": [
+      "spheres": "Mortification",
+      "sources":[
         "Primeval",
         "Soul"
       ],
@@ -2645,8 +2684,8 @@
       "name": "Stasis",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Augmentation",
-      "spheres": [
+      "spheres": "Augmentation",
+      "sources":[
         "Soul",
         "Mana"
       ],
@@ -2667,8 +2706,8 @@
       "name": "Temporal Distortion",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Aberration",
-      "spheres": [
+      "spheres": "Aberration",
+      "sources":[
         "Mana"
       ],
       "range": "Nearby",
@@ -2683,8 +2722,8 @@
       "name": "Void Feast",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Anima",
         "Primeval",
         "Soul"
@@ -2701,8 +2740,8 @@
       "name": "Void Warp",
       "tier": 3,
       "is_cantrip": false,
-      "school": "Conjuration",
-      "spheres": [
+      "spheres": "Conjuration",
+      "sources":[
         "Anima",
         "Mana"
       ],
@@ -2723,8 +2762,8 @@
       "name": "Disrupt Port",
       "tier": 4,
       "is_cantrip": false,
-      "school": "Reclamation",
-      "spheres": [
+      "spheres": "Reclamation",
+      "sources":[
         "Mana",
         "Soul"
       ],
@@ -2740,8 +2779,8 @@
       "name": "Thundercrash",
       "tier": 4,
       "is_cantrip": false,
-      "school": "Decimation",
-      "spheres": [
+      "spheres": "Decimation",
+      "sources":[
         "Anima",
         "Primeval"
       ],
@@ -2757,8 +2796,8 @@
       "name": ". When used as a",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": null,
       "duration": null,
       "cost": 0,
@@ -2772,8 +2811,8 @@
       "name": "and can only effect a target once an hour. | |",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": null,
       "duration": null,
       "cost": 0,
@@ -2787,8 +2826,8 @@
       "name": "Apprentice's Artifice",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Close",
       "duration": "Instant",
       "cost": 0,
@@ -2801,8 +2840,8 @@
       "name": "Arcane Echo",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Self",
       "duration": "Instant",
       "cost": 0,
@@ -2815,8 +2854,8 @@
       "name": "Arcane Jolt",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Close, line",
       "duration": null,
       "cost": 0,
@@ -2829,8 +2868,8 @@
       "name": "Arcane Lens",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Self",
       "duration": "Instant",
       "cost": 0,
@@ -2843,8 +2882,8 @@
       "name": "Blight Touch",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Close",
       "duration": "1 Round",
       "cost": 0,
@@ -2857,8 +2896,8 @@
       "name": "Double the carry weight capacity when slotted onto armor -",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": null,
       "duration": null,
       "cost": 0,
@@ -2872,8 +2911,8 @@
       "name": "Grim Knowledge",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Nearby",
       "duration": "Instant",
       "cost": 0,
@@ -2886,8 +2925,8 @@
       "name": "Hex Barb",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Nearby",
       "duration": "Instant",
       "cost": 0,
@@ -2900,8 +2939,8 @@
       "name": "Hunter's Stride",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Touch",
       "duration": "1 Minute, (Focused)",
       "cost": 0,
@@ -2914,8 +2953,8 @@
       "name": "its ranged is reduced to",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": null,
       "duration": null,
       "cost": 0,
@@ -2929,8 +2968,8 @@
       "name": "Mage's Ward",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Close",
       "duration": "1 round",
       "cost": 0,
@@ -2943,8 +2982,8 @@
       "name": "Mana Dart",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Close",
       "duration": "Instant",
       "cost": 0,
@@ -2957,8 +2996,8 @@
       "name": "Mending Bond",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Touch",
       "duration": "Instant",
       "cost": 0,
@@ -2971,8 +3010,8 @@
       "name": "Passive You gain",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": null,
       "duration": null,
       "cost": 0,
@@ -2986,8 +3025,8 @@
       "name": "Passive You learn one",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": null,
       "duration": null,
       "cost": 0,
@@ -3001,8 +3040,8 @@
       "name": "Primeval Lure",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Close",
       "duration": "Instant",
       "cost": 0,
@@ -3015,8 +3054,8 @@
       "name": "Primeval Rebuke",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Close",
       "duration": "1 Minute",
       "cost": 0,
@@ -3029,8 +3068,8 @@
       "name": "Primeval Ward",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Touch",
       "duration": "1 Round",
       "cost": 0,
@@ -3043,8 +3082,8 @@
       "name": "Radiant Dart",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Self",
       "duration": "Instant",
       "cost": 0,
@@ -3057,8 +3096,8 @@
       "name": "Shallow Darkness",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Touch",
       "duration": "1 minute",
       "cost": 0,
@@ -3071,8 +3110,8 @@
       "name": "Starfall",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Nearby",
       "duration": "Instant",
       "cost": 0,
@@ -3085,8 +3124,8 @@
       "name": "Starlight",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Self",
       "duration": "1 hour (Focused)",
       "cost": 0,
@@ -3099,8 +3138,8 @@
       "name": "Swift Scribe",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Touch",
       "duration": "Instant",
       "cost": 0,
@@ -3113,8 +3152,8 @@
       "name": "System Shock",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Melee",
       "duration": "Instant",
       "cost": 0,
@@ -3127,8 +3166,8 @@
       "name": "Unseen Messenger",
       "tier": 0,
       "is_cantrip": true,
-      "school": null,
-      "spheres": [],
+      "spheres": null,
+      "sources":[],
       "range": "Far",
       "duration": "Instant",
       "cost": 0,
