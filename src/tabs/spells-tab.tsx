@@ -4,6 +4,7 @@
 import { useState } from "react";
 import type { ComputedCharacter, Spell, StoredCharacter } from "../core/types.ts";
 import { REGISTRY } from "../core/data-registry.ts";
+import { Markdown } from "@ui/primitives.tsx";
 
 interface TabProps {
   c: ComputedCharacter;
@@ -85,7 +86,7 @@ export function SpellsTab({ c, stored, setStored }: TabProps) {
         </div>
         {open && (
           <div className="desc">
-            {sp.description}
+            <Markdown text={sp.description} />
             {sp.amps.length > 0 && (
               <ul style={{ marginTop: 6 }}>
                 {sp.amps.map((a, i) => <li key={i}><b>Amp {a.cost}:</b> {a.effect}</li>)}

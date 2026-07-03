@@ -121,10 +121,10 @@ describe("validateCharacter", () => {
   });
 
   it("flags skill dice overspend against the skill point budget", () => {
-    const c = clone(); // earned = floor(3/2) = 1, points already spend 1
-    c.build.skills.points = { ...c.build.skills.points, Talent: 1 };
+    const c = clone(); // earned = 4 creation + floor(3/2) = 5, points already spend 1
+    c.build.skills.points = { ...c.build.skills.points, Talent: 3, Awareness: 2 };
     const issues = validateCharacter(c, REGISTRY, computeCharacter(c, REGISTRY));
-    expect(issues.join()).toMatch(/skill points overspent: 2 of 1/);
+    expect(issues.join()).toMatch(/skill points overspent: 6 of 5/);
   });
 
   it("flags expertise overspend against the expertise point budget", () => {

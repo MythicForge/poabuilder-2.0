@@ -67,11 +67,7 @@ function skillPool(skill: SkillName, stored: StoredCharacter, attrs: Record<Attr
   const rank = skillRank(skill, s.proficiencies, s.expertise_bumps);
   const faces = profDieSize(rank);
   const skillDiceCount = s.points[skill] ?? 0;
-  const display = faces !== null
-    ? `${baseDiceCount + skillDiceCount}d${faces}`
-    : skillDiceCount > 0
-      ? `${baseDiceCount}d6 + ${skillDiceCount}d6`
-      : `${baseDiceCount}d6`;
+  const display = `${baseDiceCount + skillDiceCount}d${faces ?? 6}`;
   return { skill, attrValue, rank, baseDiceCount, profDieFaces: faces, skillDiceCount, display };
 }
 
@@ -382,7 +378,9 @@ export function computeCharacter(stored: StoredCharacter, reg: Registry): Comput
     (reg.tierProgression.creation_attribute_points ?? 0) +
     b.feats_purchased * reg.tierProgression.attribute_point_per_purchased_feat;
   const attrSpent = ATTRIBUTES.reduce((s, a) => s + b.attributes[a], 0);
-  const skillEarned = Math.floor(b.feats_purchased / 2) * reg.tierProgression.skill_point_per_even_feat;
+  const skillEarned =
+    (reg.tierProgression.creation_skill_points ?? 0) +
+    Math.floor(b.feats_purchased / 2) * reg.tierProgression.skill_point_per_even_feat;
   const skillSpent = Object.values(b.skills.points).reduce((s, n) => s + n, 0);
   const expertiseEarned = tier - 1;
   const expertiseSpent = Object.values(b.skills.expertise_bumps).reduce((s, n) => s + n, 0);

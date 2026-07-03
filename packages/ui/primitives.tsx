@@ -1,12 +1,27 @@
 // UI primitives (ported from 5edata, PoA-agnostic).
 
-import React from "react";
+import React, { useMemo } from "react";
+import { marked } from "marked";
 import {
   Shield, Zap, Footprints, BookText, Heart, Skull, Swords, Star, Box,
   Backpack, SquarePen, Sword, CircleUserRound, FlaskRound, ChevronRight,
   ChevronLeft, ChevronUp, ChevronDown, Shirt, BowArrow, Waypoints, Sparkle,
   ScrollText, DiamondPlus, Flame, Droplets, Dices, Weight, Moon, Sun, Coffee,
 } from "lucide-react";
+
+marked.setOptions({ breaks: true });
+
+interface MarkdownProps {
+  text: string;
+  className?: string;
+}
+// Renders game-data description strings (bold, lists, tables — see
+// spell-schema.json's "description: markdown string"). Content is
+// authored data, not user input.
+export function Markdown({ text, className = "" }: MarkdownProps) {
+  const html = useMemo(() => marked.parse(text ?? "", { async: false }) as string, [text]);
+  return <div className={`md ${className}`} dangerouslySetInnerHTML={{ __html: html }} />;
+}
 
 interface SpinnerProps {
   onUp?: () => void;

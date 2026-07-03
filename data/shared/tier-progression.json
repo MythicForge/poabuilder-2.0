@@ -2,6 +2,7 @@
   "max_feats": 16,
   "creation_attribute_points": 5,
   "attribute_point_per_purchased_feat": 1,
+  "creation_skill_points": 4,
   "skill_point_per_even_feat": 1,
   "tiers": [
     {

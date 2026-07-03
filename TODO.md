@@ -41,6 +41,26 @@ Dev: `npm run dev` (port 7901).
   list and mislabeled the real `spheres` field with the `sources` vocab;
   fixed. Builder UI capitalizes sphere names for display only.
 - **`.gitignore` `*.tsbuildinfo`** — untracked and ignored.
+- **`creation_skill_points` added (4)** — skill dice points now grant a
+  creation baseline like attribute points do (`creation_skill_points +
+  floor(feats_purchased/2) * skill_point_per_even_feat`), instead of starting
+  at 0 for a fresh character. Verified live in the browser: T1/0-feats now
+  shows 4/4, T3/6-feats shows 7/7.
+
+- **Skill dice display bug** — untrained skills showed base + skill dice as
+  separate terms (`1d6 + 3d6`) instead of one pool (`4d6`); `skillPool()`'s
+  display formula now always combines them.
+- **Sheet description rendering** — feat/spell `description` text is
+  authored Markdown (`spell-schema.json` says so) but was rendered as a raw
+  string, so `**bold**`, bullet lists, and pipe tables showed as literal
+  asterisks/pipes. Added a shared `<Markdown>` component (`packages/ui`,
+  using `marked`) and wired it into Combat/Feats/Spells tabs, plus `.md`
+  styling matching the sheet's dark theme. Also found and rewrote 2 feat
+  descriptions (Elementalist's Primordial Strike, Alchemist's Explosive
+  Workings) that had raw `attack_option` JSON hand-transcribed into the
+  prose as a stopgap for an unported boon type — now clean prose/tables;
+  the structured data is still preserved in `_review` for when
+  `attack_option` gets ported into the engine.
 
 ## Open / needs a call
 

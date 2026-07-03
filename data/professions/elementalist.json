@@ -210,7 +210,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "You turn your hands into weapons of the Elements. Unarmed attacks and a Close ranged attack both deal your core damage type + Will. Dice size increases each tier. Attack option — attack_type: unarmed; damage_modifier: Will; damage_type_ref: {\"source\":\"table\",\"table\":\"core_damage_type\",\"key\":\"elemental_core\"}; targets_defense: Armor; tier_scaling: [{\"tier\":1,\"dice\":\"1d6\"},{\"tier\":2,\"dice\":\"1d8\"},{\"tier\":3,\"dice\":\"1d10\"},{\"tier\":4,\"dice\":\"1d12\"},{\"tier\":5,\"dice\":\"2d8\"}]. Attack option — attack_type: ranged; damage_modifier: Will; damage_type_ref: {\"source\":\"table\",\"table\":\"core_damage_type\",\"key\":\"elemental_core\"}; targets_defense: Armor; range: Close; tier_scaling: [{\"tier\":1,\"dice\":\"1d6\"},{\"tier\":2,\"dice\":\"1d6\"},{\"tier\":3,\"dice\":\"1d8\"},{\"tier\":4,\"dice\":\"1d10\"},{\"tier\":5,\"dice\":\"1d12\"}].",
+      "description": "You turn your hands into weapons of the Elements. Unarmed attacks and a Close-range attack both deal your core damage type + Will, targeting Armor. Damage die increases each tier:\n\n| Tier | Unarmed | Ranged (Close) |\n| --- | --- | --- |\n| 1 | 1d6 | 1d6 |\n| 2 | 1d8 | 1d6 |\n| 3 | 1d10 | 1d8 |\n| 4 | 1d12 | 1d10 |\n| 5 | 2d8 | 1d12 |",
       "boons": [],
       "tables": {
         "core_damage_type": {

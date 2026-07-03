@@ -2,7 +2,7 @@
 // and limited-use counters.
 
 import type { Boon, ComputedCharacter, Feat, StoredCharacter } from "../core/types.ts";
-import { Pill } from "@ui/primitives.tsx";
+import { Markdown, Pill } from "@ui/primitives.tsx";
 
 interface TabProps {
   c: ComputedCharacter;
@@ -64,7 +64,7 @@ export function FeatsTab({ c, stored, setStored }: TabProps) {
                     </span>
                   )}
                 </div>
-                <div className="desc">{feat.description}</div>
+                <Markdown className="desc" text={feat.description} />
                 <BoonControls boons={activeBoons} stored={stored} setChoice={setChoice} toggleState={toggleState} />
               </div>
             );

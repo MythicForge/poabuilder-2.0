@@ -218,7 +218,7 @@
           "count": 1
         }
       },
-      "description": "At Daily Preparation, you can create deadlier alchemical creations in addition to your Concoction Kit. (Source: targets Body — encoded as Fortitude; verify.) Attack option — targets_defense: Fortitude. Apply condition — condition_id: BLN; target: enemy; duration: 1d4 rounds. Attack option — targets_defense: Fortitude; range: Engagement. Damage bonus — formula: 2d4; damage_type: Puncture. Damage bonus — formula: 2d4; damage_type: Fire. Attack option — targets_defense: Armor. Damage bonus — formula: 3d6; damage_type_ref: {\"source\":\"random_d6\",\"table\":\"experimental_damage_type\"}.",
+      "description": "At Daily Preparation, you can create deadlier alchemical creations in addition to your Concoction Kit:\n\n- **Debilitating Gas** — targets Fortitude. Blinds an enemy for 1d4 rounds.\n- **Shrapnel Bomb** — targets Fortitude at Engagement range. Deals 2d4 Puncture + 2d4 Fire damage.\n- **Volatile Vial** — targets Armor. Deals 3d6 damage of a random type, rolled on the experimental damage table.",
       "boons": [
         {
           "type": "crafting_pool_extend",

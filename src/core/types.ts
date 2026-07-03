@@ -253,6 +253,8 @@ export interface TierProgression {
   /** Attribute points available at character creation, before per-feat gains. */
   creation_attribute_points?: number;
   attribute_point_per_purchased_feat: number;
+  /** Skill dice points available at character creation, before per-feat gains. */
+  creation_skill_points?: number;
   skill_point_per_even_feat: number;
   tiers: {
     tier: number;

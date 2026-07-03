@@ -4,6 +4,7 @@
 import type { ComputedCharacter, StoredCharacter } from "../core/types.ts";
 import { REGISTRY } from "../core/data-registry.ts";
 import { resolveItem } from "../core/compute.ts";
+import { Markdown } from "@ui/primitives.tsx";
 
 interface TabProps {
   c: ComputedCharacter;
@@ -59,7 +60,7 @@ export function CombatTab({ c, stored, setStored }: TabProps) {
                 {feat.feat_dc ? ` · DC ${feat.feat_dc}` : ""}
               </span>
             </div>
-            <div className="desc">{feat.description}</div>
+            <Markdown className="desc" text={feat.description} />
           </div>
         ))}
       </div>
