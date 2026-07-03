@@ -384,6 +384,8 @@ export function computeCharacter(stored: StoredCharacter, reg: Registry): Comput
   const attrSpent = ATTRIBUTES.reduce((s, a) => s + b.attributes[a], 0);
   const skillEarned = Math.floor(b.feats_purchased / 2) * reg.tierProgression.skill_point_per_even_feat;
   const skillSpent = Object.values(b.skills.points).reduce((s, n) => s + n, 0);
+  const expertiseEarned = tier - 1;
+  const expertiseSpent = Object.values(b.skills.expertise_bumps).reduce((s, n) => s + n, 0);
 
   // proficiencies
   const profs = {
@@ -400,6 +402,7 @@ export function computeCharacter(stored: StoredCharacter, reg: Registry): Comput
     attributes: attrs,
     attributeBudget: { earned: attrEarned, spent: attrSpent },
     skillPointBudget: { earned: skillEarned, spent: skillSpent },
+    expertisePointBudget: { earned: expertiseEarned, spent: expertiseSpent },
     defenses,
     defenseBreakdown: breakdown,
     vitality: {

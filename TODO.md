@@ -21,15 +21,30 @@ Dev: `npm run dev` (port 7901).
   `stackable`/`stack_max` documented in spell-schema + validated. `Load Samples`
   seeds the Bren/Selene fixtures.
 
+## Done (cont.)
+
+- **`creation_attribute_points` set to 5** (real rule, not the old Bren-inferred
+  7) — Bren fixture attrs trimmed to fit (`brawn 5, finesse 1, mind 1, will 1`);
+  hardcoded test expectations in `engine.test.ts` updated to match.
+- **Expertise decoupled from skill dice points** — expertise is now its own
+  budget, 1 point per tier gained (`tier - 1`, max 4 at tier 5), spent to bump
+  skill rank Trained→Expert→Master. Skill dice points keep the old feats-based
+  budget (`floor(feats_purchased/2)`). Fixes a builder bug where a fresh
+  character (0 feats purchased) couldn't spend any skill points because dice
+  and expertise shared one budget that starts at 0. New
+  `computed.expertisePointBudget` field; UI shows two separate meters.
+- **Sphere vocab normalized to lowercase** (matches the profession
+  `grants_sphere`/`sphere` boon keys) — `spells.json`'s 138 Title-case
+  `spheres` values lowercased; Selene's fixture `"Mana"` (a `sources` value,
+  not a real sphere) replaced with `"conjuration"`. `spell-schema.json` doc
+  was also wrong — it documented a nonexistent `school` field with the sphere
+  list and mislabeled the real `spheres` field with the `sources` vocab;
+  fixed. Builder UI capitalizes sphere names for display only.
+- **`.gitignore` `*.tsbuildinfo`** — untracked and ignored.
+
 ## Open / needs a call
 
-- [ ] **Confirm `creation_attribute_points = 7`** in `tier-progression.json` —
-  inferred from the Bren fixture, not a cited rule. Set the real number.
-- [ ] **Sphere vocab is inconsistent** in the data (spells Title-case
-  `"Conjuration"`, `grants_sphere` lowercase, Selene's sphere `"Mana"`). The
-  builder's spell sphere filter is convenience-only because of this. Normalize
-  the vocabulary if sphere-scoped filtering should be a real gate.
-- [ ] **`.gitignore` `tsconfig.tsbuildinfo`** — build-cache artifact currently tracked.
+(none currently)
 
 ## Next candidates (unblocked)
 
@@ -37,6 +52,9 @@ Dev: `npm run dev` (port 7901).
 - [ ] Codex skin: expose inventory / notes if wanted (currently sheet/builder only).
 - [ ] Feat-choice sub-grants: some `choice` options grant nested spheres/spells —
   wire those into the Choices step's spell pools.
+- [ ] Sphere-scoped spell filtering is now vocab-consistent — could be made a
+  real gate (character needs a known sphere to pick a spell) instead of the
+  current convenience-only dropdown filter, if that's the intended rule.
 
 ## Deferred (out of current scope)
 

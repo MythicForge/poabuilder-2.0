@@ -9,7 +9,7 @@
     "origin_id": "soldier",
     "vocation_id": "soldier-infantry",
     "feats_purchased": 3,
-    "attributes": { "brawn": 5, "finesse": 2, "mind": 1, "will": 2 },
+    "attributes": { "brawn": 5, "finesse": 1, "mind": 1, "will": 1 },
     "skills": {
       "proficiencies": ["Vigor"],
       "points": { "Vigor": 1 },

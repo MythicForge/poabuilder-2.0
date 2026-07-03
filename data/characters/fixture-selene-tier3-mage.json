@@ -20,7 +20,7 @@
     "spellcasting_modifier": null,
     "known_spell_ids": ["alarm", "arcane-needles", "arcane-chains", "arcane-bastion", "bitter-chill", "command"],
     "known_cantrip_ids": ["arcane-jolt", "arcane-echo", "arcane-lens"],
-    "known_sphere_ids": ["Mana"],
+    "known_sphere_ids": ["conjuration"],
     "prepared_spell_ids": ["arcane-needles", "arcane-chains", "bitter-chill"],
     "signature_spell_ids": [],
     "tier4_slot_choice": null,

@@ -76,12 +76,12 @@ describe("fixture: Bren (Tier-2 Fighter)", () => {
   const c = computeCharacter(bren, REGISTRY);
   it("tier + attributes (vocation +1 brawn)", () => {
     expect(c.tier).toBe(2);
-    expect(c.attributes).toEqual({ brawn: 6, finesse: 2, mind: 1, will: 2 });
+    expect(c.attributes).toEqual({ brawn: 6, finesse: 1, mind: 1, will: 1 });
   });
   it("static defenses", () => {
     expect(c.defenses.Fortitude).toBe(14);
     expect(c.defenses.Mental).toBe(9);
-    expect(c.defenses["Will Defense"]).toBe(10);
+    expect(c.defenses["Will Defense"]).toBe(9);
   });
   it("universal resources use new-data formulas", () => {
     // ambition: 4 + Tier(2) + floor(Will 2/3) = 6; die from max(2,2)→1d4

@@ -313,6 +313,7 @@ export interface ComputedCharacter {
   attributes: Record<AttributeKey, number>;
   attributeBudget: { earned: number; spent: number };
   skillPointBudget: { earned: number; spent: number };
+  expertisePointBudget: { earned: number; spent: number };
   defenses: Record<DefenseKey, number>;
   defenseBreakdown: Record<DefenseKey, string[]>;
   vitality: { max: number; current: number; temp: number };

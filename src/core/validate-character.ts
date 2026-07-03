@@ -31,12 +31,18 @@ export function validateCharacter(stored: StoredCharacter, reg: Registry, comput
     }
   }
 
-  // ── skill points (dice picks + expertise bumps share the same budget) ──
+  // ── skill dice points (earned via feats) ──
   const pointsSpent = Object.values(b.skills.points).reduce((s, n) => s + n, 0);
-  const bumpsSpent = Object.values(b.skills.expertise_bumps).reduce((s, n) => s + n, 0);
   const skillEarned = computed.skillPointBudget.earned;
-  if (pointsSpent + bumpsSpent > skillEarned) {
-    out.push(`skill points overspent: ${pointsSpent + bumpsSpent} of ${skillEarned} (dice + expertise)`);
+  if (pointsSpent > skillEarned) {
+    out.push(`skill points overspent: ${pointsSpent} of ${skillEarned}`);
+  }
+
+  // ── expertise points (earned 1 per tier gained, tier - 1, max 4 at tier 5) ──
+  const bumpsSpent = computed.expertisePointBudget.spent;
+  const expertiseEarned = computed.expertisePointBudget.earned;
+  if (bumpsSpent > expertiseEarned) {
+    out.push(`expertise points overspent: ${bumpsSpent} of ${expertiseEarned}`);
   }
   for (const [skill, bumps] of Object.entries(b.skills.expertise_bumps)) {
     const total = (b.skills.proficiencies.includes(skill) ? 1 : 0) + bumps;

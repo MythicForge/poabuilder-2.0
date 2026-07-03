@@ -120,11 +120,18 @@ describe("validateCharacter", () => {
     expect(issues.join()).toMatch(/"Lore" is not offered/);
   });
 
-  it("flags expertise overspend against the skill budget", () => {
+  it("flags skill dice overspend against the skill point budget", () => {
     const c = clone(); // earned = floor(3/2) = 1, points already spend 1
-    c.build.skills.expertise_bumps = { Vigor: 1 };
+    c.build.skills.points = { ...c.build.skills.points, Talent: 1 };
     const issues = validateCharacter(c, REGISTRY, computeCharacter(c, REGISTRY));
     expect(issues.join()).toMatch(/skill points overspent: 2 of 1/);
+  });
+
+  it("flags expertise overspend against the expertise point budget", () => {
+    const c = clone(); // bren is tier 2 → expertise earned = 1
+    c.build.skills.expertise_bumps = { Vigor: 1, Talent: 1 };
+    const issues = validateCharacter(c, REGISTRY, computeCharacter(c, REGISTRY));
+    expect(issues.join()).toMatch(/expertise points overspent: 2 of 1/);
   });
 
   it("flags slot overflow", () => {
@@ -176,6 +183,6 @@ describe("spell spheres normalization", () => {
     for (const s of REGISTRY.spells.values()) expect(Array.isArray(s.spheres)).toBe(true);
   });
   it("a string sphere becomes a one-element array", () => {
-    expect(REGISTRY.spells.get("alarm")?.spheres).toEqual(["Conjuration"]);
+    expect(REGISTRY.spells.get("alarm")?.spheres).toEqual(["conjuration"]);
   });
 });

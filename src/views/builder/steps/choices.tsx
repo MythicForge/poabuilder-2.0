@@ -43,6 +43,8 @@ function gatherChoices(featCards: StepProps["computed"]["featCards"]): ChoiceDef
   return out;
 }
 
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
 const spheresOf = (pool: Spell[]) => {
   const set = new Set<string>();
   pool.forEach((s) => s.spheres.forEach((x) => set.add(x)));
@@ -107,7 +109,7 @@ export function ChoicesStep({ draft, update, computed }: StepProps) {
         <>
           <div className="bld-note">
             Caster: {sc.casterType} · spell tier {sc.spellcastingTier} · DC {sc.spellDC}
-            {sc.spheres.length ? ` · spheres: ${sc.spheres.join(", ")}` : ""}
+            {sc.spheres.length ? ` · spheres: ${sc.spheres.map(capitalize).join(", ")}` : ""}
           </div>
 
           <SpellPicker
@@ -162,7 +164,7 @@ function SpellPicker({ title, cap, selected, pool, onToggle }: {
         {spheres.length > 1 && (
           <select className="bld-select" style={{ minWidth: 150 }} value={sphere} onChange={(e) => setSphere(e.target.value)}>
             <option value="all">All spheres</option>
-            {spheres.map((s) => <option key={s} value={s}>{s}</option>)}
+            {spheres.map((s) => <option key={s} value={s}>{capitalize(s)}</option>)}
           </select>
         )}
       </div>
@@ -175,7 +177,7 @@ function SpellPicker({ title, cap, selected, pool, onToggle }: {
             const atLimit = !on && selected.length >= cap;
             return (
               <button key={s.id} className={`bld-chip${on ? " bld-chip--on" : ""}`} disabled={atLimit}
-                title={s.spheres.join(", ")} onClick={() => onToggle(s.id)}>
+                title={s.spheres.map(capitalize).join(", ")} onClick={() => onToggle(s.id)}>
                 {s.name}{s.tier ? <span style={{ opacity: 0.6 }}> T{s.tier}</span> : null}
               </button>
             );

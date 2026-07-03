@@ -34,10 +34,14 @@ export function AttributesStep({ draft, update, computed }: StepProps) {
     });
 
   const sBudget = computed.skillPointBudget;
-  const bumpsSpent = Object.values(draft.build.skills.expertise_bumps).reduce((s, n) => s + n, 0);
-  const sSpent = sBudget.spent + bumpsSpent;
+  const sSpent = sBudget.spent;
   const sRemaining = sBudget.earned - sSpent;
   const sOver = sSpent > sBudget.earned;
+
+  const eBudget = computed.expertisePointBudget;
+  const eSpent = eBudget.spent;
+  const eRemaining = eBudget.earned - eSpent;
+  const eOver = eSpent > eBudget.earned;
 
   const bumpPoints = (skill: string, delta: number) =>
     update((d) => {
@@ -53,7 +57,7 @@ export function AttributesStep({ draft, update, computed }: StepProps) {
       const next = cur + delta;
       const proficient = d.build.skills.proficiencies.includes(skill) ? 1 : 0;
       if (next < 0 || proficient + next > EXPERTISE_CAP) return;
-      if (delta > 0 && sRemaining <= 0) return;
+      if (delta > 0 && eRemaining <= 0) return;
       d.build.skills.expertise_bumps[skill] = next;
     });
 
@@ -118,14 +122,17 @@ export function AttributesStep({ draft, update, computed }: StepProps) {
               <span className="bld-stepper">
                 <button disabled={bumps <= 0} onClick={() => bumpExpertise(s, -1)}>−</button>
                 <span className="bld-stepper-val" style={{ fontSize: 16, minWidth: 26 }}>{bumps}</span>
-                <button disabled={sRemaining <= 0 || proficient + bumps >= EXPERTISE_CAP} onClick={() => bumpExpertise(s, 1)}>+</button>
+                <button disabled={eRemaining <= 0 || proficient + bumps >= EXPERTISE_CAP} onClick={() => bumpExpertise(s, 1)}>+</button>
               </span>
             </span>
           </div>
         );
       })}
       <div className={`bld-budget${sOver ? " bld-budget--over" : ""}`}>
-        Skill points spent {sSpent} / {sBudget.earned} earned{sRemaining > 0 ? ` · ${sRemaining} left` : ""}
+        Skill dice points spent {sSpent} / {sBudget.earned} earned{sRemaining > 0 ? ` · ${sRemaining} left` : ""}
+      </div>
+      <div className={`bld-budget${eOver ? " bld-budget--over" : ""}`}>
+        Expertise points spent {eSpent} / {eBudget.earned} earned{eRemaining > 0 ? ` · ${eRemaining} left` : ""} (1 per tier gained)
       </div>
     </div>
   );
