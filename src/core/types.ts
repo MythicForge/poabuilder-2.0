@@ -204,7 +204,10 @@ export interface Spell {
   cost: number;
   area: string | null;
   description: string;
-  amps: { cost: string; effect: string }[];
+  // `spheres` is normalized to string[] at registry load (raw JSON stores a
+  // single string or null). stackable/stack_max mark amps that may be applied
+  // more than once (stack_max = how many times).
+  amps: { cost: string; effect: string; stackable?: boolean; stack_max?: number }[];
   reference_only?: boolean;
 }
 

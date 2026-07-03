@@ -170,3 +170,12 @@ describe("pack mapping", () => {
     expect(matchItem("zzz nonexistent gizmo", REGISTRY)).toBeNull();
   });
 });
+
+describe("spell spheres normalization", () => {
+  it("every spell exposes spheres as a string array", () => {
+    for (const s of REGISTRY.spells.values()) expect(Array.isArray(s.spheres)).toBe(true);
+  });
+  it("a string sphere becomes a one-element array", () => {
+    expect(REGISTRY.spells.get("alarm")?.spheres).toEqual(["Conjuration"]);
+  });
+});

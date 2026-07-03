@@ -334,6 +334,27 @@
 .bld-chip--on { border-color: var(--gold); background: var(--gold-shadow); color: var(--text); }
 .bld-chip:disabled { opacity: 0.4; cursor: not-allowed; }
 
+.bld-choice {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-faint);
+}
+.bld-choice-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+.bld-choice-prompt { font-family: var(--serif); font-size: 17px; color: var(--text); }
+.bld-choice-owner { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--text-faint); }
+
+.bld-spellsec { margin-top: 16px; }
+.bld-spellsec-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 12px; }
+.bld-spelllist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 4px;
+  border: 1px solid var(--border-faint);
+  border-radius: 8px;
+}
+
 .bld-empty {
   border: 1px dashed var(--border);
   border-radius: 10px;

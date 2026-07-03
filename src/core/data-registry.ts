@@ -40,7 +40,12 @@ for (const [file, mod] of Object.entries(originModules)) {
 }
 
 const spells = new Map<string, Spell>();
-for (const s of (spellsDoc as { spells: Spell[] }).spells) spells.set(s.id, s);
+for (const s of (spellsDoc as unknown as { spells: Spell[] }).spells) {
+  // Raw JSON stores `spheres` as a single string or null; normalize to string[].
+  const raw = (s as { spheres?: unknown }).spheres;
+  s.spheres = typeof raw === "string" ? [raw] : Array.isArray(raw) ? (raw as string[]) : [];
+  spells.set(s.id, s);
+}
 
 const items = new Map<string, CatalogItem>();
 const itemsTyped = itemsDoc as unknown as { catalog: Record<string, CatalogItem[]>; carry_rules: { carry_capacity_formula: string }; armor_types: unknown[]; slot_definitions: Record<string, unknown> };
