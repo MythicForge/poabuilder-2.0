@@ -9,6 +9,7 @@ import type {
 import { ATTRIBUTES, SKILLS } from "./types.ts";
 import type { Registry } from "./data-registry.ts";
 import { collectFeats } from "./boon-resolver.ts";
+import { canDualWield, isTwoHanded } from "./equip.ts";
 import { evalFormula, parseAvgDiceExpr, standardEnv, type FormulaEnv } from "./formula.ts";
 
 // ── Tier & budgets ───────────────────────────────────────────────────────────
@@ -91,16 +92,39 @@ interface Equipped {
 }
 
 function equipped(stored: StoredCharacter, reg: Registry): Equipped {
-  const out: Equipped = { armor: null, shield: null, weapons: [] };
-  for (const item of stored.inventory.items) {
+  const items = stored.inventory.items;
+  const bySlot = (s: string) => items.find((it) => it.slot === s);
+
+  const bodyItem = bySlot("body");
+  const bodyCat = bodyItem ? resolveItem(bodyItem, reg) : null;
+  let armor = bodyItem && bodyCat?.category === "Armor" && !bodyCat.is_template ? { cat: bodyCat, item: bodyItem } : null;
+
+  const mainItem = bySlot("main_hand");
+  const mainCat = mainItem ? resolveItem(mainItem, reg) : null;
+  const mainIsTwoHanded = isTwoHanded(mainCat);
+
+  const offItem = bySlot("off_hand");
+  const offCat = offItem ? resolveItem(offItem, reg) : null;
+
+  let shield = offCat?.category === "Shield" ? { cat: offCat, item: offItem! } : null;
+  if (shield && mainIsTwoHanded) shield = null; // 2H mainhand blocks the shield bonus
+
+  const weapons: { cat: CatalogItem; item: InventoryItem }[] = [];
+  if (mainCat?.category === "Weapon") weapons.push({ cat: mainCat, item: mainItem! });
+  if (offCat?.category === "Weapon") weapons.push({ cat: offCat, item: offItem! });
+
+  // back-compat: flag-only equipped items (no slot) for characters predating the slot system
+  for (const item of items) {
+    if (item.slot != null) continue;
     if (!item.equipped) continue;
     const cat = resolveItem(item, reg);
     if (!cat) continue;
-    if (cat.category === "Armor" && !cat.is_template) out.armor = { cat, item };
-    else if (cat.category === "Shield") out.shield = { cat, item };
-    else if (cat.category === "Weapon") out.weapons.push({ cat, item });
+    if (!armor && cat.category === "Armor" && !cat.is_template) armor = { cat, item };
+    else if (!shield && !mainIsTwoHanded && cat.category === "Shield") shield = { cat, item };
+    else if (cat.category === "Weapon") weapons.push({ cat, item });
   }
-  return out;
+
+  return { armor, shield, weapons };
 }
 
 // ── Armor defense (per data/shared/equipment-rules.json) ────────────────────
@@ -326,6 +350,9 @@ export function computeCharacter(stored: StoredCharacter, reg: Registry): Comput
 
   // equipment
   const eq = equipped(stored, reg);
+  if (eq.weapons.length >= 2 && !isTwoHanded(eq.weapons[0]?.cat ?? null) && !canDualWield(activeBoons)) {
+    warnings.push("Dual-wielding without a boon that allows it");
+  }
   const hasAgile = activeBoons.some(({ boon }) => boon.type === "equipment_rule_override" && boon.rule === "agile")
     || activeBoons.some(({ boon }) => boon.type === "proficiency" && String(boon.grants ?? "").toLowerCase().includes("agile"));
   const unarmoredDefense = activeBoons.some(({ boon }) => boon.type === "alternate_defense" && String(boon.name ?? "").toLowerCase().includes("unarmored"));

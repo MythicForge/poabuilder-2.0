@@ -76,13 +76,15 @@ export interface StoredCharacter {
   };
 }
 
+export type SlotId = "main_hand" | "off_hand" | "body";
+
 export interface InventoryItem {
   id: string;
   catalog_item_id: string | null;
   name: string;
   quantity: number;
   equipped: boolean;
-  slot: string | null;
+  slot: SlotId | null;
   masterwork_bonus: number;
   medium_armor_stat: "brawn" | "finesse" | null;
   reduction_pool_current: number | null;
@@ -96,6 +98,7 @@ export interface JournalEntry {
   content: string;
   created_at: string;
   updated_at: string;
+  author_name?: string;
 }
 
 // ── Content definitions (shapes of data/ JSON we rely on) ───────────────────
@@ -284,9 +287,12 @@ export interface ActiveBoon {
   source: { featId: string; featName: string; owner: string };
 }
 
+export type FeatSource = "profession" | "path" | "origin" | "vocation" | "universal";
+
 export interface FeatCard {
   feat: Feat;
   owner: string; // "Fighter", "Sentinel", "Soldier", "Pilgrim", …
+  source: FeatSource;
   starting: boolean;
   activeBoons: Boon[];
 }

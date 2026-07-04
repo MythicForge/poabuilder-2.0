@@ -3,7 +3,7 @@
 // stored selections. Boon types the engine doesn't interpret numerically stay
 // available on the feat cards as structured text.
 
-import type { ActiveBoon, Boon, Feat, FeatCard, StoredCharacter } from "./types.ts";
+import type { ActiveBoon, Boon, Feat, FeatCard, FeatSource, StoredCharacter } from "./types.ts";
 import type { Registry } from "./data-registry.ts";
 
 interface ResolveCtx {
@@ -23,15 +23,15 @@ export function collectFeats(stored: StoredCharacter, reg: Registry): CollectedF
   const vocation = reg.vocations.get(b.vocation_id);
 
   // feat pool: everything this character could legally reference by id
-  const pool = new Map<string, { feat: Feat; owner: string }>();
-  const add = (feats: Feat[] | undefined, owner: string) => {
-    for (const f of feats ?? []) pool.set(f.id, { feat: f, owner });
+  const pool = new Map<string, { feat: Feat; owner: string; source: FeatSource }>();
+  const add = (feats: Feat[] | undefined, owner: string, source: FeatSource) => {
+    for (const f of feats ?? []) pool.set(f.id, { feat: f, owner, source });
   };
-  add(profession?.feats, profession?.name ?? b.profession_id);
-  for (const p of profession ? reg.pathsOf(profession.id) : []) add(p.feats, p.name);
-  add(origin?.feats, origin?.name ?? b.origin_id);
-  add(vocation?.feats, vocation?.name ?? b.vocation_id);
-  add(reg.universalOriginFeats, "Universal");
+  add(profession?.feats, profession?.name ?? b.profession_id, "profession");
+  for (const p of profession ? reg.pathsOf(profession.id) : []) add(p.feats, p.name, "path");
+  add(origin?.feats, origin?.name ?? b.origin_id, "origin");
+  add(vocation?.feats, vocation?.name ?? b.vocation_id, "vocation");
+  add(reg.universalOriginFeats, "Universal", "universal");
 
   const cards: FeatCard[] = [];
   const seen = new Set<string>();
@@ -41,7 +41,7 @@ export function collectFeats(stored: StoredCharacter, reg: Registry): CollectedF
     const entry = pool.get(id);
     if (!entry) return;
     seen.add(id);
-    cards.push({ feat: entry.feat, owner: entry.owner, starting, activeBoons: [] });
+    cards.push({ feat: entry.feat, owner: entry.owner, source: entry.source, starting, activeBoons: [] });
     // feat_grant closure: granted feats join the sheet
     walkBoons(entry.feat.boons, (boon) => {
       if (boon.type === "feat_grant" && typeof boon.feat_id === "string") push(boon.feat_id, starting);

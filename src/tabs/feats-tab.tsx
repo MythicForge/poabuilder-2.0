@@ -1,8 +1,12 @@
-// Feats tab: cards grouped by source, with choice pickers, state toggles,
-// and limited-use counters.
+// Features tab: master/detail — source rail, searchable list, slide-in detail
+// with choice pickers, state toggles, and limited-use counters.
 
+import { useMemo, useState } from "react";
 import type { Boon, ComputedCharacter, Feat, StoredCharacter } from "../core/types.ts";
 import { Markdown, Pill, PipTracker } from "@ui/primitives.tsx";
+import { normalizeTrait } from "../core/trait.ts";
+import { groupFeatCards } from "../shared/feat-groups.ts";
+import { SOURCE_COLOR } from "../shared/source-colors.ts";
 
 interface TabProps {
   c: ComputedCharacter;
@@ -16,7 +20,26 @@ function usesRemaining(feat: Feat, stored: StoredCharacter): number | null {
 }
 
 export function FeatsTab({ c, stored, setStored }: TabProps) {
-  const owners = [...new Set(c.featCards.map((f) => f.owner))];
+  const [selectedGroup, setSelectedGroup] = useState<string>("all");
+  const [query, setQuery] = useState("");
+  const [openId, setOpenId] = useState<string | null>(null);
+
+  const groups = useMemo(() => groupFeatCards(c.featCards), [c.featCards]);
+  const openCard = openId ? c.featCards.find((fc) => fc.feat.id === openId) : undefined;
+  const openGroup = openCard ? groups.find((g) => g.key === `${openCard.source}:${openCard.owner}`) : undefined;
+
+  const q = query.trim().toLowerCase();
+  const visibleGroups = groups
+    .filter((g) => selectedGroup === "all" || g.key === selectedGroup)
+    .map((g) => ({
+      ...g,
+      cards: q
+        ? g.cards.filter(
+            ({ feat }) => feat.name.toLowerCase().includes(q) || feat.description.toLowerCase().includes(q),
+          )
+        : g.cards,
+    }))
+    .filter((g) => g.cards.length > 0);
 
   const setChoice = (key: string, value: string) =>
     setStored((s) => ({ ...s, build: { ...s.build, choices: { ...s.build.choices, [key]: value } } }));
@@ -39,42 +62,96 @@ export function FeatsTab({ c, stored, setStored }: TabProps) {
     });
 
   return (
-    <>
-      {owners.map((owner) => (
-        <div className="list-card" key={owner}>
-          <div className="card-header">
-            <div className="card-title">{owner}</div>
+    <div className="feat-md">
+      <div className="feat-md-search">
+        <input placeholder="search features…" value={query} onChange={(e) => setQuery(e.target.value)} />
+      </div>
+      <div className="md-body">
+        <div className="md-rail">
+          <div
+            className={`md-rail-item${selectedGroup === "all" ? " active" : ""}`}
+            onClick={() => setSelectedGroup("all")}
+          >
+            <span className="md-rail-label">All</span>
+            <span className="md-rail-count">{c.featCards.length}</span>
           </div>
-          {c.featCards.filter((f) => f.owner === owner).map(({ feat, starting, activeBoons }) => {
-            const uses = usesRemaining(feat, stored);
-            return (
-              <div className="feat-row" key={feat.id}>
-                <div className="row-1">
-                  <span className="name">{feat.name}</span>
-                  <span className="src">
-                    {starting ? "starting" : `tier ${feat.tier}`}
-                    {feat.slot_type ? ` · ${feat.slot_type}` : ""}
-                    {feat.trait ? ` · ${feat.trait}` : ""}
-                  </span>
-                  {uses !== null && feat.uses && (
-                    <span style={{ marginLeft: "auto" }}>
-                      <PipTracker
-                        current={uses}
-                        max={feat.uses.count}
-                        onChange={(n) => spendUse(feat, n - uses)}
-                        label={feat.uses.recharge.replace(/_/g, " ")}
-                      />
-                    </span>
-                  )}
-                </div>
-                <Markdown className="desc" text={feat.description} />
-                <BoonControls boons={activeBoons} stored={stored} setChoice={setChoice} toggleState={toggleState} />
-              </div>
-            );
-          })}
+          {groups.map((g) => (
+            <div
+              key={g.key}
+              className={`md-rail-item${selectedGroup === g.key ? " active" : ""}`}
+              style={{ ["--c" as string]: SOURCE_COLOR[g.source] }}
+              onClick={() => setSelectedGroup(g.key)}
+            >
+              <span className="md-rail-label">{g.label}</span>
+              <span className="md-rail-count">{g.cards.length}</span>
+            </div>
+          ))}
         </div>
-      ))}
-    </>
+
+        <div className="md-list">
+          {visibleGroups.length === 0 && <div className="md-list-empty">No features match your search.</div>}
+          {visibleGroups.map((g) => (
+            <div key={g.key}>
+              {selectedGroup === "all" && (
+                <div className="md-list-group-head" style={{ ["--c" as string]: SOURCE_COLOR[g.source] }}>
+                  {g.label}
+                </div>
+              )}
+              {g.cards.map(({ feat, starting }) => {
+                const trait = normalizeTrait(feat.trait);
+                return (
+                  <div
+                    key={feat.id}
+                    className={`md-list-item${openId === feat.id ? " active" : ""}`}
+                    onClick={() => setOpenId(feat.id)}
+                  >
+                    <span className="md-list-item-name">{feat.name}</span>
+                    <span style={{ display: "flex", gap: 5 }}>
+                      <span className="md-list-item-tag">{starting ? "starting" : `tier ${feat.tier}`}</span>
+                      {feat.slot_type && <span className="md-list-item-tag">{feat.slot_type}</span>}
+                      {trait && <span className={`tag ${trait}`}>{trait}</span>}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+
+        <div className={`md-detail${openCard ? " detail-open" : ""}`}>
+          {openCard && (
+            <>
+              <div className="md-detail-head">
+                <button className="md-detail-back" onClick={() => setOpenId(null)}>← Back</button>
+              </div>
+              <div className="md-detail-src" style={{ ["--c" as string]: SOURCE_COLOR[openCard.source] }}>
+                {openGroup?.label ?? openCard.owner}
+              </div>
+              <div className="md-detail-name">{openCard.feat.name}</div>
+              <div className="md-detail-tag-wrap" style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                <span className="md-detail-tag">{openCard.starting ? "starting" : `tier ${openCard.feat.tier}`}</span>
+                {openCard.feat.slot_type && <span className="md-detail-tag">{openCard.feat.slot_type}</span>}
+                {normalizeTrait(openCard.feat.trait) && (
+                  <span className={`tag ${normalizeTrait(openCard.feat.trait)}`}>{normalizeTrait(openCard.feat.trait)}</span>
+                )}
+                {usesRemaining(openCard.feat, stored) !== null && openCard.feat.uses && (
+                  <PipTracker
+                    current={usesRemaining(openCard.feat, stored) as number}
+                    max={openCard.feat.uses.count}
+                    onChange={(n) => spendUse(openCard.feat, n - (usesRemaining(openCard.feat, stored) as number))}
+                    label={openCard.feat.uses.recharge.replace(/_/g, " ")}
+                  />
+                )}
+              </div>
+              <div className="md-detail-body">
+                <Markdown text={openCard.feat.description} />
+                <BoonControls boons={openCard.activeBoons} stored={stored} setChoice={setChoice} toggleState={toggleState} />
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -121,5 +198,5 @@ function BoonControls({
     }
   }
   if (!controls.length) return null;
-  return <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 6 }}>{controls}</div>;
+  return <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10 }}>{controls}</div>;
 }
