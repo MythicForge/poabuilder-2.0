@@ -71,6 +71,50 @@ export function StatCard({ icon, label, value, sub, valueClass = "" }: StatCardP
   );
 }
 
+interface PipTrackerProps {
+  current: number;
+  max: number;
+  onChange: (n: number) => void;
+  label?: string;
+  die?: string;
+}
+// Click pip i -> fill up to i+1; re-click the last filled pip -> decrement by
+// one. Above max 20 (reservoir at high tier, homebrew), falls back to a
+// numeric −/current/max/+ counter — too many boxes to be usable as pips.
+export function PipTracker({ current, max, onChange, label, die }: PipTrackerProps) {
+  const clamp = (n: number) => Math.max(0, Math.min(max, n));
+  const head = (
+    <>
+      {label && <span style={{ color: "var(--text-faint)" }}>{label}</span>}
+      {die && <span className="rc-chip-count">{die}</span>}
+    </>
+  );
+  if (max > 20) {
+    return (
+      <span style={{ display: "flex", gap: 6, alignItems: "center", fontFamily: "var(--mono)", fontSize: 11 }}>
+        {head}
+        <span className="pm" style={{ cursor: "pointer" }} onClick={() => onChange(clamp(current - 1))}>−</span>
+        <span>{current}/{max}</span>
+        <span className="pm" style={{ cursor: "pointer" }} onClick={() => onChange(clamp(current + 1))}>+</span>
+      </span>
+    );
+  }
+  return (
+    <span style={{ display: "flex", gap: 6, alignItems: "center", fontFamily: "var(--mono)", fontSize: 11 }}>
+      {head}
+      <span className="rc-pips">
+        {Array.from({ length: max }, (_, i) => (
+          <span
+            key={i}
+            className={`rc-pip${i < current ? " filled" : ""}`}
+            onClick={() => onChange(clamp(i < current ? i : i + 1))}
+          />
+        ))}
+      </span>
+    </span>
+  );
+}
+
 interface IconProps {
   kind: string;
   size?: number;

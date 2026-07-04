@@ -129,6 +129,7 @@ export interface ResourceDef {
   name: string;
   description?: string;
   max: string | number;
+  max_by_tier?: { tier: number; value: number }[];
   die_size?: { type: "table"; key: string; rows: { range: [number, number]; die: string }[] };
   recovery?: Record<string, number | "max" | { formula: string; minimum?: number }>;
   triggers?: { event: string; amount: number }[];

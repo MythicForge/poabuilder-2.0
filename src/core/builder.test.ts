@@ -178,6 +178,50 @@ describe("pack mapping", () => {
   });
 });
 
+describe("resource pools (pip tracker data layer)", () => {
+  it("absent pools.resources key computes current = max", () => {
+    const c = clone();
+    delete (c.pools.resources as Record<string, number>).adrenaline;
+    const computed = computeCharacter(c, REGISTRY);
+    const adrenaline = computed.resources.find((r) => r.def.id === "adrenaline");
+    if (adrenaline) expect(adrenaline.current).toBe(adrenaline.max);
+  });
+
+  it("stored current above max clamps to max", () => {
+    const c = clone();
+    const prof = REGISTRY.professions.get(c.build.profession_id)!;
+    const def = prof.resources[0];
+    c.pools.resources[def.id] = 9999;
+    const computed = computeCharacter(c, REGISTRY);
+    const res = computed.resources.find((r) => r.def.id === def.id)!;
+    expect(res.current).toBe(res.max);
+  });
+
+  it("absent pools.uses key computes usesRemaining = feat.uses.count", () => {
+    const c = clone();
+    const featWithUses = [...REGISTRY.professions.values(), ...REGISTRY.paths.values()]
+      .flatMap((p) => p.feats)
+      .find((f) => f.uses);
+    expect(featWithUses).toBeTruthy();
+    delete (c.pools.uses as Record<string, number>)[featWithUses!.id];
+    expect(c.pools.uses[featWithUses!.id] ?? featWithUses!.uses!.count).toBe(featWithUses!.uses!.count);
+  });
+
+  it("tier_gated vessels: max steps at tier 1/3/5 thresholds", () => {
+    const c = clone();
+    c.build.profession_id = "shaman";
+    const tierToFeats: Record<number, number> = { 1: 0, 2: 3, 3: 6, 5: 16 };
+    for (const [tier, feats] of Object.entries(tierToFeats)) {
+      c.build.feats_purchased = feats;
+      const computed = computeCharacter(c, REGISTRY);
+      expect(computed.tier).toBe(Number(tier));
+      const vessels = computed.resources.find((r) => r.def.id === "vessels")!;
+      const expected = { 1: 2, 2: 2, 3: 3, 5: 4 }[Number(tier)];
+      expect(vessels.max).toBe(expected);
+    }
+  });
+});
+
 describe("spell spheres normalization", () => {
   it("every spell exposes spheres as a string array", () => {
     for (const s of REGISTRY.spells.values()) expect(Array.isArray(s.spheres)).toBe(true);

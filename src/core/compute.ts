@@ -271,12 +271,19 @@ function computeResources(
   stored: StoredCharacter,
   reg: Registry,
   env: FormulaEnv,
+  tier: number,
 ): ComputedResource[] {
   const out: ComputedResource[] = [];
   const prof = reg.professions.get(stored.build.profession_id);
   for (const def of prof?.resources ?? []) {
     let max = 0;
-    try { max = evalFormula(def.max, env); } catch { max = 0; }
+    if (def.max === "tier_gated" && def.max_by_tier) {
+      for (const row of def.max_by_tier) {
+        if (row.tier <= tier) max = Math.max(max, row.value);
+      }
+    } else {
+      try { max = evalFormula(def.max, env); } catch { max = 0; }
+    }
     const current = Math.min(stored.pools.resources[def.id] ?? max, max);
     out.push({ def, max, current });
   }
@@ -312,7 +319,7 @@ export function computeCharacter(stored: StoredCharacter, reg: Registry): Comput
   const env = standardEnv(attrs, tier);
 
   // resources before spellcasting (reservoir may be a profession resource)
-  const resources = computeResources(stored, reg, env);
+  const resources = computeResources(stored, reg, env, tier);
 
   // active states
   const activeStates = stored.states.active;

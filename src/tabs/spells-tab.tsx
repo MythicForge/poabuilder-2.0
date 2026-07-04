@@ -4,7 +4,7 @@
 import { useState } from "react";
 import type { ComputedCharacter, Spell, StoredCharacter } from "../core/types.ts";
 import { REGISTRY } from "../core/data-registry.ts";
-import { Markdown } from "@ui/primitives.tsx";
+import { Markdown, PipTracker } from "@ui/primitives.tsx";
 
 interface TabProps {
   c: ComputedCharacter;
@@ -117,15 +117,8 @@ export function SpellsTab({ c, stored, setStored }: TabProps) {
           <div className="hp-cell">
             <div className="lbl">Current</div>
             <div className="v">
-              <span className="pm" style={{ cursor: "pointer" }} onClick={() => setReservoir(stored.pools.reservoir - 1)}>−</span>
-              <span>{stored.pools.reservoir}</span>
-              <span className="pm" style={{ cursor: "pointer" }} onClick={() => setReservoir(stored.pools.reservoir + 1)}>+</span>
+              <PipTracker current={stored.pools.reservoir} max={sc.reservoirMax} onChange={setReservoir} />
             </div>
-          </div>
-          <div className="hp-slash">/</div>
-          <div className="hp-cell">
-            <div className="lbl">Max</div>
-            <div className="v"><span>{sc.reservoirMax}</span></div>
           </div>
           <div className="hp-cell">
             <div className="lbl">Prepared</div>

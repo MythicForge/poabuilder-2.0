@@ -2,7 +2,7 @@
 // and limited-use counters.
 
 import type { Boon, ComputedCharacter, Feat, StoredCharacter } from "../core/types.ts";
-import { Markdown, Pill } from "@ui/primitives.tsx";
+import { Markdown, Pill, PipTracker } from "@ui/primitives.tsx";
 
 interface TabProps {
   c: ComputedCharacter;
@@ -57,10 +57,13 @@ export function FeatsTab({ c, stored, setStored }: TabProps) {
                     {feat.trait ? ` · ${feat.trait}` : ""}
                   </span>
                   {uses !== null && feat.uses && (
-                    <span style={{ marginLeft: "auto", display: "flex", gap: 6, alignItems: "center", fontFamily: "var(--mono)", fontSize: 11 }}>
-                      <span className="pm" style={{ cursor: "pointer" }} onClick={() => spendUse(feat, -1)}>−</span>
-                      {uses}/{feat.uses.count} ({feat.uses.recharge.replace(/_/g, " ")})
-                      <span className="pm" style={{ cursor: "pointer" }} onClick={() => spendUse(feat, 1)}>+</span>
+                    <span style={{ marginLeft: "auto" }}>
+                      <PipTracker
+                        current={uses}
+                        max={feat.uses.count}
+                        onChange={(n) => spendUse(feat, n - uses)}
+                        label={feat.uses.recharge.replace(/_/g, " ")}
+                      />
                     </span>
                   )}
                 </div>
