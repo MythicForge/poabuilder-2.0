@@ -242,6 +242,9 @@ export interface CatalogItem {
   equip_slots?: string[];
   equippable?: boolean;
   is_template?: boolean;
+  fluff_text?: string;
+  masterwork_eligible?: boolean;
+  masterwork_max?: number;
   [key: string]: unknown;
 }
 

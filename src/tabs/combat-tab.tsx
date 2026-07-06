@@ -6,6 +6,7 @@ import type { ComputedCharacter, ComputedResource, FeatCard, StoredCharacter } f
 import { REGISTRY } from "../core/data-registry.ts";
 import { resolveItem } from "../core/compute.ts";
 import { normalizeTrait } from "../core/trait.ts";
+import { formatWeaponDamage, masterworkBonus } from "../core/masterwork.ts";
 import { groupFeatCards } from "../shared/feat-groups.ts";
 import { SOURCE_COLOR } from "../shared/source-colors.ts";
 import { Markdown, PipTracker } from "@ui/primitives.tsx";
@@ -119,21 +120,27 @@ export function CombatTab({ c, stored, setStored }: TabProps) {
           <div className="card-title">Equipped Weapons</div>
         </div>
         {weapons.length === 0 && <div className="feat-row"><div className="desc">Nothing equipped.</div></div>}
-        {weapons.map(({ it, cat }) => (
-          <div className="attack-row" key={it.id}>
-            <span className="name">
-              {it.slot && <span className="inv-type-badge" style={{ marginRight: 6, marginLeft: 0 }}>{it.slot === "main_hand" ? "MAIN" : "OFF"}</span>}
-              {it.name}{it.masterwork_bonus ? ` (MW +${it.masterwork_bonus})` : ""}
-            </span>
-            <span className="dmg">{cat?.damage ?? "—"}</span>
-            <span className="type">
-              {(cat?.damage_types ?? []).map((d) => d.name).join("/") || "—"}
-              {" · "}
-              {(cat?.range_bands ?? []).map((r) => r.name).join("/") || "Melee"}
-            </span>
-            <span className="type">{(cat?.traits ?? []).map((t) => t.name).join(", ")}</span>
-          </div>
-        ))}
+        {weapons.map(({ it, cat }) => {
+          const bonus = masterworkBonus(it, cat);
+          return (
+            <div className="attack-row" key={it.id} title={cat?.fluff_text || undefined}>
+              <span className="name">
+                {it.slot && <span className="inv-type-badge" style={{ marginRight: 6, marginLeft: 0 }}>{it.slot === "main_hand" ? "MAIN" : "OFF"}</span>}
+                {it.name}
+              </span>
+              <span className="dmg">
+                {formatWeaponDamage(cat, bonus)}
+                {bonus > 0 && <span className="inv-type-badge" style={{ marginLeft: 6 }}>+{bonus} ATK</span>}
+              </span>
+              <span className="type">
+                {(cat?.damage_types ?? []).map((d) => d.name).join("/") || "—"}
+                {" · "}
+                {(cat?.range_bands ?? []).map((r) => r.name).join("/") || "Melee"}
+              </span>
+              <span className="type">{(cat?.traits ?? []).map((t) => t.name).join(", ")}</span>
+            </div>
+          );
+        })}
       </div>
 
       <div className="list-card">

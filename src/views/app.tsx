@@ -43,6 +43,7 @@ function loadInitial(): StoredCharacter {
 export function App() {
   const [stored, setStoredRaw] = useState<StoredCharacter>(loadInitial);
   const [tab, setTab] = useState<TabId>("combat");
+  const [inventoryView, setInventoryView] = useState<"list" | "cards">("cards");
 
   useEffect(() => {
     CharStorage.save(stored);
@@ -122,7 +123,7 @@ export function App() {
               {tab === "combat" && <CombatTab {...props} />}
               {tab === "feats" && <FeatsTab {...props} />}
               {tab === "spells" && <SpellsTab {...props} />}
-              {tab === "inventory" && <InventoryTab {...props} />}
+              {tab === "inventory" && <InventoryTab {...props} inventoryView={inventoryView} setInventoryView={setInventoryView} />}
               {tab === "notes" && <NotesTab {...props} />}
             </div>
           </div>
