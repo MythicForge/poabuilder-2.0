@@ -42,6 +42,7 @@ function evalTerm(term: string, ctx: ConditionCtx): CondResult {
     case "no_shield":
       return !ctx.hasShield;
     case "shield_equipped":
+    case "using_shield":
       return ctx.hasShield;
     case "raging":
     case "rage":

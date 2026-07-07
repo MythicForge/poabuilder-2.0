@@ -318,6 +318,12 @@ export interface ComputedSpellcasting {
   preparedAllowance: number;
   cantripAllowance: number;
   spheres: string[];
+  /** Bonus known-spell slots from grants_known_spells that don't count against knownAllowance. */
+  freeKnownSlots: { count: number; tier?: number; fromSphere?: string; spellIds?: string[]; sourceFeat: string }[];
+  /** Total free known-spell count (Σ freeKnownSlots.count) — spells-tab subtracts from the budget. */
+  freeKnownCount: number;
+  /** Signature spell economy (signature_spell boon). */
+  signature: { spellIds: string[]; costReduction: number; tierMax: number | null } | null;
 }
 
 export interface ComputedCharacter {
@@ -332,7 +338,15 @@ export interface ComputedCharacter {
   wounds: { max: number; current: number };
   ambition: { max: number; current: number; die: string };
   resources: ComputedResource[];
+  /** Damage-reduction pools granted by boons (max from formula; current persisted separately). */
+  reductionPools: { id: string; name: string; max: number; current: number; source: string }[];
   spellcasting: ComputedSpellcasting | null;
+  /** Flat roll bonuses from stat_bonus boons, consumed by the damage/attack layer + sheet. */
+  rollBonuses: { spellAttack: number; attackRoll: number };
+  /** Flat Action Point bonus from stat_bonus boons (sheet display; combat tracker later). */
+  apBonus: number;
+  /** Boon-driven combat bonuses (damage_bonus / attack_option / cantrip_upgrade). */
+  combat: import("./damage.ts").CombatBonuses;
   skills: SkillPoolInfo[];
   carry: { capacity: number; used: number };
   featCards: FeatCard[];

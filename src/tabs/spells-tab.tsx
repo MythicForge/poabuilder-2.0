@@ -28,7 +28,13 @@ export function SpellsTab({ c, stored, setStored }: TabProps) {
     .filter(({ boon }) => boon.type === "spell_cost_modifier")
     .reduce((s, { boon }) => s + (typeof boon.amount === "number" ? boon.amount : 0), 0);
 
-  const castCost = (sp: Spell) => (sp.is_cantrip ? 0 : Math.max(0, sp.cost + costMod));
+  const sig = sc.signature;
+  const castCost = (sp: Spell) => {
+    if (sp.is_cantrip) return 0;
+    let cost = sp.cost + costMod;
+    if (sig && sig.spellIds.includes(sp.id)) cost -= sig.costReduction; // signature discount
+    return Math.max(0, cost);
+  };
 
   const setReservoir = (n: number) =>
     setStored((s) => ({ ...s, pools: { ...s.pools, reservoir: Math.max(0, Math.min(sc.reservoirMax, n)) } }));
@@ -126,7 +132,12 @@ export function SpellsTab({ c, stored, setStored }: TabProps) {
           </div>
           <div className="hp-cell">
             <div className="lbl">Known</div>
-            <div className="v"><span>{known.length}/{sc.knownAllowance}</span></div>
+            <div className="v">
+              <span>
+                {Math.max(0, known.length - sc.freeKnownCount)}/{sc.knownAllowance}
+                {sc.freeKnownCount > 0 && ` (+${sc.freeKnownCount} free)`}
+              </span>
+            </div>
           </div>
         </div>
         {sc.spheres.length > 0 && (

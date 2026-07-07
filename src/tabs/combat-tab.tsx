@@ -143,6 +143,49 @@ export function CombatTab({ c, stored, setStored }: TabProps) {
         })}
       </div>
 
+      {(c.combat.attackOptions.length > 0 ||
+        c.combat.damageBonuses.length > 0 ||
+        c.combat.cantripUpgrades.length > 0) && (
+        <div className="list-card">
+          <div className="card-header">
+            <div className="card-title">Combat Boons</div>
+          </div>
+          {c.combat.attackOptions.map((a, i) => (
+            <div className="attack-row" key={`ao-${i}`}>
+              <span className="name">{a.name}</span>
+              <span className="dmg">
+                {a.damageDice ?? "—"}
+                {a.damageModifier && ` + ${a.damageModifier}`}
+              </span>
+              <span className="type">
+                {a.attackType ?? "attack"}
+                {a.targetsDefense && ` · vs ${a.targetsDefense}`}
+                {a.range && ` · ${a.range}`}
+              </span>
+            </div>
+          ))}
+          {c.combat.damageBonuses.map((d, i) => (
+            <div className="attack-row" key={`db-${i}`} style={d.active ? undefined : { opacity: 0.5 }}>
+              <span className="name">+{d.formula} dmg</span>
+              <span className="dmg">{d.damageType ?? ""}</span>
+              <span className="type">
+                {d.appliesTo ?? "attacks"}
+                {d.condition && ` · ${d.active ? "" : "if "}${d.condition}`}
+              </span>
+            </div>
+          ))}
+          {c.combat.cantripUpgrades.map((u, i) => (
+            <div className="attack-row" key={`cu-${i}`}>
+              <span className="name">Cantrip upgrade</span>
+              <span className="dmg">
+                {u.bonus === "damage_or_healing_die" ? `+${u.count} die` : u.bonus}
+              </span>
+              <span className="type">{u.minimumDieSize ? `min ${u.minimumDieSize}` : "cantrips"}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
       <div className="list-card">
         <div className="card-header">
           <div className="card-title">Actions & Activated Feats</div>
