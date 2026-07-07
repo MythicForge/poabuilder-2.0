@@ -6,6 +6,7 @@ import type { ComputedCharacter, StoredCharacter } from "../core/types.ts";
 import { Icon } from "@ui/primitives.tsx";
 import { REGISTRY } from "../core/data-registry.ts";
 import { applyRest, type RestKind } from "../core/rest.ts";
+import { applyDamage } from "../core/damage.ts";
 
 interface VitalsProps {
   c: ComputedCharacter;
@@ -15,31 +16,22 @@ interface VitalsProps {
 
 export function VitalityCard({ c, setStored }: VitalsProps) {
   const [amount, setAmount] = useState("");
+  const [woundDamage, setWoundDamage] = useState(false);
   const [tempEdit, setTempEdit] = useState(false);
   const [tempVal, setTempVal] = useState("");
 
-  const changeVitality = (delta: number) =>
-    setStored((s) => {
-      let d = delta;
-      let temp = s.pools.temp_vitality;
-      if (d < 0 && temp > 0) {
-        const absorbed = Math.min(temp, -d);
-        temp -= absorbed;
-        d += absorbed;
-      }
-      return {
-        ...s,
-        pools: {
-          ...s.pools,
-          temp_vitality: temp,
-          vitality: Math.max(0, Math.min(c.vitality.max, s.pools.vitality + d)),
-        },
-      };
-    });
+  const heal = (delta: number) =>
+    setStored((s) => ({
+      ...s,
+      pools: { ...s.pools, vitality: Math.max(0, Math.min(c.vitality.max, s.pools.vitality + delta)) },
+    }));
+
+  const damage = (amt: number) =>
+    setStored((s) => applyDamage(s, amt, woundDamage));
 
   const applyAmount = (sign: 1 | -1) => {
     const n = parseInt(amount, 10);
-    if (!Number.isNaN(n) && n > 0) changeVitality(sign * n);
+    if (!Number.isNaN(n) && n > 0) (sign === 1 ? heal(n) : damage(n));
     setAmount("");
   };
 
@@ -56,9 +48,9 @@ export function VitalityCard({ c, setStored }: VitalsProps) {
             <div className="hp-cell">
               <div className="lbl">Current</div>
               <div className="v">
-                <span className="pm" style={{ cursor: "pointer" }} onClick={() => changeVitality(-1)}>−</span>
+                <span className="pm" style={{ cursor: "pointer" }} onClick={() => damage(1)}>−</span>
                 <span>{c.vitality.current}</span>
-                <span className="pm" style={{ cursor: "pointer" }} onClick={() => changeVitality(1)}>+</span>
+                <span className="pm" style={{ cursor: "pointer" }} onClick={() => heal(1)}>+</span>
               </div>
             </div>
             <div className="hp-slash">/</div>
@@ -111,6 +103,10 @@ export function VitalityCard({ c, setStored }: VitalsProps) {
             <button className="rest-btn" style={{ padding: "2px 8px" }} onClick={() => applyAmount(1)}>
               <span className="name">Heal</span>
             </button>
+            <label style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 12 }} title="Bypass Vitality, apply directly to Wounds">
+              <input type="checkbox" checked={woundDamage} onChange={(e) => setWoundDamage(e.target.checked)} />
+              Wound
+            </label>
           </div>
         </div>
       </div>
