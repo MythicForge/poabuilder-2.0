@@ -5,7 +5,7 @@ import { useState } from "react";
 import type { ComputedCharacter, StoredCharacter } from "../core/types.ts";
 import { Icon } from "@ui/primitives.tsx";
 import { REGISTRY } from "../core/data-registry.ts";
-import { applyRest, type RestKind } from "../core/rest.ts";
+import { applyRest, maxRespites, type RestKind } from "../core/rest.ts";
 import { applyDamage } from "../core/damage.ts";
 
 interface VitalsProps {
@@ -16,7 +16,6 @@ interface VitalsProps {
 
 export function VitalityCard({ c, setStored }: VitalsProps) {
   const [amount, setAmount] = useState("");
-  const [woundDamage, setWoundDamage] = useState(false);
   const [tempEdit, setTempEdit] = useState(false);
   const [tempVal, setTempVal] = useState("");
 
@@ -26,8 +25,7 @@ export function VitalityCard({ c, setStored }: VitalsProps) {
       pools: { ...s.pools, vitality: Math.max(0, Math.min(c.vitality.max, s.pools.vitality + delta)) },
     }));
 
-  const damage = (amt: number) =>
-    setStored((s) => applyDamage(s, amt, woundDamage));
+  const damage = (amt: number) => setStored((s) => applyDamage(s, amt));
 
   const applyAmount = (sign: 1 | -1) => {
     const n = parseInt(amount, 10);
@@ -87,26 +85,23 @@ export function VitalityCard({ c, setStored }: VitalsProps) {
           <div className="hp-bar-wrap">
             <div className="hp-bar" style={{ width: `${pct}%` }} />
           </div>
-          <div className="hp-meta">
+          <div className="dh-rail">
             <input
-              className="hp-temp-input"
-              style={{ width: 54 }}
+              className="dh-amount"
               type="number"
               min="0"
-              placeholder="amt"
+              inputMode="numeric"
+              placeholder="0"
+              aria-label="Amount to damage or heal"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
             />
-            <button className="rest-btn" style={{ padding: "2px 8px" }} onClick={() => applyAmount(-1)}>
-              <span className="name">Damage</span>
+            <button className="dh-btn dh-btn--damage" onClick={() => applyAmount(-1)}>
+              Damage
             </button>
-            <button className="rest-btn" style={{ padding: "2px 8px" }} onClick={() => applyAmount(1)}>
-              <span className="name">Heal</span>
+            <button className="dh-btn dh-btn--heal" onClick={() => applyAmount(1)}>
+              Heal
             </button>
-            <label style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 12 }} title="Bypass Vitality, apply directly to Wounds">
-              <input type="checkbox" checked={woundDamage} onChange={(e) => setWoundDamage(e.target.checked)} />
-              Wound
-            </label>
           </div>
         </div>
       </div>
@@ -163,9 +158,14 @@ export function WoundsAmbitionRest({ c, stored, setStored }: VitalsProps) {
       </div>
 
       <div style={{ display: "flex", gap: 6, padding: "0 12px 12px", flexWrap: "wrap" }}>
-        <button className="rest-btn" onClick={() => rest("respite")} title="Restores Will ambition (min 3); spend hit dice equivalents">
+        <button
+          className="rest-btn"
+          onClick={() => rest("respite")}
+          disabled={stored.play.respites_used >= maxRespites(c.tier)}
+          title="Restores Will ambition (min 3); spend hit dice equivalents"
+        >
           <span className="name">Respite</span>
-          <span className="sub">{stored.play.respites_used} used</span>
+          <span className="sub">{stored.play.respites_used} / {maxRespites(c.tier)} used</span>
         </button>
         <button className="rest-btn" onClick={() => rest("long_rest")} title="Full vitality, Will×2 ambition (min 8), resets respites">
           <span className="name">Long Rest</span>

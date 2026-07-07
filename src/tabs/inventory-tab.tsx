@@ -5,8 +5,9 @@
 import { useMemo, useRef, useState } from "react";
 import type { CatalogItem, ComputedCharacter, InventoryItem, SlotId, StoredCharacter } from "../core/types.ts";
 import { REGISTRY } from "../core/data-registry.ts";
-import { resolveItem } from "../core/compute.ts";
+import { computeCharacter, resolveItem } from "../core/compute.ts";
 import { defaultSlotFor, equipToSlot, isTwoHanded, legalSlotsFor, unequip } from "../core/equip.ts";
+import { rescaleWoundsOnThresholdChange } from "../core/damage.ts";
 import { masterworkBonus } from "../core/masterwork.ts";
 import { gain, spend, totalCp, type Coins } from "../core/currency.ts";
 import { CardsGrid } from "./inventory-cards.tsx";
@@ -60,7 +61,12 @@ export function InventoryTab({ c, stored, setStored, inventoryView, setInventory
 
   const items = stored.inventory.items;
 
-  const setItems = (next: InventoryItem[]) => setStored((s) => ({ ...s, inventory: { ...s.inventory, items: next } }));
+  const setItems = (next: InventoryItem[]) =>
+    setStored((s) => {
+      const nextStored = { ...s, inventory: { ...s.inventory, items: next } };
+      const newMax = computeCharacter(nextStored, REGISTRY).wounds.max;
+      return rescaleWoundsOnThresholdChange(nextStored, c.wounds.max, newMax);
+    });
 
   const updateItem = (id: string, patch: Partial<InventoryItem>) =>
     setItems(items.map((it) => (it.id === id ? { ...it, ...patch } : it)));

@@ -7,7 +7,15 @@ import type { ComputedCharacter, StoredCharacter } from "./types.ts";
 import type { Registry } from "./data-registry.ts";
 import { evalFormula, standardEnv } from "./formula.ts";
 
-export type RestKind = "respite" | "long_rest" | "daily_preparation" | "full_rest";
+export type RestKind =
+  "respite" | "long_rest" | "daily_preparation" | "full_rest";
+
+// Max respites per Long Rest cycle: 3 at tier 1-2, 4 at tier 3-4, 5 at tier 5+.
+export function maxRespites(tier: number): number {
+  if (tier >= 5) return 5;
+  if (tier >= 3) return 4;
+  return 3;
+}
 
 // which recharge tags a rest kind refreshes
 const RECHARGES: Record<RestKind, string[]> = {
@@ -23,20 +31,79 @@ export function applyRest(
   reg: Registry,
   kind: RestKind,
 ): StoredCharacter {
+  if (
+    kind === "respite" &&
+    stored.play.respites_used >= maxRespites(computed.tier)
+  )
+    return stored;
+
   const next = structuredClone(stored);
   const env = standardEnv(computed.attributes, computed.tier);
 
-  // ambition (universal)
-  const amb = reg.universalResources.find((r) => r.id === "ambition");
-  const ambRec = amb?.recovery?.[kind === "daily_preparation" ? "respite" : kind] ?? amb?.recovery?.[kind];
-  if (ambRec !== undefined && kind !== "daily_preparation") {
-    next.pools.ambition = restoreValue(next.pools.ambition, computed.ambition.max, ambRec, env);
+  // vitality/ambition/reservoir recovery on respite & long/full rest
+  // (Take_Respite / Take_Long_Rest, exmp/wounds-logic.md). "Regain a total
+  // equal to X" is additive: add X to the current pool, capped at the pool's
+  // computed max. Respite adds the flat stat; long/full rest adds 3× the stat
+  // with a minimum of 10.
+  //
+  // Fortitude → Fortitude defense (8 + Brawn); Will → Will defense (8 + Will);
+  // Spellcasting_Modifier → caster modifierValue (casters only).
+  const regain = (current: number, amount: number, max: number) =>
+    Math.min(max, current + amount);
+
+  const fortitude = computed.defenses.Fortitude;
+  const will = computed.defenses["Will Defense"];
+  const spellMod = computed.spellcasting?.modifierValue ?? 0;
+
+  if (kind === "respite") {
+    // additive recovery — add the flat stat, capped at max
+    next.pools.vitality = regain(
+      next.pools.vitality,
+      fortitude,
+      computed.vitality.max,
+    );
+    next.pools.ambition = regain(
+      next.pools.ambition,
+      Math.round(will / 3),
+      computed.ambition.max,
+    );
+    if (computed.spellcasting) {
+      next.pools.reservoir = regain(
+        next.pools.reservoir,
+        Math.max(spellMod, 3),
+        computed.spellcasting.reservoirMax,
+      );
+    }
+  } else if (kind === "long_rest" || kind === "full_rest") {
+    // additive recovery — add max(3× stat, 10), capped at max
+    next.pools.vitality = regain(
+      next.pools.vitality,
+      Math.max(3 * fortitude, 10),
+      computed.vitality.max,
+    );
+    next.pools.temp_vitality = 0;
+    next.pools.ambition = regain(
+      next.pools.ambition,
+      Math.max(will, 10),
+      computed.ambition.max,
+    );
+    if (computed.spellcasting) {
+      next.pools.reservoir = regain(
+        next.pools.reservoir,
+        Math.max(3 * spellMod, 10),
+        computed.spellcasting.reservoirMax,
+      );
+    }
   }
 
-  // long/full rest: vitality to max, temp cleared
-  if (kind === "long_rest" || kind === "full_rest") {
-    next.pools.vitality = computed.vitality.max;
-    next.pools.temp_vitality = 0;
+  // wounds heal on respite/long rest/full rest (exmp/wounds-logic.md)
+  if (kind === "respite") {
+    next.pools.wounds = Math.max(0, next.pools.wounds - computed.tier);
+  } else if (kind === "long_rest" || kind === "full_rest") {
+    next.pools.wounds = Math.max(
+      0,
+      next.pools.wounds - Math.max(3 * computed.tier, 10),
+    );
   }
 
   // profession resources
@@ -44,15 +111,13 @@ export function applyRest(
     const rec = r.def.recovery?.[kind];
     if (rec !== undefined) {
       next.pools.resources[r.def.id] = restoreValue(
-        next.pools.resources[r.def.id] ?? r.current, r.max, rec, env,
+        next.pools.resources[r.def.id] ?? r.current,
+        r.max,
+        rec,
+        env,
       );
     }
     if (kind === "full_rest") next.pools.resources[r.def.id] = r.max;
-  }
-
-  // reservoir follows its source resource if it is one; otherwise refill on long rest
-  if (computed.spellcasting && (kind === "long_rest" || kind === "full_rest")) {
-    next.pools.reservoir = computed.spellcasting.reservoirMax;
   }
 
   // limited-use counters: uses whose recharge matches reset (engine stores
@@ -64,9 +129,14 @@ export function applyRest(
   }
   // free-success counters keyed by boon context reset the same way
   for (const { boon } of computed.activeBoons) {
-    if (boon.type === "grants_free_success" && typeof boon.context === "string") {
-      const recharge = typeof boon.recharge === "string" ? boon.recharge : "daily_preparation";
-      if (tags.includes(recharge)) delete next.pools.free_successes[boon.context];
+    if (
+      boon.type === "grants_free_success" &&
+      typeof boon.context === "string"
+    ) {
+      const recharge =
+        typeof boon.recharge === "string" ? boon.recharge : "daily_preparation";
+      if (tags.includes(recharge))
+        delete next.pools.free_successes[boon.context];
     }
   }
 
@@ -88,7 +158,11 @@ function restoreValue(
   if (rec === "max") return max;
   if (typeof rec === "number") return Math.min(max, current + rec);
   let amount = 0;
-  try { amount = evalFormula(rec.formula, env); } catch { amount = 0; }
+  try {
+    amount = evalFormula(rec.formula, env);
+  } catch {
+    amount = 0;
+  }
   if (rec.minimum !== undefined) amount = Math.max(amount, rec.minimum);
   return Math.min(max, current + amount);
 }

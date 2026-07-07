@@ -203,11 +203,11 @@ function armorDefense(
   const BASE = 8;
   const shieldBonus = eq.shield ? armorBonusOf(eq.shield.cat) : 0;
 
-  if (opts.spellArmorActive) {
+  if (opts.spellArmorActive && !eq.armor) {
     breakdown.push(
-      `Spell Armor: 8 + Tier ${tier} + min(9, spell mod ${opts.spellMod})`,
+      `Spell Armor: 8 + Tier ${tier} + min(10, spell mod ${opts.spellMod})`,
     );
-    return BASE + tier + Math.min(9, opts.spellMod);
+    return BASE + tier + Math.min(10, opts.spellMod);
   }
   if (opts.unarmoredDefense && !eq.armor) {
     breakdown.push(
@@ -465,6 +465,15 @@ export function computeCharacter(
   // active states
   const activeStates = stored.states.active;
 
+  // spellcasting (needed early for Spell Armor defense)
+  const spellcasting = computeSpellcasting(
+    stored,
+    activeBoons,
+    attrs,
+    tier,
+    resources,
+  );
+
   // equipment
   const eq = equipped(stored, reg);
   if (
@@ -493,7 +502,12 @@ export function computeCharacter(
         .toLowerCase()
         .includes("unarmored"),
   );
-  const spellArmorActive = activeStates.includes("spell_armor");
+  const spellArmorActive = activeBoons.some(
+    ({ boon }) =>
+      boon.type === "alternate_defense" &&
+      String(boon.name ?? "").toLowerCase().includes("spell"),
+  );
+  const spellArmorMod = spellcasting ? attrs[spellcasting.modifier] : 0;
 
   // defenses
   const breakdown: Record<DefenseKey, string[]> = {
@@ -507,7 +521,7 @@ export function computeCharacter(
       eq,
       attrs,
       tier,
-      { hasAgile, unarmoredDefense, spellArmorActive, spellMod: 0 },
+      { hasAgile, unarmoredDefense, spellArmorActive, spellMod: spellArmorMod },
       breakdown.Armor,
     ),
     Fortitude: 8 + attrs.brawn,
@@ -562,14 +576,6 @@ export function computeCharacter(
     tier +
     Math.floor(attrs.will / 3) +
     selfStatBonus(activeBoons, "Ambition Max", env);
-
-  const spellcasting = computeSpellcasting(
-    stored,
-    activeBoons,
-    attrs,
-    tier,
-    resources,
-  );
 
   // carry
   const carryCapacity = evalFormula(

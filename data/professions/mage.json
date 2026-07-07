@@ -2,9 +2,7 @@
   "id": "mage",
   "name": "Mage",
   "description": "Through years of dedicated study and meticulous transcription of spells, mages master arcane magic through sheer intellectual effort. They excel at battlefield control, utility magic, and providing arcane knowledge. Paths are the Enchanter and the Artificer.",
-  "favored_attributes": [
-    "Mind"
-  ],
+  "favored_attributes": ["Mind"],
   "vitality": {
     "base": "8 + Brawn",
     "per_tier": "2d8",
@@ -19,34 +17,19 @@
     "skills": {
       "type": "choice",
       "count": 1,
-      "from": [
-        "Intuition",
-        "Awareness",
-        "Lore"
-      ]
+      "from": ["Intuition", "Awareness", "Lore"]
     },
-    "armaments": [
-      "Simple",
-      "Catalysts"
-    ],
+    "armaments": ["Simple", "Catalysts"],
     "protection": [],
     "tools": {
       "type": "choice",
       "count": 1,
-      "from": [
-        "Crafting",
-        "Alchemy"
-      ]
+      "from": ["Crafting", "Alchemy"]
     }
   },
   "starting_pack": {
-    "weapons": [
-      "magic_stave",
-      "dagger"
-    ],
-    "armor": [
-      "mage_robes"
-    ],
+    "weapons": ["magic_stave", "dagger"],
+    "armor": ["mage_robes"],
     "kits": [],
     "inventory": [
       "spellbook_or_arcane_focus",
@@ -88,9 +71,7 @@
     {
       "id": "magic_adept",
       "name": "Magic Adept",
-      "tags": [
-        "Mage"
-      ],
+      "tags": ["Mage"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -116,31 +97,38 @@
           "options": [
             {
               "value": "aberration",
-              "label": "Aberration"
+              "label": "Aberration",
+              "boons": []
             },
             {
               "value": "augmentation",
-              "label": "Augmentation"
+              "label": "Augmentation",
+              "boons": []
             },
             {
               "value": "conjuration",
-              "label": "Conjuration"
+              "label": "Conjuration",
+              "boons": []
             },
             {
               "value": "decimation",
-              "label": "Decimation"
+              "label": "Decimation",
+              "boons": []
             },
             {
               "value": "divination",
-              "label": "Divination"
+              "label": "Divination",
+              "boons": []
             },
             {
               "value": "mortification",
-              "label": "Mortification"
+              "label": "Mortification",
+              "boons": []
             },
             {
               "value": "reclamation",
-              "label": "Reclamation"
+              "label": "Reclamation",
+              "boons": []
             }
           ]
         },
@@ -159,9 +147,7 @@
     {
       "id": "spell_research",
       "name": "Spell Research",
-      "tags": [
-        "Mage"
-      ],
+      "tags": ["Mage"],
       "path": null,
       "tier": 0,
       "trait": "Narrative",
@@ -180,10 +166,7 @@
     {
       "id": "spellcasting",
       "name": "Spellcasting",
-      "tags": [
-        "Mage",
-        "Spellcasting"
-      ],
+      "tags": ["Mage", "Spellcasting"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -226,9 +209,7 @@
     {
       "id": "pragmatic_utility",
       "name": "Pragmatic Utility",
-      "tags": [
-        "Mage"
-      ],
+      "tags": ["Mage"],
       "path": null,
       "tier": 1,
       "trait": "Passive",
@@ -253,9 +234,7 @@
     {
       "id": "astute_studies",
       "name": "Astute Studies",
-      "tags": [
-        "Mage"
-      ],
+      "tags": ["Mage"],
       "path": null,
       "tier": 2,
       "trait": "Passive",
@@ -283,9 +262,7 @@
     {
       "id": "signature_spells",
       "name": "Signature Spells",
-      "tags": [
-        "Mage"
-      ],
+      "tags": ["Mage"],
       "path": null,
       "tier": 3,
       "trait": "Passive",
@@ -295,9 +272,7 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": [
-        "pragmatic_utility"
-      ],
+      "prerequisites": ["pragmatic_utility"],
       "description": "During Daily Preparation, choose one known spell of tier equal to floor(Tier / 2) as your Signature Spell. Casting it costs 3 fewer mana. May be changed during downtime.",
       "boons": [
         {
@@ -308,6 +283,31 @@
           "from": "known_spells",
           "cost_reduction": 3,
           "changeable_during": "downtime"
+        }
+      ]
+    },
+    {
+      "id": "spell_armor_mage",
+      "name": "Spell Armor",
+      "tags": ["Mage"],
+      "path": null,
+      "tier": 0,
+      "trait": "Passive",
+      "slot_type": null,
+      "cost": null,
+      "range": null,
+      "duration": null,
+      "uses": null,
+      "feat_dc": null,
+      "prerequisites": [],
+      "description": "You weave the source of your magic around you to create a protective barrier of magical armor. Your **defense** becomes 8 + **spell casting modifier (up to 10)** + your **Tier**. This cannot be used if wearing any armor.",
+      "boons": [
+        {
+          "type": "alternate_defense",
+          "replaces": "Armor",
+          "name": "Spell Armor",
+          "formula": "8 + Tier + spellMod",
+          "condition": "no_armor"
         }
       ]
     }

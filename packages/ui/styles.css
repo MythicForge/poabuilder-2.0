@@ -905,6 +905,72 @@ body {
     line-height: 1;
 }
 
+/* Damage / Heal action rail. Buttons rest quiet (muted text); the semantic
+   signal — red harms, green heals — reveals on hover so the resting card
+   stays calm. Amount field is mono, spinner-stripped, gold focus ring. */
+.dh-rail {
+    display: flex;
+    align-items: stretch;
+    gap: 6px;
+    margin-top: 14px;
+}
+.dh-amount {
+    width: 64px;
+    flex-shrink: 0;
+    background: var(--card-2);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 15px;
+    text-align: center;
+    outline: none;
+    padding: 6px 4px;
+    transition: border-color 0.15s;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+.dh-amount:focus {
+    border-color: var(--gold-dim);
+}
+.dh-amount::placeholder {
+    color: var(--text-faint);
+}
+.dh-amount::-webkit-outer-spin-button,
+.dh-amount::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.dh-btn {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 6px 10px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition:
+        color 0.15s,
+        border-color 0.15s,
+        background 0.15s;
+}
+.dh-btn--damage:hover,
+.dh-btn--damage:focus-visible {
+    border-color: var(--danger);
+    background: color-mix(in srgb, var(--danger) 12%, transparent);
+    color: var(--danger);
+}
+.dh-btn--heal:hover,
+.dh-btn--heal:focus-visible {
+    border-color: var(--vitality);
+    background: color-mix(in srgb, var(--vitality) 12%, transparent);
+    color: var(--vitality);
+}
+
 /* ------------ HP card — always-on action rail ------------ */
 .hp-body {
     display: flex;

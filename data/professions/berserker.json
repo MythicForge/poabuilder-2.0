@@ -6,27 +6,48 @@
   "vitality": {
     "base": "14 + Brawn",
     "per_tier": "2d12 + 2",
-    "brawn_bonus": { "dice": "1d12", "threshold": 5, "attribute": "Brawn" }
+    "brawn_bonus": {
+      "dice": "1d12",
+      "threshold": 5,
+      "attribute": "Brawn"
+    }
   },
   "wound_threshold_per_tier": 2,
   "proficiencies": {
-    "skills": { "type": "choice", "count": 1, "from": ["Vigor", "Awareness", "Social"] },
+    "skills": {
+      "type": "choice",
+      "count": 1,
+      "from": ["Vigor", "Awareness", "Social"]
+    },
     "armaments": ["Martial", "Simple"],
     "protection": ["Light"],
     "tools": []
   },
   "starting_pack": {
-    "weapons": ["greataxe_or_maul", "throwing_axe", "throwing_axe", "survival_knife"],
+    "weapons": [
+      "greataxe_or_maul",
+      "throwing_axe",
+      "throwing_axe",
+      "survival_knife"
+    ],
     "armor": ["medium_armor"],
     "kits": ["tribal_tattoo_kit"],
     "inventory": ["bone_trophies", "drinking_horn"],
-    "currency": { "gold": 5 }
+    "currency": {
+      "gold": 5
+    }
   },
   "resources": [],
   "resource_notes": "Berserker has no profession-specific resource pool. Rage states are activated by spending Ambition (universal resource). Several feats raise Ambition Max — see 'Ambition Max' stat flag in rule-check.md.",
   "paths": [
-    { "id": "frenzied", "name": "Frenzied" },
-    { "id": "titan",    "name": "Titan" }
+    {
+      "id": "frenzied",
+      "name": "Frenzied"
+    },
+    {
+      "id": "titan",
+      "name": "Titan"
+    }
   ],
   "feats": [
     {
@@ -37,7 +58,14 @@
       "tier": 0,
       "trait": "Narrative",
       "slot_type": null,
-      "cost": { "resources": [{ "id": "ambition", "amount": 1 }] },
+      "cost": {
+        "resources": [
+          {
+            "id": "ambition",
+            "amount": 1
+          }
+        ]
+      },
       "range": null,
       "duration": null,
       "uses": null,
@@ -58,8 +86,8 @@
       ]
     },
     {
-      "id": "unarmored_defense",
-      "name": "Unarmored Defense",
+      "id": "berserker_defense",
+      "name": "Berserker Defense",
       "tags": ["Berserker"],
       "path": null,
       "tier": 0,
@@ -71,9 +99,15 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "While wearing no Armor, add your Brawn modifier + Tier to your Armor defense. (Source: Body — encoded as Brawn; verify.)",
+      "description": "While wearing no Armor or Light armor, you use your Fortitude for your base armor defense.",
       "boons": [
-        { "type": "stat_bonus", "stat": "Armor", "amount": "Brawn + Tier", "target": "self", "condition": "unarmored" }
+        {
+          "type": "alternate_defense",
+          "replaces": "Armor",
+          "name": "Berserker Defense",
+          "formula": "fortitude",
+          "condition": "light_or_no_armor"
+        }
       ]
     },
     {
