@@ -5,7 +5,7 @@ import { useState } from "react";
 import type { ComputedCharacter, StoredCharacter } from "../core/types.ts";
 import { Icon } from "@ui/primitives.tsx";
 import { REGISTRY } from "../core/data-registry.ts";
-import { applyRest, maxRespites, type RestKind } from "../core/rest.ts";
+import { applyRest, lastRespiteDrifted, maxRespites, undoLastRespite, type RestKind } from "../core/rest.ts";
 import { applyDamage } from "../core/damage.ts";
 
 interface VitalsProps {
@@ -14,18 +14,37 @@ interface VitalsProps {
   setStored: (fn: (s: StoredCharacter) => StoredCharacter) => void;
 }
 
-export function VitalityCard({ c, setStored }: VitalsProps) {
+export function VitalityCard({ c, stored, setStored }: VitalsProps) {
   const [amount, setAmount] = useState("");
   const [tempEdit, setTempEdit] = useState(false);
   const [tempVal, setTempVal] = useState("");
 
+  // Heal only ever touches Vitality — never the shield pool (repair on rest).
   const heal = (delta: number) =>
     setStored((s) => ({
       ...s,
       pools: { ...s.pools, vitality: Math.max(0, Math.min(c.vitality.max, s.pools.vitality + delta)) },
     }));
 
-  const damage = (amt: number) => setStored((s) => applyDamage(s, amt));
+  const shield = c.shield;
+  const raised = !!stored.play.shield_raised;
+  const canRaise = !!shield && !shield.broken;
+
+  const damage = (amt: number) =>
+    setStored((s) => {
+      // A raised, intact shield soaks first. Read the live pool from `s` so
+      // repeated hits chip the same shield rather than the stale computed value.
+      let absorb = null as { itemId: string; current: number } | null;
+      if (shield && !shield.broken && s.play.shield_raised) {
+        const it = s.inventory.items.find((i) => i.id === shield.itemId);
+        const cur = it?.reduction_pool_current ?? shield.max;
+        if (cur > 0) absorb = { itemId: shield.itemId, current: cur };
+      }
+      return applyDamage(s, amt, absorb);
+    });
+
+  const toggleRaise = () =>
+    setStored((s) => ({ ...s, play: { ...s.play, shield_raised: !s.play.shield_raised } }));
 
   const applyAmount = (sign: 1 | -1) => {
     const n = parseInt(amount, 10);
@@ -85,6 +104,38 @@ export function VitalityCard({ c, setStored }: VitalsProps) {
           <div className="hp-bar-wrap">
             <div className="hp-bar" style={{ width: `${pct}%` }} />
           </div>
+
+          {(() => {
+            const state = !shield ? "none" : shield.broken ? "broken" : raised ? "raised" : "lowered";
+            const icon = state === "none" ? "shield-x" : state === "broken" ? "shield-off" : "shield";
+            const pool = shield && !shield.broken
+              ? `${shield.current} / ${shield.max}`
+              : state === "broken" ? "broken" : "—";
+            const fillPct = shield && shield.max > 0 ? Math.round((shield.current / shield.max) * 100) : 0;
+            return (
+              <>
+                <div className={`shield-line shield-line--${state}`}>
+                  <span className="shield-tag">
+                    <Icon kind={icon} size={13} />
+                    <span className="shield-name">{shield ? shield.name : "No shield"}</span>
+                  </span>
+                  <div className="shield-meter">
+                    <div className="shield-fill" style={{ width: `${state === "broken" ? 100 : fillPct}%` }} />
+                  </div>
+                  <span className="shield-val">{pool}</span>
+                </div>
+                <button
+                  className={`shield-raise${raised ? " is-up" : ""}`}
+                  onClick={toggleRaise}
+                  disabled={!canRaise}
+                >
+                  <Icon kind={raised ? "chevron-up" : "chevron-down"} size={13} />
+                  {state === "none" ? "No shield" : state === "broken" ? "Shield broken" : raised ? "Shield up" : "Shield down"}
+                </button>
+              </>
+            );
+          })()}
+
           <div className="dh-rail">
             <input
               className="dh-amount"
@@ -116,6 +167,24 @@ export function WoundsAmbitionRest({ c, stored, setStored }: VitalsProps) {
     setStored((s) => ({ ...s, pools: { ...s.pools, ambition: Math.max(0, Math.min(c.ambition.max, n)) } }));
 
   const rest = (kind: RestKind) => setStored((s) => applyRest(s, c, REGISTRY, kind));
+
+  const respitesMax = maxRespites(c.tier);
+  const respitesUsed = stored.play.respites_used;
+  const takeRespite = () => {
+    if (respitesUsed >= respitesMax) return;
+    setStored((s) => applyRest(s, c, REGISTRY, "respite"));
+  };
+  const freeRespite = () => {
+    if (respitesUsed <= 0) return;
+    if (
+      lastRespiteDrifted(stored) &&
+      !window.confirm(
+        "Vitality/Ambition/Wounds have changed since this respite. Undo it and restore the pre-respite values?",
+      )
+    )
+      return;
+    setStored((s) => undoLastRespite(s));
+  };
 
   const dead = c.wounds.current >= c.wounds.max;
 
@@ -157,21 +226,25 @@ export function WoundsAmbitionRest({ c, stored, setStored }: VitalsProps) {
         </div>
       </div>
 
+      <div className="hp-head" style={{ marginTop: 6 }}>
+        <span className="heart"><Icon kind="dice" size={12} /></span> Respites
+        <span style={{ marginLeft: "auto", fontFamily: "var(--serif)", color: "var(--gold)" }}>{respitesUsed} / {respitesMax}</span>
+      </div>
+      <div style={{ display: "flex", gap: 4, padding: "6px 12px", flexWrap: "wrap" }}>
+        {Array.from({ length: respitesMax }, (_, i) => (
+          <span
+            key={i}
+            className={`slot-pip${i < respitesUsed ? "" : " used"}`}
+            style={{ cursor: "pointer", ...(i < respitesUsed ? { background: "var(--gold)", borderColor: "var(--gold)" } : {}) }}
+            title={i < respitesUsed ? "Click to free this respite (undo)" : "Click to take a respite"}
+            onClick={() => (i < respitesUsed ? freeRespite() : takeRespite())}
+          />
+        ))}
+      </div>
+
       <div style={{ display: "flex", gap: 6, padding: "0 12px 12px", flexWrap: "wrap" }}>
-        <button
-          className="rest-btn"
-          onClick={() => rest("respite")}
-          disabled={stored.play.respites_used >= maxRespites(c.tier)}
-          title="Restores Will ambition (min 3); spend hit dice equivalents"
-        >
-          <span className="name">Respite</span>
-          <span className="sub">{stored.play.respites_used} / {maxRespites(c.tier)} used</span>
-        </button>
-        <button className="rest-btn" onClick={() => rest("long_rest")} title="Full vitality, Will×2 ambition (min 8), resets respites">
+        <button className="rest-btn" onClick={() => rest("long_rest")} title="Full vitality, Will×2 ambition (min 8), resets respites, resets daily modes + prep uses">
           <span className="name">Long Rest</span>
-        </button>
-        <button className="rest-btn" onClick={() => rest("daily_preparation")} title="Reset daily modes and daily-preparation uses">
-          <span className="name">Daily Prep</span>
         </button>
       </div>
     </div>

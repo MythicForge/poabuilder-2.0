@@ -10,7 +10,11 @@
   },
   "wound_threshold_per_tier": 1,
   "proficiencies": {
-    "skills": { "type": "choice", "count": 2, "from": ["Talent", "Awareness", "Intuition", "Social"] },
+    "skills": {
+      "type": "choice",
+      "count": 2,
+      "from": ["Talent", "Awareness", "Intuition", "Social"]
+    },
     "armaments": ["Finesse"],
     "protection": ["Light"],
     "tools": []
@@ -19,14 +23,18 @@
     "weapons": ["dagger", "dagger", "light_bow_with_quiver_20"],
     "armor": [],
     "kits": ["thieves_tools"],
-    "inventory": ["grappling_hook_50ft_rope", "smoke_pellets_3", "dark_clothing_set"],
+    "inventory": [
+      "grappling_hook_50ft_rope",
+      "smoke_pellets_3",
+      "dark_clothing_set"
+    ],
     "currency": { "gold": 0 }
   },
   "resources": [],
   "resource_notes": "No profession-specific pool. Agent uses Ambition (universal). Alchemist path adds a craftable-concoction pool (see Concoction Kit).",
   "paths": [
-    { "id": "alchemist",    "name": "Alchemist" },
-    { "id": "infiltrator",  "name": "Infiltrator" }
+    { "id": "alchemist", "name": "Alchemist" },
+    { "id": "infiltrator", "name": "Infiltrator" }
   ],
   "feats": [
     {
@@ -65,7 +73,7 @@
         {
           "type": "alternate_defense",
           "name": "Agile Defense",
-          "formula": "10 + light_armor_bonus + max(Brawn, Mind)",
+          "formula": "8 + light_armor_bonus + max(Finesse, Mind)",
           "replaces": "Armor",
           "condition": "light_or_no_armor AND no_shield",
           "note": "New boon type — see rule-check.md."
@@ -153,8 +161,16 @@
           "key": "masterful_skill_choice",
           "prompt": "Choose a skill upgrade",
           "options": [
-            { "value": "new_skill",     "label": "New skill: Proficiency + Expertise", "grants": { "proficiency": true, "expertise": true } },
-            { "value": "upgrade_skill", "label": "Upgrade existing Expertise +1 die size", "grants": { "dice_size_increase": 1 } }
+            {
+              "value": "new_skill",
+              "label": "New skill: Proficiency + Expertise",
+              "grants": { "proficiency": true, "expertise": true }
+            },
+            {
+              "value": "upgrade_skill",
+              "label": "Upgrade existing Expertise +1 die size",
+              "grants": { "dice_size_increase": 1 }
+            }
           ]
         }
       ]

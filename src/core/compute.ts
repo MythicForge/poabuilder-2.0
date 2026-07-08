@@ -21,14 +21,11 @@ import type {
 import { ATTRIBUTES, SKILLS } from "./types.ts";
 import type { Registry } from "./data-registry.ts";
 import { collectFeats } from "./boon-resolver.ts";
-import { canDualWield, isTwoHanded } from "./equip.ts";
+import { canDualWield, isTwoHanded, equipped, type Equipped } from "./equip.ts";
 import { masterworkBonus } from "./masterwork.ts";
-import {
-  evalFormula,
-  parseAvgDiceExpr,
-  standardEnv,
-  type FormulaEnv,
-} from "./formula.ts";
+import { evalFormula, parseAvgDiceExpr, type FormulaEnv } from "./formula.ts";
+import { evalCondition, type ConditionCtx } from "./conditions.ts";
+import { computeCombatBonuses } from "./damage.ts";
 
 // ── Tier & budgets ───────────────────────────────────────────────────────────
 
@@ -128,6 +125,68 @@ export function resolveItem(
   );
 }
 
+const ATTR_LABEL: Record<AttributeKey, string> = {
+  brawn: "Brawn",
+  finesse: "Finesse",
+  mind: "Mind",
+  will: "Will",
+};
+
+/** Derived combat values for a weapon, resolved against a character's stats. */
+export interface WeaponCombat {
+  /** Label of the attribute actually used (for Varried, the winning stat). */
+  modifier: string;
+  modifierValue: number;
+  /** Proficient ⇒ one of the weapon's `groups` is a known armament. */
+  proficient: boolean;
+  /** modifierValue + Tier (Tier only when proficient). */
+  toHit: number;
+  /** modifierValue. */
+  damageMod: number;
+}
+
+/**
+ * Resolve a weapon's To Hit / Damage Mod against the character.
+ *  - modifier: "Varried" ⇒ max(Brawn, Finesse); otherwise the named attribute.
+ *  - toHit: resolved modifier + Tier (Tier added only when proficient, i.e. one
+ *    of the weapon's `groups` matches an armament proficiency).
+ *  - damageMod: resolved modifier.
+ * Returns null for non-weapons.
+ */
+export function deriveWeaponCombat(
+  cat: CatalogItem,
+  ctx: { attributes: Record<AttributeKey, number>; tier: number; armaments: string[] },
+): WeaponCombat | null {
+  if (cat.category !== "Weapon") return null;
+  const raw = String(cat.modifier ?? "").trim();
+  const lower = raw.toLowerCase();
+
+  let modifierValue: number;
+  let modifier: string;
+  if (lower === "varried" || lower === "varied") {
+    const { brawn, finesse } = ctx.attributes;
+    modifierValue = Math.max(brawn, finesse);
+    modifier = finesse > brawn ? "Finesse" : "Brawn";
+  } else if (lower in ATTR_LABEL) {
+    const key = lower as AttributeKey;
+    modifierValue = ctx.attributes[key];
+    modifier = ATTR_LABEL[key];
+  } else {
+    // unknown/blank modifier ⇒ no attribute bonus, keep the raw label for display
+    modifierValue = 0;
+    modifier = raw || "—";
+  }
+
+  const proficient = (cat.groups ?? []).some((g) => ctx.armaments.includes(g));
+  return {
+    modifier,
+    modifierValue,
+    proficient,
+    toHit: modifierValue + (proficient ? ctx.tier : 0),
+    damageMod: modifierValue,
+  };
+}
+
 function armorBonusOf(cat: CatalogItem): number {
   if (typeof cat.armor_bonus === "number") return cat.armor_bonus;
   if (cat.armor_bonus && typeof cat.armor_bonus === "object")
@@ -136,131 +195,120 @@ function armorBonusOf(cat: CatalogItem): number {
   return 0;
 }
 
-interface Equipped {
-  armor: { cat: CatalogItem; item: InventoryItem } | null;
-  shield: { cat: CatalogItem; item: InventoryItem } | null;
-  weapons: { cat: CatalogItem; item: InventoryItem }[];
+// ── Armor defense (caps & flags sourced from data/shared/equipment-rules.json) ─
+
+interface CatRule {
+  stat_cap: number | null;
+  shield_allowed: boolean;
+  agile: boolean;
+}
+interface ArmorRules {
+  base: number;
+  categories: Record<string, CatRule>;
 }
 
-function equipped(stored: StoredCharacter, reg: Registry): Equipped {
-  const items = stored.inventory.items;
-  const bySlot = (s: string) => items.find((it) => it.slot === s);
+const DEFAULT_ARMOR_RULES: ArmorRules = {
+  base: 8,
+  categories: {
+    Heavy: { stat_cap: 5, shield_allowed: true, agile: false },
+    Medium: { stat_cap: 3, shield_allowed: true, agile: false },
+    Light: { stat_cap: 5, shield_allowed: false, agile: true },
+    Unarmored: { stat_cap: null, shield_allowed: true, agile: true },
+  },
+};
 
-  const bodyItem = bySlot("body");
-  const bodyCat = bodyItem ? resolveItem(bodyItem, reg) : null;
-  let armor =
-    bodyItem && bodyCat?.category === "Armor" && !bodyCat.is_template
-      ? { cat: bodyCat, item: bodyItem }
-      : null;
-
-  const mainItem = bySlot("main_hand");
-  const mainCat = mainItem ? resolveItem(mainItem, reg) : null;
-  const mainIsTwoHanded = isTwoHanded(mainCat);
-
-  const offItem = bySlot("off_hand");
-  const offCat = offItem ? resolveItem(offItem, reg) : null;
-
-  let shield =
-    offCat?.category === "Shield" ? { cat: offCat, item: offItem! } : null;
-  if (shield && mainIsTwoHanded) shield = null; // 2H mainhand blocks the shield bonus
-
-  const weapons: { cat: CatalogItem; item: InventoryItem }[] = [];
-  if (mainCat?.category === "Weapon")
-    weapons.push({ cat: mainCat, item: mainItem! });
-  if (offCat?.category === "Weapon")
-    weapons.push({ cat: offCat, item: offItem! });
-
-  // back-compat: flag-only equipped items (no slot) for characters predating the slot system
-  for (const item of items) {
-    if (item.slot != null) continue;
-    if (!item.equipped) continue;
-    const cat = resolveItem(item, reg);
-    if (!cat) continue;
-    if (!armor && cat.category === "Armor" && !cat.is_template)
-      armor = { cat, item };
-    else if (!shield && !mainIsTwoHanded && cat.category === "Shield")
-      shield = { cat, item };
-    else if (cat.category === "Weapon") weapons.push({ cat, item });
+function parseArmorRules(reg: Registry): ArmorRules {
+  const doc = (reg.equipmentRules as Record<string, unknown>)?.armor_defense as
+    Record<string, unknown> | undefined;
+  if (!doc) return DEFAULT_ARMOR_RULES;
+  const base = typeof doc.base === "number" ? doc.base : 8;
+  const cats: Record<string, CatRule> = { ...DEFAULT_ARMOR_RULES.categories };
+  const raw = (doc.categories as Record<string, Record<string, unknown>>) ?? {};
+  for (const [name, cfg] of Object.entries(raw)) {
+    const fallback = DEFAULT_ARMOR_RULES.categories[name] ?? {
+      stat_cap: null,
+      shield_allowed: true,
+      agile: false,
+    };
+    cats[name] = {
+      stat_cap:
+        cfg.stat_cap === null
+          ? null
+          : typeof cfg.stat_cap === "number"
+            ? cfg.stat_cap
+            : fallback.stat_cap,
+      shield_allowed:
+        typeof cfg.shield_allowed === "boolean"
+          ? cfg.shield_allowed
+          : fallback.shield_allowed,
+      agile: cfg.agile_bonus != null ? true : fallback.agile,
+    };
   }
-
-  return { armor, shield, weapons };
+  return { base, categories: cats };
 }
 
-// ── Armor defense (per data/shared/equipment-rules.json) ────────────────────
-
+/** Standard equipment-driven Armor defense (before alternate_defense boons). */
 function armorDefense(
   eq: Equipped,
   attrs: Record<AttributeKey, number>,
   tier: number,
-  opts: {
-    hasAgile: boolean;
-    unarmoredDefense: boolean;
-    spellArmorActive: boolean;
-    spellMod: number;
-  },
-  breakdown: string[],
-): number {
-  const BASE = 8;
+  hasAgile: boolean,
+  rules: ArmorRules,
+): { value: number; line: string } {
+  const base = rules.base;
   const shieldBonus = eq.shield ? armorBonusOf(eq.shield.cat) : 0;
 
-  if (opts.spellArmorActive && !eq.armor) {
-    breakdown.push(
-      `Spell Armor: 8 + Tier ${tier} + min(10, spell mod ${opts.spellMod})`,
-    );
-    return BASE + tier + Math.min(10, opts.spellMod);
-  }
-  if (opts.unarmoredDefense && !eq.armor) {
-    breakdown.push(
-      `Unarmored Defense: 8 + Tier ${tier} + min(9, Brawn ${attrs.brawn})`,
-    );
-    return BASE + tier + Math.min(9, attrs.brawn);
-  }
   if (!eq.armor) {
-    const agile = opts.hasAgile ? tier : 0;
-    breakdown.push(
-      `Unarmored: 8 + Finesse ${attrs.finesse}${shieldBonus ? ` + shield ${shieldBonus}` : ""}${agile ? ` + Agile ${agile}` : ""}`,
-    );
-    return BASE + attrs.finesse + shieldBonus + agile;
+    const c = rules.categories.Unarmored;
+    const agile = hasAgile && c.agile ? tier : 0;
+    const shield = c.shield_allowed ? shieldBonus : 0;
+    return {
+      value: base + attrs.finesse + shield + agile,
+      line: `Unarmored: ${base} + Finesse ${attrs.finesse}${shield ? ` + shield ${shield}` : ""}${agile ? ` + Agile ${agile}` : ""}`,
+    };
   }
 
   const cat = eq.armor.cat;
   const bonus = armorBonusOf(cat);
   const masterwork = masterworkBonus(eq.armor.item, cat);
-  const type = String(cat.armor_type ?? "");
+  const type = String(cat.armor_type ?? "Light");
+  const c = rules.categories[type] ?? rules.categories.Light;
 
-  if (type === "Heavy") {
-    const cap = 3 + masterwork;
-    breakdown.push(
-      `Heavy: 8 + armor ${bonus} + shield ${shieldBonus} + min(${cap}, Brawn ${attrs.brawn})`,
-    );
-    return BASE + bonus + shieldBonus + Math.min(cap, attrs.brawn);
-  }
-  if (type === "Medium") {
-    const cap = 3 + masterwork;
-    const statKey = eq.armor.item.medium_armor_stat ?? "brawn";
-    const statVal = attrs[statKey];
-    breakdown.push(
-      `Medium: 8 + armor ${bonus} + shield ${shieldBonus} + min(${cap}, ${statKey} ${statVal})`,
-    );
-    return BASE + bonus + shieldBonus + Math.min(cap, statVal);
-  }
-  // Light (and anything else with a bonus): Finesse is uncapped, same as unarmored —
-  // armor bonus + masterwork are flat additions on top, agile still just adds Tier.
-  const agile = opts.hasAgile ? tier : 0;
-  breakdown.push(
-    `Light: 8 + armor ${bonus} + masterwork ${masterwork} + shield ${shieldBonus} + Finesse ${attrs.finesse}${agile ? ` + Agile ${agile}` : ""}`,
-  );
-  return BASE + bonus + masterwork + shieldBonus + attrs.finesse + agile;
+  const shield = c.shield_allowed ? shieldBonus : 0;
+  const statKey: AttributeKey =
+    type === "Heavy"
+      ? "brawn"
+      : type === "Medium"
+        ? (eq.armor.item.medium_armor_stat ?? "brawn")
+        : "finesse";
+  const statVal = attrs[statKey];
+  const capLabel = c.stat_cap == null ? "∞" : String(c.stat_cap + masterwork);
+  const capped =
+    c.stat_cap == null ? statVal : Math.min(c.stat_cap + masterwork, statVal);
+  const agile = hasAgile && c.agile ? tier : 0;
+  return {
+    value: base + bonus + shield + capped + agile,
+    line: `${type}: ${base} + armor ${bonus}${shield ? ` + shield ${shield}` : ""} + min(${capLabel}, ${statKey} ${statVal})${agile ? ` + Agile ${agile}` : ""}`,
+  };
 }
 
 // ── Boon appliers ────────────────────────────────────────────────────────────
 
-function num(v: unknown, env: FormulaEnv): number {
+/** Evaluate a numeric/formula boon field; push a warning (and return 0) on failure. */
+function num(
+  v: unknown,
+  env: FormulaEnv,
+  warnings?: string[],
+  label?: string,
+): number {
   if (typeof v === "number") return v;
   if (typeof v === "string") {
     try {
       return evalFormula(v, env);
-    } catch {
+    } catch (e) {
+      warnings?.push(
+        `bad formula "${v}"${label ? ` in ${label}` : ""}: ${(e as Error).message}`,
+      );
       return 0;
     }
   }
@@ -271,9 +319,11 @@ function selfStatBonus(
   active: ActiveBoon[],
   stat: string,
   env: FormulaEnv,
+  condCtx: ConditionCtx,
+  warnings: string[],
 ): number {
   let total = 0;
-  for (const { boon } of active) {
+  for (const { boon, source } of active) {
     if (boon.type !== "stat_bonus") continue;
     if (
       boon.stat !== stat &&
@@ -286,8 +336,12 @@ function selfStatBonus(
       continue;
     const target = (boon.target as string) ?? "self";
     if (target !== "self") continue;
-    if (boon.condition && !isSheetKnowableTrue(boon)) continue; // conditional bonuses render on cards instead
-    total += num(boon.amount, env);
+    if (boon.condition) {
+      // conditional bonus: apply only when the condition is knowably true;
+      // "unknown" (prose) stays display-only on the card, as before.
+      if (evalCondition(String(boon.condition), condCtx) !== true) continue;
+    }
+    total += num(boon.amount, env, warnings, `${source.featId} stat_bonus`);
   }
   return total;
 }
@@ -295,13 +349,87 @@ function selfStatBonus(
 const DEFENSES: DefenseKey[] = ["Armor", "Fortitude", "Mental", "Will Defense"];
 const isDefense = (s: string) => (DEFENSES as string[]).includes(s);
 
-// Conditions we can't evaluate on-sheet stay display-only. A handful ARE
-// knowable (state/equipment gates resolved by the boon-resolver already).
-function isSheetKnowableTrue(boon: Boon): boolean {
-  const c = String(boon.condition ?? "");
-  if (!c) return true;
-  // resolver already gated state/choice/armor branches; remaining strings are prose
-  return false;
+const ATTR_STAT: Record<string, AttributeKey> = {
+  Brawn: "brawn",
+  Finesse: "finesse",
+  Mind: "mind",
+  Will: "will",
+};
+
+// stat_bonus `stat` values the engine consumes (defenses + attributes handled
+// elsewhere) plus ones knowingly left description-only. Anything outside these
+// surfaces as a warning so new data vocabulary never silently vanishes.
+const KNOWN_STATS = new Set([
+  "Armor",
+  "Fortitude",
+  "Mental",
+  "Will Defense",
+  "All Defenses",
+  "Vitality Max",
+  "Ambition Max",
+  "spell_dc",
+  "spell_attack",
+  "attack_roll",
+  "AP",
+  "Brawn",
+  "Finesse",
+  "Mind",
+  "Will",
+]);
+const IGNORED_STATS = new Set(["size_category"]); // out of scope (see plan)
+
+function warnUnknownStats(active: ActiveBoon[], warnings: string[]): void {
+  const seen = new Set<string>();
+  for (const { boon, source } of active) {
+    if (boon.type !== "stat_bonus") continue;
+    const stat = String(boon.stat ?? "");
+    if (KNOWN_STATS.has(stat) || IGNORED_STATS.has(stat)) continue;
+    const key = `${source.featId}:${stat}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    warnings.push(
+      `stat_bonus targets unknown stat "${stat}" in ${source.featId}`,
+    );
+  }
+}
+
+/**
+ * Apply `stat_bonus` boons that target an attribute, in place, before anything
+ * derived. Amounts must be numeric or Tier-only formulas (evaluated against a
+ * pre-attribute env of just {Tier}) — a formula that references an attribute
+ * would be self-referential, so it is skipped with a warning.
+ */
+function applyAttributeBonuses(
+  attrs: Record<AttributeKey, number>,
+  active: ActiveBoon[],
+  tier: number,
+  condCtx: ConditionCtx,
+  warnings: string[],
+): void {
+  const tierEnv: FormulaEnv = { Tier: tier };
+  for (const { boon, source } of active) {
+    if (boon.type !== "stat_bonus") continue;
+    const key = ATTR_STAT[String(boon.stat)];
+    if (!key) continue;
+    if (((boon.target as string) ?? "self") !== "self") continue;
+    if (
+      boon.condition &&
+      evalCondition(String(boon.condition), condCtx) !== true
+    )
+      continue;
+    const amt = boon.amount;
+    if (typeof amt === "number") {
+      attrs[key] += amt;
+    } else if (typeof amt === "string") {
+      try {
+        attrs[key] += evalFormula(amt, tierEnv);
+      } catch {
+        warnings.push(
+          `attribute stat_bonus "${amt}" in ${source.featId} references a non-Tier identifier; skipped`,
+        );
+      }
+    }
+  }
 }
 
 // ── Spellcasting ─────────────────────────────────────────────────────────────
@@ -335,45 +463,97 @@ function knownSpellsAllowance(
   return 2 + threshold;
 }
 
+function spellcastingGrant(active: ActiveBoon[]): SpellcastingGrant | null {
+  for (const { boon } of active)
+    if (boon.type === "grants_spellcasting")
+      return boon as unknown as SpellcastingGrant;
+  return null;
+}
+
+function spellcastingModName(
+  stored: StoredCharacter,
+  grant: SpellcastingGrant,
+): AttributeKey | null {
+  const modName =
+    stored.build.spellcasting_modifier ??
+    (typeof grant.modifier === "string"
+      ? (grant.modifier.toLowerCase() as AttributeKey)
+      : null);
+  return modName && ATTRIBUTES.includes(modName) ? modName : null;
+}
+
+/**
+ * Resolve the spellcasting modifier value early (feeds the formula env as
+ * SpellMod). Independent of resources, so it can run before them — this breaks
+ * the old ordering knot where resources needed SpellMod but the full
+ * spellcasting object needed resources for its reservoir lookup.
+ */
+function resolveSpellMod(
+  stored: StoredCharacter,
+  active: ActiveBoon[],
+  attrs: Record<AttributeKey, number>,
+): number {
+  const grant = spellcastingGrant(active);
+  if (!grant) return 0;
+  const modName = spellcastingModName(stored, grant);
+  return modName ? attrs[modName] : 0;
+}
+
 function computeSpellcasting(
   stored: StoredCharacter,
   active: ActiveBoon[],
   attrs: Record<AttributeKey, number>,
   tier: number,
   resources: ComputedResource[],
+  env: FormulaEnv,
+  warnings: string[],
 ): ComputedSpellcasting | null {
-  // find grant: boon first, then vocation
-  let grant: SpellcastingGrant | null = null;
-  for (const { boon } of active) {
-    if (boon.type === "grants_spellcasting") {
-      grant = boon as unknown as SpellcastingGrant;
-      break;
-    }
-  }
+  const grant = spellcastingGrant(active);
   if (!grant) return null;
 
-  const modName =
-    stored.build.spellcasting_modifier ??
-    (typeof grant.modifier === "string"
-      ? (grant.modifier.toLowerCase() as AttributeKey)
-      : null);
-  if (!modName || !ATTRIBUTES.includes(modName)) return null;
+  const modName = spellcastingModName(stored, grant);
+  if (!modName) return null;
   const modValue = attrs[modName];
 
   const threshold = spellcastingThreshold(stored.build.feats_purchased);
-  const casterType = grant.caster_type;
+
+  // upgrade_spellcasting: caster_type promotion + reservoir formula override.
+  let casterType = grant.caster_type;
+  let reservoirOverride: number | null = null;
+  for (const { boon } of active) {
+    if (boon.type !== "upgrade_spellcasting") continue;
+    if (typeof boon.caster_type === "string")
+      casterType = boon.caster_type as typeof casterType;
+    if (boon.reservoir_formula != null)
+      reservoirOverride = num(
+        boon.reservoir_formula,
+        env,
+        warnings,
+        "upgrade_spellcasting reservoir",
+      );
+    // any other fields the engine doesn't model surface on the card
+    const modeled = new Set(["type", "caster_type", "reservoir_formula"]);
+    for (const k of Object.keys(boon))
+      if (!modeled.has(k))
+        warnings.push(
+          `upgrade_spellcasting field "${k}" not modeled (card-only)`,
+        );
+  }
+
   const sTier = spellcastingTier(casterType, threshold);
 
-  // reservoir: the granted resource (e.g. mana) if defined, else 2*Tier+mod style default
+  // reservoir: override → granted resource pool → caster-type default
   const source = typeof grant.source === "string" ? grant.source : null;
   const pool = source ? resources.find((r) => r.def.id === source) : undefined;
-  const reservoirMax = pool
-    ? pool.max
-    : casterType === "full"
-      ? 2 * tier + modValue
-      : casterType === "half"
-        ? tier + modValue
-        : Math.floor(tier / 2) + modValue;
+  const reservoirMax =
+    reservoirOverride ??
+    (pool
+      ? pool.max
+      : casterType === "full"
+        ? 2 * tier + modValue
+        : casterType === "half"
+          ? tier + modValue
+          : Math.floor(tier / 2) + modValue);
 
   const spheres = new Set(stored.build.known_sphere_ids);
   for (const { boon } of active) {
@@ -381,7 +561,62 @@ function computeSpellcasting(
       spheres.add(boon.sphere);
   }
 
+  // grants_cantrip — free cantrips (counts_against_known:false) raise the allowance
   const cantrips = grant.cantrips as { max?: number } | undefined;
+  let cantripAllowance = cantrips?.max ?? 0;
+  for (const { boon } of active) {
+    if (boon.type !== "grants_cantrip") continue;
+    if (boon.counts_against_known !== false) continue;
+    cantripAllowance += typeof boon.count === "number" ? boon.count : 1;
+  }
+
+  // grants_known_spells — bonus known slots that don't count against knownAllowance
+  const freeKnownSlots: ComputedSpellcasting["freeKnownSlots"] = [];
+  for (const { boon, source: src } of active) {
+    if (boon.type !== "grants_known_spells") continue;
+    if (boon.counts_against_known === true) continue;
+    const spellIds = Array.isArray(boon.spell_ids)
+      ? (boon.spell_ids as string[])
+      : undefined;
+    const count =
+      typeof boon.count === "number" ? boon.count : (spellIds?.length ?? 0);
+    if (count <= 0) continue;
+    const fromSphere =
+      typeof boon.from_sphere === "string" ? boon.from_sphere : undefined;
+    freeKnownSlots.push({
+      count,
+      tier: typeof boon.tier === "number" ? boon.tier : undefined,
+      fromSphere,
+      spellIds,
+      sourceFeat: src.featId,
+    });
+  }
+  const freeKnownCount = freeKnownSlots.reduce((s, f) => s + f.count, 0);
+
+  // signature_spell — cost reduction + tier cap for the picked signature spell(s)
+  let signature: ComputedSpellcasting["signature"] = null;
+  for (const { boon } of active) {
+    if (boon.type !== "signature_spell") continue;
+    signature = {
+      spellIds: stored.build.signature_spell_ids ?? [],
+      costReduction: num(
+        boon.cost_reduction,
+        env,
+        warnings,
+        "signature_spell cost_reduction",
+      ),
+      tierMax:
+        boon.tier_max_formula != null
+          ? num(
+              boon.tier_max_formula,
+              env,
+              warnings,
+              "signature_spell tier_max_formula",
+            )
+          : null,
+    };
+  }
+
   return {
     casterType,
     modifier: modName,
@@ -391,8 +626,11 @@ function computeSpellcasting(
     spellDC: 10 + sTier + modValue,
     knownAllowance: knownSpellsAllowance(casterType, threshold),
     preparedAllowance: modValue + tier,
-    cantripAllowance: cantrips?.max ?? 0,
+    cantripAllowance,
     spheres: [...spheres],
+    freeKnownSlots,
+    freeKnownCount,
+    signature,
   };
 }
 
@@ -403,8 +641,14 @@ function computeResources(
   reg: Registry,
   env: FormulaEnv,
   tier: number,
+  active: ActiveBoon[],
+  warnings: string[],
 ): ComputedResource[] {
   const out: ComputedResource[] = [];
+  const byId = new Map<string, ComputedResource>();
+  const clamp = (id: string, max: number) =>
+    Math.min(stored.pools.resources[id] ?? max, max);
+
   const prof = reg.professions.get(stored.build.profession_id);
   for (const def of prof?.resources ?? []) {
     let max = 0;
@@ -413,25 +657,121 @@ function computeResources(
         if (row.tier <= tier) max = Math.max(max, row.value);
       }
     } else {
-      try {
-        max = evalFormula(def.max, env);
-      } catch {
-        max = 0;
-      }
+      max = num(def.max, env, warnings, `resource "${def.id}" max`);
     }
-    const current = Math.min(stored.pools.resources[def.id] ?? max, max);
-    out.push({ def, max, current });
+    const r: ComputedResource = { def, max, current: clamp(def.id, max) };
+    out.push(r);
+    byId.set(def.id, r);
+  }
+
+  // grants_resource — inline pool defs (e.g. weaver threads). Boons that only
+  // carry a resource_id reference an existing profession pool (already added).
+  for (const { boon, source } of active) {
+    if (boon.type !== "grants_resource") continue;
+    const id = String(boon.resource_id ?? "");
+    if (!id || boon.max === undefined) continue;
+    const def: ResourceDef = {
+      id,
+      name: String(boon.name ?? id),
+      max: boon.max as string | number,
+      recovery: boon.recovery as ResourceDef["recovery"],
+    };
+    const max = num(boon.max, env, warnings, `resource "${id}" max`);
+    const existing = byId.get(id);
+    if (existing) {
+      warnings.push(
+        `resource "${id}" granted by ${source.featId} collides with an existing pool; boon wins`,
+      );
+      existing.def = def;
+      existing.max = max;
+      existing.current = clamp(id, max);
+    } else {
+      const r: ComputedResource = { def, max, current: clamp(id, max) };
+      out.push(r);
+      byId.set(id, r);
+    }
+  }
+
+  // upgrade_resource — max_override (replace) then max_bonus (add), both formulas.
+  for (const { boon } of active) {
+    if (boon.type !== "upgrade_resource") continue;
+    const id = String(boon.resource ?? "");
+    const r = byId.get(id);
+    if (!r) {
+      warnings.push(`upgrade_resource targets unknown resource "${id}"`);
+      continue;
+    }
+    if (boon.max_override != null)
+      r.max = num(
+        boon.max_override,
+        env,
+        warnings,
+        `resource "${id}" max_override`,
+      );
+    if (boon.max_bonus != null)
+      r.max += num(boon.max_bonus, env, warnings, `resource "${id}" max_bonus`);
+    r.current = clamp(id, r.max);
+  }
+
+  return out;
+}
+
+// reduction_pool boons carry a max formula but no id/name — synthesize a stable
+// id from the granting feat (indexed if a feat grants more than one). `current`
+// persists in stored.pools.reduction_pools under that id.
+function computeReductionPools(
+  active: ActiveBoon[],
+  stored: StoredCharacter,
+  env: FormulaEnv,
+  warnings: string[],
+): ComputedCharacter["reductionPools"] {
+  const out: ComputedCharacter["reductionPools"] = [];
+  const counts = new Map<string, number>();
+  for (const { boon, source } of active) {
+    if (boon.type !== "reduction_pool") continue;
+    if (boon.formula == null) continue; // non-pool variant (e.g. redirect)
+    const n = counts.get(source.featId) ?? 0;
+    counts.set(source.featId, n + 1);
+    const id = n === 0 ? source.featId : `${source.featId}#${n}`;
+    const max = num(
+      boon.formula,
+      env,
+      warnings,
+      `${source.featId} reduction_pool`,
+    );
+    const current = Math.min(stored.pools.reduction_pools[id] ?? max, max);
+    out.push({
+      id,
+      name: source.featName,
+      max,
+      current,
+      source: source.featId,
+    });
   }
   return out;
 }
 
-function ambitionDie(reg: Registry, will: number, tier: number): string {
-  const amb = reg.universalResources.find((r) => r.id === "ambition");
-  const key = Math.max(will, tier);
-  for (const row of amb?.die_size?.rows ?? []) {
+const DIE_ORDER = ["1d4", "1d6", "1d8", "1d10", "1d12"];
+
+function lookupDie(
+  rows: { range: [number, number]; die: string }[] | undefined,
+  key: number,
+): string | undefined {
+  for (const row of rows ?? []) {
     if (key >= row.range[0] && key <= row.range[1]) return row.die;
   }
-  return "1d4";
+  return undefined;
+}
+
+// Ambition die is the larger of the Will-based die and the Tier-based die.
+// Will and Tier are on different scales, so each maps to a die independently.
+function ambitionDie(reg: Registry, will: number, tier: number): string {
+  const ds = reg.universalResources.find((r) => r.id === "ambition")?.die_size;
+  const willDie = lookupDie(ds?.rows, will) ?? "1d4";
+  const tierDie = lookupDie(ds?.tier_rows, tier) ?? "1d4";
+  return DIE_ORDER.indexOf(tierDie) > DIE_ORDER.indexOf(willDie)
+    ? tierDie
+    : willDie;
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────────
@@ -450,32 +790,67 @@ export function computeCharacter(
 
   const tier = calcTier(b.feats_purchased, reg);
 
-  // attributes = allocated base + vocation bonus
+  // attributes = allocated base + vocation bonus (attribute stat_bonus applied below)
   const attrs: Record<AttributeKey, number> = { ...b.attributes };
   if (vocation)
     attrs[vocation.attribute_bonus.attribute] +=
       vocation.attribute_bonus.amount;
 
   const { cards, activeBoons } = collectFeats(stored, reg);
-  const env = standardEnv(attrs, tier);
-
-  // resources before spellcasting (reservoir may be a profession resource)
-  const resources = computeResources(stored, reg, env, tier);
-
-  // active states
   const activeStates = stored.states.active;
 
-  // spellcasting (needed early for Spell Armor defense)
-  const spellcasting = computeSpellcasting(
-    stored,
-    activeBoons,
-    attrs,
-    tier,
-    resources,
-  );
-
-  // equipment
+  // equipment + condition context (slot-aware; independent of attributes)
   const eq = equipped(stored, reg);
+  const armorRules = parseArmorRules(reg);
+  const rawArmorType = eq.armor ? String(eq.armor.cat.armor_type ?? "") : "";
+  const condCtx: ConditionCtx = {
+    armorType:
+      rawArmorType === "Light" ||
+      rawArmorType === "Medium" ||
+      rawArmorType === "Heavy"
+        ? rawArmorType
+        : null,
+    hasShield: !!eq.shield,
+    activeStates,
+    wearingArmor: !!eq.armor,
+    weaponGroups: eq.weapons
+      .map((w) => String(w.cat.subcategory ?? "").toLowerCase())
+      .filter(Boolean),
+    weaponTraits: eq.weapons.flatMap((w) =>
+      (w.cat.traits ?? [])
+        .map((tr) => String(tr?.name ?? "").toLowerCase())
+        .filter(Boolean),
+    ),
+  };
+
+  // attribute stat_bonus boons apply before anything derived
+  applyAttributeBonuses(attrs, activeBoons, tier, condCtx, warnings);
+
+  // ── formula env, built in stages (later ids depend on earlier stages) ───────
+  const env: FormulaEnv = {
+    Brawn: attrs.brawn,
+    Finesse: attrs.finesse,
+    Mind: attrs.mind,
+    Will: attrs.will,
+    Tier: tier,
+  };
+  // Stage 2 — spell modifier (early; does not need resources)
+  const spellMod = resolveSpellMod(stored, activeBoons, attrs);
+  env.SpellMod = spellMod;
+  env.spellMod = spellMod; // casing aliases for straggler data
+  env.spell_modifier = spellMod;
+  // Stage 3 — equipment-derived identifiers
+  const armorBonusVal = eq.armor ? armorBonusOf(eq.armor.cat) : 0;
+  const masterworkVal = eq.armor
+    ? masterworkBonus(eq.armor.item, eq.armor.cat)
+    : 0;
+  const shieldBonusVal = eq.shield ? armorBonusOf(eq.shield.cat) : 0;
+  env.armor_bonus = armorBonusVal;
+  env.masterwork_bonus = masterworkVal;
+  env.shield_armor_bonus = shieldBonusVal;
+  env.light_armor_bonus =
+    condCtx.armorType === "Light" ? armorBonusVal + masterworkVal : 0;
+
   if (
     eq.weapons.length >= 2 &&
     !isTwoHanded(eq.weapons[0]?.cat ?? null) &&
@@ -495,49 +870,151 @@ export function computeCharacter(
           .toLowerCase()
           .includes("agile"),
     );
-  const unarmoredDefense = activeBoons.some(
-    ({ boon }) =>
-      boon.type === "alternate_defense" &&
-      String(boon.name ?? "")
-        .toLowerCase()
-        .includes("unarmored"),
-  );
-  const spellArmorActive = activeBoons.some(
-    ({ boon }) =>
-      boon.type === "alternate_defense" &&
-      String(boon.name ?? "").toLowerCase().includes("spell"),
-  );
-  const spellArmorMod = spellcasting ? attrs[spellcasting.modifier] : 0;
 
-  // defenses
+  // ── defenses ───────────────────────────────────────────────────────────────
   const breakdown: Record<DefenseKey, string[]> = {
     Armor: [],
     Fortitude: [],
     Mental: [],
     "Will Defense": [],
   };
-  const defenses: Record<DefenseKey, number> = {
-    Armor: armorDefense(
-      eq,
-      attrs,
-      tier,
-      { hasAgile, unarmoredDefense, spellArmorActive, spellMod: spellArmorMod },
-      breakdown.Armor,
-    ),
-    Fortitude: 8 + attrs.brawn,
-    Mental: 8 + attrs.mind,
-    "Will Defense": 8 + attrs.will,
-  };
-  breakdown.Fortitude.push(`8 + Brawn ${attrs.brawn}`);
-  breakdown.Mental.push(`8 + Mind ${attrs.mind}`);
-  breakdown["Will Defense"].push(`8 + Will ${attrs.will}`);
-  for (const d of DEFENSES) {
-    const bonus = selfStatBonus(activeBoons, d, env);
-    if (bonus) {
-      defenses[d] += bonus;
-      breakdown[d].push(`+${bonus} from boons`);
+  // Stage 4 — base Fortitude/Mental/Will (feed env before alternate_defense)
+  const fortBonus = selfStatBonus(
+    activeBoons,
+    "Fortitude",
+    env,
+    condCtx,
+    warnings,
+  );
+  const mentBonus = selfStatBonus(
+    activeBoons,
+    "Mental",
+    env,
+    condCtx,
+    warnings,
+  );
+  const willBonus = selfStatBonus(
+    activeBoons,
+    "Will Defense",
+    env,
+    condCtx,
+    warnings,
+  );
+  const fortitude = 8 + attrs.brawn + fortBonus;
+  const mental = 8 + attrs.mind + mentBonus;
+  const willDef = 8 + attrs.will + willBonus;
+  env.fortitude = fortitude;
+  env.mental = mental;
+  env.will_defense = willDef;
+  // casing aliases — data uses capitalized defense identifiers (e.g. "Fortitude + armor_bonus")
+  env.Fortitude = fortitude;
+  env.Mental = mental;
+  env.WillDefense = willDef;
+
+  // Armor: standard equipment defense vs active alternate_defense boons —
+  // highest wins (P3, kills the old name-substring matching). Losers still
+  // render on their feat cards.
+  const std = armorDefense(eq, attrs, tier, hasAgile, armorRules);
+  let armorVal = std.value;
+  let armorLine = std.line;
+  for (const { boon, source } of activeBoons) {
+    if (boon.type !== "alternate_defense") continue;
+    if (String(boon.replaces ?? "Armor") !== "Armor") continue;
+    if (evalCondition(boon.condition as string, condCtx) !== true) continue;
+    const v = num(
+      boon.formula,
+      env,
+      warnings,
+      `${source.featId} alternate_defense`,
+    );
+    if (v > armorVal) {
+      armorVal = v;
+      armorLine = `${String(boon.name ?? "Alternate Defense")}: ${String(boon.formula)} = ${v}`;
     }
   }
+  const armorStatBonus = selfStatBonus(
+    activeBoons,
+    "Armor",
+    env,
+    condCtx,
+    warnings,
+  );
+
+  const defenses: Record<DefenseKey, number> = {
+    Armor: armorVal + armorStatBonus,
+    Fortitude: fortitude,
+    Mental: mental,
+    "Will Defense": willDef,
+  };
+  breakdown.Armor.push(armorLine);
+  if (armorStatBonus) breakdown.Armor.push(`+${armorStatBonus} from boons`);
+  breakdown.Fortitude.push(`8 + Brawn ${attrs.brawn}`);
+  if (fortBonus) breakdown.Fortitude.push(`+${fortBonus} from boons`);
+  breakdown.Mental.push(`8 + Mind ${attrs.mind}`);
+  if (mentBonus) breakdown.Mental.push(`+${mentBonus} from boons`);
+  breakdown["Will Defense"].push(`8 + Will ${attrs.will}`);
+  if (willBonus) breakdown["Will Defense"].push(`+${willBonus} from boons`);
+
+  // resources + spellcasting (env is now complete; reservoir may reference a resource)
+  const resources = computeResources(
+    stored,
+    reg,
+    env,
+    tier,
+    activeBoons,
+    warnings,
+  );
+  const reductionPools = computeReductionPools(
+    activeBoons,
+    stored,
+    env,
+    warnings,
+  );
+  const spellcasting = computeSpellcasting(
+    stored,
+    activeBoons,
+    attrs,
+    tier,
+    resources,
+    env,
+    warnings,
+  );
+  if (spellcasting)
+    spellcasting.spellDC += selfStatBonus(
+      activeBoons,
+      "spell_dc",
+      env,
+      condCtx,
+      warnings,
+    );
+
+  // roll + AP bonuses from stat_bonus boons
+  const rollBonuses = {
+    spellAttack: selfStatBonus(
+      activeBoons,
+      "spell_attack",
+      env,
+      condCtx,
+      warnings,
+    ),
+    attackRoll: selfStatBonus(
+      activeBoons,
+      "attack_roll",
+      env,
+      condCtx,
+      warnings,
+    ),
+  };
+  const apBonus = selfStatBonus(activeBoons, "AP", env, condCtx, warnings);
+  warnUnknownStats(activeBoons, warnings);
+
+  const combat = computeCombatBonuses(
+    activeBoons,
+    env,
+    tier,
+    condCtx,
+    warnings,
+  );
 
   // vitality max: base ("12 + Brawn") + (tier-1) × avg(per_tier) + brawn_bonus + boons
   let vitalityMax = 0;
@@ -560,7 +1037,13 @@ export function computeCharacter(
         parseAvgDiceExpr(bb.dice);
     }
   }
-  vitalityMax += selfStatBonus(activeBoons, "Vitality Max", env);
+  vitalityMax += selfStatBonus(
+    activeBoons,
+    "Vitality Max",
+    env,
+    condCtx,
+    warnings,
+  );
 
   // wounds max: 1 + wound_per_tier×Tier + floor(Brawn/3) + armor wound bonus (universal-resources canon)
   const armorWoundBonus = eq.armor?.cat.wound_bonus ?? 0;
@@ -575,7 +1058,7 @@ export function computeCharacter(
     4 +
     tier +
     Math.floor(attrs.will / 3) +
-    selfStatBonus(activeBoons, "Ambition Max", env);
+    selfStatBonus(activeBoons, "Ambition Max", env, condCtx, warnings);
 
   // carry
   const carryCapacity = evalFormula(
@@ -617,6 +1100,28 @@ export function computeCharacter(
       profs.armaments = [...profs.armaments, boon.grants];
   }
 
+  // equipped shield's damage pool. Max comes from the catalog reduction_pool;
+  // current persists on the inventory item (null ⇒ full). Fragile shields break
+  // (are unusable) once the pool empties.
+  let shieldState: ComputedCharacter["shield"] = null;
+  if (eq.shield) {
+    const max = Number(eq.shield.cat.reduction_pool ?? 0);
+    if (max > 0) {
+      const stopVal = eq.shield.item.reduction_pool_current;
+      const current = Math.min(stopVal ?? max, max);
+      shieldState = {
+        itemId: eq.shield.item.id,
+        name: eq.shield.item.name,
+        max,
+        current,
+        broken: current <= 0,
+        fragile: (eq.shield.cat.traits ?? []).some((t) =>
+          /^fragile/i.test(t.name),
+        ),
+      };
+    }
+  }
+
   return {
     tier,
     attributes: attrs,
@@ -637,7 +1142,12 @@ export function computeCharacter(
       die: ambitionDie(reg, attrs.will, tier),
     },
     resources,
+    reductionPools,
+    shield: shieldState,
     spellcasting,
+    rollBonuses,
+    apBonus,
+    combat,
     skills: SKILLS.map((s) => skillPool(s, stored, attrs)),
     carry: { capacity: carryCapacity, used: Math.round(carryUsed * 10) / 10 },
     featCards: cards,

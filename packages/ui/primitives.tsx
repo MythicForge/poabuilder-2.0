@@ -3,7 +3,7 @@
 import React, { useMemo } from "react";
 import { marked } from "marked";
 import {
-  Shield, Zap, Footprints, BookText, Heart, Skull, Swords, Star, Box,
+  Shield, ShieldOff, ShieldX, Zap, Footprints, BookText, Heart, Skull, Swords, Star, Box,
   Backpack, SquarePen, Sword, CircleUserRound, FlaskRound, ChevronRight,
   ChevronLeft, ChevronUp, ChevronDown, Shirt, BowArrow, Waypoints, Sparkle,
   ScrollText, DiamondPlus, Flame, Droplets, Dices, Weight, Moon, Sun, Coffee,
@@ -123,6 +123,8 @@ export function Icon({ kind, size = 12 }: IconProps) {
   const p = { size, strokeWidth: 1.6 };
   switch (kind) {
     case "shield": return <Shield {...p} />;
+    case "shield-off": return <ShieldOff {...p} />;
+    case "shield-x": return <ShieldX {...p} />;
     case "bolt": return <Zap {...p} />;
     case "boot": return <Footprints {...p} />;
     case "book": return <BookText {...p} />;

@@ -6,12 +6,20 @@
 
 export const FUNCTIONS = new Set(["floor", "ceil", "max", "min", "round"]);
 
-// Identifiers the runtime engine provides. Others parse fine but are reported.
+// Identifiers the runtime provides. Kept in sync with the character env built in
+// src/core/compute.ts (computeCharacter) plus the special-purpose scopes
+// (vitality base, rest recovery, dynamic pools). Anything outside this set is an
+// unknown identifier → the checker fails, so typos never become silent zeros.
 export const KNOWN_IDENTIFIERS = new Set([
-  "Brawn", "Finesse", "Mind", "Will", "Tier", "SpellTier",
-  "profession_vitality", "feat_vitality_bonus", "profession_wound_per_tier",
-  "spell_modifier", "ambition_die", "mana_spent",
-  "highest_known_spell_tier",
+  // character formula env (compute.ts)
+  "Brawn", "Finesse", "Mind", "Will", "Tier",
+  "SpellMod", "spellMod", "spell_modifier",
+  "armor_bonus", "masterwork_bonus", "shield_armor_bonus", "light_armor_bonus",
+  "fortitude", "mental", "will_defense", "Fortitude", "Mental", "WillDefense",
+  // special-purpose scopes (vitality base / wounds / rest recovery / dynamic)
+  "SpellTier", "spell_tier", "profession_vitality", "feat_vitality_bonus",
+  "profession_wound_per_tier", "ambition_die", "mana_spent",
+  "highest_known_spell_tier", "resource_spent", "summon_tier", "Ambition",
 ]);
 
 export function tokenize(src) {

@@ -196,8 +196,9 @@
         "id": "weapon-baton",
         "name": "Baton",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "club",
         "groups": ["Simple"],
+        "modifier": "Brawn",
         "damage": "1d4",
         "damage_types": [
           {
@@ -235,8 +236,9 @@
         "id": "weapon-cestus",
         "name": "Cestus",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "fist",
         "groups": ["Simple", "Finesse"],
+        "modifier": "Varried",
         "damage": "1d6",
         "damage_types": [
           {
@@ -277,8 +279,9 @@
         "id": "weapon-cleaver",
         "name": "Cleaver",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "axe",
         "groups": ["Martial"],
+        "modifier": "Brawn",
         "damage": "1d10",
         "damage_types": [
           {
@@ -319,8 +322,9 @@
         "id": "weapon-dagger",
         "name": "Dagger",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "dagger",
         "groups": ["Simple", "Finesse"],
+        "modifier": "Varried",
         "damage": "1d4",
         "damage_types": [
           {
@@ -365,8 +369,9 @@
         "id": "weapon-great-axe",
         "name": "Great axe",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "axe",
         "groups": ["Martial"],
+        "modifier": "Brawn",
         "damage": "1d12",
         "damage_types": [
           {
@@ -417,8 +422,9 @@
         "id": "weapon-greatclub",
         "name": "Greatclub",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "club",
         "groups": ["Simple"],
+        "modifier": "Brawn",
         "damage": "1d10",
         "damage_types": [
           {
@@ -456,8 +462,9 @@
         "id": "weapon-greatsword",
         "name": "Greatsword",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "sword",
         "groups": ["Martial"],
+        "modifier": "Brawn",
         "damage": "1d10(2d6)",
         "damage_types": [
           {
@@ -498,8 +505,9 @@
         "id": "weapon-halberd",
         "name": "Halberd",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "polearm",
         "groups": ["Martial"],
+        "modifier": "Brawn",
         "damage": "1d10",
         "damage_types": [
           {
@@ -543,8 +551,9 @@
         "id": "weapon-hand-axe",
         "name": "Hand axe",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "axe",
         "groups": ["Simple"],
+        "modifier": "Brawn",
         "damage": "1d6",
         "damage_types": [
           {
@@ -589,8 +598,9 @@
         "id": "weapon-hand-crossbow",
         "name": "Hand crossbow",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "ranged",
         "groups": ["Ranged", "Finesse"],
+        "modifier": "Finesse",
         "damage": "1d4",
         "damage_types": [
           {
@@ -634,8 +644,9 @@
         "id": "weapon-heavy-crossbow",
         "name": "Heavy crossbow",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "ranged",
         "groups": ["Ranged", "Martial"],
+        "modifier": "Finesse",
         "damage": "1d8",
         "damage_types": [
           {
@@ -682,8 +693,9 @@
         "id": "weapon-javelin",
         "name": "Javelin",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "polearm",
         "groups": ["Simple", "Ranged"],
+        "modifier": "Brawn",
         "damage": "1d6",
         "damage_types": [
           {
@@ -721,8 +733,9 @@
         "id": "weapon-light-bow",
         "name": "Light bow",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "ranged",
         "groups": ["Ranged"],
+        "modifier": "Finesse",
         "damage": "1d6",
         "damage_types": [
           {
@@ -763,8 +776,9 @@
         "id": "weapon-light-crossbow",
         "name": "Light crossbow",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "ranged",
         "groups": ["Ranged", "Finesse"],
+        "modifier": "Finesse",
         "damage": "1d6",
         "damage_types": [
           {
@@ -811,8 +825,9 @@
         "id": "weapon-longbow",
         "name": "Longbow",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "ranged",
         "groups": ["Ranged", "Martial"],
+        "modifier": "Varried",
         "damage": "1d10",
         "damage_types": [
           {
@@ -853,8 +868,9 @@
         "id": "weapon-longsword",
         "name": "Longsword",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "sword",
         "groups": ["Martial"],
+        "modifier": "Brawn",
         "damage": "1d8(d10)",
         "damage_types": [
           {
@@ -892,8 +908,9 @@
         "id": "weapon-lucerne",
         "name": "Lucerne",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "polearm",
         "groups": ["Martial"],
+        "modifier": "Brawn",
         "damage": "1d12",
         "damage_types": [
           {
@@ -937,8 +954,9 @@
         "id": "weapon-mace",
         "name": "Mace",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "bludgeon",
         "groups": ["Martial"],
+        "modifier": "Brawn",
         "damage": "1d8",
         "damage_types": [
           {
@@ -976,8 +994,9 @@
         "id": "weapon-morningstar",
         "name": "Morningstar",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "bludgeon",
         "groups": ["Martial"],
+        "modifier": "Brawn",
         "damage": "1d6",
         "damage_types": [
           {
@@ -1019,8 +1038,9 @@
         "id": "weapon-net",
         "name": "Net",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "special",
         "groups": ["Simple", "Ranged"],
+        "modifier": "Brawn",
         "damage": null,
         "damage_types": [],
         "range_bands": [
@@ -1056,8 +1076,9 @@
         "id": "weapon-pike",
         "name": "Pike",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "polearm",
         "groups": ["Simple", "Martial"],
+        "modifier": "Brawn",
         "damage": "1d10",
         "damage_types": [
           {
@@ -1101,8 +1122,9 @@
         "id": "weapon-quarterstaff",
         "name": "Quarterstaff",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "bludgeon",
         "groups": ["Simple"],
+        "modifier": "Brawn",
         "damage": "1d6(d8)",
         "damage_types": [
           {
@@ -1140,8 +1162,9 @@
         "id": "weapon-rapier",
         "name": "Rapier",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "rapier",
         "groups": ["Finesse"],
+        "modifier": "Finesse",
         "damage": "1d8",
         "damage_types": [
           {
@@ -1182,8 +1205,9 @@
         "id": "weapon-scimitar",
         "name": "Scimitar",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "curved",
         "groups": ["Finesse"],
+        "modifier": "Finesse",
         "damage": "1d6",
         "damage_types": [
           {
@@ -1224,8 +1248,9 @@
         "id": "weapon-short-sword",
         "name": "Short sword",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "sword",
         "groups": ["Simple", "Finesse"],
+        "modifier": "Varried",
         "damage": "1d6",
         "damage_types": [
           {
@@ -1267,8 +1292,9 @@
         "id": "weapon-sling",
         "name": "Sling",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "ranged",
         "groups": ["Simple", "Ranged"],
+        "modifier": "Brawn",
         "damage": "Modifier",
         "damage_types": [],
         "range_bands": [
@@ -1304,8 +1330,9 @@
         "id": "weapon-spear",
         "name": "Spear",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "polearm",
         "groups": ["Simple"],
+        "modifier": "Varried",
         "damage": "1d6(8)",
         "damage_types": [
           {
@@ -1343,8 +1370,9 @@
         "id": "weapon-throwing-axe",
         "name": "Throwing axe",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "axe",
         "groups": ["Simple", "Ranged"],
+        "modifier": "Brawn",
         "damage": "1d4",
         "damage_types": [
           {
@@ -1385,8 +1413,9 @@
         "id": "weapon-throwing-knife",
         "name": "Throwing knife",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "dagger",
         "groups": ["Finesse", "Ranged"],
+        "modifier": "Finesse",
         "damage": "2",
         "damage_types": [
           {
@@ -1430,8 +1459,9 @@
         "id": "weapon-war-bow",
         "name": "War bow",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "ranged",
         "groups": ["Ranged", "Finesse"],
+        "modifier": "Finesse",
         "damage": "1d8",
         "damage_types": [
           {
@@ -1472,8 +1502,9 @@
         "id": "weapon-warhammer",
         "name": "Warhammer",
         "category": "Weapon",
-        "subcategory": "weapon",
+        "subcategory": "bludgeon",
         "groups": ["Martial"],
+        "modifier": "Brawn",
         "damage": "1d8(d10)",
         "damage_types": [
           {

@@ -18,6 +18,10 @@
     --danger: #c66464;
     --danger-dim: #6a3838;
     --border-faint: #1e1e28;
+    --steel: #6f93a6;
+    --steel-bright: #9fc0d0;
+    --steel-dim: #3c525d;
+    --steel-shadow: rgba(111, 147, 166, 0.14);
 
     --portrait-bg-a: #1a1820;
     --portrait-bg-b: #100c10;
@@ -58,6 +62,10 @@ html.light {
     --danger: #9e3030;
     --danger-dim: #f0c0c0;
     --border-faint: #d8d4c8;
+    --steel: #3f6a7d;
+    --steel-bright: #2c5266;
+    --steel-dim: #8fb0bd;
+    --steel-shadow: rgba(63, 106, 125, 0.12);
 
     --portrait-bg-a: #d8d3c5;
     --portrait-bg-b: #c8c2b2;
@@ -878,6 +886,116 @@ body {
     letter-spacing: 0.14em;
     text-transform: uppercase;
     margin-top: 6px;
+}
+
+/* ── Shield health (Concept A: persistent steel line under the vitality bar) ── */
+.shield-line {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 9px;
+    margin-top: 8px;
+}
+.shield-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+    color: var(--steel);
+}
+.shield-name {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--text-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.shield-meter {
+    height: 9px;
+    border-radius: 5px;
+    background: var(--border-soft);
+    overflow: hidden;
+}
+.shield-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--steel-dim), var(--steel));
+    border-radius: 5px;
+    transition: width 0.28s;
+}
+.shield-val {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--steel-bright);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+/* lowered: shield sits out — dim the fill and labels so it reads inactive */
+.shield-line--lowered .shield-tag,
+.shield-line--lowered .shield-val {
+    color: var(--text-faint);
+}
+.shield-line--lowered .shield-fill {
+    opacity: 0.32;
+    filter: saturate(0.4);
+}
+/* none: keep the track, dashed + muted, so the slot reads as available */
+.shield-line--none .shield-tag,
+.shield-line--none .shield-val {
+    color: var(--text-faint);
+}
+.shield-line--none .shield-meter {
+    background: repeating-linear-gradient(90deg,
+        var(--border-faint) 0, var(--border-faint) 6px,
+        transparent 6px, transparent 12px);
+}
+.shield-line--none .shield-fill {
+    width: 0 !important;
+}
+/* broken: danger hatch */
+.shield-line--broken .shield-tag,
+.shield-line--broken .shield-val {
+    color: var(--danger);
+}
+.shield-line--broken .shield-fill {
+    background: repeating-linear-gradient(45deg,
+        transparent, transparent 4px,
+        var(--danger-dim) 4px, var(--danger-dim) 5px);
+}
+
+.shield-raise {
+    margin-top: 8px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--card-2);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.shield-raise:hover:not(:disabled) {
+    border-color: var(--steel-dim);
+    color: var(--steel-bright);
+}
+.shield-raise.is-up {
+    background: var(--steel-shadow);
+    border-color: var(--steel);
+    color: var(--steel-bright);
+    box-shadow: inset 0 0 0 1px var(--steel-dim);
+}
+.shield-raise:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    color: var(--text-faint);
 }
 .hp-temp-val {
     cursor: pointer;
@@ -6907,4 +7025,284 @@ button.cost-badge.off {
     background: var(--gold);
     color: var(--bg);
     cursor: default;
+}
+
+/* ═══ Item detail (shared: list-row expansion + cards popover) + editor ═══════
+   The masterwork gold band and the CUSTOM pill are the two accents; every-
+   thing else stays quiet. Reuses the .itip-* head/sub/flags/stat/desc/foot
+   idiom already defined above. */
+
+/* CUSTOM provenance — "this value is yours, not book data" */
+.inv-badge-custom,
+.itip-custom-pill {
+    color: var(--gold);
+    border-color: var(--gold-dim);
+    background: var(--gold-shadow);
+}
+.itip-custom-pill {
+    display: inline-block;
+    margin-left: 7px;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    background: var(--gold-shadow);
+    border-radius: 3px;
+    padding: 1px 5px;
+    vertical-align: middle;
+}
+.itip-provenance {
+    color: var(--gold-dim);
+    text-transform: none;
+    letter-spacing: 0;
+}
+.itip-stat-sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-faint);
+}
+
+/* Masterwork band — the "special" axis, gold hairline over the infusion tint */
+.itip-mw-band {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 14px;
+    border-top: 1px solid #b8860b44;
+    background: linear-gradient(180deg, #b8860b1f 0%, #b8860b0a 100%);
+}
+.itip-mw-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #d4a017;
+}
+.itip-mw-steppers { display: inline-flex; gap: 4px; }
+
+/* Reduction pool live controls */
+.itip-pool {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 14px;
+    border-top: 1px solid var(--border-faint);
+}
+.itip-pool-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--gold-dim);
+    letter-spacing: 0.03em;
+}
+.itip-pool-controls { display: inline-flex; gap: 4px; }
+
+.itip-notes {
+    padding: 9px 14px;
+    border-top: 1px solid var(--border-faint);
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+/* Foot action row */
+.itip-foot-meta { font-family: var(--mono); font-size: 10.5px; color: var(--text-faint); }
+.itip-foot-actions { display: inline-flex; align-items: center; gap: 5px; }
+.itip-foot-qty { font-family: var(--mono); font-size: 12px; color: var(--text-muted); min-width: 22px; text-align: center; }
+
+.itip-step,
+.itip-act {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    background: var(--card-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 12px;
+    cursor: pointer;
+    transition: border-color 0.12s, color 0.12s;
+}
+.itip-step:hover,
+.itip-act:hover { border-color: var(--gold-dim); color: var(--text); }
+.itip-act--danger:hover { border-color: var(--danger); color: var(--danger); }
+
+/* List-row inline expansion — in-flow panel that pushes rows down */
+.inv-row.inv-row-open { background: var(--gold-shadow); }
+.inv-row-detail {
+    margin: 0 16px 8px 40px;
+    background: var(--card-2);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--gold-dim);
+    border-radius: 0 6px 6px 0;
+    overflow: hidden;
+}
+.inv-row-detail .itip-head { padding-top: 11px; }
+
+/* Row chevron + action cluster */
+.inv-chevron {
+    background: none;
+    border: none;
+    color: var(--text-faint);
+    font-size: 10px;
+    line-height: 1;
+    padding: 0 2px;
+    cursor: pointer;
+    transition: transform 0.15s, color 0.15s;
+    flex-shrink: 0;
+}
+.inv-chevron.open { transform: rotate(90deg); color: var(--gold); }
+.inv-chevron:hover { color: var(--text-muted); }
+
+.inv-row-actions {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+.inv-row-edit {
+    background: none;
+    border: none;
+    color: var(--text-faint);
+    font-family: var(--mono);
+    font-size: 13px;
+    cursor: pointer;
+    transition: color 0.12s;
+}
+.inv-row-edit:hover { color: var(--gold); }
+
+/* widen the trailing action column to hold ✎ + ✕ */
+.inv-row,
+.inv-header { grid-template-columns: 1.7fr 0.4fr 0.5fr 1.4fr 48px; }
+
+/* ─── Custom-item editor modal ─────────────────────────────────────────────── */
+.item-edit-modal {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold-dim);
+    border-radius: 10px;
+    width: 480px;
+    max-width: calc(100vw - 24px);
+    max-height: 86vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6);
+}
+.item-edit-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px 10px;
+    border-bottom: 1px solid var(--border-faint);
+}
+.item-edit-title { font-family: var(--serif); font-size: 19px; font-weight: 600; color: var(--text); }
+.item-edit-provenance { font-family: var(--mono); font-size: 10.5px; color: var(--gold-dim); margin-top: 3px; letter-spacing: 0.02em; }
+.item-edit-x { background: none; border: none; color: var(--text-faint); font-size: 15px; cursor: pointer; }
+.item-edit-x:hover { color: var(--danger); }
+
+.item-edit-body { padding: 6px 16px 12px; overflow-y: auto; }
+
+.item-edit-group { padding: 10px 0; border-bottom: 1px solid var(--border-faint); }
+.item-edit-group:last-child { border-bottom: none; }
+.item-edit-group-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 8px;
+}
+.item-edit-field { display: block; margin-bottom: 8px; }
+.item-edit-field:last-child { margin-bottom: 0; }
+.item-edit-field-label { display: block; font-family: var(--mono); font-size: 11px; color: var(--text-muted); margin-bottom: 3px; }
+.item-edit-field-hint { color: var(--text-faint); }
+.item-edit-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.item-edit-input {
+    width: 100%;
+    background: var(--card-2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 9px;
+    font-family: var(--sans);
+    font-size: 13.5px;
+    outline: none;
+    transition: border-color 0.12s;
+}
+.item-edit-input:focus { border-color: var(--gold-dim); }
+.item-edit-input.warn { border-color: var(--danger-dim); }
+.item-edit-area { resize: vertical; line-height: 1.5; }
+
+.item-edit-check {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--text-muted);
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+.item-edit-check:last-child { margin-bottom: 0; }
+.item-edit-check input { accent-color: var(--gold); }
+.item-edit-note {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-style: italic;
+    color: var(--gold-dim);
+    margin: 2px 0 8px;
+    line-height: 1.45;
+}
+
+.item-edit-foot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 16px;
+    border-top: 1px solid var(--border-faint);
+}
+.item-edit-foot-spacer { flex: 1; }
+.item-edit-btn {
+    background: var(--card-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 13px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: border-color 0.12s, color 0.12s, background 0.12s;
+}
+.item-edit-btn:hover { border-color: var(--gold-dim); color: var(--text); }
+.item-edit-btn--primary { background: var(--gold); border-color: var(--gold); color: var(--bg); font-weight: 600; }
+.item-edit-btn--primary:hover { background: var(--gold-bright); border-color: var(--gold-bright); color: var(--bg); }
+.item-edit-btn--ghost { background: none; }
+.item-edit-btn--danger:hover { border-color: var(--danger); color: var(--danger); }
+.item-edit-revert-confirm {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--danger);
+}
+
+@media (max-width: 520px) {
+    .item-edit-modal { width: 100%; }
+    .item-edit-row2 { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .inv-chevron, .itip-step, .itip-act, .item-edit-input, .item-edit-btn { transition: none; }
 }

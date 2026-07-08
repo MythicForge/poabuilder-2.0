@@ -84,9 +84,9 @@ describe("fixture: Bren (Tier-2 Fighter)", () => {
     expect(c.defenses["Will Defense"]).toBe(9);
   });
   it("universal resources use new-data formulas", () => {
-    // ambition: 4 + Tier(2) + floor(Will 2/3) = 6; die from max(2,2)→1d4
+    // ambition: 4 + Tier(2) + floor(Will 1/3) = 6; die = max(Will 1→1d4, Tier 2→1d6) = 1d6
     expect(c.ambition.max).toBe(6);
-    expect(c.ambition.die).toBe("1d4");
+    expect(c.ambition.die).toBe("1d6");
     // vitality: 12+Brawn(6)=18 + (tier-1)*avg(2d12)=13 + floor(6/5)*avg(1d8)=5 → 36
     expect(c.vitality.max).toBe(36);
   });

@@ -2,12 +2,79 @@
 // InventoryItem already has a stable id and a `slot` field; this avoids the
 // dual-bookkeeping sync bugs a slot-pointer map would need to guard against.
 
-import type { ActiveBoon, CatalogItem, InventoryItem, SlotId } from "./types.ts";
+import type { ActiveBoon, CatalogItem, InventoryItem, SlotId, StoredCharacter } from "./types.ts";
 import type { Registry } from "./data-registry.ts";
 import { resolveItem } from "./compute.ts";
 
 export function isTwoHanded(cat: CatalogItem | null): boolean {
   return !!cat?.equip_slots?.includes("two_hands");
+}
+
+// ── Slot-aware equipment resolution (single source of truth) ────────────────
+// Both computeCharacter (defenses) and collectFeats (condition gating) read
+// equipment through here, so slot-equipped and legacy flag-equipped items
+// resolve identically everywhere.
+
+export interface Equipped {
+  armor: { cat: CatalogItem; item: InventoryItem } | null;
+  shield: { cat: CatalogItem; item: InventoryItem } | null;
+  weapons: { cat: CatalogItem; item: InventoryItem }[];
+}
+
+export function equipped(stored: StoredCharacter, reg: Registry): Equipped {
+  const items = stored.inventory.items;
+  const bySlot = (s: string) => items.find((it) => it.slot === s);
+
+  const bodyItem = bySlot("body");
+  const bodyCat = bodyItem ? resolveItem(bodyItem, reg) : null;
+  let armor =
+    bodyItem && bodyCat?.category === "Armor" && !bodyCat.is_template
+      ? { cat: bodyCat, item: bodyItem }
+      : null;
+
+  const mainItem = bySlot("main_hand");
+  const mainCat = mainItem ? resolveItem(mainItem, reg) : null;
+  const mainIsTwoHanded = isTwoHanded(mainCat);
+
+  const offItem = bySlot("off_hand");
+  const offCat = offItem ? resolveItem(offItem, reg) : null;
+
+  let shield =
+    offCat?.category === "Shield" ? { cat: offCat, item: offItem! } : null;
+  if (shield && mainIsTwoHanded) shield = null; // 2H mainhand blocks the shield bonus
+
+  const weapons: { cat: CatalogItem; item: InventoryItem }[] = [];
+  if (mainCat?.category === "Weapon")
+    weapons.push({ cat: mainCat, item: mainItem! });
+  if (offCat?.category === "Weapon")
+    weapons.push({ cat: offCat, item: offItem! });
+
+  // back-compat: flag-only equipped items (no slot) for characters predating the slot system
+  for (const item of items) {
+    if (item.slot != null) continue;
+    if (!item.equipped) continue;
+    const cat = resolveItem(item, reg);
+    if (!cat) continue;
+    if (!armor && cat.category === "Armor" && !cat.is_template)
+      armor = { cat, item };
+    else if (!shield && !mainIsTwoHanded && cat.category === "Shield")
+      shield = { cat, item };
+    else if (cat.category === "Weapon") weapons.push({ cat, item });
+  }
+
+  return { armor, shield, weapons };
+}
+
+/** Slot-aware armor type + shield presence for condition gating. */
+export function equipmentContext(
+  stored: StoredCharacter,
+  reg: Registry,
+): { armorType: "Light" | "Medium" | "Heavy" | null; hasShield: boolean; wearingArmor: boolean } {
+  const eq = equipped(stored, reg);
+  const raw = eq.armor ? String(eq.armor.cat.armor_type ?? "") : "";
+  const armorType =
+    raw === "Light" || raw === "Medium" || raw === "Heavy" ? raw : null;
+  return { armorType, hasShield: !!eq.shield, wearingArmor: !!eq.armor };
 }
 
 /** Slots an item may be dropped into (two-handed weapons target main_hand only; off_hand occupation is implicit). */

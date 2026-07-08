@@ -21,7 +21,8 @@
     },
     "masterwork": "masterwork_bonus adds to the category stat_cap",
     "special": {
-      "spell_armor": { "formula": "8 + Tier + min(9, spell_modifier)",
+      "superseded_by": "alternate_defense boons — the engine evaluates each boon's own formula + condition (compute.ts). These entries are documentation only; the boon formulas are the single source of truth.",
+      "spell_armor": { "formula": "8 + Tier + min(9, SpellMod)",
                        "activation": "activate_state; replaces Armor while active" },
       "unarmored_defense": { "formula": "8 + Tier + min(9, Brawn)",
                              "condition": "granted by boon (e.g. Berserker) and no armor equipped" }

@@ -57,21 +57,27 @@ describe("masterwork", () => {
     expect(b.defenses.Armor).toBeGreaterThanOrEqual(a.defenses.Armor);
   });
 
-  it("light armor is never worse than unarmored, even for high-Finesse characters", () => {
-    const highFinesse: StoredCharacter = {
-      ...bren,
-      build: { ...bren.build, attributes: { ...bren.build.attributes, finesse: 9 } },
-      inventory: { ...bren.inventory, items: [] },
-    };
-    const unarmored = computeCharacter(highFinesse, REGISTRY);
-
+  it("light armor caps Finesse at 5 (+ masterwork); armor bonus stacks on the capped stat", () => {
+    // Corrected per equipment-rules.json: Light stat_cap = 5. Unarmored Finesse
+    // is uncapped, so at very high Finesse unarmored can exceed light armor —
+    // that is intended. Light = 8 + armor_bonus + min(5 + masterwork, Finesse).
     const cat = REGISTRY.items.get("armor-shadow-weave")!;
-    const armored: StoredCharacter = {
-      ...highFinesse,
-      inventory: { ...highFinesse.inventory, items: [mkItem("a1", "armor-shadow-weave", "body", 0)] },
-    };
-    const withArmor = computeCharacter(armored, REGISTRY);
+    const armorBonus = (cat.armor_bonus as { value: number }).value;
 
-    expect(withArmor.defenses.Armor).toBe(unarmored.defenses.Armor + (cat.armor_bonus as { value: number }).value);
+    const mk = (finesse: number, mw = 0) => {
+      const c: StoredCharacter = {
+        ...bren,
+        build: { ...bren.build, attributes: { ...bren.build.attributes, finesse } },
+        inventory: { ...bren.inventory, items: [mkItem("a1", "armor-shadow-weave", "body", mw)] },
+      };
+      return computeCharacter(c, REGISTRY).defenses.Armor;
+    };
+
+    // Finesse 4 (below cap): full Finesse counts.
+    expect(mk(4)).toBe(8 + armorBonus + Math.min(5, 4));
+    // Finesse 9 (above cap): capped at 5.
+    expect(mk(9)).toBe(8 + armorBonus + 5);
+    // masterwork raises the cap to 6.
+    expect(mk(9, 1)).toBe(8 + armorBonus + 6);
   });
 });

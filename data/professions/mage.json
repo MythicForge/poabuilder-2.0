@@ -300,13 +300,13 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "You weave the source of your magic around you to create a protective barrier of magical armor. Your **defense** becomes 8 + **spell casting modifier (up to 10)** + your **Tier**. This cannot be used if wearing any armor.",
+      "description": "You weave the source of your magic around you to create a protective barrier of magical armor. Your **defense** becomes 8 + **spell casting modifier (up to 9)** + your **Tier**. This cannot be used if wearing any armor.",
       "boons": [
         {
           "type": "alternate_defense",
           "replaces": "Armor",
           "name": "Spell Armor",
-          "formula": "8 + Tier + spellMod",
+          "formula": "8 + Tier + min(9, SpellMod)",
           "condition": "no_armor"
         }
       ]

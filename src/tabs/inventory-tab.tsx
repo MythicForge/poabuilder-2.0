@@ -2,15 +2,18 @@
 // source, equip toggle, qty steppers, remove), carry bar, currency,
 // add-from-catalog modal with search + category filter.
 
-import { useMemo, useRef, useState } from "react";
+import { Fragment, useMemo, useRef, useState } from "react";
 import type { CatalogItem, ComputedCharacter, InventoryItem, SlotId, StoredCharacter } from "../core/types.ts";
 import { REGISTRY } from "../core/data-registry.ts";
-import { computeCharacter, resolveItem } from "../core/compute.ts";
+import { computeCharacter, resolveItem, deriveWeaponCombat } from "../core/compute.ts";
 import { defaultSlotFor, equipToSlot, isTwoHanded, legalSlotsFor, unequip } from "../core/equip.ts";
 import { rescaleWoundsOnThresholdChange } from "../core/damage.ts";
 import { masterworkBonus } from "../core/masterwork.ts";
 import { gain, spend, totalCp, type Coins } from "../core/currency.ts";
+import { canRevert, forkItem, revertItem, sanitizeOnSave, type ItemEdits } from "../core/custom-item.ts";
 import { CardsGrid } from "./inventory-cards.tsx";
+import { ItemDetailBody, type ItemDetailCallbacks } from "./item-detail.tsx";
+import { ItemEditModal } from "./item-edit-modal.tsx";
 
 interface TabProps {
   c: ComputedCharacter;
@@ -56,10 +59,22 @@ export function InventoryTab({ c, stored, setStored, inventoryView, setInventory
   const [coinDrawerOpen, setCoinDrawerOpen] = useState(false);
   const [coinDelta, setCoinDelta] = useState(emptyDelta);
   const [invFilter, setInvFilter] = useState<InvFilter>("All");
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [createDraft, setCreateDraft] = useState<InventoryItem | null>(null);
   const touchGhost = useRef<HTMLDivElement | null>(null);
   const touchTimer = useRef<number | null>(null);
 
   const items = stored.inventory.items;
+
+  const weaponCombat = (cat: CatalogItem | null) =>
+    cat
+      ? deriveWeaponCombat(cat, {
+          attributes: c.attributes,
+          tier: c.tier,
+          armaments: c.proficiencies.armaments,
+        })
+      : null;
 
   const setItems = (next: InventoryItem[]) =>
     setStored((s) => {
@@ -72,6 +87,56 @@ export function InventoryTab({ c, stored, setStored, inventoryView, setInventory
     setItems(items.map((it) => (it.id === id ? { ...it, ...patch } : it)));
 
   const removeItem = (id: string) => setItems(items.filter((it) => it.id !== id));
+
+  // ── custom-item editor wiring (sheet-only; never writes REGISTRY/data/) ──────
+  const detailCallbacks = (it: InventoryItem, cat: CatalogItem | null): ItemDetailCallbacks => ({
+    onQty: (d) => updateItem(it.id, { quantity: Math.max(1, it.quantity + d) }),
+    onMw: (d) =>
+      cat &&
+      updateItem(it.id, {
+        masterwork_bonus: Math.max(0, Math.min(cat.masterwork_max ?? 0, (it.masterwork_bonus ?? 0) + d)),
+      }),
+    onRemove: () => removeItem(it.id),
+    onEdit: () => setEditingId(it.id),
+    onReductionPool: (n) => updateItem(it.id, { reduction_pool_current: n }),
+  });
+
+  const saveEdits = (it: InventoryItem, cat: CatalogItem | null, edits: ItemEdits, notes: string) => {
+    updateItem(it.id, { ...sanitizeOnSave(it, forkItem(it, cat, edits), REGISTRY), notes });
+    setEditingId(null);
+  };
+  const revert = (it: InventoryItem, cat: CatalogItem | null) => {
+    updateItem(it.id, { ...revertItem(it, cat), notes: it.notes });
+    setEditingId(null);
+  };
+
+  const openCreateCustom = () => {
+    const draftId = `inv-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`;
+    setModalOpen(false);
+    setCreateDraft({
+      id: draftId,
+      catalog_item_id: null,
+      name: "New item",
+      quantity: 1,
+      equipped: false,
+      slot: null,
+      masterwork_bonus: 0,
+      medium_armor_stat: null,
+      reduction_pool_current: null,
+      notes: "",
+      custom: forkItem(
+        { id: draftId } as InventoryItem,
+        null,
+        { name: "New item", category: "Kit", weight: 0, cost: null },
+      ),
+    });
+  };
+  const saveCreate = (edits: ItemEdits, notes: string) => {
+    const draft = createDraft!;
+    const custom = forkItem(draft, null, edits);
+    setItems([...items, { ...draft, custom, name: custom.name, notes }]);
+    setCreateDraft(null);
+  };
 
   const addFromCatalog = (cat: CatalogItem) =>
     setItems([
@@ -206,6 +271,8 @@ export function InventoryTab({ c, stored, setStored, inventoryView, setInventory
     setDragOverSlot(null);
   };
 
+  const toggleExpand = (id: string) => setExpandedId((cur) => (cur === id ? null : id));
+
   const over = c.carry.used > c.carry.capacity;
 
   return (
@@ -331,6 +398,9 @@ export function InventoryTab({ c, stored, setStored, inventoryView, setInventory
             items={visibleItems}
             favIds={favIds}
             draggingId={draggingId}
+            slotLabel={slotLabel}
+            detailCallbacks={detailCallbacks}
+            weaponCombat={weaponCombat}
             onDragStart={handleCardDragStart}
             onDragEnd={handleCardDragEnd}
             onTouchStart={handleTouchStart}
@@ -342,10 +412,12 @@ export function InventoryTab({ c, stored, setStored, inventoryView, setInventory
         ) : visibleItems.map((it) => {
           const cat = resolveItem(it, REGISTRY);
           const legal = legalSlotsFor(cat);
+          const expanded = expandedId === it.id;
+          const stop = (e: React.MouseEvent) => e.stopPropagation();
           return (
+            <Fragment key={it.id}>
             <div
-              className={`inv-row${draggingId === it.id ? " inv-dragging" : ""}`}
-              key={it.id}
+              className={`inv-row${draggingId === it.id ? " inv-dragging" : ""}${expanded ? " inv-row-open" : ""}`}
               draggable={legal.length > 0}
               onDragStart={(e) => {
                 e.dataTransfer.setData("text/plain", it.id);
@@ -356,10 +428,18 @@ export function InventoryTab({ c, stored, setStored, inventoryView, setInventory
               onTouchStart={legal.length > 0 ? (e) => handleTouchStart(it, e) : undefined}
               onTouchMove={legal.length > 0 ? handleTouchMove : undefined}
               onTouchEnd={legal.length > 0 ? (e) => handleTouchEnd(it.id, e) : undefined}
-              title={cat?.fluff_text || undefined}
+              onClick={() => { if (!draggingId && !touchGhost.current) toggleExpand(it.id); }}
             >
               <div className="inv-name-cell">
-                <button className={`inv-equip-btn${it.equipped ? " equipped" : ""}`} onClick={() => toggleEquip(it, cat)}>
+                <button
+                  className={`inv-chevron${expanded ? " open" : ""}`}
+                  onClick={(e) => { stop(e); toggleExpand(it.id); }}
+                  aria-label={expanded ? "Collapse details" : "Expand details"}
+                  aria-expanded={expanded}
+                >
+                  ▸
+                </button>
+                <button className={`inv-equip-btn${it.equipped ? " equipped" : ""}`} onClick={(e) => { stop(e); toggleEquip(it, cat); }}>
                   {it.equipped ? "◉" : "○"}
                 </button>
                 <span className="name">
@@ -367,14 +447,15 @@ export function InventoryTab({ c, stored, setStored, inventoryView, setInventory
                   {cat?.category === "Armor" && cat.armor_type ? ` (${cat.armor_type})` : ""}
                 </span>
                 {cat?.category && <span className="inv-type-badge">{cat.category}{it.slot ? ` · ${slotLabel(it.slot)}` : ""}</span>}
+                {it.custom != null && <span className="inv-type-badge inv-badge-custom">Custom</span>}
               </div>
-              <span className="qty">
+              <span className="qty" onClick={stop}>
                 <span className="pm" style={{ cursor: "pointer" }} onClick={() => updateItem(it.id, { quantity: Math.max(1, it.quantity - 1) })}>−</span>
                 ×{it.quantity}
                 <span className="pm" style={{ cursor: "pointer" }} onClick={() => updateItem(it.id, { quantity: it.quantity + 1 })}>+</span>
               </span>
               <span className="wt">{((cat?.weight ?? 0) * it.quantity).toFixed(1)}</span>
-              <span className="qty">
+              <span className="qty" onClick={stop}>
                 {cat?.masterwork_eligible && (cat.masterwork_max ?? 0) > 0 && (
                   <>
                     <span
@@ -399,8 +480,17 @@ export function InventoryTab({ c, stored, setStored, inventoryView, setInventory
                   </>
                 )}
               </span>
-              <span className="x" onClick={() => removeItem(it.id)}>✕</span>
+              <span className="inv-row-actions" onClick={stop}>
+                <button className="inv-row-edit" onClick={() => setEditingId(it.id)} aria-label="Edit item">✎</button>
+                <button className="x" onClick={() => removeItem(it.id)} aria-label="Remove item">✕</button>
+              </span>
             </div>
+            {expanded && (
+              <div className="inv-row-detail">
+                <ItemDetailBody it={it} cat={cat} slotLabel={slotLabel} combat={weaponCombat(cat)} {...detailCallbacks(it, cat)} />
+              </div>
+            )}
+            </Fragment>
           );
         })}
       </div>
@@ -410,7 +500,38 @@ export function InventoryTab({ c, stored, setStored, inventoryView, setInventory
           currency={stored.inventory.currency}
           onAdd={addFromCatalog}
           onBuy={buyFromCatalog}
+          onCreateCustom={openCreateCustom}
           onClose={() => setModalOpen(false)}
+        />
+      )}
+
+      {editingId != null && (() => {
+        const it = items.find((i) => i.id === editingId);
+        if (!it) return null;
+        const cat = resolveItem(it, REGISTRY);
+        const catalogName = it.catalog_item_id ? (REGISTRY.items.get(it.catalog_item_id)?.name ?? null) : null;
+        return (
+          <ItemEditModal
+            it={it}
+            cat={cat}
+            mode="edit"
+            canRevert={canRevert(it)}
+            catalogName={catalogName}
+            onSave={(e, n) => saveEdits(it, cat, e, n)}
+            onRevert={() => revert(it, cat)}
+            onClose={() => setEditingId(null)}
+          />
+        );
+      })()}
+
+      {createDraft && (
+        <ItemEditModal
+          it={createDraft}
+          cat={createDraft.custom}
+          mode="create"
+          canRevert={false}
+          onSave={saveCreate}
+          onClose={() => setCreateDraft(null)}
         />
       )}
     </>
@@ -488,11 +609,13 @@ function CatalogModal({
   currency,
   onAdd,
   onBuy,
+  onCreateCustom,
   onClose,
 }: {
   currency: Coins;
   onAdd: (cat: CatalogItem) => void;
   onBuy: (cat: CatalogItem) => void;
+  onCreateCustom: () => void;
   onClose: () => void;
 }) {
   const [query, setQuery] = useState("");
@@ -513,6 +636,9 @@ function CatalogModal({
         <div className="card-header">
           <div className="card-title">Item Catalog</div>
           <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+            <button className="rest-btn" style={{ padding: "2px 8px" }} onClick={onCreateCustom}>
+              <span className="name">+ Custom item</span>
+            </button>
             <div className="modal-currency">
               <span className="modal-coin modal-coin--gp">
                 <span className="modal-coin-val">{currency.gold.toLocaleString()}</span>

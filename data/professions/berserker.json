@@ -30,7 +30,7 @@
       "throwing_axe",
       "survival_knife"
     ],
-    "armor": ["medium_armor"],
+    "armor": ["light_armor"],
     "kits": ["tribal_tattoo_kit"],
     "inventory": ["bone_trophies", "drinking_horn"],
     "currency": {
@@ -105,7 +105,7 @@
           "type": "alternate_defense",
           "replaces": "Armor",
           "name": "Berserker Defense",
-          "formula": "fortitude",
+          "formula": "fortitude + armor_bonus",
           "condition": "light_or_no_armor"
         }
       ]

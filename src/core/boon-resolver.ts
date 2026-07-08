@@ -5,10 +5,13 @@
 
 import type { ActiveBoon, Boon, Feat, FeatCard, FeatSource, StoredCharacter } from "./types.ts";
 import type { Registry } from "./data-registry.ts";
+import { equipmentContext } from "./equip.ts";
 
 interface ResolveCtx {
   stored: StoredCharacter;
   equippedArmorType: string | null; // "Light" | "Medium" | "Heavy" | null
+  hasShield: boolean;
+  activeStates: string[];
 }
 
 export interface CollectedFeats {
@@ -55,8 +58,14 @@ export function collectFeats(stored: StoredCharacter, reg: Registry): CollectedF
   // purchased feats
   for (const id of b.feat_ids) push(id, false);
 
-  // resolve active boons per card
-  const ctx: ResolveCtx = { stored, equippedArmorType: equippedArmorType(stored, reg) };
+  // resolve active boons per card (slot-aware equipment — one truth with compute)
+  const eqCtx = equipmentContext(stored, reg);
+  const ctx: ResolveCtx = {
+    stored,
+    equippedArmorType: eqCtx.armorType,
+    hasShield: eqCtx.hasShield,
+    activeStates: stored.states.active,
+  };
   const activeBoons: ActiveBoon[] = [];
   for (const card of cards) {
     card.activeBoons = resolveBoons(card.feat.boons, ctx);
@@ -65,15 +74,6 @@ export function collectFeats(stored: StoredCharacter, reg: Registry): CollectedF
     }
   }
   return { cards, activeBoons };
-}
-
-function equippedArmorType(stored: StoredCharacter, reg: Registry): string | null {
-  for (const it of stored.inventory.items) {
-    if (!it.equipped) continue;
-    const cat = it.custom ?? (it.catalog_item_id ? reg.items.get(it.catalog_item_id) : null);
-    if (cat?.category === "Armor" && cat.armor_type) return String(cat.armor_type);
-  }
-  return null;
 }
 
 /** Visit every boon in a boon array, including wrapper children. */

@@ -12,6 +12,21 @@ export const ATTRIBUTES: AttributeKey[] = ["brawn", "finesse", "mind", "will"];
 
 // ── Stored character ─────────────────────────────────────────────────────────
 
+// Pool fields a respite touches, captured for undo. `before` = pre-respite
+// values (what undo restores); `after` = post-respite values (drift detection).
+export interface PoolSnapshot {
+  vitality: number;
+  temp_vitality: number;
+  wounds: number;
+  ambition: number;
+  reservoir: number;
+  resources: Record<string, number>;
+}
+export interface RespiteSnapshot {
+  before: PoolSnapshot;
+  after: PoolSnapshot;
+}
+
 export interface StoredCharacter {
   id: string;
   schema_version: number;
@@ -68,6 +83,11 @@ export interface StoredCharacter {
     renown: number;
     respites_used: number;
     favorites: { type: "item" | "feat" | "spell"; id: string }[];
+    /** LIFO stack of pool states around each respite, for undo (see rest.ts). */
+    respite_snapshots?: RespiteSnapshot[];
+    /** Whether the equipped shield is raised. Down by default — the player
+     *  raises it to make its reduction pool soak damage (see damage.ts). */
+    shield_raised?: boolean;
   };
   notes: {
     journal: JournalEntry[];
@@ -133,7 +153,12 @@ export interface ResourceDef {
   description?: string;
   max: string | number;
   max_by_tier?: { tier: number; value: number }[];
-  die_size?: { type: "table"; key: string; rows: { range: [number, number]; die: string }[] };
+  die_size?: {
+    type: "table";
+    key: string;
+    rows: { range: [number, number]; die: string }[];
+    tier_rows?: { range: [number, number]; die: string }[];
+  };
   recovery?: Record<string, number | "max" | { formula: string; minimum?: number }>;
   triggers?: { event: string; amount: number }[];
 }
@@ -221,6 +246,8 @@ export interface CatalogItem {
   category: string;
   subcategory?: string;
   groups?: string[];
+  /** Attribute driving To Hit / Damage Mod. "Varried" ⇒ max(Brawn, Finesse). */
+  modifier?: string;
   damage?: string | null;
   damage_types?: { code: string; name: string }[];
   range_bands?: { code: string; name: string }[];
@@ -318,6 +345,23 @@ export interface ComputedSpellcasting {
   preparedAllowance: number;
   cantripAllowance: number;
   spheres: string[];
+  /** Bonus known-spell slots from grants_known_spells that don't count against knownAllowance. */
+  freeKnownSlots: { count: number; tier?: number; fromSphere?: string; spellIds?: string[]; sourceFeat: string }[];
+  /** Total free known-spell count (Σ freeKnownSlots.count) — spells-tab subtracts from the budget. */
+  freeKnownCount: number;
+  /** Signature spell economy (signature_spell boon). */
+  signature: { spellIds: string[]; costReduction: number; tierMax: number | null } | null;
+}
+
+export interface ShieldState {
+  /** Inventory item instance id — the pool's persistence key. */
+  itemId: string;
+  name: string;
+  max: number;
+  current: number;
+  broken: boolean;
+  /** Shield has the Fragile trait (breaks when the pool empties). */
+  fragile: boolean;
 }
 
 export interface ComputedCharacter {
@@ -332,7 +376,18 @@ export interface ComputedCharacter {
   wounds: { max: number; current: number };
   ambition: { max: number; current: number; die: string };
   resources: ComputedResource[];
+  /** Damage-reduction pools granted by boons (max from formula; current persisted separately). */
+  reductionPools: { id: string; name: string; max: number; current: number; source: string }[];
+  /** Equipped shield's damage pool, or null when no shield is in the off hand.
+   *  `current` persists on the inventory item's reduction_pool_current. */
+  shield: ShieldState | null;
   spellcasting: ComputedSpellcasting | null;
+  /** Flat roll bonuses from stat_bonus boons, consumed by the damage/attack layer + sheet. */
+  rollBonuses: { spellAttack: number; attackRoll: number };
+  /** Flat Action Point bonus from stat_bonus boons (sheet display; combat tracker later). */
+  apBonus: number;
+  /** Boon-driven combat bonuses (damage_bonus / attack_option / cantrip_upgrade). */
+  combat: import("./damage.ts").CombatBonuses;
   skills: SkillPoolInfo[];
   carry: { capacity: number; used: number };
   featCards: FeatCard[];

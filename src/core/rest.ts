@@ -1,9 +1,9 @@
-// Rest actions: Respite / Long Rest / Daily Preparation.
+// Rest actions: Respite / Long Rest (Daily Preparation folded in).
 // Applies recovery formulas from universal-resources.json + profession
 // resource defs, resets limited-use counters by recharge tier, clears
-// daily modes on daily preparation.
+// daily modes on long rest.
 
-import type { ComputedCharacter, StoredCharacter } from "./types.ts";
+import type { ComputedCharacter, PoolSnapshot, StoredCharacter } from "./types.ts";
 import type { Registry } from "./data-registry.ts";
 import { evalFormula, standardEnv } from "./formula.ts";
 
@@ -18,9 +18,12 @@ export function maxRespites(tier: number): number {
 }
 
 // which recharge tags a rest kind refreshes
+// Daily Preparation is rules-as-written folded into the Long Rest (it only ever
+// happens after one), so long_rest also recharges daily_preparation-tagged uses
+// and clears daily modes. The kind/tag stays for feats that recharge on it.
 const RECHARGES: Record<RestKind, string[]> = {
   respite: ["respite"],
-  long_rest: ["respite", "long_rest"],
+  long_rest: ["respite", "long_rest", "daily_preparation"],
   daily_preparation: ["daily_preparation"],
   full_rest: ["respite", "long_rest", "daily_preparation", "full_rest"],
 };
@@ -39,6 +42,7 @@ export function applyRest(
 
   const next = structuredClone(stored);
   const env = standardEnv(computed.attributes, computed.tier);
+  const beforePools = snapshotPools(stored.pools);
 
   // vitality/ambition/reservoir recovery on respite & long/full rest
   // (Take_Respite / Take_Long_Rest, exmp/wounds-logic.md). "Regain a total
@@ -96,6 +100,15 @@ export function applyRest(
     }
   }
 
+  // equipped shield repairs to full on a long/full rest (re-forge). The pool
+  // lives on the inventory item's reduction_pool_current, keyed by item id.
+  if ((kind === "long_rest" || kind === "full_rest") && computed.shield) {
+    const { itemId, max } = computed.shield;
+    next.inventory.items = next.inventory.items.map((it) =>
+      it.id === itemId ? { ...it, reduction_pool_current: max } : it,
+    );
+  }
+
   // wounds heal on respite/long rest/full rest (exmp/wounds-logic.md)
   if (kind === "respite") {
     next.pools.wounds = Math.max(0, next.pools.wounds - computed.tier);
@@ -140,12 +153,71 @@ export function applyRest(
     }
   }
 
-  if (kind === "daily_preparation" || kind === "full_rest") {
+  if (kind === "daily_preparation" || kind === "long_rest" || kind === "full_rest") {
     for (const k of Object.keys(next.daily_modes)) next.daily_modes[k] = null;
   }
-  if (kind === "respite") next.play.respites_used += 1;
-  if (kind === "long_rest" || kind === "full_rest") next.play.respites_used = 0;
+  if (kind === "respite") {
+    next.play.respites_used += 1;
+    (next.play.respite_snapshots ??= []).push({
+      before: beforePools,
+      after: snapshotPools(next.pools),
+    });
+  }
+  if (kind === "long_rest" || kind === "full_rest") {
+    next.play.respites_used = 0;
+    next.play.respite_snapshots = [];
+  }
 
+  return next;
+}
+
+// ── Respite undo (pip-driven) ────────────────────────────────────────────────
+
+function snapshotPools(p: StoredCharacter["pools"]): PoolSnapshot {
+  return {
+    vitality: p.vitality,
+    temp_vitality: p.temp_vitality,
+    wounds: p.wounds,
+    ambition: p.ambition,
+    reservoir: p.reservoir,
+    resources: { ...p.resources },
+  };
+}
+
+function poolsEqual(a: PoolSnapshot, b: PoolSnapshot): boolean {
+  if (
+    a.vitality !== b.vitality ||
+    a.temp_vitality !== b.temp_vitality ||
+    a.wounds !== b.wounds ||
+    a.ambition !== b.ambition ||
+    a.reservoir !== b.reservoir
+  )
+    return false;
+  const keys = new Set([...Object.keys(a.resources), ...Object.keys(b.resources)]);
+  for (const k of keys) if (a.resources[k] !== b.resources[k]) return false;
+  return true;
+}
+
+/** True when pools have moved since the most recent respite (undo would clobber
+ *  those changes). The UI uses this to decide whether to confirm before undo. */
+export function lastRespiteDrifted(stored: StoredCharacter): boolean {
+  const snaps = stored.play.respite_snapshots;
+  if (!snaps?.length) return false;
+  return !poolsEqual(snapshotPools(stored.pools), snaps[snaps.length - 1].after);
+}
+
+/** Undo the most recent respite: restore the pre-respite pools and free the
+ *  respite. Falls back to a counter-only decrement if no snapshot exists
+ *  (e.g. saves from before snapshots were tracked). */
+export function undoLastRespite(stored: StoredCharacter): StoredCharacter {
+  if (stored.play.respites_used <= 0) return stored;
+  const next = structuredClone(stored);
+  next.play.respites_used -= 1;
+  const snaps = next.play.respite_snapshots;
+  if (snaps?.length) {
+    const { before } = snaps.pop()!;
+    next.pools = { ...next.pools, ...before, resources: { ...before.resources } };
+  }
   return next;
 }
 
