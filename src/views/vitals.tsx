@@ -5,7 +5,7 @@ import { useState } from "react";
 import type { ComputedCharacter, StoredCharacter } from "../core/types.ts";
 import { Icon } from "@ui/primitives.tsx";
 import { REGISTRY } from "../core/data-registry.ts";
-import { applyRest, maxRespites, type RestKind } from "../core/rest.ts";
+import { applyRest, lastRespiteDrifted, maxRespites, undoLastRespite, type RestKind } from "../core/rest.ts";
 import { applyDamage } from "../core/damage.ts";
 
 interface VitalsProps {
@@ -117,6 +117,24 @@ export function WoundsAmbitionRest({ c, stored, setStored }: VitalsProps) {
 
   const rest = (kind: RestKind) => setStored((s) => applyRest(s, c, REGISTRY, kind));
 
+  const respitesMax = maxRespites(c.tier);
+  const respitesUsed = stored.play.respites_used;
+  const takeRespite = () => {
+    if (respitesUsed >= respitesMax) return;
+    setStored((s) => applyRest(s, c, REGISTRY, "respite"));
+  };
+  const freeRespite = () => {
+    if (respitesUsed <= 0) return;
+    if (
+      lastRespiteDrifted(stored) &&
+      !window.confirm(
+        "Vitality/Ambition/Wounds have changed since this respite. Undo it and restore the pre-respite values?",
+      )
+    )
+      return;
+    setStored((s) => undoLastRespite(s));
+  };
+
   const dead = c.wounds.current >= c.wounds.max;
 
   return (
@@ -157,16 +175,23 @@ export function WoundsAmbitionRest({ c, stored, setStored }: VitalsProps) {
         </div>
       </div>
 
+      <div className="hp-head" style={{ marginTop: 6 }}>
+        <span className="heart"><Icon kind="dice" size={12} /></span> Respites
+        <span style={{ marginLeft: "auto", fontFamily: "var(--serif)", color: "var(--gold)" }}>{respitesUsed} / {respitesMax}</span>
+      </div>
+      <div style={{ display: "flex", gap: 4, padding: "6px 12px", flexWrap: "wrap" }}>
+        {Array.from({ length: respitesMax }, (_, i) => (
+          <span
+            key={i}
+            className={`slot-pip${i < respitesUsed ? "" : " used"}`}
+            style={{ cursor: "pointer", ...(i < respitesUsed ? { background: "var(--gold)", borderColor: "var(--gold)" } : {}) }}
+            title={i < respitesUsed ? "Click to free this respite (undo)" : "Click to take a respite"}
+            onClick={() => (i < respitesUsed ? freeRespite() : takeRespite())}
+          />
+        ))}
+      </div>
+
       <div style={{ display: "flex", gap: 6, padding: "0 12px 12px", flexWrap: "wrap" }}>
-        <button
-          className="rest-btn"
-          onClick={() => rest("respite")}
-          disabled={stored.play.respites_used >= maxRespites(c.tier)}
-          title="Restores Will ambition (min 3); spend hit dice equivalents"
-        >
-          <span className="name">Respite</span>
-          <span className="sub">{stored.play.respites_used} / {maxRespites(c.tier)} used</span>
-        </button>
         <button className="rest-btn" onClick={() => rest("long_rest")} title="Full vitality, Will×2 ambition (min 8), resets respites">
           <span className="name">Long Rest</span>
         </button>

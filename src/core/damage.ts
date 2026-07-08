@@ -135,8 +135,9 @@ export function applyDamage(
   return { ...stored, pools: { ...stored.pools, temp_vitality: temp, vitality } };
 }
 
-// Swap_Armor wound handling (exmp/wounds-logic.md). Threshold ↑: no free
-// heal — wounds stay the same distance from the new max as from the old
+// Swap_Armor wound handling (exmp/wounds-logic.md). At 0 wounds: threshold
+// just moves, wounds stay 0 (no phantom wounds from swapping up). Threshold ↑:
+// no free heal — wounds stay the same distance from the new max as from the old
 // (buffer preserved). Threshold ↓ to at/below current wounds: drop to one
 // below the new max instead of instant death. Otherwise: no change.
 export function rescaleWoundsOnThresholdChange(
@@ -145,6 +146,11 @@ export function rescaleWoundsOnThresholdChange(
   newMax: number,
 ): StoredCharacter {
   const wounds = stored.pools.wounds;
+
+  // Unwounded: no buffer to preserve. The threshold just moves; the player
+  // stays at 0 wounds. (Buffer preservation only matters once wounded — this
+  // stops swapping into higher-threshold armor from phantom-inflicting wounds.)
+  if (wounds <= 0) return stored;
 
   if (newMax > oldMax) {
     const buffer = oldMax - wounds;

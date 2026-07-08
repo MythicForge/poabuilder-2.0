@@ -3,7 +3,7 @@
 // resource defs, resets limited-use counters by recharge tier, clears
 // daily modes on daily preparation.
 
-import type { ComputedCharacter, StoredCharacter } from "./types.ts";
+import type { ComputedCharacter, PoolSnapshot, StoredCharacter } from "./types.ts";
 import type { Registry } from "./data-registry.ts";
 import { evalFormula, standardEnv } from "./formula.ts";
 
@@ -39,6 +39,7 @@ export function applyRest(
 
   const next = structuredClone(stored);
   const env = standardEnv(computed.attributes, computed.tier);
+  const beforePools = snapshotPools(stored.pools);
 
   // vitality/ambition/reservoir recovery on respite & long/full rest
   // (Take_Respite / Take_Long_Rest, exmp/wounds-logic.md). "Regain a total
@@ -143,9 +144,68 @@ export function applyRest(
   if (kind === "daily_preparation" || kind === "full_rest") {
     for (const k of Object.keys(next.daily_modes)) next.daily_modes[k] = null;
   }
-  if (kind === "respite") next.play.respites_used += 1;
-  if (kind === "long_rest" || kind === "full_rest") next.play.respites_used = 0;
+  if (kind === "respite") {
+    next.play.respites_used += 1;
+    (next.play.respite_snapshots ??= []).push({
+      before: beforePools,
+      after: snapshotPools(next.pools),
+    });
+  }
+  if (kind === "long_rest" || kind === "full_rest") {
+    next.play.respites_used = 0;
+    next.play.respite_snapshots = [];
+  }
 
+  return next;
+}
+
+// ── Respite undo (pip-driven) ────────────────────────────────────────────────
+
+function snapshotPools(p: StoredCharacter["pools"]): PoolSnapshot {
+  return {
+    vitality: p.vitality,
+    temp_vitality: p.temp_vitality,
+    wounds: p.wounds,
+    ambition: p.ambition,
+    reservoir: p.reservoir,
+    resources: { ...p.resources },
+  };
+}
+
+function poolsEqual(a: PoolSnapshot, b: PoolSnapshot): boolean {
+  if (
+    a.vitality !== b.vitality ||
+    a.temp_vitality !== b.temp_vitality ||
+    a.wounds !== b.wounds ||
+    a.ambition !== b.ambition ||
+    a.reservoir !== b.reservoir
+  )
+    return false;
+  const keys = new Set([...Object.keys(a.resources), ...Object.keys(b.resources)]);
+  for (const k of keys) if (a.resources[k] !== b.resources[k]) return false;
+  return true;
+}
+
+/** True when pools have moved since the most recent respite (undo would clobber
+ *  those changes). The UI uses this to decide whether to confirm before undo. */
+export function lastRespiteDrifted(stored: StoredCharacter): boolean {
+  const snaps = stored.play.respite_snapshots;
+  if (!snaps?.length) return false;
+  return !poolsEqual(snapshotPools(stored.pools), snaps[snaps.length - 1].after);
+}
+
+/** Undo the most recent respite: restore the pre-respite pools and free the
+ *  respite. Falls back to a counter-only decrement if no snapshot exists
+ *  (e.g. saves from before snapshots were tracked). */
+export function undoLastRespite(stored: StoredCharacter): StoredCharacter {
+  if (stored.play.respites_used <= 0) return stored;
+  const next = structuredClone(stored);
+  next.play.respites_used -= 1;
+  const snaps = next.play.respite_snapshots;
+  if (snaps?.length) {
+    const { before } = snaps.pop()!;
+    next.pools = { ...next.pools, ...before, resources: { ...before.resources } };
+  }
   return next;
 }
 

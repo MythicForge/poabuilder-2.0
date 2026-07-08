@@ -12,6 +12,21 @@ export const ATTRIBUTES: AttributeKey[] = ["brawn", "finesse", "mind", "will"];
 
 // ── Stored character ─────────────────────────────────────────────────────────
 
+// Pool fields a respite touches, captured for undo. `before` = pre-respite
+// values (what undo restores); `after` = post-respite values (drift detection).
+export interface PoolSnapshot {
+  vitality: number;
+  temp_vitality: number;
+  wounds: number;
+  ambition: number;
+  reservoir: number;
+  resources: Record<string, number>;
+}
+export interface RespiteSnapshot {
+  before: PoolSnapshot;
+  after: PoolSnapshot;
+}
+
 export interface StoredCharacter {
   id: string;
   schema_version: number;
@@ -68,6 +83,8 @@ export interface StoredCharacter {
     renown: number;
     respites_used: number;
     favorites: { type: "item" | "feat" | "spell"; id: string }[];
+    /** LIFO stack of pool states around each respite, for undo (see rest.ts). */
+    respite_snapshots?: RespiteSnapshot[];
   };
   notes: {
     journal: JournalEntry[];
@@ -133,7 +150,12 @@ export interface ResourceDef {
   description?: string;
   max: string | number;
   max_by_tier?: { tier: number; value: number }[];
-  die_size?: { type: "table"; key: string; rows: { range: [number, number]; die: string }[] };
+  die_size?: {
+    type: "table";
+    key: string;
+    rows: { range: [number, number]; die: string }[];
+    tier_rows?: { range: [number, number]; die: string }[];
+  };
   recovery?: Record<string, number | "max" | { formula: string; minimum?: number }>;
   triggers?: { event: string; amount: number }[];
 }

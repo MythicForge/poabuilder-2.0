@@ -689,13 +689,27 @@ function computeReductionPools(
   return out;
 }
 
-function ambitionDie(reg: Registry, will: number, tier: number): string {
-  const amb = reg.universalResources.find((r) => r.id === "ambition");
-  const key = Math.max(will, tier);
-  for (const row of amb?.die_size?.rows ?? []) {
+const DIE_ORDER = ["1d4", "1d6", "1d8", "1d10", "1d12"];
+
+function lookupDie(
+  rows: { range: [number, number]; die: string }[] | undefined,
+  key: number,
+): string | undefined {
+  for (const row of rows ?? []) {
     if (key >= row.range[0] && key <= row.range[1]) return row.die;
   }
-  return "1d4";
+  return undefined;
+}
+
+// Ambition die is the larger of the Will-based die and the Tier-based die.
+// Will and Tier are on different scales, so each maps to a die independently.
+function ambitionDie(reg: Registry, will: number, tier: number): string {
+  const ds = reg.universalResources.find((r) => r.id === "ambition")?.die_size;
+  const willDie = lookupDie(ds?.rows, will) ?? "1d4";
+  const tierDie = lookupDie(ds?.tier_rows, tier) ?? "1d4";
+  return DIE_ORDER.indexOf(tierDie) > DIE_ORDER.indexOf(willDie)
+    ? tierDie
+    : willDie;
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────────
