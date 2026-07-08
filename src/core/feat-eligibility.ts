@@ -28,7 +28,7 @@ export interface SlotState {
   tier4ChoicePending: boolean;
 }
 
-interface Prereqs {
+export interface Prereqs {
   feats: string[];
   exclude_feats: string[];
   path_investment: { path: string; count: number } | null;
@@ -54,7 +54,7 @@ export function buildFeatPool(stored: StoredCharacter, reg: Registry): Map<strin
 }
 
 /** Prerequisites normalize: bare array = required feat ids; object = full shape. */
-function normalizePrereqs(raw: unknown): Prereqs {
+export function normalizePrereqs(raw: unknown): Prereqs {
   const out: Prereqs = { feats: [], exclude_feats: [], path_investment: null, origin_investment: null };
   if (Array.isArray(raw)) {
     out.feats = raw.filter((x): x is string => typeof x === "string");
@@ -121,6 +121,40 @@ export function ownedFeatIds(stored: StoredCharacter, reg: Registry): Set<string
 function investmentCount(featIds: Feat[] | undefined, selected: Feat[]): number {
   const ids = new Set((featIds ?? []).map((f) => f.id));
   return selected.filter((f) => ids.has(f.id)).length;
+}
+
+export interface PrereqPill {
+  label: string;
+  met: boolean;
+}
+
+/** Prerequisite pills for feat-inspect display — one per requirement, met/unmet. */
+export function prereqPills(stored: StoredCharacter, feat: Feat, reg: Registry): PrereqPill[] {
+  const pool = buildFeatPool(stored, reg);
+  const owned = ownedFeatIds(stored, reg);
+  const selected = purchasedSelected(stored, pool).filter((f) => f.id !== feat.id);
+  const nameOf = (id: string) => pool.get(id)?.feat.name ?? id;
+  const p = normalizePrereqs(feat.prerequisites);
+  const out: PrereqPill[] = [];
+
+  for (const id of p.feats) out.push({ label: `requires ${nameOf(id)}`, met: owned.has(id) });
+  for (const id of p.exclude_feats) out.push({ label: `excludes ${nameOf(id)}`, met: !owned.has(id) });
+  if (p.path_investment && p.path_investment.count > 0) {
+    const path = reg.paths.get(p.path_investment.path);
+    const have = investmentCount(path?.feats, selected);
+    out.push({ label: `${p.path_investment.count} ${path?.name ?? p.path_investment.path} feats (${have})`, met: have >= p.path_investment.count });
+  }
+  if (p.origin_investment && p.origin_investment.count > 0) {
+    const origin = reg.origins.get(p.origin_investment.origin);
+    const have = investmentCount(origin?.feats, selected);
+    out.push({ label: `${p.origin_investment.count} ${origin?.name ?? p.origin_investment.origin} feats (${have})`, met: have >= p.origin_investment.count });
+  }
+  if (feat.tier > 0) {
+    const tier = calcTier(stored.build.feats_purchased, reg);
+    out.push({ label: `Tier ${feat.tier}`, met: tier >= feat.tier });
+  }
+
+  return out;
 }
 
 export function featEligibility(stored: StoredCharacter, feat: Feat, reg: Registry): Eligibility {

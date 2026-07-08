@@ -44,6 +44,7 @@ for (const s of (spellsDoc as unknown as { spells: Spell[] }).spells) {
   // Raw JSON stores `spheres` as a single string or null; normalize to string[].
   const raw = (s as { spheres?: unknown }).spheres;
   s.spheres = typeof raw === "string" ? [raw] : Array.isArray(raw) ? (raw as string[]) : [];
+  s.sources = Array.isArray(s.sources) ? s.sources : [];
   spells.set(s.id, s);
 }
 

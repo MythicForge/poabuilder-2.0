@@ -7,6 +7,7 @@ import type { ComputedCharacter, StoredCharacter } from "./types.ts";
 import type { Registry } from "./data-registry.ts";
 import { ATTRIBUTES } from "./types.ts";
 import { SLOT_TYPES, buildFeatPool, featEligibility, purchasedSelected, slotState } from "./feat-eligibility.ts";
+import { spellAccessible } from "./spell-access.ts";
 
 export function validateCharacter(stored: StoredCharacter, reg: Registry, computed: ComputedCharacter): string[] {
   const out: string[] = [];
@@ -98,6 +99,9 @@ export function validateCharacter(stored: StoredCharacter, reg: Registry, comput
       if (!spell) out.push(`unknown spell id "${id}"`);
       else if (spell.tier > sc.spellcastingTier && !spell.is_cantrip) {
         out.push(`${spell.name} is Tier ${spell.tier}, above your spellcasting Tier ${sc.spellcastingTier}`);
+      } else {
+        const access = spellAccessible(spell, sc);
+        if (!access.ok) out.push(`${spell.name}: ${access.reason}`);
       }
     }
   } else if (b.known_spell_ids.length || b.known_cantrip_ids.length) {

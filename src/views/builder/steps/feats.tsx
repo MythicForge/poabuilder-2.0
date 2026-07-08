@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { REGISTRY } from "../../../core/data-registry.ts";
-import { featEligibility, SLOT_TYPES, slotState } from "../../../core/feat-eligibility.ts";
+import { featEligibility, prereqPills, SLOT_TYPES, slotState } from "../../../core/feat-eligibility.ts";
+import { Markdown } from "@ui/primitives.tsx";
 import type { Feat } from "../../../core/types.ts";
 import type { StepProps } from "../step.ts";
 
@@ -21,11 +23,21 @@ function pools(profId: string, originId: string, vocationId: string): { owner: s
   return out.filter((p) => p.feats.length > 0);
 }
 
+function formatCost(cost: unknown): string | null {
+  if (!cost || typeof cost !== "object") return null;
+  const c = cost as { ap?: number; resources?: { id: string; amount: number }[] };
+  const parts: string[] = [];
+  if (typeof c.ap === "number") parts.push(`${c.ap} AP`);
+  for (const r of c.resources ?? []) parts.push(`${r.amount} ${r.id}`);
+  return parts.length ? parts.join(" · ") : null;
+}
+
 export function FeatsStep({ draft, update, computed }: StepProps) {
   const b = draft.build;
   const chosen = new Set(b.feat_ids);
   const groups = pools(b.profession_id, b.origin_id, b.vocation_id);
   const slots = slotState(draft, REGISTRY);
+  const [expanded, setExpanded] = useState<string | null>(null);
 
   const setPurchased = (n: number) => update((d) => { d.build.feats_purchased = Math.max(0, n); });
   const toggle = (id: string) =>
@@ -77,27 +89,62 @@ export function FeatsStep({ draft, update, computed }: StepProps) {
         groups.map((g) => (
           <div key={g.owner} style={{ marginTop: 22 }}>
             <div className="bld-field-label">{g.owner}</div>
-            <div className="bld-grid">
+            <div className="bld-spelllist" style={{ maxHeight: "none", border: "none", padding: 0 }}>
               {g.feats.map((f) => {
                 const on = chosen.has(f.id);
                 const starting = f.tier === 0;
                 const elig = starting ? null : featEligibility(draft, f, REGISTRY);
                 const blocked = !on && !!elig && !elig.ok;
+                const open = expanded === f.id;
+                const cost = formatCost(f.cost);
+                const pills = starting ? [] : prereqPills(draft, f, REGISTRY);
                 return (
-                  <button
-                    key={f.id}
-                    className={`bld-pick${on ? " bld-pick--on" : ""}${starting || blocked ? " bld-pick--locked" : ""}`}
-                    disabled={starting || blocked}
-                    title={blocked ? elig!.reasons.join("; ") : undefined}
-                    onClick={() => !starting && toggle(f.id)}
-                  >
-                    <div className="bld-pick-name" style={{ fontSize: 16 }}>{f.name}</div>
-                    <div className="bld-pick-meta">
-                      {starting ? "Starting" : `T${f.tier}`} · {f.trait}{f.slot_type ? ` · ${f.slot_type}` : ""}
+                  <div key={f.id} className={`bld-exp-row${on ? " bld-exp-row--on" : ""}${blocked ? " bld-exp-row--blocked" : ""}`}>
+                    <div className="bld-exp-row-head" onClick={() => setExpanded(open ? null : f.id)}>
+                      <span className="bld-exp-row-name">{f.name}</span>
+                      <span className="bld-exp-row-meta">
+                        {starting ? "starting" : `T${f.tier}`} · {f.trait}{f.slot_type ? ` · ${f.slot_type}` : ""}
+                      </span>
+                      <span className="bld-exp-row-badges" />
+                      {starting ? (
+                        <span className="bld-pick-flag" style={{ marginTop: 0 }}>granted automatically</span>
+                      ) : (
+                        <button
+                          className={`bld-chip bld-exp-row-toggle${on ? " bld-chip--on" : ""}`}
+                          disabled={blocked}
+                          title={blocked ? elig!.reasons.join("; ") : undefined}
+                          onClick={(e) => { e.stopPropagation(); toggle(f.id); }}
+                        >
+                          {on ? "selected" : "select"}
+                        </button>
+                      )}
                     </div>
-                    {starting && <div className="bld-pick-flag">granted automatically</div>}
-                    {blocked && <div className="bld-pick-flag bld-pick-flag--block">{elig!.reasons[0]}</div>}
-                  </button>
+                    {open && (
+                      <div className="bld-exp-row-body">
+                        {(cost || f.range || f.duration || f.feat_dc || f.uses) && (
+                          <div className="bld-note" style={{ margin: "0 0 8px" }}>
+                            {[
+                              cost && `Cost: ${cost}`,
+                              f.range && `Range: ${f.range}`,
+                              f.duration && `Duration: ${f.duration}`,
+                              f.feat_dc && `DC: ${f.feat_dc}`,
+                              f.uses && `Uses: ${f.uses.count} / ${f.uses.recharge.replace(/_/g, " ")}`,
+                            ].filter(Boolean).join(" · ")}
+                          </div>
+                        )}
+                        {pills.length > 0 && (
+                          <div className="bld-exp-row-badges" style={{ margin: "0 0 8px" }}>
+                            {pills.map((p, i) => (
+                              <span key={i} className={`bld-source-badge${p.met ? "" : " bld-source-badge--warn"}`}>
+                                {p.met ? "✓ " : "✗ "}{p.label}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        <Markdown text={f.description} />
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </div>

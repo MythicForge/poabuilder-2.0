@@ -561,6 +561,11 @@ function computeSpellcasting(
       spheres.add(boon.sphere);
   }
 
+  // sources: the grant's resource-id source ("mana", "primeval", …) capitalized
+  // to match Spell.sources tags ("Mana", "Primeval", …). No boon currently
+  // grants an additional source — single-source v1.
+  const sources = source ? [source.charAt(0).toUpperCase() + source.slice(1)] : [];
+
   // grants_cantrip — free cantrips (counts_against_known:false) raise the allowance
   const cantrips = grant.cantrips as { max?: number } | undefined;
   let cantripAllowance = cantrips?.max ?? 0;
@@ -628,6 +633,7 @@ function computeSpellcasting(
     preparedAllowance: modValue + tier,
     cantripAllowance,
     spheres: [...spheres],
+    sources,
     freeKnownSlots,
     freeKnownCount,
     signature,

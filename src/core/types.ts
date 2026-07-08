@@ -228,6 +228,8 @@ export interface Spell {
   is_cantrip: boolean;
   school: string | null;
   spheres: string[];
+  /** Spellcasting sources that can know this spell (e.g. "Mana", "Primeval", "Universal"). Empty = data gap. */
+  sources: string[];
   range: string | null;
   duration: string | null;
   cost: number;
@@ -345,6 +347,8 @@ export interface ComputedSpellcasting {
   preparedAllowance: number;
   cantripAllowance: number;
   spheres: string[];
+  /** Spellcasting sources this character has access to (e.g. ["Mana"]), matched against Spell.sources. */
+  sources: string[];
   /** Bonus known-spell slots from grants_known_spells that don't count against knownAllowance. */
   freeKnownSlots: { count: number; tier?: number; fromSphere?: string; spellIds?: string[]; sourceFeat: string }[];
   /** Total free known-spell count (Σ freeKnownSlots.count) — spells-tab subtracts from the budget. */
