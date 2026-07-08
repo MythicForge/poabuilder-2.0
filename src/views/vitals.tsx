@@ -14,18 +14,37 @@ interface VitalsProps {
   setStored: (fn: (s: StoredCharacter) => StoredCharacter) => void;
 }
 
-export function VitalityCard({ c, setStored }: VitalsProps) {
+export function VitalityCard({ c, stored, setStored }: VitalsProps) {
   const [amount, setAmount] = useState("");
   const [tempEdit, setTempEdit] = useState(false);
   const [tempVal, setTempVal] = useState("");
 
+  // Heal only ever touches Vitality — never the shield pool (repair on rest).
   const heal = (delta: number) =>
     setStored((s) => ({
       ...s,
       pools: { ...s.pools, vitality: Math.max(0, Math.min(c.vitality.max, s.pools.vitality + delta)) },
     }));
 
-  const damage = (amt: number) => setStored((s) => applyDamage(s, amt));
+  const shield = c.shield;
+  const raised = !!stored.play.shield_raised;
+  const canRaise = !!shield && !shield.broken;
+
+  const damage = (amt: number) =>
+    setStored((s) => {
+      // A raised, intact shield soaks first. Read the live pool from `s` so
+      // repeated hits chip the same shield rather than the stale computed value.
+      let absorb = null as { itemId: string; current: number } | null;
+      if (shield && !shield.broken && s.play.shield_raised) {
+        const it = s.inventory.items.find((i) => i.id === shield.itemId);
+        const cur = it?.reduction_pool_current ?? shield.max;
+        if (cur > 0) absorb = { itemId: shield.itemId, current: cur };
+      }
+      return applyDamage(s, amt, absorb);
+    });
+
+  const toggleRaise = () =>
+    setStored((s) => ({ ...s, play: { ...s.play, shield_raised: !s.play.shield_raised } }));
 
   const applyAmount = (sign: 1 | -1) => {
     const n = parseInt(amount, 10);
@@ -85,6 +104,38 @@ export function VitalityCard({ c, setStored }: VitalsProps) {
           <div className="hp-bar-wrap">
             <div className="hp-bar" style={{ width: `${pct}%` }} />
           </div>
+
+          {(() => {
+            const state = !shield ? "none" : shield.broken ? "broken" : raised ? "raised" : "lowered";
+            const icon = state === "none" ? "shield-x" : state === "broken" ? "shield-off" : "shield";
+            const pool = shield && !shield.broken
+              ? `${shield.current} / ${shield.max}`
+              : state === "broken" ? "broken" : "—";
+            const fillPct = shield && shield.max > 0 ? Math.round((shield.current / shield.max) * 100) : 0;
+            return (
+              <>
+                <div className={`shield-line shield-line--${state}`}>
+                  <span className="shield-tag">
+                    <Icon kind={icon} size={13} />
+                    <span className="shield-name">{shield ? shield.name : "No shield"}</span>
+                  </span>
+                  <div className="shield-meter">
+                    <div className="shield-fill" style={{ width: `${state === "broken" ? 100 : fillPct}%` }} />
+                  </div>
+                  <span className="shield-val">{pool}</span>
+                </div>
+                <button
+                  className={`shield-raise${raised ? " is-up" : ""}`}
+                  onClick={toggleRaise}
+                  disabled={!canRaise}
+                >
+                  <Icon kind={raised ? "chevron-up" : "chevron-down"} size={13} />
+                  {state === "none" ? "No shield" : state === "broken" ? "Shield broken" : raised ? "Shield up" : "Shield down"}
+                </button>
+              </>
+            );
+          })()}
+
           <div className="dh-rail">
             <input
               className="dh-amount"

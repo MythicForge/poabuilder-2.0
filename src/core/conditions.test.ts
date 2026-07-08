@@ -6,6 +6,8 @@ const base: ConditionCtx = {
   hasShield: false,
   activeStates: [],
   wearingArmor: false,
+  weaponGroups: [],
+  weaponTraits: [],
 };
 const ctx = (o: Partial<ConditionCtx> = {}): ConditionCtx => ({ ...base, ...o });
 
@@ -44,6 +46,23 @@ describe("evalCondition — single terms", () => {
     expect(evalCondition("state:rage", ctx({ activeStates: ["rage"] }))).toBe(true);
     expect(evalCondition("raging", ctx({ activeStates: ["rage"] }))).toBe(true);
     expect(evalCondition("state:focus", ctx({ activeStates: ["rage"] }))).toBe(false);
+  });
+  it("weapon group terms (fighter school stances)", () => {
+    expect(evalCondition("wielding_weapon_group:sword", ctx({ weaponGroups: ["sword"] }))).toBe(true);
+    expect(evalCondition("wielding_weapon_group:axe", ctx({ weaponGroups: ["sword"] }))).toBe(false);
+    expect(evalCondition("wielding_weapon_group:curved", ctx({ weaponGroups: ["rapier", "curved"] }))).toBe(true);
+    // matched lowercased regardless of data casing
+    expect(evalCondition("wielding_weapon_group:Sword", ctx({ weaponGroups: ["sword"] }))).toBe(true);
+    expect(evalCondition("wielding_weapon_group:sword", ctx())).toBe(false);
+  });
+  it("weapon trait terms (ranger honors Thrown)", () => {
+    expect(evalCondition("wielding_weapon_trait:thrown", ctx({ weaponTraits: ["thrown"] }))).toBe(true);
+    expect(evalCondition("wielding_weapon_trait:thrown", ctx({ weaponTraits: ["heavy"] }))).toBe(false);
+    // Ranger predicate: ranged group OR thrown trait
+    const rangerCond = "wielding_weapon_group:ranged OR wielding_weapon_trait:thrown";
+    expect(evalCondition(rangerCond, ctx({ weaponGroups: ["axe"], weaponTraits: ["thrown"] }))).toBe(true);
+    expect(evalCondition(rangerCond, ctx({ weaponGroups: ["ranged"] }))).toBe(true);
+    expect(evalCondition(rangerCond, ctx({ weaponGroups: ["sword"] }))).toBe(false);
   });
   it("unknown term ⇒ unknown", () => {
     expect(evalCondition("under_a_full_moon", ctx())).toBe("unknown");

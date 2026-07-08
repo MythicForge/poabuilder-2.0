@@ -2,9 +2,7 @@
   "id": "fighter",
   "name": "Fighter",
   "description": "The quintessential weapons master, equally adept with any armament. Fighters excel at frontline combat, tactical positioning, and adapting to any battlefield situation. Paths are the Sentinel and the Reaver.",
-  "favored_attributes": [
-    "Brawn"
-  ],
+  "favored_attributes": ["Brawn"],
   "vitality": {
     "base": "12 + Brawn",
     "per_tier": "2d12",
@@ -19,43 +17,17 @@
     "skills": {
       "type": "choice",
       "count": 1,
-      "from": [
-        "Vigor",
-        "Talent",
-        "Awareness"
-      ]
+      "from": ["Vigor", "Talent", "Awareness"]
     },
-    "armaments": [
-      "Simple",
-      "Martial",
-      "Finesse",
-      "Ranged"
-    ],
-    "protection": [
-      "Light",
-      "Medium",
-      "Heavy",
-      "Shields"
-    ],
+    "armaments": ["Simple", "Martial", "Finesse", "Ranged"],
+    "protection": ["Light", "Medium", "Heavy", "Shields"],
     "tools": []
   },
   "starting_pack": {
-    "weapons": [
-      "melee_weapon",
-      "melee_weapon",
-      "ranged_weapon_or_shield"
-    ],
-    "armor": [
-      "medium_armor",
-      "shield"
-    ],
-    "kits": [
-      "polishing_kit"
-    ],
-    "inventory": [
-      "soldiers_rations_1_week",
-      "banner_or_insignia"
-    ],
+    "weapons": ["melee_weapon", "melee_weapon", "ranged_weapon_or_shield"],
+    "armor": ["medium_armor", "shield"],
+    "kits": ["polishing_kit"],
+    "inventory": ["soldiers_rations_1_week", "banner_or_insignia"],
     "currency": {
       "gold": 12
     }
@@ -96,9 +68,7 @@
     {
       "id": "signature_school",
       "name": "Signature School",
-      "tags": [
-        "Fighter"
-      ],
+      "tags": ["Fighter"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -120,11 +90,8 @@
               "value": "defender",
               "label": "Defender",
               "grants": {
-                "weapons": [
-                  "Longsword",
-                  "Shortsword",
-                  "Greatsword"
-                ],
+                "weapons": ["Longsword", "Shortsword", "Greatsword"],
+                "weapon_groups": ["sword"],
                 "stance": {
                   "description": "+1 Armor while wielding a Blade.",
                   "boons": [
@@ -132,7 +99,7 @@
                       "type": "stat_bonus",
                       "stat": "Armor",
                       "amount": 1,
-                      "condition": "wielding_school_weapon"
+                      "condition": "wielding_weapon_group:sword"
                     }
                   ]
                 },
@@ -155,14 +122,10 @@
               "value": "dueler",
               "label": "Dueler",
               "grants": {
-                "weapons": [
-                  "Rapier",
-                  "Dagger",
-                  "Scimitar",
-                  "Fists"
-                ],
+                "weapons": ["Rapier", "Dagger", "Scimitar", "Fists"],
+                "weapon_groups": ["rapier", "dagger", "curved", "fist"],
                 "stance": {
-                  "description": "After you attack, gain +2 Fortitude until next turn. (Source: Body Defense — verify stat.)",
+                  "description": "After you attack, gain +2 Fortitude until next turn.",
                   "boons": []
                 },
                 "maneuver": {
@@ -175,7 +138,7 @@
                       }
                     ]
                   },
-                  "description": "Make two attacks, each dealing half damage.",
+                  "description": "Make two attacks, each dealing half damage. MAP applies afterwards.",
                   "boons": []
                 }
               }
@@ -184,13 +147,8 @@
               "value": "enforcer",
               "label": "Enforcer",
               "grants": {
-                "weapons": [
-                  "Hammer",
-                  "Maul",
-                  "Mace",
-                  "Staff",
-                  "Shield"
-                ],
+                "weapons": ["Hammer", "Maul", "Mace", "Staff", "Shield"],
+                "weapon_groups": ["bludgeon"],
                 "stance": {
                   "description": "Resolve on Shove checks.",
                   "boons": []
@@ -214,12 +172,8 @@
               "value": "lancer",
               "label": "Lancer",
               "grants": {
-                "weapons": [
-                  "Lucerne",
-                  "Javelin",
-                  "Pike",
-                  "Spear"
-                ],
+                "weapons": ["Lucerne", "Javelin", "Pike", "Spear"],
+                "weapon_groups": ["polearm"],
                 "stance": {
                   "description": "Gain +2 to attack rolls when an enemy enters your reach or engagement, until your next turn.",
                   "boons": []
@@ -243,11 +197,9 @@
               "value": "ranger",
               "label": "Ranger",
               "grants": {
-                "weapons": [
-                  "Bow",
-                  "Crossbow",
-                  "Throwing Weapon"
-                ],
+                "weapons": ["Bow", "Crossbow", "Throwing Weapon"],
+                "weapon_groups": ["ranged"],
+                "weapon_traits": ["Thrown"],
                 "stance": {
                   "description": "Increase the weapon's range by one category.",
                   "boons": [
@@ -255,7 +207,7 @@
                       "type": "equipment_rule_override",
                       "rule": "range_increase",
                       "categories": 1,
-                      "condition": "wielding_school_weapon"
+                      "condition": "wielding_weapon_group:ranged OR wielding_weapon_trait:thrown"
                     }
                   ]
                 },
@@ -278,11 +230,8 @@
               "value": "slayer",
               "label": "Slayer",
               "grants": {
-                "weapons": [
-                  "Cleaver",
-                  "Glaive",
-                  "Axe"
-                ],
+                "weapons": ["Cleaver", "Glaive", "Axe"],
+                "weapon_groups": ["axe"],
                 "stance": {
                   "description": "Your first hit each turn deals +1 damage die.",
                   "boons": []
@@ -309,9 +258,7 @@
     {
       "id": "adrenaline_resource",
       "name": "Adrenaline",
-      "tags": [
-        "Fighter"
-      ],
+      "tags": ["Fighter"],
       "path": null,
       "tier": 0,
       "trait": "Utility",
@@ -333,38 +280,32 @@
     {
       "id": "second_breath",
       "name": "Second Breath",
-      "tags": [
-        "Fighter"
-      ],
+      "tags": ["Fighter"],
       "path": null,
       "tier": 0,
       "trait": "Narrative",
       "slot_type": null,
       "cost": {
+        "ap": 1,
         "resources": [
           {
             "id": "adrenaline",
-            "amount": 1
+            "amount": 2
           }
         ]
       },
       "range": null,
       "duration": null,
-      "uses": {
-        "count": 1,
-        "recharge": "skirmish"
-      },
+      "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "Once per skirmish, regain 2d6 Vitality.",
+      "description": "Regain 2d6 Vitality.",
       "boons": []
     },
     {
       "id": "adrenaline_rush",
       "name": "Adrenaline Rush",
-      "tags": [
-        "Fighter"
-      ],
+      "tags": ["Fighter"],
       "path": null,
       "tier": 1,
       "trait": "Narrative",
@@ -391,9 +332,7 @@
     {
       "id": "fighting_technique",
       "name": "Fighting Technique",
-      "tags": [
-        "Fighter"
-      ],
+      "tags": ["Fighter"],
       "path": null,
       "tier": 2,
       "trait": "Passive",
@@ -410,9 +349,7 @@
     {
       "id": "warriors_tenacity",
       "name": "Warrior's Tenacity",
-      "tags": [
-        "Fighter"
-      ],
+      "tags": ["Fighter"],
       "path": null,
       "tier": 3,
       "trait": "Passive",
@@ -422,9 +359,7 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": [
-        "adrenaline_rush"
-      ],
+      "prerequisites": ["adrenaline_rush"],
       "description": "Use Brawn as your Ambition modifier. Spend Adrenaline in place of Ambition on skill checks or attack rolls. Second Breath now heals for 3d6. (Source: Body — encoded as Brawn; verify.)",
       "boons": [
         {
@@ -438,10 +373,7 @@
           "replace": "Ambition",
           "with": "adrenaline",
           "with_kind": "resource",
-          "contexts": [
-            "skill_check",
-            "attack_roll"
-          ]
+          "contexts": ["skill_check", "attack_roll"]
         }
       ]
     }

@@ -100,6 +100,15 @@ export function applyRest(
     }
   }
 
+  // equipped shield repairs to full on a long/full rest (re-forge). The pool
+  // lives on the inventory item's reduction_pool_current, keyed by item id.
+  if ((kind === "long_rest" || kind === "full_rest") && computed.shield) {
+    const { itemId, max } = computed.shield;
+    next.inventory.items = next.inventory.items.map((it) =>
+      it.id === itemId ? { ...it, reduction_pool_current: max } : it,
+    );
+  }
+
   // wounds heal on respite/long rest/full rest (exmp/wounds-logic.md)
   if (kind === "respite") {
     next.pools.wounds = Math.max(0, next.pools.wounds - computed.tier);

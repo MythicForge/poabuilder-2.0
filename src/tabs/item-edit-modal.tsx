@@ -7,6 +7,8 @@ import type { CatalogItem, InventoryItem } from "../core/types.ts";
 import type { ItemEdits } from "../core/custom-item.ts";
 
 const CATEGORIES = ["Weapon", "Armor", "Shield", "Kit"] as const;
+// Attribute driving To Hit / Damage Mod. "Varried" ⇒ max(Brawn, Finesse).
+const MODIFIERS = ["Brawn", "Finesse", "Mind", "Will", "Varried"] as const;
 const ARMOR_TYPES = ["Light", "Medium", "Heavy"] as const;
 
 function armorBonusOf(cat: CatalogItem | null): number {
@@ -22,6 +24,7 @@ interface FormState {
   category: string;
   subcategory: string;
   damage: string;
+  modifier: string;
   critical: string;
   traits: string;
   armor_type: string;
@@ -43,6 +46,7 @@ function initialForm(it: InventoryItem, cat: CatalogItem | null): FormState {
     category: cat?.category ?? "Kit",
     subcategory: cat?.subcategory ?? "",
     damage: cat?.damage ?? "",
+    modifier: cat?.modifier ?? "",
     critical: cat?.critical ?? "",
     traits: (cat?.traits ?? []).map((t) => t.name).join(", "),
     armor_type: (cat?.armor_type as string) ?? "Light",
@@ -74,6 +78,7 @@ function toEdits(f: FormState): ItemEdits {
   };
   if (f.category === "Weapon") {
     edits.damage = f.damage.trim() || null;
+    edits.modifier = f.modifier || undefined;
     edits.critical = f.critical.trim() || undefined;
     edits.traits = f.traits
       .split(",")
@@ -178,12 +183,18 @@ export function ItemEditModal({
             <Group label="Weapon">
               <div className="item-edit-row2">
                 <Field label="Damage" hint={badDamage ? "expected like 2d6 — saved anyway" : undefined}>
-                  <input className={`item-edit-input${badDamage ? " warn" : ""}`} value={f.damage} onChange={(e) => set("damage", e.target.value)} placeholder="2d6" />
+                  <input className={`item-edit-input${badDamage ? " warn" : ""}`} value={f.damage} onChange={(e) => set("damage", e.target.value)} placeholder="2d6 or Modifier" />
                 </Field>
-                <Field label="Critical">
-                  <input className="item-edit-input" value={f.critical} onChange={(e) => set("critical", e.target.value)} placeholder="optional" />
+                <Field label="Modifier" hint="Varried = max(Brawn, Finesse)">
+                  <select className="item-edit-input" value={f.modifier} onChange={(e) => set("modifier", e.target.value)}>
+                    <option value="">none</option>
+                    {MODIFIERS.map((m) => <option key={m} value={m}>{m}</option>)}
+                  </select>
                 </Field>
               </div>
+              <Field label="Critical">
+                <input className="item-edit-input" value={f.critical} onChange={(e) => set("critical", e.target.value)} placeholder="optional" />
+              </Field>
               <Field label="Traits" hint="comma-separated">
                 <input className="item-edit-input" value={f.traits} onChange={(e) => set("traits", e.target.value)} placeholder="Finesse, Thrown" />
               </Field>

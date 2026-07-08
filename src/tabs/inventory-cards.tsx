@@ -5,7 +5,7 @@
 import { Backpack, Shield, Sword } from "lucide-react";
 import type { CatalogItem, InventoryItem, SlotId } from "../core/types.ts";
 import { REGISTRY } from "../core/data-registry.ts";
-import { resolveItem } from "../core/compute.ts";
+import { resolveItem, type WeaponCombat } from "../core/compute.ts";
 import { legalSlotsFor } from "../core/equip.ts";
 import { itemShortStat, masterworkBonus } from "../core/masterwork.ts";
 import { ItemDetailBody, ItemTip, useItemTip, type ItemDetailCallbacks } from "./item-detail.tsx";
@@ -22,6 +22,7 @@ interface CardsGridProps {
   draggingId: string | null;
   slotLabel: (slot: SlotId) => string;
   detailCallbacks: (it: InventoryItem, cat: CatalogItem | null) => ItemDetailCallbacks;
+  weaponCombat: (cat: CatalogItem | null) => WeaponCombat | null;
   onDragStart: (it: InventoryItem, e: React.DragEvent) => void;
   onDragEnd: () => void;
   onTouchStart: (it: InventoryItem, e: React.TouchEvent) => void;
@@ -37,6 +38,7 @@ export function CardsGrid({
   draggingId,
   slotLabel,
   detailCallbacks,
+  weaponCombat,
   onDragStart,
   onDragEnd,
   onTouchStart,
@@ -106,6 +108,7 @@ export function CardsGrid({
               it={tipItem}
               cat={tipCat}
               slotLabel={slotLabel}
+              combat={weaponCombat(tipCat)}
               {...cb}
               onEdit={() => { close(); cb.onEdit(); }}
               onRemove={() => { close(); cb.onRemove(); }}

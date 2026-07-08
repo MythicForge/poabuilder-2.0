@@ -6,8 +6,9 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import { createPortal } from "react-dom";
 import { Backpack, Shield, Sword } from "lucide-react";
 import type { CatalogItem, InventoryItem, SlotId } from "../core/types.ts";
+import type { WeaponCombat } from "../core/compute.ts";
 import { REGISTRY } from "../core/data-registry.ts";
-import { formatWeaponDamage, masterworkBonus } from "../core/masterwork.ts";
+import { formatWeaponDamage, isModifierDamage, masterworkBonus } from "../core/masterwork.ts";
 
 function DetailIcon({ category }: { category?: string }) {
   if (category === "Weapon") return <Sword size={20} strokeWidth={1.4} />;
@@ -34,12 +35,15 @@ interface ItemDetailBodyProps extends ItemDetailCallbacks {
   it: InventoryItem;
   cat: CatalogItem | null;
   slotLabel: (slot: SlotId) => string;
+  /** Derived To Hit / Damage Mod for weapons; null for non-weapons. */
+  combat?: WeaponCombat | null;
 }
 
 export function ItemDetailBody({
   it,
   cat,
   slotLabel,
+  combat,
   onQty,
   onMw,
   onRemove,
@@ -97,12 +101,22 @@ export function ItemDetailBody({
 
       {category === "Weapon" && cat?.damage && (
         <div className="itip-stat">
-          {formatWeaponDamage(cat, mw)}
+          {formatWeaponDamage(cat, mw, combat?.damageMod)}
           {(cat.damage_types ?? []).length > 0 && (
             <span className="itip-stat-sub"> {(cat.damage_types ?? []).map((d) => d.name).join("/")}</span>
           )}
           {cat.critical && <span className="itip-stat-sub"> · crit {cat.critical}</span>}
           {traits && <span className="itip-stat-sub"> · {traits}</span>}
+        </div>
+      )}
+      {category === "Weapon" && combat && (
+        <div className="itip-stat">
+          {combat.toHit + mw >= 0 ? "+" : ""}{combat.toHit + mw} To Hit
+          <span className="itip-stat-sub">
+            {!isModifierDamage(cat) && `${" · "}Dmg ${combat.damageMod >= 0 ? "+" : ""}${combat.damageMod}`}
+            {" · "}{combat.modifier}
+            {!combat.proficient && " · not proficient"}
+          </span>
         </div>
       )}
       {(category === "Armor" || category === "Shield") && cat && (

@@ -9,6 +9,10 @@ export interface ConditionCtx {
   hasShield: boolean;
   activeStates: string[];
   wearingArmor: boolean;
+  /** subcategories of currently-equipped weapons, lowercased (e.g. "sword"). */
+  weaponGroups: string[];
+  /** trait names of currently-equipped weapons, lowercased (e.g. "thrown"). */
+  weaponTraits: string[];
 }
 
 export type CondResult = true | false | "unknown";
@@ -21,6 +25,19 @@ function evalTerm(term: string, ctx: ConditionCtx): CondResult {
   if (lower.startsWith("state:")) {
     const id = t.slice(t.indexOf(":") + 1).trim();
     return ctx.activeStates.includes(id);
+  }
+
+  // wielding_weapon_group:<subcategory> — true if an equipped weapon's
+  // subcategory matches (e.g. Fighter school stances). Compared lowercased.
+  if (lower.startsWith("wielding_weapon_group:")) {
+    const g = lower.slice(lower.indexOf(":") + 1).trim();
+    return ctx.weaponGroups.includes(g);
+  }
+  // wielding_weapon_trait:<trait> — true if an equipped weapon carries the
+  // trait (e.g. Ranger school honoring Thrown). Compared lowercased.
+  if (lower.startsWith("wielding_weapon_trait:")) {
+    const tr = lower.slice(lower.indexOf(":") + 1).trim();
+    return ctx.weaponTraits.includes(tr);
   }
 
   switch (lower) {

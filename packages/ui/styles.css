@@ -18,6 +18,10 @@
     --danger: #c66464;
     --danger-dim: #6a3838;
     --border-faint: #1e1e28;
+    --steel: #6f93a6;
+    --steel-bright: #9fc0d0;
+    --steel-dim: #3c525d;
+    --steel-shadow: rgba(111, 147, 166, 0.14);
 
     --portrait-bg-a: #1a1820;
     --portrait-bg-b: #100c10;
@@ -58,6 +62,10 @@ html.light {
     --danger: #9e3030;
     --danger-dim: #f0c0c0;
     --border-faint: #d8d4c8;
+    --steel: #3f6a7d;
+    --steel-bright: #2c5266;
+    --steel-dim: #8fb0bd;
+    --steel-shadow: rgba(63, 106, 125, 0.12);
 
     --portrait-bg-a: #d8d3c5;
     --portrait-bg-b: #c8c2b2;
@@ -878,6 +886,116 @@ body {
     letter-spacing: 0.14em;
     text-transform: uppercase;
     margin-top: 6px;
+}
+
+/* ── Shield health (Concept A: persistent steel line under the vitality bar) ── */
+.shield-line {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 9px;
+    margin-top: 8px;
+}
+.shield-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+    color: var(--steel);
+}
+.shield-name {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--text-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.shield-meter {
+    height: 9px;
+    border-radius: 5px;
+    background: var(--border-soft);
+    overflow: hidden;
+}
+.shield-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--steel-dim), var(--steel));
+    border-radius: 5px;
+    transition: width 0.28s;
+}
+.shield-val {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--steel-bright);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+/* lowered: shield sits out — dim the fill and labels so it reads inactive */
+.shield-line--lowered .shield-tag,
+.shield-line--lowered .shield-val {
+    color: var(--text-faint);
+}
+.shield-line--lowered .shield-fill {
+    opacity: 0.32;
+    filter: saturate(0.4);
+}
+/* none: keep the track, dashed + muted, so the slot reads as available */
+.shield-line--none .shield-tag,
+.shield-line--none .shield-val {
+    color: var(--text-faint);
+}
+.shield-line--none .shield-meter {
+    background: repeating-linear-gradient(90deg,
+        var(--border-faint) 0, var(--border-faint) 6px,
+        transparent 6px, transparent 12px);
+}
+.shield-line--none .shield-fill {
+    width: 0 !important;
+}
+/* broken: danger hatch */
+.shield-line--broken .shield-tag,
+.shield-line--broken .shield-val {
+    color: var(--danger);
+}
+.shield-line--broken .shield-fill {
+    background: repeating-linear-gradient(45deg,
+        transparent, transparent 4px,
+        var(--danger-dim) 4px, var(--danger-dim) 5px);
+}
+
+.shield-raise {
+    margin-top: 8px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--card-2);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.shield-raise:hover:not(:disabled) {
+    border-color: var(--steel-dim);
+    color: var(--steel-bright);
+}
+.shield-raise.is-up {
+    background: var(--steel-shadow);
+    border-color: var(--steel);
+    color: var(--steel-bright);
+    box-shadow: inset 0 0 0 1px var(--steel-dim);
+}
+.shield-raise:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    color: var(--text-faint);
 }
 .hp-temp-val {
     cursor: pointer;

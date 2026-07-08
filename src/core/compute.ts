@@ -125,6 +125,68 @@ export function resolveItem(
   );
 }
 
+const ATTR_LABEL: Record<AttributeKey, string> = {
+  brawn: "Brawn",
+  finesse: "Finesse",
+  mind: "Mind",
+  will: "Will",
+};
+
+/** Derived combat values for a weapon, resolved against a character's stats. */
+export interface WeaponCombat {
+  /** Label of the attribute actually used (for Varried, the winning stat). */
+  modifier: string;
+  modifierValue: number;
+  /** Proficient ⇒ one of the weapon's `groups` is a known armament. */
+  proficient: boolean;
+  /** modifierValue + Tier (Tier only when proficient). */
+  toHit: number;
+  /** modifierValue. */
+  damageMod: number;
+}
+
+/**
+ * Resolve a weapon's To Hit / Damage Mod against the character.
+ *  - modifier: "Varried" ⇒ max(Brawn, Finesse); otherwise the named attribute.
+ *  - toHit: resolved modifier + Tier (Tier added only when proficient, i.e. one
+ *    of the weapon's `groups` matches an armament proficiency).
+ *  - damageMod: resolved modifier.
+ * Returns null for non-weapons.
+ */
+export function deriveWeaponCombat(
+  cat: CatalogItem,
+  ctx: { attributes: Record<AttributeKey, number>; tier: number; armaments: string[] },
+): WeaponCombat | null {
+  if (cat.category !== "Weapon") return null;
+  const raw = String(cat.modifier ?? "").trim();
+  const lower = raw.toLowerCase();
+
+  let modifierValue: number;
+  let modifier: string;
+  if (lower === "varried" || lower === "varied") {
+    const { brawn, finesse } = ctx.attributes;
+    modifierValue = Math.max(brawn, finesse);
+    modifier = finesse > brawn ? "Finesse" : "Brawn";
+  } else if (lower in ATTR_LABEL) {
+    const key = lower as AttributeKey;
+    modifierValue = ctx.attributes[key];
+    modifier = ATTR_LABEL[key];
+  } else {
+    // unknown/blank modifier ⇒ no attribute bonus, keep the raw label for display
+    modifierValue = 0;
+    modifier = raw || "—";
+  }
+
+  const proficient = (cat.groups ?? []).some((g) => ctx.armaments.includes(g));
+  return {
+    modifier,
+    modifierValue,
+    proficient,
+    toHit: modifierValue + (proficient ? ctx.tier : 0),
+    damageMod: modifierValue,
+  };
+}
+
 function armorBonusOf(cat: CatalogItem): number {
   if (typeof cat.armor_bonus === "number") return cat.armor_bonus;
   if (cat.armor_bonus && typeof cat.armor_bonus === "object")
@@ -751,6 +813,14 @@ export function computeCharacter(
     hasShield: !!eq.shield,
     activeStates,
     wearingArmor: !!eq.armor,
+    weaponGroups: eq.weapons
+      .map((w) => String(w.cat.subcategory ?? "").toLowerCase())
+      .filter(Boolean),
+    weaponTraits: eq.weapons.flatMap((w) =>
+      (w.cat.traits ?? [])
+        .map((tr) => String(tr?.name ?? "").toLowerCase())
+        .filter(Boolean),
+    ),
   };
 
   // attribute stat_bonus boons apply before anything derived
@@ -1030,6 +1100,28 @@ export function computeCharacter(
       profs.armaments = [...profs.armaments, boon.grants];
   }
 
+  // equipped shield's damage pool. Max comes from the catalog reduction_pool;
+  // current persists on the inventory item (null ⇒ full). Fragile shields break
+  // (are unusable) once the pool empties.
+  let shieldState: ComputedCharacter["shield"] = null;
+  if (eq.shield) {
+    const max = Number(eq.shield.cat.reduction_pool ?? 0);
+    if (max > 0) {
+      const stopVal = eq.shield.item.reduction_pool_current;
+      const current = Math.min(stopVal ?? max, max);
+      shieldState = {
+        itemId: eq.shield.item.id,
+        name: eq.shield.item.name,
+        max,
+        current,
+        broken: current <= 0,
+        fragile: (eq.shield.cat.traits ?? []).some((t) =>
+          /^fragile/i.test(t.name),
+        ),
+      };
+    }
+  }
+
   return {
     tier,
     attributes: attrs,
@@ -1051,6 +1143,7 @@ export function computeCharacter(
     },
     resources,
     reductionPools,
+    shield: shieldState,
     spellcasting,
     rollBonuses,
     apBonus,

@@ -5,7 +5,7 @@
 import { Fragment, useMemo, useRef, useState } from "react";
 import type { CatalogItem, ComputedCharacter, InventoryItem, SlotId, StoredCharacter } from "../core/types.ts";
 import { REGISTRY } from "../core/data-registry.ts";
-import { computeCharacter, resolveItem } from "../core/compute.ts";
+import { computeCharacter, resolveItem, deriveWeaponCombat } from "../core/compute.ts";
 import { defaultSlotFor, equipToSlot, isTwoHanded, legalSlotsFor, unequip } from "../core/equip.ts";
 import { rescaleWoundsOnThresholdChange } from "../core/damage.ts";
 import { masterworkBonus } from "../core/masterwork.ts";
@@ -66,6 +66,15 @@ export function InventoryTab({ c, stored, setStored, inventoryView, setInventory
   const touchTimer = useRef<number | null>(null);
 
   const items = stored.inventory.items;
+
+  const weaponCombat = (cat: CatalogItem | null) =>
+    cat
+      ? deriveWeaponCombat(cat, {
+          attributes: c.attributes,
+          tier: c.tier,
+          armaments: c.proficiencies.armaments,
+        })
+      : null;
 
   const setItems = (next: InventoryItem[]) =>
     setStored((s) => {
@@ -391,6 +400,7 @@ export function InventoryTab({ c, stored, setStored, inventoryView, setInventory
             draggingId={draggingId}
             slotLabel={slotLabel}
             detailCallbacks={detailCallbacks}
+            weaponCombat={weaponCombat}
             onDragStart={handleCardDragStart}
             onDragEnd={handleCardDragEnd}
             onTouchStart={handleTouchStart}
@@ -477,7 +487,7 @@ export function InventoryTab({ c, stored, setStored, inventoryView, setInventory
             </div>
             {expanded && (
               <div className="inv-row-detail">
-                <ItemDetailBody it={it} cat={cat} slotLabel={slotLabel} {...detailCallbacks(it, cat)} />
+                <ItemDetailBody it={it} cat={cat} slotLabel={slotLabel} combat={weaponCombat(cat)} {...detailCallbacks(it, cat)} />
               </div>
             )}
             </Fragment>

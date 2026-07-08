@@ -85,6 +85,9 @@ export interface StoredCharacter {
     favorites: { type: "item" | "feat" | "spell"; id: string }[];
     /** LIFO stack of pool states around each respite, for undo (see rest.ts). */
     respite_snapshots?: RespiteSnapshot[];
+    /** Whether the equipped shield is raised. Down by default — the player
+     *  raises it to make its reduction pool soak damage (see damage.ts). */
+    shield_raised?: boolean;
   };
   notes: {
     journal: JournalEntry[];
@@ -243,6 +246,8 @@ export interface CatalogItem {
   category: string;
   subcategory?: string;
   groups?: string[];
+  /** Attribute driving To Hit / Damage Mod. "Varried" ⇒ max(Brawn, Finesse). */
+  modifier?: string;
   damage?: string | null;
   damage_types?: { code: string; name: string }[];
   range_bands?: { code: string; name: string }[];
@@ -348,6 +353,17 @@ export interface ComputedSpellcasting {
   signature: { spellIds: string[]; costReduction: number; tierMax: number | null } | null;
 }
 
+export interface ShieldState {
+  /** Inventory item instance id — the pool's persistence key. */
+  itemId: string;
+  name: string;
+  max: number;
+  current: number;
+  broken: boolean;
+  /** Shield has the Fragile trait (breaks when the pool empties). */
+  fragile: boolean;
+}
+
 export interface ComputedCharacter {
   tier: number;
   attributes: Record<AttributeKey, number>;
@@ -362,6 +378,9 @@ export interface ComputedCharacter {
   resources: ComputedResource[];
   /** Damage-reduction pools granted by boons (max from formula; current persisted separately). */
   reductionPools: { id: string; name: string; max: number; current: number; source: string }[];
+  /** Equipped shield's damage pool, or null when no shield is in the off hand.
+   *  `current` persists on the inventory item's reduction_pool_current. */
+  shield: ShieldState | null;
   spellcasting: ComputedSpellcasting | null;
   /** Flat roll bonuses from stat_bonus boons, consumed by the damage/attack layer + sheet. */
   rollBonuses: { spellAttack: number; attackRoll: number };

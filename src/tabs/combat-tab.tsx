@@ -4,9 +4,9 @@
 import { useMemo, useState } from "react";
 import type { ComputedCharacter, ComputedResource, FeatCard, StoredCharacter } from "../core/types.ts";
 import { REGISTRY } from "../core/data-registry.ts";
-import { resolveItem } from "../core/compute.ts";
+import { resolveItem, deriveWeaponCombat } from "../core/compute.ts";
 import { normalizeTrait } from "../core/trait.ts";
-import { formatWeaponDamage, masterworkBonus } from "../core/masterwork.ts";
+import { formatWeaponDamage, isModifierDamage, masterworkBonus } from "../core/masterwork.ts";
 import { groupFeatCards } from "../shared/feat-groups.ts";
 import { SOURCE_COLOR } from "../shared/source-colors.ts";
 import { Markdown, PipTracker } from "@ui/primitives.tsx";
@@ -75,9 +75,17 @@ export function CombatTab({ c, stored, setStored }: TabProps) {
   const [openRows, setOpenRows] = useState<Set<string>>(new Set());
 
   const slotRank: Record<string, number> = { main_hand: 0, off_hand: 1 };
+  const weaponCtx = {
+    attributes: c.attributes,
+    tier: c.tier,
+    armaments: c.proficiencies.armaments,
+  };
   const weapons = stored.inventory.items
     .filter((it) => it.equipped)
-    .map((it) => ({ it, cat: resolveItem(it, REGISTRY) }))
+    .map((it) => {
+      const cat = resolveItem(it, REGISTRY);
+      return { it, cat, combat: cat ? deriveWeaponCombat(cat, weaponCtx) : null };
+    })
     .filter((x) => x.cat?.category === "Weapon")
     .sort((a, b) => (slotRank[a.it.slot ?? ""] ?? 2) - (slotRank[b.it.slot ?? ""] ?? 2));
 
@@ -120,8 +128,9 @@ export function CombatTab({ c, stored, setStored }: TabProps) {
           <div className="card-title">Equipped Weapons</div>
         </div>
         {weapons.length === 0 && <div className="feat-row"><div className="desc">Nothing equipped.</div></div>}
-        {weapons.map(({ it, cat }) => {
+        {weapons.map(({ it, cat, combat }) => {
           const bonus = masterworkBonus(it, cat);
+          const toHit = combat ? combat.toHit + bonus : null;
           return (
             <div className="attack-row" key={it.id} title={cat?.fluff_text || undefined}>
               <span className="name">
@@ -129,10 +138,15 @@ export function CombatTab({ c, stored, setStored }: TabProps) {
                 {it.name}
               </span>
               <span className="dmg">
-                {formatWeaponDamage(cat, bonus)}
-                {bonus > 0 && <span className="inv-type-badge" style={{ marginLeft: 6 }}>+{bonus} ATK</span>}
+                {formatWeaponDamage(cat, bonus, combat?.damageMod)}
+                {combat && !isModifierDamage(cat) && combat.damageMod !== 0 && ` ${combat.damageMod > 0 ? "+" : ""}${combat.damageMod}`}
               </span>
               <span className="type">
+                {toHit != null && (
+                  <span className="inv-type-badge" style={{ marginRight: 6, marginLeft: 0 }} title={`${combat!.modifier} ${combat!.modifierValue}${combat!.proficient ? ` + Tier ${c.tier}` : " (not proficient)"}${bonus ? ` + masterwork ${bonus}` : ""}`}>
+                    {toHit >= 0 ? "+" : ""}{toHit} hit
+                  </span>
+                )}
                 {(cat?.damage_types ?? []).map((d) => d.name).join("/") || "—"}
                 {" · "}
                 {(cat?.range_bands ?? []).map((r) => r.name).join("/") || "Melee"}

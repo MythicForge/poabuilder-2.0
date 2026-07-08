@@ -122,17 +122,44 @@ export function computeCombatBonuses(
   return { damageBonuses, attackOptions, cantripUpgrades };
 }
 
+/** A raised shield that can soak damage before Temp/Vitality. */
+export interface ShieldAbsorb {
+  /** Inventory item instance id whose reduction_pool_current holds the pool. */
+  itemId: string;
+  current: number;
+}
+
+// Damage order: a raised, intact shield's reduction pool soaks first, then Temp
+// Vitality, then Vitality. Absorbed shield damage is written back to the
+// equipped inventory item's reduction_pool_current so it follows that shield.
 export function applyDamage(
   stored: StoredCharacter,
   amount: number,
+  shield?: ShieldAbsorb | null,
 ): StoredCharacter {
   if (amount <= 0) return stored;
 
-  const absorbed = Math.min(stored.pools.temp_vitality, amount);
-  const temp = stored.pools.temp_vitality - absorbed;
-  const vitality = Math.max(0, stored.pools.vitality - (amount - absorbed));
+  let remaining = amount;
+  let items = stored.inventory.items;
 
-  return { ...stored, pools: { ...stored.pools, temp_vitality: temp, vitality } };
+  if (shield && shield.current > 0) {
+    const soaked = Math.min(shield.current, remaining);
+    remaining -= soaked;
+    const nextPool = shield.current - soaked;
+    items = items.map((it) =>
+      it.id === shield.itemId ? { ...it, reduction_pool_current: nextPool } : it,
+    );
+  }
+
+  const absorbed = Math.min(stored.pools.temp_vitality, remaining);
+  const temp = stored.pools.temp_vitality - absorbed;
+  const vitality = Math.max(0, stored.pools.vitality - (remaining - absorbed));
+
+  return {
+    ...stored,
+    inventory: { ...stored.inventory, items },
+    pools: { ...stored.pools, temp_vitality: temp, vitality },
+  };
 }
 
 // Swap_Armor wound handling (exmp/wounds-logic.md). At 0 wounds: threshold

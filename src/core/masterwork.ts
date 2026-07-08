@@ -10,8 +10,21 @@ export function masterworkBonus(item: InventoryItem, cat: CatalogItem | null): n
   return Math.max(0, Math.min(max, item.masterwork_bonus ?? 0));
 }
 
-export function formatWeaponDamage(cat: CatalogItem | null, bonus: number): string {
+/** A weapon whose damage IS its modifier value (no dice), e.g. Sling. */
+export function isModifierDamage(cat: CatalogItem | null): boolean {
+  return String(cat?.damage ?? "").trim().toLowerCase() === "modifier";
+}
+
+// `damageMod` (resolved weapon modifier) is only consulted for "Modifier"
+// weapons, which deal that value as their whole damage; dice weapons ignore it
+// here (their modifier is shown separately).
+export function formatWeaponDamage(
+  cat: CatalogItem | null,
+  bonus: number,
+  damageMod?: number,
+): string {
   if (!cat?.damage) return "—";
+  if (isModifierDamage(cat)) return String((damageMod ?? 0) + bonus);
   return bonus > 0 ? `${cat.damage}+${bonus}` : cat.damage;
 }
 
