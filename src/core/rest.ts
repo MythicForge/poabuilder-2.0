@@ -1,7 +1,7 @@
-// Rest actions: Respite / Long Rest / Daily Preparation.
+// Rest actions: Respite / Long Rest (Daily Preparation folded in).
 // Applies recovery formulas from universal-resources.json + profession
 // resource defs, resets limited-use counters by recharge tier, clears
-// daily modes on daily preparation.
+// daily modes on long rest.
 
 import type { ComputedCharacter, PoolSnapshot, StoredCharacter } from "./types.ts";
 import type { Registry } from "./data-registry.ts";
@@ -18,9 +18,12 @@ export function maxRespites(tier: number): number {
 }
 
 // which recharge tags a rest kind refreshes
+// Daily Preparation is rules-as-written folded into the Long Rest (it only ever
+// happens after one), so long_rest also recharges daily_preparation-tagged uses
+// and clears daily modes. The kind/tag stays for feats that recharge on it.
 const RECHARGES: Record<RestKind, string[]> = {
   respite: ["respite"],
-  long_rest: ["respite", "long_rest"],
+  long_rest: ["respite", "long_rest", "daily_preparation"],
   daily_preparation: ["daily_preparation"],
   full_rest: ["respite", "long_rest", "daily_preparation", "full_rest"],
 };
@@ -141,7 +144,7 @@ export function applyRest(
     }
   }
 
-  if (kind === "daily_preparation" || kind === "full_rest") {
+  if (kind === "daily_preparation" || kind === "long_rest" || kind === "full_rest") {
     for (const k of Object.keys(next.daily_modes)) next.daily_modes[k] = null;
   }
   if (kind === "respite") {

@@ -192,11 +192,8 @@ export function WoundsAmbitionRest({ c, stored, setStored }: VitalsProps) {
       </div>
 
       <div style={{ display: "flex", gap: 6, padding: "0 12px 12px", flexWrap: "wrap" }}>
-        <button className="rest-btn" onClick={() => rest("long_rest")} title="Full vitality, Will×2 ambition (min 8), resets respites">
+        <button className="rest-btn" onClick={() => rest("long_rest")} title="Full vitality, Will×2 ambition (min 8), resets respites, resets daily modes + prep uses">
           <span className="name">Long Rest</span>
-        </button>
-        <button className="rest-btn" onClick={() => rest("daily_preparation")} title="Reset daily modes and daily-preparation uses">
-          <span className="name">Daily Prep</span>
         </button>
       </div>
     </div>
