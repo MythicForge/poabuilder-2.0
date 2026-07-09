@@ -5,9 +5,17 @@
 
 export type AttributeKey = "brawn" | "finesse" | "mind" | "will";
 export type DefenseKey = "Armor" | "Fortitude" | "Mental" | "Will Defense";
-export type SkillName = "Vigor" | "Intuition" | "Talent" | "Awareness" | "Lore" | "Social";
+export type SkillName =
+  "Vigor" | "Intuition" | "Talent" | "Awareness" | "Lore" | "Social";
 
-export const SKILLS: SkillName[] = ["Vigor", "Intuition", "Talent", "Awareness", "Lore", "Social"];
+export const SKILLS: SkillName[] = [
+  "Vigor",
+  "Intuition",
+  "Talent",
+  "Awareness",
+  "Lore",
+  "Social",
+];
 export const ATTRIBUTES: AttributeKey[] = ["brawn", "finesse", "mind", "will"];
 
 // ── Stored character ─────────────────────────────────────────────────────────
@@ -91,7 +99,13 @@ export interface StoredCharacter {
   };
   notes: {
     journal: JournalEntry[];
-    biography: { personality: string; ideals: string; bonds: string; flaws: string; backstory: string };
+    biography: {
+      personality: string;
+      ideals: string;
+      bonds: string;
+      flaws: string;
+      backstory: string;
+    };
     freeform: string;
   };
 }
@@ -135,7 +149,7 @@ export interface Feat {
   path?: string | null;
   tier: number;
   trait: string;
-  slot_type: "tactical" | "narrative" | "minor" | null;
+  slot_type: "tactical" | "narrative" | "passive" | null;
   cost: unknown;
   range: string | null;
   duration: string | null;
@@ -159,7 +173,10 @@ export interface ResourceDef {
     rows: { range: [number, number]; die: string }[];
     tier_rows?: { range: [number, number]; die: string }[];
   };
-  recovery?: Record<string, number | "max" | { formula: string; minimum?: number }>;
+  recovery?: Record<
+    string,
+    number | "max" | { formula: string; minimum?: number }
+  >;
   triggers?: { event: string; amount: number }[];
 }
 
@@ -238,7 +255,12 @@ export interface Spell {
   // `spheres` is normalized to string[] at registry load (raw JSON stores a
   // single string or null). stackable/stack_max mark amps that may be applied
   // more than once (stack_max = how many times).
-  amps: { cost: string; effect: string; stackable?: boolean; stack_max?: number }[];
+  amps: {
+    cost: string;
+    effect: string;
+    stackable?: boolean;
+    stack_max?: number;
+  }[];
   reference_only?: boolean;
 }
 
@@ -319,7 +341,8 @@ export interface ActiveBoon {
   source: { featId: string; featName: string; owner: string };
 }
 
-export type FeatSource = "profession" | "path" | "origin" | "vocation" | "universal";
+export type FeatSource =
+  "profession" | "path" | "origin" | "vocation" | "universal";
 
 export interface FeatCard {
   feat: Feat;
@@ -350,11 +373,21 @@ export interface ComputedSpellcasting {
   /** Spellcasting sources this character has access to (e.g. ["Mana"]), matched against Spell.sources. */
   sources: string[];
   /** Bonus known-spell slots from grants_known_spells that don't count against knownAllowance. */
-  freeKnownSlots: { count: number; tier?: number; fromSphere?: string; spellIds?: string[]; sourceFeat: string }[];
+  freeKnownSlots: {
+    count: number;
+    tier?: number;
+    fromSphere?: string;
+    spellIds?: string[];
+    sourceFeat: string;
+  }[];
   /** Total free known-spell count (Σ freeKnownSlots.count) — spells-tab subtracts from the budget. */
   freeKnownCount: number;
   /** Signature spell economy (signature_spell boon). */
-  signature: { spellIds: string[]; costReduction: number; tierMax: number | null } | null;
+  signature: {
+    spellIds: string[];
+    costReduction: number;
+    tierMax: number | null;
+  } | null;
 }
 
 export interface ShieldState {
@@ -381,7 +414,13 @@ export interface ComputedCharacter {
   ambition: { max: number; current: number; die: string };
   resources: ComputedResource[];
   /** Damage-reduction pools granted by boons (max from formula; current persisted separately). */
-  reductionPools: { id: string; name: string; max: number; current: number; source: string }[];
+  reductionPools: {
+    id: string;
+    name: string;
+    max: number;
+    current: number;
+    source: string;
+  }[];
   /** Equipped shield's damage pool, or null when no shield is in the off hand.
    *  `current` persists on the inventory item's reduction_pool_current. */
   shield: ShieldState | null;

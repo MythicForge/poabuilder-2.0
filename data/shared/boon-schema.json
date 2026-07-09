@@ -41,12 +41,7 @@
       "Mind",
       "Will"
     ],
-    "defenses": [
-      "Armor",
-      "Fortitude",
-      "Mental",
-      "Will Defense"
-    ],
+    "defenses": ["Armor", "Fortitude", "Mental", "Will Defense"],
     "targets": [
       "self",
       "ally",
@@ -64,15 +59,8 @@
       "daily",
       "daily_preparation"
     ],
-    "caster_types": [
-      "full",
-      "limited"
-    ],
-    "with_kinds": [
-      "attribute",
-      "resource",
-      "summon_stat"
-    ],
+    "caster_types": ["full", "limited"],
+    "with_kinds": ["attribute", "resource", "summon_stat"],
     "equipment_rules": [
       "remove_trait",
       "allow_dual_wield",
@@ -97,18 +85,8 @@
       "Utility",
       "Support"
     ],
-    "slot_types": [
-      "tactical",
-      "narrative",
-      "minor"
-    ],
-    "ranges": [
-      "Touch",
-      "Close",
-      "Nearby",
-      "Far",
-      "Self"
-    ],
+    "slot_types": ["tactical", "narrative", "passive"],
+    "ranges": ["Touch", "Close", "Nearby", "Far", "Self"],
     "triggers": [
       "critical_success",
       "critical_hit_dealt",

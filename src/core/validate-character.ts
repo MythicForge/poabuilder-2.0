@@ -6,16 +6,27 @@
 import type { ComputedCharacter, StoredCharacter } from "./types.ts";
 import type { Registry } from "./data-registry.ts";
 import { ATTRIBUTES } from "./types.ts";
-import { SLOT_TYPES, buildFeatPool, featEligibility, purchasedSelected, slotState } from "./feat-eligibility.ts";
+import {
+  SLOT_TYPES,
+  buildFeatPool,
+  featEligibility,
+  purchasedSelected,
+  slotState,
+} from "./feat-eligibility.ts";
 import { spellAccessible } from "./spell-access.ts";
 
-export function validateCharacter(stored: StoredCharacter, reg: Registry, computed: ComputedCharacter): string[] {
+export function validateCharacter(
+  stored: StoredCharacter,
+  reg: Registry,
+  computed: ComputedCharacter,
+): string[] {
   const out: string[] = [];
   const b = stored.build;
 
   // ── attributes ──
   const { earned, spent } = computed.attributeBudget;
-  if (spent > earned) out.push(`attributes overspent: ${spent} of ${earned} points`);
+  if (spent > earned)
+    out.push(`attributes overspent: ${spent} of ${earned} points`);
   for (const a of ATTRIBUTES) {
     if (b.attributes[a] < 0) out.push(`${a} is negative`);
   }
@@ -25,10 +36,13 @@ export function validateCharacter(stored: StoredCharacter, reg: Registry, comput
   const spec = prof?.proficiencies.skills;
   if (spec && !Array.isArray(spec)) {
     if (b.skills.proficiencies.length > spec.count) {
-      out.push(`too many skill proficiencies: ${b.skills.proficiencies.length} of ${spec.count}`);
+      out.push(
+        `too many skill proficiencies: ${b.skills.proficiencies.length} of ${spec.count}`,
+      );
     }
     for (const s of b.skills.proficiencies) {
-      if (!spec.from.includes(s)) out.push(`skill proficiency "${s}" is not offered by ${prof!.name}`);
+      if (!spec.from.includes(s))
+        out.push(`skill proficiency "${s}" is not offered by ${prof!.name}`);
     }
   }
 
@@ -52,18 +66,22 @@ export function validateCharacter(stored: StoredCharacter, reg: Registry, comput
 
   // ── feat purchases & slots ──
   if (b.feats_purchased > reg.tierProgression.max_feats) {
-    out.push(`feats purchased ${b.feats_purchased} exceeds the cap of ${reg.tierProgression.max_feats}`);
+    out.push(
+      `feats purchased ${b.feats_purchased} exceeds the cap of ${reg.tierProgression.max_feats}`,
+    );
   }
   const pool = buildFeatPool(stored, reg);
   const selected = purchasedSelected(stored, pool);
   if (selected.length > b.feats_purchased) {
-    out.push(`${selected.length} feats selected but only ${b.feats_purchased} purchased`);
+    out.push(
+      `${selected.length} feats selected but only ${b.feats_purchased} purchased`,
+    );
   }
   const slots = slotState(stored, reg);
   for (const t of SLOT_TYPES) {
     if (slots.used[t] > slots.capacity[t]) {
       out.push(
-        `${t} slots overfilled: ${slots.used[t]} of ${slots.capacity[t]}${slots.tier4ChoicePending && t !== "minor" ? " — pick your Tier-4 flexible slot" : ""}`,
+        `${t} slots overfilled: ${slots.used[t]} of ${slots.capacity[t]}${slots.tier4ChoicePending && t !== "passive" ? " — pick your Tier-4 flexible slot" : ""}`,
       );
     }
   }
@@ -74,7 +92,8 @@ export function validateCharacter(stored: StoredCharacter, reg: Registry, comput
     const e = featEligibility(stored, feat, reg);
     // slot pressure is reported in aggregate above; per-feat we only surface prereq/tier failures
     for (const r of e.reasons) {
-      if (!r.startsWith("no ") && !r.startsWith("all ")) out.push(`${feat.name}: ${r}`);
+      if (!r.startsWith("no ") && !r.startsWith("all "))
+        out.push(`${feat.name}: ${r}`);
     }
   }
 
@@ -82,23 +101,34 @@ export function validateCharacter(stored: StoredCharacter, reg: Registry, comput
   const sc = computed.spellcasting;
   if (sc) {
     if (b.known_spell_ids.length > sc.knownAllowance) {
-      out.push(`known spells overfilled: ${b.known_spell_ids.length} of ${sc.knownAllowance}`);
+      out.push(
+        `known spells overfilled: ${b.known_spell_ids.length} of ${sc.knownAllowance}`,
+      );
     }
     if (b.known_cantrip_ids.length > sc.cantripAllowance) {
-      out.push(`cantrips overfilled: ${b.known_cantrip_ids.length} of ${sc.cantripAllowance}`);
+      out.push(
+        `cantrips overfilled: ${b.known_cantrip_ids.length} of ${sc.cantripAllowance}`,
+      );
     }
     if (b.prepared_spell_ids.length > sc.preparedAllowance) {
-      out.push(`prepared spells overfilled: ${b.prepared_spell_ids.length} of ${sc.preparedAllowance}`);
+      out.push(
+        `prepared spells overfilled: ${b.prepared_spell_ids.length} of ${sc.preparedAllowance}`,
+      );
     }
     const known = new Set(b.known_spell_ids);
     for (const id of b.prepared_spell_ids) {
-      if (!known.has(id)) out.push(`prepared spell "${reg.spells.get(id)?.name ?? id}" is not known`);
+      if (!known.has(id))
+        out.push(
+          `prepared spell "${reg.spells.get(id)?.name ?? id}" is not known`,
+        );
     }
     for (const id of [...b.known_spell_ids, ...b.known_cantrip_ids]) {
       const spell = reg.spells.get(id);
       if (!spell) out.push(`unknown spell id "${id}"`);
       else if (spell.tier > sc.spellcastingTier && !spell.is_cantrip) {
-        out.push(`${spell.name} is Tier ${spell.tier}, above your spellcasting Tier ${sc.spellcastingTier}`);
+        out.push(
+          `${spell.name} is Tier ${spell.tier}, above your spellcasting Tier ${sc.spellcastingTier}`,
+        );
       } else {
         const access = spellAccessible(spell, sc);
         if (!access.ok) out.push(`${spell.name}: ${access.reason}`);

@@ -9,26 +9,26 @@
       "tier": 1,
       "feats_to_advance": 3,
       "cumulative_feats_required": 3,
-      "slots": { "tactical": 1, "narrative": 1, "minor": 1 }
+      "slots": { "tactical": 1, "narrative": 1, "passive": 1 }
     },
     {
       "tier": 2,
       "feats_to_advance": 3,
       "cumulative_feats_required": 6,
-      "slots": { "tactical": 1, "narrative": 1, "minor": 1 }
+      "slots": { "tactical": 1, "narrative": 1, "passive": 1 }
     },
     {
       "tier": 3,
       "feats_to_advance": 2,
       "cumulative_feats_required": 8,
-      "slots": { "tactical": 1, "narrative": 1, "minor": 0 }
+      "slots": { "tactical": 1, "narrative": 1, "passive": 0 }
     },
     {
       "tier": 4,
       "feats_to_advance": 2,
       "cumulative_feats_required": 10,
       "slots": {
-        "minor": 1,
+        "passive": 1,
         "choice": { "count": 1, "from": ["tactical", "narrative"] }
       }
     },
@@ -36,7 +36,7 @@
       "tier": 5,
       "feats_to_advance": null,
       "cumulative_feats_required": 16,
-      "slots": { "tactical": 2, "narrative": 2, "minor": 2 }
+      "slots": { "tactical": 2, "narrative": 2, "passive": 2 }
     }
   ],
   "notes": {
