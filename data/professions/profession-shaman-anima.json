@@ -7,10 +7,7 @@
     {
       "id": "vessel_healing",
       "name": "Vessel Healing",
-      "tags": [
-        "Shaman",
-        "Anima"
-      ],
+      "tags": ["Shaman", "Anima"],
       "path": "anima",
       "tier": 1,
       "trait": "Utility",
@@ -35,14 +32,11 @@
     {
       "id": "mantle_of_elements",
       "name": "Mantle of Elements",
-      "tags": [
-        "Shaman",
-        "Anima"
-      ],
+      "tags": ["Shaman", "Anima"],
       "path": "anima",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -60,9 +54,7 @@
         {
           "type": "daily_mode_choice",
           "key": "elemental_mantle",
-          "changeable_during": [
-            "daily_preparation"
-          ],
+          "changeable_during": ["daily_preparation"],
           "options": [
             {
               "value": "flame",
@@ -119,10 +111,7 @@
     {
       "id": "vessel_strength",
       "name": "Vessel Strength",
-      "tags": [
-        "Shaman",
-        "Anima"
-      ],
+      "tags": ["Shaman", "Anima"],
       "path": "anima",
       "tier": 2,
       "trait": "Utility",
@@ -135,9 +124,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "vessel_healing"
-        ],
+        "feats": ["vessel_healing"],
         "path_investment": {
           "path": "anima",
           "count": 0
@@ -149,23 +136,18 @@
     {
       "id": "primordial_remnants",
       "name": "Primordial Remnants",
-      "tags": [
-        "Shaman",
-        "Anima"
-      ],
+      "tags": ["Shaman", "Anima"],
       "path": "anima",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "vessel_strength"
-        ],
+        "feats": ["vessel_strength"],
         "path_investment": {
           "path": "anima",
           "count": 1
@@ -242,10 +224,7 @@
     {
       "id": "spirit_step",
       "name": "Spirit Step",
-      "tags": [
-        "Shaman",
-        "Anima"
-      ],
+      "tags": ["Shaman", "Anima"],
       "path": "anima",
       "tier": 2,
       "trait": "Maneuver",

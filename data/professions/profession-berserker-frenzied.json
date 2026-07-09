@@ -7,10 +7,7 @@
     {
       "id": "frenzied_rage",
       "name": "Frenzied Rage",
-      "tags": [
-        "Berserker",
-        "Frenzied"
-      ],
+      "tags": ["Berserker", "Frenzied"],
       "path": "frenzied",
       "tier": 1,
       "trait": "Narrative",
@@ -57,10 +54,7 @@
     {
       "id": "frenzied_strike",
       "name": "Frenzied Strike",
-      "tags": [
-        "Berserker",
-        "Frenzied"
-      ],
+      "tags": ["Berserker", "Frenzied"],
       "path": "frenzied",
       "tier": 1,
       "trait": "Utility",
@@ -81,9 +75,7 @@
       },
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "frenzied_rage"
-        ],
+        "feats": ["frenzied_rage"],
         "path_investment": {
           "path": "frenzied",
           "count": 0
@@ -95,14 +87,11 @@
     {
       "id": "destructive_throw",
       "name": "Destructive Throw",
-      "tags": [
-        "Berserker",
-        "Frenzied"
-      ],
+      "tags": ["Berserker", "Frenzied"],
       "path": "frenzied",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -129,10 +118,7 @@
     {
       "id": "thrill_of_killing",
       "name": "Thrill of Killing",
-      "tags": [
-        "Berserker",
-        "Frenzied"
-      ],
+      "tags": ["Berserker", "Frenzied"],
       "path": "frenzied",
       "tier": 2,
       "trait": "Trigger",
@@ -187,10 +173,7 @@
     {
       "id": "frenzied_rush",
       "name": "Frenzied Rush",
-      "tags": [
-        "Berserker",
-        "Frenzied"
-      ],
+      "tags": ["Berserker", "Frenzied"],
       "path": "frenzied",
       "tier": 2,
       "trait": "Trigger",
@@ -208,9 +191,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "frenzied_rage"
-        ],
+        "feats": ["frenzied_rage"],
         "path_investment": {
           "path": "frenzied",
           "count": 0
@@ -232,10 +213,7 @@
     {
       "id": "vicious_swing",
       "name": "Vicious Swing",
-      "tags": [
-        "Berserker",
-        "Frenzied"
-      ],
+      "tags": ["Berserker", "Frenzied"],
       "path": "frenzied",
       "tier": 2,
       "trait": "Offensive",
@@ -266,10 +244,7 @@
     {
       "id": "frenzied_march",
       "name": "Frenzied March",
-      "tags": [
-        "Berserker",
-        "Frenzied"
-      ],
+      "tags": ["Berserker", "Frenzied"],
       "path": "frenzied",
       "tier": 3,
       "trait": "Trigger",
@@ -287,9 +262,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "thrill_of_killing"
-        ],
+        "feats": ["thrill_of_killing"],
         "path_investment": {
           "path": "frenzied",
           "count": 0
@@ -301,10 +274,7 @@
     {
       "id": "bloodrush_overload",
       "name": "Bloodrush Overload",
-      "tags": [
-        "Berserker",
-        "Frenzied"
-      ],
+      "tags": ["Berserker", "Frenzied"],
       "path": "frenzied",
       "tier": 3,
       "trait": "Trigger",

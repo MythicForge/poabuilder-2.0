@@ -7,10 +7,7 @@
     {
       "id": "titans_rage",
       "name": "Titan's Rage",
-      "tags": [
-        "Berserker",
-        "Titan"
-      ],
+      "tags": ["Berserker", "Titan"],
       "path": "titan",
       "tier": 1,
       "trait": "Narrative",
@@ -51,10 +48,7 @@
     {
       "id": "titans_charge",
       "name": "Titan's Charge",
-      "tags": [
-        "Berserker",
-        "Titan"
-      ],
+      "tags": ["Berserker", "Titan"],
       "path": "titan",
       "tier": 1,
       "trait": "Maneuver",
@@ -67,9 +61,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "titans_rage"
-        ],
+        "feats": ["titans_rage"],
         "path_investment": {
           "path": "titan",
           "count": 0
@@ -81,14 +73,11 @@
     {
       "id": "cracked_defense",
       "name": "Cracked Defense",
-      "tags": [
-        "Berserker",
-        "Titan"
-      ],
+      "tags": ["Berserker", "Titan"],
       "path": "titan",
       "tier": 1,
       "trait": "Trigger",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -107,10 +96,7 @@
     {
       "id": "titans_crush",
       "name": "Titan's Crush",
-      "tags": [
-        "Berserker",
-        "Titan"
-      ],
+      "tags": ["Berserker", "Titan"],
       "path": "titan",
       "tier": 2,
       "trait": "Maneuver",
@@ -129,9 +115,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "titans_charge"
-        ],
+        "feats": ["titans_charge"],
         "path_investment": {
           "path": "titan",
           "count": 0
@@ -143,10 +127,7 @@
     {
       "id": "indomitable_presence",
       "name": "Indomitable Presence",
-      "tags": [
-        "Berserker",
-        "Titan"
-      ],
+      "tags": ["Berserker", "Titan"],
       "path": "titan",
       "tier": 2,
       "trait": "Narrative",
@@ -184,14 +165,11 @@
     {
       "id": "giant_strength",
       "name": "Giant Strength",
-      "tags": [
-        "Berserker",
-        "Titan"
-      ],
+      "tags": ["Berserker", "Titan"],
       "path": "titan",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -218,10 +196,7 @@
     {
       "id": "colossus_stomp",
       "name": "Colossus Stomp",
-      "tags": [
-        "Berserker",
-        "Titan"
-      ],
+      "tags": ["Berserker", "Titan"],
       "path": "titan",
       "tier": 3,
       "trait": "Offensive",
@@ -237,9 +212,7 @@
       },
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "giant_strength"
-        ],
+        "feats": ["giant_strength"],
         "path_investment": {
           "path": "titan",
           "count": 2
@@ -251,10 +224,7 @@
     {
       "id": "unyielding_juggernaut",
       "name": "Unyielding Juggernaut",
-      "tags": [
-        "Berserker",
-        "Titan"
-      ],
+      "tags": ["Berserker", "Titan"],
       "path": "titan",
       "tier": 3,
       "trait": "Trigger",
@@ -268,10 +238,7 @@
       },
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "indomitable_presence",
-          "titans_charge"
-        ],
+        "feats": ["indomitable_presence", "titans_charge"],
         "path_investment": {
           "path": "titan",
           "count": 0

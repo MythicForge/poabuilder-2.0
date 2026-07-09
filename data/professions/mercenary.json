@@ -2,9 +2,7 @@
   "id": "mercenary",
   "name": "Mercenary",
   "description": "Professional soldiers of fortune who borrow techniques from every fighting tradition they encounter. The ultimate adaptable professional, filling multiple party roles as needed. Paths are the Freelancer and the Commander.",
-  "favored_attributes": [
-    "Brawn"
-  ],
+  "favored_attributes": ["Brawn"],
   "vitality": {
     "base": "10 + Brawn",
     "per_tier": "2d10",
@@ -19,39 +17,17 @@
     "skills": {
       "type": "choice",
       "count": 2,
-      "from": [
-        "any"
-      ]
+      "from": ["any"]
     },
-    "armaments": [
-      "Simple",
-      "two_of_choice"
-    ],
-    "protection": [
-      "Light",
-      "Medium",
-      "Shields"
-    ],
-    "tools": [
-      "one_of_choice"
-    ]
+    "armaments": ["Simple", "two_of_choice"],
+    "protection": ["Light", "Medium", "Shields"],
+    "tools": ["one_of_choice"]
   },
   "starting_pack": {
-    "weapons": [
-      "weapon_of_choice",
-      "weapon_of_choice"
-    ],
-    "armor": [
-      "light_or_medium_armor_choice",
-      "shield"
-    ],
+    "weapons": ["weapon_of_choice", "weapon_of_choice"],
+    "armor": ["light_or_medium_armor_choice", "shield"],
     "kits": [],
-    "inventory": [
-      "contract_logbook",
-      "mercenary_badge",
-      "mess_kit",
-      "bedroll"
-    ],
+    "inventory": ["contract_logbook", "mercenary_badge", "mess_kit", "bedroll"],
     "currency": {
       "gold": 20
     }
@@ -72,9 +48,7 @@
     {
       "id": "field_kit",
       "name": "Field Kit",
-      "tags": [
-        "Mercenary"
-      ],
+      "tags": ["Mercenary"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -91,9 +65,7 @@
           "type": "daily_mode_choice",
           "key": "field_kit_module",
           "optional": false,
-          "changeable_during": [
-            "daily_preparation"
-          ],
+          "changeable_during": ["daily_preparation"],
           "options": [
             {
               "value": "tacticians_compass",
@@ -137,9 +109,7 @@
     {
       "id": "manuscripts_of_techniques",
       "name": "Manuscripts of Techniques",
-      "tags": [
-        "Mercenary"
-      ],
+      "tags": ["Mercenary"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -161,56 +131,42 @@
               "value": "agent_undercut",
               "label": "Agent — Undercut",
               "grants": {
-                "borrowed_feat_ids": [
-                  "undercut"
-                ]
+                "borrowed_feat_ids": ["undercut"]
               }
             },
             {
               "value": "berserker_rage",
               "label": "Berserker — Berserker Rage",
               "grants": {
-                "borrowed_feat_ids": [
-                  "berserker_rage"
-                ]
+                "borrowed_feat_ids": ["berserker_rage"]
               }
             },
             {
               "value": "duelist_cadence",
               "label": "Duelist — Cadence, Precision Strike",
               "grants": {
-                "borrowed_feat_ids": [
-                  "cadence",
-                  "precision_strike"
-                ]
+                "borrowed_feat_ids": ["cadence", "precision_strike"]
               }
             },
             {
               "value": "fighter_adrenaline",
               "label": "Fighter — Adrenaline, Second Breath",
               "grants": {
-                "borrowed_feat_ids": [
-                  "adrenaline_resource",
-                  "second_breath"
-                ]
+                "borrowed_feat_ids": ["adrenaline_resource", "second_breath"]
               }
             },
             {
               "value": "stygian_soulglyph",
               "label": "Stygian — Soulglyph",
               "grants": {
-                "borrowed_feat_ids": [
-                  "soulglyph"
-                ]
+                "borrowed_feat_ids": ["soulglyph"]
               }
             },
             {
               "value": "warden_spell_scourge",
               "label": "Warden — Spell Scourge",
               "grants": {
-                "borrowed_feat_ids": [
-                  "spell_scourge"
-                ]
+                "borrowed_feat_ids": ["spell_scourge"]
               }
             }
           ],
@@ -221,9 +177,7 @@
     {
       "id": "skilled_improvisation",
       "name": "Skilled Improvisation",
-      "tags": [
-        "Mercenary"
-      ],
+      "tags": ["Mercenary"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -240,13 +194,11 @@
     {
       "id": "new_manuscript",
       "name": "New Manuscript",
-      "tags": [
-        "Mercenary"
-      ],
+      "tags": ["Mercenary"],
       "path": null,
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -266,21 +218,17 @@
     {
       "id": "upgraded_kit",
       "name": "Upgraded Kit",
-      "tags": [
-        "Mercenary"
-      ],
+      "tags": ["Mercenary"],
       "path": null,
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": [
-        "field_kit"
-      ],
+      "prerequisites": ["field_kit"],
       "description": "Upgrade your Field Kit modules: Tactician's Compass may use your Ambition dice for Initiative; Alchemical Harness holds two alchemical items; Jury-rigged Kit has 10 uses or can replenish a regular Kit's uses by 5 at daily prep.",
       "boons": [
         {

@@ -7,10 +7,7 @@
     {
       "id": "source_attunement",
       "name": "Source Attunement",
-      "tags": [
-        "Elementalist",
-        "Conduit"
-      ],
+      "tags": ["Elementalist", "Conduit"],
       "path": "conduit",
       "tier": 1,
       "trait": "Passive",
@@ -28,36 +25,12 @@
           "cost_resource": "energy",
           "cost_method": "equal_to_reservoir_cost",
           "by_core": {
-            "flame": [
-              "calming_word",
-              "ignition",
-              "signal_fire"
-            ],
-            "forest": [
-              "false_shield",
-              "elderberry_vines",
-              "venom_spray"
-            ],
-            "land": [
-              "disrupt_footing",
-              "launch",
-              "push"
-            ],
-            "ocean": [
-              "bitter_chill",
-              "cure_wounds",
-              "pull"
-            ],
-            "sky": [
-              "augmented_facade",
-              "seeking_bolt",
-              "slow_fall"
-            ],
-            "tempest": [
-              "arcane_needles",
-              "light",
-              "torment"
-            ]
+            "flame": ["calming_word", "ignition", "signal_fire"],
+            "forest": ["false_shield", "elderberry_vines", "venom_spray"],
+            "land": ["disrupt_footing", "launch", "push"],
+            "ocean": ["bitter_chill", "cure_wounds", "pull"],
+            "sky": ["augmented_facade", "seeking_bolt", "slow_fall"],
+            "tempest": ["arcane_needles", "light", "torment"]
           }
         }
       ]
@@ -65,10 +38,7 @@
     {
       "id": "primordial_art",
       "name": "Primordial Art",
-      "tags": [
-        "Elementalist",
-        "Conduit"
-      ],
+      "tags": ["Elementalist", "Conduit"],
       "path": "conduit",
       "tier": 1,
       "trait": "Passive",
@@ -79,9 +49,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "source_attunement"
-        ],
+        "feats": ["source_attunement"],
         "path_investment": {
           "path": "conduit",
           "count": 0
@@ -234,14 +202,8 @@
                       "movement": "20ft in any direction",
                       "concentration": {
                         "extends_duration": true,
-                        "allowed_actions": [
-                          "Dash",
-                          "Disengage",
-                          "Stand"
-                        ],
-                        "ends_on": [
-                          "UNC"
-                        ]
+                        "allowed_actions": ["Dash", "Disengage", "Stand"],
+                        "ends_on": ["UNC"]
                       }
                     }
                   }
@@ -376,14 +338,11 @@
     {
       "id": "surmount_resistance",
       "name": "Surmount Resistance",
-      "tags": [
-        "Elementalist",
-        "Conduit"
-      ],
+      "tags": ["Elementalist", "Conduit"],
       "path": "conduit",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,

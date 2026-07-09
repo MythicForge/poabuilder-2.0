@@ -2,10 +2,7 @@
   "id": "mesmer",
   "name": "Mesmer",
   "description": "Psionic adepts who manipulate reality through illusion, perception, and mental resonance. They excel at battlefield control, deception, and support through subtle influence and mirror constructs. Half-caster. Paths are the Spectre and the Weaver.",
-  "favored_attributes": [
-    "Mind",
-    "Will"
-  ],
+  "favored_attributes": ["Mind", "Will"],
   "favored_attributes_note": "Source: 'Mind or Will' — player picks one as Spellcasting Modifier.",
   "vitality": {
     "base": "8 + Brawn",
@@ -21,28 +18,15 @@
     "skills": {
       "type": "choice",
       "count": 1,
-      "from": [
-        "Intuition",
-        "Awareness",
-        "Social"
-      ]
+      "from": ["Intuition", "Awareness", "Social"]
     },
-    "armaments": [
-      "Catalysts",
-      "Finesse"
-    ],
-    "protection": [
-      "Light"
-    ],
+    "armaments": ["Catalysts", "Finesse"],
+    "protection": ["Light"],
     "tools": []
   },
   "starting_pack": {
-    "weapons": [
-      "focus_crystal_or_light_weapon_choice"
-    ],
-    "armor": [
-      "fineweave_robes_or_psionic_garb"
-    ],
+    "weapons": ["focus_crystal_or_light_weapon_choice"],
+    "armor": ["fineweave_robes_or_psionic_garb"],
     "kits": [],
     "inventory": [
       "fragmented_mirror",
@@ -89,9 +73,7 @@
     {
       "id": "tethers",
       "name": "Tethers",
-      "tags": [
-        "Mesmer"
-      ],
+      "tags": ["Mesmer"],
       "path": null,
       "tier": 0,
       "trait": "Narrative",
@@ -154,9 +136,7 @@
     {
       "id": "mindweave",
       "name": "Mindweave",
-      "tags": [
-        "Mesmer"
-      ],
+      "tags": ["Mesmer"],
       "path": null,
       "tier": 0,
       "trait": "Narrative",
@@ -175,10 +155,7 @@
     {
       "id": "spellcasting",
       "name": "Spellcasting",
-      "tags": [
-        "Mesmer",
-        "Spellcasting"
-      ],
+      "tags": ["Mesmer", "Spellcasting"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -196,10 +173,7 @@
           "caster_type": "limited",
           "source": "anima",
           "modifier": "SpellMod",
-          "modifier_choice": [
-            "Mind",
-            "Will"
-          ],
+          "modifier_choice": ["Mind", "Will"],
           "known_spells": {
             "start": 3,
             "tier": 1
@@ -318,9 +292,7 @@
     {
       "id": "musing_spark",
       "name": "Musing Spark",
-      "tags": [
-        "Mesmer"
-      ],
+      "tags": ["Mesmer"],
       "path": null,
       "tier": 1,
       "trait": "Utility",
@@ -357,21 +329,17 @@
     {
       "id": "deepen_aspects",
       "name": "Deepen Aspects",
-      "tags": [
-        "Mesmer"
-      ],
+      "tags": ["Mesmer"],
       "path": null,
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": [
-        "tethers"
-      ],
+      "prerequisites": ["tethers"],
       "description": "Strengthen your Tethers, gaining an enhanced feature based on your chosen Aspect: Aberration — the attack-roll penalty increases to 1d6, and you may spend 1 Reservoir to add your Tier to the penalty; Authority — the bonus Psychic damage becomes +1d4, plus an additional 1d4 per Tier, against a tethered target; Solace — once per minute, tethered allies roll skill and spell checks with Resolve; Vestige — when a tethered creature misses via the Strain you imposed, it takes 1d6 Psychic damage.",
       "boons": [
         {

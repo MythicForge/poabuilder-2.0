@@ -17,7 +17,10 @@
       "duration": "until_brand_dismissed",
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "animus", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "animus", "count": 0 }
+      },
       "description": "Inflict a Curse bond on a target, causing atrophy. The target gains Weakened 2, and all attacks against it deal an additional 1d4 Corrosive. Cost: 1 Vessel charge.",
       "boons": []
     },
@@ -34,7 +37,10 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["caustic_failure"], "path_investment": { "path": "animus", "count": 0 } },
+      "prerequisites": {
+        "feats": ["caustic_failure"],
+        "path_investment": { "path": "animus", "count": 0 }
+      },
       "description": "If a target within range has a Curse, grant them Weakness to one Physical damage type of your choice.",
       "boons": []
     },
@@ -51,7 +57,10 @@
       "duration": null,
       "uses": null,
       "feat_dc": "10 + SpellTier + Will",
-      "prerequisites": { "feats": [], "path_investment": { "path": "animus", "count": 2 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "animus", "count": 2 }
+      },
       "description": "Make a spell attack to place a Curse on a target. Choose the Curse. On a critical miss, the target is immune for 1 hour. At the start of the target's turn, they may spend 1 AP to save (effects) against your Spell DC; a critical failure deals 1d4 Void damage.",
       "boons": [
         {
@@ -60,10 +69,30 @@
           "count": 1,
           "expandable_by": [],
           "options": [
-            { "value": "condemned", "label": "Condemned (vs Fortitude)", "description": "On success target becomes Sapped; on critical success also Poisoned.", "boons": [] },
-            { "value": "paranoia", "label": "Paranoia (vs Will)", "description": "On success target becomes Frightened of you; on critical success also Compelled towards you.", "boons": [] },
-            { "value": "psychosis", "label": "Psychosis (vs Mental)", "description": "On success target becomes Enraged; on critical success it randomly attacks the closest target while Enraged.", "boons": [] },
-            { "value": "veiled", "label": "Veiled (vs Mental)", "description": "On success target becomes Blinded; on critical success also Deafened.", "boons": [] }
+            {
+              "value": "condemned",
+              "label": "Condemned (vs Fortitude)",
+              "description": "On success target becomes Sapped; on critical success also Poisoned.",
+              "boons": []
+            },
+            {
+              "value": "paranoia",
+              "label": "Paranoia (vs Will)",
+              "description": "On success target becomes Frightened of you; on critical success also Compelled towards you.",
+              "boons": []
+            },
+            {
+              "value": "psychosis",
+              "label": "Psychosis (vs Mental)",
+              "description": "On success target becomes Enraged; on critical success it randomly attacks the closest target while Enraged.",
+              "boons": []
+            },
+            {
+              "value": "veiled",
+              "label": "Veiled (vs Mental)",
+              "description": "On success target becomes Blinded; on critical success also Deafened.",
+              "boons": []
+            }
           ]
         }
       ]
@@ -75,16 +104,27 @@
       "path": "animus",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "animus", "count": 2 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "animus", "count": 2 }
+      },
       "description": "If a target marked by a Curse had a soul, upon its death you regain Reservoir equal to your Tier.",
       "boons": [
-        { "type": "conditional_effect", "trigger": "cursed_souled_enemy_dies", "effect": { "type": "restore_resource", "resource": "primeval", "amount": "Tier" } }
+        {
+          "type": "conditional_effect",
+          "trigger": "cursed_souled_enemy_dies",
+          "effect": {
+            "type": "restore_resource",
+            "resource": "primeval",
+            "amount": "Tier"
+          }
+        }
       ]
     },
     {
@@ -94,17 +134,18 @@
       "path": "animus",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["essence_harvest"], "path_investment": { "path": "animus", "count": 1 } },
+      "prerequisites": {
+        "feats": ["essence_harvest"],
+        "path_investment": { "path": "animus", "count": 1 }
+      },
       "description": "When you cast Void spells, you may heal yourself for half of the Vitality damage dealt. Gain access to the Mortification sphere.",
-      "boons": [
-        { "type": "grants_sphere", "sphere": "mortification" }
-      ]
+      "boons": [{ "type": "grants_sphere", "sphere": "mortification" }]
     }
   ]
 }

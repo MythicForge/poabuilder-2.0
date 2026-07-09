@@ -21,6 +21,7 @@ import type {
 import { ATTRIBUTES, SKILLS } from "./types.ts";
 import type { Registry } from "./data-registry.ts";
 import { collectFeats } from "./boon-resolver.ts";
+import { featExpertiseGrants } from "./skill-grants.ts";
 import { canDualWield, isTwoHanded, equipped, type Equipped } from "./equip.ts";
 import { masterworkBonus } from "./masterwork.ts";
 import { evalFormula, parseAvgDiceExpr, type FormulaEnv } from "./formula.ts";
@@ -94,11 +95,17 @@ function skillPool(
   skill: SkillName,
   stored: StoredCharacter,
   attrs: Record<AttributeKey, number>,
+  granted: { proficiencies: string[]; expertise: Record<string, number> } = { proficiencies: [], expertise: {} },
 ): SkillPoolInfo {
   const s = stored.build.skills;
   const attrValue = skillAttrValue(skill, attrs);
   const baseDiceCount = baseDiceFromAttr(attrValue);
-  const rank = skillRank(skill, s.proficiencies, s.expertise_bumps);
+  // Feat-granted proficiency/expertise stack onto the player's spent picks;
+  // granted expertise is free (never added to the budget's spent total).
+  const effProficiencies = granted.proficiencies.length ? [...s.proficiencies, ...granted.proficiencies] : s.proficiencies;
+  const grantedBump = granted.expertise[skill] ?? 0;
+  const effBumps = grantedBump ? { ...s.expertise_bumps, [skill]: (s.expertise_bumps[skill] ?? 0) + grantedBump } : s.expertise_bumps;
+  const rank = skillRank(skill, effProficiencies, effBumps);
   const faces = profDieSize(rank);
   const skillDiceCount = s.points[skill] ?? 0;
   const display = `${baseDiceCount + skillDiceCount}d${faces ?? 6}`;
@@ -805,6 +812,11 @@ export function computeCharacter(
   const { cards, activeBoons } = collectFeats(stored, reg);
   const activeStates = stored.states.active;
 
+  // Feat-granted expertise (Skill Expert, Masterful Skill, …): extra budget
+  // points and/or free ranks in named skills. Fed into the budget + skillPool.
+  const expGrants = featExpertiseGrants(activeBoons);
+  const grantedSkills = { proficiencies: [] as string[], expertise: expGrants.gained };
+
   // equipment + condition context (slot-aware; independent of attributes)
   const eq = equipped(stored, reg);
   const armorRules = parseArmorRules(reg);
@@ -1087,7 +1099,7 @@ export function computeCharacter(
     Math.floor(b.feats_purchased / 2) *
       reg.tierProgression.skill_point_per_even_feat;
   const skillSpent = Object.values(b.skills.points).reduce((s, n) => s + n, 0);
-  const expertiseEarned = tier - 1;
+  const expertiseEarned = (tier - 1) + expGrants.points;
   const expertiseSpent = Object.values(b.skills.expertise_bumps).reduce(
     (s, n) => s + n,
     0,
@@ -1154,7 +1166,7 @@ export function computeCharacter(
     rollBonuses,
     apBonus,
     combat,
-    skills: SKILLS.map((s) => skillPool(s, stored, attrs)),
+    skills: SKILLS.map((s) => skillPool(s, stored, attrs, grantedSkills)),
     carry: { capacity: carryCapacity, used: Math.round(carryUsed * 10) / 10 },
     featCards: cards,
     activeBoons,

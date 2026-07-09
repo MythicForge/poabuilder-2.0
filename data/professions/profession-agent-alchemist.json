@@ -7,14 +7,11 @@
     {
       "id": "concoction_kit",
       "name": "Concoction Kit",
-      "tags": [
-        "Agent",
-        "Alchemist"
-      ],
+      "tags": ["Agent", "Alchemist"],
       "path": "alchemist",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -38,15 +35,12 @@
           "type": "crafting_pool",
           "id": "concoction_kit",
           "budget": "Mind + Tier",
-          "craft_during": [
-            "daily_preparation",
-            "respite"
-          ],
+          "craft_during": ["daily_preparation", "respite"],
           "expires": "next_daily_preparation",
           "recipes": [
             {
-              "id": "minor_healing_salve",
-              "name": "Minor Healing Salve",
+              "id": "passive_healing_salve",
+              "name": "passive Healing Salve",
               "boons": [
                 {
                   "type": "heal",
@@ -62,11 +56,7 @@
               "boons": [
                 {
                   "type": "cure_condition",
-                  "choose_at_brew": [
-                    "PSN",
-                    "SAP",
-                    "DAZ"
-                  ]
+                  "choose_at_brew": ["PSN", "SAP", "DAZ"]
                 }
               ]
             },
@@ -76,8 +66,8 @@
               "boons": []
             },
             {
-              "id": "minor_poison_oil",
-              "name": "Minor Poison Oil",
+              "id": "passive_poison_oil",
+              "name": "passive Poison Oil",
               "boons": []
             }
           ],
@@ -89,10 +79,7 @@
           "dropped_type": "zone_effect",
           "original": {
             "type": "zone_effect",
-            "effects": [
-              "half_cover",
-              "dim_light"
-            ],
+            "effects": ["half_cover", "dim_light"],
             "range": "zone",
             "duration": "1d6 rounds"
           },
@@ -113,14 +100,11 @@
     {
       "id": "ease_of_use",
       "name": "Ease of Use",
-      "tags": [
-        "Agent",
-        "Alchemist"
-      ],
+      "tags": ["Agent", "Alchemist"],
       "path": "alchemist",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -142,23 +126,18 @@
     {
       "id": "potent_pain",
       "name": "Potent Pain",
-      "tags": [
-        "Agent",
-        "Alchemist"
-      ],
+      "tags": ["Agent", "Alchemist"],
       "path": "alchemist",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "concoction_kit"
-        ],
+        "feats": ["concoction_kit"],
         "path_investment": {
           "path": "alchemist",
           "count": 0
@@ -170,14 +149,11 @@
     {
       "id": "ambitious_hands",
       "name": "Ambitious Hands",
-      "tags": [
-        "Agent",
-        "Alchemist"
-      ],
+      "tags": ["Agent", "Alchemist"],
       "path": "alchemist",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -196,23 +172,18 @@
     {
       "id": "explosive_workings",
       "name": "Explosive Workings",
-      "tags": [
-        "Agent",
-        "Alchemist"
-      ],
+      "tags": ["Agent", "Alchemist"],
       "path": "alchemist",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "concoction_kit"
-        ],
+        "feats": ["concoction_kit"],
         "path_investment": {
           "path": "alchemist",
           "count": 1
@@ -325,10 +296,7 @@
     {
       "id": "unstable_pressure",
       "name": "Unstable Pressure",
-      "tags": [
-        "Agent",
-        "Alchemist"
-      ],
+      "tags": ["Agent", "Alchemist"],
       "path": "alchemist",
       "tier": 2,
       "trait": "Maneuver",
@@ -364,23 +332,17 @@
     {
       "id": "master_alchemist",
       "name": "Master Alchemist",
-      "tags": [
-        "Agent",
-        "Alchemist"
-      ],
+      "tags": ["Agent", "Alchemist"],
       "path": "alchemist",
       "tier": 3,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": [
-        "concoction_kit",
-        "explosive_workings"
-      ],
+      "prerequisites": ["concoction_kit", "explosive_workings"],
       "description": "You may create any of your concoctions on the fly in combat using the Alchemical Item action. These do not count toward your Daily Preparation budget and become unusable after combat ends. (Source prerequisite reads 'Steady Hands' — no such feat; encoded as concoction_kit pending confirmation — see rule-check.md.)",
       "boons": [
         {
@@ -396,10 +358,7 @@
     {
       "id": "alchemical_overload",
       "name": "Alchemical Overload",
-      "tags": [
-        "Agent",
-        "Alchemist"
-      ],
+      "tags": ["Agent", "Alchemist"],
       "path": "alchemist",
       "tier": 3,
       "trait": "Offensive",
@@ -427,10 +386,7 @@
     {
       "id": "catalyst_conversion",
       "name": "Catalyst Conversion",
-      "tags": [
-        "Agent",
-        "Alchemist"
-      ],
+      "tags": ["Agent", "Alchemist"],
       "path": "alchemist",
       "tier": 3,
       "trait": "Narrative",

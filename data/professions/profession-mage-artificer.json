@@ -8,14 +8,11 @@
     {
       "id": "skilled_summoner",
       "name": "Skilled Summoner",
-      "tags": [
-        "Mage",
-        "Artificer"
-      ],
+      "tags": ["Mage", "Artificer"],
       "path": "artificer",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -42,22 +39,17 @@
     {
       "id": "tailored_conjuration",
       "name": "Tailored Conjuration",
-      "tags": [
-        "Mage",
-        "Artificer"
-      ],
+      "tags": ["Mage", "Artificer"],
       "path": "artificer",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": [
-        "skilled_summoner"
-      ],
+      "prerequisites": ["skilled_summoner"],
       "description": "When you summon or create a creature, it gains a passive ability based on your chosen Study of Lore.",
       "boons": [
         {
@@ -192,10 +184,7 @@
     {
       "id": "arcane_forgecast",
       "name": "Arcane Forgecast",
-      "tags": [
-        "Mage",
-        "Artificer"
-      ],
+      "tags": ["Mage", "Artificer"],
       "path": "artificer",
       "tier": 1,
       "trait": "Narrative",
@@ -207,9 +196,7 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": [
-        "tailored_conjuration"
-      ],
+      "prerequisites": ["tailored_conjuration"],
       "description": "Create a permanent Forgecast companion using your chosen Study of Lore. Acts independently but requires the Command action to direct (Command cost always capped at 1 AP). If destroyed, it is repaired by next Daily Preparation.",
       "boons": [
         {
@@ -230,14 +217,11 @@
     {
       "id": "spheres_of_influence",
       "name": "Spheres of Influence",
-      "tags": [
-        "Mage",
-        "Artificer"
-      ],
+      "tags": ["Mage", "Artificer"],
       "path": "artificer",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -321,10 +305,7 @@
     {
       "id": "forgecast_autonomy",
       "name": "Forgecast Autonomy",
-      "tags": [
-        "Mage",
-        "Artificer"
-      ],
+      "tags": ["Mage", "Artificer"],
       "path": "artificer",
       "tier": 2,
       "trait": "Utility",
@@ -338,9 +319,7 @@
       },
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "arcane_forgecast"
-        ],
+        "feats": ["arcane_forgecast"],
         "path_investment": {
           "path": "artificer",
           "count": 2
@@ -362,14 +341,11 @@
     {
       "id": "reservoir_tuning",
       "name": "Reservoir Tuning",
-      "tags": [
-        "Mage",
-        "Artificer"
-      ],
+      "tags": ["Mage", "Artificer"],
       "path": "artificer",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -388,15 +364,9 @@
           "type": "daily_mode_choice",
           "key": "reservoir_tuning_mode",
           "optional": true,
-          "changeable_during": [
-            "daily_preparation"
-          ],
-          "deactivatable_during": [
-            "respite"
-          ],
-          "reactivatable_during": [
-            "daily_preparation"
-          ],
+          "changeable_during": ["daily_preparation"],
+          "deactivatable_during": ["respite"],
+          "reactivatable_during": ["daily_preparation"],
           "options": [
             {
               "value": "efficient_casting",
@@ -419,27 +389,18 @@
                   "type": "stat_bonus",
                   "stat": "spell_attack",
                   "amount": 2,
-                  "context": [
-                    "direct_spell",
-                    "zone_spell"
-                  ]
+                  "context": ["direct_spell", "zone_spell"]
                 },
                 {
                   "type": "stat_bonus",
                   "stat": "spell_dc",
                   "amount": 2,
-                  "context": [
-                    "direct_spell",
-                    "zone_spell"
-                  ]
+                  "context": ["direct_spell", "zone_spell"]
                 },
                 {
                   "type": "spell_cost_modifier",
                   "amount": 4,
-                  "context": [
-                    "direct_spell",
-                    "zone_spell"
-                  ]
+                  "context": ["direct_spell", "zone_spell"]
                 }
               ]
             }
@@ -450,14 +411,11 @@
     {
       "id": "modular_adaptation",
       "name": "Modular Adaptation",
-      "tags": [
-        "Mage",
-        "Artificer"
-      ],
+      "tags": ["Mage", "Artificer"],
       "path": "artificer",
       "tier": 3,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -473,9 +431,7 @@
             "type": "companion_directive",
             "companion_id": "forgecast",
             "key": "forgecast_directive",
-            "changeable_during": [
-              "daily_preparation"
-            ],
+            "changeable_during": ["daily_preparation"],
             "non_baseline_restriction": "action_only",
             "options": [
               {
@@ -547,10 +503,7 @@
                     "trigger": "each_turn",
                     "effect": {
                       "type": "sense_sharing",
-                      "senses": [
-                        "sight",
-                        "hearing"
-                      ],
+                      "senses": ["sight", "hearing"],
                       "source": "companion:forgecast",
                       "target": "summoner",
                       "duration": "until_next_turn"

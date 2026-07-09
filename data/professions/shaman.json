@@ -2,10 +2,7 @@
   "id": "shaman",
   "name": "Shaman",
   "description": "Versatile spellcasters connected to primeval spirits, capable of altering the environment and shapeshifting. They excel at survival, nature magic, and adaptation. Full-caster. Paths are the Anima and the Animus.",
-  "favored_attributes": [
-    "Will",
-    "Brawn"
-  ],
+  "favored_attributes": ["Will", "Brawn"],
   "vitality": {
     "base": "9 + Brawn",
     "per_tier": "2d10",
@@ -20,41 +17,20 @@
     "skills": {
       "type": "choice",
       "count": 1,
-      "from": [
-        "Vigor",
-        "Awareness",
-        "Lore"
-      ]
+      "from": ["Vigor", "Awareness", "Lore"]
     },
-    "armaments": [
-      "Primeval Form",
-      "Simple",
-      "Catalysts"
-    ],
-    "protection": [
-      "Light"
-    ],
+    "armaments": ["Primeval Form", "Simple", "Catalysts"],
+    "protection": ["Light"],
     "tools": {
       "type": "choice",
       "count": 1,
-      "from": [
-        "Medicine",
-        "Alchemy"
-      ]
+      "from": ["Medicine", "Alchemy"]
     }
   },
   "starting_pack": {
-    "weapons": [
-      "quarterstaff",
-      "dagger",
-      "dagger"
-    ],
-    "armor": [
-      "tribal_vestments"
-    ],
-    "kits": [
-      "wilderness_survival_kit"
-    ],
+    "weapons": ["quarterstaff", "dagger", "dagger"],
+    "armor": ["tribal_vestments"],
+    "kits": ["wilderness_survival_kit"],
     "inventory": [
       "component_pouch",
       "weather_resistant_cloak",
@@ -117,10 +93,7 @@
     {
       "id": "spellcasting",
       "name": "Spellcasting",
-      "tags": [
-        "Shaman",
-        "Spellcasting"
-      ],
+      "tags": ["Shaman", "Spellcasting"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -159,9 +132,7 @@
     {
       "id": "primeval_vessels",
       "name": "Primeval Vessels",
-      "tags": [
-        "Shaman"
-      ],
+      "tags": ["Shaman"],
       "path": null,
       "tier": 0,
       "trait": "Narrative",
@@ -231,9 +202,7 @@
     {
       "id": "primal_form",
       "name": "Primal Form",
-      "tags": [
-        "Shaman"
-      ],
+      "tags": ["Shaman"],
       "path": null,
       "tier": 0,
       "trait": "Narrative",
@@ -257,13 +226,11 @@
     {
       "id": "vessel_of_nature",
       "name": "Vessel of Nature",
-      "tags": [
-        "Shaman"
-      ],
+      "tags": ["Shaman"],
       "path": null,
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -286,21 +253,17 @@
     {
       "id": "evolved_form",
       "name": "Evolved Form",
-      "tags": [
-        "Shaman"
-      ],
+      "tags": ["Shaman"],
       "path": null,
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": [
-        "vessel_of_nature"
-      ],
+      "prerequisites": ["vessel_of_nature"],
       "description": "Your Primeval Form may now shift into creatures of equal or lesser tier. Gain Expertise in Vigor (increased dice size).",
       "boons": [
         {

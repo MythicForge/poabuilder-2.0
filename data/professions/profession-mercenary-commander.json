@@ -17,10 +17,19 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "commander", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "commander", "count": 0 }
+      },
       "description": "Allies within Close range (earshot) gain temporary Vitality equal to your Ambition roll. You may target a number of allies equal to your Tier.",
       "boons": [
-        { "type": "heal", "formula": "ambition_die", "target": "allies_in_range", "temporary": true, "max_targets": "Tier" }
+        {
+          "type": "heal",
+          "formula": "ambition_die",
+          "target": "allies_in_range",
+          "temporary": true,
+          "max_targets": "Tier"
+        }
       ]
     },
     {
@@ -36,7 +45,10 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["rallied"], "path_investment": { "path": "commander", "count": 0 } },
+      "prerequisites": {
+        "feats": ["rallied"],
+        "path_investment": { "path": "commander", "count": 0 }
+      },
       "description": "When you use a Maneuver action, select a number of allies up to half your Will. They may take the same action without spending AP.",
       "boons": []
     },
@@ -53,7 +65,10 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["rallied"], "path_investment": { "path": "commander", "count": 0 } },
+      "prerequisites": {
+        "feats": ["rallied"],
+        "path_investment": { "path": "commander", "count": 0 }
+      },
       "description": "Call out a target. The next attack against them has Resolve and adds your Ambition dice to the attack roll until they are hit. When hit, your Ambition dice is also added to damage.",
       "boons": []
     },
@@ -70,7 +85,10 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "commander", "count": 2 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "commander", "count": 2 }
+      },
       "description": "When an ally within your Engagement would be hit with an attack, reduce the damage by three times your Tier.",
       "boons": []
     },
@@ -87,7 +105,10 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "commander", "count": 3 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "commander", "count": 3 }
+      },
       "description": "Issue a coordinated command. Choose one tactic, targeting yourself or allies within range.",
       "boons": [
         {
@@ -107,7 +128,13 @@
               "label": "Stand Fast",
               "description": "Allies in your zone gain +2 Armor until the end of your next turn.",
               "boons": [
-                { "type": "stat_bonus", "stat": "Armor", "amount": 2, "target": "allies_in_range", "duration": "until_end_of_your_next_turn" }
+                {
+                  "type": "stat_bonus",
+                  "stat": "Armor",
+                  "amount": 2,
+                  "target": "allies_in_range",
+                  "duration": "until_end_of_your_next_turn"
+                }
               ]
             },
             {
@@ -133,13 +160,16 @@
       "path": "commander",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "commander", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "commander", "count": 0 }
+      },
       "description": "You and allies within the same Zone as you have Resolve against the Frightened condition.",
       "boons": []
     }

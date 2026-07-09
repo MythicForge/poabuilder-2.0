@@ -7,14 +7,11 @@
     {
       "id": "fade_away",
       "name": "Fade Away",
-      "tags": [
-        "Agent",
-        "Infiltrator"
-      ],
+      "tags": ["Agent", "Infiltrator"],
       "path": "infiltrator",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -41,23 +38,18 @@
     {
       "id": "lethal_precision",
       "name": "Lethal Precision",
-      "tags": [
-        "Agent",
-        "Infiltrator"
-      ],
+      "tags": ["Agent", "Infiltrator"],
       "path": "infiltrator",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "fade_away"
-        ],
+        "feats": ["fade_away"],
         "path_investment": {
           "path": "infiltrator",
           "count": 0
@@ -69,14 +61,11 @@
     {
       "id": "lightfoot",
       "name": "Lightfoot",
-      "tags": [
-        "Agent",
-        "Infiltrator"
-      ],
+      "tags": ["Agent", "Infiltrator"],
       "path": "infiltrator",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -98,14 +87,11 @@
     {
       "id": "opportunist",
       "name": "Opportunist",
-      "tags": [
-        "Agent",
-        "Infiltrator"
-      ],
+      "tags": ["Agent", "Infiltrator"],
       "path": "infiltrator",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -131,10 +117,7 @@
     {
       "id": "slip_and_strike",
       "name": "Slip and Strike",
-      "tags": [
-        "Agent",
-        "Infiltrator"
-      ],
+      "tags": ["Agent", "Infiltrator"],
       "path": "infiltrator",
       "tier": 2,
       "trait": "Trigger",
@@ -157,10 +140,7 @@
     {
       "id": "cut_the_bone",
       "name": "Cut The Bone",
-      "tags": [
-        "Agent",
-        "Infiltrator"
-      ],
+      "tags": ["Agent", "Infiltrator"],
       "path": "infiltrator",
       "tier": 2,
       "trait": "Passive",
@@ -173,9 +153,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "opportunist"
-        ],
+        "feats": ["opportunist"],
         "path_investment": {
           "path": "infiltrator",
           "count": 3
@@ -187,14 +165,11 @@
     {
       "id": "nobody_is_home",
       "name": "Nobody is Home",
-      "tags": [
-        "Agent",
-        "Infiltrator"
-      ],
+      "tags": ["Agent", "Infiltrator"],
       "path": "infiltrator",
       "tier": 3,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -221,10 +196,7 @@
     {
       "id": "misguiding",
       "name": "Misguiding",
-      "tags": [
-        "Agent",
-        "Infiltrator"
-      ],
+      "tags": ["Agent", "Infiltrator"],
       "path": "infiltrator",
       "tier": 3,
       "trait": "Trigger",
@@ -250,23 +222,18 @@
     {
       "id": "blade_in_the_night",
       "name": "Blade In the Night",
-      "tags": [
-        "Agent",
-        "Infiltrator"
-      ],
+      "tags": ["Agent", "Infiltrator"],
       "path": "infiltrator",
       "tier": 3,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "cut_the_bone"
-        ],
+        "feats": ["cut_the_bone"],
         "path_investment": {
           "path": "infiltrator",
           "count": 4

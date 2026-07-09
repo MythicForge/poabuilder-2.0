@@ -7,10 +7,7 @@
     {
       "id": "invasive_mind",
       "name": "Invasive Mind",
-      "tags": [
-        "Mesmer",
-        "Spectre"
-      ],
+      "tags": ["Mesmer", "Spectre"],
       "path": "spectre",
       "tier": 1,
       "trait": "Utility",
@@ -35,10 +32,7 @@
     {
       "id": "manifest_phantasm",
       "name": "Manifest Phantasm",
-      "tags": [
-        "Mesmer",
-        "Spectre"
-      ],
+      "tags": ["Mesmer", "Spectre"],
       "path": "spectre",
       "tier": 1,
       "trait": "Utility",
@@ -51,9 +45,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "invasive_mind"
-        ],
+        "feats": ["invasive_mind"],
         "path_investment": {
           "path": "spectre",
           "count": 0
@@ -90,10 +82,7 @@
     {
       "id": "refraction",
       "name": "Refraction",
-      "tags": [
-        "Mesmer",
-        "Spectre"
-      ],
+      "tags": ["Mesmer", "Spectre"],
       "path": "spectre",
       "tier": 1,
       "trait": "Trigger",
@@ -111,9 +100,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "manifest_phantasm"
-        ],
+        "feats": ["manifest_phantasm"],
         "path_investment": {
           "path": "spectre",
           "count": 0
@@ -125,10 +112,7 @@
     {
       "id": "warding_visions",
       "name": "Warding Visions",
-      "tags": [
-        "Mesmer",
-        "Spectre"
-      ],
+      "tags": ["Mesmer", "Spectre"],
       "path": "spectre",
       "tier": 2,
       "trait": "Trigger",
@@ -146,9 +130,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "manifest_phantasm"
-        ],
+        "feats": ["manifest_phantasm"],
         "path_investment": {
           "path": "spectre",
           "count": 3
@@ -175,13 +157,7 @@
               "boons": [
                 {
                   "type": "cure_condition",
-                  "conditions": [
-                    "ENR",
-                    "FRT",
-                    "STN",
-                    "DAZ",
-                    "INT"
-                  ],
+                  "conditions": ["ENR", "FRT", "STN", "DAZ", "INT"],
                   "choose": 1,
                   "target": "affected"
                 }
@@ -200,14 +176,11 @@
     {
       "id": "apparition",
       "name": "Apparition",
-      "tags": [
-        "Mesmer",
-        "Spectre"
-      ],
+      "tags": ["Mesmer", "Spectre"],
       "path": "spectre",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -234,10 +207,7 @@
     {
       "id": "distorted_images",
       "name": "Distorted Images",
-      "tags": [
-        "Mesmer",
-        "Spectre"
-      ],
+      "tags": ["Mesmer", "Spectre"],
       "path": "spectre",
       "tier": 2,
       "trait": "Utility",

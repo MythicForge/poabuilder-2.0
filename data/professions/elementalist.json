@@ -2,10 +2,7 @@
   "id": "elementalist",
   "name": "Elementalist",
   "description": "Born with the potential to master the elements bending them to your will. The Elementalist fights with martial prowess mixed with mastery over the elements, filling roles as front-liner, support, or controller.",
-  "favored_attributes": [
-    "Will",
-    "Finesse"
-  ],
+  "favored_attributes": ["Will", "Finesse"],
   "vitality": {
     "base": "10 + Brawn",
     "per_tier": "2d10",
@@ -20,40 +17,17 @@
     "skills": {
       "type": "choice",
       "count": 1,
-      "from": [
-        "Talent",
-        "Awareness",
-        "Lore"
-      ]
+      "from": ["Talent", "Awareness", "Lore"]
     },
-    "armaments": [
-      "Simple",
-      "Unarmed"
-    ],
-    "protection": [
-      "Light"
-    ],
-    "tools": [
-      "Alchemy",
-      "Outrider"
-    ]
+    "armaments": ["Simple", "Unarmed"],
+    "protection": ["Light"],
+    "tools": ["Alchemy", "Outrider"]
   },
   "starting_pack": {
-    "weapons": [
-      "simple_melee",
-      "simple_melee"
-    ],
-    "armor": [
-      "light_armor"
-    ],
-    "kits": [
-      "survival_kit"
-    ],
-    "inventory": [
-      "nature_press_kit",
-      "waterskin",
-      "weather_cloak"
-    ],
+    "weapons": ["simple_melee", "simple_melee"],
+    "armor": ["light_armor"],
+    "kits": ["survival_kit"],
+    "inventory": ["nature_press_kit", "waterskin", "weather_cloak"],
     "currency": {
       "gold": 7
     }
@@ -84,9 +58,7 @@
     {
       "id": "font_of_energy",
       "name": "Font of Energy",
-      "tags": [
-        "Elementalist"
-      ],
+      "tags": ["Elementalist"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -108,9 +80,7 @@
     {
       "id": "elemental_core",
       "name": "Elemental Core",
-      "tags": [
-        "Elementalist"
-      ],
+      "tags": ["Elementalist"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -132,60 +102,42 @@
               "value": "flame",
               "label": "Flame",
               "grants": {
-                "disciplines": [
-                  "Fire",
-                  "Spirit"
-                ]
+                "disciplines": ["Fire", "Spirit"]
               }
             },
             {
               "value": "forest",
               "label": "Forest",
               "grants": {
-                "disciplines": [
-                  "Wood",
-                  "Vitality"
-                ]
+                "disciplines": ["Wood", "Vitality"]
               }
             },
             {
               "value": "land",
               "label": "Land",
               "grants": {
-                "disciplines": [
-                  "Stone",
-                  "Metal"
-                ]
+                "disciplines": ["Stone", "Metal"]
               }
             },
             {
               "value": "ocean",
               "label": "Ocean",
               "grants": {
-                "disciplines": [
-                  "Water",
-                  "Ice"
-                ]
+                "disciplines": ["Water", "Ice"]
               }
             },
             {
               "value": "sky",
               "label": "Sky",
               "grants": {
-                "disciplines": [
-                  "Air",
-                  "Gravity"
-                ]
+                "disciplines": ["Air", "Gravity"]
               }
             },
             {
               "value": "tempest",
               "label": "Tempest",
               "grants": {
-                "disciplines": [
-                  "Electric",
-                  "Light"
-                ]
+                "disciplines": ["Electric", "Light"]
               }
             }
           ]
@@ -195,9 +147,7 @@
     {
       "id": "primordial_strike",
       "name": "Primordial Strike",
-      "tags": [
-        "Elementalist"
-      ],
+      "tags": ["Elementalist"],
       "path": null,
       "tier": 0,
       "trait": "Offensive",
@@ -304,9 +254,7 @@
     {
       "id": "elemental_arts",
       "name": "Elemental Arts",
-      "tags": [
-        "Elementalist"
-      ],
+      "tags": ["Elementalist"],
       "path": null,
       "tier": 0,
       "trait": "Maneuver",
@@ -595,13 +543,11 @@
     {
       "id": "core_resistance",
       "name": "Core Resistance",
-      "tags": [
-        "Elementalist"
-      ],
+      "tags": ["Elementalist"],
       "path": null,
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -633,13 +579,11 @@
     {
       "id": "core_cultivation",
       "name": "Core Cultivation",
-      "tags": [
-        "Elementalist"
-      ],
+      "tags": ["Elementalist"],
       "path": null,
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,

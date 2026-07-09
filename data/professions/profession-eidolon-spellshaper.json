@@ -11,13 +11,16 @@
       "path": "spellshaper",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "spellshaper", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "spellshaper", "count": 0 }
+      },
       "description": "Comprehend and speak any language you hear for 1 minute by spending 3 Resonance (source: 'design points'). Grants comprehension and speech only, not literacy.",
       "boons": []
     },
@@ -34,10 +37,21 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "spellshaper", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "spellshaper", "count": 0 }
+      },
       "description": "Concentrate your magic. Your next spell attack this turn gains +3 to hit. On a critical hit, regain 1 Resonance (source: 'design point').",
       "boons": [
-        { "type": "conditional_effect", "trigger": "critical_hit_dealt", "effect": { "type": "restore_resource", "resource": "resonance", "amount": 1 } }
+        {
+          "type": "conditional_effect",
+          "trigger": "critical_hit_dealt",
+          "effect": {
+            "type": "restore_resource",
+            "resource": "resonance",
+            "amount": 1
+          }
+        }
       ]
     },
     {
@@ -53,7 +67,10 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["arcane_linguistics", "focused_channeling"], "path_investment": { "path": "spellshaper", "count": 0 } },
+      "prerequisites": {
+        "feats": ["arcane_linguistics", "focused_channeling"],
+        "path_investment": { "path": "spellshaper", "count": 0 }
+      },
       "description": "When you see a spell being cast within Close range, make a Will check against the caster's Spell DC. On success, identify the spell and prevent it from affecting you and up to Tier allies within Close range. On critical success, the spell is countered and fails entirely.",
       "boons": []
     },
@@ -70,10 +87,20 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "spellshaper", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "spellshaper", "count": 0 }
+      },
       "description": "Choose a Tier 1 spell you've cast this Skirmish. Until the end of the skirmish, you may cast it again once per turn without spending Reservoir, but it must target a different creature each time.",
       "boons": [
-        { "type": "free_recast", "spell_tier_max": 1, "frequency": "once_per_turn", "duration": "end_of_skirmish", "restriction": "different_target_each_time", "no_reservoir_cost": true }
+        {
+          "type": "free_recast",
+          "spell_tier_max": 1,
+          "frequency": "once_per_turn",
+          "duration": "end_of_skirmish",
+          "restriction": "different_target_each_time",
+          "no_reservoir_cost": true
+        }
       ]
     },
     {
@@ -89,7 +116,10 @@
       "duration": null,
       "uses": { "count": 1, "recharge": "skirmish" },
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "spellshaper", "count": 2 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "spellshaper", "count": 2 }
+      },
       "description": "Once per Skirmish, when you cast a spell, choose an emotion. If the target is susceptible to emotional influence (not immune to charm, fear, or mental), gain one effect.",
       "boons": [
         {
@@ -98,10 +128,30 @@
           "count": 1,
           "expandable_by": [],
           "options": [
-            { "value": "rage",   "label": "Rage",   "description": "Add your Will to damage dealt.", "boons": [] },
-            { "value": "sorrow", "label": "Sorrow", "description": "On success, apply Sapped or Weakened to the target.", "boons": [] },
-            { "value": "joy",    "label": "Joy",    "description": "Heal an adjacent ally for 1d4 per spell tier.", "boons": [] },
-            { "value": "awe",    "label": "Awe",    "description": "Target makes all attacks with Strain for 1 round.", "boons": [] }
+            {
+              "value": "rage",
+              "label": "Rage",
+              "description": "Add your Will to damage dealt.",
+              "boons": []
+            },
+            {
+              "value": "sorrow",
+              "label": "Sorrow",
+              "description": "On success, apply Sapped or Weakened to the target.",
+              "boons": []
+            },
+            {
+              "value": "joy",
+              "label": "Joy",
+              "description": "Heal an adjacent ally for 1d4 per spell tier.",
+              "boons": []
+            },
+            {
+              "value": "awe",
+              "label": "Awe",
+              "description": "Target makes all attacks with Strain for 1 round.",
+              "boons": []
+            }
           ]
         }
       ]
@@ -113,13 +163,16 @@
       "path": "spellshaper",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "spellshaper", "count": 3 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "spellshaper", "count": 3 }
+      },
       "description": "Gain access to a new Sphere of Magic: Aberration, Conjuration, or Mortification. Gain effects based on your choice.",
       "boons": [
         {
@@ -127,9 +180,55 @@
           "key": "spellborn_sphere",
           "prompt": "Choose a Sphere",
           "options": [
-            { "value": "aberration",   "label": "Aberration",   "grants": { "sphere": "aberration",   "description": "You can telepathically commune with creatures (those of Mental 13 or lower are immune).", "boons": [] } },
-            { "value": "conjuration",  "label": "Conjuration",  "grants": { "sphere": "conjuration",  "boons": [{ "type": "conditional_effect", "trigger": "cast_conjuration_spell", "effect": { "type": "create_object", "object": { "name": "Arcane Wall", "dimensions": "10ft", "duration": "end_of_skirmish", "capacity": "cover_for_2_allies" } } }] } },
-            { "value": "mortification", "label": "Mortification", "grants": { "sphere": "mortification", "boons": [{ "type": "conditional_effect", "trigger": "ally_in_close_would_gain_wounds", "uses": { "count": 1, "recharge": "respite" }, "effect": { "type": "prevent_wounds", "amount": "spend_resonance_equal_up_to_gained" } }] } }
+            {
+              "value": "aberration",
+              "label": "Aberration",
+              "grants": {
+                "sphere": "aberration",
+                "description": "You can telepathically commune with creatures (those of Mental 13 or lower are immune).",
+                "boons": []
+              }
+            },
+            {
+              "value": "conjuration",
+              "label": "Conjuration",
+              "grants": {
+                "sphere": "conjuration",
+                "boons": [
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "cast_conjuration_spell",
+                    "effect": {
+                      "type": "create_object",
+                      "object": {
+                        "name": "Arcane Wall",
+                        "dimensions": "10ft",
+                        "duration": "end_of_skirmish",
+                        "capacity": "cover_for_2_allies"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "value": "mortification",
+              "label": "Mortification",
+              "grants": {
+                "sphere": "mortification",
+                "boons": [
+                  {
+                    "type": "conditional_effect",
+                    "trigger": "ally_in_close_would_gain_wounds",
+                    "uses": { "count": 1, "recharge": "respite" },
+                    "effect": {
+                      "type": "prevent_wounds",
+                      "amount": "spend_resonance_equal_up_to_gained"
+                    }
+                  }
+                ]
+              }
+            }
           ]
         }
       ]

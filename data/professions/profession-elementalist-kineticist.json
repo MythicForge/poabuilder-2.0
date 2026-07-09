@@ -7,10 +7,7 @@
     {
       "id": "elemental_armaments",
       "name": "Elemental Armaments",
-      "tags": [
-        "Elementalist",
-        "Kineticist"
-      ],
+      "tags": ["Elementalist", "Kineticist"],
       "path": "kineticist",
       "tier": 1,
       "trait": "Passive",
@@ -98,9 +95,7 @@
                   "damage": "1d8",
                   "damage_type": "Puncture",
                   "range": "Close",
-                  "traits": [
-                    "returning"
-                  ]
+                  "traits": ["returning"]
                 }
               ],
               "crit_effect": []
@@ -141,9 +136,7 @@
                   "damage": "1d6",
                   "damage_type": "Electric",
                   "range": null,
-                  "traits": [
-                    "Rend"
-                  ]
+                  "traits": ["Rend"]
                 }
               ],
               "crit_effect": []
@@ -155,10 +148,7 @@
     {
       "id": "kinetic_strike",
       "name": "Kinetic Strike",
-      "tags": [
-        "Elementalist",
-        "Kineticist"
-      ],
+      "tags": ["Elementalist", "Kineticist"],
       "path": "kineticist",
       "tier": 1,
       "trait": "Trigger",
@@ -176,9 +166,7 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": [
-        "elemental_armaments"
-      ],
+      "prerequisites": ["elemental_armaments"],
       "description": "After a successful strike with your Elemental Armament, expend Energy to make a second attack with the same weapon.",
       "boons": []
     }

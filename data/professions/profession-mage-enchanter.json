@@ -8,14 +8,11 @@
     {
       "id": "arcane_author",
       "name": "Arcane Author",
-      "tags": [
-        "Mage",
-        "Enchanter"
-      ],
+      "tags": ["Mage", "Enchanter"],
       "path": "enchanter",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -28,10 +25,7 @@
     {
       "id": "rune_wards",
       "name": "Rune Wards",
-      "tags": [
-        "Mage",
-        "Enchanter"
-      ],
+      "tags": ["Mage", "Enchanter"],
       "path": "enchanter",
       "tier": 1,
       "trait": "Trigger",
@@ -41,9 +35,7 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": [
-        "arcane_author"
-      ],
+      "prerequisites": ["arcane_author"],
       "description": "When you cast a spell, gain temporary vitality equal to the mana spent + (Tier × 2).",
       "boons": [
         {
@@ -61,22 +53,17 @@
     {
       "id": "rune_carving",
       "name": "Rune Carving",
-      "tags": [
-        "Mage",
-        "Enchanter"
-      ],
+      "tags": ["Mage", "Enchanter"],
       "path": "enchanter",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": [
-        "arcane_author"
-      ],
+      "prerequisites": ["arcane_author"],
       "description": "Inscribe a non-ritual, non-focused spell onto an object. Anyone can activate the inscription using your spellcasting stats and Spell DC. Inscriptions last until your next Daily Preparation. Maximum inscribed runes equal to your Mind.",
       "boons": [
         {
@@ -88,10 +75,7 @@
               "label": "Inscribe spell",
               "effect": {
                 "type": "spell",
-                "restriction": [
-                  "non_ritual",
-                  "non_focused"
-                ],
+                "restriction": ["non_ritual", "non_focused"],
                 "uses_caster_stats": true,
                 "duration": "until_daily_preparation"
               }
@@ -103,10 +87,7 @@
     {
       "id": "temperate_augmentations",
       "name": "Temperate Augmentations",
-      "tags": [
-        "Mage",
-        "Enchanter"
-      ],
+      "tags": ["Mage", "Enchanter"],
       "path": "enchanter",
       "tier": 2,
       "trait": "Utility",
@@ -117,9 +98,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "rune_carving"
-        ],
+        "feats": ["rune_carving"],
         "path_investment": {
           "path": "enchanter",
           "count": 1
@@ -130,10 +109,7 @@
         {
           "type": "apply_augmentation",
           "max_per_day": "Tier",
-          "changeable_during": [
-            "respite",
-            "daily_preparation"
-          ],
+          "changeable_during": ["respite", "daily_preparation"],
           "options": [
             {
               "value": "arcane_targeting",
@@ -186,10 +162,7 @@
             {
               "value": "spell_tuner",
               "label": "Spell Tuner",
-              "target_item": [
-                "weapon",
-                "accessory"
-              ],
+              "target_item": ["weapon", "accessory"],
               "boons": [
                 {
                   "type": "stat_bonus",
@@ -206,10 +179,7 @@
             {
               "value": "shield_weave",
               "label": "Shield Weave",
-              "target_item": [
-                "armor",
-                "shield"
-              ],
+              "target_item": ["armor", "shield"],
               "boons": [
                 {
                   "type": "stat_bonus",
@@ -221,10 +191,7 @@
             {
               "value": "spell_weave",
               "label": "Spell Weave",
-              "target_item": [
-                "armor",
-                "shield"
-              ],
+              "target_item": ["armor", "shield"],
               "boons": [
                 {
                   "type": "stat_bonus",
@@ -247,10 +214,7 @@
             {
               "value": "winged_boots",
               "label": "Winged Boots",
-              "target_item": [
-                "armor",
-                "accessory"
-              ],
+              "target_item": ["armor", "accessory"],
               "boons": []
             }
           ]
@@ -260,14 +224,11 @@
     {
       "id": "robes_of_the_magi",
       "name": "Robes of the Magi",
-      "tags": [
-        "Mage",
-        "Enchanter"
-      ],
+      "tags": ["Mage", "Enchanter"],
       "path": "enchanter",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -287,23 +248,18 @@
     {
       "id": "spellmote",
       "name": "Spellmote",
-      "tags": [
-        "Mage",
-        "Enchanter"
-      ],
+      "tags": ["Mage", "Enchanter"],
       "path": "enchanter",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "rune_carving"
-        ],
+        "feats": ["rune_carving"],
         "path_investment": {
           "path": "enchanter",
           "count": 3
@@ -326,10 +282,7 @@
                 },
                 "effect": "cast_all_stored_simultaneously",
                 "duration_hours": 24,
-                "prepare_during": [
-                  "respite",
-                  "daily_preparation"
-                ]
+                "prepare_during": ["respite", "daily_preparation"]
               }
             }
           ]

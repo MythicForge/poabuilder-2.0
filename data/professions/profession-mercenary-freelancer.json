@@ -7,10 +7,7 @@
     {
       "id": "blood_mettle",
       "name": "Blood Mettle",
-      "tags": [
-        "Mercenary",
-        "Freelancer"
-      ],
+      "tags": ["Mercenary", "Freelancer"],
       "path": "freelancer",
       "tier": 1,
       "trait": "Trigger",
@@ -33,14 +30,11 @@
     {
       "id": "known_reputation",
       "name": "Known Reputation",
-      "tags": [
-        "Mercenary",
-        "Freelancer"
-      ],
+      "tags": ["Mercenary", "Freelancer"],
       "path": "freelancer",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -59,14 +53,11 @@
     {
       "id": "fight_with_confidence",
       "name": "Fight with Confidence",
-      "tags": [
-        "Mercenary",
-        "Freelancer"
-      ],
+      "tags": ["Mercenary", "Freelancer"],
       "path": "freelancer",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -93,23 +84,18 @@
     {
       "id": "ambitious_drive",
       "name": "Ambitious Drive",
-      "tags": [
-        "Mercenary",
-        "Freelancer"
-      ],
+      "tags": ["Mercenary", "Freelancer"],
       "path": "freelancer",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "blood_mettle"
-        ],
+        "feats": ["blood_mettle"],
         "path_investment": {
           "path": "freelancer",
           "count": 0
@@ -128,23 +114,18 @@
     {
       "id": "marked_for_death",
       "name": "Marked for Death",
-      "tags": [
-        "Mercenary",
-        "Freelancer"
-      ],
+      "tags": ["Mercenary", "Freelancer"],
       "path": "freelancer",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "ambitious_drive"
-        ],
+        "feats": ["ambitious_drive"],
         "path_investment": {
           "path": "freelancer",
           "count": 3
@@ -164,10 +145,7 @@
     {
       "id": "intimidating_claim",
       "name": "Intimidating Claim",
-      "tags": [
-        "Mercenary",
-        "Freelancer"
-      ],
+      "tags": ["Mercenary", "Freelancer"],
       "path": "freelancer",
       "tier": 2,
       "trait": "Narrative",

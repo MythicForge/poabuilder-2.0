@@ -11,16 +11,24 @@
       "path": "herald",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "herald", "count": 0 }, "exclude_feats": ["ardent_retribution"] },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "herald", "count": 0 },
+        "exclude_feats": ["ardent_retribution"]
+      },
       "description": "Make a covenant channeling your Creed. You become a Full-caster: reservoir becomes (2 × Tier) + Modifier. Learn an additional Tier 1 spell. Gain access to the Reclamation sphere. Regained at dawn.",
       "boons": [
-        { "type": "upgrade_spellcasting", "caster_type": "full", "reservoir_formula": "(2 * Tier) + SpellMod" },
+        {
+          "type": "upgrade_spellcasting",
+          "caster_type": "full",
+          "reservoir_formula": "(2 * Tier) + SpellMod"
+        },
         { "type": "grants_known_spells", "count": 1, "tier": 1 },
         { "type": "grants_sphere", "sphere": "reclamation" }
       ]
@@ -38,10 +46,18 @@
       "duration": null,
       "uses": { "count": "2 * Tier", "recharge": "daily_preparation" },
       "feat_dc": null,
-      "prerequisites": { "feats": ["covenants_herald"], "path_investment": { "path": "herald", "count": 0 } },
+      "prerequisites": {
+        "feats": ["covenants_herald"],
+        "path_investment": { "path": "herald", "count": 0 }
+      },
       "description": "Restore Ambition equal to two times your Tier to yourself or willing creatures within range. Usable a total of (2 × Tier) times, refreshing at Daily Preparation.",
       "boons": [
-        { "type": "restore_resource", "resource": "ambition", "amount": "Tier * 2", "target": "self_or_willing_in_range" }
+        {
+          "type": "restore_resource",
+          "resource": "ambition",
+          "amount": "Tier * 2",
+          "target": "self_or_willing_in_range"
+        }
       ]
     },
     {
@@ -57,7 +73,10 @@
       "duration": null,
       "uses": { "count": "2 * Tier", "recharge": "daily_preparation" },
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "herald", "count": 0 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "herald", "count": 0 }
+      },
       "description": "Heal yourself or willing creatures within touch for Spellcasting Modifier + Ambition die Vitality. Usable a total of (2 × Tier) times, refreshing at Daily Preparation.",
       "boons": []
     },
@@ -68,24 +87,67 @@
       "path": "herald",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["covenants_herald"], "path_investment": { "path": "herald", "count": 0 } },
+      "prerequisites": {
+        "feats": ["covenants_herald"],
+        "path_investment": { "path": "herald", "count": 0 }
+      },
       "description": "Based on your Creed, gain access to a new Sphere of Magic and immediately learn two additional spells from it. These do not count against your known spells.",
       "boons": [
         {
           "type": "choice_conditional",
           "choice_key": "creed",
           "by_choice": {
-            "honor":    [{ "type": "grants_sphere", "sphere": "divination" },    { "type": "grants_known_spells", "count": 2, "from_sphere": "divination",    "counts_against_known": false }],
-            "serenity": [{ "type": "grants_sphere", "sphere": "reclamation" },   { "type": "grants_known_spells", "count": 2, "from_sphere": "reclamation",   "counts_against_known": false }],
-            "dominion": [{ "type": "grants_sphere", "sphere": "decimation" },    { "type": "grants_known_spells", "count": 2, "from_sphere": "decimation",    "counts_against_known": false }],
-            "entropy":  [{ "type": "grants_sphere", "sphere": "conjuration" },   { "type": "grants_known_spells", "count": 2, "from_sphere": "conjuration",   "counts_against_known": false }],
-            "paradox":  [{ "type": "grants_sphere", "sphere": "augmentation" },  { "type": "grants_known_spells", "count": 2, "from_sphere": "augmentation",  "counts_against_known": false }]
+            "honor": [
+              { "type": "grants_sphere", "sphere": "divination" },
+              {
+                "type": "grants_known_spells",
+                "count": 2,
+                "from_sphere": "divination",
+                "counts_against_known": false
+              }
+            ],
+            "serenity": [
+              { "type": "grants_sphere", "sphere": "reclamation" },
+              {
+                "type": "grants_known_spells",
+                "count": 2,
+                "from_sphere": "reclamation",
+                "counts_against_known": false
+              }
+            ],
+            "dominion": [
+              { "type": "grants_sphere", "sphere": "decimation" },
+              {
+                "type": "grants_known_spells",
+                "count": 2,
+                "from_sphere": "decimation",
+                "counts_against_known": false
+              }
+            ],
+            "entropy": [
+              { "type": "grants_sphere", "sphere": "conjuration" },
+              {
+                "type": "grants_known_spells",
+                "count": 2,
+                "from_sphere": "conjuration",
+                "counts_against_known": false
+              }
+            ],
+            "paradox": [
+              { "type": "grants_sphere", "sphere": "augmentation" },
+              {
+                "type": "grants_known_spells",
+                "count": 2,
+                "from_sphere": "augmentation",
+                "counts_against_known": false
+              }
+            ]
           }
         }
       ]
@@ -103,11 +165,24 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "herald", "count": 1 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "herald", "count": 1 }
+      },
       "description": "During a rest, guide up to Tier targets in meditation. They regain an additional 1d8 + Tier Vitality, and 1d4 + Tier to both Ambition and Reservoir.",
       "boons": [
-        { "type": "restore_resource", "resource": "ambition", "amount": "1d4 + Tier", "target": "meditation_participants" },
-        { "type": "restore_resource", "resource": "reservoir", "amount": "1d4 + Tier", "target": "meditation_participants" }
+        {
+          "type": "restore_resource",
+          "resource": "ambition",
+          "amount": "1d4 + Tier",
+          "target": "meditation_participants"
+        },
+        {
+          "type": "restore_resource",
+          "resource": "reservoir",
+          "amount": "1d4 + Tier",
+          "target": "meditation_participants"
+        }
       ]
     },
     {
@@ -117,24 +192,65 @@
       "path": "herald",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "herald", "count": 3 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "herald", "count": 3 }
+      },
       "description": "Your Creed grants a cantrip-centered boon. Each grants a spell usable as a cantrip (reduced range), per your Creed.",
       "boons": [
         {
           "type": "choice_conditional",
           "choice_key": "creed",
           "by_choice": {
-            "honor":    [{ "type": "grants_cantrip", "cantrip_id": "guidance",         "range_override": "Touch", "limit": "once_per_hour_per_target", "counts_against_known": false }],
-            "serenity": [{ "type": "grants_cantrip", "cantrip_id": "healing_word",      "range_override": "Touch", "limit": "once_per_hour_per_target", "counts_against_known": false }],
-            "dominion": [{ "type": "grants_cantrip", "cantrip_id": "turn_the_heretic",  "range_override": "Engagement_burst", "note": "On success, target immune for 1 hour.", "counts_against_known": false }],
-            "entropy":  [{ "type": "grants_cantrip", "cantrip_id": "grave_touch",       "range_override": "Touch", "counts_against_known": false }],
-            "paradox":  [{ "type": "grants_cantrip", "cantrip_id": "torment",           "range_override": "Touch", "counts_against_known": false }]
+            "honor": [
+              {
+                "type": "grants_cantrip",
+                "cantrip_id": "guidance",
+                "range_override": "Touch",
+                "limit": "once_per_hour_per_target",
+                "counts_against_known": false
+              }
+            ],
+            "serenity": [
+              {
+                "type": "grants_cantrip",
+                "cantrip_id": "healing_word",
+                "range_override": "Touch",
+                "limit": "once_per_hour_per_target",
+                "counts_against_known": false
+              }
+            ],
+            "dominion": [
+              {
+                "type": "grants_cantrip",
+                "cantrip_id": "turn_the_heretic",
+                "range_override": "Engagement_burst",
+                "note": "On success, target immune for 1 hour.",
+                "counts_against_known": false
+              }
+            ],
+            "entropy": [
+              {
+                "type": "grants_cantrip",
+                "cantrip_id": "grave_touch",
+                "range_override": "Touch",
+                "counts_against_known": false
+              }
+            ],
+            "paradox": [
+              {
+                "type": "grants_cantrip",
+                "cantrip_id": "torment",
+                "range_override": "Touch",
+                "counts_against_known": false
+              }
+            ]
           }
         }
       ]
@@ -146,19 +262,35 @@
       "path": "herald",
       "tier": 3,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": ["ascendant_boons"], "path_investment": { "path": "herald", "count": 4 } },
+      "prerequisites": {
+        "feats": ["ascendant_boons"],
+        "path_investment": { "path": "herald", "count": 4 }
+      },
       "description": "Gain an additional use of channel Creed per rest. You may also gain another Ascendant Boon from a different Creed (only the Ascendant Boon, none of that Creed's other benefits).",
       "boons": [
-        { "type": "upgrade_feat", "target_feat": "ascendant_boons", "patch": { "uses.count": "+1" } },
-        { "type": "choice", "key": "greater_covenant_second_creed", "prompt": "Choose a second Creed for its Ascendant Boon only", "options": [
-          { "value": "honor", "label": "Honor" }, { "value": "serenity", "label": "Serenity" }, { "value": "dominion", "label": "Dominion" }, { "value": "entropy", "label": "Entropy" }, { "value": "paradox", "label": "Paradox" }
-        ] }
+        {
+          "type": "upgrade_feat",
+          "target_feat": "ascendant_boons",
+          "patch": { "uses.count": "+1" }
+        },
+        {
+          "type": "choice",
+          "key": "greater_covenant_second_creed",
+          "prompt": "Choose a second Creed for its Ascendant Boon only",
+          "options": [
+            { "value": "honor", "label": "Honor" },
+            { "value": "serenity", "label": "Serenity" },
+            { "value": "dominion", "label": "Dominion" },
+            { "value": "entropy", "label": "Entropy" },
+            { "value": "paradox", "label": "Paradox" }
+          ]
+        }
       ]
     },
     {
@@ -168,13 +300,16 @@
       "path": "herald",
       "tier": 3,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": { "feats": [], "path_investment": { "path": "herald", "count": 3 } },
+      "prerequisites": {
+        "feats": [],
+        "path_investment": { "path": "herald", "count": 3 }
+      },
       "description": "During travel, your group cannot be surprised by those who are Anathema to your Creed. You can glimpse the cause of sacred places that are defiled, corrupted, or warded by spending 10 minutes in silent observation or prayer.",
       "boons": []
     }

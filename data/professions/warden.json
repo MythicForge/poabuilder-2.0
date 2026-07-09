@@ -2,10 +2,7 @@
   "id": "warden",
   "name": "Warden",
   "description": "Warriors who study magic to counter its dangers — mage hunters and neutralizers who blend martial skill with arcane knowledge. They disrupt enemy casters and shield allies from magical effects. Half-caster. Paths are the Watcher and the Vanguard.",
-  "favored_attributes": [
-    "Mind",
-    "Brawn"
-  ],
+  "favored_attributes": ["Mind", "Brawn"],
   "vitality": {
     "base": "9 + Brawn",
     "per_tier": "2d10",
@@ -20,40 +17,19 @@
     "skills": {
       "type": "choice",
       "count": 2,
-      "from": [
-        "Vigor",
-        "Intuition",
-        "Talent",
-        "Awareness"
-      ]
+      "from": ["Vigor", "Intuition", "Talent", "Awareness"]
     },
-    "armaments": [
-      "Catalysts",
-      "Simple",
-      "Finesse"
-    ],
-    "protection": [
-      "Light",
-      "Medium"
-    ],
+    "armaments": ["Catalysts", "Simple", "Finesse"],
+    "protection": ["Light", "Medium"],
     "tools": {
       "type": "choice",
       "count": 1,
-      "from": [
-        "Medicine",
-        "Scouting"
-      ]
+      "from": ["Medicine", "Scouting"]
     }
   },
   "starting_pack": {
-    "weapons": [
-      "simple_melee_choice",
-      "arcane_implement"
-    ],
-    "armor": [
-      "light_armor",
-      "shield"
-    ],
+    "weapons": ["simple_melee_choice", "arcane_implement"],
+    "armor": ["light_armor", "shield"],
     "kits": [],
     "inventory": [
       "magic_dampening_shackles",
@@ -93,9 +69,7 @@
     {
       "id": "spell_scourge",
       "name": "Spell Scourge",
-      "tags": [
-        "Warden"
-      ],
+      "tags": ["Warden"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -112,9 +86,7 @@
     {
       "id": "bound_armament",
       "name": "Bound Armament",
-      "tags": [
-        "Warden"
-      ],
+      "tags": ["Warden"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -134,9 +106,7 @@
           "grants": {
             "attack_modifier": "Mind",
             "damage_modifier": "Mind",
-            "traits": [
-              "spell_catalyst"
-            ],
+            "traits": ["spell_catalyst"],
             "proficient": true
           },
           "note": "New boon type — see rule-check.md. Referenced by Vanguard feats and Mercenary Manuscripts."
@@ -146,9 +116,7 @@
     {
       "id": "warden_order",
       "name": "Warden Order",
-      "tags": [
-        "Warden"
-      ],
+      "tags": ["Warden"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -192,18 +160,13 @@
             {
               "value": "inquisition",
               "label": "Inquisition",
-              "description": "Gain an additional Tool and V.I.T.A.L.S. proficiency. Roll with Resolve on the Scan action and on Intuition or Awareness checks involving Mortals.",
+              "description": "Gain an additional V.I.T.A.L.S. Expertise point. Roll with Resolve on the Scan action and on Intuition or Awareness checks involving Mortals.",
               "grants": {
                 "boons": [
                   {
                     "type": "proficiency",
-                    "category": "tool",
-                    "value": "one_of_choice"
-                  },
-                  {
-                    "type": "proficiency",
-                    "category": "skill",
-                    "value": "one_of_choice"
+                    "category": "expertise_points",
+                    "value": "1"
                   }
                 ]
               }
@@ -232,9 +195,7 @@
                 "boons": [
                   {
                     "type": "grants_known_spells",
-                    "spell_ids": [
-                      "protection-from-the-inhuman"
-                    ],
+                    "spell_ids": ["protection-from-the-inhuman"],
                     "counts_against_known": false
                   }
                 ]
@@ -247,10 +208,7 @@
     {
       "id": "spellcasting",
       "name": "Spellcasting",
-      "tags": [
-        "Warden",
-        "Spellcasting"
-      ],
+      "tags": ["Warden", "Spellcasting"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -290,13 +248,11 @@
     {
       "id": "arcane_shelter",
       "name": "Arcane Shelter",
-      "tags": [
-        "Warden"
-      ],
+      "tags": ["Warden"],
       "path": null,
       "tier": 1,
       "trait": "Trigger",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -327,13 +283,11 @@
     {
       "id": "volatile_shielding",
       "name": "Volatile Shielding",
-      "tags": [
-        "Warden"
-      ],
+      "tags": ["Warden"],
       "path": null,
       "tier": 2,
       "trait": "Trigger",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -342,9 +296,7 @@
         "recharge": "respite"
       },
       "feat_dc": null,
-      "prerequisites": [
-        "arcane_shelter"
-      ],
+      "prerequisites": ["arcane_shelter"],
       "description": "When you resist damage from Arcane Shelter, gain a temporary arcane ward: a Reduction Pool equal to (Tier × 2) + 2d6. When this ward is destroyed, it explodes, dealing 2d6 Arcane damage within Self range.",
       "boons": [
         {

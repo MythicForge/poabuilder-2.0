@@ -7,10 +7,7 @@
     {
       "id": "mana_strike",
       "name": "Mana Strike",
-      "tags": [
-        "Warden",
-        "Vanguard"
-      ],
+      "tags": ["Warden", "Vanguard"],
       "path": "vanguard",
       "tier": 1,
       "trait": "Narrative",
@@ -29,9 +26,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "bound_armament"
-        ],
+        "feats": ["bound_armament"],
         "path_investment": {
           "path": "vanguard",
           "count": 0
@@ -63,10 +58,7 @@
     {
       "id": "spell_rancor",
       "name": "Spell Rancor",
-      "tags": [
-        "Warden",
-        "Vanguard"
-      ],
+      "tags": ["Warden", "Vanguard"],
       "path": "vanguard",
       "tier": 1,
       "trait": "Trigger",
@@ -84,9 +76,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "mana_strike"
-        ],
+        "feats": ["mana_strike"],
         "path_investment": {
           "path": "vanguard",
           "count": 0
@@ -98,10 +88,7 @@
     {
       "id": "spell_parry",
       "name": "Spell Parry",
-      "tags": [
-        "Warden",
-        "Vanguard"
-      ],
+      "tags": ["Warden", "Vanguard"],
       "path": "vanguard",
       "tier": 1,
       "trait": "Trigger",
@@ -137,10 +124,7 @@
     {
       "id": "mystic_armament",
       "name": "Mystic Armament",
-      "tags": [
-        "Warden",
-        "Vanguard"
-      ],
+      "tags": ["Warden", "Vanguard"],
       "path": "vanguard",
       "tier": 2,
       "trait": "Utility",
@@ -153,10 +137,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "mana_strike",
-          "remnant_warrior"
-        ],
+        "feats": ["mana_strike", "remnant_warrior"],
         "path_investment": {
           "path": "vanguard",
           "count": 0
@@ -168,14 +149,11 @@
     {
       "id": "remnant_warrior",
       "name": "Remnant Warrior",
-      "tags": [
-        "Warden",
-        "Vanguard"
-      ],
+      "tags": ["Warden", "Vanguard"],
       "path": "vanguard",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -193,9 +171,7 @@
         {
           "type": "apply_augmentation",
           "max_per_day": "Tier",
-          "changeable_during": [
-            "daily_preparation"
-          ],
+          "changeable_during": ["daily_preparation"],
           "uses_no_slot": true,
           "learn_count": 1,
           "options": [
@@ -216,40 +192,28 @@
             {
               "value": "dissipation",
               "label": "Dissipation (Accessory/Weapon)",
-              "target_item": [
-                "accessory",
-                "weapon"
-              ],
+              "target_item": ["accessory", "weapon"],
               "description": "Once per rest, when a spell of equal Tier or less targets you, use your Maneuver to collapse it — roll Mind vs caster's DC; on success the spell fizzles.",
               "boons": []
             },
             {
               "value": "glint",
               "label": "Glint (Armor/Accessory)",
-              "target_item": [
-                "armor",
-                "accessory"
-              ],
+              "target_item": ["armor", "accessory"],
               "description": "Once per respite, reduce any damage by 1d12 and teleport 1 zone away.",
               "boons": []
             },
             {
               "value": "prism",
               "label": "Prism (Armor/Shield)",
-              "target_item": [
-                "armor",
-                "shield"
-              ],
+              "target_item": ["armor", "shield"],
               "description": "Once per respite, when you take elemental damage, gain Resistance to that element until the end of your next turn and may deal 2d4 of that element on your next attack.",
               "boons": []
             },
             {
               "value": "phoenix",
               "label": "Phoenix (Armor/Weapon)",
-              "target_item": [
-                "armor",
-                "weapon"
-              ],
+              "target_item": ["armor", "weapon"],
               "description": "Once per day, when you receive damage and gain Wounds, reduce the damage to 0 and drop to 1 Vitality instead.",
               "boons": []
             }
@@ -261,14 +225,11 @@
     {
       "id": "familiar_weapon",
       "name": "Familiar Weapon",
-      "tags": [
-        "Warden",
-        "Vanguard"
-      ],
+      "tags": ["Warden", "Vanguard"],
       "path": "vanguard",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,

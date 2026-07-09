@@ -7,14 +7,11 @@
     {
       "id": "signature_armor",
       "name": "Signature Armor",
-      "tags": [
-        "Fighter",
-        "Sentinel"
-      ],
+      "tags": ["Fighter", "Sentinel"],
       "path": "sentinel",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -104,10 +101,7 @@
     {
       "id": "defensive_stance",
       "name": "Defensive Stance",
-      "tags": [
-        "Fighter",
-        "Sentinel"
-      ],
+      "tags": ["Fighter", "Sentinel"],
       "path": "sentinel",
       "tier": 1,
       "trait": "Maneuver",
@@ -133,10 +127,7 @@
     {
       "id": "bulwark_maneuver",
       "name": "Bulwark Maneuver",
-      "tags": [
-        "Fighter",
-        "Sentinel"
-      ],
+      "tags": ["Fighter", "Sentinel"],
       "path": "sentinel",
       "tier": 1,
       "trait": "Maneuver",
@@ -167,9 +158,7 @@
           "type": "multi_choice",
           "key": "bulwark_maneuvers",
           "count": 2,
-          "expandable_by": [
-            "brace_for_impact"
-          ],
+          "expandable_by": ["brace_for_impact"],
           "options": [
             {
               "value": "bulwark_rally",
@@ -230,10 +219,7 @@
     {
       "id": "tactical_fortification",
       "name": "Tactical Fortification",
-      "tags": [
-        "Fighter",
-        "Sentinel"
-      ],
+      "tags": ["Fighter", "Sentinel"],
       "path": "sentinel",
       "tier": 2,
       "trait": "Trigger",
@@ -250,23 +236,18 @@
     {
       "id": "sentinel_armor",
       "name": "Sentinel Armor",
-      "tags": [
-        "Fighter",
-        "Sentinel"
-      ],
+      "tags": ["Fighter", "Sentinel"],
       "path": "sentinel",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "signature_armor"
-        ],
+        "feats": ["signature_armor"],
         "path_investment": {
           "path": "sentinel",
           "count": 3
@@ -329,23 +310,18 @@
     {
       "id": "brace_for_impact",
       "name": "Brace for Impact",
-      "tags": [
-        "Fighter",
-        "Sentinel"
-      ],
+      "tags": ["Fighter", "Sentinel"],
       "path": "sentinel",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "bulwark_maneuver"
-        ],
+        "feats": ["bulwark_maneuver"],
         "path_investment": {
           "path": "sentinel",
           "count": 1
@@ -374,10 +350,7 @@
     {
       "id": "mobile_fortress",
       "name": "Mobile Fortress",
-      "tags": [
-        "Fighter",
-        "Sentinel"
-      ],
+      "tags": ["Fighter", "Sentinel"],
       "path": "sentinel",
       "tier": 3,
       "trait": "Maneuver",
@@ -392,9 +365,7 @@
         "recharge": "respite"
       },
       "feat_dc": null,
-      "prerequisites": [
-        "sentinel_armor"
-      ],
+      "prerequisites": ["sentinel_armor"],
       "description": "Gain Disengage and Dash, and +3 Armor until end of your next turn. If a melee attack misses you while active, attempt a Shove. On critical miss, attempt a Trip instead.",
       "boons": [
         {
@@ -408,10 +379,7 @@
     {
       "id": "impervious_bastion",
       "name": "Impervious Bastion",
-      "tags": [
-        "Fighter",
-        "Sentinel"
-      ],
+      "tags": ["Fighter", "Sentinel"],
       "path": "sentinel",
       "tier": 3,
       "trait": "Trigger",
@@ -429,9 +397,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "sentinel_armor"
-        ],
+        "feats": ["sentinel_armor"],
         "path_investment": {
           "path": "sentinel",
           "count": 4
@@ -456,10 +422,7 @@
     {
       "id": "adaptive_fortress",
       "name": "Adaptive Fortress",
-      "tags": [
-        "Fighter",
-        "Sentinel"
-      ],
+      "tags": ["Fighter", "Sentinel"],
       "path": "sentinel",
       "tier": 3,
       "trait": "Utility",
@@ -473,9 +436,7 @@
       },
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "sentinel_armor"
-        ],
+        "feats": ["sentinel_armor"],
         "path_investment": {
           "path": "sentinel",
           "count": 4

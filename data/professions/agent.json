@@ -104,22 +104,19 @@
       "path": null,
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": [],
-      "description": "Select two V.I.T.A.L.S. skills to gain Expertise in (increased dice size).",
+      "description": "Gain two points to spend in Expertise on Skills",
       "boons": [
         {
-          "type": "choice",
-          "key": "skill_expert_skills",
-          "prompt": "Choose two skills to gain Expertise in",
-          "count": 2,
-          "options": [],
-          "grants": { "expertise": true }
+          "type": "proficiency",
+          "category": "expertise_points",
+          "value": "2"
         }
       ]
     },
@@ -147,31 +144,19 @@
       "path": null,
       "tier": 3,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": ["skill_expert"],
-      "description": "Choose either another V.I.T.A.L.S. skill to gain Proficiency and Expertise in, or upgrade a skill you already have Expertise in by another dice size.",
+      "description": "Gain two points to spend in Expertise on Skills",
       "boons": [
         {
-          "type": "choice",
-          "key": "masterful_skill_choice",
-          "prompt": "Choose a skill upgrade",
-          "options": [
-            {
-              "value": "new_skill",
-              "label": "New skill: Proficiency + Expertise",
-              "grants": { "proficiency": true, "expertise": true }
-            },
-            {
-              "value": "upgrade_skill",
-              "label": "Upgrade existing Expertise +1 die size",
-              "grants": { "dice_size_increase": 1 }
-            }
-          ]
+          "type": "proficiency",
+          "category": "expertise_points",
+          "value": "2"
         }
       ]
     }

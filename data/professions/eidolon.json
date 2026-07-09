@@ -2,9 +2,7 @@
   "id": "eidolon",
   "name": "Eidolon",
   "description": "Inheritors of ancient magical bloodlines who manipulate arcane energies with instinctive flair. Their magic operates on intuition and emotion rather than formula, letting them bend arcane rules. Full-caster. Paths are the Spellshaper and the Prodigy. (Source text also calls the class 'scion' — naming drift; verify.)",
-  "favored_attributes": [
-    "Will"
-  ],
+  "favored_attributes": ["Will"],
   "vitality": {
     "base": "8 + Brawn",
     "per_tier": "2d8",
@@ -20,38 +18,22 @@
     "skills": {
       "type": "choice",
       "count": 1,
-      "from": [
-        "Awareness",
-        "Lore",
-        "Social"
-      ]
+      "from": ["Awareness", "Lore", "Social"]
     },
-    "armaments": [
-      "Catalysts",
-      "one_of_choice"
-    ],
+    "armaments": ["Catalysts", "one_of_choice"],
     "protection": [],
     "tools": {
       "type": "choice",
       "count": 1,
-      "from": [
-        "Crafting",
-        "Engineering",
-        "Medicine"
-      ]
+      "from": ["Crafting", "Engineering", "Medicine"]
     }
   },
   "starting_pack": {
-    "weapons": [
-      "magic_wand",
-      "dagger_or_light_weapon_choice"
-    ],
-    "armor": [
-      "heritage_clothing"
-    ],
+    "weapons": ["magic_wand", "dagger_or_light_weapon_choice"],
+    "armor": ["heritage_clothing"],
     "kits": [],
     "inventory": [
-      "family_heirloom_minor_enchantment",
+      "family_heirloom_passive_enchantment",
       "nobles_signet_ring",
       "fine_clothing",
       "lineage_journal"
@@ -97,9 +79,7 @@
     {
       "id": "resonance",
       "name": "Resonance",
-      "tags": [
-        "Eidolon"
-      ],
+      "tags": ["Eidolon"],
       "path": null,
       "tier": 0,
       "trait": "Maneuver",
@@ -159,9 +139,7 @@
     {
       "id": "spell_shaping",
       "name": "Spell Shaping",
-      "tags": [
-        "Eidolon"
-      ],
+      "tags": ["Eidolon"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -214,10 +192,7 @@
     {
       "id": "spellcasting",
       "name": "Spellcasting",
-      "tags": [
-        "Eidolon",
-        "Spellcasting"
-      ],
+      "tags": ["Eidolon", "Spellcasting"],
       "path": null,
       "tier": 0,
       "trait": "Passive",
@@ -243,12 +218,7 @@
           "spell_dc": "10 + SpellTier + Will",
           "cantrips": {
             "max": 3,
-            "from": [
-              "mending-bond",
-              "starfall",
-              "starlight",
-              "radiant-dart"
-            ]
+            "from": ["mending-bond", "starfall", "starlight", "radiant-dart"]
           }
         }
       ]
@@ -256,13 +226,11 @@
     {
       "id": "expanded_resonance",
       "name": "Expanded Resonance",
-      "tags": [
-        "Eidolon"
-      ],
+      "tags": ["Eidolon"],
       "path": null,
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -341,13 +309,11 @@
     {
       "id": "magical_resonance",
       "name": "Magical Resonance",
-      "tags": [
-        "Eidolon"
-      ],
+      "tags": ["Eidolon"],
       "path": null,
       "tier": 2,
       "trait": "Trigger",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": {
         "resources": [
           {
@@ -360,9 +326,7 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": [
-        "expanded_resonance"
-      ],
+      "prerequisites": ["expanded_resonance"],
       "description": "Learn new spell shapes. You may now have four prepared spell shapes per day.",
       "boons": [
         {
@@ -424,9 +388,7 @@
     {
       "id": "resonant_ambition",
       "name": "Resonant Ambition",
-      "tags": [
-        "Eidolon"
-      ],
+      "tags": ["Eidolon"],
       "path": null,
       "tier": 3,
       "trait": "Utility",
@@ -441,10 +403,7 @@
         "recharge": "respite"
       },
       "feat_dc": null,
-      "prerequisites": [
-        "expanded_resonance",
-        "magical_resonance"
-      ],
+      "prerequisites": ["expanded_resonance", "magical_resonance"],
       "description": "Once per Respite, spend Ambition in place of Reservoir to create Resonance, and gain a new spell shape from either Expanded Resonance or Magical Resonance. (Source prerequisite 'Expanded Shapes' encoded as expanded_resonance; verify.)",
       "boons": [
         {
@@ -470,10 +429,7 @@
           "type": "grants_spell_shapes",
           "extends": "spell_shaping",
           "count": 1,
-          "from": [
-            "expanded_resonance",
-            "magical_resonance"
-          ]
+          "from": ["expanded_resonance", "magical_resonance"]
         }
       ]
     }

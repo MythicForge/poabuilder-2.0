@@ -7,10 +7,7 @@
     {
       "id": "woven_lies",
       "name": "Woven Lies",
-      "tags": [
-        "Mesmer",
-        "Weaver"
-      ],
+      "tags": ["Mesmer", "Weaver"],
       "path": "weaver",
       "tier": 1,
       "trait": "Utility",
@@ -35,10 +32,7 @@
     {
       "id": "crafted_stories",
       "name": "Crafted Stories",
-      "tags": [
-        "Mesmer",
-        "Weaver"
-      ],
+      "tags": ["Mesmer", "Weaver"],
       "path": "weaver",
       "tier": 1,
       "trait": "Narrative",
@@ -68,14 +62,11 @@
     {
       "id": "thread_weaving",
       "name": "Thread Weaving",
-      "tags": [
-        "Mesmer",
-        "Weaver"
-      ],
+      "tags": ["Mesmer", "Weaver"],
       "path": "weaver",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -134,14 +125,11 @@
     {
       "id": "heard_it_before",
       "name": "Heard It Before",
-      "tags": [
-        "Mesmer",
-        "Weaver"
-      ],
+      "tags": ["Mesmer", "Weaver"],
       "path": "weaver",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": "Engagement",
       "duration": null,
@@ -160,23 +148,18 @@
     {
       "id": "loom_threads",
       "name": "Loom Threads",
-      "tags": [
-        "Mesmer",
-        "Weaver"
-      ],
+      "tags": ["Mesmer", "Weaver"],
       "path": "weaver",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "thread_weaving"
-        ],
+        "feats": ["thread_weaving"],
         "path_investment": {
           "path": "weaver",
           "count": 2
@@ -208,10 +191,7 @@
     {
       "id": "puppeteer",
       "name": "Puppeteer",
-      "tags": [
-        "Mesmer",
-        "Weaver"
-      ],
+      "tags": ["Mesmer", "Weaver"],
       "path": "weaver",
       "tier": 2,
       "trait": "Trigger",
@@ -229,9 +209,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "thread_weaving"
-        ],
+        "feats": ["thread_weaving"],
         "path_investment": {
           "path": "weaver",
           "count": 0

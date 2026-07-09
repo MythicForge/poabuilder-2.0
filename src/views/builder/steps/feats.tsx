@@ -99,7 +99,7 @@ export function FeatsStep({ draft, update, computed }: StepProps) {
                 const cost = formatCost(f.cost);
                 const pills = starting ? [] : prereqPills(draft, f, REGISTRY);
                 return (
-                  <div key={f.id} className={`bld-exp-row${on ? " bld-exp-row--on" : ""}${blocked ? " bld-exp-row--blocked" : ""}`}>
+                  <div key={f.id} className={`bld-exp-row${on ? " bld-exp-row--on" : ""}${blocked ? " bld-exp-row--blocked" : ""}${open ? " bld-exp-row--open" : ""}`}>
                     <div className="bld-exp-row-head" onClick={() => setExpanded(open ? null : f.id)}>
                       <span className="bld-exp-row-name">{f.name}</span>
                       <span className="bld-exp-row-meta">

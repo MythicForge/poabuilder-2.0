@@ -7,14 +7,11 @@
     {
       "id": "arbiters_insight",
       "name": "Arbiter's Insight",
-      "tags": [
-        "Oathbound",
-        "Arbiter"
-      ],
+      "tags": ["Oathbound", "Arbiter"],
       "path": "arbiter",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -33,14 +30,11 @@
     {
       "id": "ardent_retribution",
       "name": "Ardent Retribution",
-      "tags": [
-        "Oathbound",
-        "Arbiter"
-      ],
+      "tags": ["Oathbound", "Arbiter"],
       "path": "arbiter",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -52,9 +46,7 @@
           "path": "arbiter",
           "count": 0
         },
-        "exclude_feats": [
-          "covenants_herald"
-        ]
+        "exclude_feats": ["covenants_herald"]
       },
       "description": "Gain proficiency in Medium Protection (or Heavy if you already have Medium). Gain access to Decimation spells. Based on your Creed, when you cast smite you may apply an effect once per Skirmish: Honor — the target is Blinded until the end of its turn; Serenity — gain Resistance to a chosen damage type until the start of your next turn; Dominion — set the smite's damage to 2d12 against Anathema targets; Entropy — on a critical hit, the target is Stunned until the end of its turn; Paradox — split the smite's damage between two targets within range.",
       "boons": [
@@ -73,10 +65,7 @@
     {
       "id": "aura_of_resolve",
       "name": "Aura of Resolve",
-      "tags": [
-        "Oathbound",
-        "Arbiter"
-      ],
+      "tags": ["Oathbound", "Arbiter"],
       "path": "arbiter",
       "tier": 1,
       "trait": "Narrative",
@@ -87,9 +76,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "ardent_retribution"
-        ],
+        "feats": ["ardent_retribution"],
         "path_investment": {
           "path": "arbiter",
           "count": 0
@@ -123,10 +110,7 @@
     {
       "id": "avowed_nemesis",
       "name": "Avowed Nemesis",
-      "tags": [
-        "Oathbound",
-        "Arbiter"
-      ],
+      "tags": ["Oathbound", "Arbiter"],
       "path": "arbiter",
       "tier": 2,
       "trait": "Narrative",
@@ -153,60 +137,35 @@
               {
                 "type": "choice",
                 "key": "nemesis",
-                "options": [
-                  "Deathless",
-                  "Mortals",
-                  "Monstrosities",
-                  "Occult"
-                ]
+                "options": ["Deathless", "Mortals", "Monstrosities", "Occult"]
               }
             ],
             "serenity": [
               {
                 "type": "choice",
                 "key": "nemesis",
-                "options": [
-                  "Deathless",
-                  "Forged",
-                  "Occult",
-                  "Wyrms"
-                ]
+                "options": ["Deathless", "Forged", "Occult", "Wyrms"]
               }
             ],
             "dominion": [
               {
                 "type": "choice",
                 "key": "nemesis",
-                "options": [
-                  "Monstrosities",
-                  "Primordial",
-                  "Wildlife",
-                  "Wyrms"
-                ]
+                "options": ["Monstrosities", "Primordial", "Wildlife", "Wyrms"]
               }
             ],
             "entropy": [
               {
                 "type": "choice",
                 "key": "nemesis",
-                "options": [
-                  "Eidolic",
-                  "Mortals",
-                  "Primordial",
-                  "Wildlife"
-                ]
+                "options": ["Eidolic", "Mortals", "Primordial", "Wildlife"]
               }
             ],
             "paradox": [
               {
                 "type": "choice",
                 "key": "nemesis",
-                "options": [
-                  "Eidolic",
-                  "Forged",
-                  "Occult",
-                  "Primordial"
-                ]
+                "options": ["Eidolic", "Forged", "Occult", "Primordial"]
               }
             ]
           }
@@ -216,10 +175,7 @@
     {
       "id": "devote_warding",
       "name": "Devote Warding",
-      "tags": [
-        "Oathbound",
-        "Arbiter"
-      ],
+      "tags": ["Oathbound", "Arbiter"],
       "path": "arbiter",
       "tier": 2,
       "trait": "Utility",
@@ -248,12 +204,7 @@
       "boons": [
         {
           "type": "cure_condition",
-          "conditions": [
-            "BLD",
-            "CRP",
-            "PSN",
-            "SAP"
-          ],
+          "conditions": ["BLD", "CRP", "PSN", "SAP"],
           "cost_per_condition": {
             "resources": [
               {
@@ -269,23 +220,18 @@
     {
       "id": "aura_of_creed",
       "name": "Aura of Creed",
-      "tags": [
-        "Oathbound",
-        "Arbiter"
-      ],
+      "tags": ["Oathbound", "Arbiter"],
       "path": "arbiter",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "aura_of_resolve"
-        ],
+        "feats": ["aura_of_resolve"],
         "path_investment": {
           "path": "arbiter",
           "count": 2
@@ -297,10 +243,7 @@
     {
       "id": "will_of_the_warrior",
       "name": "Will of The Warrior",
-      "tags": [
-        "Oathbound",
-        "Arbiter"
-      ],
+      "tags": ["Oathbound", "Arbiter"],
       "path": "arbiter",
       "tier": 3,
       "trait": "Trigger",
@@ -333,10 +276,7 @@
     {
       "id": "mark_of_judgement",
       "name": "Mark of Judgement",
-      "tags": [
-        "Oathbound",
-        "Arbiter"
-      ],
+      "tags": ["Oathbound", "Arbiter"],
       "path": "arbiter",
       "tier": 3,
       "trait": "Utility",
@@ -349,9 +289,7 @@
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "avowed_nemesis"
-        ],
+        "feats": ["avowed_nemesis"],
         "path_investment": {
           "path": "arbiter",
           "count": 3

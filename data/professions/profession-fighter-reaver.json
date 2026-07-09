@@ -7,10 +7,7 @@
     {
       "id": "war_tactics",
       "name": "War Tactics",
-      "tags": [
-        "Fighter",
-        "Reaver"
-      ],
+      "tags": ["Fighter", "Reaver"],
       "path": "reaver",
       "tier": 1,
       "trait": "Narrative",
@@ -69,14 +66,11 @@
     {
       "id": "weapon_familiarity",
       "name": "Weapon Familiarity",
-      "tags": [
-        "Fighter",
-        "Reaver"
-      ],
+      "tags": ["Fighter", "Reaver"],
       "path": "reaver",
       "tier": 1,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
@@ -89,10 +83,7 @@
     {
       "id": "disciplined_strike",
       "name": "Disciplined Strike",
-      "tags": [
-        "Fighter",
-        "Reaver"
-      ],
+      "tags": ["Fighter", "Reaver"],
       "path": "reaver",
       "tier": 1,
       "trait": "Offensive",
@@ -123,9 +114,7 @@
           "type": "multi_choice",
           "key": "disciplined_strikes",
           "count": 2,
-          "expandable_by": [
-            "weapon_mastery"
-          ],
+          "expandable_by": ["weapon_mastery"],
           "options": [
             {
               "value": "accurate_wound",
@@ -170,10 +159,7 @@
     {
       "id": "warriors_spirit",
       "name": "Warrior's Spirit",
-      "tags": [
-        "Fighter",
-        "Reaver"
-      ],
+      "tags": ["Fighter", "Reaver"],
       "path": "reaver",
       "tier": 2,
       "trait": "Utility",
@@ -240,10 +226,7 @@
     {
       "id": "opportunistic_strike",
       "name": "Opportunistic Strike",
-      "tags": [
-        "Fighter",
-        "Reaver"
-      ],
+      "tags": ["Fighter", "Reaver"],
       "path": "reaver",
       "tier": 2,
       "trait": "Trigger",
@@ -262,23 +245,18 @@
     {
       "id": "weapon_mastery",
       "name": "Weapon Mastery",
-      "tags": [
-        "Fighter",
-        "Reaver"
-      ],
+      "tags": ["Fighter", "Reaver"],
       "path": "reaver",
       "tier": 2,
       "trait": "Passive",
-      "slot_type": "minor",
+      "slot_type": "passive",
       "cost": null,
       "range": null,
       "duration": null,
       "uses": null,
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "disciplined_strike"
-        ],
+        "feats": ["disciplined_strike"],
         "path_investment": {
           "path": "reaver",
           "count": 2
@@ -304,10 +282,7 @@
     {
       "id": "relentless_critical",
       "name": "Relentless Critical",
-      "tags": [
-        "Fighter",
-        "Reaver"
-      ],
+      "tags": ["Fighter", "Reaver"],
       "path": "reaver",
       "tier": 3,
       "trait": "Trigger",
@@ -321,9 +296,7 @@
       },
       "feat_dc": null,
       "prerequisites": {
-        "feats": [
-          "weapon_mastery"
-        ],
+        "feats": ["weapon_mastery"],
         "path_investment": {
           "path": "reaver",
           "count": 4
@@ -395,10 +368,7 @@
     {
       "id": "flurry",
       "name": "Flurry",
-      "tags": [
-        "Fighter",
-        "Reaver"
-      ],
+      "tags": ["Fighter", "Reaver"],
       "path": "reaver",
       "tier": 3,
       "trait": "Offensive",
@@ -423,10 +393,7 @@
     {
       "id": "onslaught",
       "name": "Onslaught",
-      "tags": [
-        "Fighter",
-        "Reaver"
-      ],
+      "tags": ["Fighter", "Reaver"],
       "path": "reaver",
       "tier": 3,
       "trait": "Offensive",
@@ -444,10 +411,7 @@
       "duration": null,
       "uses": null,
       "feat_dc": null,
-      "prerequisites": [
-        "flurry",
-        "weapon_mastery"
-      ],
+      "prerequisites": ["flurry", "weapon_mastery"],
       "description": "Your next attack action increases your weapon dice size by one step. If using 1d12, it changes to 2d8.",
       "boons": []
     }
