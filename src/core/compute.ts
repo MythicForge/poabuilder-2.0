@@ -95,16 +95,26 @@ function skillPool(
   skill: SkillName,
   stored: StoredCharacter,
   attrs: Record<AttributeKey, number>,
-  granted: { proficiencies: string[]; expertise: Record<string, number> } = { proficiencies: [], expertise: {} },
+  granted: { proficiencies: string[]; expertise: Record<string, number> } = {
+    proficiencies: [],
+    expertise: {},
+  },
 ): SkillPoolInfo {
   const s = stored.build.skills;
   const attrValue = skillAttrValue(skill, attrs);
   const baseDiceCount = baseDiceFromAttr(attrValue);
   // Feat-granted proficiency/expertise stack onto the player's spent picks;
   // granted expertise is free (never added to the budget's spent total).
-  const effProficiencies = granted.proficiencies.length ? [...s.proficiencies, ...granted.proficiencies] : s.proficiencies;
+  const effProficiencies = granted.proficiencies.length
+    ? [...s.proficiencies, ...granted.proficiencies]
+    : s.proficiencies;
   const grantedBump = granted.expertise[skill] ?? 0;
-  const effBumps = grantedBump ? { ...s.expertise_bumps, [skill]: (s.expertise_bumps[skill] ?? 0) + grantedBump } : s.expertise_bumps;
+  const effBumps = grantedBump
+    ? {
+        ...s.expertise_bumps,
+        [skill]: (s.expertise_bumps[skill] ?? 0) + grantedBump,
+      }
+    : s.expertise_bumps;
   const rank = skillRank(skill, effProficiencies, effBumps);
   const faces = profDieSize(rank);
   const skillDiceCount = s.points[skill] ?? 0;
@@ -162,7 +172,11 @@ export interface WeaponCombat {
  */
 export function deriveWeaponCombat(
   cat: CatalogItem,
-  ctx: { attributes: Record<AttributeKey, number>; tier: number; armaments: string[] },
+  ctx: {
+    attributes: Record<AttributeKey, number>;
+    tier: number;
+    armaments: string[];
+  },
 ): WeaponCombat | null {
   if (cat.category !== "Weapon") return null;
   const raw = String(cat.modifier ?? "").trim();
@@ -202,6 +216,20 @@ function armorBonusOf(cat: CatalogItem): number {
   return 0;
 }
 
+// A shield only grants its Armor bonus when the character is proficient with it:
+// they must have the general Shield proficiency AND be proficient with the
+// shield's weight tier (heavier protection covers lighter). A shield with no
+// declared armor_type (e.g. improvised) needs only the general proficiency.
+const SHIELD_WEIGHTS = ["Light", "Medium", "Heavy"];
+function shieldUsable(protection: string[], shieldCat: CatalogItem): boolean {
+  const hasShieldProf = protection.some((p) => /^shields?$/i.test(p.trim()));
+  if (!hasShieldProf) return false;
+  const weight = String(shieldCat.armor_type ?? "").trim();
+  const need = SHIELD_WEIGHTS.indexOf(weight);
+  if (need < 0) return true; // no weight tier ⇒ general proficiency suffices
+  return protection.some((p) => SHIELD_WEIGHTS.indexOf(p.trim()) >= need);
+}
+
 // ── Armor defense (caps & flags sourced from data/shared/equipment-rules.json) ─
 
 interface CatRule {
@@ -219,7 +247,7 @@ const DEFAULT_ARMOR_RULES: ArmorRules = {
   categories: {
     Heavy: { stat_cap: 5, shield_allowed: true, agile: false },
     Medium: { stat_cap: 3, shield_allowed: true, agile: false },
-    Light: { stat_cap: 5, shield_allowed: false, agile: true },
+    Light: { stat_cap: 5, shield_allowed: true, agile: true },
     Unarmored: { stat_cap: null, shield_allowed: true, agile: true },
   },
 };
@@ -260,15 +288,16 @@ function armorDefense(
   attrs: Record<AttributeKey, number>,
   tier: number,
   hasAgile: boolean,
+  shieldOk: boolean,
   rules: ArmorRules,
 ): { value: number; line: string } {
   const base = rules.base;
-  const shieldBonus = eq.shield ? armorBonusOf(eq.shield.cat) : 0;
+  const shieldBonus = shieldOk && eq.shield ? armorBonusOf(eq.shield.cat) : 0;
 
   if (!eq.armor) {
     const c = rules.categories.Unarmored;
     const agile = hasAgile && c.agile ? tier : 0;
-    const shield = c.shield_allowed ? shieldBonus : 0;
+    const shield = shieldBonus;
     return {
       value: base + attrs.finesse + shield + agile,
       line: `Unarmored: ${base} + Finesse ${attrs.finesse}${shield ? ` + shield ${shield}` : ""}${agile ? ` + Agile ${agile}` : ""}`,
@@ -281,7 +310,7 @@ function armorDefense(
   const type = String(cat.armor_type ?? "Light");
   const c = rules.categories[type] ?? rules.categories.Light;
 
-  const shield = c.shield_allowed ? shieldBonus : 0;
+  const shield = shieldBonus;
   const statKey: AttributeKey =
     type === "Heavy"
       ? "brawn"
@@ -571,7 +600,9 @@ function computeSpellcasting(
   // sources: the grant's resource-id source ("mana", "primeval", …) capitalized
   // to match Spell.sources tags ("Mana", "Primeval", …). No boon currently
   // grants an additional source — single-source v1.
-  const sources = source ? [source.charAt(0).toUpperCase() + source.slice(1)] : [];
+  const sources = source
+    ? [source.charAt(0).toUpperCase() + source.slice(1)]
+    : [];
 
   // grants_cantrip — free cantrips (counts_against_known:false) raise the allowance
   const cantrips = grant.cantrips as { max?: number } | undefined;
@@ -815,10 +846,55 @@ export function computeCharacter(
   // Feat-granted expertise (Skill Expert, Masterful Skill, …): extra budget
   // points and/or free ranks in named skills. Fed into the budget + skillPool.
   const expGrants = featExpertiseGrants(activeBoons);
-  const grantedSkills = { proficiencies: [] as string[], expertise: expGrants.gained };
+  const grantedSkills = {
+    proficiencies: [] as string[],
+    expertise: expGrants.gained,
+  };
+
+  // proficiencies (profession base + feat/creed grants). Computed before armor
+  // defense so shield eligibility can gate on protection proficiency.
+  const profs = {
+    armaments: profession?.proficiencies.armaments ?? [],
+    protection: profession?.proficiencies.protection ?? [],
+    tools: Array.isArray(profession?.proficiencies.tools)
+      ? profession.proficiencies.tools
+      : [],
+  };
+  // Feat/creed proficiency grants. Data shape is { category, value }
+  // (e.g. Oathbound Dominion creed → armaments "Martial", protection "Medium").
+  // Legacy `grants` string form still maps onto armaments.
+  const addProf = (list: string[], value: string): string[] => {
+    // "A_or_B" → B if A already held, else A (e.g. Arbiter "Medium_or_Heavy").
+    if (value.includes("_or_")) {
+      const [first, second] = value.split("_or_");
+      const pick = list.includes(first) ? second : first;
+      return list.includes(pick) ? list : [...list, pick];
+    }
+    return list.includes(value) ? list : [...list, value];
+  };
+  for (const { boon } of activeBoons) {
+    if (boon.type !== "proficiency") continue;
+    if (typeof boon.grants === "string") {
+      profs.armaments = addProf(profs.armaments, boon.grants);
+      continue;
+    }
+    const cat = String(boon.category ?? "").toLowerCase();
+    const value = typeof boon.value === "string" ? boon.value : "";
+    if (!value) continue;
+    if (cat === "armaments" || cat === "armament")
+      profs.armaments = addProf(profs.armaments, value);
+    else if (cat === "protection")
+      profs.protection = addProf(profs.protection, value);
+    else if (cat === "tool" || cat === "tools")
+      profs.tools = addProf(profs.tools, value);
+    // expertise_points / expertise_gained handled in skill-grants.ts
+  }
 
   // equipment + condition context (slot-aware; independent of attributes)
   const eq = equipped(stored, reg);
+  const shieldOk = eq.shield
+    ? shieldUsable(profs.protection, eq.shield.cat)
+    : false;
   const armorRules = parseArmorRules(reg);
   const rawArmorType = eq.armor ? String(eq.armor.cat.armor_type ?? "") : "";
   const condCtx: ConditionCtx = {
@@ -869,12 +945,29 @@ export function computeCharacter(
   env.light_armor_bonus =
     condCtx.armorType === "Light" ? armorBonusVal + masterworkVal : 0;
 
+  const offHandHasLight = (eq.weapons[1]?.cat?.traits ?? []).some(
+    (tr) => String(tr?.name ?? "").toLowerCase() === "light",
+  );
   if (
     eq.weapons.length >= 2 &&
     !isTwoHanded(eq.weapons[0]?.cat ?? null) &&
+    !offHandHasLight &&
     !canDualWield(activeBoons)
   ) {
-    warnings.push("Dual-wielding without a boon that allows it");
+    warnings.push(
+      "Dual-wielding without a boon that allows it, attacks made with disadvantage.",
+    );
+  }
+
+  if (
+    eq.weapons.length >= 2 &&
+    !isTwoHanded(eq.weapons[0]?.cat ?? null) &&
+    !offHandHasLight &&
+    !canDualWield(activeBoons)
+  ) {
+    warnings.push(
+      "Off hand attack rolls with Disadvantage, as it is no Light Trait",
+    );
   }
   const hasAgile =
     activeBoons.some(
@@ -932,7 +1025,7 @@ export function computeCharacter(
   // Armor: standard equipment defense vs active alternate_defense boons —
   // highest wins (P3, kills the old name-substring matching). Losers still
   // render on their feat cards.
-  const std = armorDefense(eq, attrs, tier, hasAgile, armorRules);
+  const std = armorDefense(eq, attrs, tier, hasAgile, shieldOk, armorRules);
   let armorVal = std.value;
   let armorLine = std.line;
   for (const { boon, source } of activeBoons) {
@@ -1099,24 +1192,11 @@ export function computeCharacter(
     Math.floor(b.feats_purchased / 2) *
       reg.tierProgression.skill_point_per_even_feat;
   const skillSpent = Object.values(b.skills.points).reduce((s, n) => s + n, 0);
-  const expertiseEarned = (tier - 1) + expGrants.points;
+  const expertiseEarned = tier - 1 + expGrants.points;
   const expertiseSpent = Object.values(b.skills.expertise_bumps).reduce(
     (s, n) => s + n,
     0,
   );
-
-  // proficiencies
-  const profs = {
-    armaments: profession?.proficiencies.armaments ?? [],
-    protection: profession?.proficiencies.protection ?? [],
-    tools: Array.isArray(profession?.proficiencies.tools)
-      ? profession.proficiencies.tools
-      : [],
-  };
-  for (const { boon } of activeBoons) {
-    if (boon.type === "proficiency" && typeof boon.grants === "string")
-      profs.armaments = [...profs.armaments, boon.grants];
-  }
 
   // equipped shield's damage pool. Max comes from the catalog reduction_pool;
   // current persists on the inventory item (null ⇒ full). Fragile shields break

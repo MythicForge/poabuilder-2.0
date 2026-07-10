@@ -12,9 +12,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Universal"
-      ],
+      "sources": ["Universal"],
       "range": "Self",
       "duration": "8 hours",
       "cost": 1,
@@ -28,9 +26,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Anima"
-      ],
+      "sources": ["Anima"],
       "range": "Close",
       "duration": "10 minutes",
       "cost": 1,
@@ -49,9 +45,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Mana"
-      ],
+      "sources": ["Mana"],
       "range": "Touch",
       "duration": "10 minutes",
       "cost": 1,
@@ -65,9 +59,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Mana"
-      ],
+      "sources": ["Mana"],
       "range": "Far",
       "duration": "Instant",
       "cost": 1,
@@ -75,7 +67,7 @@
       "description": "You unleash arcane energy in the form of **three** thin needles that explode on a target. Roll 1d4 **Arcane** damage per needle. This spell automatically hits; roll only to determine whether each hit becomes a **critical** hit.",
       "amps": [
         {
-          "cost": "+1",
+          "cost": "+2",
           "effect": "Form one additional needle per Amp (Max 3)",
           "stackable": true,
           "stack_max": 3
@@ -88,10 +80,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Anima",
-        "Mana"
-      ],
+      "sources": ["Anima", "Mana"],
       "range": "Self",
       "duration": "1 hour",
       "cost": 1,
@@ -116,10 +105,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Soul",
-        "Primeval"
-      ],
+      "sources": ["Soul", "Primeval"],
       "range": "Close",
       "duration": "1 Round",
       "cost": 1,
@@ -138,10 +124,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Soul",
-        "Anima"
-      ],
+      "sources": ["Soul", "Anima"],
       "range": "Nearby",
       "duration": "Instant",
       "cost": 1,
@@ -162,10 +145,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Soul",
-        "Anima"
-      ],
+      "sources": ["Soul", "Anima"],
       "range": "Nearby",
       "duration": "Instant",
       "cost": 1,
@@ -184,9 +164,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Primeval"
-      ],
+      "sources": ["Primeval"],
       "range": "Self",
       "duration": "10 minutes",
       "cost": 1,
@@ -200,10 +178,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Soul",
-        "Primeval"
-      ],
+      "sources": ["Soul", "Primeval"],
       "range": "Touch",
       "duration": "Instant",
       "cost": 1,
@@ -224,9 +199,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Nearby",
       "duration": "(Focused)",
       "cost": 1,
@@ -249,9 +222,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Universal"
-      ],
+      "sources": ["Universal"],
       "range": "Self",
       "duration": "Instant",
       "cost": 1,
@@ -270,9 +241,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Universal"
-      ],
+      "sources": ["Universal"],
       "range": "Self",
       "duration": "Instant",
       "cost": 1,
@@ -286,10 +255,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Mana",
-        "Soul"
-      ],
+      "sources": ["Mana", "Soul"],
       "range": "Self",
       "duration": "10 Minutes (Focused)",
       "cost": 1,
@@ -303,10 +269,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Mana",
-        "Primeval"
-      ],
+      "sources": ["Mana", "Primeval"],
       "range": "Far",
       "duration": "10 rounds",
       "cost": 1,
@@ -325,9 +288,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Anima"
-      ],
+      "sources": ["Anima"],
       "range": "Close",
       "duration": "1 round",
       "cost": 1,
@@ -341,9 +302,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Primeval"
-      ],
+      "sources": ["Primeval"],
       "range": "Self",
       "duration": "1 hour",
       "cost": 1,
@@ -357,10 +316,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Anima",
-        "Primeval"
-      ],
+      "sources": ["Anima", "Primeval"],
       "range": "Close",
       "duration": "Instant",
       "cost": 1,
@@ -381,9 +337,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Universal"
-      ],
+      "sources": ["Universal"],
       "range": "Self",
       "duration": "1 hour (Focused)",
       "cost": 1,
@@ -397,9 +351,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Universal"
-      ],
+      "sources": ["Universal"],
       "range": "Self",
       "duration": "1 minute",
       "cost": 1,
@@ -413,11 +365,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Mana",
-        "Primeval",
-        "Anima"
-      ],
+      "sources": ["Mana", "Primeval", "Anima"],
       "range": "Self",
       "duration": "30 seconds",
       "cost": 1,
@@ -431,9 +379,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Anima"
-      ],
+      "sources": ["Anima"],
       "range": "Close",
       "duration": "Instant",
       "cost": 1,
@@ -447,10 +393,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Mana",
-        "Soul"
-      ],
+      "sources": ["Mana", "Soul"],
       "range": "Touch",
       "duration": "1 minute",
       "cost": 1,
@@ -477,10 +420,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Mana",
-        "Soul"
-      ],
+      "sources": ["Mana", "Soul"],
       "range": "Close",
       "duration": "Instant",
       "cost": 1,
@@ -501,10 +441,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Soul",
-        "Primeval"
-      ],
+      "sources": ["Soul", "Primeval"],
       "range": "Close",
       "duration": "1 hour (Focused)",
       "cost": 1,
@@ -518,11 +455,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Soul",
-        "Primeval",
-        "Anima"
-      ],
+      "sources": ["Soul", "Primeval", "Anima"],
       "range": "Nearby",
       "duration": "Instant",
       "cost": 1,
@@ -547,10 +480,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Mana",
-        "Primeval"
-      ],
+      "sources": ["Mana", "Primeval"],
       "range": "Self",
       "duration": "Instant",
       "cost": 1,
@@ -569,9 +499,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Primeval"
-      ],
+      "sources": ["Primeval"],
       "range": "Close",
       "duration": "3 rounds",
       "cost": 1,
@@ -594,9 +522,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Universal"
-      ],
+      "sources": ["Universal"],
       "range": "Self",
       "duration": "1 minute",
       "cost": 1,
@@ -610,10 +536,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Anima",
-        "Mana"
-      ],
+      "sources": ["Anima", "Mana"],
       "range": "Close",
       "duration": "Instant",
       "cost": 1,
@@ -634,9 +557,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Universal"
-      ],
+      "sources": ["Universal"],
       "range": "Close",
       "duration": "1 hour",
       "cost": 1,
@@ -650,9 +571,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Universal"
-      ],
+      "sources": ["Universal"],
       "range": "Self",
       "duration": "Instant",
       "cost": 1,
@@ -666,10 +585,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Mana",
-        "Primeval"
-      ],
+      "sources": ["Mana", "Primeval"],
       "range": "Self",
       "duration": "(Focused)",
       "cost": 1,
@@ -683,10 +599,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Soul",
-        "Primeval"
-      ],
+      "sources": ["Soul", "Primeval"],
       "range": "Touch",
       "duration": "10 Minutes (Focused)",
       "cost": 1,
@@ -705,10 +618,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Mana",
-        "Soul"
-      ],
+      "sources": ["Mana", "Soul"],
       "range": "Close",
       "duration": "1 Minute (Focused)",
       "cost": 1,
@@ -722,10 +632,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Mana",
-        "Anima"
-      ],
+      "sources": ["Mana", "Anima"],
       "range": "Far",
       "duration": "Instant",
       "cost": 1,
@@ -739,11 +646,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Anima",
-        "Soul",
-        "Primeval"
-      ],
+      "sources": ["Anima", "Soul", "Primeval"],
       "range": "Touch",
       "duration": "Instant",
       "cost": 1,
@@ -757,10 +660,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Mana",
-        "Anima"
-      ],
+      "sources": ["Mana", "Anima"],
       "range": "Close",
       "duration": "Instant",
       "cost": 1,
@@ -774,10 +674,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Anima",
-        "Mana"
-      ],
+      "sources": ["Anima", "Mana"],
       "range": "Touch",
       "duration": "3 rounds",
       "cost": 1,
@@ -796,9 +693,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Anima"
-      ],
+      "sources": ["Anima"],
       "range": "Close",
       "duration": "Instant",
       "cost": 1,
@@ -812,10 +707,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Soul",
-        "Anima"
-      ],
+      "sources": ["Soul", "Anima"],
       "range": "Touch",
       "duration": "Instant",
       "cost": 1,
@@ -836,10 +728,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Soul",
-        "Anima"
-      ],
+      "sources": ["Soul", "Anima"],
       "range": "Nearby",
       "duration": "Instant",
       "cost": 1,
@@ -853,10 +742,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Mana",
-        "Primeval"
-      ],
+      "sources": ["Mana", "Primeval"],
       "range": "~1 mile / ~1.5 km",
       "duration": "Instant",
       "cost": 1,
@@ -879,9 +765,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Mana"
-      ],
+      "sources": ["Mana"],
       "range": "Self",
       "duration": "10 seconds",
       "cost": 1,
@@ -895,9 +779,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Nearby",
       "duration": "1 minute",
       "cost": 1,
@@ -911,11 +793,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Mana",
-        "Soul",
-        "Anima"
-      ],
+      "sources": ["Mana", "Soul", "Anima"],
       "range": "Nearby",
       "duration": "1 minute",
       "cost": 1,
@@ -929,9 +807,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Universal"
-      ],
+      "sources": ["Universal"],
       "range": "Self",
       "duration": "2 minutes",
       "cost": 1,
@@ -945,9 +821,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Close",
       "duration": "Instant",
       "cost": 1,
@@ -961,9 +835,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Universal"
-      ],
+      "sources": ["Universal"],
       "range": "Self",
       "duration": "8 hours",
       "cost": 1,
@@ -977,10 +849,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Mana",
-        "Primeval"
-      ],
+      "sources": ["Mana", "Primeval"],
       "range": "Self",
       "duration": "24 hours",
       "cost": 1,
@@ -994,9 +863,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Self",
       "duration": "1 hour (Focused)",
       "cost": 1,
@@ -1019,9 +886,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Close",
       "duration": "1 Minute",
       "cost": 1,
@@ -1046,10 +911,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Mana",
-        "Primeval"
-      ],
+      "sources": ["Mana", "Primeval"],
       "range": "Touch",
       "duration": "Instant",
       "cost": 1,
@@ -1063,9 +925,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Anima"
-      ],
+      "sources": ["Anima"],
       "range": "Close",
       "duration": "2 rounds",
       "cost": 1,
@@ -1079,9 +939,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Oathbound"
-      ],
+      "sources": ["Oathbound"],
       "range": "Close",
       "duration": "Instant",
       "cost": 1,
@@ -1100,9 +958,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Primeval"
-      ],
+      "sources": ["Primeval"],
       "range": "Self",
       "duration": "1 Round",
       "cost": 1,
@@ -1121,9 +977,7 @@
       "tier": 1,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Anima"
-      ],
+      "sources": ["Anima"],
       "range": "Close",
       "duration": "Instant",
       "cost": 1,
@@ -1142,9 +996,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Universal"
-      ],
+      "sources": ["Universal"],
       "range": "Self",
       "duration": "1 minute",
       "cost": 2,
@@ -1163,9 +1015,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Mana"
-      ],
+      "sources": ["Mana"],
       "range": "Far",
       "duration": "30 seconds",
       "cost": 2,
@@ -1184,10 +1034,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Mana",
-        "Anima"
-      ],
+      "sources": ["Mana", "Anima"],
       "range": "Beyond",
       "duration": "8 hours (Focused)",
       "cost": 2,
@@ -1201,9 +1048,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Primeval"
-      ],
+      "sources": ["Primeval"],
       "range": "Close",
       "duration": "Instant",
       "cost": 2,
@@ -1217,10 +1062,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Soul",
-        "Primeval"
-      ],
+      "sources": ["Soul", "Primeval"],
       "range": "Self",
       "duration": "Instant",
       "cost": 2,
@@ -1239,10 +1081,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Primeval",
-        "Soul"
-      ],
+      "sources": ["Primeval", "Soul"],
       "range": "Beyond",
       "duration": "8 hours (Focused)",
       "cost": 2,
@@ -1261,10 +1100,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Soul",
-        "Primeval"
-      ],
+      "sources": ["Soul", "Primeval"],
       "range": "Close",
       "duration": "Instant",
       "cost": 2,
@@ -1285,10 +1121,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Mana",
-        "Primeval"
-      ],
+      "sources": ["Mana", "Primeval"],
       "range": "Self",
       "duration": "24 Hours",
       "cost": 2,
@@ -1307,10 +1140,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Primeval",
-        "Mana"
-      ],
+      "sources": ["Primeval", "Mana"],
       "range": "Far",
       "duration": "Instant",
       "cost": 2,
@@ -1331,10 +1161,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Primeval",
-        "Soul"
-      ],
+      "sources": ["Primeval", "Soul"],
       "range": "Far",
       "duration": "1 minute (Focused)",
       "cost": 2,
@@ -1355,9 +1182,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Close",
       "duration": "24 hours",
       "cost": 2,
@@ -1371,9 +1196,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Close",
       "duration": "30 seconds",
       "cost": 2,
@@ -1392,10 +1215,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Mana",
-        "Soul"
-      ],
+      "sources": ["Mana", "Soul"],
       "range": "Nearby",
       "duration": "1 minute",
       "cost": 2,
@@ -1414,10 +1234,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Mana",
-        "Anima"
-      ],
+      "sources": ["Mana", "Anima"],
       "range": "Close",
       "duration": "Up to 3 rounds",
       "cost": 2,
@@ -1438,9 +1255,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Primeval"
-      ],
+      "sources": ["Primeval"],
       "range": "Beyond",
       "duration": "Instant",
       "cost": 2,
@@ -1459,9 +1274,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Self",
       "duration": "(Focused)",
       "cost": 2,
@@ -1480,11 +1293,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Mana",
-        "Anima",
-        "Primeval"
-      ],
+      "sources": ["Mana", "Anima", "Primeval"],
       "range": "Nearby",
       "duration": "Instant",
       "cost": 2,
@@ -1503,9 +1312,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Universal"
-      ],
+      "sources": ["Universal"],
       "range": "Self",
       "duration": "1 minute",
       "cost": 2,
@@ -1524,10 +1331,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Mana",
-        "Primeval"
-      ],
+      "sources": ["Mana", "Primeval"],
       "range": "Self",
       "duration": "10 minutes",
       "cost": 2,
@@ -1546,10 +1350,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Mana",
-        "Soul"
-      ],
+      "sources": ["Mana", "Soul"],
       "range": "Close",
       "duration": "10 minutes",
       "cost": 2,
@@ -1572,11 +1373,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Primeval",
-        "Soul",
-        "Anima"
-      ],
+      "sources": ["Primeval", "Soul", "Anima"],
       "range": "Touch",
       "duration": "Instant",
       "cost": 2,
@@ -1595,11 +1392,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Anima",
-        "Mana",
-        "Primeval"
-      ],
+      "sources": ["Anima", "Mana", "Primeval"],
       "range": "Close",
       "duration": "1 minute",
       "cost": 2,
@@ -1618,10 +1411,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Anima",
-        "Soul"
-      ],
+      "sources": ["Anima", "Soul"],
       "range": "Self",
       "duration": "24 hours",
       "cost": 2,
@@ -1635,10 +1425,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Soul",
-        "Anima"
-      ],
+      "sources": ["Soul", "Anima"],
       "range": "Close",
       "duration": "3 rounds",
       "cost": 2,
@@ -1652,10 +1439,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Mana",
-        "Soul"
-      ],
+      "sources": ["Mana", "Soul"],
       "range": "Beyond",
       "duration": "Instant",
       "cost": 2,
@@ -1669,10 +1453,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Mana",
-        "Primeval"
-      ],
+      "sources": ["Mana", "Primeval"],
       "range": "Self",
       "duration": "10 minutes (Focused)",
       "cost": 2,
@@ -1695,10 +1476,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Soul",
-        "Anima"
-      ],
+      "sources": ["Soul", "Anima"],
       "range": "Touch",
       "duration": "Instant",
       "cost": 2,
@@ -1721,10 +1499,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Primeval",
-        "Soul"
-      ],
+      "sources": ["Primeval", "Soul"],
       "range": "Close",
       "duration": "1 minute (Focused)",
       "cost": 2,
@@ -1738,9 +1513,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Mana"
-      ],
+      "sources": ["Mana"],
       "range": "Touch",
       "duration": "1 hour",
       "cost": 2,
@@ -1759,11 +1532,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Mana",
-        "Soul",
-        "Anima"
-      ],
+      "sources": ["Mana", "Soul", "Anima"],
       "range": "Self",
       "duration": "1 minute",
       "cost": 2,
@@ -1777,9 +1546,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Primeval"
-      ],
+      "sources": ["Primeval"],
       "range": "Nearby",
       "duration": "1 minute",
       "cost": 2,
@@ -1802,10 +1569,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Anima",
-        "Primeval"
-      ],
+      "sources": ["Anima", "Primeval"],
       "range": "Close",
       "duration": "Instant",
       "cost": 2,
@@ -1819,9 +1583,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Close",
       "duration": "1 minute (Focused)",
       "cost": 2,
@@ -1835,10 +1597,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Mana",
-        "Anima"
-      ],
+      "sources": ["Mana", "Anima"],
       "range": "Nearby",
       "duration": "2 rounds",
       "cost": 2,
@@ -1857,9 +1616,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Primeval"
-      ],
+      "sources": ["Primeval"],
       "range": "Nearby",
       "duration": "1 minute",
       "cost": 2,
@@ -1878,9 +1635,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Primeval"
-      ],
+      "sources": ["Primeval"],
       "range": "Self",
       "duration": "10 minutes",
       "cost": 2,
@@ -1903,10 +1658,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Anima",
-        "Soul"
-      ],
+      "sources": ["Anima", "Soul"],
       "range": "Touch",
       "duration": "Instant",
       "cost": 2,
@@ -1925,10 +1677,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Mana",
-        "Primeval"
-      ],
+      "sources": ["Mana", "Primeval"],
       "range": "Close",
       "duration": "1 minute (Focused)",
       "cost": 2,
@@ -1949,10 +1698,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Anima",
-        "Mana"
-      ],
+      "sources": ["Anima", "Mana"],
       "range": "Self",
       "duration": "10 minutes",
       "cost": 2,
@@ -1971,10 +1717,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Anima",
-        "Soul"
-      ],
+      "sources": ["Anima", "Soul"],
       "range": "Self",
       "duration": "10 minutes (Focused)",
       "cost": 2,
@@ -1988,11 +1731,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Anima",
-        "Mana",
-        "Soul"
-      ],
+      "sources": ["Anima", "Mana", "Soul"],
       "range": "Close",
       "duration": "10 minutes (Focused)",
       "cost": 2,
@@ -2006,10 +1745,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Anima",
-        "Mana"
-      ],
+      "sources": ["Anima", "Mana"],
       "range": "Close",
       "duration": "Instant",
       "cost": 2,
@@ -2028,10 +1764,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Anima",
-        "Mana"
-      ],
+      "sources": ["Anima", "Mana"],
       "range": "Nearby",
       "duration": "Instant",
       "cost": 2,
@@ -2045,9 +1778,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Anima"
-      ],
+      "sources": ["Anima"],
       "range": "Self",
       "duration": "1 minute",
       "cost": 2,
@@ -2066,11 +1797,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Anima",
-        "Mana",
-        "Primeval"
-      ],
+      "sources": ["Anima", "Mana", "Primeval"],
       "range": "Close",
       "duration": "Instant",
       "cost": 2,
@@ -2091,9 +1818,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Close",
       "duration": "1 minute",
       "cost": 2,
@@ -2112,10 +1837,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Anima",
-        "Soul"
-      ],
+      "sources": ["Anima", "Soul"],
       "range": "Close",
       "duration": "Instant",
       "cost": 2,
@@ -2134,10 +1856,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Mana",
-        "Soul"
-      ],
+      "sources": ["Mana", "Soul"],
       "range": "Self",
       "duration": "1 minute (Focused)",
       "cost": 2,
@@ -2156,10 +1875,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Mana",
-        "Primeval"
-      ],
+      "sources": ["Mana", "Primeval"],
       "range": "Self",
       "duration": "10 minutes",
       "cost": 2,
@@ -2173,9 +1889,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Anima"
-      ],
+      "sources": ["Anima"],
       "range": "Close",
       "duration": "1 minute (Focused)",
       "cost": 2,
@@ -2189,9 +1903,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Primeval"
-      ],
+      "sources": ["Primeval"],
       "range": "Self",
       "duration": "24 hours",
       "cost": 2,
@@ -2205,10 +1917,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Anima",
-        "Primeval"
-      ],
+      "sources": ["Anima", "Primeval"],
       "range": "Nearby",
       "duration": "Instant",
       "cost": 2,
@@ -2227,9 +1936,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Universal"
-      ],
+      "sources": ["Universal"],
       "range": "Touch",
       "duration": "10 minutes (Focused)",
       "cost": 2,
@@ -2248,9 +1955,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Close",
       "duration": "Instant",
       "cost": 2,
@@ -2269,9 +1974,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Self",
       "duration": "1 minute",
       "cost": 2,
@@ -2294,11 +1997,7 @@
       "tier": 2,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Primeval",
-        "Mana",
-        "Anima"
-      ],
+      "sources": ["Primeval", "Mana", "Anima"],
       "range": "Touch",
       "duration": "1 minute",
       "cost": 2,
@@ -2312,10 +2011,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Anima",
-        "Primeval"
-      ],
+      "sources": ["Anima", "Primeval"],
       "range": "Close",
       "duration": "1 Minute",
       "cost": 3,
@@ -2334,9 +2030,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Oathbound"
-      ],
+      "sources": ["Oathbound"],
       "range": "Self",
       "duration": "1 Minute (Focused)",
       "cost": 3,
@@ -2350,11 +2044,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Anima",
-        "Mana",
-        "Soul"
-      ],
+      "sources": ["Anima", "Mana", "Soul"],
       "range": "Close",
       "duration": "1 hour",
       "cost": 3,
@@ -2377,10 +2067,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Primeval",
-        "Soul"
-      ],
+      "sources": ["Primeval", "Soul"],
       "range": "Self",
       "duration": "1 Minute (Focused)",
       "cost": 3,
@@ -2394,10 +2081,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Anima",
-        "Mana"
-      ],
+      "sources": ["Anima", "Mana"],
       "range": "Nearby",
       "duration": "1 Minute",
       "cost": 3,
@@ -2411,10 +2095,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Anima",
-        "Mana"
-      ],
+      "sources": ["Anima", "Mana"],
       "range": "Nearby",
       "duration": "Instant",
       "cost": 3,
@@ -2428,10 +2109,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Anima",
-        "Soul"
-      ],
+      "sources": ["Anima", "Soul"],
       "range": "Self",
       "duration": "(Focused)",
       "cost": 3,
@@ -2445,10 +2123,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Primeval",
-        "Soul"
-      ],
+      "sources": ["Primeval", "Soul"],
       "range": "Nearby",
       "duration": "1 minute (Focused)",
       "cost": 3,
@@ -2462,10 +2137,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Anima",
-        "Soul"
-      ],
+      "sources": ["Anima", "Soul"],
       "range": "Self",
       "duration": "1 minute (Focused)",
       "cost": 3,
@@ -2479,10 +2151,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Mana",
-        "Soul"
-      ],
+      "sources": ["Mana", "Soul"],
       "range": "Self",
       "duration": "Instant",
       "cost": 3,
@@ -2501,10 +2170,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Primeval",
-        "Mana"
-      ],
+      "sources": ["Primeval", "Mana"],
       "range": "Nearby",
       "duration": "Instant",
       "cost": 3,
@@ -2525,11 +2191,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Anima",
-        "Primeval",
-        "Mana"
-      ],
+      "sources": ["Anima", "Primeval", "Mana"],
       "range": "Nearby",
       "duration": "Instant",
       "cost": 3,
@@ -2543,10 +2205,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Anima",
-        "Primeval"
-      ],
+      "sources": ["Anima", "Primeval"],
       "range": "Self",
       "duration": "5 Minutes (Focused)",
       "cost": 3,
@@ -2560,9 +2219,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Primeval"
-      ],
+      "sources": ["Primeval"],
       "range": "Self",
       "duration": "1 Minute (Focused)",
       "cost": 3,
@@ -2581,9 +2238,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Self",
       "duration": "1 minute (Focused)",
       "cost": 3,
@@ -2602,10 +2257,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Primeval",
-        "Mana"
-      ],
+      "sources": ["Primeval", "Mana"],
       "range": "Self",
       "duration": "10 minutes (Focused)",
       "cost": 3,
@@ -2624,9 +2276,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Soul"
-      ],
+      "sources": ["Soul"],
       "range": "Touch",
       "duration": "1 hour",
       "cost": 3,
@@ -2640,11 +2290,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "divination",
-      "sources": [
-        "Mana",
-        "Primeval",
-        "Soul"
-      ],
+      "sources": ["Mana", "Primeval", "Soul"],
       "range": "Beyond",
       "duration": "Instant",
       "cost": 3,
@@ -2658,10 +2304,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "mortification",
-      "sources": [
-        "Primeval",
-        "Soul"
-      ],
+      "sources": ["Primeval", "Soul"],
       "range": "Touch",
       "duration": "Instant",
       "cost": 3,
@@ -2684,10 +2327,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "augmentation",
-      "sources": [
-        "Soul",
-        "Mana"
-      ],
+      "sources": ["Soul", "Mana"],
       "range": "Nearby",
       "duration": "Varies",
       "cost": 3,
@@ -2706,9 +2346,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "aberration",
-      "sources": [
-        "Mana"
-      ],
+      "sources": ["Mana"],
       "range": "Nearby",
       "duration": "1 minute",
       "cost": 3,
@@ -2722,11 +2360,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Anima",
-        "Primeval",
-        "Soul"
-      ],
+      "sources": ["Anima", "Primeval", "Soul"],
       "range": "Close",
       "duration": "Instant",
       "cost": 3,
@@ -2740,10 +2374,7 @@
       "tier": 3,
       "is_cantrip": false,
       "spheres": "conjuration",
-      "sources": [
-        "Anima",
-        "Mana"
-      ],
+      "sources": ["Anima", "Mana"],
       "range": "Nearby",
       "duration": "1 Round",
       "cost": 3,
@@ -2762,10 +2393,7 @@
       "tier": 4,
       "is_cantrip": false,
       "spheres": "reclamation",
-      "sources": [
-        "Mana",
-        "Soul"
-      ],
+      "sources": ["Mana", "Soul"],
       "range": "Far",
       "duration": "Instant",
       "cost": 4,
@@ -2779,10 +2407,7 @@
       "tier": 4,
       "is_cantrip": false,
       "spheres": "decimation",
-      "sources": [
-        "Anima",
-        "Primeval"
-      ],
+      "sources": ["Anima", "Primeval"],
       "range": "Far",
       "duration": "Instant",
       "cost": 4,

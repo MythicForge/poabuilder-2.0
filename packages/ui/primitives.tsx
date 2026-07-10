@@ -77,12 +77,20 @@ interface PipTrackerProps {
   onChange: (n: number) => void;
   label?: string;
   die?: string;
+  /** Preview: how many of the filled pips are armed to be spent this cast. */
+  commit?: number;
+  /** Preview: pips the armed cost exceeds `current` by (overdraw, shown ember). */
+  over?: number;
 }
 // Click pip i -> fill up to i+1; re-click the last filled pip -> decrement by
 // one. Above max 20 (reservoir at high tier, homebrew), falls back to a
 // numeric −/current/max/+ counter — too many boxes to be usable as pips.
-export function PipTracker({ current, max, onChange, label, die }: PipTrackerProps) {
+// `commit`/`over` overlay an armed-cast preview: the last `commit` filled pips
+// read as "armed" (leaving on this cast); `over` ember pips trail past the pool
+// when the cost can't be paid.
+export function PipTracker({ current, max, onChange, label, die, commit = 0, over = 0 }: PipTrackerProps) {
   const clamp = (n: number) => Math.max(0, Math.min(max, n));
+  const keep = Math.max(0, current - Math.min(commit, current));
   const head = (
     <>
       {label && <span style={{ color: "var(--text-faint)" }}>{label}</span>}
@@ -106,10 +114,13 @@ export function PipTracker({ current, max, onChange, label, die }: PipTrackerPro
         {Array.from({ length: max }, (_, i) => (
           <span
             key={i}
-            className={`rc-pip${i < current ? " filled" : ""}`}
+            className={`rc-pip${i < keep ? " filled" : i < current ? " filled commit" : ""}`}
             onClick={() => onChange(clamp(i < current ? i : i + 1))}
           />
         ))}
+        {over > 0 && <span className="rc-pip-gap" />}
+        {over > 0 &&
+          Array.from({ length: over }, (_, i) => <span key={`o${i}`} className="rc-pip over" />)}
       </span>
     </span>
   );
